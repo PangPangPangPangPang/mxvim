@@ -5,20 +5,16 @@ if [ -f ~/.vimrc ]; then
   rm ~/.vimrc
 fi
 
-if [ -d ~/.vim ]; then
+if [ "$1" = "-r" ]; then
   rm -rf ~/.vim
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    cp ./molokai.vim ~/.vim/colors/molokai.vim
 fi
-
-# download vim-plug
-mkdir -p ~/.vim/{plugged,autoload}
-curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
 
 cp .vimrc ~/.vimrc
 
-# install vim plugins
 vim -E -s <<-EOF
   :source ~/.vimrc
-  :PlugInstall
-  :PlugClean
   :qa
 EOF
+vim +BundleInstall +qall

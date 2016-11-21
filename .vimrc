@@ -1,6 +1,19 @@
-"Plugin
-call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-airline/vim-airline'
+
+Bundle "majutsushi/tagbar"
+nmap <F12> :TagbarToggle<cr>
+
+Bundle "scrooloose/nerdtree"
+nmap <F1> :NERDTreeToggle<cr>
+
+Bundle "tomasr/molokai"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
 "       Amir Salihefendic
@@ -158,7 +171,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme desert
+    colorscheme molokai
 catch
 endtry
 
