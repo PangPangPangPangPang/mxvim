@@ -24,8 +24,8 @@ vim +BundleInstall +qall
 for var in $*
 do
     if [ "$var" = "-ycm" ]; then
+        cp ./.ycm_extra_conf.py ~/.ycm_extra_conf.py
         cd ~/.vim/bundle/YouCompleteMe
         ./install --clang-completer --system-libclang
-        cp ./.ycm_extra_conf.py ~/.ycm_extra_conf.py
     fi
 done
