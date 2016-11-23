@@ -26,6 +26,6 @@ do
     if [ "$var" = "-ycm" ]; then
         cp ./.ycm_extra_conf.py ~/.ycm_extra_conf.py
         cd ~/.vim/bundle/YouCompleteMe
-        ./install --clang-completer --system-libclang
+        ./install.sh --clang-completer --system-libclang
     fi
 done
