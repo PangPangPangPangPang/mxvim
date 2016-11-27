@@ -374,6 +374,21 @@ nmap <F12> :TagbarToggle<cr>
 Bundle "scrooloose/nerdtree"
 nmap <F1> :NERDTreeToggle<cr>
 
+"Python like IDE
+Bundle "klen/python-mode"
+let g:pymode = 1
+"let g:pymode_trim_whitespaces = 1
+"let g:pymode_options = 1
+"let g:pymode_python = 'python'
+"let g:pymode_indent = 1
+"let g:pymode_folding = 1
+"let g:pymode_doc = 1
+"let g:pymode_doc_bind = 'K'
+"let g:pymode_virtualenv = 1
+"let g:pymode_virtualenv_path = $VIRTUAL_ENV
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+
 " Python Complete & Syntastic
 Bundle "Valloric/YouCompleteMe"
 let g:ycm_error_symbol = '>>'
