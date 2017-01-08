@@ -1,4 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plugin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vim/vimrc.bundle"))
+  source ~/.vim/vimrc.bundle
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Normal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -6,9 +12,11 @@ set history=500
 
 " Show line numbers
 set nu!
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -356,51 +364,6 @@ func! CompileRunGcc()
     endif
 endfunc
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-airline/vim-airline'
-
-Bundle "majutsushi/tagbar"
-nmap <F12> :TagbarToggle<cr>
-
-Bundle "scrooloose/nerdtree"
-nmap <F1> :NERDTreeToggle<cr>
-
-"Python like IDE
-Bundle "klen/python-mode"
-let g:pymode = 1
-"let g:pymode_trim_whitespaces = 1
-"let g:pymode_options = 1
-"let g:pymode_python = 'python'
-"let g:pymode_indent = 1
-"let g:pymode_folding = 1
-"let g:pymode_doc = 1
-"let g:pymode_doc_bind = 'K'
-"let g:pymode_virtualenv = 1
-"let g:pymode_virtualenv_path = $VIRTUAL_ENV
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-
-" Python Complete & Syntastic
-Bundle "Valloric/YouCompleteMe"
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F4> :YcmDiags<CR>
-
-"scheme
-Bundle "tomasr/molokai"
-
-Bundle "jiangmiao/auto-pairs"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
