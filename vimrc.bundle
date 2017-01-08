@@ -1,0 +1,58 @@
+"Swift highlight
+set runtimepath+=~/.vim/bundle/swift.vim
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-airline/vim-airline'
+
+Bundle "majutsushi/tagbar"
+nmap <F12> :TagbarToggle<cr>
+
+Bundle "scrooloose/nerdtree"
+nmap <F1> :NERDTreeToggle<cr>
+
+Bundle "scrooloose/syntastic"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"Swift
+Bundle "keith/swift.vim"
+
+"Python like IDE
+Bundle "klen/python-mode"
+let g:pymode = 1
+"let g:pymode_trim_whitespaces = 1
+"let g:pymode_options = 1
+"let g:pymode_python = 'python'
+"let g:pymode_indent = 1
+"let g:pymode_folding = 1
+"let g:pymode_doc = 1
+"let g:pymode_doc_bind = 'K'
+"let g:pymode_virtualenv = 1
+"let g:pymode_virtualenv_path = $VIRTUAL_ENV
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+
+" Python Complete & Syntastic
+Bundle "Valloric/YouCompleteMe"
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F4> :YcmDiags<CR>
+
+"scheme
+Bundle "tomasr/molokai"
+
+Bundle "jiangmiao/auto-pairs"

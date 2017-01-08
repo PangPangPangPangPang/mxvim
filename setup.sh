@@ -14,6 +14,7 @@ if [ "$1" = "-r" ]; then
 fi
 
 cp .vimrc ~/.vimrc
+cp ./vimrc.bundle ~/.vim/vimrc.bundle
 
 vim -E -s <<-EOF
 :source ~/.vimrc
