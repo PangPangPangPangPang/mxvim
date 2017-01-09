@@ -1,10 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("~/.vim/vimrc.bundle"))
-  source ~/.vim/vimrc.bundle
-endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Normal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -13,18 +7,8 @@ set history=500
 " Show line numbers
 set nu!
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -33,10 +17,20 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plugin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vim/vimrc.bundle"))
+  source ~/.vim/vimrc.bundle
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -283,9 +277,6 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ag after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ag and put the cursor in the right position
-map <leader>g :Ag 
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>

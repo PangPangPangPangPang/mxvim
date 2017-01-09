@@ -50,6 +50,7 @@ let g:ycm_warning_symbol = '>*'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 
 "scheme
