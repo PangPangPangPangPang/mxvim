@@ -29,4 +29,7 @@ do
         cd ~/.vim/bundle/YouCompleteMe
         ./install.sh --clang-completer --system-libclang
     fi
+    if [ "$var" = "-jslint" ]; then 
+        cp ./javasript/.jshintrc ~/.jshintrc
+    fi
 done
