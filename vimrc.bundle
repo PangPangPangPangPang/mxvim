@@ -4,8 +4,10 @@ set runtimepath+=~/.vim/bundle/swift.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+""""""""""""""""""most important"""""""""""""""""
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
+
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
 
@@ -15,11 +17,36 @@ nmap <F12> :TagbarToggle<cr>
 Bundle "scrooloose/nerdtree"
 nmap <F1> :NERDTreeToggle<cr>
 
-"Swift
-Bundle "keith/swift.vim"
+Bundle "jiangmiao/auto-pairs"
 
-"Python like IDE
+"search
+Bundle 'mileszs/ack.vim'
+if executable('ag')
+      let g:ackprg = 'ag --vimgrep'
+  endif
+map <c-F> :Ack<space>
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""Swift""""""""""""""""""""""
+Bundle "keith/swift.vim"
+""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""Python like IDE""""""""""""""
 Bundle "klen/python-mode"
+"Support Python version 2.6+ and 3.2+
+"Syntax highlighting
+"Virtualenv support
+"Run python code (<leader>r)
+"Add/remove breakpoints (<leader>b)
+"Improved Python indentation
+"Python folding
+"Python motions and operators (]], 3[[, ]]M, vaC, viM, daC, ciM, ...)
+"Code checking (pylint, pyflakes, pylama, ...) that can be run simultaneously (:PymodeLint)
+"Autofix PEP8 errors (:PymodeLintAuto)
+"Search in python documentation (K)
+"Code refactoring <rope refactoring library> (rope)
+"Strong code completion (rope)
+"Go to definition (<C-c>g for :RopeGotoDefinition)
 let g:pymode = 1
 let g:pymode_virtualenv = 1
 let g:pymode_rope = 0
@@ -35,26 +62,10 @@ let g:pymode_rope_autoimport = 0
 "let g:pymode_virtualenv_path = $VIRTUAL_ENV
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>r'
-"Support Python version 2.6+ and 3.2+
-"Syntax highlighting
-"Virtualenv support
-"Run python code (<leader>r)
-"Add/remove breakpoints (<leader>b)
-"Improved Python indentation
-"Python folding
-"Python motions and operators (]], 3[[, ]]M, vaC, viM, daC, ciM, ...)
-"Code checking (pylint, pyflakes, pylama, ...) that can be run simultaneously (:PymodeLint)
-"Autofix PEP8 errors (:PymodeLintAuto)
-"Search in python documentation (K)
-"Code refactoring <rope refactoring library> (rope)
-"Strong code completion (rope)
-"Go to definition (<C-c>g for :RopeGotoDefinition)
+"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Python Complete & Syntastic
+"""""""""""Complete & Syntastic"""""""""""""""""
 Bundle "Valloric/YouCompleteMe"
-"
-"" YouCompleteMe options
-"
 let g:ycm_register_as_syntastic_checker = 1 "default 1
 let g:Show_diagnostics_ui = 1 "default 1
 ""will put icons in Vim's gutter on lines that have a diagnostic set.
@@ -86,20 +97,13 @@ nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
+"""""""""""""""""""""""""""""""""""""""""""
 
-"scheme
+"""""""""""""""""""scheme""""""""""""""""""
 Bundle "tomasr/molokai"
+"""""""""""""""""""""""""""""""""""""""""""
 
-Bundle "jiangmiao/auto-pairs"
-
-"search
-Bundle 'mileszs/ack.vim'
-if executable('ag')
-      let g:ackprg = 'ag --vimgrep'
-  endif
-map <c-F> :Ack<space>
-
-"""""""""""""FE""""""""""""""""
+"""""""""""""""""""""FE""""""""""""""""""""
 Bundle 'chemzqm/wxapp.vim'
 Bundle 'othree/xml.vim'
 
@@ -112,4 +116,4 @@ Bundle 'ternjs/tern_for_vim'
 Bundle 'Shutnik/jshint2.vim'
 map <c-A> :JSHint<CR>
 let jshint2_save = 1
-"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
