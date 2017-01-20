@@ -25,6 +25,11 @@ if executable('ag')
       let g:ackprg = 'ag --vimgrep'
   endif
 map <c-F> :Ack<space>
+
+" add commenter
+Bundle 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims=1
+map <leader>/ <leader>c<space>
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift""""""""""""""""""""""
