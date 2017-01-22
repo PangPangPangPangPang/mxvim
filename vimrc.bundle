@@ -30,6 +30,7 @@ map <c-F> :Ack<space>
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift""""""""""""""""""""""
@@ -112,13 +113,11 @@ Bundle "tomasr/molokai"
 Bundle 'chemzqm/wxapp.vim'
 Bundle 'othree/xml.vim'
 
-"for javascript auto complete
-Bundle 'ternjs/tern_for_vim'
-
 "for check javascript syntastic
 "need node.js and JSHint
 "npm install -g jshint
-Bundle 'Shutnik/jshint2.vim'
-map <c-A> :JSHint<CR>
-let jshint2_save = 1
+"note: jshint doesn`t support JSX,use ESlint to replace it.
+" Bundle 'Shutnik/jshint2.vim'
+" map <c-A> :JSHint<CR>
+"let jshint2_save = 1
 """""""""""""""""""""""""""""""""""""""""""
