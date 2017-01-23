@@ -27,7 +27,7 @@ do
     if [ "$var" = "-ycm" ]; then
         cp ./.ycm_extra_conf.py ~/.ycm_extra_conf.py
         cd ~/.vim/bundle/YouCompleteMe
-        ./install.py --clang-completer --system-libclang --tern-completer
+        ./install.py --clang-completer --system-libclang 
     fi
     if [ "$var" = "-jslint" ]; then 
         cp ./javasript/.jshintrc ~/.jshintrc

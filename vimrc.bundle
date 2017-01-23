@@ -110,7 +110,11 @@ Bundle "tomasr/molokai"
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
+"config https://github.com/chemzqm/wxapp.vim
 Bundle 'chemzqm/wxapp.vim'
+
+"for javascript auto complete
+Bundle 'ternjs/tern_for_vim'
 Bundle 'othree/xml.vim'
 
 "for check javascript syntastic
