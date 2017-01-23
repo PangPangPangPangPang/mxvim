@@ -37,6 +37,9 @@ map <leader>/ <leader>c<space>
 Bundle "keith/swift.vim"
 """"""""""""""""""""""""""""""""""""""""""""""
 
+"git
+Bundle "tpope/vim-fugitive"
+
 """""""""""""""""""Python like IDE""""""""""""""
 Bundle "klen/python-mode"
 "Support Python version 2.6+ and 3.2+
