@@ -157,8 +157,12 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set shiftwidth=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set tabstop=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set sts=4
+autocmd FileType javascript,html,css,xml set shiftwidth=2
+autocmd FileType javascript,html,css,xml set tabstop=2
+autocmd FileType javascript,html,css,xml set sts=2
 
 " Linebreak on 500 characters
 set lbr
@@ -167,7 +171,6 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
