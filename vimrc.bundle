@@ -4,23 +4,27 @@ set runtimepath+=~/.vim/bundle/swift.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-""""""""""""""""""most important"""""""""""""""""
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+"""""""""""""""most important""""""""""""
+" let Vundle manage plugin
+Bundle 'gmarik/vundle' 
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
-
-Bundle "majutsushi/tagbar"
-nmap <F12> :TagbarToggle<cr>
+Bundle 'Yggdroot/indentLine'
 
 Bundle "scrooloose/nerdtree"
+"ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$'] 
 nmap <F1> :NERDTreeToggle<cr>
+
+Bundle "majutsushi/tagbar"
+nmap <F2> :TagbarToggle<cr>
 
 Bundle "jiangmiao/auto-pairs"
 
 "search
-Bundle 'mileszs/ack.vim'
+Bundle 'mileszs/ack.vim' 
+
 if executable('ag')
       let g:ackprg = 'ag --vimgrep'
   endif
@@ -30,48 +34,30 @@ map <c-F> :Ack<space>
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
+""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""git""""""""""""""""""""
+Bundle "tpope/vim-fugitive" 
+""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""Swift""""""""""""""""""""""
-Bundle "keith/swift.vim"
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""scheme"""""""""""""""""
+Bundle "tomasr/molokai"
+""""""""""""""""""""""""""""""""""""""""""
 
-"git
-Bundle "tpope/vim-fugitive"
+"""""""""""""""""""Syntastic""""""""""""""
+Bundle "vim-syntastic/syntastic"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"""""""""""""""""""Python like IDE""""""""""""""
-Bundle "klen/python-mode"
-"Support Python version 2.6+ and 3.2+
-"Syntax highlighting
-"Virtualenv support
-"Run python code (<leader>r)
-"Add/remove breakpoints (<leader>b)
-"Improved Python indentation
-"Python folding
-"Python motions and operators (]], 3[[, ]]M, vaC, viM, daC, ciM, ...)
-"Code checking (pylint, pyflakes, pylama, ...) that can be run simultaneously (:PymodeLint)
-"Autofix PEP8 errors (:PymodeLintAuto)
-"Search in python documentation (K)
-"Code refactoring <rope refactoring library> (rope)
-"Strong code completion (rope)
-"Go to definition (<C-c>g for :RopeGotoDefinition)
-let g:pymode = 1
-let g:pymode_virtualenv = 1
-let g:pymode_rope = 0
-let g:pymode_rope_autoimport = 0
-"let g:pymode_trim_whitespaces = 1
-"let g:pymode_options = 1
-"let g:pymode_python = 'python'
-"let g:pymode_indent = 1
-"let g:pymode_folding = 1
-"let g:pymode_doc = 1
-"let g:pymode_doc_bind = 'K'
-"let g:pymode_virtualenv = 1
-"let g:pymode_virtualenv_path = $VIRTUAL_ENV
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-"""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d' "use eslint to check javascript && npm install -g eslint_d
+"""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
 Bundle "Valloric/YouCompleteMe"
@@ -108,26 +94,14 @@ nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 """""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""scheme""""""""""""""""""
-Bundle "tomasr/molokai"
-"""""""""""""""""""""""""""""""""""""""""""
-
 """""""""""""""""""""FE""""""""""""""""""""
-"config https://github.com/chemzqm/wxapp.vim
-Bundle 'chemzqm/wxapp.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 
-"for javascript auto complete
-Bundle 'ternjs/tern_for_vim'
 Bundle 'othree/xml.vim'
+"""""""""""""""""""""""""""""""""""""""""""
 
-"for check javascript syntastic
-"need node.js and JSHint
-"npm install -g jshint
-"note: jshint doesn`t support JSX,use ESlint to replace it.
-" Bundle 'Shutnik/jshint2.vim'
-" map <c-A> :JSHint<CR>
-"let jshint2_save = 1
+"""""""""""""""""""Swift"""""""""""""""""""
+Bundle "keith/swift.vim"
 """""""""""""""""""""""""""""""""""""""""""

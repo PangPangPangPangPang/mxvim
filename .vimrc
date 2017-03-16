@@ -156,16 +156,16 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-set shiftwidth=4
-set tabstop=4
+" set shiftwidth=4
+" set tabstop=4
 
 " 1 tab == 4 spaces
-" autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set shiftwidth=4
-" autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set tabstop=4
-" autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set sts=4
-" autocmd FileType javascript,html,css,xml set shiftwidth=2
-" autocmd FileType javascript,html,css,xml set tabstop=2
-" autocmd FileType javascript,html,css,xml set sts=2
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set shiftwidth=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set tabstop=4
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set sts=4
+autocmd FileType javascript,html,css,xml set shiftwidth=2
+autocmd FileType javascript,html,css,xml set tabstop=2
+autocmd FileType javascript,html,css,xml set sts=2
 
 " Linebreak on 500 characters
 set lbr
@@ -411,6 +411,12 @@ function! <SID>BufcloseCloseIt()
         execute("bdelete! ".l:currentBufNum)
     endif
 endfunction
+
+" neovim config
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    nmap <F12> :bo sp term://zsh\|resize 5<CR>i
+endif
 
 " Make VIM remember position in file after reopen
 " if has("autocmd")
