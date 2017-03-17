@@ -55,7 +55,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint'] "npm install -g eslint babel-eslint
 let g:syntastic_javascript_eslint_exec = 'eslint_d' "use eslint to check javascript && npm install -g eslint_d
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -74,6 +74,12 @@ let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
 let g:ycm_complete_in_strings = 1 "default 1
 let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
 let g:ycm_path_to_python_interpreter = '' "default ''
+
+" support css file auto complete
+let g:ycm_semantic_triggers = {
+    \   'css': [ 're!^\s{2}', 're!:\s+' ],
+    \   'html': [ '</' ],
+    \ }
 
 let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
 let g:ycm_server_log_level = 'info' "default info
