@@ -34,6 +34,13 @@ map <c-F> :Ack<space>
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
+
+"code snip support
+Bundle 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+Bundle 'honza/vim-snippets'
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""git""""""""""""""""""""
@@ -72,6 +79,7 @@ let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_always_populate_location_list = 1 "default 0
 let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 
 let g:ycm_complete_in_strings = 1 "default 1
 let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
@@ -104,10 +112,12 @@ nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 
 """""""""""""""""""""FE""""""""""""""""""""
 Bundle 'pangloss/vim-javascript'
+Bundle 'othree/xml.vim'
+
+"react support
 Bundle 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
-
-Bundle 'othree/xml.vim'
+Bundle 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift"""""""""""""""""""
