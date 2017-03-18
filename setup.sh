@@ -38,12 +38,21 @@ do
     if [ "$var" = "-jslint" ]; then 
         cp ./javasript/.jshintrc ~/.jshintrc
     fi
+
+    # to support javascript tagbar run bellow commond in you project after run -eslint
+    #find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
     if [ "$var" = "-eslint" ]; then 
+        npm install eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
+        npm install -g git+https://github.com/ramitos/jsctags.git
         cp ./javasript/.eslintrc.js ~/.eslintrc.js
     fi
-    if [ "$var" = "-nvim" ]; then #install neovim first
-	mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-	ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-	ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+
+    #install neovim first
+    #brew install neovim/neovim/neovim
+    #pip install neovim
+    if [ "$var" = "-nvim" ]; then 	
+        mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+        ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+        ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
     fi
 done

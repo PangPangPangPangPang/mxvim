@@ -55,8 +55,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['eslint'] "npm install -g eslint babel-eslint
-let g:syntastic_javascript_eslint_exec = 'eslint_d' "use eslint to check javascript && npm install -g eslint_d
+" use eslint to check javascript syntastic
+" npm install eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
+let g:syntastic_javascript_checkers = ['eslint'] 
+let g:syntastic_javascript_eslint_exec = 'eslint_d' 
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
