@@ -15,10 +15,10 @@ do
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
         rm -rf ~/.vim/colors
         mkdir ~/.vim/colors
-        cp ./molokai.vim ~/.vim/colors/molokai.vim
     fi
 done
 
+cp -r ./colors/ ~/.vim/colors/
 cp .vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
 
