@@ -66,6 +66,12 @@ let g:syntastic_check_on_wq = 0
 " npm install eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
 let g:syntastic_javascript_checkers = ['eslint'] 
 let g:syntastic_javascript_eslint_exec = 'eslint_d' 
+
+" use pylint to check python syntastic
+" pip install pylint
+" if you use zsh and osx add `export LC_CTYPE=en_US.UTF-8` in your .zshrc
+let g:syntastic_python_checkers = ['pylint'] 
+let g:syntastic_python_python_exec = 'python2'
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
