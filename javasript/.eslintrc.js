@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": "airbnb",
+  "extends": "eslint:recommended",
   "plugins": [
     "react",
     "jsx-a11y",
@@ -39,6 +39,11 @@ module.exports = {
     "prefer-stateless-function": [
       0,
       { "ignorePureComponents": true }
+    ],
+    "indent": [
+      2,
+      2,
+      { "SwitchCase": 1 }
     ]
 
   }
