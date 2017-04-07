@@ -9,7 +9,30 @@ call vundle#rc()
 Bundle 'gmarik/vundle' 
 
 Bundle 'kien/ctrlp.vim'
+
 Bundle 'vim-airline/vim-airline'
+set t_Co=256
+set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+
+Bundle 'vim-airline/vim-airline-themes'
+
+let g:airline_theme='molokai'
+
 Bundle 'Yggdroot/indentLine'
 
 Bundle "scrooloose/nerdtree"

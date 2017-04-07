@@ -41,8 +41,9 @@ module.exports = {
       { "ignorePureComponents": true }
     ],
     "indent": [
-      "error",
-      2
+      2,
+      2,
+      { "SwitchCase": 1 }
     ]
 
   }
