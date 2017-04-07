@@ -1,5 +1,6 @@
 module.exports = {
   "extends": "eslint:recommended",
+  // "extends": "airbnb",
   "plugins": [
     "react",
     "jsx-a11y",
@@ -44,7 +45,9 @@ module.exports = {
       2,
       2,
       { "SwitchCase": 1 }
+    ],
+    "react/jsx-uses-vars": [
+      1
     ]
-
   }
 };
