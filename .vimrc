@@ -106,7 +106,6 @@ endif
 " Add a bit extra margin to the left
 set foldcolumn=1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -306,6 +305,9 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" <C-c> press easier then <Esc>, but <C-c> may stop the current task
+noremap <C-c> <Esc>
+noremap <F10> <C-c>
 """"""""""""""""""""""
 "Quickly Run
 """"""""""""""""""""""
@@ -402,3 +404,4 @@ endif
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "endif
+"
