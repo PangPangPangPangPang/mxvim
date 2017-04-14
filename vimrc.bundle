@@ -43,6 +43,7 @@ nmap <F1> :NERDTreeToggle<cr>
 Bundle "majutsushi/tagbar"
 nmap <F2> :TagbarToggle<cr>
 
+Bundle "easymotion/vim-easymotion"
 Bundle "jiangmiao/auto-pairs"
 
 "search
