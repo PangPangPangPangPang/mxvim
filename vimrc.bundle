@@ -53,7 +53,7 @@ Bundle 'mileszs/ack.vim'
 if executable('ag')
       let g:ackprg = 'ag --vimgrep'
   endif
-map <leader>f :Ack<space>
+nmap <leader>f :Ack<space>
 
 " add commenter
 Bundle 'scrooloose/nerdcommenter'
