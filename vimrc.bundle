@@ -45,6 +45,7 @@ nmap <F2> :TagbarToggle<cr>
 
 Bundle "easymotion/vim-easymotion"
 Bundle "jiangmiao/auto-pairs"
+Bundle "tpope/vim-surround"
 
 "search
 Bundle 'mileszs/ack.vim' 
