@@ -9,6 +9,16 @@ call vundle#rc()
 Bundle 'gmarik/vundle' 
 
 Bundle 'kien/ctrlp.vim'
+" this help vim remeber last choice, default choice is MRU.
+let g:ctrlp_cmd = 'call CallCtrlP()'
+func! CallCtrlP()
+    if exists('s:called_ctrlp')
+        CtrlPLastMode
+    else
+        let s:called_ctrlp = 1
+        CtrlPMRU
+    endif
+endfunc
 
 Bundle 'vim-airline/vim-airline'
 set t_Co=256
