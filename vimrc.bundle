@@ -80,6 +80,10 @@ Bundle 'honza/vim-snippets'
 
 """""""""""""""""""git""""""""""""""""""""
 Bundle "tpope/vim-fugitive" 
+map <silent> <leader>gs :Gstatus<cr>
+map <silent> <leader>gd :Gdiff<cr>
+map <leader>ga :Gwrite<cr>
+map <silent> <leader>gc :Gcommit<cr>
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""scheme"""""""""""""""""
