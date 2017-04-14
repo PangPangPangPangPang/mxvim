@@ -84,6 +84,7 @@ map <silent> <leader>gs :Gstatus<cr>
 map <silent> <leader>gd :Gdiff<cr>
 map <leader>ga :Gwrite<cr>
 map <silent> <leader>gc :Gcommit<cr>
+map <silent> <leader>gb :Gblame<cr>
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""scheme"""""""""""""""""
