@@ -21,6 +21,7 @@ done
 cp -r ./colors/ ~/.vim/colors/
 cp .vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
+cp ./vimrc.additional.bundle ~/.vim/vimrc.additional.bundle
 
 vim -E -s <<-EOF
 :source ~/.vimrc

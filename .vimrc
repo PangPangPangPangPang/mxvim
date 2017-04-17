@@ -307,7 +307,15 @@ map <leader>pp :setlocal paste!<cr>
 
 " <C-c> press easier then <Esc>, but <C-c> may stop the current task
 noremap <C-c> <Esc>
-noremap <F10> <C-c>
+noremap <C-,> <C-c>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => For custom users modify their own config.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vim/vimrc.additional.bundle"))
+  source ~/.vim/vimrc.additional.bundle
+endif
+
 """"""""""""""""""""""
 "Quickly Run
 """"""""""""""""""""""
