@@ -1,14 +1,12 @@
 "Swift highlight
-set runtimepath+=~/.vim/bundle/swift.vim
+set runtimepath+=~/.vim/plugged/swift.vim
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
 
-"""""""""""""""most important""""""""""""
-" let Vundle manage plugin
-Bundle 'gmarik/vundle' 
 
-Bundle 'kien/ctrlp.vim'
+" search file
+Plug 'kien/ctrlp.vim'
 " this help vim remeber last choice, default choice is MRU.
 let g:ctrlp_cmd = 'call CallCtrlP()'
 func! CallCtrlP()
@@ -20,7 +18,7 @@ func! CallCtrlP()
     endif
 endfunc
 
-Bundle 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 set t_Co=256
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
@@ -39,26 +37,26 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 
-Bundle 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 
 let g:airline_theme='molokai'
 
-Bundle 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
-Bundle "scrooloose/nerdtree"
+Plug 'scrooloose/nerdtree'
 "ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 nmap <F1> :NERDTreeToggle<cr>
 
-Bundle "majutsushi/tagbar"
+Plug 'majutsushi/tagbar'
 nmap <F2> :TagbarToggle<cr>
 
-Bundle "easymotion/vim-easymotion"
-Bundle "jiangmiao/auto-pairs"
-Bundle "tpope/vim-surround"
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
 "search
-Bundle 'mileszs/ack.vim' 
+Plug 'mileszs/ack.vim' 
 
 if executable('ag')
       let g:ackprg = 'ag --vimgrep'
@@ -66,20 +64,20 @@ if executable('ag')
 map <leader>f :Ack<space>
 
 " add commenter
-Bundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
 "code snip support
-Bundle 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-Bundle 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""git""""""""""""""""""""
-Bundle "tpope/vim-fugitive" 
+Plug 'tpope/vim-fugitive' 
 map <silent> <leader>gs :Gstatus<cr>
 map <silent> <leader>gd :Gdiff<cr>
 map <leader>ga :Gwrite<cr>
@@ -88,11 +86,11 @@ map <silent> <leader>gb :Gblame<cr>
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""scheme"""""""""""""""""
-Bundle "tomasr/molokai"
+Plug 'tomasr/molokai'
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Syntastic""""""""""""""
-Bundle "vim-syntastic/syntastic"
+Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -115,7 +113,7 @@ let g:syntastic_python_python_exec = 'python2'
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
-Bundle "Valloric/YouCompleteMe"
+Plug 'Valloric/YouCompleteMe'
 let g:ycm_register_as_syntastic_checker = 1 "default 1
 let g:Show_diagnostics_ui = 1 "default 1
 ""will put icons in Vim's gutter on lines that have a diagnostic set.
@@ -161,15 +159,17 @@ nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
-Bundle 'pangloss/vim-javascript'
-Bundle 'othree/xml.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/xml.vim'
 
 "react support
-Bundle 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
-Bundle 'letientai299/vim-react-snippets', { 'branch': 'es6' }
+Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift"""""""""""""""""""
-Bundle "keith/swift.vim"
+Plug 'keith/swift.vim'
 """""""""""""""""""""""""""""""""""""""""""
+" Initialize plugin system
+call plug#end()

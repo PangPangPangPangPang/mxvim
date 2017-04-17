@@ -12,7 +12,8 @@ for var in $*
 do
     if [ "$var" = "-r" ];  then
         rm -rf ~/.vim
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         rm -rf ~/.vim/colors
         mkdir ~/.vim/colors
     fi
@@ -21,7 +22,7 @@ done
 cp -r ./colors/ ~/.vim/colors/
 cp .vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
-if [ -d "./vimrc.additional.bundle" ]; then
+if [ -f "./vimrc.additional.bundle" ]; then
     cp ./vimrc.additional.bundle ~/.vim/vimrc.additional.bundle
 fi
 
@@ -29,13 +30,16 @@ vim -E -s <<-EOF
 :source ~/.vimrc
 :qa
 EOF
-vim +BundleInstall +qall
+vim +PlugInstall +qall
 
 for var in $*
 do
     if [ "$var" = "-ycm" ]; then
         cp ./.ycm_extra_conf.py ~/.ycm_extra_conf.py
-        cd ~/.vim/bundle/YouCompleteMe
+        cd ~/.vim/plugged/YouCompleteMe
+        if [ ! -f "./third_party/ycmd/build.py" ]; then
+            git submodule update --init --recursive
+        fi
         ./install.py --clang-completer --system-libclang --tern-completer
     fi
     if [ "$var" = "-jslint" ]; then 
