@@ -19,7 +19,7 @@ do
     fi
 done
 
-cp -r ./colors/ ~/.vim/colors/
+cp -r ./colors ~/.vim/
 cp .vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
 if [ -f "./vimrc.additional.bundle" ]; then
