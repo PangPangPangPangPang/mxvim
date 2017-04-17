@@ -23,33 +23,18 @@ cp -r ./colors ~/.vim/
 cp .vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
 if [ -f "./vimrc.additional.bundle" ]; then
-    sed -i '/YouCompleteMe/s/^/"/' vimrc.bundle
+    cp ./vimrc.additional.bundle ~/.vim/vimrc.additional.bundle
 fi
 
-update_plug () {
 vim -E -s <<-EOF
 :source ~/.vimrc
 :qa
 EOF
 vim +PlugInstall +qall
-}
-
-update_ycm = true
-if [ ! -d "~/.vim/plugged/YouCompleteMe" ]; then
-    update_ycm = false
-    sed -i '/YouCompleteMe/s/^/"/' ~/.vim/vimrc.bundle
-fi
-
-update_plug
-
-if [ $update_ycm != true ]; then
-    sed -i '/YouCompleteMe/s/^"//' ~/.vim/vimrc.bundle
-fi
 
 for var in $*
 do
     if [ "$var" = "-ycm" ]; then
-        update_plug
         cp ./.ycm_extra_conf.py ~/.ycm_extra_conf.py
         cd ~/.vim/plugged/YouCompleteMe
         if [ ! -f "./third_party/ycmd/build.py" ]; then
