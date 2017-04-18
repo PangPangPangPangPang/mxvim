@@ -1,9 +1,6 @@
-"Swift highlight
-set runtimepath+=~/.vim/plugged/swift.vim
-
+"
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
-
 
 " search file
 Plug 'kien/ctrlp.vim'
@@ -170,6 +167,9 @@ Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 
 """""""""""""""""""Swift"""""""""""""""""""
 Plug 'keith/swift.vim'
+"Swift highlight
+set runtimepath+=~/.vim/plugged/swift.vim
+
 """""""""""""""""""""""""""""""""""""""""""
 " Initialize plugin system
 call plug#end()
