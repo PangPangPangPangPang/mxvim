@@ -252,10 +252,10 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-    nmap <D-j> <M-j>
-    nmap <D-k> <M-k>
-    vmap <D-j> <M-j>
-    vmap <D-k> <M-k>
+    nmap ∆ <M-j>
+    nmap ˚ <M-k>
+    vmap ∆ <M-j>
+    vmap ˚ <M-k>
 endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
@@ -307,7 +307,11 @@ map <leader>pp :setlocal paste!<cr>
 
 " <C-c> press easier then <Esc>, but <C-c> may stop the current task
 noremap <C-c> <Esc>
-noremap <C-,> <C-c>
+noremap <M-c> <C-c>
+if has("mac") || has("macunix")
+    " alt+c
+    map ç <M-c>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => For custom users modify their own config.
