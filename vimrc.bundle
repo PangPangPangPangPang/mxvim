@@ -58,7 +58,6 @@ Plug 'mileszs/ack.vim'
 if executable('ag')
       let g:ackprg = 'ag --vimgrep'
   endif
-map <leader>f :Ack<space>
 
 " add commenter
 Plug 'scrooloose/nerdcommenter'
@@ -149,7 +148,6 @@ let g:ycm_autoclose_preview_window_after_completion= 1
 
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
