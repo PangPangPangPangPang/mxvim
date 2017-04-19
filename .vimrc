@@ -19,12 +19,6 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("~/.vim/vimrc.bundle"))
-  source ~/.vim/vimrc.bundle
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -102,7 +96,6 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
 " Add a bit extra margin to the left
 set foldcolumn=1
 
@@ -117,7 +110,6 @@ try
     colorscheme dracula
 catch
 endtry
-
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -276,7 +268,17 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 vnoremap <silent> <leader>f :call VisualSelection('gv', '')<cr><cr>
 
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
+
+" Visual mode add surround
+vnoremap <silent> <leader>( :call VisualSelection('surround', '(', ')')<cr><cr>
+vnoremap <silent> <leader>) :call VisualSelection('surround', '( ', ' )')<cr><cr>
+vnoremap <silent> <leader>{ :call VisualSelection('surround', '{', '}')<cr><cr>
+vnoremap <silent> <leader>} :call VisualSelection('surround', '{ ', ' }')<cr><cr>
+vnoremap <silent> <leader>[ :call VisualSelection('surround', '[', ']')<cr><cr>
+vnoremap <silent> <leader>] :call VisualSelection('surround', '[ ', ' ]')<cr><cr>
+vnoremap <silent> <leader>" :call VisualSelection('surround', '"', '"')<cr><cr>
+vnoremap <silent> <leader>' :call VisualSelection('surround', "\'", "\'")<cr><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -307,10 +309,21 @@ map <leader>pp :setlocal paste!<cr>
 
 " <C-c> press easier then <Esc>, but <C-c> may stop the current task
 noremap <C-c> <Esc>
-noremap <M-c> <C-c>
+inoremap <C-c> <Esc>
+
 if has("mac") || has("macunix")
-    " alt+c
-    map ç <M-c>
+    noremap ç <C-c>
+    inoremap ç <C-c>
+else
+    noremap <M-c> <C-c>
+    inoremap <M-c> <C-c>
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plugin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vim/vimrc.bundle"))
+  source ~/.vim/vimrc.bundle
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -359,7 +372,7 @@ function! CmdLine(str)
     unmenu Foo
 endfunction 
 
-function! VisualSelection(direction, extra_filter) range
+function! VisualSelection(direction, ...) range
     let l:saved_reg = @"
     execute "normal! vgvy"
 
@@ -370,6 +383,8 @@ function! VisualSelection(direction, extra_filter) range
         call CmdLine("Ack " . l:pattern)
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'surround'
+        call CmdLine("s" . '/'. l:pattern . '/' . a:1 . l:pattern . a:2 . '/')
     endif
 
     let @/ = l:pattern
