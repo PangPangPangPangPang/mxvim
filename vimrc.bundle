@@ -56,20 +56,32 @@ Plug 'tpope/vim-surround'
 Plug 'mileszs/ack.vim' 
 
 if executable('ag')
-      let g:ackprg = 'ag --vimgrep'
-  endif
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " add commenter
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
+" ultisnips slow down switch buffer, so close it
 "code snip support
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-n>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+
+" Merge javascript file to improve performance
+" Plug 'PangPangPangPangPang/vim-snippets'
+" Plug 'PangPangPangPangPang/vim-base-snippets'
+"
+
+" This snip plugin perform better but can`t work with ycm.
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+" Below are all use for tlib_vim.
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""git""""""""""""""""""""
@@ -127,9 +139,9 @@ let g:ycm_path_to_python_interpreter = '' "default ''
 
 " support css file auto complete
 let g:ycm_semantic_triggers = {
-    \   'css': [ 're!^\s{2}', 're!:\s+' ],
-    \   'html': [ '</' ],
-    \ }
+            \   'css': [ 're!^\s{2}', 're!:\s+' ],
+            \   'html': [ '</' ],
+            \ }
 
 let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
 let g:ycm_server_log_level = 'info' "default info
@@ -145,7 +157,6 @@ let g:ycm_warning_symbol = '>*'
 
 let g:ycm_autoclose_preview_window_after_completion= 1
 
-
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -160,7 +171,6 @@ Plug 'othree/xml.vim'
 "react support
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
-Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift"""""""""""""""""""
