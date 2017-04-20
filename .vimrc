@@ -183,15 +183,29 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Quickly open a buffer for scribble
+map <leader>be :e ~/buffer<cr>
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <Leader>bo :set nomore<cr>:ls<Bar>:set more<cr>:b<Space>
 
 " Move buffer
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
+map <leader>1 :bf<cr>
+map <leader>2 :bf<cr>:bn<cr>
+map <leader>3 :bf<cr>:bn2<cr>
+map <leader>4 :bf<cr>:bn3<cr>
+map <leader>5 :bf<cr>:bn4<cr>
+map <leader>6 :bf<cr>:bn5<cr>
+map <leader>7 :bf<cr>:bn6<cr>
+map <leader>8 :bf<cr>:bn7<cr>
+map <leader>9 :bf<cr>:bn8<cr>
 
 " Close all the buffers
-map <leader>ba :bufdo bd<cr>
+" map <leader>ba :bufdo bd<cr>
+map <leader>ba :1,22bd<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -300,11 +314,6 @@ map <leader>s? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -428,9 +437,3 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     nmap <F12> :bo sp term://zsh\|resize 5<CR>i
 endif
-
-" Make VIM remember position in file after reopen
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-"
