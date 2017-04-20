@@ -51,7 +51,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -96,8 +96,8 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+" Add a bit extra margin to the left, change 0 to 1.
+set foldcolumn=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -133,7 +133,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -187,11 +186,12 @@ map <C-l> <C-W>l
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
+" Move buffer
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
-
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -270,15 +270,17 @@ vnoremap <silent> <leader>f :call VisualSelection('gv', '')<cr><cr>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
 
-" Visual mode add surround
-vnoremap <silent> <leader>( :call VisualSelection('surround', '(', ')')<cr><cr>
-vnoremap <silent> <leader>) :call VisualSelection('surround', '( ', ' )')<cr><cr>
-vnoremap <silent> <leader>{ :call VisualSelection('surround', '{', '}')<cr><cr>
-vnoremap <silent> <leader>} :call VisualSelection('surround', '{ ', ' }')<cr><cr>
-vnoremap <silent> <leader>[ :call VisualSelection('surround', '[', ']')<cr><cr>
-vnoremap <silent> <leader>] :call VisualSelection('surround', '[ ', ' ]')<cr><cr>
-vnoremap <silent> <leader>" :call VisualSelection('surround', '"', '"')<cr><cr>
-vnoremap <silent> <leader>' :call VisualSelection('surround', "\'", "\'")<cr><cr>
+nnoremap <leader>== mzG=gg`z
+
+" Visual mode add surround vim-surround already support these functions by 'S'.
+" vnoremap <silent> <leader>( :call VisualSelection('surround', '(', ')')<cr><cr>
+" vnoremap <silent> <leader>) :call VisualSelection('surround', '( ', ' )')<cr><cr>
+" vnoremap <silent> <leader>{ :call VisualSelection('surround', '{', '}')<cr><cr>
+" vnoremap <silent> <leader>} :call VisualSelection('surround', '{ ', ' }')<cr><cr>
+" vnoremap <silent> <leader>[ :call VisualSelection('surround', '[', ']')<cr><cr>
+" vnoremap <silent> <leader>] :call VisualSelection('surround', '[ ', ' ]')<cr><cr>
+" vnoremap <silent> <leader>" :call VisualSelection('surround', '"', '"')<cr><cr>
+" vnoremap <silent> <leader>' :call VisualSelection('surround', "\'", "\'")<cr><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -323,14 +325,14 @@ endif
 "Plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vim/vimrc.bundle"))
-  source ~/.vim/vimrc.bundle
+    source ~/.vim/vimrc.bundle
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => For custom users modify their own config.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vim/vimrc.additional.bundle"))
-  source ~/.vim/vimrc.additional.bundle
+    source ~/.vim/vimrc.additional.bundle
 endif
 
 """"""""""""""""""""""
@@ -375,7 +377,7 @@ endfunction
 function! VisualSelection(direction, ...) range
     let l:saved_reg = @"
     execute "normal! vgvy"
-    
+
     let l:pattern = escape(@", '\\/.*$^~[]')
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
