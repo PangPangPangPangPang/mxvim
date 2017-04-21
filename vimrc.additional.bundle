@@ -1,6 +1,0 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => For custom users modify their own config.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:snips_author="Max Wang"
-let g:snips_github="https://github.com/PangPangPangPangPang"
-let g:snips_email="wangyefeng@baidu.com"
