@@ -203,10 +203,6 @@ map <leader>7 :bf<cr>:bn6<cr>
 map <leader>8 :bf<cr>:bn7<cr>
 map <leader>9 :bf<cr>:bn8<cr>
 
-" Close all the buffers
-" map <leader>ba :bufdo bd<cr>
-map <leader>ba :1,22bd<cr>
-
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -284,17 +280,8 @@ map <leader>f :Ack
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
 
+" Whole format
 nnoremap <leader>== mzG=gg`z
-
-" Visual mode add surround vim-surround already support these functions by 'S'.
-" vnoremap <silent> <leader>( :call VisualSelection('surround', '(', ')')<cr><cr>
-" vnoremap <silent> <leader>) :call VisualSelection('surround', '( ', ' )')<cr><cr>
-" vnoremap <silent> <leader>{ :call VisualSelection('surround', '{', '}')<cr><cr>
-" vnoremap <silent> <leader>} :call VisualSelection('surround', '{ ', ' }')<cr><cr>
-" vnoremap <silent> <leader>[ :call VisualSelection('surround', '[', ']')<cr><cr>
-" vnoremap <silent> <leader>] :call VisualSelection('surround', '[ ', ' ]')<cr><cr>
-" vnoremap <silent> <leader>" :call VisualSelection('surround', '"', '"')<cr><cr>
-" vnoremap <silent> <leader>' :call VisualSelection('surround', "\'", "\'")<cr><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -307,13 +294,6 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -329,6 +309,16 @@ else
     noremap <M-c> <C-c>
     inoremap <M-c> <C-c>
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Insert action like ternimal
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <c-f> <Right>
+inoremap <c-b> <left>
+inoremap <c-a> <Esc>^i
+inoremap <c-e> <Esc>$a
+inoremap <c-w> <Esc>diwi
+inoremap <c-u> <Esc>cc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plugin
@@ -437,3 +427,5 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     nmap <F12> :bo sp term://zsh\|resize 5<CR>i
 endif
+
+
