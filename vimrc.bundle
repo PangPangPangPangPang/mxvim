@@ -2,9 +2,9 @@
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
-" search file
+" Search file
 Plug 'kien/ctrlp.vim'
-" this help vim remeber last choice, default choice is MRU.
+" This help vim remeber last choice, default choice is MRU.
 let g:ctrlp_cmd = 'call CallCtrlP()'
 func! CallCtrlP()
     if exists('s:called_ctrlp')
@@ -16,9 +16,6 @@ func! CallCtrlP()
 endfunc
 
 Plug 'vim-airline/vim-airline'
-set t_Co=256
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -33,15 +30,13 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-
 Plug 'vim-airline/vim-airline-themes'
-
 let g:airline_theme='molokai'
 
 Plug 'Yggdroot/indentLine'
 
 Plug 'scrooloose/nerdtree'
-"ignore files in NERDTree
+" Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 nmap <F1> :NERDTreeToggle<cr>
 
@@ -52,36 +47,23 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
-"search
+" Search
 Plug 'mileszs/ack.vim' 
-
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-" add commenter
+" Add commenter
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
-" ultisnips slow down switch buffer, so close it
-"code snip support
-" Plug 'SirVer/ultisnips'
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-n>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
-" Merge javascript file to improve performance
-" Plug 'PangPangPangPangPang/vim-snippets'
-" Plug 'PangPangPangPangPang/vim-base-snippets'
-"
-
-" This snip plugin perform better but can`t work with ycm.
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+" Code snip support
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 Plug 'honza/vim-snippets'
-" Below are all use for tlib_vim.
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""git""""""""""""""""""""
@@ -91,10 +73,6 @@ map <silent> <leader>gd :Gdiff<cr>
 map <leader>ga :Gwrite<cr>
 map <silent> <leader>gc :Gcommit<cr>
 map <silent> <leader>gb :Gblame<cr>
-""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""scheme"""""""""""""""""
-Plug 'tomasr/molokai'
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Syntastic""""""""""""""
