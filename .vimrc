@@ -279,6 +279,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press <leader>f you Ack after the selected text
 vnoremap <silent> <leader>f :call VisualSelection('gv', '')<cr><cr>
+map <leader>f :Ack 
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>

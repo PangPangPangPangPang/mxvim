@@ -1,6 +1,6 @@
 module.exports = {
-  "extends": "eslint:recommended",
-  // "extends": "airbnb",
+  // "extends": "eslint:recommended",
+  "extends": "airbnb",
   "plugins": [
     "react",
     "jsx-a11y",

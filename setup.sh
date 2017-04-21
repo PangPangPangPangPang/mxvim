@@ -49,8 +49,8 @@ do
     # to support javascript tagbar run bellow commond in you project after run -eslint
     #find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
     if [ "$var" = "-eslint" ]; then 
-        npm install eslint-config-recommended eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
-        npm install -g git+https://github.com/ramitos/jsctags.git
+        sudo  npm install eslint-config-recommended eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint -g
+        sudo  npm install -g git+https://github.com/ramitos/jsctags.git
         cp ./javasript/.eslintrc.js ~/.eslintrc.js
     fi
 
