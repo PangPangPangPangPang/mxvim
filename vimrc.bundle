@@ -76,26 +76,43 @@ map <silent> <leader>gb :Gblame<cr>
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Syntastic""""""""""""""
-Plug 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+if v:version < 743
+    Plug 'vim-syntastic/syntastic'
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
 
-" use eslint to check javascript syntastic
-" npm install eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
-let g:syntastic_javascript_checkers = ['eslint'] 
-let g:syntastic_javascript_eslint_exec = 'eslint_d' 
+    " use eslint to check javascript syntastic
+    " npm install eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
+    let g:syntastic_javascript_checkers = ['eslint'] 
+    let g:syntastic_javascript_eslint_exec = 'eslint_d' 
 
-" use pylint to check python syntastic
-" pip install pylint
-" if you use zsh and osx add `export LC_CTYPE=en_US.UTF-8` in your .zshrc
-let g:syntastic_python_checkers = ['pylint'] 
-let g:syntastic_python_python_exec = 'python2'
+    " use pylint to check python syntastic
+    " pip install pylint
+    " if you use zsh and osx add `export LC_CTYPE=en_US.UTF-8` in your .zshrc
+    let g:syntastic_python_checkers = ['pylint'] 
+    let g:syntastic_python_python_exec = 'python2'
+else
+    Plug 'w0rp/ale'
+    let g:ale_lint_on_text_changed = 'normal'
+    " let g:ale_lint_on_enter = 0
+
+    let g:ale_sign_error = '✖'
+    let g:ale_sign_warning = '◎'
+    let g:airline_section_error = '%{ALEGetStatusLine()}'
+    let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+    highlight clear ALEErrorSign
+    highlight clear ALEWarningSign
+    " let g:ale_sign_column_always = 1
+    "
+    let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+    let g:ale_linter_aliases = {'jsx': 'css'}
+endif
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
