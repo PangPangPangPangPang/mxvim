@@ -43,15 +43,18 @@ nmap <F1> :NERDTreeToggle<cr>
 Plug 'majutsushi/tagbar'
 nmap <F2> :TagbarToggle<cr>
 
+" Efficiency.
 Plug 'easymotion/vim-easymotion'
+
+Plug 'terryma/vim-multiple-cursors'
+let g:multi_cursor_quit_key='<C-c>'
+let g:multi_cursor_skip_key='<C-x>'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
 " Search
 Plug 'mileszs/ack.vim' 
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
 
 " Add commenter
 Plug 'scrooloose/nerdcommenter'
