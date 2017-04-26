@@ -40,8 +40,7 @@ Plug 'scrooloose/nerdtree'
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 map <F1> :NERDTreeToggle<cr>
 imap <F1> <Esc>:NERDTreeToggle<cr>
-map <C-j> :NERDTreeFind<cr>
-imap <C-j> <Esc>:NERDTreeFind<cr>
+map <leader>j :NERDTreeFind<cr>
 
 Plug 'majutsushi/tagbar'
 map <F2> :TagbarToggle<cr>
