@@ -38,10 +38,14 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
-nmap <F1> :NERDTreeToggle<cr>
+map <F1> :NERDTreeToggle<cr>
+imap <F1> <Esc>:NERDTreeToggle<cr>
+map <C-j> :NERDTreeFind<cr>
+imap <C-j> <Esc>:NERDTreeFind<cr>
 
 Plug 'majutsushi/tagbar'
-nmap <F2> :TagbarToggle<cr>
+map <F2> :TagbarToggle<cr>
+imap <F2> <Esc>:TagbarToggle<cr>
 
 " Efficiency.
 Plug 'easymotion/vim-easymotion'
