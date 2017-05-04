@@ -283,18 +283,6 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
 " Whole format
 nnoremap <leader>== mzG=gg`z
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
@@ -317,7 +305,7 @@ endif
 " => Insert action like ternimal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <c-f> <Right>
-inoremap <c-b> <left>
+inoremap <c-b> <Left>
 inoremap <c-a> <Esc>^i
 inoremap <c-e> <Esc>$a
 inoremap <c-w> <Esc>diwi
