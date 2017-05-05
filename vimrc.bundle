@@ -65,11 +65,11 @@ let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
 " Code snip support
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-n>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+" Plug 'honza/vim-snippets'
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""git""""""""""""""""""""
@@ -82,7 +82,25 @@ map <silent> <leader>gb :Gblame<cr>
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Syntastic""""""""""""""
-if v:version < 743
+if v:version > 743 || has('nvim')
+    Plug 'w0rp/ale'
+    let g:ale_lint_on_text_changed = 'normal'
+    " let g:ale_lint_on_enter = 0
+
+    let g:ale_sign_error = '✖'
+    let g:ale_sign_warning = '◎'
+    let g:airline_section_error = '%{ALEGetStatusLine()}'
+    let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+    highlight clear ALEErrorSign
+    highlight clear ALEWarningSign
+    " let g:ale_sign_column_always = 1
+    "
+    let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
+                \'python' : ['flake8']
+                \ }
+    let g:ale_linter_aliases = {'jsx': 'css'}
+    map <silent> <leader>s :ALEToggle<cr>
+else
     Plug 'vim-syntastic/syntastic'
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -103,24 +121,6 @@ if v:version < 743
     " if you use zsh and osx add `export LC_CTYPE=en_US.UTF-8` in your .zshrc
     let g:syntastic_python_checkers = ['pylint'] 
     let g:syntastic_python_python_exec = 'python2'
-else
-    Plug 'w0rp/ale'
-    let g:ale_lint_on_text_changed = 'normal'
-    " let g:ale_lint_on_enter = 0
-
-    let g:ale_sign_error = '✖'
-    let g:ale_sign_warning = '◎'
-    let g:airline_section_error = '%{ALEGetStatusLine()}'
-    let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-    highlight clear ALEErrorSign
-    highlight clear ALEWarningSign
-    " let g:ale_sign_column_always = 1
-    "
-    let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
-                \'python' : ['flake8']
-                \ }
-    let g:ale_linter_aliases = {'jsx': 'css'}
-    map <leader>s :ALEToggle<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
