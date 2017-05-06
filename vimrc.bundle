@@ -133,13 +133,24 @@ endif
 
 """""""""""Complete & Syntastic"""""""""""""""""
 Plug 'Valloric/YouCompleteMe'
-let g:ycm_register_as_syntastic_checker = 1 "default 1
+
+if v:version > 743 || has('nvim')
+    let g:ycm_register_as_syntastic_checker = 0 "default 1
+    let g:ycm_enable_diagnostic_signs = 0
+    let g:ycm_enable_diagnostic_highlighting = 0
+else
+    let g:ycm_register_as_syntastic_checker = 1 "default 1
+    let g:ycm_enable_diagnostic_signs = 1
+    let g:ycm_enable_diagnostic_highlighting = 1
+    let g:ycm_error_symbol = '✖'
+    let g:ycm_warning_symbol = '◎'
+endif
+
+
 let g:Show_diagnostics_ui = 1 "default 1
 ""will put icons in Vim's gutter on lines that have a diagnostic set.
 "Turning this off will also turn off the YcmErrorLine and YcmWarningLine
 ""highlighting
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_always_populate_location_list = 1 "default 0
 let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
 let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
@@ -163,8 +174,6 @@ let g:ycm_confirm_extra_conf = 1
 let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab'  ]
 let g:ycm_filetype_whitelist = { '*': 1  }
 let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
 
 let  g:ycm_autoclose_preview_window_after_insertion = 1
 
