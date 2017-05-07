@@ -41,6 +41,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 map <F1> :NERDTreeToggle<cr>
 imap <F1> <Esc>:NERDTreeToggle<cr>
 map <leader>j :NERDTreeFind<cr>
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'majutsushi/tagbar'
 map <F2> :TagbarToggle<cr>
