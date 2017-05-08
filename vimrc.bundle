@@ -38,10 +38,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
-map <F1> :NERDTreeToggle<cr>
-imap <F1> <Esc>:NERDTreeToggle<cr>
-map <leader>j :NERDTreeFind<cr>
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'jistr/vim-nerdtree-tabs'
+map <F1> :NERDTreeTabsToggle<cr>
+imap <F1> <Esc>:NERDTreeTabsToggle<cr>
+map <leader>j :NERDTreeTabsFind<cr>
 
 Plug 'majutsushi/tagbar'
 map <F2> :TagbarToggle<cr>
