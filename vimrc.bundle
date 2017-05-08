@@ -35,7 +35,7 @@ let g:airline_theme='molokai'
 
 Plug 'Yggdroot/indentLine'
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle'  }
+Plug 'scrooloose/nerdtree'
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 Plug 'Xuyuanp/nerdtree-git-plugin'
