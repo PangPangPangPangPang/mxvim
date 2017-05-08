@@ -35,7 +35,7 @@ let g:airline_theme='molokai'
 
 Plug 'Yggdroot/indentLine'
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle'  }
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -62,7 +62,7 @@ Plug 'tpope/vim-surround'
 Plug 'mileszs/ack.vim' 
 let g:ack_use_cword_for_empty_search = 1
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep'
 endif
 
 " Add commenter
@@ -139,7 +139,6 @@ endif
 
 """""""""""Complete & Syntastic"""""""""""""""""
 Plug 'Valloric/YouCompleteMe'
-
 if v:version > 743 || has('nvim')
     let g:ycm_register_as_syntastic_checker = 0 "default 1
     let g:ycm_enable_diagnostic_signs = 0
