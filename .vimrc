@@ -327,6 +327,13 @@ if filereadable(expand("~/.vim/vimrc.additional.bundle"))
     source ~/.vim/vimrc.additional.bundle
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vim/vimrc.statusline.bundle"))
+    source ~/.vim/vimrc.statusline.bundle
+endif
+
 """"""""""""""""""""""
 "Quickly Run
 """"""""""""""""""""""

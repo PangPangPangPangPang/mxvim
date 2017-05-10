@@ -22,6 +22,8 @@ done
 cp -r ./colors ~/.vim/
 cp .vimrc ~/.vimrc
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
+cp ./vimrc.statusline.bundle ~/.vim/vimrc.additional.bundle
+
 if [ -f "./vimrc.additional.bundle" ]; then
     cp ./vimrc.additional.bundle ~/.vim/vimrc.additional.bundle
 fi
