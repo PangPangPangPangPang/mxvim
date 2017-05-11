@@ -130,7 +130,7 @@ let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
 " Code snip support
-if has('nvim')
+if 1
     " UltiSnips slow down neovim performance, change to vim-snipmate
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
