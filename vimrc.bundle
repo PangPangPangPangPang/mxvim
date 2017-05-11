@@ -14,13 +14,15 @@ func! CallCtrlP()
         CtrlPMRU
     endif
 endfunc
+
+"""""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
             \ 'colorscheme': 'jellybeans',
             \ 'mode_map': { 'c': 'NORMAL'  },
             \ 'active': {
             \   'left': [ [ 'mode', 'paste'  ], [ 'fugitive', 'filename'  ]  ],
-            \   'right': [ [ 'ale', 'lineinfo'  ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'  ]  ]
+            \   'right': [ [ 'ale' ], [ 'lineinfo'  ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'  ]  ]
             \ },
             \ 'component_function': {
             \   'modified': 'LightlineModified',
@@ -31,21 +33,33 @@ let g:lightline = {
             \   'filetype': 'LightlineFiletype',
             \   'fileencoding': 'LightlineFileencoding',
             \   'mode': 'LightlineMode',
-            \   'ale': 'LightLineAle',
+            \   'ale': 'LightlineAle',
             \ },
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '', 'right': '' }
             \ }
 
-function! LightLineAle()
+function! LightlineAle()
+    if exists('g:loaded_ale')
+        return ALEGetStatusLine()
+    endif
     return ''
 endfunction
+
 function! LightlineModified()
     return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! LightlineReadonly()
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! LightlineMode()
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+                \ fname == 'ControlP' ? 'CtrlP' :
+                \ fname =~ 'NERD_tree' ? 'NERDTree' :
+                \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 function! LightlineFilename()
@@ -76,12 +90,7 @@ endfunction
 function! LightlineFileencoding()
     return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
-
-function! LightlineMode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-" let g:airline_symbols.linenr = ''
+"""""""""""""""""""""""""""""""""""""""
 
 Plug 'Yggdroot/indentLine'
 
@@ -152,7 +161,6 @@ if v:version > 743 || has('nvim')
 
     let g:ale_sign_error = '✖'
     let g:ale_sign_warning = '◎'
-    let g:airline_section_error = '%{ALEGetStatusLine()}'
     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
     highlight clear ALEErrorSign
     highlight clear ALEWarningSign
