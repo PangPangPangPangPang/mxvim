@@ -1,3 +1,18 @@
+function! Check_mode()
+    let l:m = mode()
+    if l:m ==# "i"
+        let l:mode = 'INSERT'
+    elseif l:m ==# "R"
+        let l:mode = 'REPLACE'    
+    elseif l:m =~# '\v(v|V||s|S|)'
+        let l:mode = 'VISUAL'
+    elseif l:m ==# "t"
+        let l:mode = 'TERMINAL'
+    else
+        let l:mode = 'NORMAL'
+    endif
+    return l:mode
+endfunction
 function! Buf_total_num()
     return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 endfunction
@@ -23,13 +38,13 @@ function! Get_branch()
     return ''
 endfunction
 
-set statusline=%<%1*[B-%n]%*
+set statusline=%<%1*\ %{Check_mode()}\ %*
+set statusline+=%5*\ \ %{Get_branch()}\ %*
 " TOT is an abbreviation for total
 " set statusline+=%2*[TOT:%{Buf_total_num()}]%*
 set statusline+=%3*\ %{File_size(@%)}\ %*
 set statusline+=%4*\ %t\ %m%r%y\ %*
-set statusline+=%=%5*\ \ %{Get_branch()}\ %*
-set statusline+=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
+set statusline+=%=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
 set statusline+=%8*\ %P\ %*
 set statusline+=%9*\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}\ %*
 " default bg for statusline is 236 in space-vim-dark
