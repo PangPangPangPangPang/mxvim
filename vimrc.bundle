@@ -14,24 +14,74 @@ func! CallCtrlP()
         CtrlPMRU
     endif
 endfunc
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+            \ 'colorscheme': 'jellybeans',
+            \ 'mode_map': { 'c': 'NORMAL'  },
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste'  ], [ 'fugitive', 'filename'  ]  ],
+            \   'right': [ [ 'ale', 'lineinfo'  ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'  ]  ]
+            \ },
+            \ 'component_function': {
+            \   'modified': 'LightlineModified',
+            \   'readonly': 'LightlineReadonly',
+            \   'fugitive': 'LightlineFugitive',
+            \   'filename': 'LightlineFilename',
+            \   'fileformat': 'LightlineFileformat',
+            \   'filetype': 'LightlineFiletype',
+            \   'fileencoding': 'LightlineFileencoding',
+            \   'mode': 'LightlineMode',
+            \   'ale': 'LightLineAle',
+            \ },
+            \ 'separator': { 'left': '', 'right': '' },
+            \ 'subseparator': { 'left': '', 'right': '' }
+            \ }
 
-Plug 'vim-airline/vim-airline'
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+function! LightLineAle()
+    return ''
+endfunction
+function! LightlineModified()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
 
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+function! LightlineReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
 
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='molokai'
+function! LightlineFilename()
+    return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \  &ft == 'unite' ? unite#get_status_string() :
+                \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+    if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+        let branch = fugitive#head()
+        return branch !=# '' ? ' '.branch : ''
+    endif
+    return ''
+endfunction
+
+function! LightlineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+" let g:airline_symbols.linenr = ''
 
 Plug 'Yggdroot/indentLine'
 
