@@ -27,8 +27,7 @@ set statusline=%<%1*[B-%n]%*
 " TOT is an abbreviation for total
 " set statusline+=%2*[TOT:%{Buf_total_num()}]%*
 set statusline+=%3*\ %{File_size(@%)}\ %*
-set statusline+=%4*\ %F\ %*
-set statusline+=%6*\ %m%r%y\ %*
+set statusline+=%4*\ %t\ %m%r%y\ %*
 set statusline+=%=%5*\ \ %{Get_branch()}\ %*
 set statusline+=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
 set statusline+=%8*\ %P\ %*
