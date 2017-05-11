@@ -167,10 +167,8 @@ set wrap "Wrap lines
 " => Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -194,15 +192,15 @@ map <Leader>bo :set nomore<cr>:ls<Bar>:set more<cr>:b<Space>
 " Move buffer
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
-map <leader>1 :bf<cr>
-map <leader>2 :bf<cr>:bn<cr>
-map <leader>3 :bf<cr>:bn2<cr>
-map <leader>4 :bf<cr>:bn3<cr>
-map <leader>5 :bf<cr>:bn4<cr>
-map <leader>6 :bf<cr>:bn5<cr>
-map <leader>7 :bf<cr>:bn6<cr>
-map <leader>8 :bf<cr>:bn7<cr>
-map <leader>9 :bf<cr>:bn8<cr>
+map <leader>b1 :bf<cr>
+map <leader>b2 :bf<cr>:bn<cr>
+map <leader>b3 :bf<cr>:bn2<cr>
+map <leader>b4 :bf<cr>:bn3<cr>
+map <leader>b5 :bf<cr>:bn4<cr>
+map <leader>b6 :bf<cr>:bn5<cr>
+map <leader>b7 :bf<cr>:bn6<cr>
+map <leader>b8 :bf<cr>:bn7<cr>
+map <leader>b9 :bf<cr>:bn8<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -266,7 +264,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
+autocmd BufWrite *.js :call DeleteTrailingWS()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
