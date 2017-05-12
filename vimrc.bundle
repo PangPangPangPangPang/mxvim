@@ -74,6 +74,9 @@ function! LightlineFilename()
     if fname =~ 'NERD_tree'
         return 'NERDTree'
     endif
+    if fname =~ '__Tagbar__'
+        return 'Tagbar'
+    endif
 
     return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
                 \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
@@ -272,7 +275,6 @@ let g:jsx_ext_required = 0
 Plug 'keith/swift.vim'
 "Swift highlight
 set runtimepath+=~/.vim/plugged/swift.vim
-
 """""""""""""""""""""""""""""""""""""""""""
 " Initialize plugin system
 call plug#end()
