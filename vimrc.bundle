@@ -24,6 +24,10 @@ let g:lightline = {
             \   'left': [ [ 'mode', 'paste'  ], [ 'fugitive', 'filename'  ]  ],
             \   'right': [ [ 'ale' ], [ 'lineinfo'  ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype'  ]  ]
             \ },
+            \ 'inactive': {
+            \   'left': [ [ 'filename' ]  ],
+            \   'right': []
+            \ },
             \ 'component_function': {
             \   'modified': 'LightlineModified',
             \   'readonly': 'LightlineReadonly',
@@ -63,6 +67,14 @@ function! LightlineMode()
 endfunction
 
 function! LightlineFilename()
+    let fname = expand('%:t')
+    if fname == 'ControlP'
+        return ''
+    endif
+    if fname =~ 'NERD_tree'
+        return 'NERDTree'
+    endif
+
     return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
                 \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
                 \  &ft == 'unite' ? unite#get_status_string() :
