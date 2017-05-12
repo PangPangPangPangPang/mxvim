@@ -233,7 +233,7 @@ endtry
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Close quickfix window
-map <leader>q :cclose<cr>
+map <leader>q :cclose<cr> :pclose<cr>
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
