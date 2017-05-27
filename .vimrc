@@ -6,6 +6,9 @@ set history=500
 
 " Show line numbers
 set nu!
+" Show relative line number
+set relativenumber
+
 
 " Set to auto read when a file is changed from the outside
 set autoread

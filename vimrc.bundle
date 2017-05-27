@@ -14,8 +14,6 @@ func! CallCtrlP()
         CtrlPMRU
     endif
 endfunc
-Plug 'FelikZ/ctrlp-py-matcher'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch'  }
 
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
