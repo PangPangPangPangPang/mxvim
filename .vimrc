@@ -103,7 +103,17 @@ syntax enable
 set background=dark
 
 try
-    colorscheme dracula
+    let g:hybrid_custom_term_colors = 1
+    let g:hybrid_reduced_contrast = 1 
+    colorscheme hybrid
+    " let g:PaperColor_Theme_Options = {
+                " \   'theme': {
+                " \     'default': {
+                " \       'transparent_background': 1
+                " \     }
+                " \   }
+                " \ }
+    " colorscheme PaperColor
 catch
 endtry
 

@@ -22,7 +22,7 @@ endfunc
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-            \ 'colorscheme': 'jellybeans',
+            \ 'colorscheme': 'PaperColor',
             \ 'mode_map': { 'c': 'NORMAL'  },
             \ 'active': {
             \   'left': [ [ 'mode', 'paste'  ], [ 'fugitive', 'filename'  ]  ],
