@@ -103,9 +103,9 @@ syntax enable
 set background=dark
 
 try
-    let g:hybrid_custom_term_colors = 1
-    let g:hybrid_reduced_contrast = 1 
-    colorscheme hybrid
+    " let g:hybrid_custom_term_colors = 1
+    " let g:hybrid_reduced_contrast = 1 
+    " colorscheme hybrid
     " let g:PaperColor_Theme_Options = {
                 " \   'theme': {
                 " \     'default': {
@@ -113,7 +113,7 @@ try
                 " \     }
                 " \   }
                 " \ }
-    " colorscheme PaperColor
+    colorscheme PaperColor
 catch
 endtry
 

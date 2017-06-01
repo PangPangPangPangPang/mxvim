@@ -118,7 +118,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 map <F1> :NERDTreeTabsToggle<cr>
 imap <F1> <Esc>:NERDTreeTabsToggle<cr>
-map <leader>j :NERDTreeTabsFind<cr>
+map <leader>j :NERDTreeFind<cr>
 
 Plug 'majutsushi/tagbar'
 map <F2> :TagbarToggle<cr>
