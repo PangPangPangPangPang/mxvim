@@ -909,7 +909,7 @@ fun! s:set_highlightings_variable()
     if s:mode == s:MODE_16_COLOR
       call s:HL("CursorLineNr", s:cursorlinenr_fg, s:cursorlinenr_bg, "")
     else
-      call s:HL("CursorLineNr", s:cursorlinenr_fg, s:cursorlinenr_bg, "none")
+      call s:HL("CursorLineNr", s:cursorlinenr_fg, s:transparent, "none")
     endif
     call s:HL("CursorColumn", "", s:cursorcolumn, "none")
     call s:HL("PMenu", s:popupmenu_fg, s:popupmenu_bg, "none")
