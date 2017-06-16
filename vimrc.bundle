@@ -7,10 +7,11 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
 " Search file
-
 Plug 'ctrlpvim/ctrlp.vim'
 " This help vim remeber last choice, default choice is MRU.
 let g:ctrlp_cmd = 'call CallCtrlP()'
+unmap <leader>bo
+map <leader>bo :CtrlPBuffer<cr>
 func! CallCtrlP()
     if exists('s:called_ctrlp')
         CtrlPLastMode
@@ -118,13 +119,13 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 let g:nerdtree_tabs_open_on_gui_startup = 0
-map <F1> :NERDTreeTabsToggle<cr>
-imap <F1> <Esc>:NERDTreeTabsToggle<cr>
-map <leader>j :NERDTreeFind<cr>
+map <silent> <F1> :NERDTreeTabsToggle<cr>
+imap <silent> <F1> <Esc>:NERDTreeTabsToggle<cr>
+map <silent> <leader>j :NERDTreeFind<cr>
 
 Plug 'majutsushi/tagbar'
-map <F2> :TagbarToggle<cr>
-imap <F2> <Esc>:TagbarToggle<cr>
+map <silent> <F2> :TagbarToggle<cr>
+imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
 " Efficiency.
 Plug 'easymotion/vim-easymotion'
