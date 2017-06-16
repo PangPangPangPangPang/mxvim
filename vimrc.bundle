@@ -6,6 +6,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
+if has('gui_running')
+    Plug 'Yggdroot/indentLine'
+endif
+
 " Search file
 Plug 'ctrlpvim/ctrlp.vim'
 " This help vim remeber last choice, default choice is MRU.
@@ -116,6 +120,7 @@ Plug 'scrooloose/nerdtree'
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
+let g:nerdtree_tabs_open_on_gui_startup = 0
 map <F1> :NERDTreeTabsToggle<cr>
 imap <F1> <Esc>:NERDTreeTabsToggle<cr>
 map <leader>j :NERDTreeFind<cr>
@@ -147,7 +152,7 @@ let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
 " Code snip support
-if 1
+if !has("gui_running")
     " UltiSnips slow down neovim performance, change to vim-snipmate
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
