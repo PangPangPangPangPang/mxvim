@@ -6,22 +6,34 @@ call plug#begin('~/.vim/plugged')
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
-if has('gui_running')
-    Plug 'Yggdroot/indentLine'
-endif
-
 " Search file
-Plug 'ctrlpvim/ctrlp.vim'
-" This help vim remeber last choice, default choice is MRU.
-let g:ctrlp_cmd = 'call CallCtrlP()'
-func! CallCtrlP()
-    if exists('s:called_ctrlp')
-        CtrlPLastMode
-    else
-        let s:called_ctrlp = 1
-        CtrlPMRU
-    endif
-endfunc
+
+if 1
+    Plug 'Yggdroot/LeaderF'
+    let g:Lf_WindowHeight = 0.30
+    let g:Lf_ShortcutF = '<C-P>'
+    unmap <leader>bo
+    let g:Lf_ShortcutB = '<leader>bo'
+    let g:Lf_StlSeparator = { 'left': '', 'right': ''  }
+    let g:Lf_StlColorscheme = 'powerline'
+    let g:Lf_DefaultExternalTool = "ag"
+    let g:Lf_WildIgnore = {
+                \ 'dir': ['.svn','.git','.hg'],
+                \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+                \}
+else
+    Plug 'ctrlpvim/ctrlp.vim'
+    " This help vim remeber last choice, default choice is MRU.
+    let g:ctrlp_cmd = 'call CallCtrlP()'
+    func! CallCtrlP()
+        if exists('s:called_ctrlp')
+            CtrlPLastMode
+        else
+            let s:called_ctrlp = 1
+            CtrlPMRU
+        endif
+    endfunc
+endif
 
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
