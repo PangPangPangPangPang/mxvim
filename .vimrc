@@ -9,6 +9,8 @@ set nu!
 " Show relative line number
 set relativenumber
 
+" Allow use system clipboard
+set clipboard=unnamed
 
 " Set to auto read when a file is changed from the outside
 set autoread
