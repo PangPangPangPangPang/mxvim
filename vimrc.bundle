@@ -8,6 +8,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
 " Search file
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_by_filename = 1
 " This help vim remeber last choice, default choice is MRU.
 let g:ctrlp_cmd = 'call CallCtrlP()'
 unmap <leader>bo
