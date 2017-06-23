@@ -13,18 +13,18 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = 'r'   
 let g:ctrlp_by_filename = 1
-" This help vim remeber last choice, default choice is MRU.
-let g:ctrlp_cmd = 'call CallCtrlP()'
 unmap <leader>bo
 map <leader>bo :CtrlPBuffer<cr>
-func! CallCtrlP()
-    if exists('s:called_ctrlp')
-        CtrlPLastMode
-    else
-        let s:called_ctrlp = 1
-        CtrlPMRU
-    endif
-endfunc
+" This help vim remeber last choice, default choice is MRU.
+" let g:ctrlp_cmd = 'call CallCtrlP()'
+" func! CallCtrlP()
+    " if exists('s:called_ctrlp')
+        " CtrlPLastMode
+    " else
+        " let s:called_ctrlp = 1
+        " CtrlPMRU
+    " endif
+" endfunc
 
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
