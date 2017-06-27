@@ -288,13 +288,13 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
-Plug 'pangloss/vim-javascript', {'for': ['js', 'jsx']}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'jsx']}
+Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript']}
 let g:used_javascript_libs = 'requirejs,vue,react,jquery'
 Plug 'othree/xml.vim', {'for': ['html', 'xml']}
 
 "react support
-Plug 'maxmellon/vim-jsx-pretty', {'for': ['js', 'jsx']}
+Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript']}
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift"""""""""""""""""""
@@ -303,4 +303,7 @@ Plug 'keith/swift.vim', {'for': 'swift'}
 set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
 " Initialize plugin system
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
