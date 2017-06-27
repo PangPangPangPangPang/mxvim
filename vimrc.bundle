@@ -15,6 +15,13 @@ map <silent> <leader>gs :GFiles?<cr>
 map <silent> <leader>gl :Commits<cr>
 map <silent> <leader>gc :BCommits<cr>
 map <silent> <leader>t :Tags<cr>
+
+" Search
+Plug 'mileszs/ack.vim' 
+let g:ack_use_cword_for_empty_search = 1
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
