@@ -6,26 +6,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
-" Search file
-Plug 'ctrlpvim/ctrlp.vim'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-endif
-let g:ctrlp_working_path_mode = 'r'   
-let g:ctrlp_by_filename = 1
-unmap <leader>bo
-map <leader>bo :CtrlPBuffer<cr>
-" This help vim remeber last choice, default choice is MRU.
-" let g:ctrlp_cmd = 'call CallCtrlP()'
-" func! CallCtrlP()
-" if exists('s:called_ctrlp')
-" CtrlPLastMode
-" else
-" let s:called_ctrlp = 1
-" CtrlPMRU
-" endif
-" endfunc
-
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~30%'  }
+map <C-p> :Files<cr>
+map <leader>bo :Buffers<cr>
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -141,13 +126,6 @@ let g:multi_cursor_skip_key='<C-x>'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-
-" Search
-Plug 'mileszs/ack.vim' 
-let g:ack_use_cword_for_empty_search = 1
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
 
 " Add commenter
 Plug 'scrooloose/nerdcommenter'
@@ -304,6 +282,4 @@ set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
 " Initialize plugin system
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 call plug#end()
