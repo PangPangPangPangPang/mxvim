@@ -18,12 +18,12 @@ map <leader>bo :CtrlPBuffer<cr>
 " This help vim remeber last choice, default choice is MRU.
 " let g:ctrlp_cmd = 'call CallCtrlP()'
 " func! CallCtrlP()
-    " if exists('s:called_ctrlp')
-        " CtrlPLastMode
-    " else
-        " let s:called_ctrlp = 1
-        " CtrlPMRU
-    " endif
+" if exists('s:called_ctrlp')
+" CtrlPLastMode
+" else
+" let s:called_ctrlp = 1
+" CtrlPMRU
+" endif
 " endfunc
 
 """""""""""""""""""statusline""""""""""""""""""""
@@ -155,18 +155,18 @@ let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
 " Code snip support
-if !has("gui_running")
+let s:snipmate_installed = 0
+if has("gui_running")
     " UltiSnips slow down neovim performance, change to vim-snipmate
-    Plug 'MarcWeber/vim-addon-mw-utils'
-    Plug 'tomtom/tlib_vim'
-    Plug 'garbas/vim-snipmate'
+    Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate', {'on': []}
+    let s:snipmate_installed = 1
 else
-    Plug 'SirVer/ultisnips'
+    Plug 'SirVer/ultisnips', {'on': []}
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-n>"
     let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+Plug 'PangPangPangPangPang/vim-snippets', {'on': []}
 endif
-Plug 'PangPangPangPangPang/vim-snippets'
 """"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""git""""""""""""""""""""
@@ -272,6 +272,19 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
+"""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""Lazyload func""""""""""""""""
+augroup plug_lazy_load
+if s:snipmate_installed == 1
+    autocmd!
+    autocmd InsertEnter * call plug#load('vim-addon-mw-utils', 'tlib_vim', 'vim-snipmate', 'vim-snippets')
+                \| autocmd! plug_lazy_load
+else
+    autocmd!
+    autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets')
+                \| autocmd! plug_lazy_load
+endif
+augroup END
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
