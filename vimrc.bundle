@@ -9,8 +9,12 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~30%'  }
-map <C-p> :Files<cr>
-map <leader>bo :Buffers<cr>
+map <C-p> :GFiles<cr>
+map <silent> <leader>bo :Buffers<cr>
+map <silent> <leader>gs :GFiles?<cr>
+map <silent> <leader>gl :Commits<cr>
+map <silent> <leader>gc :BCommits<cr>
+map <silent> <leader>t :Tags<cr>
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -149,10 +153,7 @@ Plug 'PangPangPangPangPang/vim-snippets', {'on': []}
 
 """""""""""""""""""git""""""""""""""""""""
 Plug 'tpope/vim-fugitive' 
-map <silent> <leader>gs :Gstatus<cr>
-map <silent> <leader>gd :Gdiff<cr>
 map <leader>ga :Gwrite<cr>
-map <silent> <leader>gc :Gcommit<cr>
 map <silent> <leader>gb :Gblame<cr>
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -245,8 +246,8 @@ let g:ycm_key_invoke_completion = '<C-Space>'
 " set completeopt-=preview
 " set splitbelow
 
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
