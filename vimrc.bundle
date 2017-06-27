@@ -118,17 +118,17 @@ function! LightlineFileencoding()
 endfunction
 """""""""""""""""""""""""""""""""""""""
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeTabsToggle', 'NERDTreeFind']}
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeTabsToggle', 'NERDTreeFind']}
+Plug 'jistr/vim-nerdtree-tabs', {'on': ['NERDTreeTabsToggle', 'NERDTreeFind']}
 let g:nerdtree_tabs_open_on_gui_startup = 0
 map <silent> <F1> :NERDTreeTabsToggle<cr>
 imap <silent> <F1> <Esc>:NERDTreeTabsToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 map <silent> <F2> :TagbarToggle<cr>
 imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
@@ -275,18 +275,17 @@ nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript', {'for': ['js', 'jsx']}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'jsx']}
 let g:used_javascript_libs = 'requirejs,vue,react,jquery'
-
-Plug 'othree/xml.vim'
+Plug 'othree/xml.vim', {'for': ['html', 'xml']}
 
 "react support
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'maxmellon/vim-jsx-pretty', {'for': ['js', 'jsx']}
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""Swift"""""""""""""""""""
-Plug 'keith/swift.vim'
+Plug 'keith/swift.vim', {'for': 'swift'}
 "Swift highlight
 set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
