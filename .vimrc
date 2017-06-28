@@ -285,7 +285,7 @@ autocmd BufWrite *.js :call DeleteTrailingWS()
 " need plugin ack.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press <leader>f you Ack after the selected text
-vnoremap <silent> <leader>f :call VisualSelection('gv', '')<cr><cr>
+vnoremap <silent> <leader>f :call VisualSelection('fzf', '')<cr><cr>
 nnoremap <leader>f :Ag!<cr>
 
 " When you press <leader>r you can search and replace the selected text
@@ -386,6 +386,8 @@ function! VisualSelection(direction, ...) range
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     if a:direction == 'gv'
+        call CmdLine("Ack! " . l:pattern)
+    elseif a:direction == 'fzf'
         call CmdLine("Ag! " . l:pattern)
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
