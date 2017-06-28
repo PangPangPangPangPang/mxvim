@@ -10,6 +10,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~30%'  }
 map <silent> <leader>p :GFiles<cr>
+map <C-p> :GFiles<cr>
 map <silent> <leader>bo :Buffers<cr>
 map <silent> <leader>gs :GFiles?<cr>
 map <silent> <leader>gl :Commits<cr>
@@ -21,16 +22,16 @@ command! -bang -nargs=* Ag
             \                 <bang>0 ? fzf#vim#with_preview('up:60%')
             \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
             \                 <bang>0)
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir GFiles
+            \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " Search file
-Plug 'ctrlpvim/ctrlp.vim'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-endif
-let g:ctrlp_working_path_mode = 'r'   
-let g:ctrlp_by_filename = 1
+" Plug 'ctrlpvim/ctrlp.vim'
+" if executable('ag')
+    " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" endif
+" let g:ctrlp_working_path_mode = 'r'   
+" let g:ctrlp_by_filename = 1
 
 " Search
 Plug 'mileszs/ack.vim' 
@@ -96,6 +97,9 @@ function! LightlineFilename()
     endif
     if fname =~ 'NERD_tree'
         return 'NERDTree'
+    endif
+    if fname =~ 'FZF'
+        return 'FZF'
     endif
     if fname =~ '__Tagbar__'
         return 'Tagbar'
