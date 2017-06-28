@@ -286,7 +286,7 @@ autocmd BufWrite *.js :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press <leader>f you Ack after the selected text
 vnoremap <silent> <leader>f :call VisualSelection('gv', '')<cr><cr>
-nnoremap <leader>f :Ag<space>
+nnoremap <leader>f :Ag!<cr>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
@@ -386,7 +386,7 @@ function! VisualSelection(direction, ...) range
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     if a:direction == 'gv'
-        call CmdLine("Ag " . l:pattern)
+        call CmdLine("Ag! " . l:pattern)
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'surround'
