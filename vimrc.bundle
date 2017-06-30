@@ -11,7 +11,6 @@ if !has("gui_running")
     Plug 'junegunn/fzf.vim'
     let g:fzf_layout = { 'down': '~30%'  }
     map <silent> <leader>p :GFiles<cr>
-    map <C-p> :GFiles<cr>
     map <silent> <leader>bo :Buffers<cr>
     map <silent> <leader>gs :GFiles?<cr>
     map <silent> <leader>gl :Commits<cr>
@@ -25,18 +24,19 @@ if !has("gui_running")
                 \                 <bang>0)
     command! -bang -nargs=? -complete=dir GFiles
                 \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-else 
-    " Search file
-    Plug 'ctrlpvim/ctrlp.vim'
-    if executable('ag')
-        let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-    endif
-    let g:ctrlp_working_path_mode = 'r'   
-    let g:ctrlp_by_filename = 1
-    vnoremap <silent> <leader>f :call VisualSelection('gv', '')<cr><cr>
-    nnoremap <leader>f :Ack!<space>
+    command! -bang -nargs=? -complete=dir Files
+                \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 endif
+
+" Search file
+Plug 'ctrlpvim/ctrlp.vim'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
+let g:user_command_async = 1
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_working_path_mode = 'r'   
+let g:ctrlp_by_filename = 1
 
 " Search
 Plug 'mileszs/ack.vim' 
@@ -44,6 +44,8 @@ let g:ack_use_cword_for_empty_search = 1
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
+nnoremap <leader>f :Ack!<space>
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -314,5 +316,12 @@ Plug 'keith/swift.vim', {'for': 'swift'}
 set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
 " Initialize plugin system
+
+Plug 'PangPangPangPangPang/visual-selection-vim'
+" Visual mode pressing * or # searches for the current selection
+vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
+vnoremap <silent> <leader>r: call visual#action('%s/foo/')
+vnoremap <silent> <leader>f: call visual#action('fzf foo')<CR>
 
 call plug#end()

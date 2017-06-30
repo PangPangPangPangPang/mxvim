@@ -109,17 +109,17 @@ try
     " let g:hybrid_reduced_contrast = 1 
     " colorscheme hybrid
 
-    if !has('gui_running')
-        let g:PaperColor_Theme_Options = {
-                    \   'theme': {
-                    \     'default': {
-                    \       'transparent_background': 1
-                    \     }
-                    \   }
-                    \ }
-    endif
-    colorscheme PaperColor
-    " colorscheme dracula
+    " if !has('gui_running')
+        " let g:PaperColor_Theme_Options = {
+                    " \   'theme': {
+                    " \     'default': {
+                    " \       'transparent_background': 1
+                    " \     }
+                    " \   }
+                    " \ }
+    " endif
+    " colorscheme PaperColor
+    colorscheme dracula
 catch
 endtry
 
@@ -176,13 +176,6 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -284,12 +277,8 @@ autocmd BufWrite *.js :call DeleteTrailingWS()
 " => Ack searching and cope displaying
 " need plugin ack.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press <leader>f you Ack after the selected text
-vnoremap <silent> <leader>f :call VisualSelection('fzf', '')<cr><cr>
 nnoremap <leader>f :Ag!<cr>
 
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<cr>
 
 " Whole format
 nnoremap <leader>== mzG=gg`z
@@ -372,34 +361,6 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction 
-
-function! VisualSelection(direction, ...) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack! " . l:pattern)
-    elseif a:direction == 'fzf'
-        call CmdLine("Ag! " . l:pattern)
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'surround'
-        call CmdLine("s" . '/'. l:pattern . '/' . a:1 . l:pattern . a:2 . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
@@ -434,5 +395,3 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     nmap <F12> :bo sp term://zsh\|resize 5<CR>i
 endif
-
-
