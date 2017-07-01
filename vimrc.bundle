@@ -321,7 +321,8 @@ Plug 'PangPangPangPangPang/visual-selection-vim'
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
-vnoremap <silent> <leader>r: call visual#action('%s/foo/')
-vnoremap <silent> <leader>f: call visual#action('fzf foo')<CR>
+vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
+nnoremap <leader>f :Ack! 
+vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 call plug#end()

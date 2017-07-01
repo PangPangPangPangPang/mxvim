@@ -183,15 +183,6 @@ set wrap "Wrap lines
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Quickly open a buffer for scribble
-map <leader>be :e ~/buffer<cr>
-
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <Leader>bo :set nomore<cr>:ls<Bar>:set more<cr>:b<Space>
@@ -241,6 +232,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " Close quickfix window
 map <leader>q :cclose<cr> :pclose<cr>
+
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
@@ -250,7 +242,7 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
+" Move a line of text using ALT+[jk]
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -273,13 +265,6 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack searching and cope displaying
-" need plugin ack.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>f :Ag!<cr>
-
-
 " Whole format
 nnoremap <leader>== mzG=gg`z
 
@@ -289,7 +274,7 @@ map Y $v^y
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" <C-c> press easier then <Esc>, but <C-c> may stop the current task
+" <C-c> press easier then <Esc>, but <C-c> may stop the current task, so use <M-c> instead it.
 noremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
