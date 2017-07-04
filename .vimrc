@@ -20,6 +20,12 @@ let g:mapleader = "\<space>"
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Search down into subfolders
+set path+=**
+
+" Search tags 
+set tags=./tags;$HOME
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
