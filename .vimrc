@@ -187,6 +187,9 @@ map <silent> <leader><cr> :noh<cr>
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <Leader>bo :set nomore<cr>:ls<Bar>:set more<cr>:b<Space>
 
+" Quick create new buffer in the current path.
+map <leader>be :e <c-r>=expand("%:p:h")<cr>/
+
 " Move buffer
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
