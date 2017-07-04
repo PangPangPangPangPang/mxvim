@@ -8,9 +8,7 @@ set history=500
 set nu!
 
 " Show relative line number
-if has("gui_running")
- set relativenumber
-endif
+set relativenumber
 
 " Allow use system clipboard
 set clipboard=unnamed
