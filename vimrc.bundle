@@ -201,6 +201,8 @@ map <silent> <leader>gb :Gblame<cr>
 """""""""""""""""""Syntastic""""""""""""""
 if v:version > 743 || has('nvim')
     Plug 'w0rp/ale'
+    " Set ale disable as default
+    let g:ale_enabled = 0
     let g:ale_lint_on_text_changed = 'normal'
     " let g:ale_lint_on_enter = 0
 
