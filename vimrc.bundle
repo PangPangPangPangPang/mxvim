@@ -340,7 +340,13 @@ vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
 nnoremap <leader>f :Ack! 
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
-if has('unix')
+if has('mac')
+    Plug 'rizzatti/dash.vim', {'on':[
+                \  'Dash',
+                \  'Dash!'
+                \]}
+    nnoremap <silent> <leader>z :Dash<cr>
+else
     Plug 'KabbAmine/zeavim.vim', {'on': [
                 \	'Zeavim', 'Docset',
                 \	'<Plug>Zeavim',
@@ -348,12 +354,7 @@ if has('unix')
                 \	'<Plug>ZVKeyDocset',
                 \	'<Plug>ZVMotion'
                 \ ]}
-elseif has('mac')
-    Plug 'rizzatti/dash.vim', {'on':[
-                \  'Dash'
-                \  'Dash!'
-    ]}
-    nnoremap <silent> <leader>z :Dash<cr>
+    nnoremap <silent> <leader>z :Zeavim<cr>
 endif
 
 call plug#end()
