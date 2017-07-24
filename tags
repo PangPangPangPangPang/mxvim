@@ -1,0 +1,314 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f
+GetCompilationInfoForFile	.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f
+HL	colors/PaperColor.vim	/^fun! s:HL(group, fg, bg, attr)$/;"	f
+IsHeaderFile	.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f
+Language_Options	colors/PaperColor.vim	/^fun! s:Language_Options(option)$/;"	f
+Load_Settings_Override	colors/PaperColor.vim	/^fun! s:Load_Settings_Override(custom)$/;"	f
+MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f
+PaperColor_GenerateSpecs	colors/PaperColor.vim	/^fun! g:PaperColor_GenerateSpecs()$/;"	f
+PaperColor_Test	colors/PaperColor.vim	/^fun! g:PaperColor_Test()$/;"	f
+SOURCE_EXTENSIONS	.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	v
+Theme_Options	colors/PaperColor.vim	/^fun! s:Theme_Options(option)$/;"	f
+adapt_to_environment	colors/PaperColor.vim	/^fun! s:adapt_to_environment()$/;"	f
+apply_highlightings	colors/PaperColor.vim	/^fun! s:apply_highlightings()$/;"	f
+build_prim	colors/hybrid.vim	/^function! s:build_prim(hi_elem, field)$/;"	f
+colors_name	colors/solarized.vim	/^let colors_name = "solarized"$/;"	v
+colors_should_have_correct_format	colors/PaperColor.vim	/^fun! s:colors_should_have_correct_format()$/;"	f
+colour	colors/PaperColor.vim	/^fun! s:colour(r, g, b)$/;"	f
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+database	.ycm_extra_conf.py	/^  database = None$/;"	v
+database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+expected_256_only_colors_should_be_consistent	colors/PaperColor.vim	/^fun! s:expected_256_only_colors_should_be_consistent()$/;"	f
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+g:colors_name	colors/PaperColor.vim	/^let g:colors_name = "PaperColor"$/;"	v
+g:colors_name	colors/dracula.vim	/^let g:colors_name = "dracula"$/;"	v
+g:colors_name	colors/hybrid.vim	/^let g:colors_name = "hybrid"$/;"	v
+g:colors_name	colors/molokai.vim	/^let g:colors_name="molokai"$/;"	v
+g:solarized_bold	colors/solarized.vim	/^    let g:solarized_bold = 1$/;"	v
+g:solarized_contrast	colors/solarized.vim	/^    let g:solarized_contrast = "normal"$/;"	v
+g:solarized_degrade	colors/solarized.vim	/^    let g:solarized_degrade = 0$/;"	v
+g:solarized_italic	colors/solarized.vim	/^    let g:solarized_italic = 1$/;"	v
+g:solarized_termcolors	colors/solarized.vim	/^    let g:solarized_termcolors = 16$/;"	v
+g:solarized_termtrans	colors/solarized.vim	/^        let g:solarized_termtrans = 0$/;"	v
+g:solarized_termtrans	colors/solarized.vim	/^        let g:solarized_termtrans = 1$/;"	v
+g:solarized_underline	colors/solarized.vim	/^    let g:solarized_underline = 1$/;"	v
+g:solarized_visibility	colors/solarized.vim	/^    let g:solarized_visibility = "normal"$/;"	v
+generate_color_palettes	colors/PaperColor.vim	/^fun! s:generate_color_palettes()$/;"	f
+generate_vim_highlightings	colors/PaperColor.vim	/^fun! s:generate_vim_highlightings()$/;"	f
+grey_colour	colors/PaperColor.vim	/^fun! s:grey_colour(n)$/;"	f
+grey_level	colors/PaperColor.vim	/^fun! s:grey_level(n)$/;"	f
+grey_number	colors/PaperColor.vim	/^fun! s:grey_number(x)$/;"	f
+hs_highlight_boolean	colors/solarized.vim	/^let hs_highlight_boolean=1$/;"	v
+hs_highlight_delimiters	colors/solarized.vim	/^let hs_highlight_delimiters=1$/;"	v
+module.exports.extends	javasript/.eslintrc.js	/^  "extends": "airbnb",$/;"	p
+module.exports.plugins	javasript/.eslintrc.js	/^  "plugins": [$/;"	p
+os	.ycm_extra_conf.py	/^import os$/;"	i
+palettes_should_have_color00_to_color15	colors/PaperColor.vim	/^fun! s:palettes_should_have_color00_to_color15()$/;"	f
+rgb_colour	colors/PaperColor.vim	/^fun! s:rgb_colour(x, y, z)$/;"	f
+rgb_level	colors/PaperColor.vim	/^fun! s:rgb_level(n)$/;"	f
+rgb_number	colors/PaperColor.vim	/^fun! s:rgb_number(x)$/;"	f
+s:MODE_16_COLOR	colors/PaperColor.vim	/^let s:MODE_16_COLOR = 0$/;"	v
+s:MODE_256_COLOR	colors/PaperColor.vim	/^let s:MODE_256_COLOR = 1$/;"	v
+s:MODE_TRUE_COLOR	colors/PaperColor.vim	/^let s:MODE_TRUE_COLOR = 2$/;"	v
+s:MODE_TRUE_OR_256_COLOR	colors/PaperColor.vim	/^let s:MODE_TRUE_OR_256_COLOR = 3 " for code generation purpose, not for theme usage$/;"	v
+s:TRANSPARENT_BACKGROUND	colors/PaperColor.vim	/^let s:TRANSPARENT_BACKGROUND = s:Theme_Options('transparent_background') == 1$/;"	v
+s:b	colors/hybrid.vim	/^let s:b      = ",bold"$/;"	v
+s:b	colors/solarized.vim	/^    let s:b           = ""$/;"	v
+s:b	colors/solarized.vim	/^    let s:b           = ",bold"$/;"	v
+s:back	colors/solarized.vim	/^        let s:back    = s:base03$/;"	v
+s:back	colors/solarized.vim	/^    let s:back        = "NONE"$/;"	v
+s:back	colors/solarized.vim	/^    let s:back        = s:back$/;"	v
+s:back	colors/solarized.vim	/^    let s:back        = s:base02$/;"	v
+s:back	colors/solarized.vim	/^    let s:back        = s:base03$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = "#808080"$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = "#839496"$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = "12"$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = "244"$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = "4".s:bright$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = s:base1$/;"	v
+s:base0	colors/solarized.vim	/^    let s:base0       = s:temp00$/;"	v
+s:base00	colors/solarized.vim	/^    let s:base00      = "#585858"$/;"	v
+s:base00	colors/solarized.vim	/^    let s:base00      = "#657b83"$/;"	v
+s:base00	colors/solarized.vim	/^    let s:base00      = "11"$/;"	v
+s:base00	colors/solarized.vim	/^    let s:base00      = "240"$/;"	v
+s:base00	colors/solarized.vim	/^    let s:base00      = "3".s:bright$/;"	v
+s:base00	colors/solarized.vim	/^    let s:base00      = s:base0$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = "#4e4e4e"$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = "#586e75"$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = "10"$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = "2".s:bright$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = "239"$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = s:base00$/;"	v
+s:base01	colors/solarized.vim	/^    let s:base01      = s:base1$/;"	v
+s:base02	colors/solarized.vim	/^    let s:base02      = "#073642"$/;"	v
+s:base02	colors/solarized.vim	/^    let s:base02      = "#262626"$/;"	v
+s:base02	colors/solarized.vim	/^    let s:base02      = "0"$/;"	v
+s:base02	colors/solarized.vim	/^    let s:base02      = "235"$/;"	v
+s:base02	colors/solarized.vim	/^    let s:base02      = s:base2$/;"	v
+s:base03	colors/solarized.vim	/^    let s:base03      = "#002b36"$/;"	v
+s:base03	colors/solarized.vim	/^    let s:base03      = "#1c1c1c"$/;"	v
+s:base03	colors/solarized.vim	/^    let s:base03      = "0".s:bright$/;"	v
+s:base03	colors/solarized.vim	/^    let s:base03      = "234"$/;"	v
+s:base03	colors/solarized.vim	/^    let s:base03      = "8"$/;"	v
+s:base03	colors/solarized.vim	/^    let s:base03      = s:base3$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = "#8a8a8a"$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = "#93a1a1"$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = "14"$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = "245"$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = "6".s:bright$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = s:base2$/;"	v
+s:base1	colors/solarized.vim	/^    let s:base1       = s:temp01$/;"	v
+s:base2	colors/solarized.vim	/^    let s:base2       = "#d7d7af"$/;"	v
+s:base2	colors/solarized.vim	/^    let s:base2       = "#eee8d5"$/;"	v
+s:base2	colors/solarized.vim	/^    let s:base2       = "187"$/;"	v
+s:base2	colors/solarized.vim	/^    let s:base2       = "7"$/;"	v
+s:base2	colors/solarized.vim	/^    let s:base2       = s:base3$/;"	v
+s:base2	colors/solarized.vim	/^    let s:base2       = s:temp02$/;"	v
+s:base3	colors/solarized.vim	/^    let s:base3       = "#fdf6e3"$/;"	v
+s:base3	colors/solarized.vim	/^    let s:base3       = "#ffffd7"$/;"	v
+s:base3	colors/solarized.vim	/^    let s:base3       = "15"$/;"	v
+s:base3	colors/solarized.vim	/^    let s:base3       = "230"$/;"	v
+s:base3	colors/solarized.vim	/^    let s:base3       = "7".s:bright$/;"	v
+s:base3	colors/solarized.vim	/^    let s:base3       = s:temp03$/;"	v
+s:bg_none	colors/hybrid.vim	/^let s:bg_none = ' guibg=NONE ctermbg=NONE'$/;"	v
+s:bg_normal	colors/hybrid.vim	/^  let s:bg_normal = s:bg_background$/;"	v
+s:bg_normal	colors/hybrid.vim	/^  let s:bg_normal = s:bg_none$/;"	v
+s:blue	colors/solarized.vim	/^    let s:blue        = "#0087ff"$/;"	v
+s:blue	colors/solarized.vim	/^    let s:blue        = "#268bd2"$/;"	v
+s:blue	colors/solarized.vim	/^    let s:blue        = "33"$/;"	v
+s:blue	colors/solarized.vim	/^    let s:blue        = "4"$/;"	v
+s:bright	colors/solarized.vim	/^    let s:bright      = "* term=bold cterm=bold"$/;"	v
+s:c	colors/hybrid.vim	/^let s:c      = ",undercurl"$/;"	v
+s:c	colors/solarized.vim	/^    let s:c               = ",undercurl"$/;"	v
+s:cterm_aqua	colors/hybrid.vim	/^  let s:cterm_aqua       = "109"$/;"	v
+s:cterm_aqua	colors/hybrid.vim	/^  let s:cterm_aqua       = "14"  " LightCyan$/;"	v
+s:cterm_blue	colors/hybrid.vim	/^  let s:cterm_blue       = "110"$/;"	v
+s:cterm_blue	colors/hybrid.vim	/^  let s:cterm_blue       = "12"  " LightBlue$/;"	v
+s:cterm_comment	colors/hybrid.vim	/^  let s:cterm_comment    = "243"$/;"	v
+s:cterm_comment	colors/hybrid.vim	/^  let s:cterm_comment    = "7"   " LightGrey$/;"	v
+s:cterm_delbg	colors/hybrid.vim	/^  let s:cterm_delbg      = "167"$/;"	v
+s:cterm_delbg	colors/hybrid.vim	/^  let s:cterm_delbg      = "9"   " LightRed$/;"	v
+s:cterm_foreground	colors/hybrid.vim	/^  let s:cterm_foreground = "15"  " White$/;"	v
+s:cterm_foreground	colors/hybrid.vim	/^  let s:cterm_foreground = "250"$/;"	v
+s:cterm_green	colors/hybrid.vim	/^  let s:cterm_green      = "10"  " LightGreen$/;"	v
+s:cterm_green	colors/hybrid.vim	/^  let s:cterm_green      = "143"$/;"	v
+s:cterm_line	colors/hybrid.vim	/^  let s:cterm_line       = "0"   " Black$/;"	v
+s:cterm_line	colors/hybrid.vim	/^  let s:cterm_line       = "235"$/;"	v
+s:cterm_orange	colors/hybrid.vim	/^  let s:cterm_orange     = "173"$/;"	v
+s:cterm_orange	colors/hybrid.vim	/^  let s:cterm_orange     = "3"   " DarkYellow$/;"	v
+s:cterm_purple	colors/hybrid.vim	/^  let s:cterm_purple     = "13"  " LightMagenta$/;"	v
+s:cterm_purple	colors/hybrid.vim	/^  let s:cterm_purple     = "139"$/;"	v
+s:cterm_red	colors/hybrid.vim	/^  let s:cterm_red        = "167"$/;"	v
+s:cterm_red	colors/hybrid.vim	/^  let s:cterm_red        = "9"   " LightRed$/;"	v
+s:cterm_selection	colors/hybrid.vim	/^  let s:cterm_selection  = "237"$/;"	v
+s:cterm_selection	colors/hybrid.vim	/^  let s:cterm_selection  = "8"   " DarkGrey$/;"	v
+s:cterm_yellow	colors/hybrid.vim	/^  let s:cterm_yellow     = "11"  " LightYellow$/;"	v
+s:cterm_yellow	colors/hybrid.vim	/^  let s:cterm_yellow     = "221"$/;"	v
+s:cyan	colors/solarized.vim	/^    let s:cyan        = "#00afaf"$/;"	v
+s:cyan	colors/solarized.vim	/^    let s:cyan        = "#2aa198"$/;"	v
+s:cyan	colors/solarized.vim	/^    let s:cyan        = "37"$/;"	v
+s:cyan	colors/solarized.vim	/^    let s:cyan        = "6"$/;"	v
+s:fg_none	colors/hybrid.vim	/^let s:fg_none = ' guifg=NONE ctermfg=NONE'$/;"	v
+s:fg_pdef	colors/solarized.vim	/^let s:fg_pdef = s:fg_violet$/;"	v
+s:fg_phead	colors/solarized.vim	/^let s:fg_phead = s:fg_orange$/;"	v
+s:fg_ptable	colors/solarized.vim	/^let s:fg_ptable = s:fg_blue$/;"	v
+s:green	colors/solarized.vim	/^    let s:green       = "#5f8700"$/;"	v
+s:green	colors/solarized.vim	/^    let s:green       = "#859900"$/;"	v
+s:green	colors/solarized.vim	/^    let s:green       = "2"$/;"	v
+s:green	colors/solarized.vim	/^    let s:green       = "64"$/;"	v
+s:gui_background	colors/hybrid.vim	/^  let s:gui_background = "#1d1f21"$/;"	v
+s:gui_background	colors/hybrid.vim	/^  let s:gui_background = "#232c31"$/;"	v
+s:gui_comment	colors/hybrid.vim	/^  let s:gui_comment    = "#6c7a80"$/;"	v
+s:gui_comment	colors/hybrid.vim	/^  let s:gui_comment    = "#707880"$/;"	v
+s:gui_line	colors/hybrid.vim	/^  let s:gui_line       = "#282a2e"$/;"	v
+s:gui_line	colors/hybrid.vim	/^  let s:gui_line       = "#2d3c46"$/;"	v
+s:gui_selection	colors/hybrid.vim	/^  let s:gui_selection  = "#373b41"$/;"	v
+s:gui_selection	colors/hybrid.vim	/^  let s:gui_selection  = "#425059"$/;"	v
+s:i	colors/hybrid.vim	/^let s:i      = ",italic"$/;"	v
+s:i	colors/solarized.vim	/^    let s:i           = ""$/;"	v
+s:i	colors/solarized.vim	/^    let s:i           = ",italic"$/;"	v
+s:is_dark	colors/PaperColor.vim	/^let s:is_dark=(&background == 'dark')$/;"	v
+s:language_options	colors/PaperColor.vim	/^  let s:language_options = s:options['language']$/;"	v
+s:language_options	colors/PaperColor.vim	/^let s:language_options = {}$/;"	v
+s:magenta	colors/solarized.vim	/^    let s:magenta     = "#af005f"$/;"	v
+s:magenta	colors/solarized.vim	/^    let s:magenta     = "#d33682"$/;"	v
+s:magenta	colors/solarized.vim	/^    let s:magenta     = "125"$/;"	v
+s:magenta	colors/solarized.vim	/^    let s:magenta     = "5"$/;"	v
+s:mode	colors/PaperColor.vim	/^  let s:mode = s:MODE_16_COLOR$/;"	v
+s:mode	colors/PaperColor.vim	/^  let s:mode = s:MODE_256_COLOR$/;"	v
+s:mode	colors/PaperColor.vim	/^  let s:mode = s:MODE_TRUE_COLOR$/;"	v
+s:molokai_original	colors/molokai.vim	/^    let s:molokai_original = 0$/;"	v
+s:molokai_original	colors/molokai.vim	/^    let s:molokai_original = g:molokai_original$/;"	v
+s:n	colors/hybrid.vim	/^let s:n      = "NONE"$/;"	v
+s:n	colors/solarized.vim	/^    let s:n               = "NONE"$/;"	v
+s:none	colors/hybrid.vim	/^let s:none   = "NONE"$/;"	v
+s:none	colors/solarized.vim	/^    let s:none            = "NONE"$/;"	v
+s:ob	colors/solarized.vim	/^    let s:ob              = ""$/;"	v
+s:options	colors/PaperColor.vim	/^  let s:options = g:PaperColor_Theme_Options$/;"	v
+s:options	colors/PaperColor.vim	/^let s:options = {}$/;"	v
+s:orange	colors/solarized.vim	/^    let s:orange      = "#cb4b16"$/;"	v
+s:orange	colors/solarized.vim	/^    let s:orange      = "#d75f00"$/;"	v
+s:orange	colors/solarized.vim	/^    let s:orange      = "1".s:bright$/;"	v
+s:orange	colors/solarized.vim	/^    let s:orange      = "166"$/;"	v
+s:orange	colors/solarized.vim	/^    let s:orange      = "9"$/;"	v
+s:ou	colors/solarized.vim	/^    let s:ou              = ""$/;"	v
+s:ou	colors/solarized.vim	/^    let s:ou          = ",underline"$/;"	v
+s:palette	colors/PaperColor.vim	/^    let s:palette = s:selected_theme['dark'].palette$/;"	v
+s:palette	colors/PaperColor.vim	/^    let s:palette = s:selected_theme['light'].palette$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette = {'gui' : {} , 'cterm' : {}}$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.addbg      = { 'dark' : "65"               , 'light' : "194" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.addfg      = { 'dark' : "193"              , 'light' : "22"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.aqua       = { 'dark' : s:cterm_aqua       , 'light' : "23"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.background = { 'dark' : "234"              , 'light' : "254" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.blue       = { 'dark' : s:cterm_blue       , 'light' : "17"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.changebg   = { 'dark' : "60"               , 'light' : "189" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.changefg   = { 'dark' : "189"              , 'light' : "53"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.comment    = { 'dark' : s:cterm_comment    , 'light' : "59"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.darkblue   = { 'dark' : "17"               , 'light' : "194" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.darkcolumn = { 'dark' : "234"              , 'light' : "244" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.darkcyan   = { 'dark' : "24"               , 'light' : "22"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.darkpurple = { 'dark' : "53"               , 'light' : "53"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.darkred    = { 'dark' : "52"               , 'light' : "189" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.delbg      = { 'dark' : s:cterm_delbg      , 'light' : "224" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.foreground = { 'dark' : s:cterm_foreground , 'light' : "16"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.green      = { 'dark' : s:cterm_green      , 'light' : "22"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.line       = { 'dark' : s:cterm_line       , 'light' : "252" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.orange     = { 'dark' : s:cterm_orange     , 'light' : "94"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.purple     = { 'dark' : s:cterm_purple     , 'light' : "53"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.red        = { 'dark' : s:cterm_red        , 'light' : "52"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.selection  = { 'dark' : s:cterm_selection  , 'light' : "250" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.window     = { 'dark' : "236"              , 'light' : "247" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.cterm.yellow     = { 'dark' : s:cterm_yellow     , 'light' : "58"  }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.addbg      = { 'dark' : "#5F875F"        , 'light' : "#d7ffd7" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.addfg      = { 'dark' : "#d7ffaf"        , 'light' : "#005f00" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.aqua       = { 'dark' : "#8abeb7"        , 'light' : "#005f5f" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.background = { 'dark' : s:gui_background , 'light' : "#e4e4e4" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.blue       = { 'dark' : "#81a2be"        , 'light' : "#00005f" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.changebg   = { 'dark' : "#5F5F87"        , 'light' : "#d7d7ff" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.changefg   = { 'dark' : "#d7d7ff"        , 'light' : "#5f005f" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.comment    = { 'dark' : s:gui_comment    , 'light' : "#5f5f5f" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.darkblue   = { 'dark' : "#00005f"        , 'light' : "#d7ffd7" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.darkcolumn = { 'dark' : "#1c1c1c"        , 'light' : "#808080" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.darkcyan   = { 'dark' : "#005f5f"        , 'light' : "#005f00" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.darkpurple = { 'dark' : "#5f005f"        , 'light' : "#5f005f" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.darkred    = { 'dark' : "#5f0000"        , 'light' : "#d7d7ff" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.delbg      = { 'dark' : "#cc6666"        , 'light' : "#ffd7d7" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.foreground = { 'dark' : "#c5c8c6"        , 'light' : "#000000" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.green      = { 'dark' : "#b5bd68"        , 'light' : "#005f00" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.line       = { 'dark' : s:gui_line       , 'light' : "#d0d0d0" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.orange     = { 'dark' : "#de935f"        , 'light' : "#875f00" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.purple     = { 'dark' : "#b294bb"        , 'light' : "#5f005f" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.red        = { 'dark' : "#cc6666"        , 'light' : "#5f0000" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.selection  = { 'dark' : s:gui_selection  , 'light' : "#bcbcbc" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.window     = { 'dark' : "#303030"        , 'light' : "#9e9e9e" }$/;"	v
+s:palette	colors/hybrid.vim	/^let s:palette.gui.yellow     = { 'dark' : "#f0c674"        , 'light' : "#5f5f00" }$/;"	v
+s:r	colors/hybrid.vim	/^let s:r      = ",reverse"$/;"	v
+s:r	colors/solarized.vim	/^    let s:r               = ",reverse"$/;"	v
+s:red	colors/solarized.vim	/^    let s:red         = "#af0000"$/;"	v
+s:red	colors/solarized.vim	/^    let s:red         = "#dc322f"$/;"	v
+s:red	colors/solarized.vim	/^    let s:red         = "1"$/;"	v
+s:red	colors/solarized.vim	/^    let s:red         = "124"$/;"	v
+s:s	colors/hybrid.vim	/^let s:s      = ",standout"$/;"	v
+s:s	colors/solarized.vim	/^    let s:s               = ",standout"$/;"	v
+s:script_path	colors/PaperColor.vim	/^let s:script_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')$/;"	v
+s:selected_theme	colors/PaperColor.vim	/^let s:selected_theme = s:themes[s:theme_name]$/;"	v
+s:sp_back	colors/solarized.vim	/^    let s:sp_back      = ""$/;"	v
+s:sp_base0	colors/solarized.vim	/^    let s:sp_base0     = ""$/;"	v
+s:sp_base00	colors/solarized.vim	/^    let s:sp_base00    = ""$/;"	v
+s:sp_base01	colors/solarized.vim	/^    let s:sp_base01    = ""$/;"	v
+s:sp_base02	colors/solarized.vim	/^    let s:sp_base02    = ""$/;"	v
+s:sp_base03	colors/solarized.vim	/^    let s:sp_base03    = ""$/;"	v
+s:sp_base1	colors/solarized.vim	/^    let s:sp_base1     = ""$/;"	v
+s:sp_base2	colors/solarized.vim	/^    let s:sp_base2     = ""$/;"	v
+s:sp_base3	colors/solarized.vim	/^    let s:sp_base3     = ""$/;"	v
+s:sp_blue	colors/solarized.vim	/^    let s:sp_blue      = ""$/;"	v
+s:sp_cyan	colors/solarized.vim	/^    let s:sp_cyan      = ""$/;"	v
+s:sp_green	colors/solarized.vim	/^    let s:sp_green     = ""$/;"	v
+s:sp_magenta	colors/solarized.vim	/^    let s:sp_magenta   = ""$/;"	v
+s:sp_none	colors/solarized.vim	/^    let s:sp_none      = ""$/;"	v
+s:sp_orange	colors/solarized.vim	/^    let s:sp_orange    = ""$/;"	v
+s:sp_red	colors/solarized.vim	/^    let s:sp_red       = ""$/;"	v
+s:sp_violet	colors/solarized.vim	/^    let s:sp_violet    = ""$/;"	v
+s:sp_yellow	colors/solarized.vim	/^    let s:sp_yellow    = ""$/;"	v
+s:style	colors/hybrid.vim	/^let s:style = &background$/;"	v
+s:t_none	colors/hybrid.vim	/^let s:t_none = "NONE"$/;"	v
+s:t_none	colors/solarized.vim	/^    let s:t_none          = "NONE"$/;"	v
+s:temp00	colors/solarized.vim	/^    let s:temp00      = s:base00$/;"	v
+s:temp01	colors/solarized.vim	/^    let s:temp01      = s:base01$/;"	v
+s:temp02	colors/solarized.vim	/^    let s:temp02      = s:base02$/;"	v
+s:temp03	colors/solarized.vim	/^    let s:temp03      = s:base03$/;"	v
+s:theme_name	colors/PaperColor.vim	/^  let s:theme_name = tolower(g:PaperColor_Theme)$/;"	v
+s:theme_name	colors/PaperColor.vim	/^let s:theme_name = 'default'$/;"	v
+s:theme_options	colors/PaperColor.vim	/^  let s:theme_options = s:options['theme']$/;"	v
+s:theme_options	colors/PaperColor.vim	/^let s:theme_options = {}$/;"	v
+s:themes	colors/PaperColor.vim	/^let s:themes = {}$/;"	v
+s:themes	colors/PaperColor.vim	/^let s:themes['default'] = {$/;"	v
+s:themes	colors/PaperColor.vim	/^let s:themes['default'].dark = {$/;"	v
+s:themes	colors/PaperColor.vim	/^let s:themes['default'].light = {$/;"	v
+s:to_HEX	colors/PaperColor.vim	/^let s:to_HEX = {$/;"	v
+s:u	colors/hybrid.vim	/^let s:u      = ",underline"$/;"	v
+s:u	colors/solarized.vim	/^    let s:u           = ""$/;"	v
+s:u	colors/solarized.vim	/^    let s:u           = ",underline"$/;"	v
+s:violet	colors/solarized.vim	/^    let s:violet      = "#5f5faf"$/;"	v
+s:violet	colors/solarized.vim	/^    let s:violet      = "#6c71c4"$/;"	v
+s:violet	colors/solarized.vim	/^    let s:violet      = "13"$/;"	v
+s:violet	colors/solarized.vim	/^    let s:violet      = "61"$/;"	v
+s:vmode	colors/solarized.vim	/^    let s:vmode       = "cterm"$/;"	v
+s:vmode	colors/solarized.vim	/^    let s:vmode       = "gui"$/;"	v
+s:yellow	colors/solarized.vim	/^    let s:yellow      = "#af8700"$/;"	v
+s:yellow	colors/solarized.vim	/^    let s:yellow      = "#b58900"$/;"	v
+s:yellow	colors/solarized.vim	/^    let s:yellow      = "136"$/;"	v
+s:yellow	colors/solarized.vim	/^    let s:yellow      = "3"$/;"	v
+set_color_variables	colors/PaperColor.vim	/^fun! s:set_color_variables()$/;"	f
+set_highlightings_variable	colors/PaperColor.vim	/^fun! s:set_highlightings_variable()$/;"	f
+test_report	colors/PaperColor.vim	/^fun! s:test_report(test, verbose)$/;"	f
+to_256	colors/PaperColor.vim	/^fun! s:to_256(rgb)$/;"	f
+writeToFile	colors/PaperColor.vim	/^fun! s:writeToFile(message, file)$/;"	f
+ycm_core	.ycm_extra_conf.py	/^import ycm_core$/;"	i

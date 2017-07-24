@@ -162,6 +162,9 @@ Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 map <silent> <F2> :TagbarToggle<cr>
 imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
+" Use :GutentagsUpdate to update tags
+Plug 'ludovicchabant/vim-gutentags'
+
 " Efficiency.
 Plug 'easymotion/vim-easymotion'
 
@@ -243,7 +246,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
-Plug 'Valloric/YouCompleteMe', {'on': []}
+Plug 'Valloric/YouCompleteMe', {'on': ['YcmCompleter']}
 if v:version > 743 || has('nvim')
     let g:ycm_register_as_syntastic_checker = 0 "default 1
     let g:ycm_enable_diagnostic_signs = 0
