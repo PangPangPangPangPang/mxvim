@@ -8,7 +8,7 @@ set history=500
 set nu!
 
 " Show relative line number
-set relativenumber
+" set relativenumber
 
 " Allow use system clipboard
 set clipboard=unnamed
