@@ -163,7 +163,7 @@ map <silent> <F2> :TagbarToggle<cr>
 imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
 " Use :GutentagsUpdate to update tags
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " Efficiency.
 Plug 'easymotion/vim-easymotion'
