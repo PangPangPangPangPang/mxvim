@@ -246,7 +246,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
-Plug 'Valloric/YouCompleteMe', {'on': ['YcmCompleter']}
+Plug 'Valloric/YouCompleteMe', {'on': []}
 if v:version > 743 || has('nvim')
     let g:ycm_register_as_syntastic_checker = 0 "default 1
     let g:ycm_enable_diagnostic_signs = 0
