@@ -307,7 +307,7 @@ augroup plug_lazy_load
                     \| autocmd! plug_lazy_load
     else
         autocmd!
-        autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
+        autocmd InsertEnter * call plug#load('YouCompleteMe', 'ultisnips','vim-snippets')
                     \| autocmd! plug_lazy_load
     endif
 augroup END
