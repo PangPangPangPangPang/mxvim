@@ -320,7 +320,7 @@ let g:ycm_key_invoke_completion = '<C-Space>'
 
 " nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <silent> <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 """""""""""""""""""""""""""""""""""""""""""
