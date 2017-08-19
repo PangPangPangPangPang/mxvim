@@ -58,7 +58,7 @@ if has("cscope")
   set cst
   set nocsverb
   " add any database in current directory
-  let find_str = system("find ./ -name '*.out'")
+  let find_str = system("find ./ -name '*.out' -maxdepth 1")
   let file_list = split(find_str, '\n')
   if len(file_list) > 0
       let file_name = file_list[0]
