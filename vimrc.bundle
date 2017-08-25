@@ -358,7 +358,13 @@ Plug 'keith/swift.vim', {'for': 'swift'}
 "Swift highlight
 set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
-" Initialize plugin system
+
+""""""""""""""""""System about"""""""""""""
+if has('mac')
+    " Smart change im when back to normal state
+    Plug 'ybian/smartim'
+    let g:smartim_default = "com.apple.keylayout.ABC"
+endif
 
 Plug 'PangPangPangPangPang/visual-selection-vim'
 " Visual mode pressing * or # searches for the current selection
@@ -368,6 +374,7 @@ vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
 nnoremap <leader>f :Ack! 
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
+"Quick open doc
 if has('mac')
     Plug 'rizzatti/dash.vim', {'on':[
                 \  'Dash',
@@ -384,6 +391,7 @@ else
                 \ ]}
     nnoremap <silent> <leader>z :Zeavim<cr>
 endif
+"""""""""""""""""""""""""""""""""""""""""""
 
-
+" Initialize plugin system
 call plug#end()
