@@ -207,7 +207,7 @@ map <leader>/ <leader>c<space>
 
 " Code snip support
 let s:snipmate_installed = 0
-if !has("gui_running")
+if has("mac")
     " UltiSnips slow down neovim performance, change to vim-snipmate
     Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate', {'on': []}
     let s:snipmate_installed = 1
@@ -358,6 +358,11 @@ Plug 'keith/swift.vim', {'for': 'swift'}
 "Swift highlight
 set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""markdown"""""""""""""""""
+" npm -g install instant-markdown-d
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+""""""""""""""""""""""""""""""""""""""""""
 " Initialize plugin system
 
 Plug 'PangPangPangPangPang/visual-selection-vim'
