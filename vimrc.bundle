@@ -367,6 +367,8 @@ if has('mac')
     " Smart change im when back to normal state
     Plug 'ybian/smartim'
     let g:smartim_default = "com.apple.keylayout.ABC"
+elseif has('unix')
+    Plug 'lilydjwg/fcitx.vim'
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
