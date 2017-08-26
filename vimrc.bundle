@@ -359,8 +359,7 @@ Plug 'keith/swift.vim', {'for': 'swift'}
 set runtimepath+=~/.vim/plugged/swift.vim
 """""""""""""""""""""""""""""""""""""""""""
 """"""""""""""markdown"""""""""""""""""
-" npm -g install instant-markdown-d
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
 """"""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""System about"""""""""""""
 if has('mac')
