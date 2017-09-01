@@ -10,6 +10,10 @@ set nu!
 " Show relative line number
 set relativenumber
 
+if has('mac') && !has('gui_running')
+    set norelativenumber
+endif
+
 " Allow use system clipboard
 set clipboard=unnamed
 
