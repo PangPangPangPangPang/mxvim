@@ -4,6 +4,13 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+<leader>m1	markdown.vim	/^nmap <leader>m1 mpI#<space><esc>`p$/;"	m
+<leader>m2	markdown.vim	/^nmap <leader>m2 mpI##<space><esc>`p$/;"	m
+<leader>m3	markdown.vim	/^nmap <leader>m3 mpI###<space><esc>`p$/;"	m
+<leader>m4	markdown.vim	/^nmap <leader>m4 mpI####<space><esc>`p$/;"	m
+<leader>m5	markdown.vim	/^nmap <leader>m5 mpI#####<space><esc>`p$/;"	m
+<leader>md	markdown.vim	/^vnoremap <leader>md mp:<C-u>call visual#action('s\/foo\/**foo**\/g')<CR>`p$/;"	m
+<leader>mi	markdown.vim	/^vnoremap <leader>mi mp:<C-u>call visual#action('s\/foo\/*foo*\/g')<CR>`p$/;"	m
 DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
 FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f
 GetCompilationInfoForFile	.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f
