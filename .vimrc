@@ -219,7 +219,6 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -269,14 +268,13 @@ if has("mac") || has("macunix")
     vmap ˚ <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save, useful for Python and JavaScript.
 func! DeleteTrailingWS()
     exe "normal mz"
     %s/\s\+$//ge
     exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 
 " Whole format
@@ -389,7 +387,7 @@ function! <SID>BufcloseCloseIt()
     endif
 endfunction
 
-" neovim config
+" Open terminal in neovim.
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     nmap <F12> :bo sp term://zsh\|resize 5<CR>i

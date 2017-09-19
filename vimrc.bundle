@@ -6,17 +6,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
+" Search file
 if !has("gui_running") 
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     let g:fzf_layout = { 'down': '~30%'  }
     map <silent> <leader>p :GFiles<cr>
-    map <silent> <leader>bo :Buffers<cr>
-    map <silent> <leader>gs :GFiles?<cr>
-    map <silent> <leader>gl :Commits<cr>
-    map <silent> <leader>gc :BCommits<cr>
-    map <silent> <leader>t :Tags<cr>
-
     command! -bang -nargs=* Ag
                 \ call fzf#vim#ag(<q-args>,
                 \                 <bang>0 ? fzf#vim#with_preview('up:60%')
@@ -28,7 +23,6 @@ if !has("gui_running")
                 \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 endif
 
-" Search file
 Plug 'ctrlpvim/ctrlp.vim'
 if executable('ag')
     let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
@@ -186,12 +180,6 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 map <silent> <F2> :TagbarToggle<cr>
 imap <silent> <F2> <Esc>:TagbarToggle<cr>
-
-" Use :GutentagsUpdate to update tags
-" Plug 'ludovicchabant/vim-gutentags'
-
-" Efficiency.
-Plug 'easymotion/vim-easymotion'
 
 Plug 'terryma/vim-multiple-cursors'
 let g:multi_cursor_quit_key='<C-c>'
@@ -362,11 +350,7 @@ set runtimepath+=~/.vim/plugged/swift.vim
 Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
 """"""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""System about"""""""""""""
-if has('mac')
-    " Smart change im when back to normal state
-    Plug 'ybian/smartim'
-    let g:smartim_default = "com.apple.keylayout.ABC"
-elseif has('unix')
+if has('unix')
     Plug 'lilydjwg/fcitx.vim'
 endif
 """""""""""""""""""""""""""""""""""""""""""
