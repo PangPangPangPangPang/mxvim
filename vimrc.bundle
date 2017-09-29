@@ -354,6 +354,11 @@ set runtimepath+=~/.vim/plugged/swift.vim
 """"""""""""""markdown"""""""""""""""""
 Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
 """"""""""""""""""""""""""""""""""""""""""
+
+""""""""""""Dart"""""""""""""""""""
+Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+"""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""System about"""""""""""""
 if has('unix')
     Plug 'lilydjwg/fcitx.vim'

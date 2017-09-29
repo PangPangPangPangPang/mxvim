@@ -176,9 +176,9 @@ set smarttab
 autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp set shiftwidth=4
 autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp set tabstop=4
 autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp set sts=4
-autocmd FileType javascript,html,css,xml set shiftwidth=2
-autocmd FileType javascript,html,css,xml set tabstop=2
-autocmd FileType javascript,html,css,xml set sts=2
+autocmd FileType javascript,html,css,xml,dart set shiftwidth=2
+autocmd FileType javascript,html,css,xml,dart set tabstop=2
+autocmd FileType javascript,html,css,xml,dart set sts=2
 
 " Linebreak on 500 characters
 set lbr
