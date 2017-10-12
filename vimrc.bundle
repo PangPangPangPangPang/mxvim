@@ -7,35 +7,33 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
 " Search file
-if !has("gui_running") 
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    let g:fzf_layout = { 'down': '~30%'  }
-    map <silent> <leader>p :GFiles<cr>
-    command! -bang -nargs=* Ag
-                \ call fzf#vim#ag(<q-args>,
-                \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-                \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-                \                 <bang>0)
-    command! -bang -nargs=? -complete=dir GFiles
-                \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
-    command! -bang -nargs=? -complete=dir Files
-                \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-endif
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
-if !has('python')
-    echo 'In order to use pymatcher plugin, you need +python compiled vim'
-else
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
-let g:ctrlp_lazy_update = 350
-let g:ctrlp_max_files = 0
-let g:ctrlp_clear_cache_on_exit = 0
-if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
-endif
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~30%'  }
+map <silent> <C-p> :GFiles<cr>
+command! -bang -nargs=* Ag
+            \ call fzf#vim#ag(<q-args>,
+            \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+            \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \                 <bang>0)
+command! -bang -nargs=? -complete=dir GFiles
+            \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'FelikZ/ctrlp-py-matcher'
+" if !has('python')
+    " echo 'In order to use pymatcher plugin, you need +python compiled vim'
+" else
+    " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" endif
+" let g:ctrlp_lazy_update = 350
+" let g:ctrlp_max_files = 0
+" let g:ctrlp_clear_cache_on_exit = 0
+" if executable("ag")
+    " set grepprg=ag\ --nogroup\ --nocolor
+    " let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+" endif
 
 " Search
 Plug 'mileszs/ack.vim' 
