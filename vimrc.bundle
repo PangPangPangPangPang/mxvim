@@ -237,32 +237,11 @@ if v:version > 743 || has('nvim')
                 \ }
     let g:ale_linter_aliases = {'jsx': 'css'}
     map <silent> <leader>s :ALEToggle<cr>
-else
-    Plug 'vim-syntastic/syntastic'
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-
-    " use eslint to check javascript syntastic
-    " npm install eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
-    let g:syntastic_javascript_checkers = ['eslint'] 
-    let g:syntastic_javascript_eslint_exec = 'eslint_d' 
-
-    " use pylint to check python syntastic
-    " pip install pylint
-    " if you use zsh and osx add `export LC_CTYPE=en_US.UTF-8` in your .zshrc
-    let g:syntastic_python_checkers = ['pylint'] 
-    let g:syntastic_python_python_exec = 'python2'
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
-Plug 'Valloric/YouCompleteMe', {'on': []}
+Plug 'Valloric/YouCompleteMe'
 if v:version > 743 || has('nvim')
     let g:ycm_register_as_syntastic_checker = 0 "default 1
     let g:ycm_enable_diagnostic_signs = 0
@@ -304,13 +283,6 @@ let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-spli
 let g:ycm_filetype_whitelist = { '*': 1  }
 let g:ycm_key_invoke_completion = '<C-Space>'
 
-" let g:ycm_add_preview_to_completeopt = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" set completeopt-=preview
-" set splitbelow
-
-" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
@@ -319,7 +291,7 @@ nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 augroup plug_lazy_load
     if s:snipmate_installed == 1
         autocmd!
-        autocmd InsertEnter * call plug#load('vim-addon-mw-utils', 'tlib_vim', 'vim-snipmate', 'vim-snippets', 'YouCompleteMe')
+        autocmd InsertEnter * call plug#load('vim-addon-mw-utils', 'tlib_vim', 'vim-snipmate', 'vim-snippets')
                     \| autocmd! plug_lazy_load
     else
         autocmd!
@@ -344,11 +316,6 @@ Plug 'othree/xml.vim', {'for': ['html', 'xml']}
 Plug 'maxmellon/vim-jsx-pretty'
 """""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""Swift"""""""""""""""""""
-Plug 'keith/swift.vim', {'for': 'swift'}
-"Swift highlight
-set runtimepath+=~/.vim/plugged/swift.vim
-"""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""markdown"""""""""""""""""
 Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
 """"""""""""""""""""""""""""""""""""""""""
@@ -356,12 +323,6 @@ Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 """""""""""""""""""""""""""""""""""
-
-""""""""""""""""""System about"""""""""""""
-if has('unix')
-    Plug 'lilydjwg/fcitx.vim'
-endif
-"""""""""""""""""""""""""""""""""""""""""""
 
 " Initialize plugin system
 Plug 'PangPangPangPangPang/visual-selection-vim'
