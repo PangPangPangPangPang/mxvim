@@ -1,17 +1,19 @@
 {
-    "libs": [
-        "browser",
-        "jquery",
-	"ecma6"
-    ],
-    "loadEagerly": [
-        "importantfile.js",
-	"node.js"
-    ],
-    "plugins": {
-        "requirejs": {
-            "baseURL": "./",
-            "paths": {}
+        "ecmaVersion": 6,
+        "libs": [
+                "browser",
+                "jquery",
+                "react"
+
+        ],
+        "plugins": {
+                "es_modules": {},
+                "doc_comment": {
+                        "fullDocs": true,
+                        "strong": true
+                },
+                "angular": {},
+                "node": {}
         }
-    }
+
 }
