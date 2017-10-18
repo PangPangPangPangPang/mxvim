@@ -241,51 +241,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""Complete & Syntastic"""""""""""""""""
-Plug 'Valloric/YouCompleteMe'
-if v:version > 743 || has('nvim')
-    let g:ycm_register_as_syntastic_checker = 0 "default 1
-    let g:ycm_enable_diagnostic_signs = 0
-    let g:ycm_enable_diagnostic_highlighting = 0
-else
-    let g:ycm_register_as_syntastic_checker = 1 "default 1
-    let g:ycm_enable_diagnostic_signs = 1
-    let g:ycm_enable_diagnostic_highlighting = 1
-    let g:ycm_error_symbol = '✖'
-    let g:ycm_warning_symbol = '◎'
-endif
+Plug 'maralla/completor.vim', {'do': 'make js'}
 
-
-let g:Show_diagnostics_ui = 1 "default 1
-""will put icons in Vim's gutter on lines that have a diagnostic set.
-"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
-""highlighting
-let g:ycm_always_populate_location_list = 1 "default 0
-let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
-let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
-
-let g:ycm_complete_in_strings = 1 "default 1
-let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
-let g:ycm_path_to_python_interpreter = '' "default ''
-
-" support css file auto complete
-let g:ycm_semantic_triggers = {
-            \   'css': [ 're!^\s{2}', 're!:\s+' ],
-            \   'html': [ '</' ],
-            \ }
-
-let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
-let g:ycm_server_log_level = 'info' "default info
-
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
-let g:ycm_confirm_extra_conf = 1
-
-let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab'  ]
-let g:ycm_filetype_whitelist = { '*': 1  }
-let g:ycm_key_invoke_completion = '<C-Space>'
-
-nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F4> :YcmDiags<CR>
-nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 """""""""""""""""""""""""""""""""""""""""""
 """"""""""""""Lazyload func""""""""""""""""
 augroup plug_lazy_load
@@ -295,7 +252,7 @@ augroup plug_lazy_load
                     \| autocmd! plug_lazy_load
     else
         autocmd!
-        autocmd InsertEnter * call plug#load('YouCompleteMe', 'ultisnips','vim-snippets')
+        autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
                     \| autocmd! plug_lazy_load
     endif
 augroup END
@@ -304,10 +261,17 @@ augroup END
 """""""""""""""""Python""""""""""""""""""""
 let g:python_highlight_all = 1
 Plug 'vim-python/python-syntax'
+Plug 'davidhalter/jedi-vim'
+let g:jedi#goto_command = "<C-]>"
+let g:jedi#completions_enabled = 0
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
+
+Plug 'ternjs/tern_for_vim', {'do': 'npm i', 'for': 'javascript'}
+autocmd FileType javascript nnoremap <C-]> :TernDef<CR>
+
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'requirejs,vue,react,jquery'
 Plug 'othree/xml.vim', {'for': ['html', 'xml']}
