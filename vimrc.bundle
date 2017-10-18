@@ -198,7 +198,7 @@ map <leader>/ <leader>c<space>
 
 " Code snip support
 let s:snipmate_installed = 0
-if has("mac") && !has("gui_running")
+if has("nvim")
     " UltiSnips slow down neovim performance, change to vim-snipmate
     Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate', {'on': []}
     let s:snipmate_installed = 1
