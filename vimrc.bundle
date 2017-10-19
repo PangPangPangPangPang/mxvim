@@ -318,6 +318,10 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 """"""""""""""markdown"""""""""""""""""
 Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
+if has('mac')
+    let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
+endif
+
 """"""""""""""""""""""""""""""""""""""""""
 
 """"""""""""Dart"""""""""""""""""""
