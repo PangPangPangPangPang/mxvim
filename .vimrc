@@ -108,48 +108,6 @@ endif
 " Add a bit extra margin to the left, change 0 to 1.
 set foldcolumn=0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable 
-set background=dark
-
-try
-    " let g:hybrid_custom_term_colors = 1
-    " let g:hybrid_reduced_contrast = 1 
-    " colorscheme hybrid
-
-    if !has('gui_running')
-        let g:PaperColor_Theme_Options = {
-                    \   'theme': {
-                    \     'default': {
-                    \       'transparent_background': 1
-                    \     }
-                    \   }
-                    \ }
-    endif
-    colorscheme PaperColor
-    " colorscheme dracula
-catch
-endtry
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=L
-    set guioptions-=R
-    set guioptions-=r
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,11 +270,57 @@ inoremap <c-w> <Esc>diwi
 inoremap <c-u> <Esc>cc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugin
+" Plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vim/vimrc.bundle"))
     source ~/.vim/vimrc.bundle
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+try
+    " let g:hybrid_custom_term_colors = 1
+    " let g:hybrid_reduced_contrast = 1 
+    " colorscheme hybrid
+
+    " if !has('gui_running')
+        " let g:PaperColor_Theme_Options = {
+                    " \   'theme': {
+                    " \     'default': {
+                    " \       'transparent_background': 1
+                    " \     }
+                    " \   }
+                    " \ }
+    " endif
+    " colorscheme PaperColor
+    " colorscheme dracula
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark=dark
+catch
+endtry
+
+" Enable syntax highlighting
+syntax enable 
+set background=dark
+
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=L
+    set guioptions-=R
+    set guioptions-=r
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => For custom users modify their own config.

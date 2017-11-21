@@ -201,16 +201,16 @@ map <leader>/ <leader>c<space>
 
 " Code snip support
 let s:snipmate_installed = 0
-if has("nvim")
-    " UltiSnips slow down neovim performance, change to vim-snipmate
-    Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate', {'on': []}
-    let s:snipmate_installed = 1
-else
+" if has("nvim")
+    " " UltiSnips slow down neovim performance, change to vim-snipmate
+    " Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate', {'on': []}
+    " let s:snipmate_installed = 1
+" else
     Plug 'SirVer/ultisnips', {'on': []}
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-n>"
     let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-endif
+" endif
 Plug 'PangPangPangPangPang/vim-snippets', {'on': []}
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -312,11 +312,12 @@ Plug 'vim-python/python-syntax'
 """""""""""""""""""""FE""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
+
 let g:used_javascript_libs = 'requirejs,vue,react,jquery'
 Plug 'othree/xml.vim', {'for': ['html', 'xml']}
 
 "react support
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'chemzqm/vim-jsx-improve'
 """""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""markdown"""""""""""""""""
@@ -358,6 +359,9 @@ else
     nnoremap <silent> <leader>z :Zeavim<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
+
+Plug 'morhetz/gruvbox'
+
 
 " Initialize plugin system
 call plug#end()
