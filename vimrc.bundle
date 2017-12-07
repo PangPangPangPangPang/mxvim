@@ -10,7 +10,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~30%'  }
-map <silent> <C-p> :GFiles<cr>
+" map <silent> <C-p> :GFiles<cr>
 command! -bang -nargs=* Ag
             \ call fzf#vim#ag(<q-args>,
             \                 <bang>0 ? fzf#vim#with_preview('up:60%')
@@ -21,22 +21,17 @@ command! -bang -nargs=? -complete=dir GFiles
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-if has('gui_running')
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'FelikZ/ctrlp-py-matcher'
-    if !has('python')
-        echo 'In order to use pymatcher plugin, you need +python compiled vim'
-    else
-        let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-    endif
-    let g:ctrlp_lazy_update = 350
-    let g:ctrlp_max_files = 0
-    let g:ctrlp_clear_cache_on_exit = 0
-    if executable("ag")
-        set grepprg=ag\ --nogroup\ --nocolor
-        let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
-    endif
-endif
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_DefaultExternalTool = "ag"
+" let g:Lf_UseVersionControlTool = "git ls-files"
+let g:Lf_WindowHeight = 0.3
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
+let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 
 " Search
 Plug 'mileszs/ack.vim' 
@@ -298,7 +293,7 @@ augroup plug_lazy_load
                     \| autocmd! plug_lazy_load
     else
         autocmd!
-        autocmd InsertEnter * call plug#load('YouCompleteMe', 'ultisnips','vim-snippets')
+        autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
                     \| autocmd! plug_lazy_load
     endif
 augroup END
@@ -360,8 +355,10 @@ else
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
-Plug 'morhetz/gruvbox'
-
+" Plug 'morhetz/gruvbox'
+Plug 'fmoralesc/vim-pad'
+let g:pad#dir = '~/Notes'
 
 " Initialize plugin system
 call plug#end()
+

@@ -294,9 +294,9 @@ try
                     " \ }
     " endif
     " colorscheme PaperColor
-    " colorscheme dracula
-    colorscheme gruvbox
-    let g:gruvbox_contrast_dark=dark
+    colorscheme dracula
+    " colorscheme gruvbox
+    " let g:gruvbox_contrast_dark=dark
 catch
 endtry
 
