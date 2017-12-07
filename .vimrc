@@ -154,7 +154,7 @@ map <silent> <leader><cr> :noh<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
-map <Leader>bo :set nomore<cr>:ls<Bar>:set more<cr>:b<Space>
+" map <Leader>bo :set nomore<cr>:ls<Bar>:set more<cr>:b<Space>
 
 " Quick create new buffer in the current path.
 map <leader>be :e <c-r>=expand("%:p:h")<cr>/

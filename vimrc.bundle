@@ -24,8 +24,10 @@ command! -bang -nargs=? -complete=dir Files
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "ag"
 " let g:Lf_UseVersionControlTool = "git ls-files"
+let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
 let g:Lf_WindowHeight = 0.3
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
