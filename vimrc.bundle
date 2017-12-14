@@ -327,7 +327,9 @@ endif
 
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """""""""""""""""""""""""""""""""""
+
 
 " Initialize plugin system
 Plug 'PangPangPangPangPang/visual-selection-vim'

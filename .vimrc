@@ -284,17 +284,17 @@ try
     " let g:hybrid_reduced_contrast = 1 
     " colorscheme hybrid
 
-    " if !has('gui_running')
-        " let g:PaperColor_Theme_Options = {
-                    " \   'theme': {
-                    " \     'default': {
-                    " \       'transparent_background': 1
-                    " \     }
-                    " \   }
-                    " \ }
-    " endif
-    " colorscheme PaperColor
-    colorscheme dracula
+    if !has('gui_running')
+        let g:PaperColor_Theme_Options = {
+                    \   'theme': {
+                    \     'default': {
+                    \       'transparent_background': 1
+                    \     }
+                    \   }
+                    \ }
+    endif
+    colorscheme PaperColor
+    " colorscheme dracula
     " colorscheme gruvbox
     " let g:gruvbox_contrast_dark=dark
 catch
