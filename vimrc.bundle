@@ -10,7 +10,6 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~30%'  }
-" map <silent> <C-p> :GFiles<cr>
 command! -bang -nargs=* Ag
             \ call fzf#vim#ag(<q-args>,
             \                 <bang>0 ? fzf#vim#with_preview('up:60%')
@@ -23,7 +22,6 @@ command! -bang -nargs=? -complete=dir Files
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "ag"
 " let g:Lf_UseVersionControlTool = "git ls-files"
@@ -34,6 +32,14 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
+
+
+" Neovim work fine with fzf.
+if has("nvim")
+    map <silent> <C-p> :GFiles<cr>
+else
+    let g:Lf_ShortcutF = '<C-P>'
+endif
 
 " Search
 Plug 'mileszs/ack.vim' 
@@ -163,14 +169,13 @@ function! LightlineFileencoding()
 endfunction
 """""""""""""""""""""""""""""""""""""""
 
-Plug 'scrooloose/nerdtree', {'on': ['NERDTreeTabsToggle', 'NERDTreeFind']}
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
-Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeTabsToggle', 'NERDTreeFind']}
-Plug 'jistr/vim-nerdtree-tabs', {'on': ['NERDTreeTabsToggle', 'NERDTreeFind']}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let g:nerdtree_tabs_open_on_gui_startup = 0
-map <silent> <F1> :NERDTreeTabsToggle<cr>
-imap <silent> <F1> <Esc>:NERDTreeTabsToggle<cr>
+map <silent> <F1> :NERDTreeToggle<cr>
+imap <silent> <F1> <Esc>:NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
 " Config netrw
@@ -197,17 +202,11 @@ let g:NERDSpaceDelims=1
 map <leader>/ <leader>c<space>
 
 " Code snip support
-let s:snipmate_installed = 0
-" if has("nvim")
-    " " UltiSnips slow down neovim performance, change to vim-snipmate
-    " Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate', {'on': []}
-    " let s:snipmate_installed = 1
-" else
-    Plug 'SirVer/ultisnips', {'on': []}
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<c-n>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-" endif
+Plug 'SirVer/ultisnips', {'on': []}
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+
 Plug 'PangPangPangPangPang/vim-snippets', {'on': []}
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -289,15 +288,9 @@ nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 """""""""""""""""""""""""""""""""""""""""""
 """"""""""""""Lazyload func""""""""""""""""
 augroup plug_lazy_load
-    if s:snipmate_installed == 1
-        autocmd!
-        autocmd InsertEnter * call plug#load('vim-addon-mw-utils', 'tlib_vim', 'vim-snipmate', 'vim-snippets')
-                    \| autocmd! plug_lazy_load
-    else
-        autocmd!
-        autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
-                    \| autocmd! plug_lazy_load
-    endif
+    autocmd!
+    autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
+                \| autocmd! plug_lazy_load
 augroup END
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -327,9 +320,11 @@ endif
 
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """""""""""""""""""""""""""""""""""
 
+""""""""""""oc"""""""""""""""""""
+Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
+"""""""""""""""""""""""""""""""""""
 
 " Initialize plugin system
 Plug 'PangPangPangPangPang/visual-selection-vim'
@@ -358,10 +353,6 @@ else
     nnoremap <silent> <leader>z :Zeavim<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
-
-" Plug 'morhetz/gruvbox'
-Plug 'fmoralesc/vim-pad'
-let g:pad#dir = '~/Notes'
 
 " Initialize plugin system
 call plug#end()

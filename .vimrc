@@ -22,9 +22,6 @@ set autoread
 
 let g:mapleader = "\<space>"
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " Search down into subfolders
 set path+=**
 
@@ -38,8 +35,8 @@ set tags=./tags;$HOME
 filetype plugin on
 filetype indent on
 
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" Set 3 lines to the cursor - when moving vertically using j/k
+set so=3
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
@@ -107,7 +104,6 @@ endif
 
 " Add a bit extra margin to the left, change 0 to 1.
 set foldcolumn=0
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -260,7 +256,7 @@ else
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Insert action like ternimal
+" => Insert action like terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <c-f> <Right>
 inoremap <c-b> <Left>
@@ -279,31 +275,30 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable 
+set background=dark
+
 try
     " let g:hybrid_custom_term_colors = 1
     " let g:hybrid_reduced_contrast = 1 
     " colorscheme hybrid
 
-    if !has('gui_running')
-        let g:PaperColor_Theme_Options = {
-                    \   'theme': {
-                    \     'default': {
-                    \       'transparent_background': 1
-                    \     }
-                    \   }
-                    \ }
-    endif
-    colorscheme PaperColor
-    " colorscheme dracula
+    " if !has('gui_running')
+        " let g:PaperColor_Theme_Options = {
+                    " \   'theme': {
+                    " \     'default': {
+                    " \       'transparent_background': 1
+                    " \     }
+                    " \   }
+                    " \ }
+    " endif
+    " colorscheme PaperColor
+    colorscheme dracula
     " colorscheme gruvbox
     " let g:gruvbox_contrast_dark=dark
 catch
 endtry
-
-" Enable syntax highlighting
-syntax enable 
-set background=dark
-
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -394,5 +389,7 @@ endfunction
 " Open terminal in neovim.
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
-    nmap <F12> :bo sp term://zsh\|resize 5<CR>i
+    map <F12> :bo sp term://zsh\|resize 5<CR>i
+else
+    map <F12> :terminal<cr>
 endif
