@@ -475,4 +475,19 @@ let g:deoplete#enable_at_startup = 1
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 """""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""FE""""""""""""""""""""
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+
+let g:used_javascript_libs = 'requirejs,vue,react,jquery'
+Plug 'othree/xml.vim', {'for': ['html', 'xml']}
+
+"react support
+Plug 'chemzqm/vim-jsx-improve'
+"""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""oc"""""""""""""""""""
+Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
+"""""""""""""""""""""""""""""""""""
 call plug#end()
