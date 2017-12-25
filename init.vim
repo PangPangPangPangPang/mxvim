@@ -487,6 +487,10 @@ Plug 'othree/xml.vim', {'for': ['html', 'xml']}
 Plug 'chemzqm/vim-jsx-improve'
 """""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""Python""""""""""""""""
+Plug 'zchee/deoplete-jedi'
+"""""""""""""""""""""""""""""""""""""""
+
 """"""""""""oc"""""""""""""""""""
 Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """""""""""""""""""""""""""""""""""
