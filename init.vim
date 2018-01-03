@@ -426,6 +426,7 @@ nnoremap <leader>f :Ack!<space>
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
+map <F1> :NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
 Plug 'terryma/vim-multiple-cursors'
