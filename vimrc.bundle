@@ -77,7 +77,7 @@ map <leader>cg :cs find g <C-R>=expand("<cword>")<CR><CR>
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-            \ 'colorscheme': 'PaperColor',
+            \ 'colorscheme': 'seoul256',
             \ 'mode_map': { 'c': 'NORMAL'  },
             \ 'active': {
             \   'left': [ [ 'mode', 'paste'  ], [ 'fugitive', 'filename'  ]  ],
