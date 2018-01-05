@@ -399,6 +399,7 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'itchyny/calendar.vim'
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'wombat',
