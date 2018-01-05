@@ -469,12 +469,19 @@ nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <c-]> :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
+ 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+imap <TAB>     <Plug>(neosnippet_expand_or_jump)
+smap <TAB>     <Plug>(neosnippet_expand_or_jump)
+xmap <TAB>     <Plug>(neosnippet_expand_target)
 
 
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'natebosch/dartlang-snippets'
 """""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
