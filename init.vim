@@ -9,11 +9,9 @@ set history=500
 " Show line numbers
 set nu!
 
-" Show relative line number
-set relativenumber
-
-if has('mac') && !has('gui_running')
-    set norelativenumber
+if has('gui_running')
+    " Show relative line number
+    set relativenumber
 endif
 
 " Allow use system clipboard
@@ -98,11 +96,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 " Add a bit extra margin to the left, change 0 to 1.
 set foldcolumn=0
 
@@ -155,31 +148,6 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Quick create new buffer in the current path.
 map <leader>be :e <c-r>=expand("%:p:h")<cr>/
-
-" Move buffer
-map <leader>bn :bnext<cr>
-map <leader>bp :bprevious<cr>
-map <leader>b1 :bf<cr>
-map <leader>b2 :bf<cr>:bn<cr>
-map <leader>b3 :bf<cr>:bn2<cr>
-map <leader>b4 :bf<cr>:bn3<cr>
-map <leader>b5 :bf<cr>:bn4<cr>
-map <leader>b6 :bf<cr>:bn5<cr>
-map <leader>b7 :bf<cr>:bn6<cr>
-map <leader>b8 :bf<cr>:bn7<cr>
-map <leader>b9 :bf<cr>:bn8<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -295,59 +263,11 @@ try
 catch
 endtry
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=L
-    set guioptions-=R
-    set guioptions-=r
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => For custom users modify their own config.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("~/.vim/vimrc.additional.bundle"))
-    source ~/.vim/vimrc.additional.bundle
-endif
-
-""""""""""""""""""""""
-"Quickly Run
-""""""""""""""""""""""
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'java'
-        exec "!javac %"
-        exec "!time java %<"
-    elseif &filetype == 'sh'
-        :!time bash %
-    elseif &filetype == 'python'
-        exec "!time python2.7 %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'go'
-        "        exec "!go build %<"
-        exec "!time go run %"
-    elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
-    endif
-endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -382,12 +302,8 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " Open terminal in neovim.
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-    map <F12> :bo sp term://zsh\|resize 5<CR>i
-else
-    map <F12> :terminal<cr>
-endif
+tnoremap <Esc> <C-\><C-n>
+map <F12> :bo sp term://zsh\|resize 5<CR>i
 
 " Config netrw
 let g:netrw_banner = 0
@@ -399,7 +315,7 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'itchyny/calendar.vim'
+Plug 'itchyny/calendar.vim', {'on': 'Calendar'}
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -429,6 +345,10 @@ Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
 map <F1> :NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
+
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+map <silent> <F2> :TagbarToggle<cr>
+imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
 Plug 'terryma/vim-multiple-cursors'
 let g:multi_cursor_quit_key='<C-c>'
@@ -466,9 +386,9 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 let g:LanguageClient_loadSettings = 1
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>k :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <c-]> :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <leader>r :call LanguageClient_textDocument_rename()<CR>
 
  
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -482,25 +402,43 @@ xmap <TAB>     <Plug>(neosnippet_expand_target)
 
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-Plug 'natebosch/dartlang-snippets'
 """""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""FE""""""""""""""""""""
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 
 let g:used_javascript_libs = 'requirejs,vue,react,jquery'
 Plug 'othree/xml.vim', {'for': ['html', 'xml']}
 
 "react support
-Plug 'chemzqm/vim-jsx-improve'
+Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
 """""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""Python""""""""""""""""
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', {'for': 'python'}
 """""""""""""""""""""""""""""""""""""""
 
 """"""""""""oc"""""""""""""""""""
 Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """""""""""""""""""""""""""""""""""
+
+"Quick open doc
+if has('mac')
+    Plug 'rizzatti/dash.vim', {'on':[
+                \  'Dash',
+                \  'Dash!'
+                \]}
+    nnoremap <silent> <leader>z :Dash<cr>
+else
+    Plug 'KabbAmine/zeavim.vim', {'on': [
+                \	'Zeavim', 'Docset',
+                \	'<Plug>Zeavim',
+                \	'<Plug>ZVVisSelection',
+                \	'<Plug>ZVKeyDocset',
+                \	'<Plug>ZVMotion'
+                \ ]}
+    nnoremap <silent> <leader>z :Zeavim<cr>
+endif
+"""""""""""""""""""""""""""""""""""""""""""
 call plug#end()
