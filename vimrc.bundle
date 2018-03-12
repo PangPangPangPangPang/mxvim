@@ -318,23 +318,6 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""
 
-""""""""""""Dart"""""""""""""""""""
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-Plug 'natebosch/dartlang-snippets'
-Plug 'natebosch/vim-lsc', {'for': 'dart'}
-let g:lsc_server_commands = {'dart': 'dart_language_server'}
-let g:lsc_enable_autocomplete = v:true
-let g:lsc_auto_map = v:true " Use defaults
-" ... or set only the keys you want mapped, defaults are:
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': '<C-]>',
-    \ 'FindReferences': 'gr',
-    \ 'FindCodeActions': 'ga',
-    \ 'ShowHover': 'K',
-    \ 'Completion': 'omnifunc',
-    \}
-"""""""""""""""""""""""""""""""""""
-
 """"""""""""oc"""""""""""""""""""
 Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """""""""""""""""""""""""""""""""""
