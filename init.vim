@@ -315,7 +315,6 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'itchyny/calendar.vim', {'on': 'Calendar'}
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -327,11 +326,19 @@ colorscheme jellybeans
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-map <c-p> :Files<cr>
-let g:fzf_layout = { 'down': '~30%'  }
-
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_ShortcutB = '<Leader>bo'
+let g:Lf_DefaultExternalTool = "ag"
+" let g:Lf_UseVersionControlTool = "git ls-files"
+let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
+let g:Lf_WindowHeight = 0.3
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
+let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 
 Plug 'mileszs/ack.vim' 
 let g:ack_use_cword_for_empty_search = 1
