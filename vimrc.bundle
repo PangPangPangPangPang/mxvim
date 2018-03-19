@@ -6,22 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 
-" Search file
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-let g:fzf_layout = { 'down': '~30%'  }
-command! -bang -nargs=* Ag
-            \ call fzf#vim#ag(<q-args>,
-            \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-            \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \                 <bang>0)
-command! -bang -nargs=? -complete=dir GFiles
-            \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "ag"
 " let g:Lf_UseVersionControlTool = "git ls-files"
@@ -32,14 +19,6 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-
-
-" Neovim work fine with fzf.
-if has("nvim")
-    map <silent> <C-p> :GFiles<cr>
-else
-    let g:Lf_ShortcutF = '<C-P>'
-endif
 
 " Search
 Plug 'mileszs/ack.vim' 
