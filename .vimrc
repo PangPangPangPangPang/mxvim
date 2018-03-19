@@ -240,21 +240,6 @@ map Y $v^y
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" <C-c> press easier then <Esc>, but <C-c> may stop the current task, so use <M-c> instead it.
-noremap <C-c> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-
-if has("mac") || has("macunix")
-    noremap ç <C-c>
-    inoremap ç <C-c>
-    vnoremap ç <C-c>
-else
-    noremap <M-c> <C-c>
-    inoremap <M-c> <C-c>
-    vnoremap <M-c> <C-c>
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Insert action like terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
