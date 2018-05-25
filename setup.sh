@@ -40,7 +40,7 @@ do
         if [ ! -f "./third_party/ycmd/build.py" ]; then
             git submodule update --init --recursive
         fi
-        ./install.py --clang-completer --system-libclang --tern-completer
+        ./install.py --clang-completer --system-libclang --tern-completer --go-completer
     fi
     if [ "$var" = "-jslint" ]; then 
         cp ./javasript/.jshintrc ~/.jshintrc

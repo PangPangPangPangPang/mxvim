@@ -390,6 +390,7 @@ let g:LanguageClient_serverCommands = {
     \ 'objc': ['~/cquery/build/release/bin/cquery', '--language-server'],
     \ 'cpp': ['~/cquery/build/release/bin/cquery', '--language-server'],
     \ 'c': ['~/cquery/build/release/bin/cquery', '--language-server'],
+    \ 'go': ['go-langserver'],
     \ }
 
 let g:LanguageClient_loadSettings = 1

@@ -199,8 +199,9 @@ map <silent> <leader>gb :Gblame<cr>
 if v:version > 743 || has('nvim')
     Plug 'w0rp/ale'
     " Set ale disable as default
-    let g:ale_enabled = 0
+    let g:ale_enabled = 1
     let g:ale_lint_on_text_changed = 'normal'
+    let g:ale_lint_on_insert_leave = 1
     " let g:ale_lint_on_enter = 0
 
     let g:ale_sign_error = '✖'
@@ -264,7 +265,6 @@ let g:ycm_key_invoke_completion = '<C-Space>'
 nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
-"""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""Lazyload func""""""""""""""""
 augroup plug_lazy_load
     autocmd!
@@ -278,6 +278,9 @@ let g:python_highlight_all = 1
 Plug 'vim-python/python-syntax'
 """""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""Golang""""""""""""""""""""
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+"""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""FE""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
