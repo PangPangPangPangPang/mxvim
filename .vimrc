@@ -127,8 +127,8 @@ set smarttab
 " set tabstop=4
 
 " 1 tab == 4 spaces
-autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp set shiftwidth=4
-autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp set tabstop=4
+autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go set shiftwidth=4
+autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go set tabstop=4
 autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp set sts=4
 autocmd FileType javascript,html,css,xml,dart,objc set shiftwidth=2
 autocmd FileType javascript,html,css,xml,dart,objc set tabstop=2
