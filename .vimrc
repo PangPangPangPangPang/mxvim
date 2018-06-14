@@ -391,5 +391,5 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     map <F12> :bo sp term://zsh\|resize 5<CR>i
 else
-    map <F12> :terminal<cr>
+    map <F12> :rightbelow terminal ++rows=10 <cr><c-w>:set wfh<cr>
 endif
