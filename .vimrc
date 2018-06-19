@@ -280,9 +280,9 @@ syntax enable
 set background=dark
 
 try
-    let g:hybrid_custom_term_colors = 1
-    let g:hybrid_reduced_contrast = 1 
-    colorscheme hybrid
+    " let g:hybrid_custom_term_colors = 1
+    " let g:hybrid_reduced_contrast = 1 
+    " colorscheme hybrid
 
     " if !has('gui_running')
         " let g:PaperColor_Theme_Options = {
@@ -293,7 +293,7 @@ try
                     " \   }
                     " \ }
     " endif
-    " colorscheme PaperColor
+    colorscheme PaperColor
     " colorscheme dracula
     " colorscheme gruvbox
     " let g:gruvbox_contrast_dark=dark
@@ -387,9 +387,9 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " Open terminal in neovim.
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-    map <F12> :bo sp term://zsh\|resize 5<CR>i
-else
-    map <F12> :rightbelow terminal ++rows=10 <cr><c-w>:set wfh<cr>
-endif
+" if has('nvim')
+    " tnoremap <Esc> <C-\><C-n>
+    " map <F12> :bo sp term://zsh\|resize 5<CR>i
+" else
+    " map <F12> :rightbelow terminal ++rows=10 <cr><c-w>:set wfh<cr>
+" endif

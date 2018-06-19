@@ -35,6 +35,12 @@ nnoremap <leader>f :Ack!<space>
 Plug 'PangPangPangPangPang/vim-codequery'
 map <silent> <leader>c :CodeQuery<CR>
 
+" Quick toggle terminal.
+Plug 'PangPangPangPangPang/vim-terminal'
+map <F12> :MXTerminalToggle<cr>
+tmap <F12> <c-w>:MXTerminalToggle<cr>
+
+
 if has("cscope")
     set csto=1
     set cst
