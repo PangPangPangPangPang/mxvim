@@ -39,6 +39,7 @@ map <silent> <leader>c :CodeQuery<CR>
 Plug 'PangPangPangPangPang/vim-terminal'
 map <F12> :MXTerminalToggle<cr>
 tmap <F12> <c-w>:MXTerminalToggle<cr>
+let g:mx_terminal_custom_height = 10
 
 
 if has("cscope")
@@ -285,14 +286,15 @@ Plug 'vim-python/python-syntax'
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""Golang""""""""""""""""""""
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+" Call :GoUpdateBinaries to update.
+Plug 'fatih/vim-go'
 """""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""FE""""""""""""""""""""
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 
 let g:used_javascript_libs = 'requirejs,vue,react,jquery'
-Plug 'othree/xml.vim', {'for': ['html', 'xml']}
+
 
 "react support
 Plug 'chemzqm/vim-jsx-improve'
