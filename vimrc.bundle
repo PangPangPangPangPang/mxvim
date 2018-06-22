@@ -36,10 +36,11 @@ Plug 'PangPangPangPangPang/vim-codequery'
 map <silent> <leader>c :CodeQuery<CR>
 
 " Quick toggle terminal.
-Plug 'PangPangPangPangPang/vim-terminal'
-map <F12> :MXTerminalToggle<cr>
-tmap <F12> <c-w>:MXTerminalToggle<cr>
-let g:mx_terminal_custom_height = 10
+Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
+map <silent> <F12> :VSTerminalToggle<cr>
+tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
+let g:vs_terminal_custom_height = 10
+" let g:vs_terminal_custom_command = '/bin/sh'
 
 
 if has("cscope")

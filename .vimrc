@@ -8,11 +8,11 @@ set history=500
 set nu!
 
 " Show relative line number
-set relativenumber
+" set relativenumber
 
-if has('mac') && !has('gui_running')
-    set norelativenumber
-endif
+" if has('mac') && !has('gui_running')
+    " set norelativenumber
+" endif
 
 " Allow use system clipboard
 " set clipboard=unnamed
