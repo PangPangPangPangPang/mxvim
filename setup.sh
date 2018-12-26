@@ -40,7 +40,7 @@ do
         if [ ! -f "./third_party/ycmd/build.py" ]; then
             git submodule update --init --recursive
         fi
-        ./install.py --clang-completer --system-libclang --tern-completer --go-completer
+        ./install.py --clang-completer --tern-completer --go-completer
     fi
     if [ "$var" = "-jslint" ]; then 
         cp ./javasript/.jshintrc ~/.jshintrc
@@ -52,14 +52,5 @@ do
         sudo npm install eslint-config-recommended eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint babel-eslint eslint_d -g
         sudo npm install -g git+https://github.com/ramitos/jsctags.git
         cp ./javasript/.eslintrc.js ~/.eslintrc.js
-    fi
-
-    #install neovim first
-    #brew install neovim/neovim/neovim
-    #pip install neovim
-    if [ "$var" = "-nvim" ]; then 	
-        mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-        ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-        ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
     fi
 done

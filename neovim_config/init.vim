@@ -377,35 +377,13 @@ vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
 nnoremap <leader>f :Ack! 
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
+" Install node and yarn before install the plugin.
+Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'javascript': ['~/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'javascript.jsx': ['~/javascript-typescript-langserver/lib/language-server-stdio.js'],
-    \ 'dart': ['dart_language_server'],
-    \ 'objc': ['~/cquery/build/release/bin/cquery', '--language-server'],
-    \ 'cpp': ['~/cquery/build/release/bin/cquery', '--language-server'],
-    \ 'c': ['~/cquery/build/release/bin/cquery', '--language-server'],
-    \ 'go': ['go-langserver'],
-    \ }
-
-let g:LanguageClient_loadSettings = 1
-nnoremap <silent> <leader>k :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <c-]> :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <leader>r :call LanguageClient_textDocument_rename()<CR>
-
- 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-imap <TAB>     <Plug>(neosnippet_expand_or_jump)
-smap <TAB>     <Plug>(neosnippet_expand_or_jump)
-xmap <TAB>     <Plug>(neosnippet_expand_target)
+nmap <silent> <c-p> <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 
 """"""""""""Dart"""""""""""""""""""
@@ -424,7 +402,7 @@ Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
 """""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""Python""""""""""""""""
-Plug 'zchee/deoplete-jedi', {'for': 'python'}
+" Plug 'zchee/deoplete-jedi', {'for': 'python'}
 """""""""""""""""""""""""""""""""""""""
 
 """"""""""""oc"""""""""""""""""""
