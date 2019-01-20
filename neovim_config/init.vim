@@ -378,9 +378,10 @@ nnoremap <leader>f :Ack!
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 " Install node and yarn before install the plugin.
+" React support:CocInstall coc-tsserver coc-html coc-css
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 
-nmap <silent> <c-p> <Plug>(coc-definition)
+nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
