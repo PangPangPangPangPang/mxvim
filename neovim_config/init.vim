@@ -339,6 +339,7 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
+let g:Lf_ReverseOrder = 1
 
 Plug 'mileszs/ack.vim' 
 let g:ack_use_cword_for_empty_search = 1
@@ -386,6 +387,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+
+""""""""""""Markdown"""""""""""""""""""
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
+"""""""""""""""""""""""""""""""""""
 
 """"""""""""Dart"""""""""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
