@@ -1,4 +1,6 @@
 {
+  "coc.preferences.noselect": false,
+  "coc.preferences.preferCompleteThanJumpPlaceholder": true,
   "languageserver": {
     "dart": {
       "command": "dart_language_server",
@@ -12,6 +14,17 @@
         }
       }
     }
-  }
+  },
 
+"languageserver": {
+    "golang": {
+      "command": "go-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    }
+ }
 }
