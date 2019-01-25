@@ -420,6 +420,15 @@ let g:lightline = {
       \ },
       \ }
 
+" Call :GoUpdateBinaries to update.
+Plug 'fatih/vim-go'
+autocmd FileType go nmap <silent> <F3> :GoDebugStart<CR>
+autocmd FileType go nmap <silent> <F4> :GoDebugBreakpoint<CR>
+autocmd FileType go nmap <silent> <F5> :GoDebugCountinue<CR>
+autocmd FileType go nmap <silent> <F6> :GoDebugNext<CR>
+autocmd FileType go nmap <silent> <F7> :GoDebugStep<CR>
+autocmd FileType go nmap <silent> <F8> :GoDebugStepOut<CR>
+
 """"""""""""Markdown"""""""""""""""""""
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
 """""""""""""""""""""""""""""""""""
