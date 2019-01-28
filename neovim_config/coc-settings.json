@@ -13,10 +13,7 @@
           "completion": {}
         }
       }
-    }
-  },
-
-"languageserver": {
+    },
     "golang": {
       "command": "go-langserver",
       "filetypes": ["go"],
@@ -26,5 +23,5 @@
         "lintTool": "golint"
       }
     }
- }
+  }
 }
