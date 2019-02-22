@@ -19,6 +19,7 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
+let g:Lf_ReverseOrder = 1
 
 " Search
 Plug 'mileszs/ack.vim' 
@@ -310,11 +311,7 @@ Plug 'chemzqm/vim-jsx-improve'
 """""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""markdown"""""""""""""""""
-Plug 'iamcco/markdown-preview.vim', {'for': 'markdown'}
-if has('mac')
-    let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
-endif
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 """"""""""""""""""""""""""""""""""""""""""
 
 """"""""""""oc"""""""""""""""""""
