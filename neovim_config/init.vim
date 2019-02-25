@@ -400,6 +400,15 @@ let g:lightline = {
       \ },
       \ }
 
+Plug 'mengelbrecht/lightline-bufferline'
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unnamed      = '[No Name]'
+
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+
 Plug 'sebdah/vim-delve'
 autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
@@ -449,4 +458,9 @@ else
     nnoremap <silent> <leader>z :Zeavim<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
+
+Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
+
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
