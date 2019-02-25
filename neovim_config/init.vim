@@ -294,8 +294,11 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'nightsense/snow'
-colorscheme snow
+" Plug 'nightsense/snow'
+" colorscheme snow
+
+Plug 'nanotech/jellybeans.vim'
+colorscheme jellybeans
 
 
 Plug 'luochen1990/rainbow'
@@ -356,6 +359,7 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 " Install node and yarn before install the plugin.
 " React support:CocInstall coc-tsserver coc-html coc-css
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+set updatetime=1000
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
