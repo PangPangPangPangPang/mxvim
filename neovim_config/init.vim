@@ -242,27 +242,6 @@ inoremap <c-u> <Esc>cc
 syntax enable 
 set background=dark
 
-try
-    " let g:hybrid_custom_term_colors = 1
-    " let g:hybrid_reduced_contrast = 1 
-    " colorscheme hybrid
-
-    " if !has('gui_running')
-        " let g:PaperColor_Theme_Options = {
-                    " \   'theme': {
-                    " \     'default': {
-                    " \       'transparent_background': 1
-                    " \     }
-                    " \   }
-                    " \ }
-    " endif
-    " colorscheme PaperColor
-    " colorscheme dracula
-    " colorscheme gruvbox
-    " let g:gruvbox_contrast_dark=dark
-catch
-endtry
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -315,8 +294,9 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'nanotech/jellybeans.vim'
-colorscheme jellybeans
+Plug 'nightsense/snow'
+colorscheme snow
+
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
@@ -410,7 +390,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'snow_dark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
