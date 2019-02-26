@@ -296,10 +296,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Plug 'nightsense/snow'
 " colorscheme snow
-
-Plug 'nanotech/jellybeans.vim'
-colorscheme jellybeans
-
+Plug 'NLKNguyen/papercolor-theme'
+colorscheme PaperColor
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
@@ -394,15 +392,79 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'snow_dark',
+      \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
+      \ 'inactive': {
+      \   'left': [ [ 'filename' ]  ],
+      \   'right': []
       \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'modified': 'LightlineModified',
+      \   'readonly': 'LightlineReadonly',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+function! LightlineModified()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! LightlineMode()
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+                \ fname == 'ControlP' ? 'CtrlP' :
+                \ fname =~ 'NERD_tree' ? 'NERDTree' :
+                \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightlineFilename()
+    let fname = expand('%:t')
+    if fname == 'ControlP'
+        return ''
+    endif
+    if fname =~ 'NERD_tree'
+        return 'NERDTree'
+    endif
+    if fname =~ 'FZF'
+        return 'FZF'
+    endif
+    if fname =~ '__Tagbar__'
+        return 'Tagbar'
+    endif
+
+    return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \  &ft == 'unite' ? unite#get_status_string() :
+                \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
 
 Plug 'mengelbrecht/lightline-bufferline'
 let g:lightline#bufferline#show_number  = 1
