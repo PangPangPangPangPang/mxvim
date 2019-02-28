@@ -58,7 +58,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=1
+set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -279,10 +279,6 @@ function! <SID>BufcloseCloseIt()
         execute("bdelete! ".l:currentBufNum)
     endif
 endfunction
-
-" Open terminal in neovim.
-tnoremap <Esc> <C-\><C-n>
-map <F12> :bo sp term://zsh\|resize 5<CR>i
 
 " Config netrw
 let g:netrw_banner = 0
@@ -526,6 +522,17 @@ endif
 """""""""""""""""""""""""""""""""""""""""""
 
 Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
+
+" Quick toggle terminal.
+Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
+map <silent> <F12> :VSTerminalToggle<cr>
+if has('nvim')
+    tnoremap <F12> <C-\><C-n> :VSTerminalToggle<cr>
+    tnoremap <C-w> <C-\><C-n><C-w>
+else
+    tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
+endif
+let g:vs_terminal_custom_height = 10
 
 Plug 'Yggdroot/indentLine'
 
