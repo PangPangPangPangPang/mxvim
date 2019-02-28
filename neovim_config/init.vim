@@ -527,7 +527,7 @@ Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
 map <silent> <F12> :VSTerminalToggle<cr>
 if has('nvim')
-    tnoremap <F12> <C-\><C-n> :VSTerminalToggle<cr>
+    tnoremap <silent> <F12> <C-\><C-n> :VSTerminalToggle<cr>
     tnoremap <C-w> <C-\><C-n><C-w>
 else
     tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
