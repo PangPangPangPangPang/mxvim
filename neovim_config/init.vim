@@ -339,6 +339,9 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
+let g:NERDCustomDelimiters={
+	\ 'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' },
+    \}
 map <leader>/ <leader>c<space>
 
 " Initialize plugin system
@@ -462,15 +465,6 @@ function! LightlineFileencoding()
     return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
 
-Plug 'mengelbrecht/lightline-bufferline'
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#unnamed      = '[No Name]'
-
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
-
 Plug 'sebdah/vim-delve'
 autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
@@ -524,11 +518,12 @@ endif
 Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 
 " Quick toggle terminal.
-Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
+Plug 'PangPangPangPangPang/vim-terminal'
 map <silent> <F12> :VSTerminalToggle<cr>
 if has('nvim')
     tnoremap <silent> <F12> <C-\><C-n> :VSTerminalToggle<cr>
-    tnoremap <C-w> <C-\><C-n><C-w>
+    tnoremap <silent> <C-w> <C-\><C-n><C-w>
+    tnoremap <silent> <Esc> <C-\><C-n>
 else
     tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
 endif
