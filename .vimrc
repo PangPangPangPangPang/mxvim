@@ -26,7 +26,7 @@ let g:mapleader = "\<space>"
 set path+=**
 
 " Search tags 
-set tags=./tags;$HOME
+set tags=./.tags;,.tags
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface

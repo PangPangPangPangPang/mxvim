@@ -25,7 +25,7 @@ set autoread
 set path+=**
 
 " Search tags 
-set tags=./tags;$HOME
+set tags=./.tags;,.tags
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -356,7 +356,6 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 " Install node and yarn before install the plugin.
 " React support:CocInstall coc-tsserver coc-html coc-css
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
-set updatetime=1000
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -388,30 +387,66 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
+Plug 'w0rp/ale'
+" Set ale disable as default
+let g:ale_enabled = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+" let g:ale_lint_on_enter = 0
+
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '◎'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+" let g:ale_sign_column_always = 1
+"
+let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
+            \'python' : ['flake8']
+            \ }
+let g:ale_linter_aliases = {'jsx': 'css'}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'],
+            \'golang': ['gofmt']}
+let g:ale_fix_on_save = 1
+
+map <silent> <leader>s :ALEToggle<cr>
+Plug 'maximbaz/lightline-ale'
+
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'filename' ]  ],
-      \   'right': []
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'modified': 'LightlineModified',
-      \   'readonly': 'LightlineReadonly',
-      \   'filename': 'LightlineFilename',
-      \   'fileformat': 'LightlineFileformat',
-      \   'filetype': 'LightlineFiletype',
-      \   'fileencoding': 'LightlineFileencoding',
-      \   'mode': 'LightlineMode',
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+            \ 'active':{},
+            \ 'inactive':{},
+            \ }
+
+let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
+let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ]]
+let g:lightline.inactive.left = [[ 'filename' ]]
+let g:lightline.inactive.right = []
+let g:lightline.component_function = {
+            \ 'cocstatus': 'coc#status',
+            \ 'modified': 'LightlineModified',
+            \ 'readonly': 'LightlineReadonly',
+            \ 'filename': 'LightlineFilename',
+            \ 'fileformat': 'LightlineFileformat',
+            \ 'filetype': 'LightlineFiletype',
+            \ 'fileencoding': 'LightlineFileencoding',
+            \ 'mode': 'LightlineMode',
+            \}
+let g:lightline.colorscheme = 'PaperColor'
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+let g:lightline.component_type = {
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'left',
       \ }
 
 function! LightlineModified()
@@ -530,5 +565,15 @@ endif
 let g:vs_terminal_custom_height = 10
 
 Plug 'Yggdroot/indentLine'
+
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" if executable('go-langserver')
+    " au User lsp_setup call lsp#register_server({
+                " \ 'name': 'go-langserver',
+                " \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+                " \ 'whitelist': ['go'],
+                " \ })
+" endif
 
 call plug#end()
