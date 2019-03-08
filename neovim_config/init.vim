@@ -313,18 +313,14 @@ let g:Lf_WildIgnore = {
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
 
-Plug 'dyng/ctrlsf.vim'
-let g:ctrlsf_populate_qflist = 1
-let g:ctrlsf_auto_focus = {
-    \ "at": "done",
-    \ "duration_less_than": 1000
-    \ }
-" let g:ctrlsf_default_view_mode = 'compact'
-" let g:ctrlsf_position = 'bottom'
-
-
-vnoremap <silent> <leader>f :call visual#action('CtrlSF foo')<cr>
-nnoremap <leader>f :CtrlSF<space>
+Plug 'iamFIREcracker/ack.vim' 
+let g:ack_use_cword_for_empty_search = 1
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+let g:ack_use_async = 1
+vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
+nnoremap <leader>f :Ack!<space>
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
