@@ -355,7 +355,7 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 " Install node and yarn before install the plugin.
 " React support:CocInstall coc-tsserver coc-html coc-css
-Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -406,7 +406,7 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \ }
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_fixers = {'javascript': ['prettier', 'eslint'],
-            \'golang': ['gofmt']}
+            \'go': ['gofmt']}
 let g:ale_fix_on_save = 1
 
 map <silent> <leader>s :ALEToggle<cr>
