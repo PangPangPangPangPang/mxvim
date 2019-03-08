@@ -313,10 +313,18 @@ let g:Lf_WildIgnore = {
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
 
-" Install ripgrep to support grep.
-vnoremap <silent> <leader>f :call visual#action('Leaderf! rg -e foo')<cr>
-nnoremap <silent> <leader>f :Leaderf rg<cr>
-" nnoremap <leader>f :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+Plug 'dyng/ctrlsf.vim'
+let g:ctrlsf_populate_qflist = 1
+let g:ctrlsf_auto_focus = {
+    \ "at": "done",
+    \ "duration_less_than": 1000
+    \ }
+" let g:ctrlsf_default_view_mode = 'compact'
+" let g:ctrlsf_position = 'bottom'
+
+
+vnoremap <silent> <leader>f :call visual#action('CtrlSF foo')<cr>
+nnoremap <leader>f :CtrlSF<space>
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
