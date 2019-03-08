@@ -313,13 +313,10 @@ let g:Lf_WildIgnore = {
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
 
-Plug 'mileszs/ack.vim' 
-let g:ack_use_cword_for_empty_search = 1
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
-nnoremap <leader>f :Ack!<space>
+" Install ripgrep to support grep.
+vnoremap <silent> <leader>f :call visual#action('Leaderf! rg -e foo')<cr>
+nnoremap <silent> <leader>f :Leaderf rg<cr>
+" nnoremap <leader>f :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
@@ -349,8 +346,6 @@ Plug 'PangPangPangPangPang/visual-selection-vim'
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
-vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
-nnoremap <leader>f :Ack! 
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 " Install node and yarn before install the plugin.
