@@ -511,25 +511,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 """""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""FE""""""""""""""""""""
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
-
-let g:used_javascript_libs = 'requirejs,vue,react,jquery'
-Plug 'othree/xml.vim', {'for': ['html', 'xml']}
-
-"react support
-Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
-"""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""Python""""""""""""""""
-" Plug 'zchee/deoplete-jedi', {'for': 'python'}
-"""""""""""""""""""""""""""""""""""""""
-
-""""""""""""oc"""""""""""""""""""
-Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
-"""""""""""""""""""""""""""""""""""
-
 "Quick open doc
 if has('mac')
     Plug 'rizzatti/dash.vim', {'on':[
@@ -565,14 +546,12 @@ let g:vs_terminal_custom_height = 10
 
 Plug 'Yggdroot/indentLine'
 
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" if executable('go-langserver')
-    " au User lsp_setup call lsp#register_server({
-                " \ 'name': 'go-langserver',
-                " \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-                " \ 'whitelist': ['go'],
-                " \ })
-" endif
+" Git status plugin
+Plug 'airblade/vim-gitgutter'
+" Snip plugin
+Plug 'honza/vim-snippets'
+
+" Hightlight plugin
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
