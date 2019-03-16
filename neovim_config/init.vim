@@ -432,7 +432,7 @@ let g:lightline.component_function = {
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
             \}
-let g:lightline.colorscheme = 'PaperColor'
+let g:lightline.colorscheme = 'seoul256'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_expand = {
@@ -548,10 +548,16 @@ Plug 'Yggdroot/indentLine'
 
 " Git status plugin
 Plug 'airblade/vim-gitgutter'
+
+" Git support
+Plug 'tpope/vim-fugitive'
+
 " Snip plugin
 Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 Plug 'sheerun/vim-polyglot'
+
+
 
 call plug#end()
