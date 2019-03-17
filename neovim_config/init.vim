@@ -3,6 +3,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:mapleader = "\<space>"
 
+set updatetime=100
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -353,7 +355,7 @@ vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 " Install node and yarn before install the plugin.
-" React support:CocInstall coc-tsserver coc-html coc-css
+" React support:CocInstall coc-tsserver coc-html coc-css coc-snippets
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 nmap <silent> <c-]> <Plug>(coc-definition)
@@ -557,7 +559,5 @@ Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 Plug 'sheerun/vim-polyglot'
-
-
 
 call plug#end()
