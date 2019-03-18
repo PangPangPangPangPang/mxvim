@@ -567,5 +567,6 @@ Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['markdown']
 
 call plug#end()
