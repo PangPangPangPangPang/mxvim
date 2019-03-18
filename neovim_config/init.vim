@@ -517,10 +517,6 @@ autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
 """""""""""""""""""""""""""""""""""
 
-""""""""""""Dart"""""""""""""""""""
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-"""""""""""""""""""""""""""""""""""
-
 "Quick open doc
 if has('mac')
     Plug 'rizzatti/dash.vim', {'on':[
