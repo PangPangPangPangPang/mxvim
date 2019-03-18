@@ -3,6 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:mapleader = "\<space>"
 
+" Time for swap fill will be written to disk.
 set updatetime=100
 
 " Sets how many lines of history VIM has to remember
