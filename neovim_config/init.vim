@@ -295,9 +295,16 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Plug 'nightsense/snow'
 " colorscheme snow
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
 Plug 'NLKNguyen/papercolor-theme'
 colorscheme PaperColor
-
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
@@ -508,10 +515,6 @@ autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
 """""""""""""""""""""""""""""""""""
 
-""""""""""""Dart"""""""""""""""""""
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-"""""""""""""""""""""""""""""""""""
-
 "Quick open doc
 if has('mac')
     Plug 'rizzatti/dash.vim', {'on':[
@@ -558,5 +561,6 @@ Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['markdown']
 
 call plug#end()
