@@ -334,9 +334,7 @@ Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 map <silent> <F2> :TagbarToggle<cr>
 imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
-Plug 'terryma/vim-multiple-cursors'
-let g:multi_cursor_quit_key='<C-c>'
-let g:multi_cursor_skip_key='<C-x>'
+Plug 'mg979/vim-visual-multi'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
