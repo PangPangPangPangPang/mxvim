@@ -104,7 +104,6 @@ set tm=500
 " Add a bit extra margin to the left, change 0 to 1.
 set foldcolumn=0
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -298,12 +297,12 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'nightsense/snow'
 " colorscheme snow
 let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
+            \   'theme': {
+            \     'default': {
+            \       'transparent_background': 1
+            \     }
+            \   }
+            \ }
 
 Plug 'NLKNguyen/papercolor-theme'
 colorscheme PaperColor
@@ -353,8 +352,8 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 let g:NERDCustomDelimiters={
-	\ 'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' },
-    \}
+            \ 'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' },
+            \}
 map <leader>/ <leader>c<space>
 
 " Initialize plugin system
@@ -378,11 +377,11 @@ let g:coc_snippet_prev = '<S-TAB>'
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if &filetype == 'vim'
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 " Remap for rename current word
 nmap <leader>ar <Plug>(coc-rename)
@@ -448,17 +447,17 @@ let g:lightline.colorscheme = 'seoul256'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
+            \  'linter_checking': 'lightline#ale#checking',
+            \  'linter_warnings': 'lightline#ale#warnings',
+            \  'linter_errors': 'lightline#ale#errors',
+            \  'linter_ok': 'lightline#ale#ok',
+            \ }
 let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
+            \     'linter_checking': 'left',
+            \     'linter_warnings': 'warning',
+            \     'linter_errors': 'error',
+            \     'linter_ok': 'left',
+            \ }
 
 function! LightlineModified()
     return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
