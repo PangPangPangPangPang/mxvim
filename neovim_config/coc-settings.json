@@ -2,6 +2,7 @@
   "coc.preferences.noselect": false,
   "coc.preferences.preferCompleteThanJumpPlaceholder": true,
   "coc.preferences.diagnostic.displayByAle": true,
+  "suggest.enablePreview": true,
   "languageserver": {
     "dart": {
       "command": "dart_language_server",
