@@ -48,6 +48,8 @@ source $VIMRUNTIME/menu.vim
 
 " Turn on the WiLd menu
 set wildmenu
+set wildoptions=pum
+" set pumblend=20
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -334,7 +336,7 @@ nnoremap <leader>f :Ack!<space>
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
-map <F1> :NERDTreeToggle<cr>
+map <silent> <F1> :NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
@@ -342,6 +344,8 @@ map <silent> <F2> :TagbarToggle<cr>
 imap <silent> <F2> <Esc>:TagbarToggle<cr>
 
 Plug 'mg979/vim-visual-multi'
+let g:VM_maps = {}
+let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
