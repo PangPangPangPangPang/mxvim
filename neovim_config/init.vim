@@ -566,7 +566,7 @@ Plug 'honza/vim-snippets'
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['markdown']
 
-" Manage input method.
+" Manage input method. 
 Plug 'rlue/vim-barbaric'
 
 call plug#end()
