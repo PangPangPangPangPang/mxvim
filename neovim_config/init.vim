@@ -567,7 +567,10 @@ Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['markdown']
 
 " Manage input method. 
-" For mac: curl -o /usr/local/bin/xkbswitch https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
-Plug 'rlue/vim-barbaric'
+if has("mac")
+    Plug 'ybian/smartim'
+else 
+    Plug 'lilydjwg/fcitx.vim'
+endif
 
 call plug#end()
