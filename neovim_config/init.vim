@@ -541,13 +541,13 @@ Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 
 " Quick toggle terminal.
 Plug 'PangPangPangPangPang/vim-terminal'
-map <silent> <F12> :VSTerminalToggle<cr>
+map <silent> <F5> :VSTerminalToggle<cr>
 if has('nvim')
-    tnoremap <silent> <F12> <C-\><C-n> :VSTerminalToggle<cr>
+    tnoremap <silent> <F5> <C-\><C-n> :VSTerminalToggle<cr>
     tnoremap <silent> <C-w> <C-\><C-n><C-w>
     tnoremap <silent> <Esc> <C-\><C-n>
 else
-    tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
+    tmap <silent> <F5> <c-w>:VSTerminalToggle<cr>
 endif
 let g:vs_terminal_custom_height = 10
 
