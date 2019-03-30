@@ -573,4 +573,10 @@ else
     Plug 'lilydjwg/fcitx.vim'
 endif
 
+Plug 'rhysd/clever-f.vim'
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
+
+Plug 'machakann/vim-highlightedyank'
+
 call plug#end()
