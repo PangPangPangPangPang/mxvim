@@ -1,6 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Normal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set termguicolors
+
 let g:mapleader = "\<space>"
 
 " Time for swap fill will be written to disk.
@@ -22,7 +24,6 @@ endif
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
 
 " Search down into subfolders
 set path+=**
@@ -291,11 +292,8 @@ let g:netrw_altv = 1 " open splits to the right
 let g:netrw_list_hide = netrw_gitignore#Hide()
 let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
-
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'nightsense/snow'
-" colorscheme snow
 let g:PaperColor_Theme_Options = {
             \   'theme': {
             \     'default': {
@@ -303,9 +301,11 @@ let g:PaperColor_Theme_Options = {
             \     }
             \   }
             \ }
-
 Plug 'NLKNguyen/papercolor-theme'
 colorscheme PaperColor
+
+" colorscheme spring-night
+
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
@@ -443,7 +443,7 @@ let g:lightline.component_function = {
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
             \}
-let g:lightline.colorscheme = 'seoul256'
+let g:lightline.colorscheme = 'spring-night'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_expand = {
