@@ -50,7 +50,7 @@ source $VIMRUNTIME/menu.vim
 " Turn on the WiLd menu
 set wildmenu
 set wildoptions=pum
-" set pumblend=20
+set pumblend=20
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
