@@ -573,10 +573,16 @@ else
     Plug 'lilydjwg/fcitx.vim'
 endif
 
+" Highlight f/F/t/T search.
 Plug 'rhysd/clever-f.vim'
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
 
+" Highlight yank.
 Plug 'machakann/vim-highlightedyank'
-
+Plug 'blindFS/vim-taskwarrior'
+"
+" Auto change to root.
+Plug 'airblade/vim-rooter'
+let g:rooter_resolve_links = 1
 call plug#end()
