@@ -570,7 +570,7 @@ let g:polyglot_disabled = ['markdown']
 if has("mac")
     Plug 'ybian/smartim'
 else 
-    Plug 'lilydjwg/fcitx.vim'
+    Plug 'rlue/vim-barbaric'
 endif
 
 " Highlight f/F/t/T search.
@@ -580,7 +580,6 @@ map , <Plug>(clever-f-repeat-back)
 
 " Highlight yank.
 Plug 'machakann/vim-highlightedyank'
-Plug 'blindFS/vim-taskwarrior'
 "
 " Auto change to root.
 Plug 'airblade/vim-rooter'
