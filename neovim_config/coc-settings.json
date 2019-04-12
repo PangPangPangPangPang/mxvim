@@ -1,30 +1,26 @@
 {
-  "coc.preferences.noselect": false,
-  "coc.preferences.preferCompleteThanJumpPlaceholder": true,
-  "coc.preferences.diagnostic.displayByAle": true,
-  "suggest.enablePreview": true,
-  "languageserver": {
-    "dart": {
-      "command": "dart_language_server",
-      "args": [],
-      "filetypes": ["dart"],
-      "initializationOptions": {},
-      "settings": {
-        "dart": {
-          "validation": {},
-          "completion": {}
+        "coc.preferences.noselect": false,
+        "coc.preferences.preferCompleteThanJumpPlaceholder": true,
+        "suggest.enablePreview": true,
+        "languageserver": {
+                "dart": {
+                        "command": "dart_language_server",
+                        "args": [],
+                        "filetypes": ["dart"],
+                        "initializationOptions": {},
+                        "settings": {
+                                "dart": {
+                                        "validation": {},
+                                        "completion": {}
+                                }
+                        }
+                },
+                "golang": {
+                        "command": "gopls",
+                        "args": [],
+                        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+                        "filetypes": ["go"]
+                }
         }
-      }
-    },
-    "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
-    }
-  }
 }
 

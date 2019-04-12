@@ -6,7 +6,7 @@ set termguicolors
 let g:mapleader = "\<space>"
 
 " Time for swap fill will be written to disk.
-set updatetime=100
+set updatetime=10
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -397,7 +397,7 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " Set ale disable as default
 let g:ale_enabled = 1
 let g:ale_lint_on_text_changed = 'normal'
@@ -407,6 +407,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '◎'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 " let g:ale_sign_column_always = 1
