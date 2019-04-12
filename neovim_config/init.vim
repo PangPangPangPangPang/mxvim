@@ -397,9 +397,9 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " Set ale disable as default
-let g:ale_enabled = 1
+let g:ale_enabled = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 " let g:ale_lint_on_enter = 0
@@ -444,7 +444,7 @@ let g:lightline.component_function = {
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
             \}
-let g:lightline.colorscheme = 'spring-night'
+let g:lightline.colorscheme = 'PaperColor'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_expand = {
