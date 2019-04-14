@@ -585,4 +585,6 @@ Plug 'machakann/vim-highlightedyank'
 " Auto change to root.
 Plug 'airblade/vim-rooter'
 let g:rooter_resolve_links = 1
+
 call plug#end()
+

@@ -20,6 +20,7 @@ do
 done
 
 cp -r ./colors ~/.config/nvim/
+cp -r ./syntax ~/.config/nvim/
 cp init.vim ~/.config/nvim/init.vim
 cp ./coc-settings.json ~/.config/nvim/
 
