@@ -316,13 +316,16 @@ let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "ag"
 " let g:Lf_UseVersionControlTool = "git ls-files"
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
-let g:Lf_WindowHeight = 0.3
+" let g:Lf_WindowHeight = 0.3
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
+
+map <silent> <F2> :LeaderfBufTag<cr>
+imap <silent> <F2> :LeaderfBufTag<cr>
 
 Plug 'iamFIREcracker/ack.vim' 
 let g:ack_use_cword_for_empty_search = 1
@@ -338,9 +341,10 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 map <silent> <F1> :NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-map <silent> <F2> :TagbarToggle<cr>
-imap <silent> <F2> <Esc>:TagbarToggle<cr>
+" Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+" map <silent> <F2> :TagbarToggle<cr>
+" imap <silent> <F2> <Esc>:TagbarToggle<cr>
+
 
 Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
@@ -399,7 +403,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 Plug 'w0rp/ale'
 " Set ale disable as default
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 " let g:ale_lint_on_enter = 0
