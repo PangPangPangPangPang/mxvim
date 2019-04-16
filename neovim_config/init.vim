@@ -294,24 +294,25 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
-let g:PaperColor_Theme_Options = {
-            \   'theme': {
-            \     'default': {
-            \       'transparent_background': 1
-            \     }
-            \   }
-            \ }
-Plug 'NLKNguyen/papercolor-theme'
-colorscheme PaperColor
-
-" colorscheme spring-night
+" let g:PaperColor_Theme_Options = {
+            " \   'theme': {
+            " \     'default': {
+            " \       'transparent_background': 1
+            " \     }
+            " \   }
+            " \ }
+" Plug 'NLKNguyen/papercolor-theme'
+" colorscheme PaperColor
+" " colorscheme spring-night
+let g:one_allow_italics = 1
+colorscheme one
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = '<C-P>'
-let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_StlColorscheme = 'one'
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "ag"
 " let g:Lf_UseVersionControlTool = "git ls-files"
@@ -323,9 +324,6 @@ let g:Lf_WildIgnore = {
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
-
-map <silent> <F2> :LeaderfBufTag<cr>
-imap <silent> <F2> :LeaderfBufTag<cr>
 
 Plug 'iamFIREcracker/ack.vim' 
 let g:ack_use_cword_for_empty_search = 1
@@ -341,9 +339,25 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 map <silent> <F1> :NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
-" Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-" map <silent> <F2> :TagbarToggle<cr>
-" imap <silent> <F2> <Esc>:TagbarToggle<cr>
+Plug 'liuchengxu/vista.vim'
+map <silent> <F2> :Vista!!<cr>
+imap <silent> <F2> <Esc>:Vista!!<cr>
+let g:vista_default_executive = 'coc'
+let g:vista_executive_for = {
+            \ 'markdown': 'ctags',
+            \ 'c': 'ctags',
+            \ 'cpp': 'ctags',
+            \}
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista#renderer#enable_icon = 1
+let g:vista_echo_cursor_strategy= 'floating_win'
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 
 Plug 'mg979/vim-visual-multi'
@@ -448,7 +462,7 @@ let g:lightline.component_function = {
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
             \}
-let g:lightline.colorscheme = 'PaperColor'
+let g:lightline.colorscheme = 'one'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_expand = {
