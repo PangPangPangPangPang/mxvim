@@ -16,11 +16,27 @@
                         }
                 },
                 "golang": {
-                        "command": "gopls",
-                        "args": [],
-                        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-                        "filetypes": ["go"]
+                        "command": "go-langserver",
+                        "filetypes": ["go"],
+                        "initializationOptions": {
+                                "gocodeCompletionEnabled": true,
+                                "diagnosticsEnabled": true,
+                                "lintTool": "golint"
+                        }
                 }
         }
 }
 
+//                "golang": {
+        //                       "command": "gopls",
+        //                       "args": [],
+        //                       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        //                       "filetypes": ["go"]
+        //               }
+
+//                "golang": {
+//                        "command": "bingo",
+//                        "args": ["--diagnostics-style=instant"],
+//                        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+//                        "filetypes": ["go"]
+//                }

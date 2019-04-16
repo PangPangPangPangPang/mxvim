@@ -294,18 +294,18 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 call plug#begin('~/.config/nvim/plugged')
 
-" let g:PaperColor_Theme_Options = {
-            " \   'theme': {
-            " \     'default': {
-            " \       'transparent_background': 1
-            " \     }
-            " \   }
-            " \ }
-" Plug 'NLKNguyen/papercolor-theme'
-" colorscheme PaperColor
-" " colorscheme spring-night
-let g:one_allow_italics = 1
-colorscheme one
+let g:PaperColor_Theme_Options = {
+            \   'theme': {
+            \     'default': {
+            \       'transparent_background': 1
+            \     }
+            \   }
+            \ }
+Plug 'NLKNguyen/papercolor-theme'
+colorscheme PaperColor
+" colorscheme spring-night
+" let g:one_allow_italics = 1
+" colorscheme one
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
