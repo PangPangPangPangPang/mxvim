@@ -572,7 +572,7 @@ autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 
 
 """"""""""""Markdown"""""""""""""""""""
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'   }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 """""""""""""""""""""""""""""""""""
 
 "Quick open doc
@@ -626,6 +626,7 @@ let g:polyglot_disabled = ['markdown']
 " Manage input method. 
 if has("mac")
     Plug 'ybian/smartim'
+    let g:smartim_default = 'com.apple.keylayout.ABC'
 else 
     Plug 'rlue/vim-barbaric'
 endif
