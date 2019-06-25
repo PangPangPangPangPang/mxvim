@@ -419,7 +419,7 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 " Install node and yarn before install the plugin.
 " React support:CocInstall coc-tsserver coc-html coc-css coc-snippets
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -572,7 +572,7 @@ autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 
 
 """"""""""""Markdown"""""""""""""""""""
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.vim'
 """""""""""""""""""""""""""""""""""
 
 "Quick open doc
