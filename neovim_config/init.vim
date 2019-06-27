@@ -639,5 +639,7 @@ map , <Plug>(clever-f-repeat-back)
 " Highlight yank.
 Plug 'machakann/vim-highlightedyank'
 "
+Plug 'junegunn/vim-peekaboo'
+
 call plug#end()
 
