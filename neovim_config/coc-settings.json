@@ -1,7 +1,11 @@
 {
-        "coc.preferences.noselect": false,
-        "coc.preferences.preferCompleteThanJumpPlaceholder": true,
+        "suggest.noselect": false,
+        "suggest.preferCompleteThanJumpPlaceholder": false,
+        "suggest.minTriggerInputLength": 2,
         "suggest.enablePreview": true,
+        "suggest.acceptSuggestionOnCommitCharacter": true,
+        "suggest.autoTrigger": "always",
+        "suggest.triggerAfterInsertEnter": true,
         "languageserver": {
                 "dart": {
                         "command": "dart_language_server",
@@ -16,35 +20,12 @@
                         }
                 },
                 "golang": {
-                               "command": "gopls",
-                               "args": [],
-                               "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-                               "filetypes": ["go"]
-                       }
+                        "command": "gopls",
+                        "args": [],
+                        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+                        "filetypes": ["go"]
+                }
         }
 }
 
 
-//  "golang": {
-//                 "command": "gopls",
-//                 "args": [],
-//                 "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-//                 "filetypes": ["go"]
-//         }
-//
-//   "golang": {
-//           "command": "go-langserver",
-//           "filetypes": ["go"],
-//           "initializationOptions": {
-//                   "gocodeCompletionEnabled": true,
-//                   "diagnosticsEnabled": true,
-//                   "lintTool": "golint"
-//           }
-//   }
-// 
-//                "golang": {
-//                        "command": "bingo",
-//                        "args": ["--diagnostics-style=instant"],
-//                        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-//                        "filetypes": ["go"]
-//                }
