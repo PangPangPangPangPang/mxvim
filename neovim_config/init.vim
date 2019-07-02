@@ -52,10 +52,13 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-" Turn on the WiLd menu
-set wildmenu
-set wildoptions=pum
-set pumblend=20
+" Turn on the wild menu
+"
+if has('wildmenu')
+    set wildmenu
+    set wildoptions=pum
+    set pumblend=20
+endif
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -638,8 +641,6 @@ map , <Plug>(clever-f-repeat-back)
 
 " Highlight yank.
 Plug 'machakann/vim-highlightedyank'
-"
-Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
