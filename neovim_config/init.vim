@@ -53,9 +53,9 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 " Turn on the wild menu
-"
-if has('wildmenu')
-    set wildmenu
+set wildmenu
+
+if exists('&pumblend')
     set wildoptions=pum
     set pumblend=20
 endif
