@@ -618,6 +618,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Git support
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " Snip plugin
 Plug 'honza/vim-snippets'
