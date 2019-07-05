@@ -473,8 +473,7 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \'python' : ['flake8']
             \ }
 let g:ale_linter_aliases = {'jsx': 'css'}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'],
-            \'go': ['gofmt']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
 let g:ale_fix_on_save = 1
 
 map <silent> <leader>s :ALEToggle<cr>
@@ -568,10 +567,7 @@ function! LightlineFileencoding()
     return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
 
-Plug 'sebdah/vim-delve'
-let g:delve_new_command = 'new'
-autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
-autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
+
 
 
 """"""""""""Markdown"""""""""""""""""""
@@ -643,5 +639,14 @@ map , <Plug>(clever-f-repeat-back)
 " Highlight yank.
 Plug 'machakann/vim-highlightedyank'
 
+"""""""""""""'go'"""""""""""""
+Plug 'fatih/vim-go', { 'for' : 'go' }
+let g:go_code_completion_enabled = 0
+
+Plug 'sebdah/vim-delve', { 'for' : 'go' }
+let g:delve_new_command = 'new'
+autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
+autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
+""""""""""""""""""""""""""""""
 call plug#end()
 
