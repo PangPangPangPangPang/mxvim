@@ -423,6 +423,7 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 " Install node and yarn before install the plugin.
 " React support:CocInstall coc-tsserver coc-html coc-css coc-snippets
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-python', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css',  'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-xml', 'coc-tabnine' ]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -452,7 +453,7 @@ map <leader>ax  <Plug>(coc-fix-current)
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 Plug 'w0rp/ale'
 " Set ale disable as default
