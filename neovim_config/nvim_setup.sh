@@ -12,6 +12,7 @@ for var in $*
 do
     if [ "$var" = "-r" ];  then
         rm -rf ~/.config/nvim/
+        rm -rf ~/.config/coc/
         curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         rm -rf ~/.config/nvim/colors
