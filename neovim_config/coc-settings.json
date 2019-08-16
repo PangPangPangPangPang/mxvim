@@ -1,4 +1,8 @@
 {
+        "coc.preferences.hoverTarget": "float",
+        "signature.target": "float",
+        "diagnostic.messageTarget": "float",
+        "suggest.floatEnable": true,
         "suggest.noselect": false,
         "suggest.preferCompleteThanJumpPlaceholder": false,
         "suggest.minTriggerInputLength": 2,

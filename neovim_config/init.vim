@@ -313,34 +313,11 @@ Plug 'NLKNguyen/papercolor-theme'
 colorscheme PaperColor
 " colorscheme spring-night
 " let g:one_allow_italics = 1
+
 " colorscheme one
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
-
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-let g:Lf_ShortcutF = '<C-P>'
-let g:Lf_StlColorscheme = 'one'
-let g:Lf_ShortcutB = '<Leader>bo'
-let g:Lf_DefaultExternalTool = "ag"
-" let g:Lf_UseVersionControlTool = "git ls-files"
-let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
-" let g:Lf_WindowHeight = 0.3
-let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
-            \}
-let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-let g:Lf_ReverseOrder = 1
-
-Plug 'iamFIREcracker/ack.vim' 
-let g:ack_use_cword_for_empty_search = 1
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-let g:ack_use_async = 1
-vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
-nnoremap <leader>f :Ack!<space>
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 let NERDTreeIgnore=['\.pyc$', '\~$'] 
@@ -366,21 +343,30 @@ let g:vista#renderer#icons = {
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+noremap <c-p> :FZF<cr>
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+function! s:build_quickfix_list(lines)
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
+endfunction
+let g:fzf_action = {
+            \ 'ctrl-l': function('s:build_quickfix_list'),
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
 function! OpenFloatingWin()
     let height = &lines - 3
     let width = float2nr(&columns - (&columns * 2 / 10))
     let col = float2nr((&columns - width) / 2)
-
-    " 设置浮动窗口打开的位置，大小等。
-    " 这里的大小配置可能不是那么的 flexible 有继续改进的空间
     let opts = {
                 \ 'relative': 'editor',
                 \ 'row': height * 0.3,
                 \ 'col': col + 30,
                 \ 'width': width * 2 / 3,
-                \ 'height': height / 2
+                \ 'height': height / 2,
                 \ }
 
     let buf = nvim_create_buf(v:false, v:true)
@@ -397,6 +383,15 @@ function! OpenFloatingWin()
                 \ norelativenumber
                 \ signcolumn=no
 endfunction
+
+Plug 'iamFIREcracker/ack.vim'
+let g:ack_use_cword_for_empty_search = 1
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+let g:ack_use_async = 1
+vnoremap <silent> <leader>p :call visual#action('Ack! foo')<cr>
+nnoremap <leader>p :Ack! <space>
 
 
 Plug 'mg979/vim-visual-multi'
@@ -641,8 +636,8 @@ map , <Plug>(clever-f-repeat-back)
 Plug 'machakann/vim-highlightedyank'
 
 """""""""""""'go'"""""""""""""
-Plug 'fatih/vim-go', { 'for' : 'go' }
-let g:go_code_completion_enabled = 0
+" Plug 'fatih/vim-go', { 'for' : 'go' }
+" let g:go_code_completion_enabled = 0
 
 Plug 'sebdah/vim-delve', { 'for' : 'go' }
 let g:delve_new_command = 'new'
@@ -661,5 +656,6 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 call plug#end()
 
