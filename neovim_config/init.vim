@@ -33,7 +33,7 @@ set autoread
 " Search down into subfolders
 set path+=**
 
-" Search tags 
+" Search tags
 set tags=./.tags;,.tags
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,7 +47,7 @@ filetype indent on
 set so=3
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -84,23 +84,23 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -169,9 +169,9 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
-    set switchbuf=useopen,usetab 
+    set switchbuf=useopen,usetab
     set stal=2
 catch
 endtry
@@ -252,7 +252,7 @@ inoremap <c-u> <Esc>cc
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -320,7 +320,7 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
-let NERDTreeIgnore=['\.pyc$', '\~$'] 
+let NERDTreeIgnore=['\.pyc$', '\~$']
 map <silent> <F1> :NERDTreeToggle<cr>
 map <silent> <leader>j :NERDTreeFind<cr>
 
@@ -391,7 +391,8 @@ if executable('ag')
 endif
 let g:ack_use_async = 1
 vnoremap <silent> <leader>p :call visual#action('Ack! foo')<cr>
-nnoremap <leader>p :Ack! <space>
+" nnoremap <leader>p :Ack! <space>
+nnoremap <leader>p :Ag<cr>
 
 
 Plug 'mg979/vim-visual-multi'
@@ -466,10 +467,19 @@ highlight clear ALEWarningSign
 " let g:ale_sign_column_always = 1
 "
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
-            \'python' : ['flake8']
+            \'python' : ['flake8'],
+            \'go' : ['golint'],
             \ }
 let g:ale_linter_aliases = {'jsx': 'css'}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'go': ['gofmt', 'goimports'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 let g:ale_fix_on_save = 1
 
 map <silent> <leader>s :ALEToggle<cr>
@@ -619,11 +629,11 @@ Plug 'honza/vim-snippets'
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['markdown']
 
-" Manage input method. 
+" Manage input method.
 if has("mac")
     Plug 'ybian/smartim'
     let g:smartim_default = 'com.apple.keylayout.ABC'
-else 
+else
     Plug 'rlue/vim-barbaric'
 endif
 
@@ -658,4 +668,3 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 call plug#end()
-
