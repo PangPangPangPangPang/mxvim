@@ -10,6 +10,8 @@ endif
 
 let g:mapleader = "\<space>"
 
+set list lcs=tab:\|\ 
+
 " Time for swap fill will be written to disk.
 set updatetime=10
 
