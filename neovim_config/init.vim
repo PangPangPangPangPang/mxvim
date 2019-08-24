@@ -254,6 +254,7 @@ inoremap <c-u> <Esc>cc
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
+
 syntax enable
 set background=dark
 
@@ -473,8 +474,8 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \'go' : ['golint'],
             \ }
 let g:ale_linter_aliases = {'jsx': 'css'}
+" \   'go': ['remove_trailing_lines', 'trim_whitespace'],
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'go': ['gofmt', 'goimports'],
 \}
