@@ -474,7 +474,7 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \'go' : ['golint'],
             \ }
 let g:ale_linter_aliases = {'jsx': 'css'}
-" \   'go': ['remove_trailing_lines', 'trim_whitespace'],
+" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'go': ['gofmt', 'goimports'],
@@ -662,7 +662,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
-Plug 'sebdah/vim-delve', { 'for' : 'go' }
+Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 let g:delve_new_command = 'new'
 autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
@@ -679,5 +679,7 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-
+ 
+" Add mark
+Plug 'kshenoy/vim-signature'
 call plug#end()
