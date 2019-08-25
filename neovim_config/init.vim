@@ -663,7 +663,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
 Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-let g:delve_new_command = 'new'
+let g:delve_new_command = 'vnew'
 autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 """"""""""""""""""""""""""""""
