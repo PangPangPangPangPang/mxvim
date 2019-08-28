@@ -346,6 +346,10 @@ let g:vista#renderer#icons = {
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif
 
 noremap <c-p> :FZF<cr>
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
