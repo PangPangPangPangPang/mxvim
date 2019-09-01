@@ -401,9 +401,9 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 let g:ack_use_async = 1
-vnoremap <silent> <leader>p :call visual#action('Ack! foo')<cr>
+vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
 " nnoremap <leader>p :Ack! <space>
-nnoremap <leader>p :Ag<cr>
+nnoremap <leader>f :Ag<cr>
 
 
 Plug 'mg979/vim-visual-multi'
@@ -626,10 +626,8 @@ let g:vs_terminal_custom_height = 10
 
 Plug 'Yggdroot/indentLine'
 
-" Git status plugin
-Plug 'airblade/vim-gitgutter'
-
 " Git support
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
@@ -660,7 +658,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'fatih/vim-go', { 'for' : 'go' }
 let g:go_code_completion_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
-let g:go_def_mapping_enabled = 0
+let g:go_def_mapping_enabled = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -674,20 +672,8 @@ Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 let g:delve_new_command = 'vnew'
 autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
+
 """"""""""""""""""""""""""""""
-Plug 'easymotion/vim-easymotion'
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-" nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" Move to line
-map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
- 
 " Add mark
 Plug 'kshenoy/vim-signature'
 call plug#end()
