@@ -18,6 +18,8 @@ set updatetime=10
 " Sets how many lines of history VIM has to remember
 set history=500
 
+set colorcolumn=81
+
 " Show line numbers
 set nu!
 
@@ -316,12 +318,21 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'NLKNguyen/papercolor-theme'
 " colorscheme PaperColor
 "
+Plug 'srcery-colors/srcery-vim'
 let g:srcery_italic = 1
 let g:srcery_transparent_background = 1
+let g:srcery_inverse_matches = 1
+let g:srcery_inverse_match_paren = 1
 colorscheme srcery
 
 " let g:one_allow_italics = 1
 " colorscheme one
+
+" Plug 'morhetz/gruvbox'
+" highlight Normal ctermbg=None
+" let g:grubox_italic = 1
+" let g:grubox_contrast = 'hard'
+" colorscheme gruvbox
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
@@ -517,7 +528,7 @@ let g:lightline.component_function = {
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
             \}
-let g:lightline.colorscheme = 'one'
+let g:lightline.colorscheme = 'srcery'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_expand = {
@@ -677,3 +688,4 @@ autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 " Add mark
 Plug 'kshenoy/vim-signature'
 call plug#end()
+
