@@ -154,6 +154,9 @@ set si "Smart indent
 set nowrap "Wrap lines
 set sidescroll=1
 
+set splitright
+set splitbelow
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -688,4 +691,3 @@ autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 " Add mark
 Plug 'kshenoy/vim-signature'
 call plug#end()
-
