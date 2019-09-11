@@ -378,7 +378,7 @@ let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>'],
             \ '<C-J>': ['<C-N>', '<C-J>'],
             \ '<C-K>': ['<C-P>', '<C-K>'],
             \ '<C-]>': ['<C-V>'],
-            \ '<C-X>': ['<C-H>'],
+            \ '<C-X>': ['<C-S>'],
             \ '<C-P>': ['<C-O>'],
             \}
 " let g:Lf_WindowHeight = 0.3
@@ -398,7 +398,7 @@ endif
 
 " noremap <c-p> :FZF<cr>
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
-let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+" let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
 function! s:build_quickfix_list(lines)
     call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
     copen
@@ -407,34 +407,8 @@ endfunction
 let g:fzf_action = {
             \ 'ctrl-l': function('s:build_quickfix_list'),
             \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
+            \ 'ctrl-s': 'split',
             \ 'ctrl-v': 'vsplit' }
-function! OpenFloatingWin()
-    let height = &lines - 3
-    let width = float2nr(&columns - (&columns * 2 / 10))
-    let col = float2nr((&columns - width) / 2)
-    let opts = {
-                \ 'relative': 'editor',
-                \ 'row': height * 0.3,
-                \ 'col': col + 30,
-                \ 'width': width * 2 / 3,
-                \ 'height': height / 2,
-                \ }
-
-    let buf = nvim_create_buf(v:false, v:true)
-    let win = nvim_open_win(buf, v:true, opts)
-
-    " 设置浮动窗口高亮
-    call setwinvar(win, '&winhl', 'Normal:Pmenu')
-
-    setlocal
-                \ buftype=nofile
-                \ nobuflisted
-                \ bufhidden=hide
-                \ nonumber
-                \ norelativenumber
-                \ signcolumn=no
-endfunction
 
 Plug 'iamFIREcracker/ack.vim'
 let g:ack_use_cword_for_empty_search = 1
