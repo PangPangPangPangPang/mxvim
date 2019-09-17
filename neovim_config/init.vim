@@ -477,7 +477,8 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
+let g:ale_sign_column_always = 1
 " Set ale disable as default
 let g:ale_enabled = 1
 let g:ale_lint_on_text_changed = 'normal'
@@ -673,7 +674,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'fatih/vim-go', { 'for' : 'go' }
 let g:go_code_completion_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
-let g:go_def_mapping_enabled = 1
+let g:go_def_mapping_enabled = 0
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
