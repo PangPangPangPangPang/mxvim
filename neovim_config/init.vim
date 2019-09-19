@@ -1,7 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Normal
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable true color 启用终端24位色
+" Enable true color
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -29,7 +26,7 @@ if has('gui_running')
 endif
 
 " Allow use system clipboard
-" set clipboard=unnamed
+set clipboard=unnamed
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -141,12 +138,12 @@ set smarttab
 " set tabstop=4
 
 " 1 tab == 4 spaces
-autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go set shiftwidth=4
-autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go set tabstop=4
-autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go set sts=4
-autocmd FileType javascript,html,css,xml,dart,objc set shiftwidth=2
-autocmd FileType javascript,html,css,xml,dart,objc set tabstop=2
-autocmd FileType javascript,html,css,xml,dart,objc set sts=2
+autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set shiftwidth=4
+autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set tabstop=4
+autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set sts=4
+autocmd FileType javascript,html,css,xml,dart,swift set shiftwidth=2
+autocmd FileType javascript,html,css,xml,dart,swift set tabstop=2
+autocmd FileType javascript,html,css,xml,dart,swift set sts=2
 
 " Linebreak on 500 characters
 set lbr
@@ -199,22 +196,6 @@ map <leader>q :cclose<cr> :pclose<cr>
 " Always show the status line
 set laststatus=2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Move a line of text using ALT+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-    nmap ∆ <M-j>
-    nmap ˚ <M-k>
-    vmap ∆ <M-j>
-    vmap ˚ <M-k>
-endif
-
 " Delete trailing white space on save, useful for Python and JavaScript.
 func! DeleteTrailingWS()
     exe "normal mz"
@@ -233,21 +214,6 @@ map Y $v^y
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" <C-c> press easier then <Esc>, but <C-c> may stop the current task, so use <M-c> instead it.
-noremap <C-c> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-
-if has("mac") || has("macunix")
-    noremap ç <C-c>
-    inoremap ç <C-c>
-    vnoremap ç <C-c>
-else
-    noremap <M-c> <C-c>
-    inoremap <M-c> <C-c>
-    vnoremap <M-c> <C-c>
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Insert action like terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -257,7 +223,6 @@ inoremap <c-a> <Esc>^i
 inoremap <c-e> <Esc>$a
 inoremap <c-w> <Esc>diwi
 inoremap <c-u> <Esc>cc
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -312,6 +277,7 @@ let g:netrw_altv = 1 " open splits to the right
 let g:netrw_list_hide = netrw_gitignore#Hide()
 let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
+" Load Plugin
 for f in split(glob('~/.config/nvim/plug.vim'))
     exe 'source' f
 endfor
