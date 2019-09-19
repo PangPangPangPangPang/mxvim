@@ -1,16 +1,16 @@
-let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 2
-let g:defx_icons_directory_icon = ''
-let g:defx_icons_mark_icon = '*'
-let g:defx_icons_parent_icon = ''
-let g:defx_icons_default_icon = ''
-let g:defx_icons_directory_symlink_icon = ''
-" Options below are applicable only when using "tree" feature
-let g:defx_icons_root_opened_tree_icon = ''
-let g:defx_icons_nested_opened_tree_icon = ''
-let g:defx_icons_nested_closed_tree_icon = ''
-map <silent> <F1> :Defx -columns=icons:indent:filename:type -toggle -resume -split=vertical -winwidth=30 -direction=topleft<cr>
-map <silent> <leader>j :Defx -columns=icons:indent:filename:type -split=vertical -winwidth=30 -direction=topleft `expand('%:p:h')` -search=`expand('%:p')`<cr>
+" let g:defx_icons_enable_syntax_highlight = 1
+" let g:defx_icons_column_length = 2
+" let g:defx_icons_directory_icon = ''
+" let g:defx_icons_mark_icon = '*'
+" let g:defx_icons_parent_icon = ''
+" let g:defx_icons_default_icon = ''
+" let g:defx_icons_directory_symlink_icon = ''
+" " Options below are applicable only when using "tree" feature
+" let g:defx_icons_root_opened_tree_icon = ''
+" let g:defx_icons_nested_opened_tree_icon = ''
+" let g:defx_icons_nested_closed_tree_icon = ''
+map <silent> <F1> :Defx -toggle -resume -split=vertical -winwidth=30 -direction=topleft<cr>
+map <silent> <leader>j :Defx -split=vertical -winwidth=30 -direction=topleft `expand('%:p:h')` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings

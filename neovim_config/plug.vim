@@ -15,8 +15,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'ryanoasis/vim-devicons'
-
+" Plug 'ryanoasis/vim-devicons'
 
 Plug 'liuchengxu/vista.vim'
 
@@ -36,8 +35,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdcommenter'
 
-" Install node and yarn before install the plugin.
-" React support:CocInstall coc-tsserver coc-html coc-css coc-snippets
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
@@ -93,7 +90,6 @@ Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['markdown']
 
 " Manage input method.
 if has("mac")
