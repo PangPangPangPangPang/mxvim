@@ -22,8 +22,8 @@ function! s:defx_my_settings() abort
                 \ defx#do_action('move')
     nnoremap <silent><buffer><expr> p
                 \ defx#do_action('paste')
-    nnoremap <silent><buffer><expr> l
-                \ defx#do_action('open')
+    " nnoremap <silent><buffer><expr> l
+                " \ defx#do_action('open')
     nnoremap <silent><buffer><expr> E
                 \ defx#do_action('open', 'vsplit')
     nnoremap <silent><buffer><expr> P
@@ -55,10 +55,10 @@ function! s:defx_my_settings() abort
                 \ defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> ;
                 \ defx#do_action('repeat')
-    nnoremap <silent><buffer><expr> h
+    nnoremap <silent><buffer><expr> u
                 \ defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> ~
-                \ defx#do_action('cd')
+                \ defx#do_action('cd', [expand('%:p:h')])
     nnoremap <silent><buffer><expr> q
                 \ defx#do_action('quit')
     nnoremap <silent><buffer><expr> <Space>

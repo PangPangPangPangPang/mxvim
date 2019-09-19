@@ -3,7 +3,7 @@ let g:lightline = {
             \ 'inactive':{},
             \ }
 
-let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
+let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ]]
 let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ]]
 let g:lightline.inactive.left = [[ 'filename' ]]
 let g:lightline.inactive.right = []
@@ -16,6 +16,9 @@ let g:lightline.component_function = {
             \ 'filetype': 'LightlineFiletype',
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
+            \ 'percent': 'LightlinePercent',
+            \'charvaluehex': 'LightlineCharValueHex',
+            \'lineinfo': 'LightlineLineInfo',
             \}
 let g:lightline.colorscheme = 'srcery'
 let g:lightline.separator = { 'left': '', 'right': '' }
@@ -33,12 +36,29 @@ let g:lightline.component_type = {
             \     'linter_ok': 'left',
             \ }
 
+function! LightlinePercent()
+    if &ft =~ 'defx'
+        return ''
+    endif
+    let byte = line2byte( line( "." ) ) + col( "." ) - 1
+    let size = (line2byte( line( "$" ) + 1 ) - 1)
+    return (byte * 100) / size . "%"
+endfunction
+
+function! LightlineCharValueHex()
+    return winwidth(0) > 50 ? printf('%02x', char2nr(getline('.')[col('.')-1])) : ''
+endfunction
+
+function! LightlineLineInfo()
+    return winwidth(0) > 50 ? printf('%d:%-2d', line('.'), col('.')) : ''
+endfunction
+
 function! LightlineModified()
-    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo\|defx' ? '' : &modified ? '+' : &modifiable ? '' : ''
 endfunction
 
 function! LightlineReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+    return &ft !~? 'help\|vimfiler\|gundo\|defx' && &readonly ? '' : ''
 endfunction
 
 function! LightlineMode()
@@ -51,17 +71,14 @@ endfunction
 
 function! LightlineFilename()
     let fname = expand('%:t')
-    if fname == 'ControlP'
+    if fname =~ 'defx'
         return ''
     endif
-    if fname =~ 'defx'
-        return 'defx'
-    endif
     if fname =~ 'FZF'
-        return 'FZF'
+        return ''
     endif
     if fname =~ '__Tagbar__'
-        return 'Tagbar'
+        return ''
     endif
 
     return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
