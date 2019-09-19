@@ -26,7 +26,7 @@ if has('gui_running')
 endif
 
 " Allow use system clipboard
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " Set to auto read when a file is changed from the outside
 set autoread
