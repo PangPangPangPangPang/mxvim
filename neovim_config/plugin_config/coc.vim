@@ -1,4 +1,4 @@
-let g:coc_global_extensions=[ 'coc-python', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css',  'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-tabnine' ]
+let g:coc_global_extensions=[ 'coc-python', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css',  'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-tabnine', 'coc-prettier' ]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -29,3 +29,6 @@ command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" Use `:Prettier` to format current buffer.
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
