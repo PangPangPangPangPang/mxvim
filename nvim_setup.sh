@@ -21,8 +21,18 @@ done
 
 cp -r ./neovim_config/colors ~/.vim/
 cp -r ./neovim_config/syntax ~/.vim/
+cp -r ./neovim_config/plugin_config ~/.vim/
+cp ./neovim_config/plug.vim ~/.vim/
 cp ./neovim_config/init.vim ~/.vimrc
 cp ./neovim_config/coc-settings.json ~/.vim/
+
+for var in $*
+do
+    if [ "$var" = "-noplugin" ];  then
+        rm ~/.vim/.vimrc
+        exit
+    fi
+done
 
 vim -E -s <<-EOF
 :source ~/.vimrc

@@ -10,7 +10,7 @@
 " let g:defx_icons_nested_opened_tree_icon = ''
 " let g:defx_icons_nested_closed_tree_icon = ''
 map <silent> <F1> :Defx -toggle -resume -split=vertical -winwidth=30 -direction=topleft<cr>
-map <silent> <leader>j :Defx -split=vertical -winwidth=30 -direction=topleft `expand('%:p:h')` -search=`expand('%:p')`<cr>
+map <silent> <leader>j :Defx -split=vertical -winwidth=30 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
@@ -58,7 +58,7 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> u
                 \ defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> ~
-                \ defx#do_action('cd', [expand('%:p:h')])
+                \ defx#do_action('cd', [getcwd()])
     nnoremap <silent><buffer><expr> q
                 \ defx#do_action('quit')
     nnoremap <silent><buffer><expr> <Space>
@@ -76,3 +76,18 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
 endfunction
+	call defx#custom#column('icon', {
+	      \ 'directory_icon': '▸',
+	      \ 'opened_icon': '▾',
+	      \ 'root_icon': ' ',
+	      \ })
+	call defx#custom#column('filename', {
+	      \ 'min_width': 40,
+	      \ 'max_width': 40,
+	      \ })
+
+	call defx#custom#column('mark', {
+	      \ 'readonly_icon': '✗',
+	      \ 'selected_icon': '✓',
+	      \ })
+
