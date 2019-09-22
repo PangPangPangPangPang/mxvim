@@ -93,12 +93,12 @@ Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac")
-    Plug 'ybian/smartim'
-    let g:smartim_default = 'com.apple.keylayout.ABC'
+    Plug 'lyokha/vim-xkbswitch'
+    let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+    let g:XkbSwitchEnabled = 1
 else
     Plug 'rlue/vim-barbaric'
 endif
-
 " Highlight f/F/t/T search.
 Plug 'rhysd/clever-f.vim'
 map ; <Plug>(clever-f-repeat-forward)
