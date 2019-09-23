@@ -40,8 +40,8 @@ function! LightlinePercent()
     if &ft =~ 'defx'
         return ''
     endif
-    let byte = line2byte( line( "." ) ) + col( "." ) - 1
-    let size = (line2byte( line( "$" ) + 1 ) - 1)
+    let byte = line2byte( line( "." ) ) + col( "." ) 
+    let size = line2byte( line( "$" ) )
     return (byte * 100) / size . "%"
 endfunction
 
@@ -63,9 +63,7 @@ endfunction
 
 function! LightlineMode()
     let fname = expand('%:t')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-                \ fname == 'ControlP' ? 'CtrlP' :
-                \ fname =~ 'defx' ? 'defx' :
+    return fname =~ 'defx' ? 'defx' :
                 \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
@@ -77,10 +75,6 @@ function! LightlineFilename()
     if fname =~ 'FZF'
         return ''
     endif
-    if fname =~ '__Tagbar__'
-        return ''
-    endif
-
     return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
                 \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
                 \  &ft == 'unite' ? unite#get_status_string() :
@@ -100,6 +94,3 @@ endfunction
 function! LightlineFileencoding()
     return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
-
-
-

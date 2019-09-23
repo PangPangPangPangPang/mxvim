@@ -9,8 +9,8 @@
 " let g:defx_icons_root_opened_tree_icon = ''
 " let g:defx_icons_nested_opened_tree_icon = ''
 " let g:defx_icons_nested_closed_tree_icon = ''
-map <silent> <F1> :Defx -toggle -resume -split=vertical -winwidth=30 -direction=topleft<cr>
-map <silent> <leader>j :Defx -split=vertical -winwidth=30 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
+map <silent> <F1> :Defx -toggle -resume -split=vertical -winwidth=40 -direction=topleft<cr>
+map <silent> <leader>j :Defx -split=vertical -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
