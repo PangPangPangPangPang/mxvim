@@ -208,8 +208,8 @@ autocmd BufWrite *.js :call DeleteTrailingWS()
 " Whole format
 nnoremap <leader>== mzG=gg`z
 
-" Copy without blank line
-map Y $v^y
+" Copy to system clipboard
+map Y "+y
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
