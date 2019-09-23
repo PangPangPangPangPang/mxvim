@@ -15,7 +15,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-" Plug 'ryanoasis/vim-devicons'
+Plug 'kristijanhusak/defx-git'
 
 Plug 'liuchengxu/vista.vim'
 

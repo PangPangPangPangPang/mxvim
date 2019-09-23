@@ -1,16 +1,7 @@
-" let g:defx_icons_enable_syntax_highlight = 1
-" let g:defx_icons_column_length = 2
-" let g:defx_icons_directory_icon = ''
-" let g:defx_icons_mark_icon = '*'
-" let g:defx_icons_parent_icon = ''
-" let g:defx_icons_default_icon = ''
-" let g:defx_icons_directory_symlink_icon = ''
-" " Options below are applicable only when using "tree" feature
-" let g:defx_icons_root_opened_tree_icon = ''
-" let g:defx_icons_nested_opened_tree_icon = ''
-" let g:defx_icons_nested_closed_tree_icon = ''
-map <silent> <F1> :Defx -toggle -resume -split=vertical -winwidth=40 -direction=topleft<cr>
-map <silent> <leader>j :Defx -split=vertical -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
+map <silent> <F1> :Defx -columns=git:mark:indent:icon:filename:type:size:time
+            \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical<cr>
+map <silent> <leader>j :Defx -columns=git:mark:indent:icon:filename:type:size:time 
+            \           -split=vertical -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
@@ -23,7 +14,7 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> p
                 \ defx#do_action('paste')
     " nnoremap <silent><buffer><expr> l
-                " \ defx#do_action('open')
+    " \ defx#do_action('open')
     nnoremap <silent><buffer><expr> E
                 \ defx#do_action('open', 'vsplit')
     nnoremap <silent><buffer><expr> P
@@ -38,7 +29,7 @@ function! s:defx_my_settings() abort
                 \ defx#do_action('new_multiple_files')
     nnoremap <silent><buffer><expr> C
                 \ defx#do_action('toggle_columns',
-                \                'mark:indent:icon:filename:type:size:time')
+                \                'git:mark:indent:icon:filename:type:size:time')
     nnoremap <silent><buffer><expr> S
                 \ defx#do_action('toggle_sort', 'time')
     nnoremap <silent><buffer><expr> d
@@ -76,18 +67,29 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
 endfunction
-	call defx#custom#column('icon', {
-	      \ 'directory_icon': '▸',
-	      \ 'opened_icon': '▾',
-	      \ 'root_icon': ' ',
-	      \ })
-	call defx#custom#column('filename', {
-	      \ 'min_width': 40,
-	      \ 'max_width': 40,
-	      \ })
+call defx#custom#column('icon', {
+            \ 'directory_icon': '▶',
+            \ 'opened_icon': '▼',
+            \ 'root_icon': '❤',
+            \ })
+call defx#custom#column('filename', {
+            \ 'min_width': 40,
+            \ 'max_width': 40,
+            \ })
 
-	call defx#custom#column('mark', {
-	      \ 'readonly_icon': '✗',
-	      \ 'selected_icon': '✓',
-	      \ })
+call defx#custom#column('mark', {
+            \ 'readonly_icon': '',
+            \ 'selected_icon': '✔',
+            \ })
+call defx#custom#column('git', 'indicators', {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ })
+
 
