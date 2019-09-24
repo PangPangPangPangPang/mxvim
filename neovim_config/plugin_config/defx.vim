@@ -1,3 +1,6 @@
+if !has('python3')
+    finish
+endif
 map <silent> <F1> :Defx -columns=git:mark:indent:icon:filename:type:size:time
             \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical<cr>
 map <silent> <leader>j :Defx -columns=git:mark:indent:icon:filename:type:size:time 

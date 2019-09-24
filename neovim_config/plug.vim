@@ -8,13 +8,18 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('python3')
+    if has('nvim')
+        Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/defx.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
 else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 endif
+
 Plug 'kristijanhusak/defx-git'
 
 Plug 'liuchengxu/vista.vim'
@@ -24,7 +29,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'iamFIREcracker/ack.vim'
+" Plug 'mileszs/ack.vim'
 
 Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
