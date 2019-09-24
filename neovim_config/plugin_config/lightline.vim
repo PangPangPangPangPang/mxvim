@@ -7,6 +7,13 @@ let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_wa
 let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ]]
 let g:lightline.inactive.left = [[ 'filename' ]]
 let g:lightline.inactive.right = []
+let g:lightline.tab = {
+            \ 'active': [ 'tabnum', 'filename', 'modified' ],
+            \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
+
+let g:lightline.tabline = {
+            \ 'left': [ [ 'tabs' ] ],
+            \ 'right': [ [ 'close' ] ] }
 let g:lightline.component_function = {
             \ 'cocstatus': 'coc#status',
             \ 'modified': 'LightlineModified',
@@ -63,16 +70,17 @@ endfunction
 
 function! LightlineMode()
     let fname = expand('%:t')
-    return fname =~ 'defx' ? 'defx' :
+    return fname == '__Tagbar__' ? 'Tagbar' :
+                \ fname == 'ControlP' ? 'CtrlP' :
+                \ fname =~ '\[defx\]' ? 'defx' :
                 \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 function! LightlineFilename()
-    let fname = expand('%:t')
-    if fname =~ 'defx'
+    if &ft == 'defx'
         return ''
     endif
-    if fname =~ 'FZF'
+    if &ft == 'FZF'
         return ''
     endif
     return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
