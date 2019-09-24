@@ -29,7 +29,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
 
 Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
