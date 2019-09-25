@@ -1,2 +1,4 @@
 vimrc.additional.bundle
 tags
+.DS_Store
+path/
