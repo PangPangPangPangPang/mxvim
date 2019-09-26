@@ -2,7 +2,7 @@
         "coc.preferences.hoverTarget": "float",
         "signature.target": "float",
         "diagnostic.messageTarget": "float",
-        "diagnostic.displayByAle": true,
+        "diagnostic.displayByAle": false,
         "suggest.floatEnable": true,
         "suggest.noselect": false,
         "suggest.preferCompleteThanJumpPlaceholder": false,

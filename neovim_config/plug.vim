@@ -35,7 +35,7 @@ Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
 let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 
@@ -43,8 +43,8 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'dense-analysis/ale'
-Plug 'maximbaz/lightline-ale'
+" Plug 'dense-analysis/ale'
+" Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 """"""""""""Markdown"""""""""""""""""""
