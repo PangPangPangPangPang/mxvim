@@ -16,11 +16,11 @@ if has('python3')
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
     endif
+    Plug 'kristijanhusak/defx-git'
 else
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 endif
 
-Plug 'kristijanhusak/defx-git'
 
 Plug 'liuchengxu/vista.vim'
 
