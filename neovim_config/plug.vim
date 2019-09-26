@@ -35,8 +35,7 @@ Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
 let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsFlyMode = 0
+" Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 
