@@ -13,7 +13,7 @@ let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>'],
             \ '<C-X>': ['<C-S>'],
             \ '<C-P>': ['<C-O>'],
             \}
-" let g:Lf_WindowHeight = 0.3
+let g:Lf_WindowHeight = 0.3
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
