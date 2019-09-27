@@ -12,12 +12,10 @@ function! Source(path)
        exec ('source '. a:path)
    endif
 endfunction
+call Source('~/.config/nvim/path/path.vim')
 
 " Load plugin
 call Source('~/.config/nvim/plug.vim')
-for f in split(glob('~/.config/nvim/path/path.vim'))
-    exec 'source' f
-endfor
 
 " Load basic config
 call Source('~/.config/nvim/basic.vim')

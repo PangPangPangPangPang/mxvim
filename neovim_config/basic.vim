@@ -151,7 +151,7 @@ set nowrap "Wrap lines
 set sidescroll=1
 
 set splitright
-" set splitbelow
+set splitbelow
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
