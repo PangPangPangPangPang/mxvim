@@ -1,4 +1,4 @@
-Guifont MaxIosevka:h14
+Guifont MaxIosevka\ Light:h16
 GuiTabline 0
 
 
