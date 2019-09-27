@@ -15,19 +15,10 @@ do
         rm -rf ~/.config/coc/
         curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        rm -rf ~/.config/nvim/colors
-        mkdir ~/.config/nvim/colors
     fi
 done
 
-cp -r ./colors ~/.config/nvim/
-cp -r ./path ~/.config/nvim/
-cp -r ./syntax ~/.config/nvim/
-cp ./plug.vim ~/.config/nvim/
-cp -r ./plugin_config ~/.config/nvim/
-cp init.vim ~/.config/nvim/init.vim
-cp ginit.vim ~/.config/nvim/ginit.vim
-cp ./coc-settings.json ~/.config/nvim/
+cp -r ./ ~/.config/nvim/
 
 for var in $*
 do
