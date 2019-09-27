@@ -54,6 +54,9 @@ source $VIMRUNTIME/menu.vim
 " Turn on the wild menu
 set wildmenu
 
+" Popup menu height
+set pumheight=20
+
 if exists('&pumblend')
     set wildoptions=pum
     set pumblend=20
@@ -66,6 +69,8 @@ if has("win16") || has("win32")
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
+
+set completeopt=longest,menu
 
 "Always show current position
 set ruler
