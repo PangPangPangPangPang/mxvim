@@ -4,7 +4,9 @@ let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_StlColorscheme = 'one'
 let g:Lf_ShortcutB = '<Leader>bo'
-let g:Lf_DefaultExternalTool = "ag"
+let g:Lf_DefaultExternalTool = "rg"
+let g:Lf_RootMarkers = ['.xcworkspace', '.project', '.git']
+
 " let g:Lf_UseVersionControlTool = "git ls-files"
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>'],
             \ '<C-J>': ['<C-N>', '<C-J>'],
@@ -20,3 +22,4 @@ let g:Lf_WildIgnore = {
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
+
