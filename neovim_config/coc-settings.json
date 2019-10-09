@@ -29,6 +29,27 @@
                         "args": [],
                         "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
                         "filetypes": ["go"]
+                },
+                "ccls": {
+                    "command": "ccls",
+                    "filetypes": ["c", "cpp", "objc", "objcpp"],
+                    "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+                    "initializationOptions": {
+                        "cache": {
+                            "directory": "/tmp/ccls"
+                        },
+                        "clang": {
+                            "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1",
+                            "extraArgs": [
+                                "-isystem",
+                                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+                                "-I",
+                                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/",
+                                "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/Foundation.framework/Headers",
+                                "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers",
+                            ]
+                        }
+                    }
                 }
         }
 }
