@@ -1,4 +1,4 @@
-let g:coc_global_extensions=[ 'coc-python', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css',  'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-tabnine', 'coc-prettier' ]
+let g:coc_global_extensions=[ 'coc-python', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-snippets', 'coc-vimlsp', 'coc-tabnine', 'coc-prettier' ]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
