@@ -4,7 +4,7 @@ let g:lightline = {
             \ }
 
 " let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'cocstatus'], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
-let g:lightline.active.right = [[ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
+let g:lightline.active.right = [[ 'gitbranch' ], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
 let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ]]
 let g:lightline.inactive.left = [[ 'filename' ]]
 let g:lightline.inactive.right = []
@@ -16,6 +16,7 @@ let g:lightline.tabline = {
             \ 'left': [ [ 'tabs' ] ],
             \ 'right': [ [ 'close' ] ] }
 let g:lightline.component_function = {
+            \ 'gitbranch': 'fugitive#head',
             \ 'cocstatus': 'coc#status',
             \ 'modified': 'LightlineModified',
             \ 'readonly': 'LightlineReadonly',
@@ -31,6 +32,7 @@ let g:lightline.component_function = {
 let g:lightline.colorscheme = 'srcery'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
+" let g:lightline.subseparator = { 'left': '┃', 'right': '┃' }
 let g:lightline.component_expand = {
             \  'linter_checking': 'lightline#ale#checking',
             \  'linter_warnings': 'lightline#ale#warnings',

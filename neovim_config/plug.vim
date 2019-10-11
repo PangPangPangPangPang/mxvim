@@ -87,7 +87,9 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 Plug 'Yggdroot/indentLine'
 
 " Git support
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_sign_allow_clobber = 0
+let g:gitgutter_sign_priority = 1
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
