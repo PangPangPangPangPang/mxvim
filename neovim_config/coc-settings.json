@@ -1,59 +1,67 @@
 {
-        "coc.preferences.hoverTarget": "float",
-        "signature.target": "float",
-        "diagnostic.messageTarget": "float",
-        "diagnostic.displayByAle": false,
-        "suggest.floatEnable": true,
-        "suggest.noselect": false,
-        "suggest.preferCompleteThanJumpPlaceholder": false,
-        "suggest.minTriggerInputLength": 2,
-        "suggest.enablePreview": true,
-        "suggest.acceptSuggestionOnCommitCharacter": true,
-        "suggest.autoTrigger": "always",
-        "suggest.triggerAfterInsertEnter": true,
-        "languageserver": {
-                "dart": {
-                        "command": "dart_language_server",
-                        "args": [],
-                        "filetypes": ["dart"],
-                        "initializationOptions": {},
-                        "settings": {
-                                "dart": {
-                                        "validation": {},
-                                        "completion": {}
-                                }
-                        }
-                },
-                "golang": {
-                        "command": "gopls",
-                        "args": [],
-                        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-                        "filetypes": ["go"]
-                },
-                "ccls": {
-                    "command": "ccls",
-                    "filetypes": ["c", "cpp", "objc", "objcpp"],
-                    "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-                    "initializationOptions": {
-                        "cache": {
-                            "directory": "/tmp/ccls"
-                        },
-                        "clang": {
-                            "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1",
-                            "extraArgs": [
-                                "-isystem",
-                                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-                                "-I",
-                                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/",
-                                "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CloudKit.framework",
-                                "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/Foundation.framework/Headers",
-                                "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers",
-                                "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers"
-                            ]
-                        }
-                    }
-                }
+  "coc.preferences.hoverTarget": "float",
+  "signature.target": "float",
+  "diagnostic.messageTarget": "float",
+  "diagnostic.displayByAle": false,
+  "suggest.floatEnable": true,
+  "suggest.noselect": false,
+  "suggest.preferCompleteThanJumpPlaceholder": false,
+  "suggest.minTriggerInputLength": 2,
+  "suggest.enablePreview": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter": true,
+  "languageserver": {
+    "dart": {
+      "command": "dart_language_server",
+      "args": [],
+      "filetypes": ["dart"],
+      "initializationOptions": {},
+      "settings": {
+        "dart": {
+          "validation": {},
+          "completion": {}
         }
+      }
+    },
+    "golang": {
+      "command": "gopls",
+      "args": [],
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+     "swift": {
+      "command": "sourcekit-lsp",
+      "args": [],
+      "filetypes": ["swift"],
+      "initializationOptions": {},
+      "settings": {
+      }
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "clang": {
+          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1",
+          "extraArgs": [
+            "-isystem",
+            "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+            "-I",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CloudKit.framework",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/Foundation.framework/Headers",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers",
+            "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers"
+                            ]
+        }
+      }
+    }
+  }
 }
 
 
