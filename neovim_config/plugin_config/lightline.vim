@@ -62,7 +62,7 @@ function! LightlineLineInfo()
 endfunction
 
 function! LightlineModified()
-    return &ft =~ 'help\|vimfiler\|gundo\|defx' ? '' : &modified ? '+' : &modifiable ? '' : ''
+    return &ft =~ 'help\|vimfiler\|gundo\|defx' ? '' : &modified ? 'modified' : &modifiable ? '' : ''
 endfunction
 
 function! LightlineReadonly()
@@ -78,18 +78,7 @@ function! LightlineMode()
 endfunction
 
 function! LightlineFilename()
-    if &ft == 'defx'
-        return ''
-    endif
-    if &ft == 'FZF'
-        return ''
-    endif
-    return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \  &ft == 'unite' ? unite#get_status_string() :
-                \  &ft == 'vimshell' ? vimshell#get_status_string() :
-                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-                \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+    return &ft =~ 'help\|vimfiler\|gundo\|defx' ? '' : expand('%:t')
 endfunction
 
 function! LightlineFileformat()
