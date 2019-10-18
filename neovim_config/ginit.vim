@@ -1,2 +1,3 @@
-Guifont MaxIosevka\ Light:h16
+Guifont MaxIosevka:h16
+
 GuiTabline 0

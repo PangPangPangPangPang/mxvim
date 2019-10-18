@@ -18,8 +18,10 @@ function! s:defx_my_settings() abort
                 \ defx#do_action('paste')
     " nnoremap <silent><buffer><expr> l
     " \ defx#do_action('open')
-    nnoremap <silent><buffer><expr> E
+    nnoremap <silent><buffer><expr> V
                 \ defx#do_action('open', 'vsplit')
+    nnoremap <silent><buffer><expr> S
+                \ defx#do_action('open', 'split')
     nnoremap <silent><buffer><expr> P
                 \ defx#do_action('open', 'pedit')
     nnoremap <silent><buffer><expr> o
@@ -33,8 +35,8 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> C
                 \ defx#do_action('toggle_columns',
                 \                'git:mark:indent:icon:filename:type:size:time')
-    nnoremap <silent><buffer><expr> S
-                \ defx#do_action('toggle_sort', 'time')
+    " nnoremap <silent><buffer><expr> S
+    "             \ defx#do_action('toggle_sort', 'time')
     nnoremap <silent><buffer><expr> d
                 \ defx#do_action('remove')
     nnoremap <silent><buffer><expr> r
@@ -72,9 +74,9 @@ function! s:defx_my_settings() abort
 endfunction
 call defx#custom#column('icon', {
             \ 'directory_icon': '▶',
-            \ 'opened_icon': '▼',
-            \ 'root_icon': '❤',
+            \ 'opened_icon': '▼'
             \ })
+" \ 'root_icon': '❤',
 call defx#custom#column('filename', {
             \ 'min_width': 40,
             \ 'max_width': 40,

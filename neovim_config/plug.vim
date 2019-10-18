@@ -122,7 +122,6 @@ Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 """"""""""""""""""""""""""""""
 " Add mark
 Plug 'kshenoy/vim-signature'
-
 call plug#end()
 
 " Load plugin config.

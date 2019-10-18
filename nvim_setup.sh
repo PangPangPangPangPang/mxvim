@@ -19,6 +19,7 @@ done
 
 cp -r ./neovim_config/ ~/.vim/
 cp -r ./neovim_config/init.vim ~/.vimrc
+cp -r ./.gvimrc ~/.gvimrc
 
 for var in $*
 do
