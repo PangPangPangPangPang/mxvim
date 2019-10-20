@@ -8,7 +8,7 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-if has('python3')
+if 1
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     else
@@ -16,9 +16,11 @@ if has('python3')
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
     endif
-    Plug 'kristijanhusak/defx-git'
+    let g:mx_loaded_defx = 1
+    " Plug 'kristijanhusak/defx-git'
 else
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+    let g:mx_loaded_nerdtree = 1
 endif
 
 
