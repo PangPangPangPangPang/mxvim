@@ -3,6 +3,8 @@
   "signature.target": "float",
   "diagnostic.messageTarget": "float",
   "diagnostic.displayByAle": false,
+  "diagnostic.errorSign": "xx",
+  "diagnostic.warningSign": ">>",
   "suggest.floatEnable": true,
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": false,
