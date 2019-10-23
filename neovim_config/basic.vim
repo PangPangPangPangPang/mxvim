@@ -217,9 +217,9 @@ augroup BasicGroup
     autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set shiftwidth=4
     autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set tabstop=4
     autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set sts=4
-    autocmd FileType javascript,html,css,xml,dart,swift,json set shiftwidth=2
-    autocmd FileType javascript,html,css,xml,dart,swift,json set tabstop=2
-    autocmd FileType javascript,html,css,xml,dart,swift,json set sts=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,swift,json set shiftwidth=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,swift,json set tabstop=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,swift,json set sts=2
 
     " Return to last edit position when opening files (You want this!)
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

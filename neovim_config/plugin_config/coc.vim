@@ -1,4 +1,15 @@
-let g:coc_global_extensions=[ 'coc-python', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-snippets', 'coc-vimlsp', 'coc-tabnine', 'coc-prettier', 'coc-translator' ]
+let g:coc_global_extensions = [
+            \'coc-python',
+            \'coc-json',
+            \'coc-tsserver',
+            \'coc-html',
+            \'coc-css',
+            \'coc-snippets',
+            \'coc-vimlsp',
+            \'coc-tabnine',
+            \'coc-prettier',
+            \'coc-translator'
+            \]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -10,11 +21,11 @@ let g:coc_snippet_prev = '<S-TAB>'
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 " Remap for rename current word
 nmap <leader>ar <Plug>(coc-rename)
