@@ -18,7 +18,7 @@ set colorcolumn=81
 " Show line numbers
 set nu!
 
-if has('gui_running')
+if has('gui_running') || has('nvim')
     " Show relative line number
     set relativenumber
 endif
