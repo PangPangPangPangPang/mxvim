@@ -8,7 +8,7 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-if 1
+if has('python3')
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     else
@@ -124,6 +124,7 @@ Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 """"""""""""""""""""""""""""""
 " Add mark
 Plug 'kshenoy/vim-signature'
+
 call plug#end()
 
 " Load plugin config.
