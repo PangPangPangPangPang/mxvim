@@ -1,9 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'NLKNguyen/papercolor-theme'
+" Theme
 " Plug 'morhetz/gruvbox'
-Plug 'srcery-colors/srcery-vim'
-
+" Plug 'srcery-colors/srcery-vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1

@@ -1,5 +1,5 @@
-syntax enable
-set background=dark
+" set background=dark
+set background=light
 
 " Enable true color
 if exists('+termguicolors')
@@ -16,8 +16,10 @@ endif
 
 let g:PaperColor_Theme_Options = {
             \   'theme': {
-            \     'default': {
-            \       'transparent_background': 1
+            \     'default.dark': {
+            \       'transparent_background': 1,
+            \       'allow_bold': 1,
+            \       'allow_italic': 1
             \     }
             \   }
             \ }
@@ -30,3 +32,4 @@ colorscheme PaperColor
 " let g:grubox_italic = 1
 " let g:grubox_contrast = 'hard'
 " colorscheme gruvbox
+

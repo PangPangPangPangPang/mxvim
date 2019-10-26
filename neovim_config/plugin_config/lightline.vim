@@ -30,7 +30,7 @@ let g:lightline.component_function = {
             \'lineinfo': 'LightlineLineInfo',
             \}
 " let g:lightline.colorscheme = 'srcery'
-let g:lightline.colorscheme = 'seoul256'
+let g:lightline.colorscheme = 'PaperColor'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '┃', 'right': '┃' }
