@@ -1,5 +1,5 @@
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 
 " Enable true color
 if exists('+termguicolors')

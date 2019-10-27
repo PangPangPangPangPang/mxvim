@@ -5,6 +5,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'srcery-colors/srcery-vim'
 Plug 'NLKNguyen/papercolor-theme'
 
+Plug 'mhinz/vim-startify'
+
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
