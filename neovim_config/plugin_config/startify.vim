@@ -1,5 +1,5 @@
 
-let g:startify_custom_header = [ 
+let g:my_startify_custom_header = [ 
             \ ' MMMMMMMM               MMMMMMMM                                      ``````                       VVVVVVVV           VVVVVVVV  iiii                          ',
             \ ' M:::::::M             M:::::::M                                      `::::`                       V::::::V           V::::::V i::::i                         ',
             \ ' M::::::::M           M::::::::M                                      `::::`                       V::::::V           V::::::V  iiii                          ',
@@ -17,4 +17,7 @@ let g:startify_custom_header = [
             \ ' M::::::M               M::::::M a::::::::::aa:::a x:::::x    x:::::x         s:::::::::::ss                  V:::V           i::::::im::::m   m::::m   m::::m',
             \ ' MMMMMMMM               MMMMMMMM  aaaaaaaaaa  aaaaxxxxxxx      xxxxxxx         sssssssssss                     VVV            iiiiiiiimmmmmm   mmmmmm   mmmmmm',
             \ ]
+let g:startify_custom_header =
+            \ 'startify#center(g:my_startify_custom_header)'
+
 " let g:startify_custom_header = g:ascii + startify#fortune#boxed()
