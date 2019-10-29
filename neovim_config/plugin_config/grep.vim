@@ -1,10 +1,11 @@
 let g:grepper = {
             \ 'tools': ['rg', 'ag', 'ack', 'grep', 'findstr', 'pt', 'git'],
-            \ 'pt': {
-            \   'grepprg':    'pt --nocolor --nogroup',
-            \   'grepformat': '%f:%l:%m',
-            \   'escape':     '\+*^$()[]',
-            \ }
+            \ 'rg': { 'grepprg':    'rg -H --no-ignore --no-heading --vimgrep' . (has('win32') ? ' $* .' : ''),
+            \         'grepformat': '%f:%l:%c:%m',
+            \         'escape':     '\^$.*+?()[]{}|' },
+            \ 'pt': { 'grepprg':    'pt --nocolor --nogroup',
+            \         'grepformat': '%f:%l:%m',
+            \         'escape':     '\+*^$()[]', }
             \ }
 let g:grepper.highlight = 1
     nnoremap <leader>f :Grepper<cr>
