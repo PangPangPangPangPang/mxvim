@@ -1,3 +1,4 @@
+let g:startify_change_to_vcs_root = 1
 
 let g:my_startify_custom_header = [ 
             \ ' MMMMMMMM               MMMMMMMM                                      ``````                       VVVVVVVV           VVVVVVVV  iiii                          ',
