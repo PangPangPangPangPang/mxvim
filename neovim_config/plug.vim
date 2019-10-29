@@ -45,7 +45,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdcommenter'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
