@@ -34,7 +34,9 @@ colorscheme PaperColor
 " let g:grubox_contrast = 'hard'
 " colorscheme gruvbox
 
-highlight ALEErrorSign guibg=NONE guifg=Red ctermbg=NONE ctermfg=Red
-highlight ALEErrorSignLineNr guibg=NONE guifg=Red ctermbg=NONE ctermfg=Red
-highlight ALEWarningSign guibg=NONE guifg=Cyan ctermbg=NONE ctermfg=Cyan
-highlight ALEWarningSignLineNr guibg=NONE guifg=Cyan ctermbg=NONE ctermfg=Cyan
+highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
+highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
+highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
+highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
+highlight ALEError gui=underline term=underline guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
+highlight ALEWarning gui=underline term=underline guibg=none guifg=#A78E44 ctermbg=none ctermfg=Yellow
