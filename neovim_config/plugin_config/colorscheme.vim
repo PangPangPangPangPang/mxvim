@@ -25,6 +25,7 @@ let g:PaperColor_Theme_Options = {
             \ }
 colorscheme PaperColor
 
+
 " let g:one_allow_italics = 1
 " colorscheme one
 
@@ -33,3 +34,7 @@ colorscheme PaperColor
 " let g:grubox_contrast = 'hard'
 " colorscheme gruvbox
 
+highlight ALEErrorSign guibg=NONE guifg=Red ctermbg=NONE ctermfg=Red
+highlight ALEErrorSignLineNr guibg=NONE guifg=Red ctermbg=NONE ctermfg=Red
+highlight ALEWarningSign guibg=NONE guifg=Cyan ctermbg=NONE ctermfg=Cyan
+highlight ALEWarningSignLineNr guibg=NONE guifg=Cyan ctermbg=NONE ctermfg=Cyan

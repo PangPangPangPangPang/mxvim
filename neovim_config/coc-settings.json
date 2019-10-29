@@ -2,9 +2,9 @@
   "coc.preferences.hoverTarget": "float",
   "signature.target": "float",
   "diagnostic.messageTarget": "float",
-  "diagnostic.displayByAle": false,
-  "diagnostic.errorSign": "xx",
-  "diagnostic.warningSign": ">>",
+  "diagnostic.displayByAle": true,
+  "diagnostic.errorSign": ">>",
+  "diagnostic.warningSign": "--",
   "suggest.floatEnable": true,
   "suggest.noselect": false,
   "suggest.preferCompleteThanJumpPlaceholder": false,
@@ -28,8 +28,7 @@
     },
     "golang": {
       "command": "gopls",
-      "args": [],
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
     },
     "swift": {
