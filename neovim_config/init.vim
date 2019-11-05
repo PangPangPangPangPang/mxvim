@@ -18,3 +18,6 @@ call <SID>Source('~/.config/nvim/plug.vim')
 
 " Load basic config
 call <SID>Source('~/.config/nvim/basic.vim')
+
+" Load private config
+call <SID>Source('~/.config/nvim/private.vim')

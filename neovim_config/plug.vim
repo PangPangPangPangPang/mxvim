@@ -104,7 +104,7 @@ Plug 'honza/vim-snippets'
 Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
-if has("mac")
+if has("mac") && has("nvim")
     Plug 'lyokha/vim-xkbswitch'
     let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
     let g:XkbSwitchEnabled = 1
@@ -127,7 +127,6 @@ Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 " Add mark
 Plug 'kshenoy/vim-signature'
 
-Plug 'yianwillis/vimcdoc'
 call plug#end()
 
 " Load plugin config.
