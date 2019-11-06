@@ -10,7 +10,7 @@ let g:grepper = {
 let g:grepper.highlight = 1
     nnoremap <leader>f :Grepper<cr>
 if executable('rg') 
-    vnoremap <silent> <leader>f :call visual#action('GrepperRg foo')<cr>
+    vnoremap <silent> <leader>f :call visual#action("GrepperRg 'foo'")<cr>
 elseif executable('ag')
-    vnoremap <silent> <leader>f :call visual#action('GrepperAg foo')<cr>
+    vnoremap <silent> <leader>f :call visual#action("GrepperAg 'foo'")<cr>
 endif
