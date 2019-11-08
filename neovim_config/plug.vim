@@ -1,9 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Theme
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Plug 'srcery-colors/srcery-vim'
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'mhinz/vim-startify'
 
