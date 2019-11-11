@@ -22,4 +22,3 @@ let g:Lf_WildIgnore = {
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
-
