@@ -224,3 +224,24 @@ augroup BasicGroup
     " Return to last edit position when opening files (You want this!)
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup End
+
+function! Mosh_Flip_Ext()
+  " Switch editing between .m* and .h* files (and more).
+  " Since .h file can be in a different dir, call find.
+  if match(expand("%"),'\.m') > 0
+    let s:flipname = substitute(expand("%"),'\.m\(.*\)','.h\1',"")
+    exe ":find " s:flipname
+  elseif match(expand("%"),"\\.h") > 0
+    let s:flipname = substitute(expand("%"),'\.h\(.*\)','.m\1',"")
+    " exe ":sp " s:flipname
+    exe ":find " s:flipname
+    let s:flipname = substitute(expand("%"),'\.h\(.*\)','.c\1',"")
+    exe ":find " s:flipname
+    let s:flipname = substitute(expand("%"),'\.h\(.*\)','.cpp\1',"")
+    exe ":find " s:flipname
+  endif
+endfun
+
+command! -nargs=0 -bar A :call Mosh_Flip_Ext()<CR>
+nnoremap <leader>A :call Mosh_Flip_Ext()<CR>
+
