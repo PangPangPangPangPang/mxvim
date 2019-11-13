@@ -1,5 +1,6 @@
 if exists('g:GuiLoaded')
-    Guifont MaxIosevka:h14:l
+    " Guifont MaxIosevka:h14:l
+    Guifont MaxIosevka:h15
     GuiTabline 0
     GuiPopupmenu 0
     nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>

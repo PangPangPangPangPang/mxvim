@@ -5,6 +5,8 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 " let g:ale_lint_on_enter = 0
 
+let g:ale_c_ccls_executable = 'ccls'
+
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_statusline_format = ['x %d', '> %d', '⬥ ok']
@@ -13,9 +15,11 @@ let g:ale_sign_highlight_linenrs = 1
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSign
 "
+let g:ale_linter_aliases = {'cfamily': ['c', 'cpp', 'objc', 'objcpp']}
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \'python' : ['flake8'],
             \'go' : ['golint'],
+            \'cfamily' : ['ccls'],
             \ }
 let g:ale_linter_aliases = {'jsx': 'css'}
 " \   '*': ['remove_trailing_lines', 'trim_whitespace'],
