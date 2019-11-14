@@ -31,6 +31,7 @@ let g:lightline.component_function = {
             \}
 " let g:lightline.colorscheme = 'srcery'
 let g:lightline.colorscheme = 'gruvbox'
+" let g:lightline.colorscheme = 'one'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '┃', 'right': '┃' }

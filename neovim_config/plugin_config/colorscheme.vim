@@ -39,6 +39,8 @@ let g:gruvbox_number_column = 'bg0'
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
+" colorscheme dracula
+" colorscheme hybrid
 if has('nvim')
     highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
 endif
