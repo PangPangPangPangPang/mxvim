@@ -38,11 +38,14 @@ let g:gruvbox_sign_column = 'bg0'
 let g:gruvbox_number_column = 'bg0'
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_italicize_strings = 1
+let g:gruvbox_transparent_bg=1
 colorscheme gruvbox
 " colorscheme dracula
 " colorscheme hybrid
 if has('nvim')
     highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
+    highlight LineNr gui=NONE term=NONE guibg=NONE guifg=#928374 ctermbg=NONE ctermfg=Gray
+    highlight SignColumn gui=NONE term=NONE guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
 endif
 highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
