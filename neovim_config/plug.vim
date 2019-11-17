@@ -98,7 +98,6 @@ Plug 'airblade/vim-gitgutter'
 let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_sign_priority = 1
 let g:gitgutter_override_sign_column_highlight = 0
-highlight link GitGutterAdd MyDiffAdd
 
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
