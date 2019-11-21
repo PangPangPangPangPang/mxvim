@@ -6,6 +6,7 @@ let g:Lf_StlColorscheme = 'one'
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_RootMarkers = ['.xcworkspace', '.project', '.git']
+let g:Lf_WindowPosition = 'popup'
 
 " let g:Lf_UseVersionControlTool = "git ls-files"
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>'],

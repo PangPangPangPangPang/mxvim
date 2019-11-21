@@ -5,6 +5,9 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+set cursorline
+set cursorcolumn
+
 set list lcs=tab:\|\ 
 
 " Time for swap fill will be written to disk.
