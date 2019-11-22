@@ -17,16 +17,17 @@ let g:ale_sign_highlight_linenrs = 1
 "
 let g:ale_linter_aliases = {'cfamily': ['c', 'cpp', 'objc', 'objcpp']}
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
-            \'python' : ['flake8'],
-            \'go' : ['golint'],
-            \'cfamily' : ['ccls'],
-            \ }
-let g:ale_linter_aliases = {'jsx': 'css'}
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \        'python' : ['flake8'],
+            \        'go' : ['golint'],
+            \        'cfamily' : ['ccls'],
+            \       }
+let g:ale_linter_aliases = {'jsx': 'css',
+            \               '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \              }
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'go': ['gofmt', 'goimports'],
-\}
+            \       'javascript': ['eslint'],
+            \       'go': ['gofmt', 'goimports'],
+            \      }
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -42,5 +43,5 @@ highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE 
 highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
 highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-highlight ALEError gui=underline term=underline guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-highlight ALEWarning gui=underline term=underline guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
+" highlight ALEError gui=underline term=underline guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
+" highlight ALEWarning gui=underline term=underline guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
