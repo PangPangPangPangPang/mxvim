@@ -13,7 +13,7 @@
   "suggest.enablePreview": true,
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.autoTrigger": "always",
-  "suggest.triggerAfterInsertEnter": true,
+  "suggest.timeout": 500,
   "languageserver": {
     "dart": {
       "command": "dart_language_server",

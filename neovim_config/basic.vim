@@ -6,7 +6,7 @@ if exists('+termguicolors')
 endif
 
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 set list lcs=tab:\|\ 
 
