@@ -23,7 +23,7 @@ set nu!
 
 if has('gui_running') || has('nvim')
     " Show relative line number
-    set relativenumber
+    " set relativenumber
 endif
 
 " Allow use system clipboard
