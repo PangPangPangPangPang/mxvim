@@ -22,11 +22,11 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \        'cfamily' : ['ccls'],
             \       }
 let g:ale_linter_aliases = {'jsx': 'css',
-            \               '*': ['remove_trailing_lines', 'trim_whitespace'],
             \              }
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
             \       'go': ['gofmt', 'goimports'],
+            \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
