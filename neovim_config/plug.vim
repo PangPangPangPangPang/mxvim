@@ -129,6 +129,9 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'fatih/vim-go', { 'for' : 'go' }
 Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
+"""""""""""""'objc'"""""""""""""
+Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
+
 """"""""""""""""""""""""""""""
 " Add mark
 Plug 'kshenoy/vim-signature'
