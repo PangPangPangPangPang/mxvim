@@ -39,9 +39,12 @@ let g:gruvbox_number_column = 'bg0'
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_italicize_strings = 1
 let g:gruvbox_transparent_bg=1
-colorscheme gruvbox
+" colorscheme gruvbox
 " colorscheme dracula
 " colorscheme hybrid
+"
+let g:gruvbox_material_background = 'soft'
+colorscheme gruvbox-material
 if has('nvim')
     highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
     highlight LineNr gui=NONE term=NONE guibg=NONE guifg=#928374 ctermbg=NONE ctermfg=Gray
@@ -58,6 +61,6 @@ highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NON
 highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
 " highlight ALEError gui=underline term=underline guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 " highlight ALEWarning gui=underline term=underline guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-" 
+"
 " highlight GitGutterAdd guibg=NONE
 " highlight GitGutterChange guibg=NONE
