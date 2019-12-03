@@ -1,8 +1,10 @@
 let g:ale_sign_column_always = 0
 " Set ale disable as default
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
+let g:ale_virtualtext_cursor = 1
+let g:ale_echo_cursor = 0
 " let g:ale_lint_on_enter = 0
 
 let g:ale_c_ccls_executable = 'ccls'
@@ -26,6 +28,7 @@ let g:ale_linter_aliases = {'jsx': 'css',
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
             \       'go': ['gofmt', 'goimports'],
+            \       'swift': ['swiftformat'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }
 let g:ale_echo_msg_error_str = 'E'
@@ -39,9 +42,9 @@ let g:ale_set_quickfix = 0
 
 map <silent> <leader>s :ALEToggle<cr>
 
-highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
+" highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
+" highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
+" highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
+" highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
 " highlight ALEError gui=underline term=underline guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 " highlight ALEWarning gui=underline term=underline guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
