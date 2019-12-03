@@ -43,7 +43,14 @@ let g:gruvbox_transparent_bg=1
 " colorscheme dracula
 " colorscheme hybrid
 "
+let g:gruvbox_material_enable_bold = 1
 let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_italicize_strings = 1
+let g:gruvbox_material_disable_italic_comment = 0
+let g:gruvbox_material_transparent_background= 1
+let g:gruvbox_material_lightline_disable_bold = 0
+let g:Lf_StlColorscheme = 'gruvbox_material'
+
 colorscheme gruvbox-material
 if has('nvim')
     highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
