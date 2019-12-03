@@ -32,9 +32,18 @@ let g:lightline.component_function = {
 " let g:lightline.colorscheme = 'srcery'
 let g:lightline.colorscheme = 'gruvbox_material'
 " let g:lightline.colorscheme = 'one'
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
-" let g:lightline.subseparator = { 'left': '┃', 'right': '┃' }
+" let g:lightline.separator = { 'left': '', 'right': '' }
+" let g:lightline.subseparator = { 'left': '', 'right': '' }
+
+let g:lightline.separator = { 'left': "\ue0b8", 'right': "\ue0be" }
+let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
+let g:lightline.tabline_separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
+let g:lightline.tabline_subseparator = { 'left': "\ue0bb", 'right': "\ue0bb" }
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf529"
+let g:lightline#ale#indicator_errors = "\uf00d"
+let g:lightline#ale#indicator_ok = "\uf00c"
+
 let g:lightline.component_expand = {
             \  'linter_checking': 'lightline#ale#checking',
             \  'linter_warnings': 'lightline#ale#warnings',
