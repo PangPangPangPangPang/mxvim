@@ -71,3 +71,5 @@ colorscheme gruvbox-material
 "
 " highlight GitGutterAdd guibg=NONE
 " highlight GitGutterChange guibg=NONE
+highlight ALEVirtualTextError gui=italic term=italic guibg=italic guifg=#DB5A6B ctermbg=none ctermfg=Red
+highlight ALEVirtualTextWarning gui=italic term=italic guibg=italic guifg=#a78e44 ctermbg=none ctermfg=Yellow
