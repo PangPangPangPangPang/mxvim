@@ -29,7 +29,6 @@ let g:ale_linter_aliases = {'jsx': 'css',
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
             \       'go': ['gofmt', 'goimports'],
-            \       'swift': ['swiftformat'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }
 let g:ale_echo_msg_error_str = 'E'

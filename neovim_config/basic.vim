@@ -217,12 +217,12 @@ let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 augroup BasicGroup
     " 1 tab == 4 spaces
-    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set shiftwidth=4
-    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set tabstop=4
-    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set sts=4
-    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json set shiftwidth=2
-    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json set tabstop=2
-    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json set sts=2
+    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set shiftwidth=4
+    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set tabstop=4
+    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc set sts=4
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json,swift set shiftwidth=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json,swift set tabstop=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json,swift set sts=2
 
     " Return to last edit position when opening files (You want this!)
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
