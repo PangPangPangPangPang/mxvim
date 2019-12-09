@@ -50,10 +50,10 @@ let g:gruvbox_material_disable_italic_comment = 0
 let g:gruvbox_material_transparent_background= 1
 let g:gruvbox_material_lightline_disable_bold = 0
 let g:Lf_StlColorscheme = 'gruvbox_material'
-
 colorscheme gruvbox-material
-" if has('nvim')
-"     highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
+
+if has('nvim')
+    highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
 "     highlight LineNr gui=NONE term=NONE guibg=NONE guifg=#928374 ctermbg=NONE ctermfg=Gray
 "     highlight SignColumn gui=NONE term=NONE guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
 "
@@ -61,7 +61,7 @@ colorscheme gruvbox-material
 "     highlight GitGutterChange gui=BOLD term=BOLD guibg=NONE guifg=#fff143 ctermbg=NONE ctermfg=Yellow
 "     highlight GitGutterDelete gui=BOLD term=BOLD guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 "     highlight GitGutterChangeDelete gui=BOLD term=BOLD guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" endif
+endif
 " highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 " highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
 " highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
