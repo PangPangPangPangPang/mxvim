@@ -54,22 +54,8 @@ colorscheme gruvbox-material
 
 if has('nvim')
     highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
-"     highlight LineNr gui=NONE term=NONE guibg=NONE guifg=#928374 ctermbg=NONE ctermfg=Gray
-"     highlight SignColumn gui=NONE term=NONE guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
-"
-"     highlight GitGutterAdd gui=BOLD term=BOLD guibg=NONE guifg=#AFDD22 ctermbg=NONE ctermfg=Green
-"     highlight GitGutterChange gui=BOLD term=BOLD guibg=NONE guifg=#fff143 ctermbg=NONE ctermfg=Yellow
-"     highlight GitGutterDelete gui=BOLD term=BOLD guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-"     highlight GitGutterChangeDelete gui=BOLD term=BOLD guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
+    highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
 endif
-" highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-" highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-" highlight ALEError gui=underline term=underline guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" highlight ALEWarning gui=underline term=underline guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-"
-" highlight GitGutterAdd guibg=NONE
-" highlight GitGutterChange guibg=NONE
 highlight ALEVirtualTextError gui=italic term=italic guibg=italic guifg=#DB5A6B ctermbg=none ctermfg=Red
 highlight ALEVirtualTextWarning gui=italic term=italic guibg=italic guifg=#a78e44 ctermbg=none ctermfg=Yellow

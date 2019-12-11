@@ -41,10 +41,3 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 
 map <silent> <leader>s :ALEToggle<cr>
-
-" highlight ALEErrorSign gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" highlight ALEErrorSignLineNr gui=bold term=bold guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" highlight ALEWarningSign gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-" highlight ALEWarningSignLineNr gui=bold term=bold guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
-" highlight ALEError gui=underline term=underline guibg=NONE guifg=#DB5A6B ctermbg=NONE ctermfg=Red
-" highlight ALEWarning gui=underline term=underline guibg=NONE guifg=#A78E44 ctermbg=NONE ctermfg=Yellow
