@@ -53,9 +53,11 @@ let g:Lf_StlColorscheme = 'gruvbox_material'
 colorscheme gruvbox-material
 
 if has('nvim')
-    highlight CursorLineNr gui=bold term=bold guibg=NONE guifg=#D79921 ctermbg=NONE ctermfg=Yellow
+    highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow
     highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
 endif
 highlight ALEVirtualTextError gui=italic term=italic guibg=italic guifg=#DB5A6B ctermbg=none ctermfg=Red
 highlight ALEVirtualTextWarning gui=italic term=italic guibg=italic guifg=#a78e44 ctermbg=none ctermfg=Yellow
+highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
+highlight Visual gui=none term=none guibg=#f2fdff guifg=NONE ctermbg=NONE ctermfg=NONE
