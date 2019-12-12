@@ -31,26 +31,26 @@ endif
 " colorscheme one
 
 " highlight Normal ctermbg=None
-let g:gruvbox_italic = 1
-let g:gruvbox_bold = 1
-let g:gruvbox_contrast_dark = 'soft'
-let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_number_column = 'bg0'
-let g:gruvbox_italicize_comments = 1
-let g:gruvbox_italicize_strings = 1
-let g:gruvbox_transparent_bg=1
-" colorscheme gruvbox
+let g:gruvbox_transp_bg = 0
+let g:gruvbox_plugin_hi_groups = 1
+let g:gruvbox_filetype_hi_groups = 1
+colorscheme gruvbox8_soft
 " colorscheme dracula
 " colorscheme hybrid
 "
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_background = 'soft'
-let g:gruvbox_material_italicize_strings = 1
-let g:gruvbox_material_disable_italic_comment = 0
-let g:gruvbox_material_transparent_background= 1
-let g:gruvbox_material_lightline_disable_bold = 0
-let g:Lf_StlColorscheme = 'gruvbox_material'
-colorscheme gruvbox-material
+" let g:gruvbox_material_enable_bold = 1
+" let g:gruvbox_material_background = 'soft'
+" let g:gruvbox_material_italicize_strings = 1
+" let g:gruvbox_material_disable_italic_comment = 0
+"
+" if has('gui_running')
+"     let g:gruvbox_material_transparent_background= 0
+" else
+"     let g:gruvbox_material_transparent_background= 1
+" endif
+" let g:gruvbox_material_lightline_disable_bold = 0
+" let g:Lf_StlColorscheme = 'gruvbox_material'
+" colorscheme gruvbox-material
 
 if has('nvim')
     highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow

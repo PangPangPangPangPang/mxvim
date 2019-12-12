@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'dracula/vim'
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'lifepillar/vim-gruvbox8'
 " Plug 'Dave-Elec/gruvbox'
 " Plug 'srcery-colors/srcery-vim'
 " Plug 'NLKNguyen/papercolor-theme'
