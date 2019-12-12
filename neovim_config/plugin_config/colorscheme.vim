@@ -60,4 +60,4 @@ endif
 highlight ALEVirtualTextError gui=italic term=italic guibg=italic guifg=#DB5A6B ctermbg=none ctermfg=Red
 highlight ALEVirtualTextWarning gui=italic term=italic guibg=italic guifg=#a78e44 ctermbg=none ctermfg=Yellow
 highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-highlight Visual gui=none term=none guibg=#f2fdff guifg=NONE ctermbg=NONE ctermfg=NONE
+" highlight Visual gui=none term=none guibg=#f2fdff guifg=NONE ctermbg=NONE ctermfg=NONE
