@@ -6,7 +6,6 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-snippets',
             \'coc-vimlsp',
-            \'coc-tabnine',
             \'coc-prettier',
             \'coc-translator'
             \]
