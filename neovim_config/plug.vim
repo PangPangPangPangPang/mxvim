@@ -140,6 +140,7 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 " Add mark
 Plug 'kshenoy/vim-signature'
 
+Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 
 " Load plugin config.

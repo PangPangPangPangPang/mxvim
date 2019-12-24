@@ -64,4 +64,8 @@ highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#DB5A6B ctermbg=n
 highlight ALEVirtualTextWarning gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
 highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
 highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-" highlight Visual gui=none term=none guibg=#f2fdff guifg=NONE ctermbg=NONE ctermfg=NONE
+
+highlight GitgutterAdd gui=none term=none guibg=none guifg=#afdd22 ctermbg=none ctermfg=Green
+highlight GitgutterChange gui=none term=none guibg=none guifg=#D79921 ctermbg=none ctermfg=Yellow
+highlight GitgutterDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
+highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
