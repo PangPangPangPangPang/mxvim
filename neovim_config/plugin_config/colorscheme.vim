@@ -69,3 +69,4 @@ highlight GitgutterAdd gui=none term=none guibg=none guifg=#afdd22 ctermbg=none 
 highlight GitgutterChange gui=none term=none guibg=none guifg=#D79921 ctermbg=none ctermfg=Yellow
 highlight GitgutterDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
 highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
+highlight SignatureMarkText gui=none term=none guibg=none guifg=#FFFFFF ctermbg=none ctermfg=white
