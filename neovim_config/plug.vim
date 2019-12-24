@@ -1,3 +1,4 @@
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Theme
@@ -9,6 +10,7 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'srcery-colors/srcery-vim'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
+
 
 Plug 'mhinz/vim-startify'
 
@@ -50,7 +52,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
