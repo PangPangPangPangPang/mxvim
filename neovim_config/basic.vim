@@ -5,10 +5,14 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+if has('nvim')
+    set guicursor=a:block
+endif
+
 set cursorline
 " set cursorcolumn
 
-set list lcs=tab:\|\ 
+set list lcs=tab:\|\
 
 " Time for swap fill will be written to disk.
 set updatetime=10
