@@ -49,6 +49,8 @@ let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
+let @t="\m\`\$v\^S\]\`\`"
+nnoremap <leader>] = @t
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -141,6 +143,9 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 Plug 'kshenoy/vim-signature'
 
 Plug 'norcalli/nvim-colorizer.lua'
+
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
 call plug#end()
 
 " Load plugin config.
