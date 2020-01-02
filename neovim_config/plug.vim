@@ -142,10 +142,6 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 " Add mark
 Plug 'kshenoy/vim-signature'
 
-Plug 'norcalli/nvim-colorizer.lua'
-
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-
 call plug#end()
 
 " Load plugin config.
