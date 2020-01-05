@@ -31,6 +31,9 @@ let g:ale_fixers = {
             \       'go': ['gofmt', 'goimports'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }
+let g:ale_fix_on_save_ignore = {
+            \      'vim': ['remove_trailing_lines', 'trim_whitespace'],
+            \      }
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
