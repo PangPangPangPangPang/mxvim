@@ -37,6 +37,7 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -110,6 +111,7 @@ Plug 'junegunn/gv.vim'
 
 " Snip plugin
 Plug 'honza/vim-snippets'
+let g:polyglot_disabled = ['markdown']
 
 " Hightlight plugin
 Plug 'sheerun/vim-polyglot'
@@ -142,6 +144,7 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 " Add mark
 Plug 'kshenoy/vim-signature'
 
+Plug 'skanehira/preview-markdown.vim'
 call plug#end()
 
 " Load plugin config.
