@@ -3,8 +3,12 @@ let g:ale_sign_column_always = 0
 let g:ale_enabled = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
-let g:ale_virtualtext_cursor = 1
-let g:ale_echo_cursor = 0
+if has('nvim') 
+    let g:ale_virtualtext_cursor = 1
+    let g:ale_echo_cursor = 0
+else
+    let g:ale_echo_cursor = 1
+endif
 let g:ale_virtualtext_prefix = '>> '
 " let g:ale_lint_on_enter = 0
 
