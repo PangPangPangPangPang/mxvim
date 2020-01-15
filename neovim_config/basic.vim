@@ -191,12 +191,12 @@ map <leader>pp :setlocal paste!<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Insert action like terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <c-f> <Right>
-inoremap <c-b> <Left>
-inoremap <c-a> <Esc>^i
-inoremap <c-e> <Esc>$a
-inoremap <c-w> <Esc>diwi
-inoremap <c-u> <Esc>cc
+" inoremap <c-f> <Right>
+" inoremap <c-b> <Left>
+" inoremap <c-a> <Esc>^i
+" inoremap <c-e> <Esc>$a
+" inoremap <c-w> <Esc>diwi
+" inoremap <c-u> <Esc>cc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts

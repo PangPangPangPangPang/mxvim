@@ -11,6 +11,8 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
 
+" Readline style insertion
+Plug 'tpope/vim-rsi'
 
 Plug 'mhinz/vim-startify'
 
