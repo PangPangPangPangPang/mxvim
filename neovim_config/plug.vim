@@ -170,6 +170,8 @@ if has('vim')
     let g:ywvim_popupwin_follow_cursor=1
     let g:ywvim_popupwin_horizontal=0
 endif
+
+Plug 'simnalamburt/vim-mundo'
 call plug#end()
 
 " Load plugin config.
