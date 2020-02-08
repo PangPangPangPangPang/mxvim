@@ -90,7 +90,7 @@ Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 
 " Quick toggle terminal.
 Plug 'PangPangPangPangPang/vim-terminal'
-map <silent> <F5> :VSTerminalToggle<cr>
+" map <silent> <F5> :VSTerminalToggle<cr>
 
 " Initialize plugin system
 Plug 'PangPangPangPangPang/visual-selection-vim'
@@ -172,9 +172,16 @@ if has('vim')
 endif
 
 Plug 'simnalamburt/vim-mundo'
+Plug 'skywind3000/vim-terminal-help'
+let g:terminal_key = "<F5>"
+let g:terminal_cwd = 2
+let g:terminal_height = 20
+let g:terminal_list = 0
+let g:terminal_kill = "term"
 call plug#end()
 
 " Load plugin config.
 for f in split(glob('~/.config/nvim/plugin_config/*.vim'))
     exe 'source' f
 endfor
+
