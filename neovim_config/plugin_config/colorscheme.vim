@@ -33,7 +33,7 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-let g:gruvbox_transp_bg = 1
+let g:gruvbox_transp_bg = 0
 let g:gruvbox_plugin_hi_groups = 1
 let g:gruvbox_filetype_hi_groups = 1
 try 
@@ -70,6 +70,7 @@ if has('nvim')
     highlight ALEVirtualTextWarning gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
     highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
     highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ColorColumn gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
 
     highlight GitgutterAdd gui=none term=none guibg=none guifg=#afdd22 ctermbg=none ctermfg=Green
     highlight GitgutterChange gui=none term=none guibg=none guifg=#D79921 ctermbg=none ctermfg=Yellow
