@@ -33,11 +33,11 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-let g:gruvbox_transp_bg = 0
-let g:gruvbox_plugin_hi_groups = 1
-let g:gruvbox_filetype_hi_groups = 1
 try 
     colorscheme gruvbox8_soft
+    let g:gruvbox_transp_bg = 0
+    let g:gruvbox_plugin_hi_groups = 1
+    let g:gruvbox_filetype_hi_groups = 1
 endtry
 "
 " let g:gruvbox_material_enable_bold = 1
@@ -56,21 +56,35 @@ endtry
 "     colorscheme gruvbox-material
 " endtry
 
+" try
+"     colorscheme forest-night
+" endtry
+" try
+"     colorscheme xcodedark
+"     let g:xcodedark_emph_funcs = 1
+"     let g:xcodedark_emph_idents = 1
+"     augroup vim-colors-xcode
+"         autocmd!
+"     augroup END
+" 
+"     autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
+"     autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
+" endtry
 if has('nvim')
-    highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow
-    highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    " highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow
     highlight SignColumn gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    " highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
+    " highlight ColorColumn gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
 endif
-
+" 
 if has('nvim')
     highlight ALEVirtualTextError gui=italic term=italic guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
     highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
     highlight ALEVirtualTextWarning gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
     highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
-    highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ColorColumn gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
 
     highlight GitgutterAdd gui=none term=none guibg=none guifg=#afdd22 ctermbg=none ctermfg=Green
     highlight GitgutterChange gui=none term=none guibg=none guifg=#D79921 ctermbg=none ctermfg=Yellow

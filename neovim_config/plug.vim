@@ -6,11 +6,13 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
+" Plug 'arzg/vim-colors-xcode'
 " Plug 'Dave-Elec/gruvbox'
 " Plug 'srcery-colors/srcery-vim'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
 
+" Plug 'sainnhe/vim-color-forest-night'
 " Readline style insertion
 Plug 'tpope/vim-rsi'
 
@@ -64,7 +66,7 @@ Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 """"""""""""Markdown"""""""""""""""""""
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 """""""""""""""""""""""""""""""""""
 
 "Quick open doc
@@ -146,8 +148,6 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 " Add mark
 Plug 'kshenoy/vim-signature'
 
-Plug 'skanehira/preview-markdown.vim'
-
 Plug 'PangPangPangPangPang/ywvim'
 let g:ywvim_ims=[
             \['py', '拼音', 'pinyin.ywvim'],
@@ -178,6 +178,7 @@ let g:terminal_cwd = 2
 let g:terminal_height = 20
 let g:terminal_list = 0
 let g:terminal_kill = "term"
+
 call plug#end()
 
 " Load plugin config.
