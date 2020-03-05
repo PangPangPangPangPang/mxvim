@@ -16,18 +16,6 @@
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
   "languageserver": {
-    "dart": {
-      "command": "dart_language_server",
-      "args": [],
-      "filetypes": ["dart"],
-      "initializationOptions": {},
-      "settings": {
-        "dart": {
-          "validation": {},
-          "completion": {}
-        }
-      }
-    },
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
