@@ -78,9 +78,11 @@ call defx#custom#column('icon', {
             \ })
 " \ 'root_icon': '❤',
 call defx#custom#column('filename', {
-            \ 'min_width': 40,
-            \ 'max_width': 40,
+            \ 'max_width': 2000,
             \ })
+call defx#custom#option('_', {
+            \ 'columns': 'filename:type',
+            \})
 
 call defx#custom#column('mark', {
             \ 'readonly_icon': '',
