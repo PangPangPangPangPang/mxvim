@@ -145,6 +145,10 @@ Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 
 """"""""""""""""""""""""""""""
+"""""""""""""flutter"""""""""""""
+Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+""""""""""""""""""""""""""""""
+
 " Add mark
 Plug 'kshenoy/vim-signature'
 
