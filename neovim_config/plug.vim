@@ -177,6 +177,7 @@ endif
 
 Plug 'simnalamburt/vim-mundo'
 Plug 'skywind3000/vim-terminal-help'
+let g:terminal_auto_insert = 1
 let g:terminal_key = "<F5>"
 let g:terminal_cwd = 2
 let g:terminal_height = 20
