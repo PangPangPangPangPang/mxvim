@@ -91,7 +91,7 @@ endif
 Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 
 " Quick toggle terminal.
-Plug 'PangPangPangPangPang/vim-terminal'
+" Plug 'PangPangPangPangPang/vim-terminal'
 " map <silent> <F5> :VSTerminalToggle<cr>
 
 " Initialize plugin system
