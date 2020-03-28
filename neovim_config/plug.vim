@@ -147,6 +147,7 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """"""""""""""""""""""""""""""
 """""""""""""flutter"""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'PangPangPangPangPang/vim-flutter', {'for': 'dart'}
 """"""""""""""""""""""""""""""
 
 " Add mark
