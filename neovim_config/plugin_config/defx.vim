@@ -1,7 +1,7 @@
 if !exists('g:mx_loaded_defx')
     finish
 endif
-map <silent> <F1> :Defx -columns=mark:indent:icon:filename:type:size:time
+map <silent> <F1> :Defx -columns=mark:indent:icons:filename:type:size:time
             \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical<cr>
 map <silent> <leader>j :Defx -columns=mark:indent:icon:filename:type:size:time
             \           -split=vertical -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
@@ -99,4 +99,17 @@ call defx#custom#column('mark', {
 "   \ 'Unknown'   : '?'
 "   \ })
 
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 2
+let g:defx_icons_directory_icon = ' '
+let g:defx_icons_mark_icon = '* '
+let g:defx_icons_copy_icon = ' '
+let g:defx_icons_move_icon = ' '
+let g:defx_icons_parent_icon = ' '
+let g:defx_icons_default_icon = ' '
+let g:defx_icons_directory_symlink_icon = ' '
+" Options below are applicable only when using "tree" feature
+let g:defx_icons_root_opened_tree_icon = ' '
+let g:defx_icons_nested_opened_tree_icon = ' '
+let g:defx_icons_nested_closed_tree_icon = ' '
 

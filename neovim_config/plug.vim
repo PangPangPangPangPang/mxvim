@@ -1,6 +1,8 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'ryanoasis/vim-devicons'
+
 " Theme
 " Plug 'dracula/vim'
 " Plug 'morhetz/gruvbox'
@@ -24,6 +26,7 @@ let g:rainbow_active = 1
 if has('python3')
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'kristijanhusak/defx-icons'
     else
         Plug 'Shougo/defx.nvim'
         Plug 'roxma/nvim-yarp'
@@ -147,7 +150,14 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 """"""""""""""""""""""""""""""
 """""""""""""flutter"""""""""""""
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+let g:flutter_command= '~/motor_flutter/.flutterw/cache/dist/bd_1.5.4/flutter/bin/flutter'
+let g:flutter_show_log_on_attach = 1
 Plug 'PangPangPangPangPang/vim-flutter', {'for': 'dart'}
+autocmd FileType dart nnoremap <buffer> <leader>fs :FlutterRun<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fr :FlutterHotReload<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fa :FlutterAttach<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fq :FlutterQuit<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fR :FlutterHotRestart<cr>
 """"""""""""""""""""""""""""""
 
 " Add mark
