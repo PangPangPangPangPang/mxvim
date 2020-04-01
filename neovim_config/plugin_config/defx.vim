@@ -3,7 +3,7 @@ if !exists('g:mx_loaded_defx')
 endif
 map <silent> <F1> :Defx -columns=mark:indent:icons:filename:type:size:time
             \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical<cr>
-map <silent> <leader>j :Defx -columns=mark:indent:icon:filename:type:size:time
+map <silent> <leader>j :Defx -columns=mark:indent:icons:filename:type:size:time
             \           -split=vertical -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
