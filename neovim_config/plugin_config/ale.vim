@@ -27,11 +27,13 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \        'python' : ['flake8'],
             \        'go' : ['golint'],
             \        'cfamily' : ['ccls'],
+            \        'dart' : ['dartanalyzer'],
             \       }
 let g:ale_linter_aliases = {'jsx': 'css',
             \              }
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
+            \       'dart': ['dartfmt'],
             \       'go': ['gofmt', 'goimports'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }

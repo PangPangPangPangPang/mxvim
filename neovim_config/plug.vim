@@ -149,9 +149,6 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 
 """"""""""""""""""""""""""""""
 """""""""""""flutter"""""""""""""
-let g:dart_format_on_save = 1
-let g:dart_style_guide = 2
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 let g:flutter_command= '~/motor_flutter/.flutterw/cache/dist/bd_1.5.4/flutter/bin/flutter'
 let g:flutter_show_log_on_attach = 1
 Plug 'PangPangPangPangPang/vim-flutter', {'for': 'dart'}
