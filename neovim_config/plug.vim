@@ -158,6 +158,7 @@ autocmd FileType dart nnoremap <buffer> <leader>fa :FlutterAttach<cr>
 autocmd FileType dart nnoremap <buffer> <leader>fq :FlutterQuit<cr>
 autocmd FileType dart nnoremap <buffer> <leader>fR :FlutterHotRestart<cr>
 """"""""""""""""""""""""""""""
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Add mark
 Plug 'kshenoy/vim-signature'

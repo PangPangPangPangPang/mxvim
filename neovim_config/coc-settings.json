@@ -42,6 +42,7 @@
         ".hg/"
       ],
       "initializationOptions": {
+        "highlight": { "lsRanges": true },
         "cache": {
           "directory": "/tmp/ccls"
         },
