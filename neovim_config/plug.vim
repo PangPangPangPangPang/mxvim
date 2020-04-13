@@ -194,6 +194,9 @@ let g:terminal_cwd = 2
 let g:terminal_height = 20
 let g:terminal_list = 0
 let g:terminal_kill = "term"
+
+Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
+
 call plug#end()
 
 " Load plugin config.
