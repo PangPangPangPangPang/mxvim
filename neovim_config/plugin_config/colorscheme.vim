@@ -33,12 +33,12 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-" try 
-"     let g:gruvbox_transp_bg = 0
-"     let g:gruvbox_plugin_hi_groups = 1
-"     let g:gruvbox_filetype_hi_groups = 1
-"     colorscheme gruvbox8_soft
-" endtry
+try 
+    let g:gruvbox_transp_bg = 0
+    let g:gruvbox_plugin_hi_groups = 1
+    let g:gruvbox_filetype_hi_groups = 1
+    colorscheme gruvbox8_soft
+endtry
 "
 " let g:gruvbox_material_enable_bold = 1
 " let g:gruvbox_material_background = 'soft'
@@ -52,14 +52,14 @@ endif
 " endif
 " let g:gruvbox_material_lightline_disable_bold = 0
 " let g:Lf_StlColorscheme = 'gruvbox_material'
-try 
-    let g:gruvbox_material_palette = 'original'
-    let g:gruvbox_material_background = 'soft'
-    let g:gruvbox_material_enable_bold = 1
-    let g:gruvbox_material_visual = 'reverse'
-
-    colorscheme gruvbox-material
-endtry
+" try 
+"     let g:gruvbox_material_palette = 'original'
+"     let g:gruvbox_material_background = 'soft'
+"     let g:gruvbox_material_enable_bold = 1
+"     let g:gruvbox_material_visual = 'reverse'
+" 
+"     colorscheme gruvbox-material
+" endtry
 
 " try
 "     colorscheme forest-night

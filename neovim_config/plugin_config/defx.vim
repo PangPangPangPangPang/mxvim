@@ -2,9 +2,9 @@ if !exists('g:mx_loaded_defx')
     finish
 endif
 map <silent> <F1> :Defx -columns=mark:indent:icons:filename:type:size:time
-            \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical<cr>
+            \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
 map <silent> <leader>j :Defx -columns=mark:indent:icons:filename:type:size:time
-            \           -split=vertical -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
+            \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
