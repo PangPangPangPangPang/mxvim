@@ -91,7 +91,7 @@ else
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
-Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
+Plug 'dstein64/vim-startuptime', {'on': ['StartupTime']}
 
 " Quick toggle terminal.
 " Plug 'PangPangPangPangPang/vim-terminal'
