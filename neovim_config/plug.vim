@@ -195,9 +195,9 @@ let g:terminal_height = 20
 let g:terminal_list = 0
 let g:terminal_kill = "term"
 
-Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
-" Plug 'SirVer/ultisnips'        "code snippets
-" Plug 'honza/vim-snippets'
+" Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
+Plug 'SirVer/ultisnips'        "code snippets
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
