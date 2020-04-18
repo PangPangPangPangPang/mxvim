@@ -62,6 +62,10 @@ nnoremap <leader>] = @t
 
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'SirVer/ultisnips'        "code snippets
+let g:UltiSnipsExpandTrigger="<enter>"
+Plug 'honza/vim-snippets'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
@@ -196,8 +200,6 @@ let g:terminal_list = 0
 let g:terminal_kill = "term"
 
 " Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
-Plug 'SirVer/ultisnips'        "code snippets
-Plug 'honza/vim-snippets'
 
 call plug#end()
 

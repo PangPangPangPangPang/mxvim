@@ -24,7 +24,7 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-y>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr> <CR> pumvisible() ? "\<Esc>a\<CR>" : "\<CR>"
+" inoremap <expr> <CR> pumvisible() ? "\<Esc>a\<CR>" : "\<CR>"
 let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
 
