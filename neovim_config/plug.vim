@@ -62,11 +62,7 @@ nnoremap <leader>] = @t
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'SirVer/ultisnips'        "code snippets
-let g:UltiSnipsExpandTrigger="<enter>"
-Plug 'honza/vim-snippets'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
