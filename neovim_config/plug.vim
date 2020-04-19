@@ -18,7 +18,12 @@ Plug 'lifepillar/vim-gruvbox8'
 " Readline style insertion
 Plug 'tpope/vim-rsi'
 
+let entry_format = "'   ['. index .']'. repeat(' ', (3 - strlen(index)))"
+
 Plug 'mhinz/vim-startify'
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
@@ -62,7 +67,7 @@ nnoremap <leader>] = @t
 
 Plug 'scrooloose/nerdcommenter'
 
- 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
