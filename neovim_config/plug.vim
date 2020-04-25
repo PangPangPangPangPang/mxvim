@@ -162,7 +162,7 @@ autocmd FileType dart nnoremap <buffer> <leader>fa :FlutterAttach<cr>
 autocmd FileType dart nnoremap <buffer> <leader>fq :FlutterQuit<cr>
 autocmd FileType dart nnoremap <buffer> <leader>fR :FlutterHotRestart<cr>
 """"""""""""""""""""""""""""""
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Add mark
 Plug 'kshenoy/vim-signature'
@@ -191,6 +191,8 @@ if has('vim')
 endif
 
 Plug 'simnalamburt/vim-mundo'
+nnoremap <silent> <F6> :MundoToggle<CR>
+
 Plug 'skywind3000/vim-terminal-help'
 let g:terminal_auto_insert = 1
 let g:terminal_key = "<F5>"
@@ -198,8 +200,6 @@ let g:terminal_cwd = 2
 let g:terminal_height = 20
 let g:terminal_list = 0
 let g:terminal_kill = "term"
-
-" Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 
 call plug#end()
 
