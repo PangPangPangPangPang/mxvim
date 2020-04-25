@@ -44,8 +44,7 @@ else
     let g:mx_loaded_nerdtree = 1
 endif
 
-
-Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
