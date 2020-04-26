@@ -66,7 +66,11 @@ nnoremap <leader>] = @t
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+Plug 'beeender/Comrade'
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
