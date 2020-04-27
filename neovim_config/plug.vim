@@ -5,7 +5,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " Theme
 " Plug 'dracula/vim'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
 " Plug 'arzg/vim-colors-xcode'

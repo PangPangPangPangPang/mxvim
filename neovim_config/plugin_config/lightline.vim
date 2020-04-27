@@ -40,6 +40,11 @@ let g:lightline.separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
 let g:lightline.subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
 let g:lightline.tabline_separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
 let g:lightline.tabline_subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
+
+" let g:lightline.separator = { 'left': "\ue0b8", 'right': "\ue0be" }
+" let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
+" let g:lightline.tabline_separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
+" let g:lightline.tabline_subseparator = { 'left': "\ue0bb", 'right': "\ue0bb" }
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_warnings = "\uf529"
 let g:lightline#ale#indicator_errors = "\uf00d"
