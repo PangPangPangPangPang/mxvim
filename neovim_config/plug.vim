@@ -206,6 +206,7 @@ let g:terminal_list = 0
 let g:terminal_kill = "term"
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'RRethy/vim-illuminate'
 
 call plug#end()
 
