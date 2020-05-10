@@ -205,6 +205,8 @@ let g:terminal_height = 20
 let g:terminal_list = 0
 let g:terminal_kill = "term"
 
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
 call plug#end()
 
 " Load plugin config.
