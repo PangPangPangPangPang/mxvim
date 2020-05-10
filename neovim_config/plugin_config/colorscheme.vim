@@ -59,6 +59,7 @@ endtry
 "     colorscheme gruvbox-material
 " endtry
 
+
 " try
 "     colorscheme forest-night
 " endtry
@@ -93,5 +94,5 @@ if has('nvim')
     highlight GitgutterChange gui=none term=none guibg=none guifg=#D79921 ctermbg=none ctermfg=Yellow
     highlight GitgutterDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
     highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
-    highlight SignatureMarkText gui=none term=none guibg=none guifg=#FFFFFF ctermbg=none ctermfg=white
+    highlight SignatureMarkText gui=none term=none guibg=none guifg=EBDBB2 ctermbg=none ctermfg=white
 endif

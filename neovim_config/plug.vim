@@ -5,7 +5,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " Theme
 " Plug 'dracula/vim'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
 " Plug 'arzg/vim-colors-xcode'
@@ -66,11 +66,11 @@ nnoremap <leader>] = @t
 
 Plug 'scrooloose/nerdcommenter'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-Plug 'beeender/Comrade'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" let g:deoplete#enable_at_startup = 1
+" Plug 'beeender/Comrade'
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
