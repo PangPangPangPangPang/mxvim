@@ -126,10 +126,10 @@ Plug 'junegunn/gv.vim'
 
 " Snip plugin
 Plug 'honza/vim-snippets'
-let g:polyglot_disabled = ['markdown']
 
 " Hightlight plugin
-Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['markdown', 'mma']
+" Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")
