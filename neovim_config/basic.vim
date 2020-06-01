@@ -20,7 +20,7 @@ set updatetime=10
 " Sets how many lines of history VIM has to remember
 set history=500
 
-set colorcolumn=80
+set colorcolumn=140
 
 " Show line numbers
 set nu!
