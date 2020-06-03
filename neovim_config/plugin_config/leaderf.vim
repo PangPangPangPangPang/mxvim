@@ -9,7 +9,6 @@ let g:Lf_RootMarkers = ['.xcworkspace', '.project', '.git']
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 
-
 " let g:Lf_UseVersionControlTool = "git ls-files"
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>'],
             \ '<C-J>': ['<C-N>', '<C-J>'],
@@ -25,3 +24,20 @@ let g:Lf_WildIgnore = {
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 let g:Lf_ReverseOrder = 1
+function! s:set_leaderf_highlights()                                                                                                                                                                       
+    highlight link Lf_hl_cursorline Cursorline                                                                                                                                                             
+    highlight link Lf_hl_popup_inputText LightlineLeft_inactive_0                                                                                                                                          
+    highlight link Lf_hl_popup_blank LightlineLeft_inactive_0                                                                                                                                              
+    highlight link Lf_hl_popup_window Pmenu                                                                                                                                                                
+    highlight link Lf_hl_popup_normalMode LightlineLeft_normal_0                                                                                                                                           
+    highlight link Lf_hl_popup_inputMode LightlineLeft_insert_0                                                                                                                                            
+    highlight link Lf_hl_popup_lineInfo LightlineRight_active_1                                                                                                                                            
+    highlight link Lf_hl_popup_total LightlineRight_active_0                                                                                                                                               
+    highlight link Lf_hl_popup_category LightlineLeft_normal_0                                                                                                                                             
+    highlight link Lf_hl_popup_nameOnlyMode LightlineLeft_normal_1                                                                                                                                         
+    highlight link Lf_hl_popup_fullPathMode LightlineLeft_normal_1                                                                                                                                         
+    highlight link Lf_hl_popup_fuzzyMode LightlineLeft_normal_1                                                                                                                                            
+    highlight link Lf_hl_popup_regexMode LightlineLeft_normal_1                                                                                                                                            
+    highlight link Lf_hl_popup_cwd LightlineRight_normal_2                                                                                                                                                 
+    highlight link Lf_hl_match Search                                                                                                                                                                      
+endfunction
