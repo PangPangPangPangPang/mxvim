@@ -5,7 +5,8 @@ Plug 'ryanoasis/vim-devicons'
 
 " Theme
 " Plug 'dracula/vim'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
 " Plug 'arzg/vim-colors-xcode'
@@ -128,8 +129,8 @@ Plug 'junegunn/gv.vim'
 Plug 'honza/vim-snippets'
 
 " Hightlight plugin
-let g:polyglot_disabled = ['markdown', 'mma']
-" Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['markdown', 'mathematica']
+Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")

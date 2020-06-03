@@ -3,7 +3,7 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 
-noremap <c-p> :Files<cr>
+" noremap <c-p> :Files<cr>
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'rounded' } }
 

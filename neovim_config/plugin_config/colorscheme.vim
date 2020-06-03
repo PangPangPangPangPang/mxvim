@@ -42,24 +42,27 @@ endif
 
 "
 " 
-try 
-    " if has('gui_running')
-    "     let g:gruvbox_material_transparent_background= 0
-    " else
-    "     let g:gruvbox_material_transparent_background= 1
-    " endif
-    let g:gruvbox_material_palette = 'original'
-    let g:gruvbox_material_background = 'soft'
-    let g:gruvbox_material_enable_bold = 1
-    let g:gruvbox_material_visual = 'reverse'
-    let g:gruvbox_material_italicize_strings = 1
-    let g:gruvbox_material_lightline_disable_bold = 0
-    let g:gruvbox_material_disable_italic_comment = 0
-    let g:Lf_StlColorscheme = 'gruvbox_material'
+" try 
+"     " if has('gui_running')
+"     "     let g:gruvbox_material_transparent_background= 0
+"     " else
+"     "     let g:gruvbox_material_transparent_background= 1
+"     " endif
+"     let g:gruvbox_material_palette = 'original'
+"     let g:gruvbox_material_background = 'soft'
+"     let g:gruvbox_material_enable_bold = 1
+"     let g:gruvbox_material_visual = 'reverse'
+"     let g:gruvbox_material_italicize_strings = 1
+"     let g:gruvbox_material_lightline_disable_bold = 0
+"     let g:gruvbox_material_disable_italic_comment = 0
+"     let g:Lf_StlColorscheme = 'gruvbox_material'
+" 
+"     colorscheme gruvbox-material
+" endtry
 
-    colorscheme gruvbox-material
-endtry
-
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'soft'
+colorscheme gruvbox
 
 " try
 "     colorscheme forest-night
