@@ -4,7 +4,7 @@
   "diagnostic.messageTarget": "float",
   "diagnostic.displayByAle": true,
   "diagnostic.enable": false,
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.errorSign": ">>",
   "diagnostic.warningSign": "--",
   "suggest.floatEnable": true,
