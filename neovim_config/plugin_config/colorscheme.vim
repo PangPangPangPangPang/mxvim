@@ -60,11 +60,11 @@ endif
 "     colorscheme gruvbox-material
 " endtry
 
-" let g:gruvbox_italic = 1
-" let g:gruvbox_contrast_dark = 'soft'
-" colorscheme gruvbox
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'soft'
+colorscheme gruvbox
 
-colorscheme deus
+" colorscheme deus
 " try
 "     colorscheme forest-night
 " endtry
