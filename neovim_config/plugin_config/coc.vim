@@ -8,7 +8,8 @@ let g:coc_global_extensions = [
             \'coc-vimlsp',
             \'coc-prettier',
             \'coc-translator',
-            \'coc-flutter'
+            \'coc-flutter',
+            \'coc-sourcekit'
             \]
 
 nmap <silent> <c-]> <Plug>(coc-definition)

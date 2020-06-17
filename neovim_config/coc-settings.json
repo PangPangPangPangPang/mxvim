@@ -24,13 +24,6 @@
         "usePlaceholders": true
       }
     },
-    "swift": {
-      "command": "sourcekit-lsp",
-      "args": [],
-      "filetypes": ["swift"],
-      "initializationOptions": {},
-      "settings": {}
-    },
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
