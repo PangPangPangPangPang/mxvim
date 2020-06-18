@@ -30,7 +30,8 @@ endfunction
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-if has('python3')
+" if has('python3')
+if 0
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'kristijanhusak/defx-icons'
