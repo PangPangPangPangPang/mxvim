@@ -13,5 +13,9 @@ let g:go_highlight_generate_tags = 1
 
 "vim-delve
 let g:delve_new_command = 'vnew'
-autocmd FileType go nmap <silent> <F3> :DlvDebug<CR>
+autocmd FileType go nmap <silent> <F3> :call DlvDebug()<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
+
+function! DlvDebug()
+    exec 'DlvDebug '. getcwd(). '/main.go'
+endfunction
