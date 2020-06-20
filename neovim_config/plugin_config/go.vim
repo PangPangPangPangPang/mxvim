@@ -12,7 +12,8 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
 "vim-delve
-let g:delve_new_command = 'vnew'
+" let g:delve_new_command = 'vnew'
+let g:delve_new_command = 'new'
 autocmd FileType go nmap <silent> <F3> :call DlvDebug()<CR>
 autocmd FileType go nmap <silent> <F4> :DlvToggleBreakpoint<CR>
 
