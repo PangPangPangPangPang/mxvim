@@ -12,6 +12,9 @@ let g:lightline.tab = {
             \ 'active': [ 'tabnum', 'filename', 'modified' ],
             \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
 
+let g:lightline.enable = {
+            \ 'tabline': 0,
+            \}
 let g:lightline.tabline = {
             \ 'left': [ [ 'tabs' ] ],
             \ 'right': [ [ 'close' ] ] }
