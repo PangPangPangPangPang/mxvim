@@ -123,6 +123,8 @@ vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 
+let g:indentLine_char = '⎸'
+" let g:indentLine_char = '┆'
 Plug 'Yggdroot/indentLine'
 
 " Git support

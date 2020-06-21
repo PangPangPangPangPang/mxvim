@@ -28,9 +28,6 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-"                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 inoremap <silent><expr> <cr> "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
