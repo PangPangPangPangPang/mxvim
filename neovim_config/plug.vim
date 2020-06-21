@@ -6,7 +6,7 @@ Plug 'ryanoasis/vim-devicons'
 " Theme
 " Plug 'dracula/vim'
 " Plug 'morhetz/gruvbox'
-Plug 'gruvbox-community/gruvbox'
+" Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
 " Plug 'ajmwagar/vim-deus'
