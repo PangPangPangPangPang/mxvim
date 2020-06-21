@@ -21,11 +21,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-y>" :
-"       \ <SID>check_back_space() ? "\<Tab>" :
-"       \ coc#refresh()
-" inoremap <expr> <CR> pumvisible() ? "\<Esc>a\<CR>" : "\<CR>"
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -36,6 +31,7 @@ let g:coc_snippet_prev = '<c-p>'
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
 "                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <cr> "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
