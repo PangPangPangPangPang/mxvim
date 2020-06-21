@@ -30,8 +30,8 @@ endfunction
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-if has('python3')
-" if 0
+" if has('python3')
+if 0
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'kristijanhusak/defx-icons'
@@ -44,6 +44,7 @@ if has('python3')
     " Plug 'kristijanhusak/defx-git'
 else
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+    Plug 'Xuyuanp/nerdtree-git-plugin'
     let g:mx_loaded_nerdtree = 1
 endif
 
