@@ -1,9 +1,9 @@
-if !exists('g:mx_loaded_defx')
+if !Installed("defx.nvim")
     finish
 endif
-map <silent> <F1> :Defx -columns=mark:indent:icons:filename:type:size:time
+map <silent> <F1> :Defx -columns=git:mark:indent:icons:filename:type:size:time
             \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-map <silent> <leader>j :Defx -columns=mark:indent:icons:filename:type:size:time
+map <silent> <leader>j :Defx -columns=git:mark:indent:icons:filename:type:size:time
             \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
@@ -89,16 +89,16 @@ call defx#custom#column('mark', {
             \ 'readonly_icon': '',
             \ 'selected_icon': '✔',
             \ })
-" call defx#custom#column('git', 'indicators', {
-"   \ 'Modified'  : '✹',
-"   \ 'Staged'    : '✚',
-"   \ 'Untracked' : '✭',
-"   \ 'Renamed'   : '➜',
-"   \ 'Unmerged'  : '═',
-"   \ 'Ignored'   : '☒',
-"   \ 'Deleted'   : '✖',
-"   \ 'Unknown'   : '?'
-"   \ })
+call defx#custom#column('git', 'indicators', {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ })
 
 let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 2

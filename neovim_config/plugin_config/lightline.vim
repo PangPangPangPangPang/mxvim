@@ -105,15 +105,23 @@ function! LightlineFilename()
 endfunction
 
 function! LightlineFileformat()
-      return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+      return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbolWithDefault()) : ''
     " return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! LightlineFiletype()
-      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbolWithDefault() : 'no ft') : ''
     " return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
 
 function! LightlineFileencoding()
     return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! WebDevIconsGetFileFormatSymbolWithDefault()
+    return Installed('vim-devicons') ? WebDevIconsGetFileFormatSymbol() : ''
+endfunction
+
+function! WebDevIconsGetFileTypeSymbolWithDefault()
+    return Installed('vim-devicons') ? WebDevIconsGetFileTypeSymbol() : ''
 endfunction

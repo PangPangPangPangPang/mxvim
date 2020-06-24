@@ -1,6 +1,7 @@
-if !exists('g:mx_loaded_nerdtree')
+if !Installed("nerdtree")
     finish
 endif
+echom Installed("nerdtree")
 let NERDTreeIgnore=['\.pyc$', '\~$']
 let NERDTreeMinimalUI=1
 let NERDTreeMinimalMenu=0

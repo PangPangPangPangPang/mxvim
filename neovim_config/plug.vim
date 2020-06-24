@@ -1,3 +1,11 @@
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
+function! Installed(value)
+    return has_key(g:plugs, a:value)
+endfunction
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -30,22 +38,16 @@ endfunction
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-" if has('python3')
-if 0
+if has('python3')
     if has('nvim')
-        Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'kristijanhusak/defx-icons'
+        Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
     else
-        Plug 'Shougo/defx.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
+        Plug 'Shougo/defx.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
     endif
-    let g:mx_loaded_defx = 1
-    " Plug 'kristijanhusak/defx-git'
+    
 else
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    let g:mx_loaded_nerdtree = 1
 endif
 
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
@@ -161,7 +163,7 @@ map , <Plug>(clever-f-repeat-back)
 Plug 'machakann/vim-highlightedyank'
 
 """""""""""""'go'"""""""""""""
-Plug 'fatih/vim-go', { 'for' : 'go' }
+" Plug 'fatih/vim-go', { 'for' : 'go' }
 Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 """""""""""""'objc'"""""""""""""
