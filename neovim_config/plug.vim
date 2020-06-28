@@ -137,6 +137,7 @@ let g:gitgutter_override_sign_column_highlight = 0
 
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+Plug 'rhysd/git-messenger.vim'
 
 " Snip plugin
 Plug 'honza/vim-snippets'
