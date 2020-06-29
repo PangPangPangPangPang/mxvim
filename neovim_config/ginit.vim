@@ -1,5 +1,5 @@
 if exists('g:GuiLoaded')
-    " Guifont MaxIosevka:h14:l
+    " Guifont MaxIosevka:h16:l
     Guifont MaxIosevka\ Nerd\ Font:h16
     GuiTabline 0
     GuiPopupmenu 0

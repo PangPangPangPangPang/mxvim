@@ -1,4 +1,4 @@
-set guifont=MaxIosevka:h16
+set guifont=MaxIosevka\ Nerd\ Font:h16
 set guioptions=
 
 
