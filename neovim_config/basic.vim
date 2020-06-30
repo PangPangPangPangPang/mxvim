@@ -20,6 +20,9 @@ set updatetime=10
 " Sets how many lines of history VIM has to remember
 set history=500
 
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
 set colorcolumn=140
 
 " Show line numbers
@@ -126,6 +129,13 @@ set tm=500
 
 " Add a bit extra margin to the left, change 0 to 1.
 set foldcolumn=0
+
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
