@@ -21,14 +21,18 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-let g:coc_snippet_next = '<c-n>'
-let g:coc_snippet_prev = '<c-p>'
-inoremap <silent><expr> <cr> "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
