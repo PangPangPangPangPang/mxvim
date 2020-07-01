@@ -1,10 +1,17 @@
 if !Installed("defx.nvim")
     finish
 endif
-map <silent> <F1> :Defx -columns=git:mark:indent:icons:filename:type:size:time
-            \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-map <silent> <leader>j :Defx -columns=git:mark:indent:icons:filename:type:size:time
-            \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
+if Installed('vim-devicons')
+    map <silent> <F1> :Defx -columns=git:mark:indent:icons:filename:type:size:time
+                \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
+    map <silent> <leader>j :Defx -columns=git:mark:indent:icons:filename:type:size:time
+                \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
+else 
+    map <silent> <F1> :Defx -columns=git:mark:indent:icon:filename:type:size:time
+                \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
+    map <silent> <leader>j :Defx -columns=git:mark:indent:icon:filename:type:size:time
+                \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
+endif
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
