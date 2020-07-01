@@ -9,7 +9,7 @@ endfunction
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 
 " Theme
 " Plug 'dracula/vim'
@@ -31,9 +31,6 @@ Plug 'tpope/vim-rsi'
 let entry_format = "'   ['. index .']'. repeat(' ', (3 - strlen(index)))"
 
 Plug 'mhinz/vim-startify'
-function! StartifyEntryFormat()
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-endfunction
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1

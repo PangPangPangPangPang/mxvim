@@ -1,3 +1,9 @@
+if Installed('vim-devicons')
+    function! StartifyEntryFormat()
+        return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+    endfunction
+endif
+
 let g:startify_change_to_vcs_root = 1
 
 let g:my_startify_custom_header = [ 
