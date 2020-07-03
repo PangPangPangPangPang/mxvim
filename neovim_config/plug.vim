@@ -86,7 +86,8 @@ let g:vem_tabline_number_symbol = " "
 Plug 'pacha/vem-tabline'
 
 """"""""""""Markdown"""""""""""""""""""
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 """""""""""""""""""""""""""""""""""
 
 "Quick open doc

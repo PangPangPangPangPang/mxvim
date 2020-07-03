@@ -2,14 +2,14 @@ if !Installed("defx.nvim")
     finish
 endif
 if Installed('vim-devicons')
-    map <silent> <F1> :Defx -columns=git:mark:indent:icons:filename:type:size:time
+    map <silent> <F1> :Defx -columns=indent:git:mark:icons:filename:type:size:time
                 \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-    map <silent> <leader>j :Defx -columns=git:mark:indent:icons:filename:type:size:time
+    map <silent> <leader>j :Defx -columns=indent:git:mark:icons:filename:type:size:time
                 \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 else 
-    map <silent> <F1> :Defx -columns=git:mark:indent:icon:filename:type:size:time
+    map <silent> <F1> :Defx -columns=indent:git:mark:icon:filename:type:size:time
                 \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-    map <silent> <leader>j :Defx -columns=git:mark:indent:icon:filename:type:size:time
+    map <silent> <leader>j :Defx -columns=indent:git:mark:icon:filename:type:size:time
                 \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 endif
 autocmd FileType defx call s:defx_my_settings()
@@ -41,7 +41,7 @@ function! s:defx_my_settings() abort
                 \ defx#do_action('new_multiple_files')
     nnoremap <silent><buffer><expr> C
                 \ defx#do_action('toggle_columns',
-                \                'mark:indent:icon:filename:type:size:time')
+                \                'indent:git:mark:icon:filename:type:size:time')
     " nnoremap <silent><buffer><expr> S
     "             \ defx#do_action('toggle_sort', 'time')
     nnoremap <silent><buffer><expr> d
