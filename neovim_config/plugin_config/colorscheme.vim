@@ -33,13 +33,18 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-try 
-    let g:gruvbox_transp_bg = 0
-    let g:gruvbox_plugin_hi_groups = 1
-    let g:gruvbox_filetype_hi_groups = 1
-    colorscheme gruvbox8_soft
-endtry
+" try 
+"     let g:gruvbox_transp_bg = 0
+"     let g:gruvbox_plugin_hi_groups = 1
+"     let g:gruvbox_filetype_hi_groups = 1
+"     colorscheme gruvbox8_soft
+" endtry
 
+try
+    let g:miramare_enable_italic = 1
+    let g:miramare_disable_italic_comment = 1
+    colorscheme miramare
+endtry
 "
 " 
 " try 
