@@ -5,10 +5,11 @@ let g:Lf_ShowHidden = 1
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_RootMarkers = ['.xcworkspace', '.project', '.git']
-let g:Lf_WindowPosition = 'popup'
+" let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PopupColorscheme = 'gruvbox_default'
-let g:Lf_StlColorscheme = 'gruvbox_default'
+let g:Lf_StlColorscheme = 'gruvbox_material'
+let g:Lf_ShowDevIcons = 0
 
 " let g:Lf_UseVersionControlTool = "git ls-files"
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>'],
