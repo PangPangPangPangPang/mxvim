@@ -10,7 +10,6 @@ let g:coc_global_extensions = [
             \'coc-translator',
             \'coc-flutter',
             \'coc-sourcekit',
-            \'coc-go'
             \]
 
 nmap <silent> <c-]> <Plug>(coc-definition)

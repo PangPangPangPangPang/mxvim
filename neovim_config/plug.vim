@@ -17,15 +17,17 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'connorholyday/vim-snazzy'
+" Plug 'connorholyday/vim-snazzy'
 " Plug 'ajmwagar/vim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'Dave-Elec/gruvbox'
-Plug 'srcery-colors/srcery-vim'
+" Plug 'srcery-colors/srcery-vim'
 " Plug 'NLKNguyen/papercolor-theme'
-Plug 'rakr/vim-one'
-Plug 'joshdick/onedark.vim'
-Plug 'franbach/miramare'
+" Plug 'rakr/vim-one'
+" Plug 'joshdick/onedark.vim'
+" Plug 'franbach/miramare'
+" Plug 'dracula/vim', { 'as': 'dracula' }
+
 
 " Plug 'sainnhe/vim-color-forest-night'
 " Readline style insertion
