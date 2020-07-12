@@ -84,12 +84,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
-
-let g:vem_tabline_multiwindow_mode = 1
-let g:vem_tabline_show = 1
-let g:vem_tabline_show_number = 'buffnr'
-let g:vem_tabline_number_symbol = " "
-Plug 'pacha/vem-tabline'
+Plug 'mengelbrecht/lightline-bufferline'
+let g:lightline#bufferline#show_number = 1
 
 """"""""""""Markdown"""""""""""""""""""
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}

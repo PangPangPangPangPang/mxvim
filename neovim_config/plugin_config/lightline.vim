@@ -13,11 +13,11 @@ let g:lightline.tab = {
             \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
 
 let g:lightline.enable = {
-            \ 'tabline': 0,
+            \ 'tabline': 1,
             \}
 let g:lightline.tabline = {
-            \ 'left': [ [ 'tabs' ] ],
-            \ 'right': [ [ 'close' ] ] }
+            \ 'left': [ [ 'buffers' ] ],
+            \ 'right': [ [ ] ] }
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
             \ 'cocstatus': 'coc#status',
@@ -61,12 +61,14 @@ let g:lightline.component_expand = {
             \  'linter_warnings': 'lightline#ale#warnings',
             \  'linter_errors': 'lightline#ale#errors',
             \  'linter_ok': 'lightline#ale#ok',
+            \   'buffers': 'lightline#bufferline#buffers',
             \ }
 let g:lightline.component_type = {
             \     'linter_checking': 'left',
             \     'linter_warnings': 'warning',
             \     'linter_errors': 'error',
             \     'linter_ok': 'left',
+            \   'buffers': 'tabsel',
             \ }
 
 function! LightlinePercent()
