@@ -11,6 +11,7 @@ endif
 
 set cursorline
 " set cursorcolumn
+" set colorcolumn=140
 
 set list lcs=tab:\⎸\ 
 
@@ -23,7 +24,6 @@ set history=500
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-set colorcolumn=140
 
 " Show line numbers
 set nu!

@@ -39,6 +39,7 @@ try
     let g:gruvbox_filetype_hi_groups = 1
     colorscheme gruvbox8_soft
 endtry
+colorscheme snazzy
 
 " try
 "     let g:miramare_enable_italic = 1
