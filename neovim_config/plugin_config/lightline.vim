@@ -19,7 +19,7 @@ let g:lightline.enable = {
             \}
 let g:lightline.tabline = {
             \ 'left': [ [ 'buffers' ] ],
-            \ 'right': [ [ ] ] }
+            \ 'right': [ [ 'max' ] ] }
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
             \ 'cocstatus': 'coc#status',
@@ -33,12 +33,15 @@ let g:lightline.component_function = {
             \ 'percent': 'LightlinePercent',
             \'charvaluehex': 'LightlineCharValueHex',
             \'lineinfo': 'LightlineLineInfo',
+            \'max': 'LightlineTabName',
             \}
 " let g:lightline.colorscheme = 'srcery'
 " let g:lightline.colorscheme = 'deus'
 " let g:lightline.colorscheme = 'forest_night'
 " let g:lightline.colorscheme = 'one'
+" let g:lightline.colorscheme = 'equinusocio_material'
 let g:lightline.colorscheme = 'gruvbox_material'
+
 " let g:lightline.colorscheme = 'miramare'
 " let g:lightline.colorscheme = 'snazzy'
 " let g:lightline.separator = { 'left': '', 'right': '' }
@@ -63,16 +66,20 @@ let g:lightline.component_expand = {
             \  'linter_warnings': 'lightline#ale#warnings',
             \  'linter_errors': 'lightline#ale#errors',
             \  'linter_ok': 'lightline#ale#ok',
-            \   'buffers': 'lightline#bufferline#buffers',
+            \  'buffers': 'lightline#bufferline#buffers',
             \ }
 let g:lightline.component_type = {
             \     'linter_checking': 'left',
             \     'linter_warnings': 'warning',
             \     'linter_errors': 'error',
             \     'linter_ok': 'left',
-            \   'buffers': 'tabsel',
+            \     'buffers': 'tabsel',
             \ }
 
+function! LightlineTabName()
+    return "Max"
+endfunction
+    
 function! LightlinePercent()
     if &ft =~ 'defx'
         return ''

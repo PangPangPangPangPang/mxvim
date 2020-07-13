@@ -41,6 +41,9 @@ try
 endtry
 " colorscheme snazzy
 
+" let g:equinusocio_material_darker = 0
+" colorscheme equinusocio_material
+
 " try
 "     let g:miramare_enable_italic = 1
 "     let g:miramare_disable_italic_comment = 1

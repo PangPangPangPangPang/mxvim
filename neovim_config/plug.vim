@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'connorholyday/vim-snazzy'
+" Plug 'chuling/equinusocio-material.vim'
 " Plug 'ajmwagar/vim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'Dave-Elec/gruvbox'
