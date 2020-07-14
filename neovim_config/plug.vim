@@ -145,7 +145,7 @@ Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 let g:polyglot_disabled = ['markdown', 'mathematica']
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")
@@ -224,10 +224,13 @@ let g:terminal_kill = "term"
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 
+if has('nvim-0.5')
+    Plug 'nvim-treesitter/nvim-treesitter'
+endif
+
 call plug#end()
 
 " Load plugin config.
 for f in split(glob('~/.config/nvim/plugin_config/*.vim'))
     exe 'source' f
 endfor
-
