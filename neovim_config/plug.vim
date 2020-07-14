@@ -54,6 +54,9 @@ else
     Plug 'Xuyuanp/nerdtree-git-plugin'
 endif
 
+" Highlight yank.
+Plug 'machakann/vim-highlightedyank'
+
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -219,13 +222,12 @@ let g:terminal_list = 0
 let g:terminal_kill = "term"
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'RRethy/vim-illuminate'
 
 if has('nvim-0.5')
     Plug 'nvim-treesitter/nvim-treesitter'
 else
-    " Highlight yank.
-    Plug 'machakann/vim-highlightedyank'
+    " Automatically highlighting other uses of the current word under the cursor
+    Plug 'RRethy/vim-illuminate'
 endif
 
 call plug#end()
