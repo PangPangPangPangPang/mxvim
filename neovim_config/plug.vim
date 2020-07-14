@@ -87,7 +87,6 @@ Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 let g:lightline#bufferline#show_number = 1
-let g:lightline#bufferline#multiwindow_mode = 1
 
 """"""""""""Markdown"""""""""""""""""""
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
