@@ -145,7 +145,7 @@ Plug 'honza/vim-snippets'
 
 " Hightlight plugin
 let g:polyglot_disabled = ['markdown', 'mathematica']
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")
@@ -160,9 +160,6 @@ Plug 'rhysd/clever-f.vim'
 
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
-
-" Highlight yank.
-Plug 'machakann/vim-highlightedyank'
 
 """""""""""""'go'"""""""""""""
 " Plug 'fatih/vim-go', { 'for' : 'go' }
@@ -226,6 +223,9 @@ Plug 'RRethy/vim-illuminate'
 
 if has('nvim-0.5')
     Plug 'nvim-treesitter/nvim-treesitter'
+else
+    " Highlight yank.
+    Plug 'machakann/vim-highlightedyank'
 endif
 
 call plug#end()
