@@ -1,11 +1,11 @@
-let g:Lf_ShortcutF = '<C-P>'
+" let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_DefaultMode = 'NameOnly'
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_RootMarkers = ['.xcworkspace', '.project', '.git']
-" let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PopupColorscheme = 'gruvbox_default'
 let g:Lf_StlColorscheme = 'gruvbox_material'
