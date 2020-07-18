@@ -26,7 +26,18 @@ set shortmess+=c
 
 
 " Show line numbers
-set nu!
+" set nu!
+set nonu
+
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+" Add a bit extra margin to the left, change 0 to 1.
+set foldcolumn=0
+
 
 if has('gui_running') || has('nvim')
     " Show relative line number
@@ -127,15 +138,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Add a bit extra margin to the left, change 0 to 1.
-set foldcolumn=0
-
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=auto
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
