@@ -225,11 +225,10 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 if has('nvim-0.5')
     Plug 'nvim-treesitter/nvim-treesitter'
-else
-    " Automatically highlighting other uses of the current word under the cursor
-    Plug 'RRethy/vim-illuminate'
 endif
 
+" Automatically highlighting other uses of the current word under the cursor
+Plug 'RRethy/vim-illuminate'
 call plug#end()
 
 " Load plugin config.
