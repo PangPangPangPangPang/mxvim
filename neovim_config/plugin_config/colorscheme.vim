@@ -95,17 +95,17 @@ if has('nvim')
 endif
 " 
 if has('nvim')
-    highlight ALEVirtualTextError gui=italic term=italic guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
-    highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
-    highlight ALEVirtualTextWarning gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
-    highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#a78e44 ctermbg=none ctermfg=Yellow
+    highlight ALEVirtualTextError gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight ALEVirtualTextWarning gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
+    highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
     highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
 
-    highlight GitgutterAdd gui=none term=none guibg=none guifg=#a78e44 ctermbg=none ctermfg=Green
-    highlight GitgutterChange gui=none term=none guibg=none guifg=#D79921 ctermbg=none ctermfg=Yellow
-    highlight GitgutterDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
-    highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#DB5A6B ctermbg=none ctermfg=Red
+    highlight GitgutterAdd gui=none term=none guibg=none guifg=#b8bb26 ctermbg=none ctermfg=Green
+    highlight GitgutterChange gui=none term=none guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
+    highlight GitgutterDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
     highlight SignatureMarkText gui=none term=none guibg=none guifg=#EBDBB2 ctermbg=none ctermfg=white
 endif

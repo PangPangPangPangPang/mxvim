@@ -23,8 +23,10 @@ let g:ale_virtualtext_prefix = '■ '
 
 let g:ale_c_ccls_executable = 'ccls'
 
-let g:ale_sign_error = '■'
-let g:ale_sign_warning = '⬥'
+" let g:ale_sign_error = '■'
+" let g:ale_sign_warning = '⬥'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 let g:ale_statusline_format = ['x %d', '> %d', '⬥ ok']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_highlight_linenrs = 1
