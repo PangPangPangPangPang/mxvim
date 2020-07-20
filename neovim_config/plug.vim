@@ -165,7 +165,7 @@ map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
 
 """""""""""""'go'"""""""""""""
-" Plug 'fatih/vim-go', { 'for' : 'go' }
+Plug 'fatih/vim-go', { 'for' : 'go' }
 Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 """""""""""""'objc'"""""""""""""
