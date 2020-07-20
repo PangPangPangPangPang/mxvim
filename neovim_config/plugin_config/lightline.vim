@@ -6,8 +6,8 @@ let g:lightline = {
             \ }
 
 " let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'cocstatus'], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
-let g:lightline.active.right = [[ 'gitbranch' ], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
-let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ]]
+let g:lightline.active.right = [[ 'fileformat', 'fileencoding', 'filetype' ], [ 'percent' ], [ 'lineinfo' ]]
+let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'gitbranch' ],  [ 'readonly', 'filename', 'modified' ]]
 let g:lightline.inactive.left = [[ 'filename' ]]
 let g:lightline.inactive.right = []
 let g:lightline.tab = {
