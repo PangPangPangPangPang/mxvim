@@ -1,5 +1,7 @@
 " let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#filename_modifier = ':t'
+let g:lightline#bufferline#enable_devicons = g:devicons_install
+
 let g:lightline = {
             \ 'active':{},
             \ 'inactive':{},
@@ -9,7 +11,7 @@ let g:lightline = {
 let g:lightline.active.right = [[ 'fileformat', 'fileencoding', 'filetype' ], [ 'percent' ], [ 'lineinfo' ]]
 let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'gitbranch' ],  [ 'readonly', 'filename', 'modified' ]]
 let g:lightline.inactive.left = [[ 'filename' ]]
-let g:lightline.inactive.right = []
+let g:lightline.inactive.right = [['lineinfo']]
 let g:lightline.tab = {
             \ 'active': [ 'tabnum', 'filename', 'modified' ],
             \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
@@ -140,9 +142,9 @@ function! LightlineFileencoding()
 endfunction
 
 function! WebDevIconsGetFileFormatSymbolWithDefault()
-    return Installed('vim-devicons') ? WebDevIconsGetFileFormatSymbol() : ''
+    return g:devicons_install ? WebDevIconsGetFileFormatSymbol() : ''
 endfunction
 
 function! WebDevIconsGetFileTypeSymbolWithDefault()
-    return Installed('vim-devicons') ? WebDevIconsGetFileTypeSymbol() : ''
+    return g:devicons_install ? WebDevIconsGetFileTypeSymbol() : ''
 endfunction

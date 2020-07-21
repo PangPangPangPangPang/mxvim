@@ -9,7 +9,8 @@ endfunction
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
+let g:devicons_install = 1
 
 " Theme
 " Plug 'dracula/vim'
@@ -41,8 +42,8 @@ Plug 'mhinz/vim-startify'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-" if has('python3')
-if 0
+if has('python3')
+" if 0
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
     else
