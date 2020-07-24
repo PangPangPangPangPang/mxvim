@@ -294,7 +294,7 @@ try
                     " \ }
     " endif
     " colorscheme PaperColor
-    colorscheme snow
+    colorscheme gruvbox8
     " colorscheme dracula
     " colorscheme gruvbox
     " let g:gruvbox_contrast_dark=dark
