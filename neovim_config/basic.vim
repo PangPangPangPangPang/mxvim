@@ -178,7 +178,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Specify the behavior when switching between buffers
 try
     set switchbuf=useopen,usetab
-    set stal=2
+    set showtabline=1
 catch
 endtry
 
