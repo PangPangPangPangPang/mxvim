@@ -233,8 +233,7 @@ let g:ycm_key_list_previous_completion = ['<C-N>', '<Up>']
 
 
 nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nmap K :YcmDiags<CR>
-nmap K <plug>(YCMHover)
+nmap K :YcmDiags<CR>
 
 """"""""""""""Lazyload func""""""""""""""""
 augroup plug_lazy_load
@@ -246,7 +245,7 @@ augroup END
 
 """""""""""""""""Golang""""""""""""""""""""
 " Call :GoUpdateBinaries to update.
-" Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 """""""""""""""""""""""""""""""""""""""""""
 
 " Initialize plugin system
