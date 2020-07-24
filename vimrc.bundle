@@ -3,7 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'sainnhe/gruvbox-material'
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'morhetz/gruvbox'
 
 " Make pairs colorful
 Plug 'luochen1990/rainbow'
@@ -28,7 +28,7 @@ let g:Lf_ReverseOrder = 1
 Plug 'mileszs/ack.vim' 
 let g:ack_use_cword_for_empty_search = 1
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+  " let g:ackprg = 'ag --vimgrep'
 endif
 vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
 nnoremap <leader>f :Ack!<space>
@@ -48,13 +48,10 @@ let g:gutentags_cache_dir = expand('~/.cache/tags')
 " change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
 
-Plug 'skywind3000/vim-terminal-help'
-let g:terminal_auto_insert = 1
-let g:terminal_key = "<F5>"
-let g:terminal_cwd = 2
-let g:terminal_height = 20
-let g:terminal_list = 0
-let g:terminal_kill = "term"
+Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
+map <silent> <F12> :VSTerminalToggle<cr>
+tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
+let g:vs_terminal_custom_height = 10
 
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
