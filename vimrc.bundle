@@ -273,6 +273,9 @@ else
                 \	'<Plug>ZVMotion'
                 \ ]}
     nnoremap <silent> <leader>z :Zeavim<cr>
+
+Plug 'puremourning/vimspector'
+let g:vimspector_enable_mappings = 'HUMAN'
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
