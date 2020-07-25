@@ -10,6 +10,7 @@ if !has('nvim') && $TERM ==# 'screen-256color'
 endif
 " Sets how many lines of history VIM has to remember
 set history=500
+set mouse=a
 
 " Show line numbers
 set nu!
