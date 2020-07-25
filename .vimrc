@@ -273,6 +273,47 @@ inoremap <c-e> <Esc>$a
 inoremap <c-w> <Esc>diwi
 inoremap <c-u> <Esc>cc
 
+function! GetPyxVersion()
+    try
+        let l:pyx_version = execute('py3 print(sys.version)')[1:6]
+    catch
+        let l:pyx_version = ''
+    endtry
+    if l:pyx_version == ''
+        try
+            let l:pyx_version = execute('py print(sys.version)')[1:6]
+        catch
+            return 0
+        endtry
+    endif
+    let s:python_version = str2float(l:pyx_version[0:2])
+    if s:python_version > 3
+        let g:pynvim_import = 0
+        let g:ipdb_import = 0
+python3 << Python3EOF
+try:
+    import vim
+    import pynvim
+except Exception:
+    pass
+else:
+    vim.command('let g:pynvim_import = 1')
+try:
+    import ipdb
+except Exception:
+    pass
+else:
+    vim.command('let g:ipdb_import = 1')
+Python3EOF
+    endif
+    if l:pyx_version[5] == ' '
+        return s:python_version + str2float(l:pyx_version[4])/100
+    else
+        return s:python_version + str2float(l:pyx_version[4:5])/1000
+    endif
+endfunction
+let g:python_version   = GetPyxVersion()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
