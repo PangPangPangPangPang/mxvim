@@ -225,7 +225,7 @@ let g:terminal_kill = "term"
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 if has('nvim-0.5')
-    Plug 'nvim-treesitter/nvim-treesitter', { 'commit': '599bec38900b2a7eaeb05a44807d6ab70911e522' }
+    Plug 'nvim-treesitter/nvim-treesitter'
 endif
 
 " Automatically highlighting other uses of the current word under the cursor
