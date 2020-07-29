@@ -38,10 +38,10 @@ let g:gutentags_cache_dir = expand('~/.cache/tags')
 " change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
 
-Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
-map <silent> <F12> :VSTerminalToggle<cr>
-tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
-let g:vs_terminal_custom_height = 10
+" Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
+" map <silent> <F12> :VSTerminalToggle<cr>
+" tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
+" let g:vs_terminal_custom_height = 10
 
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
