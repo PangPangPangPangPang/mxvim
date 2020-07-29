@@ -275,7 +275,7 @@ augroup END
 
 """""""""""""""""Golang""""""""""""""""""""
 " Call :GoUpdateBinaries to update.
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 """""""""""""""""""""""""""""""""""""""""""
 
 " Initialize plugin system
