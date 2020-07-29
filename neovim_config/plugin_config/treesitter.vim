@@ -2,6 +2,7 @@ if !Installed("nvim-treesitter")
     finish
 endif
 if has('nvim-0.5')
+    highlight link TSError Normal
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     highlight = {
