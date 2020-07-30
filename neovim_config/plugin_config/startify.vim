@@ -36,8 +36,8 @@ function! s:list_commits()
 endfunction
 
 let g:startify_lists = [
-            \ { 'header': ['   MRU'],            'type': 'files' },
             \ { 'header': ['   Sessions'],       'type': 'sessions' },
+            \ { 'header': ['   MRU'],            'type': 'files' },
             \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
             \ { 'header': ['   Commits'],        'type': function('s:list_commits') },
             \ ]
