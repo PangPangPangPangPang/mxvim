@@ -3,7 +3,15 @@ if !Installed("nvim-treesitter")
 endif
 if has('nvim-0.5')
     highlight link TSError Normal
+    highlight link TSPunctBracket Normal 
 lua <<EOF
+require "nvim-treesitter.highlight"
+local hlmap = vim.treesitter.TSHighlighter.hl_map
+
+--Misc
+hlmap.error = nil
+hlmap["punctuation.delimiter"] = "Delimiter"
+hlmap["punctuation.bracket"] = nil
 require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,                    -- false will disable the whole extension
