@@ -43,7 +43,6 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
 if has('python3')
-" if 0
     if has('nvim')
         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
     else
@@ -81,10 +80,6 @@ nnoremap <leader>] = @t
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" let g:deoplete#enable_at_startup = 1
-" Plug 'beeender/Comrade'
 
 Plug 'dense-analysis/ale'
 Plug 'maximbaz/lightline-ale'
@@ -131,7 +126,6 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 
 let g:indentLine_char = '⎸'
-" let g:indentLine_char = '┆'
 Plug 'Yggdroot/indentLine'
 
 " Git support
@@ -159,9 +153,9 @@ if has("mac") && has("nvim")
 else
     Plug 'rlue/vim-barbaric'
 endif
+
 " Highlight f/F/t/T search.
 Plug 'rhysd/clever-f.vim'
-
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
 
@@ -189,27 +183,6 @@ autocmd FileType dart nnoremap <buffer> <leader>fR :FlutterHotRestart<cr>
 Plug 'kshenoy/vim-signature'
 
 Plug 'PangPangPangPangPang/ywvim'
-let g:ywvim_ims=[
-            \['py', '拼音', 'pinyin.ywvim'],
-            \]
-let g:ywvim_zhpunc = 1
-let g:ywvim_listmax = 10
-let g:ywvim_esc_autoff = 0
-let g:ywvim_autoinput = 0
-let g:ywvim_circlecandidates = 1
-let g:ywvim_helpim_on = 1
-let g:ywvim_matchexact = 0
-let g:ywvim_chinesecode = 1
-let g:ywvim_gb = 0
-let g:ywvim_preconv = 'g2b'
-let g:ywvim_conv = ''
-let g:ywvim_lockb = 1
-let g:ywvim_theme = 'light'
-if has('vim')
-    let g:ywvim_popupwin=1
-    let g:ywvim_popupwin_follow_cursor=1
-    let g:ywvim_popupwin_horizontal=0
-endif
 
 Plug 'simnalamburt/vim-mundo'
 nnoremap <silent> <F6> :MundoToggle<CR>
@@ -230,6 +203,7 @@ endif
 
 " Automatically highlighting other uses of the current word under the cursor
 Plug 'RRethy/vim-illuminate'
+
 call plug#end()
 
 " Load plugin config.
