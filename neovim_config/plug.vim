@@ -198,10 +198,13 @@ let g:terminal_kill = "term"
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 if has('nvim-0.5')
-    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-treesitter/nvim-treesitter' 
 endif
 
 " Automatically highlighting other uses of the current word under the cursor
+let g:Illuminate_highlightUnderCursor = 0
+let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
+
 Plug 'RRethy/vim-illuminate'
 
 call plug#end()

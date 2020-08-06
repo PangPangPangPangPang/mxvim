@@ -113,4 +113,12 @@ if has('nvim')
     highlight GitgutterDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
     highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
     highlight SignatureMarkText gui=none term=none guibg=none guifg=#EBDBB2 ctermbg=none ctermfg=white
+
+    highlight IlluminatedWord gui=none term=none guibg=#444444 guifg=none ctermbg=245 ctermfg=none
+    augroup illuminate_augroup
+        autocmd!
+        autocmd VimEnter * hi link illuminatedWord IlluminatedWord
+    augroup END
+
 endif
+
