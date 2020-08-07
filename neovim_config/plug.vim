@@ -27,7 +27,7 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
 " Plug 'joshdick/onedark.vim'
-Plug 'franbach/miramare'
+Plug 'PangPangPangPangPang/miramare'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 
