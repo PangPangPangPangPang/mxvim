@@ -33,12 +33,12 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-try 
-    let g:gruvbox_transp_bg = 0
-    let g:gruvbox_plugin_hi_groups = 1
-    let g:gruvbox_filetype_hi_groups = 1
-    colorscheme gruvbox8_soft
-endtry
+" try 
+"     let g:gruvbox_transp_bg = 0
+"     let g:gruvbox_plugin_hi_groups = 1
+"     let g:gruvbox_filetype_hi_groups = 1
+"     colorscheme gruvbox8_soft
+" endtry
 " let g:dracula_bold = 1
 " let g:dracula_italic = 1
 " let g:dracula_colorterm = 1
