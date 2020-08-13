@@ -16,8 +16,8 @@ let g:devicons_install = 1
 " Plug 'dracula/vim'
 " Plug 'morhetz/gruvbox'
 " Plug 'gruvbox-community/gruvbox'
-" Plug 'sainnhe/gruvbox-material'
-" Plug 'lifepillar/vim-gruvbox8'
+Plug 'sainnhe/gruvbox-material'
+Plug 'lifepillar/vim-gruvbox8'
 " Plug 'connorholyday/vim-snazzy'
 " Plug 'chuling/equinusocio-material.vim'
 " Plug 'ajmwagar/vim-deus'
@@ -142,8 +142,8 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'honza/vim-snippets'
 
 " Hightlight plugin
-let g:polyglot_disabled = ['markdown', 'mathematica']
-Plug 'sheerun/vim-polyglot'
+" let g:polyglot_disabled = ['markdown', 'mathematica']
+" Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")
@@ -197,8 +197,39 @@ let g:terminal_kill = "term"
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
+" if has('nvim-0.5')
+"     Plug 'nvim-treesitter/nvim-treesitter' 
+" endif
 if has('nvim-0.5')
-    Plug 'nvim-treesitter/nvim-treesitter' 
+    Plug 'nvim-treesitter/nvim-treesitter', {'on': ['TSBufEnable', 'TSEnableAll',
+                \ 'TSInstall', 'TSInstallInfo', 'TSInstallSync', 'TSModuleInfo']}
+    highlight link TSPunctBracket NONE
+    highlight link TSVariable NONE
+    highlight link TSError NONE
+    " highlight link TSKeyword Statement
+    " highlight link TSInclude Statement
+    " highlight link TSConstBuiltin cSpecial
+    " highlight link TSParameter Parameter
+
+    " lazy load for file type
+    let s:ts_ft_set = ['c', 'h', 'cpp', 'go', 'java', 'rust', 'javascript', 'typescript']
+
+    function LazyLoadTreeSitter(timer) abort
+        if !get(g:, 'loaded_nvim_treesitter', 0)
+            call plug#load('nvim-treesitter')
+        endif
+
+        execute 'autocmd FileType ' . join(s:ts_ft_set, ',') .
+                    \ ' execute("TSBufEnable highlight")'
+        for buf_nr in filter(range(1, bufnr('$')), 'bufexists(v:val) && bufloaded(v:val)')
+            let ft = getbufvar(buf_nr, '&filetype')
+            if index(s:ts_ft_set, ft) > -1
+                call setbufvar(buf_nr, '&filetype', ft)
+            endif
+        endfor
+    endfunction
+    execute 'autocmd FileType ' . join(s:ts_ft_set, ',') .
+                \ ' ++once call timer_start(0, "LazyLoadTreeSitter")'
 endif
 
 " Automatically highlighting other uses of the current word under the cursor
