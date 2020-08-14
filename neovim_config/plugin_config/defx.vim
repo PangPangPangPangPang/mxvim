@@ -1,17 +1,8 @@
 if !Installed("defx.nvim")
     finish
 endif
-if Installed('vim-devicons')
-    map <silent> <F1> :Defx -columns=indent:git:mark:icons:filename:type:size:time
-                \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-    map <silent> <leader>j :Defx -columns=indent:git:mark:icons:filename:type:size:time
-                \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
-else 
-    map <silent> <F1> :Defx -columns=indent:git:mark:icon:filename:type:size:time
-                \      -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-    map <silent> <leader>j :Defx -columns=indent:git:mark:icon:filename:type:size:time
-                \           -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
-endif
+map <silent> <F1> :Defx -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
+map <silent> <leader>j :Defx  -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
@@ -79,18 +70,26 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
 endfunction
+
+if Installed("defx.nvim")
+    call defx#custom#option('_', {
+                \ 'columns': 'mark:indent:git:icons:filename:type:size:time',
+                \ })
+else
+    call defx#custom#option('_', {
+                \ 'columns': 'mark:indent:git:icon:filename:type:size:time',
+                \ })
+endif
+
 call defx#custom#column('icon', {
             \ 'directory_icon': '▶',
-            \ 'opened_icon': '▼'
+            \ 'opened_icon': '▼',
+            \ 'root_icon': '❤',
             \ })
-" \ 'root_icon': '❤',
 call defx#custom#column('filename', {
             \ 'min_width': 60,
             \ 'max_width': 400,
             \ })
-call defx#custom#option('_', {
-            \ 'columns': 'filename:type',
-            \})
 
 call defx#custom#column('mark', {
             \ 'readonly_icon': '',
@@ -107,17 +106,17 @@ call defx#custom#column('git', 'indicators', {
   \ 'Unknown'   : '?'
   \ })
 
-let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 2
-let g:defx_icons_directory_icon = ' '
-let g:defx_icons_mark_icon = '* '
-let g:defx_icons_copy_icon = ' '
-let g:defx_icons_move_icon = ' '
-let g:defx_icons_parent_icon = ' '
-let g:defx_icons_default_icon = ' '
-let g:defx_icons_directory_symlink_icon = ' '
-" Options below are applicable only when using "tree" feature
-let g:defx_icons_root_opened_tree_icon = ' '
-let g:defx_icons_nested_opened_tree_icon = ' '
-let g:defx_icons_nested_closed_tree_icon = ' '
 
+let g:defx_icons_enable_syntax_highlight = 0
+let g:defx_icons_column_length = 1
+let g:defx_icons_directory_icon = ' '
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_copy_icon = ''
+let g:defx_icons_move_icon = ''
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+" Options below are applicable only when using "tree" feature
+let g:defx_icons_root_opened_tree_icon = ''
+let g:defx_icons_nested_opened_tree_icon = ''
+let g:defx_icons_nested_closed_tree_icon = ''
