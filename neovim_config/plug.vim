@@ -142,8 +142,8 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'honza/vim-snippets'
 
 " Hightlight plugin
-" let g:polyglot_disabled = ['markdown', 'mathematica']
-" Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['markdown', 'mathematica']
+Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")
