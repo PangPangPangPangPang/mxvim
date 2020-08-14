@@ -238,6 +238,9 @@ let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
 
 Plug 'RRethy/vim-illuminate'
 
+" DB
+Plug 'tpope/vim-dadbod', {'on': [ 'DB' ]}
+
 call plug#end()
 
 " Load plugin config.
