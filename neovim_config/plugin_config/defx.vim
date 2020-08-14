@@ -107,7 +107,7 @@ call defx#custom#column('git', 'indicators', {
   \ })
 
 
-let g:defx_icons_enable_syntax_highlight = 0
+let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 1
 let g:defx_icons_directory_icon = ' '
 let g:defx_icons_mark_icon = '*'
