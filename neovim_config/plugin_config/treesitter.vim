@@ -2,10 +2,11 @@ if !Installed("nvim-treesitter")
     finish
 endif
 finish
+finish
 if has('nvim-0.5')
     highlight link TSVariable None
-    highlight link TSError Normal
-    highlight link TSPunctBracket Normal 
+    highlight link TSError None
+    highlight link TSPunctBracket None 
 lua <<EOF
 require "nvim-treesitter.highlight"
 local hlmap = vim.treesitter.TSHighlighter.hl_map
