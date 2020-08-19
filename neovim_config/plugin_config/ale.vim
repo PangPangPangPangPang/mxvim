@@ -18,7 +18,7 @@ if has('nvim')
 else
     let g:ale_echo_cursor = 1
 endif
-let g:ale_virtualtext_prefix = '■  '
+let g:ale_virtualtext_prefix = '■ '
 " let g:ale_lint_on_enter = 0
 
 let g:ale_c_ccls_executable = 'ccls'
