@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
             \'coc-flutter',
             \'coc-sourcekit',
             \'coc-postfix',
+            \'coc-fzf-preview',
             \]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
