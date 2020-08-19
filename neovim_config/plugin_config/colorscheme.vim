@@ -101,9 +101,9 @@ if has('nvim')
 endif
 " 
 if has('nvim')
-    highlight ALEVirtualTextError gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight ALEVirtualTextError gui=none term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight ALEVirtualTextWarning gui=none term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
     highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight ALEVirtualTextWarning gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
     highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
     highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE

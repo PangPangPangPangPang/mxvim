@@ -47,13 +47,13 @@ let g:lightline.component_function = {
 
 let g:lightline.colorscheme = 'miramare'
 " let g:lightline.colorscheme = 'snazzy'
-" let g:lightline.separator = { 'left': '', 'right': '' }
-" let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
 
-let g:lightline.separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
-let g:lightline.subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
-let g:lightline.tabline_separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
-let g:lightline.tabline_subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
+" let g:lightline.separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
+" let g:lightline.subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
+" let g:lightline.tabline_separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
+" let g:lightline.tabline_subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
 
 " let g:lightline.separator = { 'left': "\ue0b8", 'right': "\ue0be" }
 " let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
