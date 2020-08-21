@@ -8,6 +8,35 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+if has('nvim')
+    " highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow
+    highlight SignColumn gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    " highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
+    " highlight ColorColumn gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
+endif
+" 
+if has('nvim')
+    highlight ALEVirtualTextError gui=none term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight ALEVirtualTextWarning gui=none term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
+    highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
+    highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+
+    highlight GitgutterAdd gui=none term=none guibg=none guifg=#8ec07c ctermbg=none ctermfg=Green
+    highlight GitgutterChange gui=none term=none guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
+    highlight GitgutterDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+    highlight SignatureMarkText gui=none term=none guibg=none guifg=#EBDBB2 ctermbg=none ctermfg=white
+
+    highlight IlluminatedWord gui=none term=none guibg=#444444 guifg=none ctermbg=245 ctermfg=none
+    augroup illuminate_augroup
+        autocmd!
+        autocmd VimEnter * hi link illuminatedWord IlluminatedWord
+    augroup END
+
+endif
 
 " colorscheme dracula
 " colorscheme hybrid
@@ -93,33 +122,4 @@ endtry
 "     autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
 "     autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 " endtry
-if has('nvim')
-    " highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow
-    highlight SignColumn gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    " highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-    " highlight ColorColumn gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-endif
-" 
-if has('nvim')
-    highlight ALEVirtualTextError gui=none term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight ALEVirtualTextWarning gui=none term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
-    highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
-    highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-
-    highlight GitgutterAdd gui=none term=none guibg=none guifg=#8ec07c ctermbg=none ctermfg=Green
-    highlight GitgutterChange gui=none term=none guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
-    highlight GitgutterDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight SignatureMarkText gui=none term=none guibg=none guifg=#EBDBB2 ctermbg=none ctermfg=white
-
-    highlight IlluminatedWord gui=none term=none guibg=#444444 guifg=none ctermbg=245 ctermfg=none
-    augroup illuminate_augroup
-        autocmd!
-        autocmd VimEnter * hi link illuminatedWord IlluminatedWord
-    augroup END
-
-endif
 

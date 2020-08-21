@@ -212,7 +212,7 @@ if has('nvim-0.5')
     " highlight link TSParameter Parameter
 
     " lazy load for file type
-    let s:ts_ft_set = ['c', 'h', 'cpp', 'go', 'java', 'rust', 'javascript', 'typescript']
+    let s:ts_ft_set = ['c', 'h', 'cpp', 'go', 'java', 'rust', 'javascript', 'typescript', 'dart']
 
     function LazyLoadTreeSitter(timer) abort
         if !get(g:, 'loaded_nvim_treesitter', 0)
