@@ -8,7 +8,7 @@ let g:coc_global_extensions = [
             \'coc-vimlsp',
             \'coc-prettier',
             \'coc-translator',
-            \'coc-flutter',
+            \'coc-flutter-tools',
             \'coc-sourcekit',
             \'coc-postfix',
             \'coc-fzf-preview',
@@ -62,3 +62,14 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 map <silent> <leader>t :CocCommand translator.popup<CR>
+
+" For flutter
+autocmd FileType dart nnoremap <buffer> <leader>fs :CocCommand flutter.run<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fa :CocCommand flutter.attach<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fq :CocCommand flutter.dev.quit<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fr :CocCommand flutter.dev.hotreload<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fR :CocCommand flutter.dev.hotRestart<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fl :CocCommand flutter.dev.openDevLog<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fp :CocCommand flutter.dev.openProfiler<cr>
+autocmd FileType dart nnoremap <buffer> <leader>fo :CocCommand flutter.toggleOutline<cr>
+

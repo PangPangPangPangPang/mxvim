@@ -82,10 +82,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'dense-analysis/ale'
-Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
-let g:lightline#bufferline#show_number = 1
+Plug 'maximbaz/lightline-ale'
+
+" Plug 'mengelbrecht/lightline-bufferline'
+" let g:lightline#bufferline#show_number = 1
 
 """"""""""""Markdown"""""""""""""""""""
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -166,19 +167,7 @@ Plug 'sebdah/vim-delve', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 """""""""""""'objc'"""""""""""""
 Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
-
 """"""""""""""""""""""""""""""
-"""""""""""""flutter"""""""""""""
-let g:flutter_command= '~/motor_flutter/.flutterw/cache/dist/bd_1.5.4/flutter/bin/flutter'
-let g:flutter_show_log_on_attach = 1
-Plug 'PangPangPangPangPang/vim-flutter', {'for': 'dart'}
-autocmd FileType dart nnoremap <buffer> <leader>fs :FlutterRun<cr>
-autocmd FileType dart nnoremap <buffer> <leader>fr :FlutterHotReload<cr>
-autocmd FileType dart nnoremap <buffer> <leader>fa :FlutterAttach<cr>
-autocmd FileType dart nnoremap <buffer> <leader>fq :FlutterQuit<cr>
-autocmd FileType dart nnoremap <buffer> <leader>fR :FlutterHotRestart<cr>
-""""""""""""""""""""""""""""""
-" Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Add mark
 Plug 'kshenoy/vim-signature'

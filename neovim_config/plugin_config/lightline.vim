@@ -7,9 +7,8 @@ let g:lightline = {
             \ 'inactive':{},
             \ }
 
-" let g:lightline.active.right = [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'cocstatus'], [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
-let g:lightline.active.right = [[ 'fileformat', 'fileencoding', 'filetype' ], [ 'percent' ], [ 'lineinfo' ]]
-let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'gitbranch' ],  [ 'readonly', 'filename', 'modified' ]]
+let g:lightline.active.right = [[ 'fileformat', 'fileencoding', 'filetype' ], [ 'percent' ], [ 'lineinfo' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]
+let g:lightline.active.left = [[ 'mode', 'paste' ], [ 'gitbranch' ],  [ 'readonly', 'filename', 'modified', 'cocstatus' ]]
 let g:lightline.inactive.left = [[ 'filename' ]]
 let g:lightline.inactive.right = [['lineinfo']]
 let g:lightline.tab = {
@@ -24,7 +23,6 @@ let g:lightline.tabline = {
             \ 'right': [ [ 'max' ] ] }
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
-            \ 'cocstatus': 'coc#status',
             \ 'modified': 'LightlineModified',
             \ 'readonly': 'LightlineReadonly',
             \ 'filename': 'LightlineFilename',
@@ -36,6 +34,7 @@ let g:lightline.component_function = {
             \'charvaluehex': 'LightlineCharValueHex',
             \'lineinfo': 'LightlineLineInfo',
             \'max': 'LightlineTabName',
+            \ 'cocstatus': 'coc#status',
             \}
 " let g:lightline.colorscheme = 'srcery'
 " let g:lightline.colorscheme = 'deus'
@@ -49,7 +48,7 @@ let g:lightline.colorscheme = 'miramare'
 " let g:lightline.colorscheme = 'snazzy'
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
-
+ 
 let g:lightline.separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
 let g:lightline.subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
 let g:lightline.tabline_separator = { 'left': "\uE0B0", 'right': "\uE0B2" }
@@ -59,33 +58,35 @@ let g:lightline.tabline_subseparator = { 'left': "\uE0B1", 'right': "\uE0B3" }
 " let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
 " let g:lightline.tabline_separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
 " let g:lightline.tabline_subseparator = { 'left': "\ue0bb", 'right': "\ue0bb" }
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_warnings = "\uf529"
-let g:lightline#ale#indicator_errors = "\uf00d"
-let g:lightline#ale#indicator_ok = "\uf00c"
+" 
+let g:lightline#ale#indicator_checking = " "
+let g:lightline#ale#indicator_infos = " "
+let g:lightline#ale#indicator_warnings = " "
+let g:lightline#ale#indicator_errors = " "
+let g:lightline#ale#indicator_ok = " "
 
 let g:lightline.component_expand = {
             \  'linter_checking': 'lightline#ale#checking',
             \  'linter_warnings': 'lightline#ale#warnings',
             \  'linter_errors': 'lightline#ale#errors',
+            \  'linter_infos': 'lightline#ale#infos',
             \  'linter_ok': 'lightline#ale#ok',
-            \  'wraptab': 'LightlineWrapTab',
             \ }
 let g:lightline.component_type = {
-            \     'linter_checking': 'left',
+            \     'linter_checking': 'right',
             \     'linter_warnings': 'warning',
             \     'linter_errors': 'error',
-            \     'linter_ok': 'left',
-            \     'wraptab': 'tabsel',
+            \     'linter_ok': 'right',
+            \     'linter_infos': 'right',
             \ }
 
-function LightlineWrapTab()
-    if tabpagenr('$') > 1
-        return lightline#tabs()
-    endif
-    let ret = lightline#bufferline#buffers()
-    return l:ret
-endfunction
+" function LightlineWrapTab()
+"     if tabpagenr('$') > 1
+"         return lightline#tabs()
+"     endif
+"     let ret = lightline#bufferline#buffers()
+"     return l:ret
+" endfunction
 
 function! LightlineTabName()
     return "Max"
@@ -148,4 +149,8 @@ endfunction
 
 function! WebDevIconsGetFileTypeSymbolWithDefault()
     return g:devicons_install ? WebDevIconsGetFileTypeSymbol() : ''
+endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
 endfunction

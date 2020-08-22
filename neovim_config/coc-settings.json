@@ -15,6 +15,9 @@
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
+  "flutter.sdk.flutter-lookup": "~/motor_flutter/.flutterw/cache/dist/bd_1.5.4/flutter/bin/flutter",
+  "flutter.sdk.dart-command": "",
+  "flutter.openDevLogSplitCommand": "botright 20split",
   "languageserver": {
     "golang": {
       "command": "gopls",
