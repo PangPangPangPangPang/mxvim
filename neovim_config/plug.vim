@@ -149,9 +149,6 @@ Plug 'sheerun/vim-polyglot'
 
 " Manage input method.
 if has("mac") && has("nvim")
-    Plug 'lyokha/vim-xkbswitch'
-    let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
-    let g:XkbSwitchEnabled = 1
 else
     Plug 'rlue/vim-barbaric'
 endif

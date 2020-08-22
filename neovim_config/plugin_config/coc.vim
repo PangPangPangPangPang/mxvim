@@ -1,5 +1,7 @@
 let g:coc_global_extensions = [
             \'coc-python',
+            \'coc-sh',
+            \'coc-imselect',
             \'coc-json',
             \'coc-tsserver',
             \'coc-html',
