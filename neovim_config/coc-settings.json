@@ -18,6 +18,9 @@
   "flutter.sdk.flutter-lookup": "~/motor_flutter/.flutterw/cache/dist/bd_1.5.4/flutter/bin/flutter",
   "flutter.sdk.dart-command": "",
   "flutter.openDevLogSplitCommand": "botright 20split",
+  "imselect.enableStatusItem": false,
+  "imselect.defaultInput": "com.apple.keylayout.US",
+  "imselect.enableFloating": true,
   "languageserver": {
     "golang": {
       "command": "gopls",
