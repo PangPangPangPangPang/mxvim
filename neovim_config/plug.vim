@@ -188,7 +188,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 "     Plug 'nvim-treesitter/nvim-treesitter' 
 " endif
 if has('nvim-0.5')
-    Plug 'nvim-treesitter/nvim-treesitter', {'on': ['TSBufEnable', 'TSEnableAll',
+    Plug 'PangPangPangPangPang/nvim-treesitter', {'on': ['TSBufEnable', 'TSEnableAll',
                 \ 'TSInstall', 'TSInstallInfo', 'TSInstallSync', 'TSModuleInfo']}
     highlight link TSPunctBracket NONE
     highlight link TSVariable NONE

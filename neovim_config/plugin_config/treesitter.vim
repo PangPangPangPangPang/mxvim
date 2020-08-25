@@ -1,7 +1,8 @@
 if !Installed("nvim-treesitter")
     finish
 endif
-finish
+nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') <bar>
+                \ execute('TSBufEnable highlight') <CR>
 finish
 if has('nvim-0.5')
     highlight link TSVariable None

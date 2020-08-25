@@ -16,6 +16,7 @@
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
   "flutter.openDevLogSplitCommand": "botright 20split",
+  "flutter.sdk.flutter-lookup": "~/flutter/bin",
   "imselect.enableStatusItem": false,
   "imselect.defaultInput": "com.apple.keylayout.US",
   "imselect.enableFloating": false,
