@@ -3,6 +3,8 @@ if !Installed("nvim-treesitter")
 endif
 nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') <bar>
                 \ execute('TSBufEnable highlight') <CR>
+autocmd InsertLeave * execute('silent! TSBufDisable highlight') | execute('TSBufEnable highlight')
+
 finish
 if has('nvim-0.5')
     highlight link TSVariable None
