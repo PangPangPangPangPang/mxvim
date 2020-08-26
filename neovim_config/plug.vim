@@ -27,7 +27,7 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
 " Plug 'joshdick/onedark.vim'
-Plug 'PangPangPangPangPang/miramare'
+Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 
@@ -193,10 +193,6 @@ if has('nvim-0.5')
     highlight link TSPunctBracket NONE
     highlight link TSVariable NONE
     highlight link TSError NONE
-    " highlight link TSKeyword Statement
-    " highlight link TSInclude Statement
-    " highlight link TSConstBuiltin cSpecial
-    " highlight link TSParameter Parameter
 
     " lazy load for file type
     let s:ts_ft_set = ['c', 'h', 'cpp', 'go', 'java', 'rust', 'javascript', 'typescript', 'dart']

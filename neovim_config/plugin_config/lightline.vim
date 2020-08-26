@@ -71,6 +71,7 @@ let g:lightline.component_expand = {
             \  'linter_errors': 'lightline#ale#errors',
             \  'linter_infos': 'lightline#ale#infos',
             \  'linter_ok': 'lightline#ale#ok',
+            \  'wraptab': 'LightlineWrapTab',
             \ }
 let g:lightline.component_type = {
             \     'linter_checking': 'right',
@@ -78,15 +79,16 @@ let g:lightline.component_type = {
             \     'linter_errors': 'error',
             \     'linter_ok': 'right',
             \     'linter_infos': 'right',
+            \     'wraptab': 'tabsel',
             \ }
 
-" function LightlineWrapTab()
-"     if tabpagenr('$') > 1
-"         return lightline#tabs()
-"     endif
-"     let ret = lightline#bufferline#buffers()
-"     return l:ret
-" endfunction
+function LightlineWrapTab()
+    if tabpagenr('$') > 1
+        return lightline#tabs()
+    endif
+    let ret = lightline#bufferline#buffers()
+    return l:ret
+endfunction
 
 function! LightlineTabName()
     return "Max"
