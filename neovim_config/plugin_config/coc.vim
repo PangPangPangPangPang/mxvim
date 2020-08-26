@@ -73,5 +73,5 @@ autocmd FileType dart nnoremap <silent> <buffer> <leader>fr :CocCommand flutter.
 autocmd FileType dart nnoremap <silent> <buffer> <leader>fR :CocCommand flutter.dev.hotRestart<cr>
 autocmd FileType dart nnoremap <silent> <buffer> <leader>fl :CocCommand flutter.dev.openDevLog<cr>
 autocmd FileType dart nnoremap <silent> <buffer> <leader>fp :CocCommand flutter.dev.openProfiler<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fo :CocCommand flutter.toggleOutline<cr>
+autocmd FileType dart nnoremap <silent> <buffer> <F2> :CocCommand flutter.toggleOutline<cr>
 

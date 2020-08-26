@@ -30,8 +30,6 @@ let g:vista#renderer#icons = {
             \ 'subroutine': '羚',
             \ 'interface': '',
             \ 'implementation': ' ',
-            \ 'enumerator': ' ',
-            \ 'enum': ' ',
             \ 'types': ' ',
             \ 'type': ' ',
             \ 'typedef': ' ',
