@@ -66,12 +66,23 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 map <silent> <leader>t :CocCommand translator.popup<CR>
 
 " For flutter
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fs :CocCommand flutter.run --dart-define=runInFlutter=true<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fa :CocCommand flutter.attach<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fq :CocCommand flutter.dev.quit<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fr :CocCommand flutter.dev.hotreload<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fR :CocCommand flutter.dev.hotRestart<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fl :CocCommand flutter.dev.openDevLog<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <leader>fp :CocCommand flutter.dev.openProfiler<cr>
-autocmd FileType dart nnoremap <silent> <buffer> <F2> :CocCommand flutter.toggleOutline<cr>
+augroup Flutter
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fs :CocCommand flutter.run --dart-define=runInFlutter=true<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fa :CocCommand flutter.attach<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fq :CocCommand flutter.dev.quit<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fr :CocCommand flutter.dev.hotreload<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fR :CocCommand flutter.dev.hotRestart<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fl :CocCommand flutter.dev.openDevLog<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fp :CocCommand flutter.dev.openProfiler<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <F2> :CocCommand flutter.toggleOutline<cr>
+augroup end
+
+augroup Coc
+    augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
