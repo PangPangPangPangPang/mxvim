@@ -67,10 +67,10 @@ map <silent> <leader>t :CocCommand translator.popup<CR>
 
 " For flutter
 augroup Flutter
-    autocmd FileType dart nnoremap <silent> <buffer> <leader>fs :CocCommand flutter.run --dart-define=runInFlutter=true<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fs :CocCommand flutter.attach --dart-define=runInFlutter=true <cr>
     autocmd FileType dart nnoremap <silent> <buffer> <leader>fa :CocCommand flutter.attach<cr>
     autocmd FileType dart nnoremap <silent> <buffer> <leader>fq :CocCommand flutter.dev.quit<cr>
-    autocmd FileType dart nnoremap <silent> <buffer> <leader>fr :CocCommand flutter.dev.hotreload<cr>
+    autocmd FileType dart nnoremap <silent> <buffer> <leader>fr :CocCommand flutter.dev.hotReload<cr>
     autocmd FileType dart nnoremap <silent> <buffer> <leader>fR :CocCommand flutter.dev.hotRestart<cr>
     autocmd FileType dart nnoremap <silent> <buffer> <leader>fl :CocCommand flutter.dev.openDevLog<cr>
     autocmd FileType dart nnoremap <silent> <buffer> <leader>fp :CocCommand flutter.dev.openProfiler<cr>
