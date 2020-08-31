@@ -32,4 +32,3 @@ nvim -E -s <<-EOF
 :qa
 EOF
 nvim +PlugInstall +qall
-

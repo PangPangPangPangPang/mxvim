@@ -3,7 +3,7 @@ if !Installed("nvim-treesitter")
 endif
 nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') <bar>
                 \ execute('TSBufEnable highlight') <CR>
-autocmd InsertLeave * execute('silent! write | edit | TSBufEnable highlight')
+" autocmd InsertLeave * execute('silent! write | edit | TSBufEnable highlight')
 
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
