@@ -28,7 +28,7 @@ set shortmess+=c
 
 " Show line numbers
 " set nu!
-set nonu
+set nu
 
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one

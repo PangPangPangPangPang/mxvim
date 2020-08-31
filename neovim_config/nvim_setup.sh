@@ -22,8 +22,7 @@ cp -r ./ ~/.config/nvim/
 
 for var in $*
 do
-    if [ "$var" = "-noplugin" ];  then
-        rm ~/.config/nvim/plug.vim
+    if [ "$var" = "--no-plugin" ];  then
         exit
     fi
 done
