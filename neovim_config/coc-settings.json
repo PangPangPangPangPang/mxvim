@@ -15,6 +15,7 @@
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
+  "flutter.outlineIconPadding": 1,
   "flutter.openDevLogSplitCommand": "botright 20split",
   "flutter.sdk.flutter-lookup": "~/flutter/bin",
   "imselect.enableStatusItem": false,

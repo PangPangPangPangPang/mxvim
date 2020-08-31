@@ -184,37 +184,9 @@ let g:terminal_kill = "term"
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
-" if has('nvim-0.5')
-"     Plug 'nvim-treesitter/nvim-treesitter' 
-" endif
 if has('nvim-0.5')
-    Plug 'PangPangPangPangPang/nvim-treesitter', {'on': ['TSBufEnable', 'TSEnableAll',
-                \ 'TSInstall', 'TSInstallInfo', 'TSInstallSync', 'TSModuleInfo']}
-    highlight link TSPunctBracket NONE
-    highlight link TSVariable NONE
-    highlight link TSError NONE
-
-    " lazy load for file type
-    let s:ts_ft_set = ['c', 'h', 'cpp', 'go', 'java', 'rust', 'javascript', 'typescript', 'dart']
-
-    function LazyLoadTreeSitter(timer) abort
-        if !get(g:, 'loaded_nvim_treesitter', 0)
-            call plug#load('nvim-treesitter')
-        endif
-
-        execute 'autocmd FileType ' . join(s:ts_ft_set, ',') .
-                    \ ' execute("TSBufEnable highlight")'
-        for buf_nr in filter(range(1, bufnr('$')), 'bufexists(v:val) && bufloaded(v:val)')
-            let ft = getbufvar(buf_nr, '&filetype')
-            if index(s:ts_ft_set, ft) > -1
-                call setbufvar(buf_nr, '&filetype', ft)
-            endif
-        endfor
-    endfunction
-    execute 'autocmd FileType ' . join(s:ts_ft_set, ',') .
-                \ ' ++once call timer_start(0, "LazyLoadTreeSitter")'
+    Plug 'nvim-treesitter/nvim-treesitter' 
 endif
-
 " Automatically highlighting other uses of the current word under the cursor
 let g:Illuminate_highlightUnderCursor = 0
 let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']

@@ -1,18 +1,3 @@
-if !Installed("nvim-treesitter")
-    finish
-endif
-nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') <bar>
-                \ execute('TSBufEnable highlight') <CR>
-autocmd InsertLeave * execute('silent! write | edit | TSBufEnable highlight')
-
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
-
-if has('nvim-0.5')
-    " highlight link TSVariable None
-    highlight link TSError None
-    highlight link TSPunctBracket None
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",     -- one of "all", "language", or a list of languages
     highlight = {
@@ -98,5 +83,3 @@ require'nvim-treesitter.configs'.setup {
         },
     },
 }
-EOF
-endif
