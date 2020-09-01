@@ -10,6 +10,7 @@
   "diagnostic.warningSign": "--",
   "suggest.floatEnable": true,
   "suggest.noselect": false,
+  "suggest.enablePreselect": true,
   "suggest.preferCompleteThanJumpPlaceholder": false,
   "suggest.minTriggerInputLength": 2,
   "suggest.enablePreview": true,
