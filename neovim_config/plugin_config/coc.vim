@@ -99,20 +99,20 @@ augroup Coc
 augroup end
 
 function s:open_coc_menu() abort
-  let content = [
-            \ ["&Help Keyword\t\\ch", 'echo 100' ],
-            \ ["&Signature\t\\cs", 'echo 101'],
-            \ ['-'],
-            \ ["Find in &File\t\\cx", 'echo 200' ],
-            \ ["Find in &Project\t\\cp", 'echo 300' ],
-            \ ["Find in &Defintion\t\\cd", 'echo 400' ],
-            \ ["&Rename", "call CocAction('rename')"],
-            \ ['-'],
-            \ ["&Documentation\t\\cm", 'echo 600'],
-            \ ]
-" set cursor to the last position
-let opts = {'index':g:quickui#context#cursor}
-call quickui#context#open(content, opts)
+let content = [
+                \ ["&Format", "call CocActionAsync('format')" ],
+                \ ["&Fix", "call CocAction('doQuickFix')"],
+                \ ['-'],
+                \ ["CodeAciton", "call CocActionAsync('codeAction',         '')" ],
+                \ ["Find in &Project\t\\cp", 'echo 300' ],
+                \ ["Find in &Defintion\t\\cd", 'echo 400' ],
+                \ ["&Rename", "call CocActionAsync('rename')"],
+                \ ['-'],
+                \ ["&Documentation\t\\cm", 'echo 600'],
+                \ ]
+    " set cursor to the last position
+    let opts = {'index':g:quickui#context#cursor}
+    call quickui#context#open(content, opts)
 endfunction
 
 nmap <leader>a :call <SID>open_coc_menu()<CR>
