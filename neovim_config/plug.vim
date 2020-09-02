@@ -198,7 +198,7 @@ Plug 'tpope/vim-dadbod', {'on': [ 'DB' ]}
 
 Plug 'skywind3000/vim-quickui'
 let g:quickui_border_style = 2
-let g:quickui_color_scheme = 'papercol dark'
+let g:quickui_color_scheme = 'system'
 
 call plug#end()
 
