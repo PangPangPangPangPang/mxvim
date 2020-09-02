@@ -55,17 +55,17 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+" xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+" nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
 " Remap for rename current word
-nmap <leader>ar <Plug>(coc-rename)
+" nmap <leader>ar <Plug>(coc-rename)
 
 " Remap for format selected region
-vmap <leader>af  <Plug>(coc-format-selected)
-nmap <leader>af  <Plug>(coc-format-selected)
-nmap <leader>ac  <Plug>(coc-codeaction)
-map <leader>ax  <Plug>(coc-fix-current)
+" vmap <leader>af  <Plug>(coc-format-selected)
+" nmap <leader>af  <Plug>(coc-format-selected)
+" nmap <leader>ac  <Plug>(coc-codeaction)
+" map <leader>ax  <Plug>(coc-fix-current)
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -98,3 +98,21 @@ augroup Coc
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+function s:open_coc_menu() abort
+  let content = [
+            \ ["&Help Keyword\t\\ch", 'echo 100' ],
+            \ ["&Signature\t\\cs", 'echo 101'],
+            \ ['-'],
+            \ ["Find in &File\t\\cx", 'echo 200' ],
+            \ ["Find in &Project\t\\cp", 'echo 300' ],
+            \ ["Find in &Defintion\t\\cd", 'echo 400' ],
+            \ ["&Rename", "call CocAction('rename')"],
+            \ ['-'],
+            \ ["&Documentation\t\\cm", 'echo 600'],
+            \ ]
+" set cursor to the last position
+let opts = {'index':g:quickui#context#cursor}
+call quickui#context#open(content, opts)
+endfunction
+
+nmap <leader>a :call <SID>open_coc_menu()<CR>

@@ -100,3 +100,26 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 endif
+
+function s:refresh_hl() abort
+    if exists('b:hl_last_changedtick') &&
+                \ (b:hl_last_changedtick < 0 || b:hl_last_changedtick == b:changedtick)
+        return
+    endif
+    let ft = &filetype
+    if index(s:ts_ft_set, ft) >= 0
+        execute 'silent! TSBufDisable highlight'
+        execute 'TSBufEnable highlight'
+        echo('abc')
+    else
+        let b:hl_last_changedtick = -1
+        return
+    endif
+    let b:hl_last_changedtick = b:changedtick
+endfunction
+
+let s:ts_ft_set = ['go', 'java', 'rust', 'javascript', 'typescript']
+augroup AsyncHighlight
+    autocmd!
+    autocmd CursorHold,CursorHoldI * call <SID>refresh_hl()
+augroup end
