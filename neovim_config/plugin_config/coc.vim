@@ -18,9 +18,6 @@ let g:coc_global_extensions = [
             \]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -45,27 +42,47 @@ function! s:show_documentation()
     endif
 endfunction
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-" xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-" nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
-" Remap for rename current word
-" nmap <leader>ar <Plug>(coc-rename)
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
 " Remap for format selected region
-" vmap <leader>af  <Plug>(coc-format-selected)
-" nmap <leader>af  <Plug>(coc-format-selected)
-" nmap <leader>ac  <Plug>(coc-codeaction)
-" map <leader>ax  <Plug>(coc-fix-current)
+"
+function s:open_coc_menu() abort
+let content = [
+                \ ["Find &Type Definition", "call CocActionAsync('jumpDefinition')" ],
+                \ ["Find &Implementation", "call CocActionAsync('jumpImplementation')" ],
+                \ ["Find &References", "call CocActionAsync('jumpReferences')" ],
+                \ ['-'],
+                \ ["Prev Diagnostic &[", "call CocActionAsync('diagnosticPrevious')" ],
+                \ ["Next Diagnostic &]", "call CocActionAsync('diagnosticNext')" ],
+                \ ['-'],
+                \ ["Re&name", "call CocActionAsync('rename')"],
+                \ ["&Format Code", "call CocActionAsync('formatSelected', '')" ],
+                \ ["Fi&x Code", "call CocAction('doQuickFix')"],
+                \ ["&CodeAciton", "call CocActionAsync('codeAction', '')" ],
+                \ ]
+    " set cursor to the last position
+    let opts = {'index':g:quickui#context#cursor}
+    call quickui#context#open(content, opts)
+endfunction
+nmap <leader>c :call <SID>open_coc_menu()<CR>
+function s:open_coc_visual_menu() abort
+let content = [
+                \ ["&Format Code", "call CocActionAsync('formatSelected', visualmode())" ],
+                \ ["Fi&x Code", "call CocAction('doQuickFix')"],
+                \ ['-'],
+                \ ["&CodeAciton", "call CocActionAsync('codeAction', visualmode())" ],
+                \ ["&Rename", "call CocActionAsync('rename')"],
+                \ ]
+    " set cursor to the last position
+    let opts = {'index':g:quickui#context#cursor}
+    call quickui#context#open(content, opts)
+endfunction
+vmap <leader>c :call <SID>open_coc_visual_menu()<CR>
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -98,21 +115,3 @@ augroup Coc
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-function s:open_coc_menu() abort
-let content = [
-                \ ["&Format", "call CocActionAsync('format')" ],
-                \ ["&Fix", "call CocAction('doQuickFix')"],
-                \ ['-'],
-                \ ["CodeAciton", "call CocActionAsync('codeAction',         '')" ],
-                \ ["Find in &Project\t\\cp", 'echo 300' ],
-                \ ["Find in &Defintion\t\\cd", 'echo 400' ],
-                \ ["&Rename", "call CocActionAsync('rename')"],
-                \ ['-'],
-                \ ["&Documentation\t\\cm", 'echo 600'],
-                \ ]
-    " set cursor to the last position
-    let opts = {'index':g:quickui#context#cursor}
-    call quickui#context#open(content, opts)
-endfunction
-
-nmap <leader>a :call <SID>open_coc_menu()<CR>

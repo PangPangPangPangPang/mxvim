@@ -174,7 +174,7 @@ set splitright
 set splitbelow
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+command! -nargs=0 CD :execute("cd %:p:h")
 
 " Specify the behavior when switching between buffers
 try

@@ -1,4 +1,5 @@
 let g:NERDSpaceDelims=1
+let g:NERDCreateDefaultMappings = 0
 let g:NERDCustomDelimiters={
             \ 'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' },
             \ 'swift': { 'left': '//'},
@@ -8,4 +9,5 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDToggleCheckAllLines = 1
 
 " User <leader>cm to use its alternate delimiters.
-map <leader>/ <leader>c<space>
+nmap <leader>/ <Plug>NERDCommenterToggle
+vmap <leader>/ <Plug>NERDCommenterToggle gv
