@@ -121,5 +121,4 @@ vmap <leader>f :call <SID>open_coc_flutter_menu()<CR>
 
 augroup Flutter
   autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
-  autocmd FileType dart nnoremap <silent> <F2> :CocCommand flutter.toggleOutline<cr>
 augroup end
