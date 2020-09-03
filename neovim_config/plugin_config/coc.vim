@@ -32,6 +32,7 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -42,21 +43,8 @@ function! s:show_documentation()
   endif
 endfunction
 
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
-
-" Use `:Prettier` to format current buffer.
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 map <silent> <leader>t :CocCommand translator.popup<CR>
 
@@ -69,8 +57,7 @@ augroup Coc
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-
-" Menu config
+" Normal Menu config
 function s:open_coc_menu() abort
   let content = [
         \ ["Find &Type Definition", "call CocActionAsync('jumpDefinition')" ],
@@ -81,22 +68,28 @@ function s:open_coc_menu() abort
         \ ["Next Diagnostic &]", "call CocActionAsync('diagnosticNext')" ],
         \ ['-'],
         \ ["Re&name", "call CocActionAsync('rename')"],
-        \ ["&Format Code", "call CocActionAsync('formatSelected', '')" ],
-        \ ["Fi&x Code", "call CocAction('doQuickFix')"],
-        \ ["&CodeAciton", "call CocActionAsync('codeAction', '')" ],
+        \ ["&Format Code", "call CocActionAsync('format')" ],
+        \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
+        \ ["&Code Aciton", "CocCommand actions.open" ],
+        \ ['-'],
+        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
         \ ]
   " set cursor to the last position
   let opts = {'index':g:quickui#context#cursor}
   call quickui#context#open(content, opts)
 endfunction
 nmap <leader>c :call <SID>open_coc_menu()<CR>
+
+" Visual Menu config
 function s:open_coc_visual_menu() abort
   let content = [
         \ ["&Format Code", "call CocActionAsync('formatSelected', visualmode())" ],
-        \ ["Fi&x Code", "call CocAction('doQuickFix')"],
+        \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
         \ ['-'],
-        \ ["&CodeAciton", "call CocActionAsync('codeAction', visualmode())" ],
-        \ ["&Rename", "call CocActionAsync('rename')"],
+        \ ["&Code Aciton", "CocCommand actions.open" ],
+        \ ['-'],
+        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
         \ ]
   " set cursor to the last position
   let opts = {'index':g:quickui#context#cursor}
@@ -125,6 +118,7 @@ function s:open_coc_flutter_menu() abort
   call quickui#context#open(content, opts)
 endfunction
 vmap <leader>f :call <SID>open_coc_flutter_menu()<CR>
+
 augroup Flutter
   autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
   autocmd FileType dart nnoremap <silent> <F2> :CocCommand flutter.toggleOutline<cr>
