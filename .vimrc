@@ -8,6 +8,14 @@ if !has('nvim') && $TERM ==# 'screen-256color'
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
+if has("termguicolors")
+    " fix bug for vim
+    set t_8f=^[[38;2;%lu;%lu;%lum
+    set t_8b=^[[48;2;%lu;%lu;%lum
+
+    " enable true color
+    set termguicolors
+endif
 " Sets how many lines of history VIM has to remember
 set history=500
 set mouse=a
