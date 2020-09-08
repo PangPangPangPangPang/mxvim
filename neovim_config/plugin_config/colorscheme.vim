@@ -1,4 +1,6 @@
 set background=dark
+"     显示高亮组 [[[4
+nnoremap <silent> wh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " set background=light
 
 " Enable true color
