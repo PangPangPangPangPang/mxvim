@@ -24,6 +24,7 @@ if has('nvim')
     highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
     highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
+    highlight ALEInfoSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
 
     highlight GitgutterAdd gui=none term=none guibg=none guifg=#8ec07c ctermbg=none ctermfg=Green
