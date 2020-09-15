@@ -2,9 +2,8 @@ if !Installed("nvim-treesitter")
     finish
 endif
 " nnoremap <silent> <leader>ts : write <bar> edit <bar> TSBufEnable highlight<CR>
-nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') <br>
-                \ execute('TSBufEnable highlight') <CR>
-" autocmd InsertLeave * execute('silent! write | edit | TSBufEnable highlight')
+nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') 
+            \ execute('TSBufEnable highlight') <cr>
 
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
@@ -13,6 +12,39 @@ if has('nvim-0.5')
     " highlight link TSVariable None
     highlight link TSError None
     highlight link TSPunctBracket None
+    let g:ts_ft_set = ['go', 'java', 'rust', 'javascript', 'typescript', 'lua', 'dart']
+
+    augroup TSHighlight
+        autocmd!
+        autocmd CursorHold,CursorHoldI * call <SID>refresh_ts()
+        autocmd VimEnter * call <SID>enable_ts_hl()
+    augroup END
+
+    function s:refresh_ts() abort
+        if exists('b:ts_last_changedtick') &&
+                    \ (b:ts_last_changedtick < 0 || b:ts_last_changedtick == b:changedtick)
+            return
+        endif
+        let ft = &filetype
+        if index(g:ts_ft_set, ft) >= 0
+            execute 'silent! TSBufDisable highlight'
+            execute 'TSBufEnable highlight'
+        else
+            let b:ts_last_changedtick = -1
+            return
+        endif
+        let b:ts_last_changedtick = b:changedtick
+    endfunction
+
+    function s:enable_ts_hl() abort
+        lua require'nvim-treesitter.configs'.setup {
+                    \   ensure_installed = vim.g.ts_ft_set,
+                    \   highlight = {
+                    \       enable = true,
+                    \       disable = {'c'},
+                    \   },
+                    \ }
+    endfunction
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",     -- one of "all", "language", or a list of languages
@@ -101,26 +133,3 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 endif
-
-function s:refresh_hl() abort
-    if exists('b:hl_last_changedtick') &&
-                \ (b:hl_last_changedtick < 0 || b:hl_last_changedtick == b:changedtick)
-        return
-    endif
-    let ft = &filetype
-    if index(s:ts_ft_set, ft) >= 0
-        execute 'silent! TSBufDisable highlight'
-        execute 'TSBufEnable highlight'
-        echo('abc')
-    else
-        let b:hl_last_changedtick = -1
-        return
-    endif
-    let b:hl_last_changedtick = b:changedtick
-endfunction
-
-let s:ts_ft_set = ['go', 'java', 'rust', 'javascript', 'typescript']
-augroup AsyncHighlight
-    autocmd!
-    autocmd CursorHold,CursorHoldI * call <SID>refresh_hl()
-augroup end
