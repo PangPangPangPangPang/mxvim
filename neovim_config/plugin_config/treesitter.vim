@@ -1,10 +1,7 @@
+finish
 if !Installed("nvim-treesitter")
     finish
 endif
-" nnoremap <silent> <leader>ts : write <bar> edit <bar> TSBufEnable highlight<CR>
-nnoremap <silent> <leader>ts :execute('silent! TSBufDisable highlight') 
-            \ execute('TSBufEnable highlight') <cr>
-
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
 
@@ -14,11 +11,11 @@ if has('nvim-0.5')
     highlight link TSPunctBracket None
     let g:ts_ft_set = ['go', 'java', 'rust', 'javascript', 'typescript', 'lua', 'dart']
 
-    augroup TSHighlight
-        autocmd!
-        autocmd CursorHold,CursorHoldI * call <SID>refresh_ts()
-        autocmd VimEnter * call <SID>enable_ts_hl()
-    augroup END
+    " augroup TSHighlight
+    "     autocmd!
+    "     autocmd CursorHold,CursorHoldI * call <SID>refresh_ts()
+    "     autocmd VimEnter * call <SID>enable_ts_hl()
+    " augroup END
 
     function s:refresh_ts() abort
         if exists('b:ts_last_changedtick') &&

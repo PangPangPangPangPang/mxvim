@@ -59,8 +59,7 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -169,27 +168,29 @@ Plug 'SolaWing/vim-objc-syntax', {'for': 'objc'}
 " Add mark
 Plug 'kshenoy/vim-signature'
 
-Plug 'PangPangPangPangPang/ywvim'
+" Plug 'PangPangPangPangPang/ywvim'
 
 Plug 'simnalamburt/vim-mundo'
 nnoremap <silent> <F6> :MundoToggle<CR>
 
-Plug 'skywind3000/vim-terminal-help'
-let g:terminal_auto_insert = 1
-let g:terminal_key = "<F5>"
-let g:terminal_cwd = 2
-let g:terminal_height = 20
-let g:terminal_list = 0
-let g:terminal_kill = "term"
+" Plug 'skywind3000/vim-terminal-help'
+" let g:terminal_auto_insert = 1
+" let g:terminal_key = "<F5>"
+" let g:terminal_cwd = 2
+" let g:terminal_height = 20
+" let g:terminal_list = 0
+" let g:terminal_kill = "term"
+Plug 'voldikss/vim-floaterm'
+let g:floaterm_keymap_toggle = '<F5>'
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-if has('nvim-0.5')
-    Plug 'nvim-treesitter/nvim-treesitter' 
-endif
-" Automatically highlighting other uses of the current word under the cursor
-let g:Illuminate_highlightUnderCursor = 0
+let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
+
+" if has('nvim-0.5')
+"     Plug 'nvim-treesitter/nvim-treesitter' 
+" endif
+" Automatically highlighting other uses of the current word under the cursor
 
 Plug 'RRethy/vim-illuminate'
 
