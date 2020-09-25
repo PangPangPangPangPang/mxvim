@@ -30,7 +30,6 @@ Plug 'lifepillar/vim-gruvbox8'
 Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
-
 " Plug 'sainnhe/vim-color-forest-night'
 " Readline style insertion
 Plug 'tpope/vim-rsi'
@@ -173,15 +172,15 @@ Plug 'kshenoy/vim-signature'
 Plug 'simnalamburt/vim-mundo'
 nnoremap <silent> <F6> :MundoToggle<CR>
 
-" Plug 'skywind3000/vim-terminal-help'
-" let g:terminal_auto_insert = 1
-" let g:terminal_key = "<F5>"
-" let g:terminal_cwd = 2
-" let g:terminal_height = 20
-" let g:terminal_list = 0
-" let g:terminal_kill = "term"
-Plug 'voldikss/vim-floaterm'
-let g:floaterm_keymap_toggle = '<F5>'
+Plug 'skywind3000/vim-terminal-help'
+let g:terminal_auto_insert = 1
+let g:terminal_key = "<F5>"
+let g:terminal_cwd = 2
+let g:terminal_height = 20
+let g:terminal_list = 0
+let g:terminal_kill = "term"
+" Plug 'voldikss/vim-floaterm'
+" let g:floaterm_keymap_toggle = '<F5>'
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 let g:Illuminate_highlightUnderCursor = 1

@@ -10,4 +10,4 @@ let g:NERDToggleCheckAllLines = 1
 
 " User <leader>cm to use its alternate delimiters.
 nmap <leader>/ <Plug>NERDCommenterToggle
-vmap <leader>/ <Plug>NERDCommenterToggle gv
+vmap <leader>/ <Plug>NERDCommenterToggle
