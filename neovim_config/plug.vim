@@ -34,6 +34,9 @@ Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 " Readline style insertion
 Plug 'tpope/vim-rsi'
 
+Plug 'junegunn/vim-slash'
+noremap <plug>(slash-after) zz
+
 let entry_format = "'   ['. index .']'. repeat(' ', (3 - strlen(index)))"
 
 Plug 'mhinz/vim-startify'
@@ -103,6 +106,7 @@ else
                 \	'Zeavim', 'Docset',
                 \	'<Plug>Zeavim',
                 \	'<Plug>ZVVisSelection',
+
                 \	'<Plug>ZVKeyDocset',
                 \	'<Plug>ZVMotion'
                 \ ]}
