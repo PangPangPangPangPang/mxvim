@@ -1,17 +1,15 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Normal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set termguicolors
-
 " Correct RGB escape codes for vim inside tmux
-if !has('nvim') && $TERM ==# 'screen-256color'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+" if !has('nvim') && $TERM ==# 'screen-256color'
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" endif
 if has("termguicolors")
     " fix bug for vim
-    set t_8f=^[[38;2;%lu;%lu;%lum
-    set t_8b=^[[48;2;%lu;%lu;%lum
+    " set t_8f=^[[38;2;%lu;%lu;%lum
+    " set t_8b=^[[48;2;%lu;%lu;%lum
 
     " enable true color
     set termguicolors
@@ -352,7 +350,7 @@ try
     " endif
     " colorscheme PaperColor
     " colorscheme dracula
-    colorscheme gruvbox
+    colorscheme gruvbox8
     " let g:gruvbox_contrast_dark=dark
 catch
 endtry

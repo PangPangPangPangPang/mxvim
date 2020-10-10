@@ -82,7 +82,7 @@ try
     let g:miramare_enable_italic_string = 1
     let g:miramare_enable_bold = 1
     let g:miramare_disable_italic_comment = 0
-    let g:miramare_transparent_background = 1
+    let g:miramare_transparent_background = 0
     colorscheme miramare
 endtry
 "

@@ -20,6 +20,7 @@ done
 cp -r ./colors ~/.vim/
 cp .vimrc ~/.vimrc
 cp .gvimrc ~/.gvimrc
+cp ./neovim_config/coc-settings.json ~/.vim/coc-settings.json
 cp ./vimrc.bundle ~/.vim/vimrc.bundle
 if [ -f "./vimrc.additional.bundle" ]; then
     cp ./vimrc.additional.bundle ~/.vim/vimrc.additional.bundle
