@@ -73,13 +73,13 @@ function s:open_coc_menu() abort
         \ ["&Code Aciton", "CocCommand actions.open" ],
         \ ['-'],
         \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+        \ ["Close F&loat", "call coc#util#close_floats()"]
         \ ]
   " set cursor to the last position
   let opts = {'index':g:quickui#context#cursor}
   call quickui#context#open(content, opts)
 endfunction
-nmap <leader>c :call <SID>open_coc_menu()<CR>
+nmap <silent> <leader>c :call <SID>open_coc_menu()<CR>
 
 " Visual Menu config
 function s:open_coc_visual_menu() abort
@@ -90,6 +90,7 @@ function s:open_coc_visual_menu() abort
         \ ["&Code Aciton", "CocCommand actions.open" ],
         \ ['-'],
         \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+        \ ["Close F&loat", "call coc#util#close_floats()"]
         \ ]
   " set cursor to the last position
   let opts = {'index':g:quickui#context#cursor}
@@ -117,7 +118,7 @@ function s:open_coc_flutter_menu() abort
   let opts = {'index':g:quickui#context#cursor}
   call quickui#context#open(content, opts)
 endfunction
-vmap <leader>f :call <SID>open_coc_flutter_menu()<CR>
+vmap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
 
 augroup Flutter
   autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
