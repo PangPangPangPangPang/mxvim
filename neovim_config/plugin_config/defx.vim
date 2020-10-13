@@ -5,6 +5,7 @@ map <silent> <F1> :Defx -toggle -resume -winwidth=40 -direction=topleft -split=v
 map <silent> <leader>j :Defx  -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
+    set nonu
     " Define mappings
     nnoremap <silent><buffer><expr> <CR>
                 \ defx#do_action('drop')
@@ -70,7 +71,7 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
 endfunction
-
+" 
 if Installed("vim-devicons")
     call defx#custom#option('_', {
                 \ 'columns': 'mark:indent:git:icons:filename:type:size:time',
@@ -80,7 +81,7 @@ else
                 \ 'columns': 'mark:indent:git:icon:filename:type:size:time',
                 \ })
 endif
-
+" 
 call defx#custom#column('icon', {
             \ 'directory_icon': '▶',
             \ 'opened_icon': '▼',
@@ -105,8 +106,8 @@ call defx#custom#column('git', 'indicators', {
   \ 'Deleted'   : '✖',
   \ 'Unknown'   : '?'
   \ })
-
-
+" 
+" 
 let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 2
 let g:defx_icons_directory_icon = ' '

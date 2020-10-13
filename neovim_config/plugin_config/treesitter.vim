@@ -1,4 +1,3 @@
-finish
 if !Installed("nvim-treesitter")
     finish
 endif
