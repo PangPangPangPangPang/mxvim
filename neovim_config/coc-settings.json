@@ -51,6 +51,8 @@
     "value": "\uf89f ",
     "variable": "\ue71b "
   },
+  "explorer.icon.enableNerdfont": true,
+  "explorer.floating.border.enable": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

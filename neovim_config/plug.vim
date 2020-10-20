@@ -44,17 +44,17 @@ Plug 'mhinz/vim-startify'
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-if has('python3')
-    if has('nvim')
-        Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
-    else
-        Plug 'Shougo/defx.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
-    endif
-    
-else
-    Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-endif
+" if has('python3')
+"     if has('nvim')
+"         Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
+"     else
+"         Plug 'Shougo/defx.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
+"     endif
+"     
+" else
+"     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+"     Plug 'Xuyuanp/nerdtree-git-plugin'
+" endif
 
 " Highlight yank.
 Plug 'machakann/vim-highlightedyank'
@@ -129,7 +129,7 @@ vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 
 let g:indentLine_char = '│'
-let g:indentLine_fileTypeExclude = ['markdown']
+let g:indentLine_fileTypeExclude = ['markdown', 'coc-explorer']
 Plug 'Yggdroot/indentLine'
 
 " Git support

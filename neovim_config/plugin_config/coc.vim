@@ -11,13 +11,17 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-prettier',
       \'coc-translator',
-      \'coc-flutter-tools',
+      \'coc-flutter',
       \'coc-sourcekit',
       \'coc-postfix',
       \'coc-fzf-preview',
+      \'coc-explorer',
       \]
+      " \'coc-flutter-tools',
 
 nmap <silent> <c-]> <Plug>(coc-definition)
+map <silent> <F1> :CocCommand explorer<CR>
+map <silent> <leader>j :CocCommand explorer --no-toggle<CR>
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -109,11 +113,12 @@ function s:open_coc_flutter_menu() abort
         \ ["&Hot Restart", "CocCommand flutter.dev.hotRestart"],
         \ ['-'],
         \ ["Open Dev&Log", "CocCommand flutter.dev.openDevLog"],
-        \ ["Open &Profiler", "CocCommand flutter.dev.openProfiler"],
+        \ ["Open &Profiler", "CocCommand flutter.dev.openDevToolsProfiler"],
         \ ["Toggle &Outline", "CocCommand flutter.toggleOutline"],
         \ ['-'],
         \ ["&Find all", "Grepper"],
         \ ]
+        " \ ["Open Dev&Log", "CocCommand flutter.dev.openDevLog"],
   " set cursor to the last position
   let opts = {'index':g:quickui#context#cursor}
   call quickui#context#open(content, opts)

@@ -14,7 +14,7 @@ set cursorline
 " set cursorcolumn
 " set colorcolumn=140
 
-set list lcs=tab:\│\ 
+" set list lcs=tab:\│\ 
 
 " Time for swap fill will be written to disk.
 set updatetime=10
