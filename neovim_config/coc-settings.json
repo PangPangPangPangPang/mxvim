@@ -54,6 +54,14 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.floating.border.enable": true,
   "explorer.openAction.strategy": "previousBuffer",
+  "explorer.previewAction.onHover": false,
+  "explorer.file.column.git.icon.added": "✚",
+  "explorer.file.column.git.icon.deleted": "✖",
+  "explorer.file.column.git.icon.renamed": "➜",
+  "explorer.file.column.git.icon.unmerged": "═",
+  "explorer.file.column.git.icon.untracked": "?",
+  "explorer.file.column.git.icon.modified": "✹",
+  "explorer.file.column.git.icon.ignored": "☒",
   "languageserver": {
     "golang": {
       "command": "gopls",
