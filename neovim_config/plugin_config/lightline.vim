@@ -34,7 +34,7 @@ let g:lightline.component_function = {
             \'charvaluehex': 'LightlineCharValueHex',
             \'lineinfo': 'LightlineLineInfo',
             \'max': 'LightlineTabName',
-            \ 'cocstatus': 'coc#status',
+            \ 'cocstatus': 'LightlineCocStatus',
             \}
 " let g:lightline.colorscheme = 'srcery'
 " let g:lightline.colorscheme = 'deus'
@@ -142,6 +142,14 @@ function! LightlineGitBranch()
         return ''
     endif
     return fugitive#Head()
+endfunction
+
+function! LightlineCocStatus()
+
+    if &ft =~ 'defx' || &ft =~ 'explorer'
+        return ''
+    endif
+    return coc#status()
 endfunction
 
 function! LightlineFiletype()
