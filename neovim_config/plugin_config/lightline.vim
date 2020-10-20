@@ -22,7 +22,7 @@ let g:lightline.tabline = {
             \ 'left': [ [ 'wraptab' ] ],
             \ 'right': [ [ 'max' ] ] }
 let g:lightline.component_function = {
-            \ 'gitbranch': 'fugitive#head',
+            \ 'gitbranch': 'LightlineGitBranch',
             \ 'modified': 'LightlineModified',
             \ 'readonly': 'LightlineReadonly',
             \ 'filename': 'LightlineFilename',
@@ -95,7 +95,7 @@ function! LightlineTabName()
 endfunction
     
 function! LightlinePercent()
-    if &ft =~ 'defx'
+    if &ft =~ 'defx' || &ft =~ 'explorer'
         return ''
     endif
     let byte = line2byte( line( "." ) ) + col( "." )
@@ -112,11 +112,11 @@ function! LightlineLineInfo()
 endfunction
 
 function! LightlineModified()
-    return &ft =~ 'help\|vimfiler\|gundo\|defx' ? '' : &modified ? 'modified' : &modifiable ? '' : ''
+    return &ft =~ 'help\|vimfiler\|gundo\|defx\|explorer' ? '' : &modified ? 'modified' : &modifiable ? '' : ''
 endfunction
 
 function! LightlineReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo\|defx' && &readonly ? '' : ''
+    return &ft !~? 'help\|vimfiler\|gundo\|defx\|explorer' && &readonly ? '' : ''
 endfunction
 
 function! LightlineMode()
@@ -124,16 +124,24 @@ function! LightlineMode()
     return fname == '__Tagbar__' ? 'Tagbar' :
                 \ fname == 'ControlP' ? 'CtrlP' :
                 \ fname =~ '\[defx\]' ? 'defx' :
+                \ fname =~ '\[coc-explorer\]' ? 'Explorer' :
                 \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 function! LightlineFilename()
-    return &ft =~ 'help\|vimfiler\|gundo\|defx' ? '' : expand('%:t')
+    return &ft =~ 'help\|vimfiler\|gundo\|defx\|explorer' ? '' : expand('%:t')
 endfunction
 
 function! LightlineFileformat()
       return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbolWithDefault()) : ''
     " return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+function! LightlineGitBranch()
+
+    if &ft =~ 'defx' || &ft =~ 'explorer'
+        return ''
+    endif
+    return fugitive#Head()
 endfunction
 
 function! LightlineFiletype()
