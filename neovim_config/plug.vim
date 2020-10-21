@@ -35,6 +35,7 @@ Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 Plug 'tpope/vim-rsi'
 
 Plug 'romainl/vim-cool'
+let g:CoolTotalMatches = 1
 
 let entry_format = "'   ['. index .']'. repeat(' ', (3 - strlen(index)))"
 
