@@ -34,8 +34,7 @@ Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 " Readline style insertion
 Plug 'tpope/vim-rsi'
 
-Plug 'junegunn/vim-slash'
-noremap <plug>(slash-after) zz
+Plug 'romainl/vim-cool'
 
 let entry_format = "'   ['. index .']'. repeat(' ', (3 - strlen(index)))"
 
@@ -203,6 +202,11 @@ Plug 'tpope/vim-dadbod', {'on': [ 'DB' ]}
 Plug 'skywind3000/vim-quickui'
 let g:quickui_border_style = 2
 let g:quickui_color_scheme = 'system'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
 
 call plug#end()
 
