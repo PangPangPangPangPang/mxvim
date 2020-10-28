@@ -34,6 +34,7 @@ Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 " Readline style insertion
 Plug 'tpope/vim-rsi'
 
+" vim-cool disables search highlighting when you are done searching and re-enables it when you search again.
 Plug 'romainl/vim-cool'
 let g:CoolTotalMatches = 1
 

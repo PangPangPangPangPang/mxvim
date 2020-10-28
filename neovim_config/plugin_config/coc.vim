@@ -16,6 +16,7 @@ let g:coc_global_extensions = [
       \'coc-postfix',
       \'coc-fzf-preview',
       \'coc-explorer',
+      \'coc-fzf-preview',
       \]
       " \'coc-flutter-tools',
 
