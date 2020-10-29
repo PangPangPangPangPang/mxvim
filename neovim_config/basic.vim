@@ -226,11 +226,11 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " Config netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3 " tree view
-let g:netrw_altv = 1 " open splits to the right
-let g:netrw_list_hide = netrw_gitignore#Hide()
-let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3 " tree view
+" let g:netrw_altv = 1 " open splits to the right
+" let g:netrw_list_hide = netrw_gitignore#Hide()
+" let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
 augroup BasicGroup
     " 1 tab == 4 spaces
@@ -245,3 +245,9 @@ augroup BasicGroup
     " Return to last edit position when opening files (You want this!)
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup End
+
+augroup tt_ft
+    autocmd!
+    autocmd BufNewFile,BufRead *.ttss   set syntax=css
+    autocmd BufNewFile,BufRead *.ttml   set syntax=html
+augroup END

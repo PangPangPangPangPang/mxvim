@@ -191,11 +191,11 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
 
-" if has('nvim-0.5')
-"     Plug 'nvim-treesitter/nvim-treesitter' 
-" endif
-" Automatically highlighting other uses of the current word under the cursor
+if has('nvim-0.5')
+    Plug 'nvim-treesitter/nvim-treesitter' 
+endif
 
+" Automatically highlighting other uses of the current word under the cursor
 Plug 'RRethy/vim-illuminate'
 
 " DB

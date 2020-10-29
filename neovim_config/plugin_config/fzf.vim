@@ -4,7 +4,7 @@ if has("nvim")
 endif
 
 noremap <c-p> :Files<cr>
-noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
+" noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
 
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
