@@ -107,7 +107,6 @@ else
                 \	'Zeavim', 'Docset',
                 \	'<Plug>Zeavim',
                 \	'<Plug>ZVVisSelection',
-
                 \	'<Plug>ZVKeyDocset',
                 \	'<Plug>ZVMotion'
                 \ ]}
