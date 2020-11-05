@@ -11,25 +11,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-if has('nvim')
-    " highlight CursorLineNr gui=bold term=bold guibg=#395260 guifg=#D79921 ctermbg=NONE ctermfg=Yellow
-    highlight SignColumn gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    " highlight CursorLine gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-    " highlight ColorColumn gui=none term=none guibg=#395260 guifg=NONE ctermbg=NONE ctermfg=NONE
-endif
 " 
-if has('nvim')
-    highlight ALEVirtualTextError gui=none term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight ALEVirtualTextWarning gui=none term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
-    highlight ALEErrorSign gui=italic term=italic guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight ALEWarningSign gui=italic term=italic guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
-    highlight ALEErrorSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEWarningSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEInfoSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-    highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
-
-endif
-
 " colorscheme dracula
 " colorscheme hybrid
 
