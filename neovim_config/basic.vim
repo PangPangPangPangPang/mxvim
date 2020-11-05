@@ -11,7 +11,7 @@ set mouse=a
 " endif
 
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 " set colorcolumn=140
 
 " set list lcs=tab:\│\ 

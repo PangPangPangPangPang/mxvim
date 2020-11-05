@@ -7,73 +7,73 @@ autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     set nonu
     " Define mappings
-    nnoremap <silent><buffer><expr> z<CR>
+    nnoremap <silent><buffer><expr> <CR>
                 \ defx#do_action('drop')
-    nnoremap <silent><buffer><expr> dc
+    nnoremap <silent><buffer><expr> c
                 \ defx#do_action('copy')
-    nnoremap <silent><buffer><expr> dm
+    nnoremap <silent><buffer><expr> m
                 \ defx#do_action('move')
-    nnoremap <silent><buffer><expr> dp
+    nnoremap <silent><buffer><expr> p
                 \ defx#do_action('paste')
     " nnoremap <silent><buffer><expr> l
     " \ defx#do_action('open')
-    nnoremap <silent><buffer><expr> dV
+    nnoremap <silent><buffer><expr> V
                 \ defx#do_action('open', 'vsplit')
-    nnoremap <silent><buffer><expr> dS
+    nnoremap <silent><buffer><expr> S
                 \ defx#do_action('open', 'split')
-    nnoremap <silent><buffer><expr> dP
+    nnoremap <silent><buffer><expr> P
                 \ defx#do_action('open', 'pedit')
-    nnoremap <silent><buffer><expr> do
+    nnoremap <silent><buffer><expr> o
                 \ defx#do_action('open_or_close_tree')
-    nnoremap <silent><buffer><expr> dK
-                \ defx#do_action('new_directory')
-    nnoremap <silent><buffer><expr> dN
-                \ defx#do_action('new_file')
-    nnoremap <silent><buffer><expr> dM
-                \ defx#do_action('new_multiple_files')
-    nnoremap <silent><buffer><expr> dC
+    nnoremap <silent><buffer><expr> C
                 \ defx#do_action('toggle_columns', 'indent:git:mark:icon:filename:type:size:time')
-    " nnoremap <silent><buffer><expr> S
-    "             \ defx#do_action('toggle_sort', 'time')
-    nnoremap <silent><buffer><expr> dd
-                \ defx#do_action('remove')
-    nnoremap <silent><buffer><expr> dr
-                \ defx#do_action('rename')
-    nnoremap <silent><buffer><expr> d!
+    nnoremap <silent><buffer><expr> !
                 \ defx#do_action('execute_command')
-    nnoremap <silent><buffer><expr> dx
+    nnoremap <silent><buffer><expr> x
                 \ defx#do_action('execute_system')
-    nnoremap <silent><buffer><expr> dyy
-                \ defx#do_action('yank_path')
-    nnoremap <silent><buffer><expr> d.
-                \ defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> d;
+    nnoremap <silent><buffer><expr> ;
                 \ defx#do_action('repeat')
-    nnoremap <silent><buffer><expr> du
+    nnoremap <silent><buffer><expr> u
                 \ defx#do_action('cd', ['..'])
-    nnoremap <silent><buffer><expr> d~
+    nnoremap <silent><buffer><expr> ~
                 \ defx#do_action('cd', [getcwd()])
-    nnoremap <silent><buffer><expr> dq
+    nnoremap <silent><buffer><expr> q
                 \ defx#do_action('quit')
-    nnoremap <silent><buffer><expr> d<Space>
+    nnoremap <silent><buffer><expr> <Space>
                 \ defx#do_action('toggle_select') . 'j'
-    nnoremap <silent><buffer><expr> d*
+    nnoremap <silent><buffer><expr> *
                 \ defx#do_action('toggle_select_all')
-    nnoremap <silent><buffer><expr> dj
+    nnoremap <silent><buffer><expr> j
                 \ line('.') == line('$') ? 'gg' : 'j'
-    nnoremap <silent><buffer><expr> dk
+    nnoremap <silent><buffer><expr> k
                 \ line('.') == 1 ? 'G' : 'k'
-    nnoremap <silent><buffer><expr> d<C-l>
+    nnoremap <silent><buffer><expr> <C-l>
                 \ defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> d<C-g>
+    nnoremap <silent><buffer><expr> <C-g>
                 \ defx#do_action('print')
-    nnoremap <silent><buffer><expr> dcd
+    nnoremap <silent><buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
 endfunction
+function s:open_defx_menu() abort
+    let content = [
+                \ [ 'Copy file             &c', "call defx#call_action('copy')" ],
+                \ [ 'Paste file            &p', "call defx#call_action('paste')" ],
+                \ [ 'Rename file           &r', "call defx#call_action('rename')" ],
+                \ [ 'Move file             &m', "call defx#call_action('move')" ],
+                \ [ 'Delete file           &d', "call defx#call_action('remove')" ],
+                \ [ 'New Directory         &k', "call defx#call_action('new_directory')" ],
+                \ [ 'New Files             &n', "call defx#call_action('new_multiple_files')" ],
+                \ [ 'Yank Path             &y', "call defx#call_action('yank_path')" ],
+                \ [ 'Toggle ignored files  &.', "call defx#call_action('toggle_ignored_files')" ],
+                \ [ 'Go back               &u', "call defx#call_action('cd', ['..'])" ],
+                \ [ 'Go Root               &h', "call defx#call_action('cd', [getcwd()])" ],
+                \ [ 'Change Root           &e', "call defx#call_action(change_vim_cwd)" ],
+                \]
+    let opts = {'title': 'defx menu'}
+  call quickui#context#open(content, opts)
+endfunction
 
-autocmd FIleType defx nnoremap <silent> <buffer> <tab> :silent <c-u> :silent WhichKey 'd'<CR>
-autocmd FIleType defx vnoremap <silent> <buffer> <tab> :silent <c-u> :silent WhichKeyVisual 'd'<CR>
-" 
+autocmd FIleType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
 if Installed("vim-devicons")
     call defx#custom#option('_', {
                 \ 'columns': 'mark:indent:git:icons:filename:type:size:time',

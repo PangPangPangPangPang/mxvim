@@ -204,16 +204,6 @@ Plug 'skywind3000/vim-quickui'
 let g:quickui_border_style = 2
 let g:quickui_color_scheme = 'system'
 
-let g:which_key_map = {}
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-let g:which_key_use_floating_win = 0
-" Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-autocmd! User vim-which-key call which_key#register('d', 'g:which_key_map')
-
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'

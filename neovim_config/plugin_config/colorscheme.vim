@@ -81,8 +81,8 @@ endif
 try
     autocmd InsertEnter * hi clear CursorLine | hi! link CursorLine None
     autocmd InsertLeave * hi clear CursorLine | hi! link CursorLine ColorColumn
-    autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
-    autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
+    " autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
+    " autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
     let g:miramare_enable_italic = 1
     let g:miramare_enable_italic_string = 1
     let g:miramare_enable_bold = 1
