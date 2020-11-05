@@ -69,7 +69,7 @@ function s:open_defx_menu() abort
                 \ [ 'Go Root               &h', "call defx#call_action('cd', [getcwd()])" ],
                 \ [ 'Change Root           &e', "call defx#call_action(change_vim_cwd)" ],
                 \]
-    let opts = {'title': 'defx menu'}
+    let opts = {'title': 'defx menu', 'ignore_case': 0}
   call quickui#context#open(content, opts)
 endfunction
 
