@@ -28,13 +28,6 @@ if has('nvim')
     highlight ALEInfoSignLineNr gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
     highlight ALEStyleWarning gui=none term=none guibg=none guifg=NONE ctermbg=NONE ctermfg=NONE
 
-    highlight GitgutterAdd gui=none term=none guibg=none guifg=#8ec07c ctermbg=none ctermfg=Green
-    highlight GitgutterChange gui=none term=none guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
-    highlight GitgutterDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
-    highlight SignatureMarkText gui=none term=none guibg=none guifg=#EBDBB2 ctermbg=none ctermfg=white
-
-
 endif
 
 " colorscheme dracula

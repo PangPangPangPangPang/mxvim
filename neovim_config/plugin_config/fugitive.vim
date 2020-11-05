@@ -16,3 +16,9 @@ let g:gitgutter_sign_removed = '▏'
 " let g:gitgutter_sign_removed = '▎'
 let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▒'
+
+highlight GitgutterAdd gui=none term=none guibg=none guifg=#8ec07c ctermbg=none ctermfg=Green
+highlight GitgutterChange gui=none term=none guibg=none guifg=#fabd2f ctermbg=none ctermfg=Yellow
+highlight GitgutterDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+highlight GitgutterChangeDelete gui=none term=none guibg=none guifg=#fb4934 ctermbg=none ctermfg=Red
+highlight SignatureMarkText gui=none term=none guibg=none guifg=#EBDBB2 ctermbg=none ctermfg=white
