@@ -1,3 +1,5 @@
+set runtimepath^=~/.config/nvim/after
+
 if get(s:, 'loaded', 0) != 0
 	finish
 else
