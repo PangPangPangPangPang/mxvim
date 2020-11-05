@@ -42,6 +42,7 @@ let g:ale_linter_aliases = {'jsx': 'css',
             \              }
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
+            \       'html': ['prettier'],
             \       'dart': ['dartfmt'],
             \       'go': ['gofmt', 'goimports'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],

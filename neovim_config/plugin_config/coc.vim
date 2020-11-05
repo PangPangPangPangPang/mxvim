@@ -21,8 +21,8 @@ let g:coc_global_extensions = [
       " \'coc-flutter-tools',
 
 nmap <silent> <c-]> <Plug>(coc-definition)
-map <silent> <F1> :CocCommand explorer<CR>
-map <silent> <leader>j :CocCommand explorer --no-toggle<CR>
+" map <silent> <F1> :CocCommand explorer<CR>
+" map <silent> <leader>j :CocCommand explorer --no-toggle<CR>
 
 function! s:check_back_space() abort
   let col = col('.') - 1

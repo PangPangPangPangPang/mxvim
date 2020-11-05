@@ -248,6 +248,6 @@ augroup End
 
 augroup tt_ft
     autocmd!
-    autocmd BufNewFile,BufRead *.ttss   set syntax=css
-    autocmd BufNewFile,BufRead *.ttml   set syntax=html
+    autocmd BufNewFile,BufRead *.ttss   set filetype=css
+    autocmd BufNewFile,BufRead *.ttml   set filetype=html
 augroup END
