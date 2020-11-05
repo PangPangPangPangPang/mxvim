@@ -61,19 +61,19 @@ function s:open_defx_menu() abort
                 \ [ 'Rename file           &r', "call defx#call_action('rename')" ],
                 \ [ 'Move file             &m', "call defx#call_action('move')" ],
                 \ [ 'Delete file           &d', "call defx#call_action('remove')" ],
-                \ [ 'New Directory         &k', "call defx#call_action('new_directory')" ],
+                \ [ 'New Directory         &N', "call defx#call_action('new_directory')" ],
                 \ [ 'New Files             &n', "call defx#call_action('new_multiple_files')" ],
                 \ [ 'Yank Path             &y', "call defx#call_action('yank_path')" ],
                 \ [ 'Toggle ignored files  &.', "call defx#call_action('toggle_ignored_files')" ],
                 \ [ 'Go back               &u', "call defx#call_action('cd', ['..'])" ],
-                \ [ 'Go Root               &h', "call defx#call_action('cd', [getcwd()])" ],
-                \ [ 'Change Root           &e', "call defx#call_action(change_vim_cwd)" ],
+                \ [ 'Go Root               &R', "call defx#call_action('cd', [getcwd()])" ],
+                \ [ 'Change Root           &C', "call defx#call_action(change_vim_cwd)" ],
                 \]
     let opts = {'title': 'defx menu', 'ignore_case': 0}
   call quickui#context#open(content, opts)
 endfunction
+autocmd FileType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
 
-autocmd FIleType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
 if Installed("vim-devicons")
     call defx#custom#option('_', {
                 \ 'columns': 'mark:indent:git:icons:filename:type:size:time',
