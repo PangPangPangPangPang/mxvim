@@ -113,6 +113,9 @@ else
     nnoremap <silent> <leader>z :Zeavim<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
+Plug 'szw/vim-maximizer'
+nnoremap <silent><C-w>a :MaximizerToggle<CR>
+vnoremap <silent><C-w> :MaximizerToggle<CR>gv
 
 Plug 'dstein64/vim-startuptime', {'on': ['StartupTime']}
 

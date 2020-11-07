@@ -5,7 +5,6 @@ else
 endif
 
 let g:mapleader = "\<space>"
-
 function! s:Source(path)
    if !empty(glob(a:path))
        exec ('source '. a:path)
