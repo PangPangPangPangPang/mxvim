@@ -113,7 +113,7 @@ else
     nnoremap <silent> <leader>z :Zeavim<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
-Plug 'szw/vim-maximizer'
+Plug 'szw/vim-maximizer', {'on': 'MaximizerToggle'}
 nnoremap <silent><C-w>a :MaximizerToggle<CR>
 vnoremap <silent><C-w> :MaximizerToggle<CR>gv
 
