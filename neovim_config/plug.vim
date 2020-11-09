@@ -119,8 +119,8 @@ else
 endif
 """""""""""""""""""""""""""""""""""""""""""
 Plug 'szw/vim-maximizer', {'on': 'MaximizerToggle'}
-nnoremap <silent><C-w>a :MaximizerToggle<CR>
-vnoremap <silent><C-w> :MaximizerToggle<CR>gv
+nnoremap <silent><C-w>z :MaximizerToggle<CR>
+vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
 
 Plug 'dstein64/vim-startuptime', {'on': ['StartupTime']}
 
@@ -142,9 +142,6 @@ Plug 'Yggdroot/indentLine'
 
 " Git support
 Plug 'airblade/vim-gitgutter'
-let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_sign_priority = 1
-let g:gitgutter_override_sign_column_highlight = 0
 
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
