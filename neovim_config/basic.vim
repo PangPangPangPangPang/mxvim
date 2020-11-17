@@ -249,5 +249,5 @@ augroup End
 augroup tt_ft
     autocmd!
     autocmd BufNewFile,BufRead *.ttss   set filetype=css
-    autocmd BufNewFile,BufRead *.ttml   set filetype=html
+    autocmd BufNewFile,BufRead *.ttml   set filetype=xml
 augroup END

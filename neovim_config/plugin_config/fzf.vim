@@ -3,7 +3,7 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 
-noremap <c-p> :Files<cr>
+noremap <silent><c-p> :Files<cr>
 " noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
 
 
