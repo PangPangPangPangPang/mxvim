@@ -350,7 +350,8 @@ try
     " endif
     " colorscheme PaperColor
     " colorscheme dracula
-    colorscheme gruvbox8
+    " colorscheme gruvbox8
+    colorscheme gruvbox-material
     " let g:gruvbox_contrast_dark=dark
 catch
 endtry

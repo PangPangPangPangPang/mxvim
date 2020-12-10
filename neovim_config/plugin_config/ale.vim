@@ -38,6 +38,8 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \        'dart' : ['dartanalyzer'],
             \       }
 let g:ale_linter_aliases = {'jsx': 'css',
+            \               'javascript': 'css',
+            \               'html': 'xml',
             \              }
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
