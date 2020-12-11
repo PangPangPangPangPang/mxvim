@@ -83,6 +83,7 @@ let g:gruvbox_material_lightline_disable_bold = 0
 let g:gruvbox_material_disable_italic_comment = 0
 let g:gruvbox_material_current_word = 'bold'
 let g:gruvbox_material_better_performance = 1
+let g:gruvbox_material_statusline_style = 'original'
 
 silent! colorscheme gruvbox-material
     " endtry
