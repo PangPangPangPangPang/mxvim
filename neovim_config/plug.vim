@@ -91,6 +91,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
+Plug 'TaDaa/vimade'
 
 " Plug 'mengelbrecht/lightline-bufferline'
 " let g:lightline#bufferline#show_number = 1

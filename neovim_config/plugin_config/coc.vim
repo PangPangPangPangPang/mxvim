@@ -5,6 +5,8 @@ let g:coc_global_extensions = [
       \'coc-imselect',
       \'coc-json',
       \'coc-tsserver',
+      \'coc-eslint',
+      \'coc-stylelint',
       \'coc-html',
       \'coc-css',
       \'coc-snippets',

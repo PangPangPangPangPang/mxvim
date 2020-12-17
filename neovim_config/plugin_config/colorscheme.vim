@@ -1,6 +1,6 @@
 set background=dark
 " set background=light
-"     显示高亮组 [[[4
+"     highlight color group
 nnoremap <silent> <leader>wh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " set background=light
 
@@ -57,12 +57,13 @@ autocmd InsertEnter * hi clear CursorLine | hi! link CursorLine None
 autocmd InsertLeave * hi clear CursorLine | hi! link CursorLine ColorColumn
 " autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
 " autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
-let g:miramare_enable_italic = 1
-let g:miramare_enable_italic_string = 1
-let g:miramare_enable_bold = 1
-let g:miramare_disable_italic_comment = 0
-let g:miramare_transparent_background = 0
-" colorscheme miramare
+
+" let g:miramare_enable_italic = 1
+" let g:miramare_enable_italic_string = 1
+" let g:miramare_enable_bold = 1
+" let g:miramare_disable_italic_comment = 0
+" let g:miramare_transparent_background = 0
+" silent! colorscheme miramare
 "
 " 
 " try 
@@ -84,7 +85,6 @@ let g:gruvbox_material_disable_italic_comment = 0
 let g:gruvbox_material_current_word = 'bold'
 let g:gruvbox_material_better_performance = 1
 let g:gruvbox_material_statusline_style = 'original'
-
 silent! colorscheme gruvbox-material
     " endtry
 

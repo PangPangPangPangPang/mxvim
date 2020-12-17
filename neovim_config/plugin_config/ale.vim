@@ -32,15 +32,16 @@ let g:ale_sign_highlight_linenrs = 1
 "
 let g:ale_linter_aliases = {'cfamily': ['c', 'cpp', 'objc', 'objcpp']}
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
+            \        'javascript' : ['eslint'],
             \        'python' : ['flake8'],
             \        'go' : ['golint'],
             \        'cfamily' : ['ccls'],
             \        'dart' : ['dartanalyzer'],
             \       }
-let g:ale_linter_aliases = {'jsx': 'css',
-            \               'javascript': 'css',
-            \               'html': 'xml',
-            \              }
+" let g:ale_linter_aliases = {'jsx': 'css',
+"             \               'javascript': 'css',
+"             \               'html': 'xml',
+"             \              }
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
             \       'html': ['prettier'],
