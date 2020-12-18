@@ -30,23 +30,26 @@ let g:ale_sign_highlight_linenrs = 1
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSign
 "
-let g:ale_linter_aliases = {'cfamily': ['c', 'cpp', 'objc', 'objcpp']}
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \        'javascript' : ['eslint'],
+            \        'html' : ['htmlhint'],
+            \        'css' : ['prettier'],
             \        'python' : ['flake8'],
             \        'go' : ['golint'],
             \        'cfamily' : ['ccls'],
             \        'dart' : ['dartanalyzer'],
             \       }
-" let g:ale_linter_aliases = {'jsx': 'css',
-"             \               'javascript': 'css',
-"             \               'html': 'xml',
-"             \              }
+let g:ale_linter_aliases = {
+            \               'cfamily': ['c', 'cpp', 'objc', 'objcpp'],
+            \               'xml': 'html',
+            \               'ttss': 'css',
+            \              }
 let g:ale_fixers = {
             \       'javascript': ['eslint'],
-            \       'html': ['prettier'],
             \       'dart': ['dartfmt'],
             \       'go': ['gofmt', 'goimports'],
+            \        'html' : ['htmlhint'],
+            \        'css' : ['prettier'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }
 let g:ale_fix_on_save_ignore = {
