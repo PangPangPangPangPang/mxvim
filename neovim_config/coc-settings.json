@@ -4,7 +4,7 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.messageTarget": "float",
   "diagnostic.displayByAle": true,
-  "diagnostic.enable": true,
+  "diagnostic.enable": false,
   "diagnostic.virtualText": true,
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",

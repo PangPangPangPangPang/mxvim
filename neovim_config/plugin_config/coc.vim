@@ -11,7 +11,6 @@ let g:coc_global_extensions = [
       \'coc-css',
       \'coc-snippets',
       \'coc-vimlsp',
-      \'coc-prettier',
       \'coc-translator',
       \'coc-flutter',
       \'coc-sourcekit',

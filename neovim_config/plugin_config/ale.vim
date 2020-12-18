@@ -33,7 +33,7 @@ let g:ale_sign_highlight_linenrs = 1
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
             \        'javascript' : ['eslint'],
             \        'html' : ['htmlhint'],
-            \        'css' : ['prettier'],
+            \        'css' : ['stylelint'],
             \        'python' : ['flake8'],
             \        'go' : ['golint'],
             \        'cfamily' : ['ccls'],
@@ -49,7 +49,7 @@ let g:ale_fixers = {
             \       'dart': ['dartfmt'],
             \       'go': ['gofmt', 'goimports'],
             \        'html' : ['htmlhint'],
-            \        'css' : ['prettier'],
+            \        'css' : ['stylelint'],
             \       '*': ['remove_trailing_lines', 'trim_whitespace'],
             \      }
 let g:ale_fix_on_save_ignore = {
