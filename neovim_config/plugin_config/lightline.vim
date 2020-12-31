@@ -41,10 +41,10 @@ let g:lightline.component_function = {
 " let g:lightline.colorscheme = 'forest_night'
 " let g:lightline.colorscheme = 'one'
 " let g:lightline.colorscheme = 'equinusocio_material'
-let g:lightline.colorscheme = 'gruvbox_material'
+" let g:lightline.colorscheme = 'gruvbox_material'
 " let g:lightline.colorscheme = 'dracula'
 
-" let g:lightline.colorscheme = 'miramare'
+let g:lightline.colorscheme = 'miramare'
 " let g:lightline.colorscheme = 'snazzy'
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
@@ -128,18 +128,18 @@ function! LightlineMode()
                 \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-" function! LightlineFilename()
-"     return &ft =~ 'help\|vimfiler\|gundo\|defx\|explorer' ? '' : expand('%:t')
-" endfunction
-
 function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
+    return &ft =~ 'help\|vimfiler\|gundo\|defx\|explorer' ? '' : expand('%:t')
 endfunction
+
+" function! LightlineFilename()
+"   let root = fnamemodify(get(b:, 'git_dir'), ':h')
+"   let path = expand('%:p')
+"   if path[:len(root)-1] ==# root
+"     return path[len(root)+1:]
+"   endif
+"   return expand('%')
+" endfunction
 
 function! LightlineFileformat()
       return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbolWithDefault()) : ''

@@ -21,6 +21,11 @@
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "typescriptreact": ["javascript"]
+  },
   "flutter.outlineIconPadding": 1,
   "flutter.lsp.initialization.closingLabels": false,
   "flutter.openDevLogSplitCommand": "botright 20split",

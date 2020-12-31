@@ -197,7 +197,7 @@ let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
 
 if has('nvim-0.5')
-    Plug 'nvim-treesitter/nvim-treesitter' 
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
 
 " Automatically highlighting other uses of the current word under the cursor

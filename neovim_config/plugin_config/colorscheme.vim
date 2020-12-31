@@ -58,12 +58,12 @@ autocmd InsertLeave * hi clear CursorLine | hi! link CursorLine ColorColumn
 " autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
 " autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
 
-" let g:miramare_enable_italic = 1
-" let g:miramare_enable_italic_string = 1
-" let g:miramare_enable_bold = 1
-" let g:miramare_disable_italic_comment = 0
-" let g:miramare_transparent_background = 0
-" silent! colorscheme miramare
+let g:miramare_enable_italic = 1
+let g:miramare_enable_italic_string = 1
+let g:miramare_enable_bold = 1
+let g:miramare_disable_italic_comment = 0
+let g:miramare_transparent_background = 0
+silent! colorscheme miramare
 "
 " 
 " try 
@@ -72,20 +72,20 @@ autocmd InsertLeave * hi clear CursorLine | hi! link CursorLine ColorColumn
     " else
     "     let g:gruvbox_material_transparent_background= 1
     " endif
-let g:gruvbox_material_palette = 'original'
-let g:gruvbox_material_background = 'soft'
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_visual = 'grey background'
-let g:gruvbox_material_sign_column_background = 'none'
-let g:gruvbox_material_italicize_strings = 1
-let g:gruvbox_material_diagnostic_line_highlight = 0
-let g:gruvbox_material_lightline_disable_bold = 0
-let g:gruvbox_material_disable_italic_comment = 0
-let g:gruvbox_material_current_word = 'bold'
-let g:gruvbox_material_better_performance = 1
-let g:gruvbox_material_statusline_style = 'original'
-silent! colorscheme gruvbox-material
+" let g:gruvbox_material_palette = 'original'
+" let g:gruvbox_material_background = 'soft'
+" let g:gruvbox_material_enable_italic = 1
+" let g:gruvbox_material_enable_bold = 1
+" let g:gruvbox_material_visual = 'grey background'
+" let g:gruvbox_material_sign_column_background = 'none'
+" let g:gruvbox_material_italicize_strings = 1
+" let g:gruvbox_material_diagnostic_line_highlight = 0
+" let g:gruvbox_material_lightline_disable_bold = 0
+" let g:gruvbox_material_disable_italic_comment = 0
+" let g:gruvbox_material_current_word = 'bold'
+" let g:gruvbox_material_better_performance = 1
+" let g:gruvbox_material_statusline_style = 'original'
+" silent! colorscheme gruvbox-material
     " endtry
 
 " let g:gruvbox_italic = 1

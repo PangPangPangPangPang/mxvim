@@ -8,7 +8,7 @@ if has('nvim-0.5')
     " highlight link TSVariable None
     highlight link TSError None
     highlight link TSPunctBracket None
-    let g:ts_ft_set = ['go', 'java', 'rust', 'javascript', 'typescript', 'lua', 'dart']
+    let g:ts_ft_set = ['go', 'java', 'rust', 'javascript', 'typescript', 'lua', 'dart', 'typescriptreact']
 
     " augroup TSHighlight
     "     autocmd!
