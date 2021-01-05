@@ -72,7 +72,9 @@ Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'mhinz/vim-grepper'
+" Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper', { 'on': ['GrepperRg', 'Grepper', '<plug>(GrepperOperator)'] }
+
 
 Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}

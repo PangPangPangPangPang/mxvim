@@ -1,6 +1,7 @@
 let g:grepper = {
             \ 'tools': ['rg', 'ag', 'ack', 'grep', 'findstr', 'pt', 'git'],
-            \ 'rg': { 'grepprg':    'rg -H --no-heading --ignore-case --no-ignore --vimgrep' . (has('win32') ? ' $* .' : ''),
+            \ 'rg': { 
+            \         'grepprg':    "rg -H --no-heading --ignore-case --no-ignore -g '!*build*' --vimgrep" . (has('win32') ? ' $* .' : ''),
             \         'grepformat': '%f:%l:%c:%m',
             \         'escape':     '\^$.*+?()[]{}|' },
             \ 'pt': { 'grepprg':    'pt --nocolor --nogroup',
