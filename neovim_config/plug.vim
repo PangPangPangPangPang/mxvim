@@ -89,6 +89,9 @@ nnoremap <leader>] = @t
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/diagnostic-nvim'
 
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
@@ -224,3 +227,5 @@ call plug#end()
 for f in split(glob('~/.config/nvim/plugin_config/*.vim'))
     exe 'source' f
 endfor
+
+" lua require("lsp_config")
