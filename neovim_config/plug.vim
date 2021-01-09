@@ -211,10 +211,13 @@ Plug 'RRethy/vim-illuminate'
 " DB
 Plug 'tpope/vim-dadbod', {'on': [ 'DB' ]}
 
+Plug 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = '<C-y><tab>'
+let g:user_emmet_prev_key = '<C-y>p'
+
 Plug 'skywind3000/vim-quickui'
 let g:quickui_border_style = 2
 let g:quickui_color_scheme = 'system'
-
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
