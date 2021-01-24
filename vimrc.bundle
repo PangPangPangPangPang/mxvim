@@ -48,8 +48,12 @@ let g:lightline.colorscheme = 'gruvbox_material'
 Plug 'lambdalisue/fern.vim'
 let g:fern#disable_default_mappings = 1
 
+Plug 'lambdalisue/nerdfont.vim' " icones
+Plug 'lambdalisue/fern-renderer-nerdfont.vim' " icones
+let g:fern#renderer = "nerdfont"
+
 noremap <silent> <F1> :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
-noremap <silent> <Leader>j :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
+noremap <silent> <Leader>j :Fern . -drawer -reveal=% -width=35<CR><C-w>=
 function! FernInit() abort
   nmap <buffer><expr>
         \ <Plug>(fern-my-open-expand-collapse)
