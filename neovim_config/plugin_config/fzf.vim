@@ -3,7 +3,7 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 
-noremap <silent><c-p> :Files<cr>
+" noremap <silent><c-p> :Files<cr>
 " noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
 
 
@@ -11,6 +11,7 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse'
 let $FZF_DEFAULT_OPTS .= ' --info=inline'
 let $FZF_DEFAULT_OPTS .= ' --tiebreak=end,index'
 let $FZF_PREVIEW_COMMAND = 'COLORTERM=truecolor bat --color=always --style=plain --theme=TwoDark -n -- {} || cat {}'
+let $FZF_DEFAULT_COMMAND = "rg --files"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'rounded' } }
 
 

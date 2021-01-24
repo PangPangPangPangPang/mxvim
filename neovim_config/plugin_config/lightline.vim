@@ -42,6 +42,7 @@ let g:lightline.component_function = {
 " let g:lightline.colorscheme = 'one'
 " let g:lightline.colorscheme = 'equinusocio_material'
 " let g:lightline.colorscheme = 'gruvbox_material'
+" let g:lightline.colorscheme = 'gruvbox8'
 " let g:lightline.colorscheme = 'dracula'
 
 let g:lightline.colorscheme = 'miramare'

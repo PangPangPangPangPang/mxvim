@@ -37,12 +37,11 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-" try 
-"     let g:gruvbox_transp_bg = 0
-"     let g:gruvbox_plugin_hi_groups = 1
-"     let g:gruvbox_filetype_hi_groups = 1
-"     colorscheme gruvbox8_soft
-" endtry
+" let g:gruvbox_transp_bg = 1
+" let g:gruvbox_plugin_hi_groups = 1
+" let g:gruvbox_filetype_hi_groups = 1
+" silent! colorscheme gruvbox8
+
 " let g:dracula_bold = 1
 " let g:dracula_italic = 1
 " let g:dracula_colorterm = 1
@@ -53,8 +52,8 @@ endif
 " let g:equinusocio_material_darker = 0
 " colorscheme equinusocio_material
 
-autocmd InsertEnter * hi clear CursorLine | hi! link CursorLine None
-autocmd InsertLeave * hi clear CursorLine | hi! link CursorLine ColorColumn
+" autocmd InsertEnter * hi clear CursorLine | hi! link CursorLine None
+" autocmd InsertLeave * hi clear CursorLine | hi! link CursorLine ColorColumn
 " autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
 " autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
 

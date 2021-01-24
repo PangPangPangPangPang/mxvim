@@ -21,7 +21,7 @@ let g:devicons_install = 1
 " Plug 'dracula/vim'
 " Plug 'morhetz/gruvbox'
 " Plug 'gruvbox-community/gruvbox'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-gruvbox8'
 " Plug 'connorholyday/vim-snazzy'
 " Plug 'chuling/equinusocio-material.vim'
@@ -67,10 +67,11 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
 " Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-grepper', { 'on': ['GrepperRg', 'Grepper', '<plug>(GrepperOperator)'] }
