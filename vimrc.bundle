@@ -2,16 +2,10 @@
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
-Plug 'sainnhe/gruvbox-material'
-let g:gruvbox_material_palette = 'original'
-let g:gruvbox_material_background = 'soft'
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_visual = 'reverse'
-let g:gruvbox_material_italicize_strings = 1
-let g:gruvbox_material_lightline_disable_bold = 0
-let g:gruvbox_material_disable_italic_comment = 0
-
-" Plug 'lifepillar/vim-gruvbox8'
+Plug 'lifepillar/vim-gruvbox8'
+let g:gruvbox_transp_bg = 1
+let g:gruvbox_plugin_hi_groups = 1
+let g:gruvbox_filetype_hi_groups = 1
 
 " Make pairs colorful
 Plug 'luochen1990/rainbow'
@@ -42,7 +36,7 @@ let g:lightline = {
             \ 'active':{},
             \ 'inactive':{},
             \ }
-let g:lightline.colorscheme = 'gruvbox_material'
+let g:lightline.colorscheme = 'gruvbox8'
 """""""""""""""""""""""""""""""""""""""
 
 Plug 'lambdalisue/fern.vim'
@@ -134,7 +128,7 @@ map <silent> <leader>gb :Gblame<cr>
 if v:version > 743 || has('nvim')
     Plug 'w0rp/ale'
     " Set ale disable as default
-    let g:ale_enabled = 1
+    let g:ale_enabled = 0
     let g:ale_lint_on_text_changed = 'normal'
     let g:ale_lint_on_insert_leave = 1
     " let g:ale_lint_on_enter = 0
@@ -207,11 +201,11 @@ endif
 " nmap K :YcmDiags<CR>
 
 """"""""""""""Lazyload func""""""""""""""""
-augroup plug_lazy_load
-    autocmd!
-    autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
-                \| autocmd! plug_lazy_load
-augroup END
+" augroup plug_lazy_load
+    " autocmd!
+    " autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
+                " \| autocmd! plug_lazy_load
+" augroup END
 """""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""Golang""""""""""""""""""""
@@ -377,3 +371,4 @@ augroup end
 " Initialize plugin system
 call plug#end()
 
+silent! colorscheme gruvbox8
