@@ -16,19 +16,34 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Search
-Plug 'mileszs/ack.vim' 
-let g:ack_use_cword_for_empty_search = 1
-if executable('ag')
-  " let g:ackprg = 'ag --vimgrep'
+" Global search
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+let g:grepper = {
+            \ 'tools': ['rg', 'ag', 'ack', 'grep', 'findstr', 'pt', 'git'],
+            \ 'rg': { 
+            \         'grepprg':    "rg -H --no-heading --ignore-case -g '!*build*' --vimgrep" . (has('win32') ? ' $* .' : ''),
+            \         'grepformat': '%f:%l:%c:%m',
+            \         'escape':     '\^$.*+?()[]{}|' },
+            \ 'pt': { 'grepprg':    'pt --nocolor --nogroup',
+            \         'grepformat': '%f:%l:%m',
+            \         'escape':     '\+*^$()[]', }
+            \ }
+" \         'grepprg':    "rg -H --no-heading --ignore-case --no-ignore -g '!*build*' --vimgrep" . (has('win32') ? ' $* .' : ''),
+let g:grepper.highlight = 1
+nnoremap <leader>f :Grepper<cr>
+if executable('rg') 
+    vnoremap <silent> <leader>f :call visual#action("GrepperRg 'foo'")<cr>
+elseif executable('ag')
+    vnoremap <silent> <leader>f :call visual#action("GrepperAg 'foo'")<cr>
 endif
-vnoremap <silent> <leader>f :call visual#action('Ack! foo')<cr>
-nnoremap <leader>f :Ack!<space>
 
-" Plug 'PangPangPangPangPang/vim-terminal', { 'branch' : 'dev' }
-" map <silent> <F12> :VSTerminalToggle<cr>
-" tmap <silent> <F12> <c-w>:VSTerminalToggle<cr>
-" let g:vs_terminal_custom_height = 10
+Plug 'skywind3000/vim-terminal-help'
+let g:terminal_auto_insert = 1
+let g:terminal_key = "<F5>"
+let g:terminal_cwd = 2
+let g:terminal_height = 20
+let g:terminal_list = 0
+let g:terminal_kill = "term"
 
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
@@ -39,6 +54,7 @@ let g:lightline = {
 let g:lightline.colorscheme = 'gruvbox8'
 """""""""""""""""""""""""""""""""""""""
 
+" File tree
 Plug 'lambdalisue/fern.vim'
 let g:fern#disable_default_mappings = 1
 
@@ -49,46 +65,47 @@ let g:fern#renderer = "nerdfont"
 noremap <silent> <F1> :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
 noremap <silent> <Leader>j :Fern . -drawer -reveal=% -width=35<CR><C-w>=
 function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> o <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <CR> <Plug>(fern-action-open:select)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> M <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)j
-  nmap <buffer> r <Plug>(fern-action-reload)
-  " nmap <buffer> k <Plug>(fern-action-mark-toggle)j
-  nmap <buffer> s <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> < <Plug>(fern-action-leave)
-  nmap <buffer><nowait> > <Plug>(fern-action-enter)
+    autocmd filetype fern setlocal nonumber
+    nmap <buffer><expr>
+                \ <Plug>(fern-my-open-expand-collapse)
+                \ fern#smart#leaf(
+                \   "\<Plug>(fern-action-open:select)",
+                \   "\<Plug>(fern-action-expand)",
+                \   "\<Plug>(fern-action-collapse)",
+                \ )
+    nmap <buffer> o <Plug>(fern-my-open-expand-collapse)
+    nmap <buffer> <CR> <Plug>(fern-action-open:select)
+    nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+    nmap <buffer> n <Plug>(fern-action-new-path)
+    nmap <buffer> d <Plug>(fern-action-remove)
+    nmap <buffer> m <Plug>(fern-action-move)
+    nmap <buffer> M <Plug>(fern-action-rename)
+    nmap <buffer> h <Plug>(fern-action-hidden-toggle)j
+    nmap <buffer> r <Plug>(fern-action-reload)
+    " nmap <buffer> k <Plug>(fern-action-mark-toggle)j
+    nmap <buffer> s <Plug>(fern-action-open:split)
+    nmap <buffer> v <Plug>(fern-action-open:vsplit)
+    nmap <buffer><nowait> < <Plug>(fern-action-leave)
+    nmap <buffer><nowait> > <Plug>(fern-action-enter)
 endfunction
 
 augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
+    autocmd!
+    autocmd FileType fern call FernInit()
 augroup END
 
 function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
+    let path = expand('%:p')
+    if !isdirectory(path)
+        return
+    endif
+    bwipeout %
+    execute printf('Fern %s', fnameescape(path))
 endfunction
 
 augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
+    autocmd!
+    autocmd BufEnter * ++nested call s:hijack_directory()
 augroup END
 
 " Config netrw
@@ -202,9 +219,9 @@ endif
 
 """"""""""""""Lazyload func""""""""""""""""
 " augroup plug_lazy_load
-    " autocmd!
-    " autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
-                " \| autocmd! plug_lazy_load
+" autocmd!
+" autocmd InsertEnter * call plug#load('ultisnips','vim-snippets')
+" \| autocmd! plug_lazy_load
 " augroup END
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -218,8 +235,8 @@ Plug 'PangPangPangPangPang/visual-selection-vim'
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
-vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
-nnoremap <leader>f :Ack! 
+" vnoremap <silent> <leader>f :call visual#action('Ack! foo')<CR>
+" nnoremap <leader>f :Ack! 
 vnoremap <leader>r :call visual#replace('%s/foo//g')<CR><left><left>
 
 "Quick open doc
@@ -239,54 +256,54 @@ else
                 \ ]}
     nnoremap <silent> <leader>z :Zeavim<cr>
 
-Plug 'puremourning/vimspector'
-let g:vimspector_enable_mappings = 'HUMAN'
+    Plug 'puremourning/vimspector'
+    let g:vimspector_enable_mappings = 'HUMAN'
 endif
 """""""""""""""""""""""""""""""""""""""""""
 "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-      \'coc-python',
-      \'coc-sh',
-      \'coc-imselect',
-      \'coc-json',
-      \'coc-tsserver',
-      \'coc-html',
-      \'coc-css',
-      \'coc-snippets',
-      \'coc-vimlsp',
-      \'coc-prettier',
-      \'coc-translator',
-      \'coc-flutter-tools',
-      \'coc-sourcekit',
-      \'coc-postfix',
-      \'coc-fzf-preview',
-      \]
+            \'coc-python',
+            \'coc-sh',
+            \'coc-imselect',
+            \'coc-json',
+            \'coc-tsserver',
+            \'coc-html',
+            \'coc-css',
+            \'coc-snippets',
+            \'coc-vimlsp',
+            \'coc-prettier',
+            \'coc-translator',
+            \'coc-flutter-tools',
+            \'coc-sourcekit',
+            \'coc-postfix',
+            \'coc-fzf-preview',
+            \]
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
 if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Use `:Fold` for fold current buffer
@@ -296,74 +313,73 @@ map <silent> <leader>t :CocCommand translator.popup<CR>
 
 
 augroup Coc
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Normal Menu config
 function s:open_coc_menu() abort
-  let content = [
-        \ ["Find &Type Definition", "call CocActionAsync('jumpDefinition')" ],
-        \ ["Find &Implementation", "call CocActionAsync('jumpImplementation')" ],
-        \ ["Find &References", "call CocActionAsync('jumpReferences')" ],
-        \ ['-'],
-        \ ["Prev Diagnostic &[", "call CocActionAsync('diagnosticPrevious')" ],
-        \ ["Next Diagnostic &]", "call CocActionAsync('diagnosticNext')" ],
-        \ ['-'],
-        \ ["Re&name", "call CocActionAsync('rename')"],
-        \ ["&Format Code", "call CocActionAsync('format')" ],
-        \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
-        \ ["&Code Aciton", "CocCommand actions.open" ],
-        \ ['-'],
-        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-        \ ]
-  " set cursor to the last position
-  let opts = {'index':g:quickui#context#cursor}
-  call quickui#context#open(content, opts)
+    let content = [
+                \ ["Find &Type Definition", "call CocActionAsync('jumpDefinition')" ],
+                \ ["Find &Implementation", "call CocActionAsync('jumpImplementation')" ],
+                \ ["Find &References", "call CocActionAsync('jumpReferences')" ],
+                \ ['-'],
+                \ ["Prev Diagnostic &[", "call CocActionAsync('diagnosticPrevious')" ],
+                \ ["Next Diagnostic &]", "call CocActionAsync('diagnosticNext')" ],
+                \ ['-'],
+                \ ["Re&name", "call CocActionAsync('rename')"],
+                \ ["&Format Code", "call CocActionAsync('format')" ],
+                \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
+                \ ["&Code Aciton", "CocCommand actions.open" ],
+                \ ['-'],
+                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                \ ]
+    " set cursor to the last position
+    let opts = {'index':g:quickui#context#cursor}
+    call quickui#context#open(content, opts)
 endfunction
 nmap <leader>c :call <SID>open_coc_menu()<CR>
 
 " Visual Menu config
 function s:open_coc_visual_menu() abort
-  let content = [
-        \ ["&Format Code", "call CocActionAsync('formatSelected', visualmode())" ],
-        \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
-        \ ['-'],
-        \ ["&Code Aciton", "CocCommand actions.open" ],
-        \ ['-'],
-        \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-        \ ]
-  " set cursor to the last position
-  let opts = {'index':g:quickui#context#cursor}
-  call quickui#context#open(content, opts)
+    let content = [
+                \ ["&Format Code", "call CocActionAsync('formatSelected', visualmode())" ],
+                \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
+                \ ['-'],
+                \ ["&Code Aciton", "CocCommand actions.open" ],
+                \ ['-'],
+                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                \ ]
+    " set cursor to the last position
+    let opts = {'index':g:quickui#context#cursor}
+    call quickui#context#open(content, opts)
 endfunction
 vmap <leader>c :call <SID>open_coc_visual_menu()<CR>
 
 " For flutter
 function s:open_coc_flutter_menu() abort
-  let content = [
-        \ ["&Attach", "CocCommand flutter.attach" ],
-        \ ["Attach &Simple", "CocCommand flutter.attach --dart-define=runInFlutter=true"],
-        \ ["&Quit Debug", "CocCommand flutter.dev.quit" ],
-        \ ['-'],
-        \ ["Hot &Reload", "CocCommand flutter.dev.hotReload"],
-        \ ["&Hot Restart", "CocCommand flutter.dev.hotRestart"],
-        \ ['-'],
-        \ ["Open Dev&Log", "CocCommand flutter.dev.openDevLog"],
-        \ ["Open &Profiler", "CocCommand flutter.dev.openProfiler"],
-        \ ["Toggle &Outline", "CocCommand flutter.toggleOutline"],
-        \ ['-'],
-        \ ["&Find all", "Grepper"],
-        \ ]
-  " set cursor to the last position
-  let opts = {'index':g:quickui#context#cursor}
-  call quickui#context#open(content, opts)
+    let content = [
+                \ ["&Attach", "CocCommand flutter.attach" ],
+                \ ["Attach &Simple", "CocCommand flutter.attach --dart-define=runInFlutter=true"],
+                \ ["&Quit Debug", "CocCommand flutter.dev.quit" ],
+                \ ['-'],
+                \ ["Hot &Reload", "CocCommand flutter.dev.hotReload"],
+                \ ["&Hot Restart", "CocCommand flutter.dev.hotRestart"],
+                \ ['-'],
+                \ ["Open Dev&Log", "CocCommand flutter.dev.openDevLog"],
+                \ ["Open &Profiler", "CocCommand flutter.dev.openProfiler"],
+                \ ["Toggle &Outline", "CocCommand flutter.toggleOutline"],
+                \ ['-'],
+                \ ["&Find all", "Grepper"],
+                \ ]
+    " set cursor to the last position
+    let opts = {'index':g:quickui#context#cursor}
+    call quickui#context#open(content, opts)
 endfunction
-vmap <leader>f :call <SID>open_coc_flutter_menu()<CR>
 
 augroup Flutter
   autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
