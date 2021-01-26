@@ -37,6 +37,10 @@ elseif executable('ag')
     vnoremap <silent> <leader>f :call visual#action("GrepperAg 'foo'")<cr>
 endif
 
+Plug 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = '<C-y><tab>'
+let g:user_emmet_prev_key = '<C-y>p'
+
 Plug 'skywind3000/vim-terminal-help'
 let g:terminal_auto_insert = 1
 let g:terminal_key = "<F5>"
