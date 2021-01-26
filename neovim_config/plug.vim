@@ -94,9 +94,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'nvim-lua/diagnostic-nvim'
 
+let g:ale_disable_lsp = 1
+let g:ale_enabled = 0
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
+if g:ale_enabled == 1
+    Plug 'maximbaz/lightline-ale'
+endif
 " Plug 'TaDaa/vimade'
 
 " Plug 'mengelbrecht/lightline-bufferline'
