@@ -87,10 +87,10 @@ Plug 'tpope/vim-surround'
 let @t="\m\`\$v\^S\]\`\`"
 nnoremap <leader>] = @t
 
-" Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
+" Plug 'tpope/vim-commentary'
 " For tsx/jsx comment
-Plug 'suy/vim-context-commentstring'
+" Plug 'suy/vim-context-commentstring'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neovim/nvim-lspconfig'
@@ -210,7 +210,7 @@ let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
 
 if has('nvim-0.5')
-    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 endif
 
 " Automatically highlighting other uses of the current word under the cursor
