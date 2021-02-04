@@ -147,24 +147,86 @@ map <silent> <leader>gb :Gblame<cr>
 
 """""""""""""""""""Syntastic""""""""""""""
 if v:version > 743 || has('nvim')
+    let g:ale_disable_lsp = 1
     Plug 'w0rp/ale'
-    " Set ale disable as default
-    let g:ale_enabled = 0
     let g:ale_lint_on_text_changed = 'normal'
     let g:ale_lint_on_insert_leave = 1
+    let g:ale_linters_explicit = 1
+    let g:ale_completion_delay = 500
+    let g:ale_lint_delay = 100
+    let g:ale_fix_on_save = 1
+    let g:ale_set_loclist = 0
+    let g:ale_set_quickfix = 0
+
+    if has('nvim') 
+        let g:ale_virtualtext_cursor = 1
+        let g:ale_echo_cursor = 0
+    else
+        let g:ale_echo_cursor = 1
+    endif
+    let g:ale_virtualtext_prefix = '■ '
     " let g:ale_lint_on_enter = 0
 
-    let g:ale_sign_error = '✖'
-    let g:ale_sign_warning = '◎'
-    let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-    highlight clear ALEErrorSign
-    highlight clear ALEWarningSign
-    " let g:ale_sign_column_always = 1
+    let g:ale_c_ccls_executable = 'ccls'
+
+    let g:ale_sign_warning = ' '
+    let g:ale_sign_error = ' '
+    let g:ale_statusline_format = ['x %d', '> %d', '⬥ ok']
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_sign_highlight_linenrs = 1
+    " highlight clear ALEErrorSign
+    " highlight clear ALEWarningSign
     "
+    let g:ale_javascript_eslint_executable = '/usr/local/bin/eslint'
+    let g:ale_javascript_eslint_use_global = 1
     let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
-                \'python' : ['flake8']
-                \ }
-    let g:ale_linter_aliases = {'jsx': 'css'}
+                \        'javascript' : ['eslint'],
+                \        'typescript' : ['eslint'],
+                \        'typescriptreact' : ['eslint'],
+                \        'html' : ['htmlhint'],
+                \        'css' : ['stylelint'],
+                \        'python' : ['flake8'],
+                \        'go' : ['golint'],
+                \        'cfamily' : ['ccls'],
+                \        'dart' : ['dartanalyzer'],
+                \       }
+    let g:ale_linter_aliases = {
+                \   'cfamily': ['c', 'cpp', 'objc', 'objcpp'],
+                \   'xml': 'html',
+                \   'ttss': 'css',
+                \   'Dockerfile': 'dockerfile',
+                \   'csh': 'sh',
+                \   'javascriptreact': ['javascript', 'jsx'],
+                \   'plaintex': 'tex',
+                \   'ps1': 'powershell',
+                \   'rmarkdown': 'r',
+                \   'rmd': 'r',
+                \   'systemverilog': 'verilog',
+                \   'typescriptreact': ['typescript', 'tsx'],
+                \   'verilog_systemverilog': ['verilog_systemverilog', 'verilog'],
+                \   'vimwiki': 'markdown',
+                \   'vue': ['vue', 'javascript'],
+                \   'xsd': ['xsd', 'xml'],
+                \   'xslt': ['xslt', 'xml'],
+                \   'zsh': 'sh',
+                \              }
+    let g:ale_fixers = {
+                \       'javascript': ['eslint'],
+                \       'typescript' : ['eslint'],
+                \       'typescriptreact' : ['eslint'],
+                \       'dart': ['dartfmt'],
+                \       'go': ['gofmt', 'goimports'],
+                \        'html' : ['htmlhint'],
+                \        'css' : ['stylelint'],
+                \       '*': ['remove_trailing_lines', 'trim_whitespace'],
+                \      }
+    let g:ale_fix_on_save_ignore = {
+                \      'vim': ['remove_trailing_lines', 'trim_whitespace'],
+                \      }
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
     map <silent> <leader>s :ALEToggle<cr>
 endif
 """""""""""""""""""""""""""""""""""""""""""
@@ -339,58 +401,58 @@ if 0
         autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
     augroup end
 else
-"""""""""""Complete & Syntastic"""""""""""""""""
-Plug 'Valloric/YouCompleteMe'
-" if g:python_version >= 3
+    """""""""""Complete & Syntastic"""""""""""""""""
+    Plug 'Valloric/YouCompleteMe'
+    " if g:python_version >= 3
     " let g:ycm_python_binary_path = g:python3_host_prog
-" else
+    " else
     " let g:ycm_python_binary_path = g:python_host_prog
-" endif
-let g:ycm_global_ycm_extra_conf = $YCM_WINDIR . "\\.ycm_extra_conf.py"
-" add_preview
-let g:ycm_add_preview_to_completeopt                = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion  = 1
-let g:ycm_key_list_select_completion                = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion              = ['<C-p>', '<Up>']
-let g:ycm_key_invoke_completion                     = 'Enter'
-" let g:ycm_confirm_extra_conf                        = 1 " 加载.ycm_extra_conf.py提示
-let g:ycm_collect_identifiers_from_tags_files       = 1 " 开启 YC基于标签引擎
-let g:ycm_min_num_of_chars_for_completion           = 2 " 从第2个键入字符就开始罗列匹配项
-let g:ycm_seed_identifiers_with_syntax              = 0 " 语法关键字补全
-let g:ycm_complete_in_comments                      = 0
-let g:ycm_complete_in_strings                       = 1
-let g:ycm_show_diagnostics_ui                       = 1
-let g:ycm_collect_identifiers_from_tags_files       = 1
-if has('patch-8.1.1875')
-    let g:ycm_disable_signature_help = 0
-else
-    let g:ycm_disable_signature_help = 1
-endif
-let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-            \ 'cs,lua,javascript': ['re!\w{2}'],
-            \ 'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 're!\[.*\]\s'],
-            \ 'ocaml' : ['.', '#'],
-            \ 'objcpp' : ['->', '.', '::'],
-            \ 'perl' : ['->'],
-            \ 'php' : ['->', '::'],
-            \ 'typescript,d,perl6,scala,vb,elixir' : ['.'],
-            \ 'ruby' : ['.', '::'],
-            \ }
-let g:ycm_filetype_blacklist = {
-            \ 'coc-explorer' : 1,
-            \ 'tagbar'       : 1,
-            \ 'vista'        : 1,
-            \ 'leaderf'      : 1,
-            \ 'fzf'          : 1,
-            \ 'gitcommit'    : 1,
-            \ }
-" hover
+    " endif
+    let g:ycm_global_ycm_extra_conf = $YCM_WINDIR . "\\.ycm_extra_conf.py"
+    " add_preview
+    let g:ycm_add_preview_to_completeopt                = 1
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_autoclose_preview_window_after_insertion  = 1
+    let g:ycm_key_list_select_completion                = ['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion              = ['<C-p>', '<Up>']
+    let g:ycm_key_invoke_completion                     = 'Enter'
+    " let g:ycm_confirm_extra_conf                        = 1 " 加载.ycm_extra_conf.py提示
+    let g:ycm_collect_identifiers_from_tags_files       = 1 " 开启 YC基于标签引擎
+    let g:ycm_min_num_of_chars_for_completion           = 2 " 从第2个键入字符就开始罗列匹配项
+    let g:ycm_seed_identifiers_with_syntax              = 0 " 语法关键字补全
+    let g:ycm_complete_in_comments                      = 0
+    let g:ycm_complete_in_strings                       = 1
+    let g:ycm_show_diagnostics_ui                       = 1
+    let g:ycm_collect_identifiers_from_tags_files       = 1
+    if has('patch-8.1.1875')
+        let g:ycm_disable_signature_help = 0
+    else
+        let g:ycm_disable_signature_help = 1
+    endif
+    let g:ycm_semantic_triggers =  {
+                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                \ 'cs,lua,javascript': ['re!\w{2}'],
+                \ 'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 're!\[.*\]\s'],
+                \ 'ocaml' : ['.', '#'],
+                \ 'objcpp' : ['->', '.', '::'],
+                \ 'perl' : ['->'],
+                \ 'php' : ['->', '::'],
+                \ 'typescript,d,perl6,scala,vb,elixir' : ['.'],
+                \ 'ruby' : ['.', '::'],
+                \ }
+    let g:ycm_filetype_blacklist = {
+                \ 'coc-explorer' : 1,
+                \ 'tagbar'       : 1,
+                \ 'vista'        : 1,
+                \ 'leaderf'      : 1,
+                \ 'fzf'          : 1,
+                \ 'gitcommit'    : 1,
+                \ }
+    " hover
 
 
-nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap K :YcmDiags<CR>
+    nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+    nmap K :YcmDiags<CR>
 endif
 " Initialize plugin system
 call plug#end()
