@@ -85,9 +85,11 @@ let g:terminal_kill = "term"
 """""""""""""""""""statusline""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-            \ 'active':{},
-            \ 'inactive':{},
-            \ }
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
+
 let g:lightline.colorscheme = 'gruvbox8'
 """""""""""""""""""""""""""""""""""""""
 
