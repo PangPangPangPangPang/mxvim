@@ -485,6 +485,7 @@ else
 
 
     nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+    nnoremap <silent> <leader>cx a<ESC>:YcmCompleter FixIt<CR>
     nmap K :YcmDiags<CR>
 endif
 " Initialize plugin system
