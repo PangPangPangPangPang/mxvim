@@ -36,7 +36,7 @@ do
     cd ~/.vim/plugged/YouCompleteMe
     if [ "$var" = "-ycm" ]; then
         # python3 install.py --all
-         python3 install.py --go-completer
+         python3 install.py --go-completer --ts-completer
     fi
 done
 

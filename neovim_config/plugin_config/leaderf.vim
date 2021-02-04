@@ -5,7 +5,7 @@ let g:Lf_ShowHidden = 1
 let g:Lf_ShortcutB = '<Leader>bo'
 let g:Lf_DefaultExternalTool = "rg"
 let g:Lf_RootMarkers = ['.xcworkspace', '.project', '.git']
-let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'bottom'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PopupColorscheme = 'gruvbox_default'
 let g:Lf_StlColorscheme = 'gruvbox_material'
@@ -25,4 +25,5 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
+
 let g:Lf_ReverseOrder = 1

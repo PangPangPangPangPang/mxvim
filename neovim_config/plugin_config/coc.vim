@@ -18,6 +18,7 @@ let g:coc_global_extensions = [
       \'coc-fzf-preview',
       \'coc-explorer',
       \'coc-fzf-preview',
+      \'coc-pairs',
       \]
       " \'coc-flutter-tools',
 

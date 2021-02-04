@@ -81,7 +81,7 @@ Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
 let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 let @t="\m\`\$v\^S\]\`\`"

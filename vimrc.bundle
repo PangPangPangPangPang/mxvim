@@ -169,57 +169,6 @@ if v:version > 743 || has('nvim')
 endif
 """""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""Complete & Syntastic"""""""""""""""""
-" Plug 'Valloric/YouCompleteMe'
-" " if g:python_version >= 3
-"     " let g:ycm_python_binary_path = g:python3_host_prog
-" " else
-"     " let g:ycm_python_binary_path = g:python_host_prog
-" " endif
-" let g:ycm_global_ycm_extra_conf = $YCM_WINDIR . "\\.ycm_extra_conf.py"
-" " add_preview
-" let g:ycm_add_preview_to_completeopt                = 0
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_autoclose_preview_window_after_insertion  = 1
-" let g:ycm_key_list_select_completion                = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion              = ['<C-p>', '<Up>']
-" " let g:ycm_confirm_extra_conf                        = 1 " 加载.ycm_extra_conf.py提示
-" let g:ycm_collect_identifiers_from_tags_files       = 1 " 开启 YC基于标签引擎
-" let g:ycm_min_num_of_chars_for_completion           = 2 " 从第2个键入字符就开始罗列匹配项
-" let g:ycm_seed_identifiers_with_syntax              = 0 " 语法关键字补全
-" let g:ycm_complete_in_comments                      = 0
-" let g:ycm_complete_in_strings                       = 1
-" let g:ycm_show_diagnostics_ui                       = 0
-" let g:ycm_collect_identifiers_from_tags_files       = 1
-" if has('patch-8.1.1875')
-"     let g:ycm_disable_signature_help = 0
-" else
-"     let g:ycm_disable_signature_help = 1
-" endif
-" let g:ycm_semantic_triggers =  {
-"             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-"             \ 'cs,lua,javascript': ['re!\w{2}'],
-"             \ 'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 're!\[.*\]\s'],
-"             \ 'ocaml' : ['.', '#'],
-"             \ 'objcpp' : ['->', '.', '::'],
-"             \ 'perl' : ['->'],
-"             \ 'php' : ['->', '::'],
-"             \ 'typescript,d,perl6,scala,vb,elixir' : ['.'],
-"             \ 'ruby' : ['.', '::'],
-"             \ }
-" let g:ycm_filetype_blacklist = {
-"             \ 'coc-explorer' : 1,
-"             \ 'tagbar'       : 1,
-"             \ 'vista'        : 1,
-"             \ 'leaderf'      : 1,
-"             \ 'fzf'          : 1,
-"             \ 'gitcommit'    : 1,
-"             \ }
-" " hover
-" 
-" 
-" nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nmap K :YcmDiags<CR>
 
 """"""""""""""Lazyload func""""""""""""""""
 " augroup plug_lazy_load
@@ -265,129 +214,184 @@ else
 endif
 """""""""""""""""""""""""""""""""""""""""""
 "
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-            \'coc-python',
-            \'coc-sh',
-            \'coc-imselect',
-            \'coc-json',
-            \'coc-tsserver',
-            \'coc-html',
-            \'coc-css',
-            \'coc-snippets',
-            \'coc-vimlsp',
-            \'coc-prettier',
-            \'coc-translator',
-            \'coc-flutter-tools',
-            \'coc-sourcekit',
-            \'coc-postfix',
-            \'coc-fzf-preview',
-            \]
+if 0
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    let g:coc_global_extensions = [
+                \'coc-python',
+                \'coc-sh',
+                \'coc-imselect',
+                \'coc-json',
+                \'coc-tsserver',
+                \'coc-html',
+                \'coc-css',
+                \'coc-snippets',
+                \'coc-vimlsp',
+                \'coc-prettier',
+                \'coc-translator',
+                \'coc-flutter-tools',
+                \'coc-sourcekit',
+                \'coc-postfix',
+                \'coc-fzf-preview',
+                \]
 
-nmap <silent> <c-]> <Plug>(coc-definition)
+    nmap <silent> <c-]> <Plug>(coc-definition)
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+    function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
 
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
+    let g:coc_snippet_next = '<TAB>'
+    let g:coc_snippet_prev = '<S-TAB>'
 
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
+    if exists('*complete_info')
+        inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
     else
-        call CocAction('doHover')
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     endif
-endfunction
 
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
+    " Use K for show documentation in preview window
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+    function! s:show_documentation()
+        if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+    endfunction
 
-map <silent> <leader>t :CocCommand translator.popup<CR>
+    " Use `:Fold` for fold current buffer
+    command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+    map <silent> <leader>t :CocCommand translator.popup<CR>
 
 
-augroup Coc
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+    augroup Coc
+        autocmd!
+        " Setup formatexpr specified filetype(s).
+        " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+        " Update signature help on jump placeholder
+        autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
 
-" Normal Menu config
-function s:open_coc_menu() abort
-    let content = [
-                \ ["Find &Type Definition", "call CocActionAsync('jumpDefinition')" ],
-                \ ["Find &Implementation", "call CocActionAsync('jumpImplementation')" ],
-                \ ["Find &References", "call CocActionAsync('jumpReferences')" ],
-                \ ['-'],
-                \ ["Prev Diagnostic &[", "call CocActionAsync('diagnosticPrevious')" ],
-                \ ["Next Diagnostic &]", "call CocActionAsync('diagnosticNext')" ],
-                \ ['-'],
-                \ ["Re&name", "call CocActionAsync('rename')"],
-                \ ["&Format Code", "call CocActionAsync('format')" ],
-                \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
-                \ ["&Code Aciton", "CocCommand actions.open" ],
-                \ ['-'],
-                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-                \ ]
-    " set cursor to the last position
-    let opts = {'index':g:quickui#context#cursor}
-    call quickui#context#open(content, opts)
-endfunction
-nmap <leader>c :call <SID>open_coc_menu()<CR>
+    " Normal Menu config
+    function s:open_coc_menu() abort
+        let content = [
+                    \ ["Find &Type Definition", "call CocActionAsync('jumpDefinition')" ],
+                    \ ["Find &Implementation", "call CocActionAsync('jumpImplementation')" ],
+                    \ ["Find &References", "call CocActionAsync('jumpReferences')" ],
+                    \ ['-'],
+                    \ ["Prev Diagnostic &[", "call CocActionAsync('diagnosticPrevious')" ],
+                    \ ["Next Diagnostic &]", "call CocActionAsync('diagnosticNext')" ],
+                    \ ['-'],
+                    \ ["Re&name", "call CocActionAsync('rename')"],
+                    \ ["&Format Code", "call CocActionAsync('format')" ],
+                    \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
+                    \ ["&Code Aciton", "CocCommand actions.open" ],
+                    \ ['-'],
+                    \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                    \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                    \ ]
+        " set cursor to the last position
+        let opts = {'index':g:quickui#context#cursor}
+        call quickui#context#open(content, opts)
+    endfunction
+    nmap <leader>c :call <SID>open_coc_menu()<CR>
 
-" Visual Menu config
-function s:open_coc_visual_menu() abort
-    let content = [
-                \ ["&Format Code", "call CocActionAsync('formatSelected', visualmode())" ],
-                \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
-                \ ['-'],
-                \ ["&Code Aciton", "CocCommand actions.open" ],
-                \ ['-'],
-                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
-                \ ]
-    " set cursor to the last position
-    let opts = {'index':g:quickui#context#cursor}
-    call quickui#context#open(content, opts)
-endfunction
-vmap <leader>c :call <SID>open_coc_visual_menu()<CR>
+    " Visual Menu config
+    function s:open_coc_visual_menu() abort
+        let content = [
+                    \ ["&Format Code", "call CocActionAsync('formatSelected', visualmode())" ],
+                    \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
+                    \ ['-'],
+                    \ ["&Code Aciton", "CocCommand actions.open" ],
+                    \ ['-'],
+                    \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                    \ ]
+        " set cursor to the last position
+        let opts = {'index':g:quickui#context#cursor}
+        call quickui#context#open(content, opts)
+    endfunction
+    vmap <leader>c :call <SID>open_coc_visual_menu()<CR>
 
-" For flutter
-function s:open_coc_flutter_menu() abort
-    let content = [
-                \ ["&Attach", "CocCommand flutter.attach" ],
-                \ ["Attach &Simple", "CocCommand flutter.attach --dart-define=runInFlutter=true"],
-                \ ["&Quit Debug", "CocCommand flutter.dev.quit" ],
-                \ ['-'],
-                \ ["Hot &Reload", "CocCommand flutter.dev.hotReload"],
-                \ ["&Hot Restart", "CocCommand flutter.dev.hotRestart"],
-                \ ['-'],
-                \ ["Open Dev&Log", "CocCommand flutter.dev.openDevLog"],
-                \ ["Open &Profiler", "CocCommand flutter.dev.openProfiler"],
-                \ ["Toggle &Outline", "CocCommand flutter.toggleOutline"],
-                \ ['-'],
-                \ ["&Find all", "Grepper"],
-                \ ]
-    " set cursor to the last position
-    let opts = {'index':g:quickui#context#cursor}
-    call quickui#context#open(content, opts)
-endfunction
+    " For flutter
+    function s:open_coc_flutter_menu() abort
+        let content = [
+                    \ ["&Attach", "CocCommand flutter.attach" ],
+                    \ ["Attach &Simple", "CocCommand flutter.attach --dart-define=runInFlutter=true"],
+                    \ ["&Quit Debug", "CocCommand flutter.dev.quit" ],
+                    \ ['-'],
+                    \ ["Hot &Reload", "CocCommand flutter.dev.hotReload"],
+                    \ ["&Hot Restart", "CocCommand flutter.dev.hotRestart"],
+                    \ ['-'],
+                    \ ["Open Dev&Log", "CocCommand flutter.dev.openDevLog"],
+                    \ ["Open &Profiler", "CocCommand flutter.dev.openProfiler"],
+                    \ ["Toggle &Outline", "CocCommand flutter.toggleOutline"],
+                    \ ['-'],
+                    \ ["&Find all", "Grepper"],
+                    \ ]
+        " set cursor to the last position
+        let opts = {'index':g:quickui#context#cursor}
+        call quickui#context#open(content, opts)
+    endfunction
 
-augroup Flutter
-  autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
-augroup end
+    augroup Flutter
+        autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
+    augroup end
+else
+"""""""""""Complete & Syntastic"""""""""""""""""
+Plug 'Valloric/YouCompleteMe'
+" if g:python_version >= 3
+    " let g:ycm_python_binary_path = g:python3_host_prog
+" else
+    " let g:ycm_python_binary_path = g:python_host_prog
+" endif
+let g:ycm_global_ycm_extra_conf = $YCM_WINDIR . "\\.ycm_extra_conf.py"
+" add_preview
+let g:ycm_add_preview_to_completeopt                = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion  = 1
+let g:ycm_key_list_select_completion                = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion              = ['<C-p>', '<Up>']
+let g:ycm_key_invoke_completion                     = 'Enter'
+" let g:ycm_confirm_extra_conf                        = 1 " 加载.ycm_extra_conf.py提示
+let g:ycm_collect_identifiers_from_tags_files       = 1 " 开启 YC基于标签引擎
+let g:ycm_min_num_of_chars_for_completion           = 2 " 从第2个键入字符就开始罗列匹配项
+let g:ycm_seed_identifiers_with_syntax              = 0 " 语法关键字补全
+let g:ycm_complete_in_comments                      = 0
+let g:ycm_complete_in_strings                       = 1
+let g:ycm_show_diagnostics_ui                       = 1
+let g:ycm_collect_identifiers_from_tags_files       = 1
+if has('patch-8.1.1875')
+    let g:ycm_disable_signature_help = 0
+else
+    let g:ycm_disable_signature_help = 1
+endif
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ 'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 're!\[.*\]\s'],
+            \ 'ocaml' : ['.', '#'],
+            \ 'objcpp' : ['->', '.', '::'],
+            \ 'perl' : ['->'],
+            \ 'php' : ['->', '::'],
+            \ 'typescript,d,perl6,scala,vb,elixir' : ['.'],
+            \ 'ruby' : ['.', '::'],
+            \ }
+let g:ycm_filetype_blacklist = {
+            \ 'coc-explorer' : 1,
+            \ 'tagbar'       : 1,
+            \ 'vista'        : 1,
+            \ 'leaderf'      : 1,
+            \ 'fzf'          : 1,
+            \ 'gitcommit'    : 1,
+            \ }
+" hover
+
+
+nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap K :YcmDiags<CR>
+endif
 " Initialize plugin system
 call plug#end()
 

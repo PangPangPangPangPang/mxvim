@@ -30,7 +30,7 @@ set shortmess+=c
 " set nonu
 set nu
 
-if has("patch-8.1.1564")
+if has("patch-8.1.1564") || has('nvim-0.5')
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -240,9 +240,9 @@ augroup BasicGroup
     autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set tabstop=4
     autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set sts=4
 
-    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json set shiftwidth=2
-    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json set tabstop=2
-    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json set sts=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json,less set shiftwidth=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json,less set tabstop=2
+    autocmd FileType javascriptreact,javascript,html,css,xml,dart,json,less set sts=2
 
     " Return to last edit position when opening files (You want this!)
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
