@@ -24,9 +24,16 @@ set nu!
 " Show relative line number
 " set relativenumber
 
-" if has('mac') && !has('gui_running')
-    " set norelativenumber
-" endif
+if has('mac') && !has('gui_running')
+    set norelativenumber
+endif
+
+if has("patch-8.1.1564") || has('nvim-0.5')
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Allow use system clipboard
 " set clipboard=unnamed
