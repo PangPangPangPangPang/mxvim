@@ -129,18 +129,18 @@ function! LightlineMode()
                 \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-function! LightlineFilename()
-    return &ft =~ 'help\|vimfiler\|gundo\|defx\|explorer' ? '' : expand('%:t')
-endfunction
-
 " function! LightlineFilename()
-"   let root = fnamemodify(get(b:, 'git_dir'), ':h')
-"   let path = expand('%:p')
-"   if path[:len(root)-1] ==# root
-"     return path[len(root)+1:]
-"   endif
-"   return expand('%')
+"     return &ft =~ 'help\|vimfiler\|gundo\|defx\|explorer' ? '' : expand('%:t')
 " endfunction
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 function! LightlineFileformat()
       return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbolWithDefault()) : ''

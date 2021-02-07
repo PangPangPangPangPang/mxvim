@@ -1,5 +1,5 @@
 let g:Lf_ShortcutF = '<C-P>'
-let g:Lf_DefaultMode = 'NameOnly'
+" let g:Lf_DefaultMode = 'NameOnly'
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShortcutB = '<Leader>bo'
