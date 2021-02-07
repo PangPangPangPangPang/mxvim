@@ -14,6 +14,11 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
 let g:polyglot_disabled = ['markdown', 'mathematica']
 Plug 'sheerun/vim-polyglot'
 
+let g:indentLine_char = '│'
+let g:indentLine_setColors = 0
+let g:indentLine_fileTypeExclude = ['markdown', 'coc-explorer']
+Plug 'Yggdroot/indentLine'
+
 if has('python3') 
     Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
     let g:Lf_ShortcutF = '<C-P>'
@@ -457,8 +462,10 @@ else
     let g:ycm_seed_identifiers_with_syntax              = 0 " 语法关键字补全
     let g:ycm_complete_in_comments                      = 0
     let g:ycm_complete_in_strings                       = 1
-    let g:ycm_show_diagnostics_ui                       = 1
+    let g:ycm_show_diagnostics_ui                       = 0
     let g:ycm_collect_identifiers_from_tags_files       = 1
+    let g:ycm_auto_hover                                = ''
+
     if has('patch-8.1.1875')
         let g:ycm_disable_signature_help = 0
     else
@@ -488,7 +495,7 @@ else
 
     nnoremap <silent> <c-]> a<ESC>:YcmCompleter GoToDefinitionElseDeclaration<CR>
     nnoremap <silent> <leader>cx a<ESC>:YcmCompleter FixIt<CR>
-    nmap K :YcmDiags<CR>
+    nmap K <plug>(YCMHover)
 endif
 " Initialize plugin system
 call plug#end()
