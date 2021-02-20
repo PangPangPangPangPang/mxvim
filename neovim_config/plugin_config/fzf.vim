@@ -3,8 +3,8 @@ if has("nvim")
   au FileType fzf tunmap <Esc>
 endif
 
-" noremap <silent><c-p> :Files<cr>
-" noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
+noremap <silent><c-p> :Files<cr>
+noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
 
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse'

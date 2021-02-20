@@ -1,3 +1,4 @@
+finish
 let g:Lf_ShortcutF = '<C-P>'
 " let g:Lf_DefaultMode = 'NameOnly'
 let g:Lf_PreviewCode = 1

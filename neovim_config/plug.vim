@@ -67,11 +67,11 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-grepper', { 'on': ['GrepperRg', 'Grepper', '<plug>(GrepperOperator)'] }
@@ -82,6 +82,16 @@ let g:VM_maps = {}
 let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 
 " Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
+let g:pear_tree_repeatable_expand = 0
+let g:pear_tree_pairs = {
+            \ '(': {'closer': ')'},
+            \ '[': {'closer': ']'},
+            \ '{': {'closer': '}'},
+            \ "'": {'closer': "'"},
+            \ '"': {'closer': '"'},
+            \ '<*>': {'closer': '</*>'},
+            \ }
 
 Plug 'tpope/vim-surround'
 let @t="\m\`\$v\^S\]\`\`"
