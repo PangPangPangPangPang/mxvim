@@ -29,7 +29,7 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'Dave-Elec/gruvbox'
 " Plug 'srcery-colors/srcery-vim'
-" Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
 " Plug 'joshdick/onedark.vim'
 Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }

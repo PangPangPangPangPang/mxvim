@@ -1,5 +1,5 @@
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 "     highlight color group
 nnoremap <silent> <leader>wh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " set background=light
@@ -22,16 +22,16 @@ endif
 " let g:srcery_inverse_match_paren = 1
 " colorscheme srcery
 
-" let g:PaperColor_Theme_Options = {
-"             \   'theme': {
-"             \     'default.dark': {
-"             \       'transparent_background': 1,
-"             \       'allow_bold': 1,
-"             \       'allow_italic': 1
-"             \     }
-"             \   }
-"             \ }
-" colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+            \   'theme': {
+            \     'default.dark': {
+            \       'transparent_background': 1,
+            \       'allow_bold': 1,
+            \       'allow_italic': 1
+            \     }
+            \   }
+            \ }
+colorscheme PaperColor
 
 
 " let g:one_allow_italics = 1
@@ -62,7 +62,7 @@ let g:miramare_enable_italic_string = 1
 let g:miramare_enable_bold = 1
 let g:miramare_disable_italic_comment = 0
 let g:miramare_transparent_background = 0
-silent! colorscheme miramare
+" silent! colorscheme miramare
 "
 " 
 " try 
@@ -107,8 +107,10 @@ silent! colorscheme miramare
 "     autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 " endtry
 
-highlight IlluminatedWord gui=none term=none guibg=#444444 guifg=none ctermbg=245 ctermfg=none
-augroup illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi link illuminatedWord IlluminatedWord
-augroup END
+if &background=='dark'
+    highlight IlluminatedWord gui=none term=none guibg=#444444 guifg=none ctermbg=245 ctermfg=none
+    augroup illuminate_augroup
+        autocmd!
+        autocmd VimEnter * hi link illuminatedWord IlluminatedWord
+    augroup END
+endif
