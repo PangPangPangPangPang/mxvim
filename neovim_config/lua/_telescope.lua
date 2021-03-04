@@ -31,13 +31,13 @@ require('telescope').setup{
                 -- ["<C-i>"] = my_cool_custom_action,
             },
         },
-        prompt_position = "bottom",
+        prompt_position = "top",
         prompt_prefix = "> ",
         selection_caret = "> ",
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
-        sorting_strategy = "descending",
+        sorting_strategy = "ascending",
         layout_strategy = "horizontal",
         layout_defaults = {
             horizontal = {
