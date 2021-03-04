@@ -24,12 +24,11 @@ require('telescope').setup{
                 ["<CR>"] = actions.select_default + actions.center,
 
                 -- You can perform as many actions in a row as you like
-                ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
                 ["<esc>"] = actions.close,
             },
             n = {
                 ["<esc>"] = false,
-                ["<C-i>"] = my_cool_custom_action,
+                -- ["<C-i>"] = my_cool_custom_action,
             },
         },
         prompt_position = "bottom",

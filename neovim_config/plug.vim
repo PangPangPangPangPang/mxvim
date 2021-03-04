@@ -80,7 +80,6 @@ else
     Plug 'junegunn/fzf.vim'
 endif
 
-
 " Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-grepper', { 'on': ['GrepperRg', 'Grepper', '<plug>(GrepperOperator)'] }
 
@@ -257,5 +256,3 @@ call plug#end()
 for f in split(glob('~/.config/nvim/plugin_config/*.vim'))
     exe 'source' f
 endfor
-
-" lua require("lsp_config")
