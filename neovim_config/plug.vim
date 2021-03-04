@@ -67,9 +67,8 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!']}
 
-" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
-
+" Fuzzy finder
 if has('nvim-0.5')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -78,6 +77,7 @@ noremap <silent><c-p> :Telescope find_files<cr>
 else
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 endif
 
 " Plug 'mhinz/vim-grepper'
