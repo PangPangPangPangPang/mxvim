@@ -1,3 +1,7 @@
+if !Installed("fzf.vim")
+    finish
+endif
+    finish
 if has("nvim")
   au TermOpen * tnoremap <Esc> <c-\><c-n>
   au FileType fzf tunmap <Esc>
