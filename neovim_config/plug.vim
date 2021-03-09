@@ -87,7 +87,7 @@ Plug 'mg979/vim-visual-multi'
 let g:VM_maps = {}
 let g:VM_maps['Remove Region'] = '<C-p>' " replace Q
 
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 " Plug 'tmsvg/pear-tree'
 " let g:pear_tree_repeatable_expand = 0
 " let g:pear_tree_pairs = {

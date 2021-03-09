@@ -22,16 +22,16 @@ endif
 " let g:srcery_inverse_match_paren = 1
 " colorscheme srcery
 
-let g:PaperColor_Theme_Options = {
-            \   'theme': {
-            \     'default.dark': {
-            \       'transparent_background': 1,
-            \       'allow_bold': 1,
-            \       'allow_italic': 1
-            \     }
-            \   }
-            \ }
-colorscheme PaperColor
+" let g:PaperColor_Theme_Options = {
+"             \   'theme': {
+"             \     'default.dark': {
+"             \       'transparent_background': 1,
+"             \       'allow_bold': 1,
+"             \       'allow_italic': 1
+"             \     }
+"             \   }
+"             \ }
+" colorscheme PaperColor
 
 
 " let g:one_allow_italics = 1
@@ -62,7 +62,7 @@ let g:miramare_enable_italic_string = 1
 let g:miramare_enable_bold = 1
 let g:miramare_disable_italic_comment = 0
 let g:miramare_transparent_background = 0
-" silent! colorscheme miramare
+silent! colorscheme miramare
 "
 " 
 " try 

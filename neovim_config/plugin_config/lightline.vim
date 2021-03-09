@@ -45,8 +45,8 @@ let g:lightline.component_function = {
 " let g:lightline.colorscheme = 'gruvbox8'
 " let g:lightline.colorscheme = 'dracula'
 
-" let g:lightline.colorscheme = 'miramare'
-let g:lightline.colorscheme = 'PaperColor'
+let g:lightline.colorscheme = 'miramare'
+" let g:lightline.colorscheme = 'PaperColor'
 " let g:lightline.colorscheme = 'snazzy'
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
