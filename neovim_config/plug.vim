@@ -22,17 +22,18 @@ let g:devicons_install = 1
 " Plug 'morhetz/gruvbox'
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'sainnhe/gruvbox-material'
-Plug 'lifepillar/vim-gruvbox8'
+" Plug 'lifepillar/vim-gruvbox8'
 " Plug 'connorholyday/vim-snazzy'
 " Plug 'chuling/equinusocio-material.vim'
 " Plug 'ajmwagar/vim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " Plug 'Dave-Elec/gruvbox'
 " Plug 'srcery-colors/srcery-vim'
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'rakr/vim-one'
 " Plug 'joshdick/onedark.vim'
-Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
+" Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
+Plug 'nanotech/jellybeans.vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Plug 'sainnhe/vim-color-forest-night'

@@ -57,13 +57,14 @@ endif
 " autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
 " autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
 
-let g:miramare_enable_italic = 1
-let g:miramare_enable_italic_string = 1
-let g:miramare_enable_bold = 1
-let g:miramare_disable_italic_comment = 0
-let g:miramare_transparent_background = 0
-silent! colorscheme miramare
+" let g:miramare_enable_italic = 1
+" let g:miramare_enable_italic_string = 1
+" let g:miramare_enable_bold = 1
+" let g:miramare_disable_italic_comment = 0
+" let g:miramare_transparent_background = 0
+" silent! colorscheme miramare
 "
+silent! colorscheme jellybeans
 " 
 " try 
     " if has('gui_running')
