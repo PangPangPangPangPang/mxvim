@@ -35,6 +35,8 @@ let g:devicons_install = 1
 " Plug 'PangPangPangPangPang/miramare', { 'branch': 'develop' }
 Plug 'nanotech/jellybeans.vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
+
 
 " Plug 'sainnhe/vim-color-forest-night'
 " Readline style insertion
@@ -117,9 +119,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:ale_disable_lsp = 1
 let g:ale_enabled = 0
 Plug 'dense-analysis/ale'
-Plug 'itchyny/lightline.vim'
-if g:ale_enabled == 1
-    Plug 'maximbaz/lightline-ale'
+
+if !has('nvim-0.5')
+    Plug 'itchyny/lightline.vim'
+    if g:ale_enabled == 1
+        Plug 'maximbaz/lightline-ale'
+    endif
+else 
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 endif
 " Plug 'TaDaa/vimade'
 

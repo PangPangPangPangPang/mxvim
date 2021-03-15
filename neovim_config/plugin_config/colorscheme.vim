@@ -64,7 +64,9 @@ endif
 " let g:miramare_transparent_background = 0
 " silent! colorscheme miramare
 "
-silent! colorscheme jellybeans
+let g:nvcode_termcolors=256
+colorscheme nvcode
+" silent! colorscheme jellybeans
 " 
 " try 
     " if has('gui_running')

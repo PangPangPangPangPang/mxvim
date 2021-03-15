@@ -1,3 +1,7 @@
+if Installed('galaxyline.nvim')
+    lua require("_galaxyline")
+    finish
+endif
 " let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#enable_devicons = g:devicons_install
