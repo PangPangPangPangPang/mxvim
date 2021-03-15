@@ -11,7 +11,8 @@ gl.short_line_list = {
     'nerdtree',
     'fugitive',
     'fugitiveblame',
-    'plug'
+    'plug',
+    'defx'
 }
 
 -- VistaPlugin = extension.vista_nearest
@@ -314,7 +315,7 @@ gls.short_line_left[1] = {
 gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
-    separator = ' ',
+    separator = '',
     condition = has_file_type,
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.fg,colors.purple}
