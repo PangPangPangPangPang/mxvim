@@ -10,6 +10,8 @@ set mouse=a
 "     set guicursor=a:block
 " endif
 
+set noshowmode
+
 set cursorline
 " set cursorcolumn
 " set colorcolumn=140
