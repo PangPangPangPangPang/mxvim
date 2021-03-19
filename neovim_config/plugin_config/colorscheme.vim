@@ -64,8 +64,9 @@ endif
 " let g:miramare_transparent_background = 0
 " silent! colorscheme miramare
 "
-let g:nvcode_termcolors=256
-colorscheme nvcode
+" let g:nvcode_termcolors=256
+" colorscheme nvcode
+colorscheme codedark
 " silent! colorscheme jellybeans
 " 
 " try 

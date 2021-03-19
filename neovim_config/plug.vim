@@ -36,6 +36,8 @@ let g:devicons_install = 1
 Plug 'nanotech/jellybeans.vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'tomasiser/vim-code-dark'
+
 
 
 " Plug 'sainnhe/vim-color-forest-night'

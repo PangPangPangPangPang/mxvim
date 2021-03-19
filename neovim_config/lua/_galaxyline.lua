@@ -167,20 +167,6 @@ gls.left[4] = {
   }
 }
 
-gls.left[5] = {
-  GitIcon = {
-    provider = function() return '    ' end,
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {colors.orange,colors.line_bg},
-  }
-}
-gls.left[6] = {
-  GitBranch = {
-    provider = 'GitBranch',
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {'#8FBCBB',colors.line_bg,'bold'},
-  }
-}
 
 local checkwidth = function()
   local squeeze_width  = vim.fn.winwidth(0) / 2
@@ -259,7 +245,22 @@ gls.left[16] = {
   }
 }
 
-gls.right[1]= {
+gls.right[1] = {
+  GitIcon = {
+    provider = function() return '    ' end,
+    condition = require('galaxyline.provider_vcs').check_git_workspace,
+    highlight = {colors.orange,colors.line_bg},
+  }
+}
+gls.right[2] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = require('galaxyline.provider_vcs').check_git_workspace,
+    highlight = {'#8FBCBB',colors.line_bg,'bold'},
+  }
+}
+
+gls.right[3]= {
   FileFormat = {
     provider = 'FileFormat',
     separator = ' ',
