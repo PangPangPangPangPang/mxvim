@@ -21,17 +21,17 @@ local colors = {
     bg = '#282c34',
     line_bg = '#353644',
     fg = '#8FBCBB',
-    fg_green = '#65a380',
+    fg_green = '#B5CEA8',
 
-    yellow = '#fabd2f',
-    cyan = '#008080',
-    darkblue = '#081633',
-    green = '#afd700',
-    orange = '#FF8800',
-    purple = '#5d4d7a',
-    magenta = '#c678dd',
-    blue = '#51afef';
-    red = '#ec5f67'
+    yellow = '#DCDCAA',
+    cyan = '#4EC9B0',
+    darkblue = '#223E55',
+    green = '#6A9955',
+    orange = '#CE9178',
+    purple = '#C586C0',
+    magenta = '#C586C0',
+    blue = '#569CD6';
+    red = '#F44747'
 }
 
 local function lsp_status(status)
