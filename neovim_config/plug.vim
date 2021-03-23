@@ -127,14 +127,14 @@ if !has('nvim-0.5')
     if g:ale_enabled == 1
         Plug 'maximbaz/lightline-ale'
     endif
+    Plug 'mengelbrecht/lightline-bufferline'
+    let g:lightline#bufferline#show_number = 1
 else 
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 endif
 " Plug 'TaDaa/vimade'
 
-" Plug 'mengelbrecht/lightline-bufferline'
-" let g:lightline#bufferline#show_number = 1
 
 """"""""""""Markdown"""""""""""""""""""
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}

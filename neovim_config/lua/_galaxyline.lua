@@ -16,11 +16,10 @@ gl.short_line_list = {
 }
 
 -- VistaPlugin = extension.vista_nearest
-
 local colors = {
-    bg = '#282c34',
-    line_bg = '#353644',
-    fg = '#8FBCBB',
+    bg = '#1E1E1E',
+    line_bg = '#1E1E1E',
+    fg = '#9CDCFE',
     fg_green = '#B5CEA8',
 
     yellow = '#DCDCAA',
@@ -33,6 +32,9 @@ local colors = {
     blue = '#569CD6';
     red = '#F44747'
 }
+
+vim.api.nvim_command('hi! StatusLine guibg='..colors.line_bg..' guifg='..colors.line_bg)
+-- vim.api.nvim_command('hi! StatusLine guibg=#1E1E1E guifg=#1E1E1E')
 
 local function lsp_status(status)
     shorter_stat = ''
@@ -256,7 +258,7 @@ gls.right[2] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {'#8FBCBB',colors.line_bg,'bold'},
+    highlight = {colors.fg,colors.line_bg,'bold'},
   }
 }
 
