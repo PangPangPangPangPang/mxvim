@@ -180,7 +180,7 @@ gls.left[7] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = '   ',
+    icon = '    ',
     highlight = {colors.green,colors.line_bg},
   }
 }
@@ -188,7 +188,7 @@ gls.left[8] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
-    icon = '   ',
+    icon = '    ',
     highlight = {colors.orange,colors.line_bg},
   }
 }
@@ -196,14 +196,14 @@ gls.left[9] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
-    icon = '   ',
+    icon = '    ',
     highlight = {colors.red,colors.line_bg},
   }
 }
 gls.left[10] = {
     TrailingWhiteSpace = {
      provider = TrailingWhiteSpace,
-     icon = '   ',
+     icon = '    ',
      highlight = {colors.yellow,colors.bg},
     }
 }
@@ -211,7 +211,7 @@ gls.left[10] = {
 gls.left[11] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
-    icon = '   ',
+    icon = '    ',
     highlight = {colors.red,colors.bg}
   }
 }
@@ -229,13 +229,13 @@ gls.left[14] = {
 }
 
 
-gls.left[15] = {
-    CocStatus = {
-     provider = CocStatus,
-     highlight = {colors.green,colors.bg},
-     icon = '  🗱  '
-    }
-}
+-- gls.left[15] = {
+--     CocStatus = {
+--      provider = CocStatus,
+--      highlight = {colors.green,colors.bg},
+--      icon = '  🗱  '
+--     }
+-- }
 
 gls.left[16] = {
   CocFunc = {
