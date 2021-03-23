@@ -1,5 +1,6 @@
 require'nvim-treesitter.configs'.setup {
-    -- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
+    -- npm i -g tree-sitter-cli
+    ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
     highlight = {
         enable = true,              -- false will disable the whole extension
         disable = { 'devicetree', 'teal', 'nix', 'supercollider', 'ledger', 'gdscript', 'erlang' },  -- list of language that will be disabled
