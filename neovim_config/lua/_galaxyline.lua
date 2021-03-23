@@ -308,7 +308,7 @@ gls.short_line_left[1] = {
     separator = ' ',
     condition = has_file_type,
     separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.fg,colors.purple}
+    highlight = {colors.fg,colors.bg}
   }
 }
 
@@ -319,6 +319,6 @@ gls.short_line_right[1] = {
     separator = '',
     condition = has_file_type,
     separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.fg,colors.purple}
+    highlight = {colors.fg,colors.bg}
   }
 }
