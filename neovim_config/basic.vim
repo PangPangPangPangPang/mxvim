@@ -257,6 +257,5 @@ augroup tt_ft
 augroup END
 let g:plugs = {}
 function! Installed(value)
-    return 1
-    return has_key(g:plugs, a:value)
+    return 0
 endfunction

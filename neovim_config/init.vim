@@ -12,11 +12,11 @@ function! s:Source(path)
 endfunction
 call <SID>Source('~/.config/nvim/path/path.vim')
 
-" Load plugin
-call <SID>Source('~/.config/nvim/plug.vim')
-
 " Load basic config
 call <SID>Source('~/.config/nvim/basic.vim')
+
+" Load plugin
+call <SID>Source('~/.config/nvim/plug.vim')
 
 " Load private config
 call <SID>Source('~/.config/nvim/private.vim')

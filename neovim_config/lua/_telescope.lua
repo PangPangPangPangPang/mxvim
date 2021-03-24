@@ -1,4 +1,8 @@
 local actions = require('telescope.actions')
+local map = require('utils').map
+
+map('n', '<c-p>', ':Telescope find_files<cr>', {silent = true})
+map('n', '<c-b>', ':Telescope buffers<cr>', {silent = true})
 
 require('telescope').setup{
     defaults = {

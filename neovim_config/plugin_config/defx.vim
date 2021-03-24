@@ -1,4 +1,4 @@
-if !Installed("defx.nvim")
+if Installed("nerdtree")
     finish
 endif
 map <silent> <F1> :Defx -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
