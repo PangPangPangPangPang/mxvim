@@ -15,7 +15,6 @@ gl.short_line_list = {
     'defx'
 }
 
-VistaPlugin = extension.vista_nearest
 local colors = {
     bg = '#1E1E1E',
     line_bg = '#1E1E1E',
@@ -233,14 +232,15 @@ gls.mid[2] = {
   }
 }
 
-gls.mid[3] = {
-  Vista = {
-    provider = VistaPlugin,
-    separator = ' ',
-    separator_highlight = {colors.bg,colors.line_bg},
-    highlight = {colors.fg,colors.line_bg,'bold'},
-  }
-}
+-- VistaPlugin = extension.vista_nearest
+-- gls.mid[3] = {
+--   Vista = {
+--     provider = VistaPlugin,
+--     separator = '   ',
+--     separator_highlight = {colors.bg,colors.line_bg},
+--     highlight = {colors.fg,colors.line_bg,'bold'},
+--   }
+-- }
 
 
 -- gls.left[15] = {
