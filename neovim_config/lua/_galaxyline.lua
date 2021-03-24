@@ -15,7 +15,7 @@ gl.short_line_list = {
     'defx'
 }
 
--- VistaPlugin = extension.vista_nearest
+VistaPlugin = extension.vista_nearest
 local colors = {
     bg = '#1E1E1E',
     line_bg = '#1E1E1E',
@@ -210,23 +210,35 @@ gls.left[10] = {
     }
 }
 
-gls.left[11] = {
+gls.mid[0] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '    ',
     highlight = {colors.red,colors.bg}
   }
 }
--- gls.left[12] = {
---   Space = {
---     provider = function () return ' ' end
---   }
--- }
-gls.left[14] = {
+gls.mid[1] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '    ',
     highlight = {colors.yellow,colors.bg},
+  }
+}
+
+gls.mid[2] = {
+  CocFunc = {
+    provider = CocFunc,
+    icon = '  λ ',
+    highlight = {colors.yellow,colors.bg},
+  }
+}
+
+gls.mid[3] = {
+  Vista = {
+    provider = VistaPlugin,
+    separator = ' ',
+    separator_highlight = {colors.bg,colors.line_bg},
+    highlight = {colors.fg,colors.line_bg,'bold'},
   }
 }
 
@@ -239,13 +251,6 @@ gls.left[14] = {
 --     }
 -- }
 
-gls.left[16] = {
-  CocFunc = {
-    provider = CocFunc,
-    icon = '  λ ',
-    highlight = {colors.yellow,colors.bg},
-  }
-}
 
 gls.right[1] = {
   GitIcon = {
@@ -258,7 +263,7 @@ gls.right[2] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {colors.fg,colors.line_bg,'bold'},
+    highlight = {colors.orange,colors.line_bg,'bold'},
   }
 }
 
@@ -267,7 +272,7 @@ gls.right[3]= {
     provider = 'FileFormat',
     separator = ' ',
     separator_highlight = {colors.bg,colors.line_bg},
-    highlight = {colors.fg,colors.line_bg,'bold'},
+    highlight = {colors.yellow,colors.line_bg,'bold'},
   }
 }
 gls.right[4] = {
@@ -278,30 +283,28 @@ gls.right[4] = {
     highlight = {colors.fg,colors.line_bg},
   },
 }
+-- gls.right[5] = {
+--   PerCent = {
+--     provider = 'LinePercent',
+--     separator = ' ',
+--     separator_highlight = {colors.line_bg,colors.line_bg},
+--     highlight = {colors.cyan,colors.darkblue,'bold'},
+--   }
+-- }
+
 gls.right[5] = {
-  PerCent = {
-    provider = 'LinePercent',
-    separator = ' ',
-    separator_highlight = {colors.line_bg,colors.line_bg},
-    highlight = {colors.cyan,colors.darkblue,'bold'},
+  ScrollBar = {
+    provider = 'ScrollBar',
+    separator = '  ',
+    highlight = {colors.red,colors.bg},
   }
 }
-
--- gls.right[4] = {
---   ScrollBar = {
---     provider = 'ScrollBar',
---     highlight = {colors.blue,colors.purple},
---   }
--- }
---
--- gls.right[3] = {
---   Vista = {
---     provider = VistaPlugin,
---     separator = ' ',
---     separator_highlight = {colors.bg,colors.line_bg},
---     highlight = {colors.fg,colors.line_bg,'bold'},
---   }
--- }
+gls.right[6] = {
+  FirstElement = {
+    provider = function() return ' ' end,
+    highlight = {colors.blue,colors.line_bg}
+  },
+}
 
 gls.short_line_left[1] = {
   BufferType = {
