@@ -43,6 +43,12 @@
     "xml",
     "ttml"
   ],
+  "Lua.workspace.library": {
+    "/usr/share/nvim/runtime/lua": true,
+    "/usr/share/nvim/runtime/lua/vim": true,
+    "/usr/share/nvim/runtime/lua/vim/lsp": true
+  },
+  "Lua.diagnostics.globals": ["vim"],
   "imselect.enableStatusItem": false,
   "imselect.defaultInput": "com.apple.keylayout.US",
   "imselect.enableFloating": false,

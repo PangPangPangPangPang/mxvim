@@ -1,16 +1,15 @@
--- dofile('/home/wil/.config/nvim/lua/profiler.lua')
 local g = vim.g
--- local fn = vim.fn
+local fn = vim.fn
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
--- local utils = require('config.utils')
--- local opt = utils.opt
--- local autocmd = utils.autocmd
--- local map = utils.map
 local api = vim.api
+g.mapleader = ' '
+
+vim.api.nvim_command('source ~/.config/nvim/basic.vim')
 
 require('plugins')
 
-wo.number = true
-
-
+local files =fn.split(fn.glob('~/.config/nvim/plugin_config/*.vim'))
+for _, v in pairs(files) do
+        vim.api.nvim_command('source '..v)
+end

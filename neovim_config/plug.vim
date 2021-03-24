@@ -169,7 +169,7 @@ Plug 'szw/vim-maximizer', {'on': 'MaximizerToggle'}
 nnoremap <silent><C-w>z :MaximizerToggle<CR>
 vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
 
-Plug 'dstein64/vim-startuptime', {'on': ['StartupTime']}
+Plug 'tweekmonster/startuptime.vim', {'on': ['StartupTime']}
 
 " Quick toggle terminal.
 " Plug 'PangPangPangPangPang/vim-terminal'

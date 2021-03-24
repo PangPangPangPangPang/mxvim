@@ -17,9 +17,10 @@ let g:coc_global_extensions = [
       \'coc-postfix',
       \'coc-fzf-preview',
       \'coc-explorer',
-      \'coc-fzf-preview',
+      \'coc-lua',
       \]
       " \'coc-flutter-tools',
+      " \'coc-fzf-preview',
 
 nmap <silent> <c-]> <Plug>(coc-definition)
 " map <silent> <F1> :CocCommand explorer<CR>

@@ -255,3 +255,8 @@ augroup tt_ft
     autocmd BufNewFile,BufRead *.ttss   set filetype=css
     autocmd BufNewFile,BufRead *.ttml   set filetype=html
 augroup END
+let g:plugs = {}
+function! Installed(value)
+    return 1
+    return has_key(g:plugs, a:value)
+endfunction
