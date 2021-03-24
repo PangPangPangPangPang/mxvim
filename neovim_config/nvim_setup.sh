@@ -7,18 +7,21 @@
 if [ -f ~/.config/nvim/init.vim ]; then
     rm -rf  ~/.config/nvim/init.vim
 fi
-
 for var in $*
 do
     if [ "$var" = "-r" ];  then
         rm -rf ~/.config/nvim/
-        sudo rm -rf ~/.config/coc/
+        rm -rf ~/.config/coc/
         curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
 done
 
 cp -r ./ ~/.config/nvim/
+
+if [ -f ~/.config/nvim/init.lua ]; then
+    rm -rf  ~/.config/nvim/init.lua
+fi
 
 for var in $*
 do
