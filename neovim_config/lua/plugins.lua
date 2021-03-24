@@ -16,6 +16,8 @@ require('packer').startup(function(use)
     use {'windwp/nvim-ts-autotag'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
 
+    use {'jiangmiao/auto-pairs'}
+
     use {'PangPangPangPangPang/visual-selection-vim'}
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 

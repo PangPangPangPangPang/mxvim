@@ -21,4 +21,4 @@ nvim -E -s <<-EOF
 :source ~/.config/nvim/init.lua
 :qa
 EOF
-nvim +PackerInstall +PackerCompile +PackerSync +qa
+nvim --headless +PackerInstall +PackerCompile +qa
