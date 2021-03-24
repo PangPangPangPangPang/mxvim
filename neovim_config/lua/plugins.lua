@@ -21,11 +21,12 @@ require('packer').startup(function(use)
 
     use {'machakann/vim-highlightedyank'}
 
-    use {'liuchengxu/vista.vim', cmd = {'Vista!!'}}
+    use {'liuchengxu/vista.vim', cmd = {'Vista'}}
 
     use {'Shougo/defx.nvim', requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'}}
 
-    use {'dstein64/vim-startuptime'}
+    use {'tweekmonster/startuptime.vim', cmd = 'StartupTime'}
+
 
     use {'kyazdani42/nvim-web-devicons'}
     use {'glepnir/galaxyline.nvim'}

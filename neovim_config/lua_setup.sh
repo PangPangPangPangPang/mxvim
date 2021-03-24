@@ -4,10 +4,12 @@
 #brew install neovim/neovim/neovim
 #pip install neovim
 
-sudo rm -rf ~/.config/nvim/
-sudo rm -rf ~/.config/coc/
+rm -rf ~/.config/nvim/
+rm -rf ~/.config/coc/
+mkdir ~/.config/nvim
 
-cp -r ./ ~/.config/nvim/
+cp -r ./lua ~/.config/nvim/lua
+cp -r ./init.lua ~/.config/nvim/init.lua
 
 if [ -f ~/.config/nvim/init.vim ]; then
     rm -rf  ~/.config/nvim/init.vim
@@ -16,4 +18,4 @@ nvim -E -s <<-EOF
 :source ~/.config/nvim/init.lua
 :qa
 EOF
-nvim +PackerInstall +qall
+# nvim +PackerCompile +PackerSync
