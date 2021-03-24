@@ -108,7 +108,13 @@ Plug 'tpope/vim-surround'
 let @t="\m\`\$v\^S\]\`\`"
 nnoremap <leader>] = @t
 
-Plug 'scrooloose/nerdcommenter'
+" commenter
+if !has('nvim-0.5')
+    Plug 'scrooloose/nerdcommenter'
+else
+    Plug 'b3nj5m1n/kommentary'
+endif
+
 " Plug 'tpope/vim-commentary'
 " For tsx/jsx comment
 " Plug 'suy/vim-context-commentstring'
@@ -239,6 +245,9 @@ let g:Illuminate_ftblacklist = ['defx', 'vista', 'nerdtree']
 
 if has('nvim-0.5')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'windwp/nvim-ts-autotag'
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
 endif
 
 " Automatically highlighting other uses of the current word under the cursor
