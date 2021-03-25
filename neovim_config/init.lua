@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
 local api = vim.api
 g.mapleader = ' '
-g.plugs = {}
+g.use_lua = 1
 
 api.nvim_command('source ~/.config/nvim/basic.vim')
 

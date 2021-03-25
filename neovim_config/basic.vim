@@ -238,9 +238,9 @@ set ffs=unix,dos,mac
 
 augroup BasicGroup
     " 1 tab == 4 spaces
-    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set shiftwidth=4
-    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set tabstop=4
-    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift set sts=4
+    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4
+    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set tabstop=4
+    autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set sts=4
 
     autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less set shiftwidth=2
     autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less set tabstop=2
@@ -256,7 +256,7 @@ augroup tt_ft
     autocmd BufNewFile,BufRead *.ttml   set filetype=html
 augroup END
 function! Installed(value)
-    if get(g:, 'plugs', ) == []
+    if get(g:, 'use_lua', 0) == 1
         return 0
     endif
     return has_key(g:plugs, a:value)

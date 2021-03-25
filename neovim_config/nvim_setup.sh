@@ -33,4 +33,4 @@ nvim -E -s <<-EOF
 :source ~/.config/nvim/init.vim
 :qa
 EOF
-nvim +PlugInstall +qall
+#nvim +PlugCompile +qall
