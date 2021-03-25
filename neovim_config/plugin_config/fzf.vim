@@ -7,8 +7,8 @@ if has("nvim")
 endif
 
 noremap <silent><c-p> :Files<cr>
-noremap <c-p> :CocCommand fzf-preview.ProjectFiles<cr>
-noremap <leader>b :CocCommand fzf-preview.Buffers<cr>
+noremap <silent><c-p> :CocCommand fzf-preview.ProjectFiles<cr>
+noremap <silent><leader>b :CocCommand fzf-preview.Buffers<cr>
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 let $FZF_DEFAULT_OPTS .= ' --info=inline'
