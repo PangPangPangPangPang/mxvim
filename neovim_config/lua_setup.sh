@@ -17,8 +17,4 @@ cp -r ./init.lua ~/.config/nvim/init.lua
 if [ -f ~/.config/nvim/init.vim ]; then
     rm -rf  ~/.config/nvim/init.vim
 fi
-nvim -E -s <<-EOF
-:source ~/.config/nvim/init.lua
-:qa
-EOF
 nvim --headless +PackerInstall +PackerCompile +qa

@@ -76,7 +76,9 @@ require('packer').startup(function(use)
     use {'kyazdani42/nvim-web-devicons'}
     use {'glepnir/galaxyline.nvim', config = function() require('_galaxyline') end}
 
-    use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require('_telescope') end}
+    -- use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require('_telescope') end}
+    use {'junegunn/fzf', rtp = '~/.fzf', run = './install --all'}
+    use {'junegunn/fzf.vim'}
 
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
