@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
       \'coc-imselect',
       \'coc-json',
       \'coc-tsserver',
+      \'coc-prettier',
       \'coc-eslint',
       \'coc-stylelint',
       \'coc-html',
@@ -16,10 +17,10 @@ let g:coc_global_extensions = [
       \'coc-sourcekit',
       \'coc-postfix',
       \'coc-fzf-preview',
-      \'coc-explorer',
       \'coc-lua',
       \]
       " \'coc-flutter-tools',
+      " \'coc-explorer',
       " \'coc-fzf-preview',
 
 nmap <silent> <c-]> <Plug>(coc-definition)
