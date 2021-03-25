@@ -6,7 +6,7 @@ local api = vim.api
 g.mapleader = ' '
 g.plugs = {}
 
-vim.api.nvim_command('source ~/.config/nvim/basic.vim')
+api.nvim_command('source ~/.config/nvim/basic.vim')
 
 require('plugins')
 require('_telescope')
@@ -14,5 +14,5 @@ require('treesitter')
 
 local files =fn.split(fn.glob('~/.config/nvim/plugin_config/*.vim'))
 for _, v in pairs(files) do
-        vim.api.nvim_command('source '..v)
+        api.nvim_command('source '..v)
 end
