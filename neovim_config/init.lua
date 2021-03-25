@@ -9,8 +9,6 @@ g.use_lua = 1
 api.nvim_command('source ~/.config/nvim/basic.vim')
 
 require('plugins')
-require('_telescope')
-require('treesitter')
 
 local files =fn.split(fn.glob('~/.config/nvim/plugin_config/*.vim'))
 for _, v in pairs(files) do

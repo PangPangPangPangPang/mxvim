@@ -28,9 +28,9 @@ require('packer').startup(function(use)
     -- commenter
     use {'b3nj5m1n/kommentary'}
 
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'windwp/nvim-ts-autotag'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
 
     use {'jiangmiao/auto-pairs'}
 
@@ -77,7 +77,7 @@ require('packer').startup(function(use)
     use {'kyazdani42/nvim-web-devicons'}
     use {'glepnir/galaxyline.nvim'}
 
-    use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}}
+    use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require('_telescope') end}
 
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
