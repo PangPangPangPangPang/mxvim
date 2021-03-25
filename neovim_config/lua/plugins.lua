@@ -94,8 +94,6 @@ require('packer').startup(function(use)
     use {'honza/vim-snippets'}
 
     use {'rhysd/clever-f.vim'}
-    map('', ';', '<Plug>(clever-f-repeat-forward)', {silent = true})
-    map('', ',', '<Plug>(clever-f-repeat-back)', {silent = true})
 
     use {'kshenoy/vim-signature'}
 

@@ -16,3 +16,4 @@ if executable('rg')
 elseif executable('ag')
     vnoremap <silent> <leader>f :call visual#action("GrepperAg 'foo'")<cr>
 endif
+
