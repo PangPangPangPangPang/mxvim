@@ -43,9 +43,8 @@ require('packer').startup(function(use)
         setup = [[require('config.indentline')]]
     }
 
-    use {'mg979/vim-visual-multi'}
-    g.VM_maps = {}
-    g.VM_maps['Remove Region'] = '<C-p>'
+    -- use {'mg979/vim-visual-multi'}
+    -- vim.api.nvim_set_var('VM_maps', {'Remove Region' = '<c-p'})
 
     use {'tpope/vim-surround'}
     -- map('n', '<leader>]', "\m\`\$v\^S\]\`\`", {silent = true})
@@ -70,12 +69,12 @@ require('packer').startup(function(use)
 
     use {'liuchengxu/vista.vim', cmd = {'Vista'}}
 
-    use {'Shougo/defx.nvim', requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'}}
+    use {'Shougo/defx.nvim',run = ':UpdateRemotePlugins', requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'}}
 
     use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
     use {'kyazdani42/nvim-web-devicons'}
-    use {'glepnir/galaxyline.nvim'}
+    use {'glepnir/galaxyline.nvim', config = function() require('_galaxyline') end}
 
     use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require('_telescope') end}
 

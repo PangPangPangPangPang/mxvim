@@ -8,10 +8,6 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-function! Installed(value)
-    return has_key(g:plugs, a:value)
-endfunction
-
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ryanoasis/vim-devicons'
