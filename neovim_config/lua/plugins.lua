@@ -128,5 +128,3 @@ require('packer').startup(function(use)
     use {'kana/vim-textobj-indent'}
     use {'kana/vim-textobj-line'}
 end)
-
-vim.cmd [[colorscheme codedark]]
