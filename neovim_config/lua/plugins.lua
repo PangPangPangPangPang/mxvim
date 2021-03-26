@@ -28,9 +28,10 @@ require('packer').startup(function(use)
     -- commenter
     use {'b3nj5m1n/kommentary'}
 
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
     use {'windwp/nvim-ts-autotag'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
+    use {'p00f/nvim-ts-rainbow'}
 
     use {'jiangmiao/auto-pairs'}
 

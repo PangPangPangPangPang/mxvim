@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
     -- npm i -g tree-sitter-cli
-    ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
+    -- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
     highlight = {
         enable = true,              -- false will disable the whole extension
         custom_captures = {
@@ -90,7 +90,11 @@ require'nvim-treesitter.configs'.setup {
     },
     context_commentstring = {
         enable = true,
+    },
+    rainbow = {
+        enable = true
     }
+
 }
 
 vim.g.kommentary_create_default_mappings = false
