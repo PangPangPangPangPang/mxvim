@@ -31,7 +31,7 @@ require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
     use {'windwp/nvim-ts-autotag'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
-    use {'p00f/nvim-ts-rainbow'}
+    use {'p00f/nvim-ts-rainbow', disable = false}
 
     use {'jiangmiao/auto-pairs'}
 
