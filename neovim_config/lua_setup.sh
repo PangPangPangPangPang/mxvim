@@ -12,7 +12,8 @@ cp ./basic.vim ~/.config/nvim
 cp ./coc-settings.json ~/.config/nvim
 cp -r ./plugin_config ~/.config/nvim/plugin_config
 cp -r ./lua ~/.config/nvim/lua
-cp -r ./init.lua ~/.config/nvim/init.lua
+# cp -r ./init.lua ~/.config/nvim/init.lua
+ln ./init.lua ~/.config/nvim/init.lua
 
 if [ -f ~/.config/nvim/init.vim ]; then
     rm -rf  ~/.config/nvim/init.vim

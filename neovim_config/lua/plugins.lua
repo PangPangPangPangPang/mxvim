@@ -25,6 +25,8 @@ require('packer').startup(function(use)
     use {'luochen1990/rainbow'}
     g.rainbow_active = 1
 
+    use {'romainl/vim-qf'}
+
     -- commenter
     use {'b3nj5m1n/kommentary'}
 
