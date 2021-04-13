@@ -15,5 +15,5 @@ ln -s "$(pwd)/plugin_config" "${dst_dir}/plugin_config"
 ln -s "$(pwd)/lua" "${dst_dir}/lua"
 ln -s "$(pwd)/init.lua" "${dst_dir}/init.lua"
 
-nvim --headless +PackerInstall +qa
+nvim --headless +PackerInstall +PackerCompile +qa
 
