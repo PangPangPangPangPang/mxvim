@@ -4,18 +4,16 @@
 #brew install neovim/neovim/neovim
 #pip install neovim
 
-rm -rf ~/.config/nvim/
+dst_dir="$HOME/.config/nvim"
+rm -rf ${dst_dir}
+mkdir -p ${dst_dir} 2>/dev/null
 # rm -rf ~/.config/coc/
-mkdir ~/.config/nvim
 
-cp ./basic.vim ~/.config/nvim
-cp ./coc-settings.json ~/.config/nvim
-cp -r ./plugin_config ~/.config/nvim/plugin_config
-cp -r ./lua ~/.config/nvim/lua
-# cp -r ./init.lua ~/.config/nvim/init.lua
-ln ./init.lua ~/.config/nvim/init.lua
+ln -s "$(pwd)/basic.vim" ${dst_dir}
+ln -s "$(pwd)/coc-settings.json" ${dst_dir}
+ln -s "$(pwd)/plugin_config" "${dst_dir}/plugin_config"
+ln -s "$(pwd)/lua" "${dst_dir}/lua"
+ln -s "$(pwd)/init.lua" "${dst_dir}/init.lua"
 
-if [ -f ~/.config/nvim/init.vim ]; then
-    rm -rf  ~/.config/nvim/init.vim
-fi
-nvim --headless +PackerInstall +PackerCompile +qa
+nvim --headless +PackerInstall +qa
+
