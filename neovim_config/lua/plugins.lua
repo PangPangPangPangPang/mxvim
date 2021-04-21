@@ -88,6 +88,7 @@ require('packer').startup(function(use)
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
     use {'kdheepak/lazygit.nvim', cmd = {'LazyGit'}}
+    g.lazygit_floating_window_use_plenary = 0
     map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
 
     use {'szw/vim-maximizer', cmd = {'MaximizerToggle'}}
