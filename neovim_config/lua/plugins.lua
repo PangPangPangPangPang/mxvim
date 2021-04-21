@@ -27,8 +27,6 @@ require('packer').startup(function(use)
 
     use {'romainl/vim-qf'}
 
-    use {'kevinhwang91/nvim-hlslens', opt = false}
-
     -- commenter
     use {'b3nj5m1n/kommentary'}
 
