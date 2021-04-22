@@ -137,3 +137,8 @@ vmap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
 augroup Flutter
   autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
 augroup end
+
+hi default link CocErrorVirtualText CocCodeLens
+hi default link CocWarningVirtualText CocCodeLens
+hi default link CocInfoVirtualText CocCodeLens
+hi default link CocHintVirtualText CocCodeLens
