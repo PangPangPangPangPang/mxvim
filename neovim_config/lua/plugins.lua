@@ -63,6 +63,8 @@ require('packer').startup(function(use)
     use {'neoclide/coc.nvim', branch = 'release'}
 
     use {'tomasiser/vim-code-dark'}
+    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+
 
     -- vim-cool disables search highlighting when you are done searching and re-enables it when you search again.
     use {'romainl/vim-cool'}

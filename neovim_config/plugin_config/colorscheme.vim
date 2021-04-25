@@ -66,8 +66,12 @@ endif
 "
 " let g:nvcode_termcolors=256
 " colorscheme nvcode
-colorscheme codedark
+" colorscheme codedark
 " silent! colorscheme jellybeans
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_italic = 1
+let g:gruvbox_invert_selection = 0
+silent! colorscheme gruvbox
 " 
 " try 
     " if has('gui_running')
