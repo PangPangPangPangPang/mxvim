@@ -40,11 +40,11 @@ require('packer').startup(function(use)
     -- Indentation tracking
     g.indentLine_char = '│'
     g.indentLine_fileTypeExclude = {'markdown', 'coc-explorer'}
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        branch = 'lua',
-        setup = [[require('config.indentline')]]
-    }
+    -- use {
+    --     'lukas-reineke/indent-blankline.nvim',
+    --     branch = 'lua',
+    --     setup = [[require('config.indentline')]]
+    -- }
 
     -- use {'mg979/vim-visual-multi'}
     -- vim.api.nvim_set_var('VM_maps', {'Remove Region' = '<c-p'})
@@ -61,9 +61,13 @@ require('packer').startup(function(use)
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
     use {'neoclide/coc.nvim', branch = 'release'}
+    --[[ use {'neovim/nvim-lspconfig'}
+    use {'glepnir/lspsaga.nvim'}
+    use {'hrsh7th/nvim-compe'}
+    use {'hrsh7th/vim-vsnip'} ]]
 
     use {'tomasiser/vim-code-dark'}
-    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
 
     -- vim-cool disables search highlighting when you are done searching and re-enables it when you search again.

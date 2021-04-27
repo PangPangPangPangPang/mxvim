@@ -15,7 +15,7 @@ gl.short_line_list = {
     'defx'
 }
 
---[[ local colors = {
+local colors = {
     bg = '#1E1E1E',
     line_bg = '#1E1E1E',
     fg = '#9CDCFE',
@@ -30,9 +30,9 @@ gl.short_line_list = {
     magenta = '#C586C0',
     blue = '#569CD6';
     red = '#F44747'
-} ]]
+}
 
-local lush = require("lush")
+--[[ local lush = require("lush")
 local base = require("gruvbox.base")
 local plugins = require("gruvbox.plugins.highlights")
 local languages = require("gruvbox.languages")
@@ -67,7 +67,7 @@ local colors = {
     blue = blue,
     red = red,
 }
-
+ ]]
 
 
 vim.api.nvim_command('hi! StatusLine guibg='..colors.line_bg..' guifg='..colors.line_bg)
