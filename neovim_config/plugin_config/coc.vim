@@ -31,7 +31,7 @@ let g:coc_global_extensions = [
       " \'coc-fzf-preview',
 
 nmap <silent> <c-]> <Plug>(coc-definition)
-nmap <Esc> :call coc#float#close_all() <CR>
+nmap <silent> <Esc> :call coc#float#close_all() <CR>
 
 " map <silent> <F1> :CocCommand explorer<CR>
 " map <silent> <leader>j :CocCommand explorer --no-toggle<CR>
