@@ -12,6 +12,10 @@ set mouse=a
 
 set noshowmode
 
+if has('nvim-0.5')
+	set jumpoptions=stack
+endif
+
 set cursorline
 " set cursorcolumn
 " set colorcolumn=140
