@@ -1,5 +1,4 @@
 {
-  "coc.preferences.hoverTarget": "float",
   "signature.target": "float",
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableSign": true,

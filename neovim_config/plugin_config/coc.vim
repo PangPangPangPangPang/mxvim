@@ -103,6 +103,7 @@ augroup Coc
     " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd bufenter * call s:coc_highlight()
 augroup end
 
 " Normal Menu config
@@ -173,7 +174,13 @@ augroup Flutter
     autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
 augroup end
 
-hi default link CocErrorVirtualText CocCodeLens
-hi default link CocWarningVirtualText CocCodeLens
-hi default link CocInfoVirtualText CocCodeLens
-hi default link CocHintVirtualText CocCodeLens
+
+function s:coc_highlight() abort
+    hi default link CocErrorVirtualText CocCodeLens
+    hi default link CocWarningVirtualText CocCodeLens
+    hi default link CocInfoVirtualText CocCodeLens
+    hi default link CocHintVirtualText CocCodeLens
+    hi! CocUnderline gui=undercurl term=undercurl guisp=#c4384b
+    hi! CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
+    hi! CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
+endfunction
