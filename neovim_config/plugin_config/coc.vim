@@ -181,6 +181,6 @@ function s:coc_highlight() abort
     hi default link CocInfoVirtualText CocCodeLens
     hi default link CocHintVirtualText CocCodeLens
     hi! CocUnderline gui=undercurl term=undercurl guisp=#c4384b
-    hi! CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
-    hi! CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
+    hi! CocErrorHighlight gui=undercurl term=undercurl guisp=#c4384b
+    hi! CocWarningHighlight gui=undercurl term=undercurl guisp=#c4ab39
 endfunction
