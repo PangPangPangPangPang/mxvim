@@ -89,6 +89,10 @@
   "explorer.file.column.git.icon.untracked": "?",
   "explorer.file.column.git.icon.modified": "✹",
   "explorer.file.column.git.icon.ignored": "☒",
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false,
   "languageserver": {
     "golang": {
       "command": "gopls",

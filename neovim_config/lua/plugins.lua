@@ -18,7 +18,9 @@ require('packer').startup(function(use)
     g.devicons_install = 1
 
     -- use {'tomasiser/vim-code-dark'}
-    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    use {"lifepillar/vim-gruvbox8"}
 
     -- Readline style insertion
     use {'tpope/vim-rsi'}
@@ -63,11 +65,11 @@ require('packer').startup(function(use)
 
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-    -- use {'neoclide/coc.nvim', branch = 'release'}
-    use {'neovim/nvim-lspconfig'}
+    use {'neoclide/coc.nvim', branch = 'release'}
+    --[[ use {'neovim/nvim-lspconfig'}
     use {'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}
-    use {'hrsh7th/vim-vsnip'}
+    use {'hrsh7th/vim-vsnip'} ]]
 
     use {'prettier/vim-prettier', run= 'yarn install'}
 

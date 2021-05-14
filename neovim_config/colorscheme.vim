@@ -37,10 +37,10 @@ endif
 " let g:one_allow_italics = 1
 " colorscheme one
 
-" let g:gruvbox_transp_bg = 1
-" let g:gruvbox_plugin_hi_groups = 1
-" let g:gruvbox_filetype_hi_groups = 1
-" silent! colorscheme gruvbox8
+let g:gruvbox_transp_bg = 0
+let g:gruvbox_plugin_hi_groups = 1
+let g:gruvbox_filetype_hi_groups = 1
+silent! colorscheme gruvbox8
 
 " let g:dracula_bold = 1
 " let g:dracula_italic = 1
@@ -68,10 +68,10 @@ endif
 " colorscheme nvcode
 " silent! colorscheme codedark
 " silent! colorscheme jellybeans
-let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_italic = 1
-let g:gruvbox_invert_selection = 0
-silent! colorscheme gruvbox
+" let g:gruvbox_sign_column = 'bg0'
+" let g:gruvbox_italic = 1
+" let g:gruvbox_invert_selection = 0
+" silent! colorscheme gruvbox
 " 
 " try 
     " if has('gui_running')

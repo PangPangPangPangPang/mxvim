@@ -1,18 +1,11 @@
-lua require("lsp_config")
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+" lua require("lsp_config")
+" inoremap <silent><expr> <C-Space> compe#complete()
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+" inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+" inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-" hi! LspDiagnosticsUnderlineError gui=undercurl term=undercurl guisp=#c4384b
-" hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=#c4384b
-" hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=#c4384b
-" hi! LspDiagnosticsVirtualTextError guibg=#c4384b
-" hi! LspDiagnosticsVirtualTextInformation guibg=#c4384b
-" hi! LspDiagnosticsVirtualTextWarning guibg=#c4384b
-
-finish
+" finish
 let g:coc_global_extensions = [
             \'coc-actions',
             \'coc-python',
@@ -33,6 +26,7 @@ let g:coc_global_extensions = [
             \'coc-postfix',
             \'coc-fzf-preview',
             \'coc-lua',
+            \'coc-stylelintplus',
             \]
 " \'coc-flutter-tools',
 " \'coc-explorer',
@@ -111,7 +105,7 @@ augroup Coc
     " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    autocmd bufenter * call s:coc_highlight()
+    " autocmd bufenter * call s:coc_highlight()
 augroup end
 
 " Normal Menu config

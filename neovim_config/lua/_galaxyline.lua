@@ -15,7 +15,7 @@ gl.short_line_list = {
     'defx'
 }
 
---[[ local colors = {
+local colors = {
     bg = '#1E1E1E',
     line_bg = '#1E1E1E',
     fg = '#9CDCFE',
@@ -31,42 +31,41 @@ gl.short_line_list = {
     blue = '#569CD6';
     red = '#F44747'
 }
- ]]
-local lush = require("lush")
-local base = require("gruvbox.base")
-local plugins = require("gruvbox.plugins.highlights")
-local languages = require("gruvbox.languages")
-
-local specs = {base, languages, plugins}
-local spec = lush.merge(specs)
-
-local bg0 = spec.GruvboxBg0.fg.hex
-  local fg1 = spec.GruvboxFg1.fg.hex
-
-local yellow = spec.GruvboxYellow.fg.hex
-local blue = spec.GruvboxBlue.fg.hex
-local aqua = spec.GruvboxAqua.fg.hex
-local orange = spec.GruvboxOrange.fg.hex
-local red = spec.GruvboxRed.fg.hex
-local green = spec.GruvboxGreen.fg.hex
-local purple = spec.GruvboxPurple.fg.hex
-
-local colors = {
-    bg = bg0,
-    line_bg = bg0,
-    fg = fg1,
-    fg_green = green,
-
-    yellow = yellow,
-    cyan = aqua,
-    darkblue = blue,
-    green = green,
-    orange = orange,
-    purple = purple,
-    magenta = purple,
-    blue = blue,
-    red = red,
-}
+-- local lush = require("lush")
+-- local base = require("gruvbox.base")
+-- local plugins = require("gruvbox.plugins.highlights")
+-- local languages = require("gruvbox.languages")
+-- 
+-- local specs = {base, languages, plugins}
+-- local spec = lush.merge(specs)
+-- 
+-- local bg0 = spec.GruvboxBg0.fg.hex
+--   local fg1 = spec.GruvboxFg1.fg.hex
+-- 
+-- local yellow = spec.GruvboxYellow.fg.hex
+-- local blue = spec.GruvboxBlue.fg.hex
+-- local aqua = spec.GruvboxAqua.fg.hex
+-- local orange = spec.GruvboxOrange.fg.hex
+-- local red = spec.GruvboxRed.fg.hex
+-- local green = spec.GruvboxGreen.fg.hex
+-- local purple = spec.GruvboxPurple.fg.hex
+-- 
+-- local colors = {
+--     bg = bg0,
+--     line_bg = bg0,
+--     fg = fg1,
+--     fg_green = green,
+-- 
+--     yellow = yellow,
+--     cyan = aqua,
+--     darkblue = blue,
+--     green = green,
+--     orange = orange,
+--     purple = purple,
+--     magenta = purple,
+--     blue = blue,
+--     red = red,
+-- }
 
 
 
