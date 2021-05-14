@@ -98,7 +98,8 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-set completeopt=longest,menu
+" set completeopt=longest,menu
+set completeopt=menuone,noselect
 
 "Always show current position
 set ruler

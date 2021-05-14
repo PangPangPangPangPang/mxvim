@@ -17,6 +17,9 @@ require('packer').startup(function(use)
     use {'ryanoasis/vim-devicons'}
     g.devicons_install = 1
 
+    -- use {'tomasiser/vim-code-dark'}
+    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+
     -- Readline style insertion
     use {'tpope/vim-rsi'}
 
@@ -60,19 +63,14 @@ require('packer').startup(function(use)
 
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-    use {'neoclide/coc.nvim', branch = 'release'}
-    --[[ use {'neovim/nvim-lspconfig'}
+    -- use {'neoclide/coc.nvim', branch = 'release'}
+    use {'neovim/nvim-lspconfig'}
     use {'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}
-    use {'hrsh7th/vim-vsnip'} ]]
+    use {'hrsh7th/vim-vsnip'}
 
-    use {'tomasiser/vim-code-dark'}
-    -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    use {'prettier/vim-prettier', run= 'yarn install'}
 
-
-    -- vim-cool disables search highlighting when you are done searching and re-enables it when you search again.
-    use {'romainl/vim-cool'}
-    g.CoolTotalMatches = 1
 
     use {'machakann/vim-highlightedyank'}
 
@@ -99,6 +97,9 @@ require('packer').startup(function(use)
     map('n', '<c-w>z', ':MaximizerToggle<CR>', {silent = true})
     map('v', '<c-w>z', ':MaximizerToggle<CR>gv', {silent = true})
 
+    -- vim-cool disables search highlighting when you are done searching and re-enables it when you search again.
+    use {'romainl/vim-cool'}
+    g.CoolTotalMatches = 1
 
     use {'airblade/vim-gitgutter'}
     use {'tpope/vim-fugitive'}

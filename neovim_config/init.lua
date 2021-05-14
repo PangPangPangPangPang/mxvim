@@ -7,8 +7,10 @@ g.mapleader = ' '
 g.use_lua = 1
 
 api.nvim_command('source ~/.config/nvim/basic.vim')
+api.nvim_command('source ~/.config/nvim/colorscheme.vim')
 
 require('plugins')
+
 
 local files =fn.split(fn.glob('~/.config/nvim/plugin_config/*.vim'))
 for _, v in pairs(files) do
