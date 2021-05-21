@@ -49,6 +49,7 @@ require('packer').startup(function(use)
     g.indentLine_fileTypeExclude = {'markdown', 'coc-explorer'}
     use {
         'lukas-reineke/indent-blankline.nvim',
+        requires = {'Yggdroot/indentLine'},
         branch = 'lua',
         setup = [[require('config.indentline')]]
     }
