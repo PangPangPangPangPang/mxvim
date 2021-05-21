@@ -35,7 +35,8 @@ require('packer').startup(function(use)
     use {'kevinhwang91/nvim-bqf'}
 
     -- commenter
-    use {'b3nj5m1n/kommentary'}
+    -- use {'b3nj5m1n/kommentary'}
+    use {'tpope/vim-commentary'}
 
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
     use {'windwp/nvim-ts-autotag'}
