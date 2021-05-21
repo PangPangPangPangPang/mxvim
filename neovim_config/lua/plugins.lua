@@ -20,7 +20,8 @@ require('packer').startup(function(use)
     -- use {'tomasiser/vim-code-dark'}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    use {"lifepillar/vim-gruvbox8"}
+    -- use {"lifepillar/vim-gruvbox8"}
+    use {"Mofiqul/codedark.nvim"}
 
     -- Readline style insertion
     use {'tpope/vim-rsi'}
@@ -31,6 +32,7 @@ require('packer').startup(function(use)
     g.rainbow_active = 1
 
     use {'romainl/vim-qf'}
+    use {'kevinhwang91/nvim-bqf'}
 
     -- commenter
     use {'b3nj5m1n/kommentary'}
@@ -45,11 +47,11 @@ require('packer').startup(function(use)
     -- Indentation tracking
     g.indentLine_char = '│'
     g.indentLine_fileTypeExclude = {'markdown', 'coc-explorer'}
-    -- use {
-    --     'lukas-reineke/indent-blankline.nvim',
-    --     branch = 'lua',
-    --     setup = [[require('config.indentline')]]
-    -- }
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        branch = 'lua',
+        setup = [[require('config.indentline')]]
+    }
 
     -- use {'mg979/vim-visual-multi'}
     -- vim.api.nvim_set_var('VM_maps', {'Remove Region' = '<c-p'})

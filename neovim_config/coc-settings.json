@@ -1,5 +1,6 @@
 {
   "signature.target": "float",
+  "dialog.floatHighlight": "CocFloatingBorder",
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableSign": true,
   "diagnostic.enableHighlightLineNumber": true,
