@@ -105,6 +105,7 @@ augroup Coc
     " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    " autocmd CursorHold * silent call CocActionAsync('highlight')
     " autocmd bufenter * call s:coc_highlight()
 augroup end
 
@@ -186,3 +187,4 @@ function s:coc_highlight() abort
     hi! CocErrorHighlight gui=undercurl term=undercurl guisp=#c4384b
     hi! CocWarningHighlight gui=undercurl term=undercurl guisp=#c4ab39
 endfunction
+call s:coc_highlight()
