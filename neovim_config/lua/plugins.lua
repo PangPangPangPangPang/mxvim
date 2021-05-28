@@ -28,8 +28,8 @@ require('packer').startup(function(use)
 
     use {'mhinz/vim-startify'}
 
-    use {'luochen1990/rainbow'}
-    g.rainbow_active = 1
+    -- use {'luochen1990/rainbow'}
+    -- g.rainbow_active = 1
 
     use {'romainl/vim-qf'}
     use {'kevinhwang91/nvim-bqf'}
@@ -50,7 +50,7 @@ require('packer').startup(function(use)
     g.indentLine_fileTypeExclude = {'markdown', 'coc-explorer'}
     use {
         'lukas-reineke/indent-blankline.nvim',
-        requires = {'Yggdroot/indentLine'},
+        -- requires = {'Yggdroot/indentLine'},
         branch = 'lua',
         setup = [[require('config.indentline')]]
     }
