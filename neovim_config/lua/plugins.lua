@@ -113,7 +113,8 @@ require('packer').startup(function(use)
     use {'rhysd/git-messenger.vim'}
     use {'honza/vim-snippets'}
 
-    use {'rhysd/clever-f.vim'}
+    -- use {'rhysd/clever-f.vim'}
+    use {'justinmk/vim-sneak'}
 
     use {'kshenoy/vim-signature'}
 
