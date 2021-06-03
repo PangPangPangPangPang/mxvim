@@ -13,6 +13,7 @@ let g:coc_global_extensions = [
             \'coc-imselect',
             \'coc-json',
             \'coc-tsserver',
+            \'coc-react-refactor',
             \'coc-prettier',
             \'coc-eslint',
             \'coc-stylelint',

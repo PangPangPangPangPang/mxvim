@@ -10,6 +10,7 @@ mkdir -p ${dst_dir} 2>/dev/null
 # rm -rf ~/.config/coc/
 
 ln -s "$(pwd)/basic.vim" ${dst_dir}
+ln -s "$(pwd)/ginit.vim" ${dst_dir}
 ln -s "$(pwd)/colorscheme.vim" ${dst_dir}
 ln -s "$(pwd)/coc-settings.json" ${dst_dir}
 ln -s "$(pwd)/plugin_config" "${dst_dir}/plugin_config"

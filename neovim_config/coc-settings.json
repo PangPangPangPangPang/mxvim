@@ -24,6 +24,7 @@
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.autoTrigger": "always",
   "suggest.timeout": 500,
+  "tsserver.log": "verbose",
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
