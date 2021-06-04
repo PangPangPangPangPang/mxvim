@@ -3,7 +3,6 @@ if !Installed("nerdtree")
     map <silent> <leader>j :Defx  -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
     autocmd FileType defx call s:defx_my_settings()
     function! s:defx_my_settings() abort
-        set nonu
         " Define mappings
         nnoremap <silent><buffer><expr> <2-LeftMouse> 
                     \ defx#is_directory() ?
@@ -82,6 +81,7 @@ if !Installed("nerdtree")
     endfunction
     augroup DefxGroup
         autocmd!
+        autocmd FileType defx setlocal nonumber
         autocmd FileType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
         autocmd FileType defx map <silent><buffer> <RightMouse> :call <SID>open_defx_menu()<CR>
         autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
@@ -102,7 +102,6 @@ if !Installed("nerdtree")
         endfunction
 
     augroup END
-
 
     if g:devicons_install == 1
         call defx#custom#option('_', {
