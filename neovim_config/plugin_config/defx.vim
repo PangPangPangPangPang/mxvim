@@ -9,7 +9,7 @@ if !Installed("nerdtree")
                     \ defx#is_directory() ?
                     \ defx#do_action('open_or_close_tree') :
                     \ defx#do_action('drop')
-		nnoremap <silent><buffer><expr> <CR>
+        nnoremap <silent><buffer><expr> <CR>
                     \ defx#is_directory() ?
                     \ defx#do_action('open_directory') :
                     \ defx#do_action('multi', ['drop', 'quit'])
@@ -29,7 +29,7 @@ if !Installed("nerdtree")
                     \ defx#do_action('open', 'pedit')
         nnoremap <silent><buffer><expr> o
                     \ defx#do_action('open_or_close_tree')
-		nnoremap <silent><buffer><expr> o
+        nnoremap <silent><buffer><expr> o
                     \ defx#is_directory() ?
                     \ defx#do_action('open_or_close_tree') :
                     \ defx#do_action('drop')
@@ -84,6 +84,23 @@ if !Installed("nerdtree")
         autocmd!
         autocmd FileType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
         autocmd FileType defx map <silent><buffer> <RightMouse> :call <SID>open_defx_menu()<CR>
+        autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
+                    \ * if isdirectory(expand('<amatch>'))
+                    \   | call s:browse_check(expand('<amatch>')) | endif
+
+        function! s:browse_check(path) abort
+            if bufnr('%') != expand('<abuf>')
+                return
+            endif
+
+            " Disable netrw.
+            augroup FileExplorer
+                autocmd!
+            augroup END
+
+            execute 'Defx' a:path
+        endfunction
+
     augroup END
 
 
