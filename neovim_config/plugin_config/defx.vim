@@ -84,23 +84,22 @@ if !Installed("nerdtree")
         autocmd FileType defx setlocal nonumber
         autocmd FileType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
         autocmd FileType defx map <silent><buffer> <RightMouse> :call <SID>open_defx_menu()<CR>
-        autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
-                    \ * if isdirectory(expand('<amatch>'))
-                    \   | call s:browse_check(expand('<amatch>')) | endif
+        " autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
+        "             \ * if isdirectory(expand('<amatch>'))
+        "             \   | call s:browse_check(expand('<amatch>')) | endif
 
-        function! s:browse_check(path) abort
-            if bufnr('%') != expand('<abuf>')
-                return
-            endif
+        " function! s:browse_check(path) abort
+        "     if bufnr('%') != expand('<abuf>')
+        "         return
+        "     endif
 
-            " Disable netrw.
-            augroup FileExplorer
-                autocmd!
-            augroup END
+        "     " Disable netrw.
+        "     augroup FileExplorer
+        "         autocmd!
+        "     augroup END
 
-            execute 'Defx' a:path
-        endfunction
-
+        "     execute 'Defx' a:path
+        " endfunction
     augroup END
 
     if g:devicons_install == 1
