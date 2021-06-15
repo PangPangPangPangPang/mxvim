@@ -66,8 +66,9 @@ endif
 "
 " let g:nvcode_termcolors=256
 " colorscheme nvcode
-let g:codedark_term256=1
-silent! colorscheme codedark
+" let g:codedark_term256=1
+" silent! colorscheme codedark
+silent! colorscheme vscode
 " silent! colorscheme jellybeans
 " let g:gruvbox_sign_column = 'bg0'
 " let g:gruvbox_italic = 1

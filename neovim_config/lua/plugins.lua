@@ -21,7 +21,7 @@ require('packer').startup(function(use)
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     -- use {"lifepillar/vim-gruvbox8"}
-    use {"Mofiqul/codedark.nvim"}
+    use {"Mofiqul/vscode.nvim"}
 
     -- Readline style insertion
     use {'tpope/vim-rsi'}
