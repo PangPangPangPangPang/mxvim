@@ -47,12 +47,16 @@ require('packer').startup(function(use)
 
     -- Indentation tracking
     g.indentLine_char = '│'
-    g.indentLine_fileTypeExclude = {'markdown', 'coc-explorer'}
+    g.indent_blankline_use_treesitter = true
+    g.indentLine_faster = 1
+    g.indentLine_fileTypeExclude = {'tex', 'markdown', 'txt', 'startify', 'packer', 'coc-explorer'}
+    g.indent_blankline_show_first_indent_level = false
+    g.indent_blankline_show_trailing_blankline_indent = false
     use {
         'lukas-reineke/indent-blankline.nvim',
         -- requires = {'Yggdroot/indentLine'},
         branch = 'lua',
-        setup = [[require('config.indentline')]]
+        -- setup = [[require('config.indentline')]]
     }
 
     -- use {'mg979/vim-visual-multi'}
