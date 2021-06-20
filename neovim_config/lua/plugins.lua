@@ -73,11 +73,12 @@ require('packer').startup(function(use)
 
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-    use {'neoclide/coc.nvim', branch = 'release'}
-    --[[ use {'neovim/nvim-lspconfig'}
+    -- use {'neoclide/coc.nvim', branch = 'release'}
+    -- use {'RRethy/vim-illuminate'}
+    use {'neovim/nvim-lspconfig'}
     use {'glepnir/lspsaga.nvim'}
     use {'hrsh7th/nvim-compe'}
-    use {'hrsh7th/vim-vsnip'} ]]
+    use {'hrsh7th/vim-vsnip'}
 
     use {'prettier/vim-prettier', run= 'yarn install'}
 
@@ -142,7 +143,6 @@ require('packer').startup(function(use)
     g.user_emmet_expandabbr_key = '<C-y><tab>'
     g.user_emmet_prev_key = '<C-y>p'
 
-    use {'RRethy/vim-illuminate'}
     use {'tpope/vim-dadbod', cmd = {'DB'}}
     use {'skywind3000/vim-quickui'}
     g.quickui_border_style = 2

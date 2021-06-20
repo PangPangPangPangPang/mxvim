@@ -51,9 +51,6 @@ local on_attach = function(client, bufnr)
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=#444444
-      hi LspReferenceText cterm=bold ctermbg=red guibg=#444444
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#444444
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -61,6 +58,11 @@ local on_attach = function(client, bufnr)
 
         autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
       augroup END
+      highlight LspReference guifg=NONE guibg=#444444 guisp=NONE gui=NONE cterm=NONE ctermfg=NONE ctermbg=59
+      highlight! link LspReferenceText LspReference
+      highlight! link LspReferenceRead LspReference
+      highlight! link LspReferenceWrite LspReference
+
     ]], false)
   end
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
