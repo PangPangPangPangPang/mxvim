@@ -73,20 +73,24 @@ require('packer').startup(function(use)
 
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-    -- use {'neoclide/coc.nvim', branch = 'release'}
-    -- use {'RRethy/vim-illuminate'}
-
-    -- nvim builtin lsp
-    use {'neovim/nvim-lspconfig'}
-    use {'glepnir/lspsaga.nvim'}
-    use {'hrsh7th/nvim-compe'}
-    vim.api.nvim_exec([[
-    let g:vsnip_filetypes = {}
-    let g:vsnip_filetypes.javascriptreact = ['javascript']
-    let g:vsnip_filetypes.typescriptreact = ['typescript']
-    ]], false)
-    use {'hrsh7th/vim-vsnip'}
-    use {'hrsh7th/vim-vsnip-integ'}
+    vim.api.nvim_set_var('use_coc', true);
+    if vim.api.nvim_get_var('use_coc') then
+        -- coc lsp
+        use {'neoclide/coc.nvim', branch = 'release'}
+        use {'RRethy/vim-illuminate'}
+    else 
+        -- nvim builtin lsp
+        use {'neovim/nvim-lspconfig'}
+        use {'glepnir/lspsaga.nvim'}
+        use {'hrsh7th/nvim-compe'}
+        vim.api.nvim_exec([[
+        let g:vsnip_filetypes = {}
+        let g:vsnip_filetypes.javascriptreact = ['javascript']
+        let g:vsnip_filetypes.typescriptreact = ['typescript']
+        ]], false)
+        use {'hrsh7th/vim-vsnip'}
+        use {'hrsh7th/vim-vsnip-integ'}
+    end
 
     use {'prettier/vim-prettier', run= 'yarn install'}
 
