@@ -65,9 +65,10 @@ endif
 " silent! colorscheme miramare
 "
 " let g:nvcode_termcolors=256
-" colorscheme nvcode
+" silent! colorscheme nvcode
 " let g:codedark_term256=1
 " silent! colorscheme codedark
+let g:vscode_style = "dark"
 silent! colorscheme vscode
 " silent! colorscheme jellybeans
 " let g:gruvbox_sign_column = 'bg0'
@@ -99,7 +100,7 @@ silent! colorscheme vscode
 
 " let g:gruvbox_italic = 1
 " let g:gruvbox_contrast_dark = 'soft'
-" colorscheme gruvbox
+" silent! colorscheme gruvbox
 
 " colorscheme deus
 " try

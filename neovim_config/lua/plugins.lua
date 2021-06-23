@@ -9,6 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
+
 cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
     -- Packer itself
@@ -17,10 +18,10 @@ require('packer').startup(function(use)
     use {'ryanoasis/vim-devicons'}
     g.devicons_install = 1
 
-    -- use {'tomasiser/vim-code-dark'}
+    use {'tomasiser/vim-code-dark'}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    -- use {"lifepillar/vim-gruvbox8"}
+    use {"lifepillar/vim-gruvbox8"}
     use {"Mofiqul/vscode.nvim"}
 
     -- Readline style insertion
@@ -38,10 +39,17 @@ require('packer').startup(function(use)
     -- use {'b3nj5m1n/kommentary'}
     use {'tpope/vim-commentary'}
 
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
-    use {'windwp/nvim-ts-autotag'}
-    use {'JoosepAlviste/nvim-ts-context-commentstring'}
-    use {'p00f/nvim-ts-rainbow', disable = false}
+    vim.api.nvim_set_var('use_treesitter', true);
+    if vim.api.nvim_get_var('use_treesitter') then
+        use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('treesitter') end}
+        use {'windwp/nvim-ts-autotag'}
+        use {'JoosepAlviste/nvim-ts-context-commentstring'}
+        use {'p00f/nvim-ts-rainbow', disable = false}
+    else
+        use {'sheerun/vim-polyglot'}
+        use {'luochen1990/rainbow'}
+        g.rainbow_active = 1
+    end
 
     use {'jiangmiao/auto-pairs'}
 
@@ -92,7 +100,8 @@ require('packer').startup(function(use)
         use {'hrsh7th/vim-vsnip-integ'}
     end
 
-    use {'prettier/vim-prettier', run= 'yarn install'}
+    -- use {'prettier/vim-prettier', run= 'yarn install'}
+    use {'sbdchd/neoformat', cmd = 'Neoformat', config = function() require('neoformat') end}
 
 
     use {'machakann/vim-highlightedyank'}
