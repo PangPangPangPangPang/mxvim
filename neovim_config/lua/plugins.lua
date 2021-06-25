@@ -51,7 +51,8 @@ require('packer').startup(function(use)
         g.rainbow_active = 1
     end
 
-    use {'jiangmiao/auto-pairs'}
+    -- use {'jiangmiao/auto-pairs'}
+    use {'Raimondi/delimitMate'}
 
     -- Indentation tracking
     g.indentLine_char = '│'
@@ -85,7 +86,7 @@ require('packer').startup(function(use)
     if vim.api.nvim_get_var('use_coc') then
         -- coc lsp
         use {'neoclide/coc.nvim', branch = 'release'}
-        use {'RRethy/vim-illuminate'}
+        -- use {'RRethy/vim-illuminate'}
     else 
         -- nvim builtin lsp
         use {'neovim/nvim-lspconfig'}

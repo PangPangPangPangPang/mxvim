@@ -32,6 +32,7 @@ let g:coc_global_extensions = [
             \'coc-stylelintplus',
             \]
 " \'coc-flutter-tools',
+" \'coc-highlight',
 " \'coc-explorer',
 " \'coc-fzf-preview',
 
@@ -108,9 +109,11 @@ augroup Coc
     " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    " autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
     " autocmd bufenter * call s:coc_highlight()
 augroup end
+
 
 " Normal Menu config
 function s:open_coc_menu() abort
@@ -127,9 +130,10 @@ function s:open_coc_menu() abort
                 \ ["Fi&x Code", "call CocActionAsync('doQuickfix')"],
                 \ ["&Code Aciton", "CocCommand actions.open" ],
                 \ ['-'],
-                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                \ ["Code &Prettier", "Neoformat" ],
                 \ ["Close F&loat", "call coc#util#close_floats()"]
                 \ ]
+    " \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
     " set cursor to the last position
     let opts = {'index':g:quickui#context#cursor}
     call quickui#context#open(content, opts)
@@ -144,9 +148,10 @@ function s:open_coc_visual_menu() abort
                 \ ['-'],
                 \ ["&Code Aciton", "CocCommand actions.open" ],
                 \ ['-'],
-                \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+                \ ["Code &Prettier", "Neoformat" ],
                 \ ["Close F&loat", "call coc#util#close_floats()"]
                 \ ]
+                " \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
     " set cursor to the last position
     let opts = {'index':g:quickui#context#cursor}
     call quickui#context#open(content, opts)

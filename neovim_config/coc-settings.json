@@ -91,6 +91,7 @@
   "explorer.file.column.git.icon.untracked": "?",
   "explorer.file.column.git.icon.modified": "✹",
   "explorer.file.column.git.icon.ignored": "☒",
+  "coc.preferences.colorSupport": false,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
