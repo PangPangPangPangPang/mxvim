@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
             \'coc-fzf-preview',
             \'coc-lua',
             \'coc-stylelintplus',
+            \'coc-spell-checker',
             \]
 " \'coc-flutter-tools',
 " \'coc-highlight',

@@ -51,8 +51,8 @@ require('packer').startup(function(use)
         g.rainbow_active = 1
     end
 
-    -- use {'jiangmiao/auto-pairs'}
-    use {'Raimondi/delimitMate'}
+    use {'jiangmiao/auto-pairs'}
+    -- use {'Raimondi/delimitMate'}
 
     -- Indentation tracking
     g.indentLine_char = '│'
