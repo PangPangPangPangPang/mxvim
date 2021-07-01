@@ -1,4 +1,4 @@
-if !g:use_coc 
+if !g:use_coc
     lua require("lsp_config")
     inoremap <silent><expr> <C-Space> compe#complete()
     inoremap <silent><expr> <CR>      compe#confirm('<CR>')
@@ -42,26 +42,26 @@ nmap <silent> <c-]> :call <SID>GotoDefinition()<CR>
 nmap <silent> <Esc> :call coc#float#close_all() <CR>
 
 function! s:GotoDefinition() abort
-  let l:current_tag = expand('<cWORD>')
+    let l:current_tag = expand('<cWORD>')
 
-  let l:current_position    = getcurpos()
-  let l:current_position[0] = bufnr()
+    let l:current_position    = getcurpos()
+    let l:current_position[0] = bufnr()
 
-  let l:current_tag_stack = gettagstack()
-  let l:current_tag_index = l:current_tag_stack['curidx']
-  let l:current_tag_items = l:current_tag_stack['items']
+    let l:current_tag_stack = gettagstack()
+    let l:current_tag_index = l:current_tag_stack['curidx']
+    let l:current_tag_items = l:current_tag_stack['items']
 
-  if CocAction('jumpDefinition')
-    let l:new_tag_index = l:current_tag_index + 1
-    let l:new_tag_item  = [#{tagname: l:current_tag, from: l:current_position}]
-    let l:new_tag_items = l:current_tag_items[:]
-    if l:current_tag_index <= len(l:current_tag_items)
-      call remove(l:new_tag_items, l:current_tag_index - 1, -1)
+    if CocAction('jumpDefinition')
+        let l:new_tag_index = l:current_tag_index + 1
+        let l:new_tag_item  = [#{tagname: l:current_tag, from: l:current_position}]
+        let l:new_tag_items = l:current_tag_items[:]
+        if l:current_tag_index <= len(l:current_tag_items)
+            call remove(l:new_tag_items, l:current_tag_index - 1, -1)
+        endif
+        let l:new_tag_items += l:new_tag_item
+
+        call settagstack(winnr(), #{curidx: l:new_tag_index, items: l:new_tag_items}, 'r')
     endif
-    let l:new_tag_items += l:new_tag_item
-
-    call settagstack(winnr(), #{curidx: l:new_tag_index, items: l:new_tag_items}, 'r')
-  endif
 endfunction
 
 if exists('+tagfunc') | setlocal tagfunc=CocTagFunc | endif
@@ -76,7 +76,7 @@ endfunction
 
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
-" 
+"
 " if exists('*complete_info')
 "   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 " else
@@ -85,7 +85,7 @@ let g:coc_snippet_prev = '<S-TAB>'
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_slect_confirm()
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use K for show documentation in preview window
@@ -152,7 +152,7 @@ function s:open_coc_visual_menu() abort
                 \ ["Code &Prettier", "Neoformat" ],
                 \ ["Close F&loat", "call coc#util#close_floats()"]
                 \ ]
-                " \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
+    " \ ["Code &Prettier", "CocCommand prettier.formatFile" ],
     " set cursor to the last position
     let opts = {'index':g:quickui#context#cursor}
     call quickui#context#open(content, opts)
