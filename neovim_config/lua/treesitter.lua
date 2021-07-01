@@ -99,4 +99,4 @@ require'nvim-treesitter.configs'.setup {
 
 vim.g.kommentary_create_default_mappings = false
 vim.api.nvim_set_keymap("n", "<leader>/", "gcc", {})
-vim.api.nvim_set_keymap("v", "<leader>/", "gcc", {})
+vim.api.nvim_set_keymap("v", "<leader>/", "gc", {})
