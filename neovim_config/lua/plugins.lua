@@ -122,9 +122,16 @@ require('packer').startup(function(use)
 
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
-    use {'kdheepak/lazygit.nvim', cmd = {'LazyGit'}}
-    g.lazygit_floating_window_use_plenary = 0
-    map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
+    use {'voldikss/vim-floaterm'}
+
+    map('n', '<F5>', ":FloatermToggle<CR>", {silent = true})
+    map('t', '<F5>', "<C-\\><C-n>:FloatermToggle<CR>", {silent = true})
+
+    map('n', '<leader>lg', ":FloatermNew --width=0.8 --height=0.8 lazygit<CR>", {silent = true})
+    map('t', '<esc>', "<C-\\><C-n>:FloatermKill<CR>", {silent = true})
+
+    -- g.lazygit_floating_window_use_plenary = 0
+    -- map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
 
     use {'szw/vim-maximizer', cmd = {'MaximizerToggle'}}
     map('n', '<c-w>z', ':MaximizerToggle<CR>', {silent = true})
@@ -148,13 +155,13 @@ require('packer').startup(function(use)
     use {'simnalamburt/vim-mundo'}
     map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
 
-    use {'skywind3000/vim-terminal-help'}
-    g.terminal_auto_insert = 1
-    g.terminal_key = "<F5>"
-    g.terminal_cwd = 2
-    g.terminal_height = 20
-    g.terminal_list = 0
-    g.terminal_kill = "term"
+    -- use {'skywind3000/vim-terminal-help'}
+    -- g.terminal_auto_insert = 1
+    -- g.terminal_key = "<F5>"
+    -- g.terminal_cwd = 2
+    -- g.terminal_height = 20
+    -- g.terminal_list = 0
+    -- g.terminal_kill = "term"
 
     use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
     g.Illuminate_highlightUnderCursor = 1
