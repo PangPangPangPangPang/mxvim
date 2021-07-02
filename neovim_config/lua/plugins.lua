@@ -127,8 +127,8 @@ require('packer').startup(function(use)
     g.floaterm_title = '$1/$2'
 
     map('n', '<F5>', ":FloatermToggle default<CR>", {silent = true})
-    map('t', '<F5>', "<C-\\><C-n>:FloatermToggle<CR>", {silent = true})
-    map('t', '<esc>', "<C-\\><C-n>:FloatermToggle<CR>", {silent = true})
+    map('t', '<F5>', "<C-\\><C-n>:FloatermToggle default<CR>", {silent = true})
+    map('t', '<esc>', "<C-\\><C-n>:FloatermKill<CR>", {silent = true})
     map('n', '<leader>lg', ":FloatermNew --width=0.8 --height=0.8 lazygit<CR>", {silent = true})
 
     -- g.lazygit_floating_window_use_plenary = 0
