@@ -123,6 +123,7 @@ require('packer').startup(function(use)
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
     use {'voldikss/vim-floaterm'}
+    vim.api.nvim_command('hi! link FloatermBorder Directory')
     g.floaterm_title = '$1/$2'
 
     map('n', '<F5>', ":FloatermToggle default<CR>", {silent = true})
