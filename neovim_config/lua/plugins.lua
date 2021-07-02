@@ -123,12 +123,12 @@ require('packer').startup(function(use)
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
     use {'voldikss/vim-floaterm'}
+    g.floaterm_title = '$1/$2'
 
-    map('n', '<F5>', ":FloatermToggle<CR>", {silent = true})
+    map('n', '<F5>', ":FloatermToggle default<CR>", {silent = true})
     map('t', '<F5>', "<C-\\><C-n>:FloatermToggle<CR>", {silent = true})
-
+    map('t', '<esc>', "<C-\\><C-n>:FloatermToggle<CR>", {silent = true})
     map('n', '<leader>lg', ":FloatermNew --width=0.8 --height=0.8 lazygit<CR>", {silent = true})
-    map('t', '<esc>', "<C-\\><C-n>:FloatermKill<CR>", {silent = true})
 
     -- g.lazygit_floating_window_use_plenary = 0
     -- map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
