@@ -11,7 +11,7 @@ end
 
 
 cmd [[packadd packer.nvim]]
-require('packer').startup(function(use)
+require('packer').startup({function(use)
     -- Packer itself
     use {'wbthomason/packer.nvim', opt = true}
 
@@ -174,4 +174,11 @@ require('packer').startup(function(use)
     use {'kana/vim-textobj-function'}
     use {'kana/vim-textobj-indent'}
     use {'kana/vim-textobj-line'}
-end)
+end,
+config = {
+    display = {
+        open_fn = function()
+            return require('packer.util').float({ border = 'single' })
+        end
+    }
+}})
