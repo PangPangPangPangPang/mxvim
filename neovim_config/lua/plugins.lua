@@ -64,7 +64,7 @@ require('packer').startup(function(use)
     use {
         'lukas-reineke/indent-blankline.nvim',
         -- requires = {'Yggdroot/indentLine'},
-        branch = 'lua',
+        -- branch = 'lua',
         -- setup = [[require('config.indentline')]]
     }
 

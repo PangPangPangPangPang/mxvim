@@ -23,7 +23,7 @@ set cursorline
 " set list lcs=tab:\│\ 
 
 " Time for swap fill will be written to disk.
-set updatetime=10
+set updatetime=400
 
 " Sets how many lines of history VIM has to remember
 set history=500
