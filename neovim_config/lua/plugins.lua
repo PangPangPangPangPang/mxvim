@@ -20,9 +20,9 @@ require('packer').startup({function(use)
 
     use {'tomasiser/vim-code-dark'}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     use {"lifepillar/vim-gruvbox8"}
     use {"Mofiqul/vscode.nvim"}
+    use {"PangPangPangPangPang/miramare", branch= 'develop'}
 
     -- Readline style insertion
     use {'tpope/vim-rsi'}
@@ -82,23 +82,45 @@ require('packer').startup({function(use)
 
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-    vim.api.nvim_set_var('use_coc', true);
+    vim.api.nvim_set_var('use_coc', false);
     if vim.api.nvim_get_var('use_coc') then
         -- coc lsp
         use {'neoclide/coc.nvim', branch = 'release'}
         -- use {'RRethy/vim-illuminate'}
     else 
         -- nvim builtin lsp
-        use {'neovim/nvim-lspconfig'}
-        use {'glepnir/lspsaga.nvim'}
-        use {'hrsh7th/nvim-compe'}
-        vim.api.nvim_exec([[
-        let g:vsnip_filetypes = {}
-        let g:vsnip_filetypes.javascriptreact = ['javascript']
-        let g:vsnip_filetypes.typescriptreact = ['typescript']
-        ]], false)
-        use {'hrsh7th/vim-vsnip'}
-        use {'hrsh7th/vim-vsnip-integ'}
+        use {
+            "neovim/nvim-lspconfig",
+            event = "BufRead",
+            config = function()
+                require("lsp_config").config()
+            end
+        }
+        use {
+            'glepnir/lspsaga.nvim',
+            config = function()
+                require("lsp_saga").config()
+            end
+        }
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require("nvim_compe").config()
+            end,
+            wants = {"LuaSnip"},
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require("nvim_compe").snippets()
+                    end
+                },
+                "rafamadriz/friendly-snippets"
+            }
+        }
     end
 
     -- use {'prettier/vim-prettier', run= 'yarn install'}
