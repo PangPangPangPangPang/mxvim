@@ -23,7 +23,6 @@ M.config = function()
         buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
         buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-        buf_set_keymap('n', '<space>cp', ':Prettier<CR>', opts)
         -- buf_set_keymap('n', '<space>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
         -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
         -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -36,23 +35,13 @@ M.config = function()
         --   buf_set_keymap("v", "<space>cp", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
         -- end
 
-        -- lspsaga
-        -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-        buf_set_keymap('n', '<space>cn', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-        buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-        buf_set_keymap('n', '<space>cd', "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
-        buf_set_keymap('n', '<space>c]', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-        buf_set_keymap('n', '<space>c[', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
-
         -- Set autocommands conditional on server_capabilities
         if client.resolved_capabilities.document_highlight then
             vim.api.nvim_exec([[
             augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-
-            autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
             highlight LspReference guifg=NONE guibg=#444444 guisp=NONE gui=NONE cterm=NONE ctermfg=NONE ctermbg=59
             highlight! link LspReferenceText LspReference

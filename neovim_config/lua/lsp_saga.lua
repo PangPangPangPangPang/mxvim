@@ -1,5 +1,14 @@
+local map = require('utils').map
 local M = {}
 M.config = function() 
+        local opts = { noremap=true, silent=true }
+        -- lspsaga
+        -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+        map('n', '<space>cn', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+        map('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+        map('n', '<space>cd', "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
+        map('n', '<space>c]', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
+        map('n', '<space>c[', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
     local saga = require 'lspsaga'
 
     saga.init_lsp_saga {
@@ -39,6 +48,11 @@ M.config = function()
         -- like server_filetype_map = {metals = {'sbt', 'scala'}}
         server_filetype_map = {}
     }
+    vim.api.nvim_exec([[
+    augroup lsp_saga_document_highlight
+        autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
+    augroup END
+    ]], false)
 end
 
 return M

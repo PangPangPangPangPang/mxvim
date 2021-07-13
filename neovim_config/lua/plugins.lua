@@ -20,7 +20,6 @@ require('packer').startup(function(use)
 
     use {'tomasiser/vim-code-dark'}
     -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-    -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
     use {"lifepillar/vim-gruvbox8"}
     use {"Mofiqul/vscode.nvim"}
 
@@ -118,13 +117,6 @@ require('packer').startup(function(use)
                 "rafamadriz/friendly-snippets"
             }
         }
-        vim.api.nvim_exec([[
-        let g:vsnip_filetypes = {}
-        let g:vsnip_filetypes.javascriptreact = ['javascript']
-        let g:vsnip_filetypes.typescriptreact = ['typescript']
-        ]], false)
-        use {'hrsh7th/vim-vsnip'}
-        use {'hrsh7th/vim-vsnip-integ'}
     end
 
     -- use {'prettier/vim-prettier', run= 'yarn install'}
