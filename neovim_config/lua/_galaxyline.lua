@@ -15,6 +15,7 @@ gl.short_line_list = {
     'defx'
 }
 
+-- vscode
 local colors = {
     -- bg = '#1E1E1E',
     bg = '#264F78',
@@ -33,44 +34,25 @@ local colors = {
     blue = '#569CD6';
     red = '#F44747'
 }
--- local lush = require("lush")
--- local base = require("gruvbox.base")
--- local plugins = require("gruvbox.plugins.highlights")
--- local languages = require("gruvbox.languages")
--- 
--- local specs = {base, languages, plugins}
--- local spec = lush.merge(specs)
--- 
--- local bg0 = spec.GruvboxBg0.fg.hex
---   local fg1 = spec.GruvboxFg1.fg.hex
--- 
--- local yellow = spec.GruvboxYellow.fg.hex
--- local blue = spec.GruvboxBlue.fg.hex
--- local aqua = spec.GruvboxAqua.fg.hex
--- local orange = spec.GruvboxOrange.fg.hex
--- local red = spec.GruvboxRed.fg.hex
--- local green = spec.GruvboxGreen.fg.hex
--- local purple = spec.GruvboxPurple.fg.hex
--- 
--- local colors = {
-    --     bg = bg0,
-    --     line_bg = bg0,
-    --     fg = fg1,
-    --     fg_green = green,
-    -- 
-    --     yellow = yellow,
-    --     cyan = aqua,
-    --     darkblue = blue,
-    --     green = green,
-    --     orange = orange,
-    --     purple = purple,
-    --     magenta = purple,
-    --     blue = blue,
-    --     red = red,
-    -- }
 
+-- miramire
+colors = {
+    bg = '#2A0000',
+    -- line_bg = '#1E1E1E',
+    line_bg = '#2A0000',
+    fg = '#e6d6ac',
+    fg_green = '#87c095',
 
-
+    yellow = '#d9bb80',
+    cyan = '#87c095',
+    darkblue = '#203a41',
+    green = '#a7c080',
+    orange = '#e39b7b',
+    purple = '#d3a0bc',
+    magenta = '#d3a0bc',
+    blue = '#89beba';
+    red = '#e68183'
+}
     vim.api.nvim_command('hi! StatusLine guibg='..colors.line_bg..' guifg='..colors.line_bg)
     -- vim.api.nvim_command('hi! StatusLine guibg=#1E1E1E guifg=#1E1E1E')
 
