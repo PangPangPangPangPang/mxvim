@@ -90,6 +90,7 @@ require('packer').startup(function(use)
         -- nvim builtin lsp
         use {
             "neovim/nvim-lspconfig",
+            event = "BufRead",
             config = function()
                 require("lsp_config").config()
             end
@@ -102,6 +103,7 @@ require('packer').startup(function(use)
         }
         use {
             "hrsh7th/nvim-compe",
+            event = "InsertEnter",
             config = function()
                 require("nvim_compe").config()
             end,
@@ -110,6 +112,7 @@ require('packer').startup(function(use)
                 {
                     "L3MON4D3/LuaSnip",
                     wants = "friendly-snippets",
+                    event = "InsertCharPre",
                     config = function()
                         require("nvim_compe").snippets()
                     end

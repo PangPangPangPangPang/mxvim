@@ -47,7 +47,6 @@ M.config = function()
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
             highlight! link LspReferenceWrite LspReference
-
             ]], false)
         end
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
