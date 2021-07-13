@@ -89,89 +89,117 @@ require('packer').startup(function(use)
         -- use {'RRethy/vim-illuminate'}
     else 
         -- nvim builtin lsp
-        use {'neovim/nvim-lspconfig'}
-        use {'glepnir/lspsaga.nvim'}
-        use {'hrsh7th/nvim-compe'}
-        vim.api.nvim_exec([[
-        let g:vsnip_filetypes = {}
-        let g:vsnip_filetypes.javascriptreact = ['javascript']
-        let g:vsnip_filetypes.typescriptreact = ['typescript']
-        ]], false)
-        use {'hrsh7th/vim-vsnip'}
-        use {'hrsh7th/vim-vsnip-integ'}
-    end
+        use {
+            "neovim/nvim-lspconfig",
+            event = "BufRead",
+            config = function()
+                require("lsp_config").config()
+            end
+        }
+        use {'glepnir/lspsaga.nvim',
+        config = function()
+            require("lsp_saga").config()
+        end
+    }
+    use {
+        "hrsh7th/nvim-compe",
+        event = "InsertEnter",
+        config = function()
+            require("compe-completion").config()
+        end,
+        wants = {"LuaSnip"},
+        requires = {
+            {
+                "L3MON4D3/LuaSnip",
+                wants = "friendly-snippets",
+                event = "InsertCharPre",
+                config = function()
+                    require("compe-completion").snippets()
+                end
+            },
+            "rafamadriz/friendly-snippets"
+        }
+    }
+    vim.api.nvim_exec([[
+    let g:vsnip_filetypes = {}
+    let g:vsnip_filetypes.javascriptreact = ['javascript']
+    let g:vsnip_filetypes.typescriptreact = ['typescript']
+    ]], false)
+    use {'hrsh7th/vim-vsnip'}
+    use {'hrsh7th/vim-vsnip-integ'}
+end
 
-    -- use {'prettier/vim-prettier', run= 'yarn install'}
-    use {'sbdchd/neoformat', cmd = 'Neoformat', config = function() require('neoformat') end}
+-- use {'prettier/vim-prettier', run= 'yarn install'}
+use {'sbdchd/neoformat', cmd = 'Neoformat', config = function() require('neoformat') end}
 
 
-    use {'machakann/vim-highlightedyank'}
+use {'machakann/vim-highlightedyank'}
 
-    use {'liuchengxu/vista.vim', cmd = {'Vista'}}
+use {'liuchengxu/vista.vim', cmd = {'Vista'}}
 
-    use {'Shougo/defx.nvim',run = ':UpdateRemotePlugins', requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'}}
+use {'Shougo/defx.nvim',run = ':UpdateRemotePlugins', requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'}}
 
-    use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
+use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
-    use {'kyazdani42/nvim-web-devicons'}
-    use {'glepnir/galaxyline.nvim', config = function() require('_galaxyline') end}
+use {'kyazdani42/nvim-web-devicons'}
+use {'glepnir/galaxyline.nvim', config = function() require('_galaxyline') end}
 
-    use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require('_telescope') end}
-    --[[ use {'junegunn/fzf', rtp = '~/.fzf', run = './install --all'}
-    use {'junegunn/fzf.vim'} ]]
+use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require('_telescope') end}
+--[[ use {'junegunn/fzf', rtp = '~/.fzf', run = './install --all'}
+use {'junegunn/fzf.vim'} ]]
 
-    use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
+use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = {'MarkdownPreview'}}
 
-    use {'voldikss/vim-floaterm'}
-    vim.api.nvim_command('hi! link FloatermBorder Directory')
-    g.floaterm_title = '$1/$2'
+use {'voldikss/vim-floaterm'}
+vim.api.nvim_command('hi! link FloatermBorder Directory')
+g.floaterm_title = '$1/$2'
 
-    map('n', '<F5>', ":FloatermToggle default<CR>", {silent = true})
-    map('t', '<F5>', "<C-\\><C-n>:FloatermToggle default<CR>", {silent = true})
-    map('t', '<esc>', "<C-\\><C-n>:FloatermKill<CR>", {silent = true})
-    map('n', '<leader>lg', ":FloatermNew --width=0.8 --height=0.8 lazygit<CR>", {silent = true})
+map('n', '<F5>', ":FloatermToggle default<CR>", {silent = true})
+map('t', '<F5>', "<C-\\><C-n>:FloatermToggle default<CR>", {silent = true})
+map('t', '<esc>', "<C-\\><C-n>:FloatermKill<CR>", {silent = true})
+map('n', '<leader>lg', ":FloatermNew --width=0.8 --height=0.8 lazygit<CR>", {silent = true})
 
-    -- g.lazygit_floating_window_use_plenary = 0
-    -- map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
+-- g.lazygit_floating_window_use_plenary = 0
+-- map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
 
-    use {'szw/vim-maximizer', cmd = {'MaximizerToggle'}}
-    map('n', '<c-w>z', ':MaximizerToggle<CR>', {silent = true})
-    map('v', '<c-w>z', ':MaximizerToggle<CR>gv', {silent = true})
+use {'szw/vim-maximizer', cmd = {'MaximizerToggle'}}
+map('n', '<c-w>z', ':MaximizerToggle<CR>', {silent = true})
+map('v', '<c-w>z', ':MaximizerToggle<CR>gv', {silent = true})
 
-    -- vim-cool disables search highlighting when you are done searching and re-enables it when you search again.
-    use {'romainl/vim-cool'}
-    g.CoolTotalMatches = 1
+-- vim-cool disables search highlighting when you are done searching and re-enables it when you search again.
+use {'romainl/vim-cool'}
+g.CoolTotalMatches = 1
 
-    use {'airblade/vim-gitgutter'}
-    use {'tpope/vim-fugitive'}
-    use {'junegunn/gv.vim'}
-    use {'rhysd/git-messenger.vim'}
-    use {'honza/vim-snippets'}
+use {'airblade/vim-gitgutter'}
+use {'tpope/vim-fugitive'}
+use {'junegunn/gv.vim'}
+use {'rhysd/git-messenger.vim'}
+use {'honza/vim-snippets'}
 
-    -- use {'rhysd/clever-f.vim'}
-    use {'justinmk/vim-sneak'}
+-- use {'rhysd/clever-f.vim'}
+use {'justinmk/vim-sneak'}
 
-    use {'kshenoy/vim-signature'}
+use {'kshenoy/vim-signature'}
 
-    use {'simnalamburt/vim-mundo'}
-    map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
+use {'simnalamburt/vim-mundo'}
+map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
 
-    use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
-    g.Illuminate_highlightUnderCursor = 1
-    g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
+use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
+g.Illuminate_highlightUnderCursor = 1
+g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
 
-    -- html
-    use {'mattn/emmet-vim'}
-    g.user_emmet_expandabbr_key = '<C-y><tab>'
-    g.user_emmet_prev_key = '<C-y>p'
+-- html
+use {'mattn/emmet-vim'}
+g.user_emmet_expandabbr_key = '<C-y><tab>'
+g.user_emmet_prev_key = '<C-y>p'
 
-    use {'tpope/vim-dadbod', cmd = {'DB'}}
-    use {'skywind3000/vim-quickui'}
-    g.quickui_border_style = 2
-    g.quickui_color_scheme = 'system'
+use {'tpope/vim-dadbod', cmd = {'DB'}}
+use {'skywind3000/vim-quickui'}
+g.quickui_border_style = 2
+g.quickui_color_scheme = 'system'
 
-    use {'kana/vim-textobj-user'}
-    use {'kana/vim-textobj-function'}
-    use {'kana/vim-textobj-indent'}
-    use {'kana/vim-textobj-line'}
+use {'kana/vim-textobj-user'}
+use {'kana/vim-textobj-function'}
+use {'kana/vim-textobj-indent'}
+use {'kana/vim-textobj-line'}
 end)
