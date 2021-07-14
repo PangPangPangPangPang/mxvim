@@ -82,7 +82,7 @@ require('packer').startup({function(use)
 
     use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-    vim.api.nvim_set_var('use_coc', false);
+    vim.api.nvim_set_var('use_coc', true);
     if vim.api.nvim_get_var('use_coc') then
         -- coc lsp
         use {'neoclide/coc.nvim', branch = 'release'}
