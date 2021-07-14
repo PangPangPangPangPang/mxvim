@@ -57,20 +57,20 @@ endif
 " autocmd InsertEnter * hi clear CursorColumn | hi! link CursorColumn None
 " autocmd InsertLeave * hi clear CursorColumn | hi! link CursorColumn ColorColumn
 
-let g:miramare_enable_italic = 1
-let g:miramare_enable_italic_string = 1
-let g:miramare_enable_bold = 1
-let g:miramare_disable_italic_comment = 0
-let g:miramare_transparent_background = 0
-silent! colorscheme miramare
+" let g:miramare_enable_italic = 1
+" let g:miramare_enable_italic_string = 1
+" let g:miramare_enable_bold = 1
+" let g:miramare_disable_italic_comment = 0
+" let g:miramare_transparent_background = 0
+" silent! colorscheme miramare
 "
 " let g:nvcode_termcolors=256
 " silent! colorscheme nvcode
 " let g:codedark_term256=1
 " silent! colorscheme codedark
  
-" let g:vscode_style = "dark"
-" silent! colorscheme vscode
+let g:vscode_style = "dark"
+silent! colorscheme vscode
  
 " silent! colorscheme jellybeans
 " let g:gruvbox_sign_column = 'bg0'

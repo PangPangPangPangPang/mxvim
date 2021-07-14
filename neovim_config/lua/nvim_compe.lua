@@ -6,8 +6,8 @@ M.config = function()
     map('i', '<C-Space>', "compe#complete()", opts)
     map('i', '<CR>', "compe#confirm('<CR>')", opts)
     map('i', '<C-e>', "compe#close('<C-e>')", opts)
-    map('i', '<C-f>', "compe#scroll({ 'delta': +4 })", opts)
-    map('i', '<C-d>', "compe#scroll({ 'delta': -4 })", opts)
+    -- map('i', '<C-f>', "compe#scroll({ 'delta': +4 })", opts)
+    -- map('i', '<C-d>', "compe#scroll({ 'delta': -4 })", opts)
     map('n', '<leader>cp', ":Neoformat<CR>", { noremap=true, silent=true })
     require "compe".setup {
         enabled = true,
