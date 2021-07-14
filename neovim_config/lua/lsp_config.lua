@@ -42,7 +42,19 @@ M.config = function()
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
             augroup END
+
+            hi! default link LspDiagnosticsVirtualTextError NonText
+            hi! default link LspDiagnosticsVirtualTextHint NonText
+            hi! default link LspDiagnosticsVirtualTextInformation NonText
+            hi! default link LspDiagnosticsVirtualTextWarning NonText
+
+            hi! LspDiagnosticsDefaultInformation guifg=#444444
+            hi! LspDiagnosticsUnderlineError gui=undercurl term=undercurl guisp=#c4384b guifg=none
+            hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=#569cd6 guifg=none
+            hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=#c4ab39 guifg=none
+            hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=#569cd6 guifg=none
             highlight LspReference guifg=NONE guibg=#444444 guisp=NONE gui=NONE cterm=NONE ctermfg=NONE ctermbg=59
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
