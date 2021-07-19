@@ -92,6 +92,15 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
     },
     rainbow = {
+        colors = {
+            '#4EC9B0',
+            '#6A9955',
+            '#CE9178',
+            '#C586C0',
+            '#C586C0',
+            '#569CD6',
+            '#F44747'
+        },
         enable = true
     }
 
