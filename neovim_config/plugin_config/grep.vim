@@ -1,4 +1,5 @@
 let g:grepper = {
+            \ 'simple_prompt': 1,
             \ 'tools': ['rg', 'ag', 'ack', 'grep', 'findstr', 'pt', 'git'],
             \ 'rg': { 
             \         'grepprg':    "rg -H --no-heading --ignore-case -g '!{*build*,*release*,*gecko*}' --vimgrep" . (has('win32') ? ' $* .' : ''),

@@ -2,8 +2,8 @@ local actions = require('telescope.actions')
 local map = require('utils').map
 
 map('n', '<c-p>', ':Telescope find_files<cr>', {silent = true})
-map('n', '<leader>b', ':Telescope buffers<cr>', {silent = true})
--- map('n', '<leader>f', ':Telescope live_grep<cr>', {silent = true})
+map('n', '<leader>b', ':Telescope buffers theme=get_cursor<cr>', {silent = true})
+map('n', '<leader>f', ':Telescope live_grep theme=get_dropdown<cr>', {silent = true})
 
 require('telescope').setup{
     defaults = {
@@ -40,9 +40,9 @@ require('telescope').setup{
         selection_caret = "▶ ",
         entry_prefix = "  ",
         initial_mode = "insert",
-        selection_strategy = "reset",
+        -- selection_strategy = "reset",
         sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        layout_strategy = "vertical",
         layout_config = {
             horizontal = {
                 mirror = false,
@@ -51,10 +51,8 @@ require('telescope').setup{
                 preview_cutoff = 120,
             },
             vertical = {
-                mirror = false,
-                prompt_position = "bottom",
-                width = 0.75,
-                preview_cutoff = 120,
+                mirror = true,
+                width = 0.50,
             },
         },
         file_sorter =  require'telescope.sorters'.get_fuzzy_file,
