@@ -182,10 +182,13 @@ augroup end
 
 
 function s:coc_highlight() abort
-    hi default link CocErrorVirtualText CocCodeLens
-    hi default link CocWarningVirtualText CocCodeLens
-    hi default link CocInfoVirtualText CocCodeLens
-    hi default link CocHintVirtualText CocCodeLens
+    hi default link CocErrorVirtualText LineNr
+    hi default link CocWarningVirtualText LineNr
+    hi default link CocInfoVirtualText LineNr
+    hi default link CocHintVirtualText LineNr
+    hi default link CocErrorSign ErrorMsg
+    hi default link CocWarningSign WarningMsg
+    hi default link CocInfoSign Question
     hi! CocUnderline gui=undercurl term=undercurl guisp=#c4384b
     hi! CocErrorHighlight gui=undercurl term=undercurl guisp=#c4384b
     hi! CocInfoHighlight gui=undercurl term=undercurl guisp=#c4ab39
