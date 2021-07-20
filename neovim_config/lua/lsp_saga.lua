@@ -1,6 +1,6 @@
 local map = require('utils').map
 local M = {}
-M.config = function() 
+M.config = function()
         local opts = { noremap=true, silent=true }
         -- lspsaga
         -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
