@@ -6,7 +6,6 @@ let g:coc_global_extensions = [
             \'coc-actions',
             \'coc-python',
             \'coc-sh',
-            \'coc-imselect',
             \'coc-json',
             \'coc-tsserver',
             \'coc-react-refactor',

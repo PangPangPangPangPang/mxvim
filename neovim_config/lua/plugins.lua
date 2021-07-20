@@ -28,6 +28,8 @@ require('packer').startup({function(use)
     use {'tpope/vim-rsi'}
 
     use {'mhinz/vim-startify'}
+    use {'brglng/vim-im-select'}
+    g.im_select_default = 'com.apple.keylayout.US'
 
     -- use {'luochen1990/rainbow'}
     -- g.rainbow_active = 1
