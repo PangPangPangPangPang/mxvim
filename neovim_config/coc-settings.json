@@ -8,7 +8,7 @@
   "diagnostic.displayByAle": false,
   "diagnostic.enable": true,
   "diagnostic.virtualText": true,
-  "diagnostic.infoSign": " ",
+  "diagnostic.infoSign": " ",
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",
   "diagnostic.virtualTextPrefix": "■ ",
