@@ -3,7 +3,7 @@
   "dialog.floatHighlight": "CocFloatingBorder",
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableSign": true,
-  "diagnostic.enableHighlightLineNumber": true,
+  "diagnostic.enableHighlightLineNumber": false,
   "diagnostic.messageTarget": "float",
   "diagnostic.displayByAle": false,
   "diagnostic.enable": true,

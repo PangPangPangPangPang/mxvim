@@ -179,7 +179,6 @@ augroup Flutter
     autocmd FileType dart nnoremap <silent> <leader>f :call <SID>open_coc_flutter_menu()<CR>
 augroup end
 
-
 function s:coc_highlight() abort
     hi default link CocErrorVirtualText LineNr
     hi default link CocWarningVirtualText LineNr

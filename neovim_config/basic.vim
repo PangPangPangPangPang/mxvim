@@ -1,8 +1,8 @@
 " Enable true color
 if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
 endif
 set mouse=a
 
@@ -13,7 +13,7 @@ set mouse=a
 set noshowmode
 
 if has('nvim-0.5')
-	set jumpoptions=stack
+    set jumpoptions=stack
 endif
 
 set cursorline
@@ -36,14 +36,17 @@ set shortmess+=c
 " set nonu
 set nu
 
-if has("patch-8.1.1564") || has('nvim-0.5')
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+let g:show_signcolumn = has("patch-8.1.1564") || has('nvim-0.5')
+
+if !g:show_signcolumn
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+    " Add a bit extra margin to the left, change 0 to 1.
+    set foldcolumn=0
 else
-  set signcolumn=yes
+    set signcolumn=yes
+    set foldcolumn=1
 endif
-" Add a bit extra margin to the left, change 0 to 1.
-set foldcolumn=0
 
 
 if has('gui_running') || has('nvim')
