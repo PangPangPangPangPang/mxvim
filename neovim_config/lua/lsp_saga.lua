@@ -1,14 +1,21 @@
 local map = require('utils').map
 local M = {}
 M.config = function()
-        local opts = { noremap=true, silent=true }
-        -- lspsaga
-        -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-        map('n', '<space>cn', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-        map('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-        map('n', '<space>cd', "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
-        map('n', '<space>c]', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
-        map('n', '<space>c[', "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+    local opts = {noremap = true, silent = true}
+    -- lspsaga
+    -- buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+    map('n', '<space>cn', "<cmd>lua require('lspsaga.rename').rename()<CR>",
+        opts)
+    map('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>",
+        opts)
+    map('n', '<space>cd',
+        "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
+    map('n', '<space>c]',
+        "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",
+        opts)
+    map('n', '<space>c[',
+        "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",
+        opts)
     local saga = require 'lspsaga'
 
     saga.init_lsp_saga {
@@ -25,19 +32,23 @@ M.config = function()
             enable = true,
             sign = false,
             sign_priority = 20,
-            virtual_text = true,
+            virtual_text = true
         },
         finder_definition_icon = '  ',
         finder_reference_icon = '  ',
         max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
         finder_action_keys = {
-            open = 'o', vsplit = 's',split = 'i',quit = 'q',scroll_down = '<C-f>', scroll_up = '<C-b>' -- quit can be a table
+            open = 'o',
+            vsplit = 's',
+            split = 'i',
+            quit = 'q',
+            scroll_down = '<C-f>',
+            scroll_up = '<C-b>' -- quit can be a table
         },
-        code_action_keys = {
-            quit = 'q',exec = '<CR>'
-        },
+        code_action_keys = {quit = 'q', exec = '<CR>'},
         rename_action_keys = {
-            quit = '<C-c>',exec = '<CR>'  -- quit can be a table
+            quit = '<C-c>',
+            exec = '<CR>' -- quit can be a table
         },
         definition_preview_icon = '  ',
         -- "single" "double" "round" "plus"

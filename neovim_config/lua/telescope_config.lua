@@ -1,24 +1,19 @@
 local M = {}
-M.map = function ()
+M.map = function()
     local map = require('utils').map
     map('n', '<c-p>', ':Telescope find_files<cr>', {silent = true})
     map('n', '<leader>b', ':Telescope buffers<cr>', {silent = true})
 end
-M.config = function ()
+M.config = function()
     local actions = require('telescope.actions')
 
     -- map('n', '<leader>f', ':Telescope live_grep<cr>', {silent = true})
 
-    require('telescope').setup{
+    require('telescope').setup {
         defaults = {
             vimgrep_arguments = {
-                'rg',
-                '--color=never',
-                '--no-heading',
-                '--with-filename',
-                '--line-number',
-                '--column',
-                '--smart-case'
+                'rg', '--color=never', '--no-heading', '--with-filename',
+                '--line-number', '--column', '--smart-case'
             },
             mappings = {
                 i = {
@@ -33,12 +28,12 @@ M.config = function ()
                     ["<CR>"] = actions.select_default + actions.center,
 
                     -- You can perform as many actions in a row as you like
-                    ["<esc>"] = actions.close,
+                    ["<esc>"] = actions.close
                 },
                 n = {
-                    ["<esc>"] = false,
+                    ["<esc>"] = false
                     -- ["<C-i>"] = my_cool_custom_action,
-                },
+                }
             },
             prompt_prefix = "❤  ",
             selection_caret = "▶ ",
@@ -52,26 +47,27 @@ M.config = function ()
                     mirror = false,
                     prompt_position = "top",
                     width = 0.75,
-                    preview_cutoff = 120,
+                    preview_cutoff = 120
                 },
-                vertical = {
-                    mirror = true,
-                    width = 0.50,
-                },
+                vertical = {mirror = true, width = 0.50}
             },
-            file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+            file_sorter = require'telescope.sorters'.get_fuzzy_file,
             file_ignore_patterns = {},
-            generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+            generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
             path_display = {'absolute'},
             winblend = 0,
             border = {},
-            borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+            borderchars = {
+                '─', '│', '─', '│', '╭', '╮', '╯', '╰'
+            },
             color_devicons = true,
             use_less = true,
-            set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+            set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
             file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-            grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-            qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+            grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep
+                .new,
+            qflist_previewer = require'telescope.previewers'.vim_buffer_qflist
+                .new,
 
             -- Developer configurations: Not meant for general override
             buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker

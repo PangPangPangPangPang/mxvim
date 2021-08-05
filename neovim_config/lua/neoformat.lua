@@ -6,7 +6,10 @@ g.neoformat_basic_format_trim = 1
 
 -- python
 g.neoformat_enabled_python = {'autopep8'}
-g.neoformat_python_autopep8 = {exe = 'autopep8', args = {'--max-line-length=100'}}
+g.neoformat_python_autopep8 = {
+    exe = 'autopep8',
+    args = {'--max-line-length=100'}
+}
 
 -- lua
 g.neoformat_enabled_lua = {'luaformat'}
