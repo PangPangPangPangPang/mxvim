@@ -45,7 +45,7 @@ if !g:show_signcolumn
     set foldcolumn=0
 else
     set signcolumn=yes
-    set foldcolumn=1
+    set foldcolumn=0
 endif
 
 

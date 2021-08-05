@@ -82,6 +82,7 @@ if !Installed("nerdtree")
     augroup DefxGroup
         autocmd!
         autocmd FileType defx setlocal nonumber
+        autocmd FileType defx setlocal foldcolumn=0
         autocmd FileType defx map <silent> <buffer> <tab> :call <SID>open_defx_menu()<CR>
         autocmd FileType defx map <silent><buffer> <RightMouse> :call <SID>open_defx_menu()<CR>
         " autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
