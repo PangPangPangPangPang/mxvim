@@ -1,5 +1,5 @@
 local M = {}
-M.config = function()
+M.map = function()
     local g = vim.g
     local map = require('utils').map
     vim.api.nvim_command('hi! link FloatermBorder Directory')

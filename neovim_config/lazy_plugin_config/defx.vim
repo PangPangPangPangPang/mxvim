@@ -1,6 +1,4 @@
 if !Installed("nerdtree")
-    map <silent> <F1> :Defx -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>
-    map <silent> <leader>j :Defx  -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>
     autocmd FileType defx call s:defx_my_settings()
     function! s:defx_my_settings() abort
         " Define mappings
@@ -114,9 +112,9 @@ if !Installed("nerdtree")
     endif
     " 
     call defx#custom#column('icon', {
-                \ 'directory_icon': '▶',
-                \ 'opened_icon': '▼',
-                \ 'root_icon': '❤',
+                \ 'directory_icon': '▶ ',
+                \ 'opened_icon': '▼ ',
+                \ 'root_icon': '❤ ',
                 \ })
     call defx#custom#column('filename', {
                 \ 'min_width': 60,
@@ -124,18 +122,18 @@ if !Installed("nerdtree")
                 \ })
 
     call defx#custom#column('mark', {
-                \ 'readonly_icon': '',
-                \ 'selected_icon': '✔',
+                \ 'readonly_icon': ' ',
+                \ 'selected_icon': '✔ ',
                 \ })
     call defx#custom#column('git', 'indicators', {
-                \ 'Modified'  : '✹',
-                \ 'Staged'    : '✚',
-                \ 'Untracked' : '✭',
-                \ 'Renamed'   : '➜',
-                \ 'Unmerged'  : '═',
-                \ 'Ignored'   : '☒',
-                \ 'Deleted'   : '✖',
-                \ 'Unknown'   : '?'
+                \ 'Modified'  : '✹ ',
+                \ 'Staged'    : '✚ ',
+                \ 'Untracked' : '✭ ',
+                \ 'Renamed'   : '➜ ',
+                \ 'Unmerged'  : '═ ',
+                \ 'Ignored'   : '☒ ',
+                \ 'Deleted'   : '✖ ',
+                \ 'Unknown'   : '? '
                 \ })
     " 
     " 

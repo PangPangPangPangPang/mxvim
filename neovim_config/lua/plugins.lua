@@ -31,14 +31,9 @@ require('packer').startup({
         use {'brglng/vim-im-select'}
         g.im_select_default = 'com.apple.keylayout.US'
 
-        -- use {'luochen1990/rainbow'}
-        -- g.rainbow_active = 1
-
-        use {'romainl/vim-qf'}
         use {'kevinhwang91/nvim-bqf'}
 
         -- commenter
-        -- use {'b3nj5m1n/kommentary'}
         use {'tpope/vim-commentary'}
 
         vim.api.nvim_set_var('use_treesitter', true);
@@ -76,11 +71,7 @@ require('packer').startup({
             -- setup = [[require('config.indentline')]]
         }
 
-        -- use {'mg979/vim-visual-multi'}
-        -- vim.api.nvim_set_var('VM_maps', {'Remove Region' = '<c-p'})
-
         use {'tpope/vim-surround'}
-        -- map('n', '<leader>]', "\m\`\$v\^S\]\`\`", {silent = true})
 
         use {'PangPangPangPangPang/visual-selection-vim'}
         map('v', '*', ":<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>",
@@ -96,7 +87,6 @@ require('packer').startup({
         if vim.api.nvim_get_var('use_coc') then
             -- coc lsp
             use {'neoclide/coc.nvim', branch = 'release'}
-            -- use {'RRethy/vim-illuminate'}
         else
             -- nvim builtin lsp
             use {
@@ -129,7 +119,6 @@ require('packer').startup({
             }
         end
 
-        -- use {'prettier/vim-prettier', run= 'yarn install'}
         use {
             'sbdchd/neoformat',
             cmd = 'Neoformat',
@@ -143,7 +132,11 @@ require('packer').startup({
         use {
             'Shougo/defx.nvim',
             run = ':UpdateRemotePlugins',
-            requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'}
+            requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
+            config = function() 
+                require('config/defx').config() 
+                require('config/defx').map()
+            end,
         }
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
@@ -170,10 +163,8 @@ require('packer').startup({
             cmd = {'MarkdownPreview'}
         }
 
-        use {
-            'voldikss/vim-floaterm',
-            config = function() require('vim_floaterm').config() end
-        }
+        use {'voldikss/vim-floaterm', cmd = {'FloatermToggle'}}
+        require('vim_floaterm').map()
 
         -- g.lazygit_floating_window_use_plenary = 0
         -- map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
@@ -197,10 +188,14 @@ require('packer').startup({
 
         use {'kshenoy/vim-signature'}
 
-        use {'simnalamburt/vim-mundo'}
+        use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}
         map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
 
-        use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
+        use {
+            'rrethy/vim-hexokinase',
+            run = 'make hexokinase',
+            event = "InsertEnter"
+        }
         g.Illuminate_highlightUnderCursor = 1
         g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
 
