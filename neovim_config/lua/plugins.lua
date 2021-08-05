@@ -163,7 +163,7 @@ require('packer').startup({
             cmd = {'MarkdownPreview'}
         }
 
-        use {'voldikss/vim-floaterm', cmd = {'FloatermToggle'}}
+        use {'voldikss/vim-floaterm', cmd = {'FloatermToggle', 'FloatermNew'}}
         require('vim_floaterm').map()
 
         -- g.lazygit_floating_window_use_plenary = 0
