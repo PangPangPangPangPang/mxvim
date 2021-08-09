@@ -15,6 +15,12 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
+        use {
+            'lewis6991/gitsigns.nvim',
+            requires = {'nvim-lua/plenary.nvim'},
+            config = function() require('gitsigns').setup() end
+        }
+
         use {'ryanoasis/vim-devicons'}
         g.devicons_install = 1
 
@@ -86,7 +92,11 @@ require('packer').startup({
         vim.api.nvim_set_var('use_coc', true);
         if vim.api.nvim_get_var('use_coc') then
             -- coc lsp
-            use {'neoclide/coc.nvim', branch = 'release'}
+            use {
+                'PangPangPangPangPang/coc.nvim',
+                branch = 'master',
+                run = 'yarn install --frozen-lockfile'
+            }
         else
             -- nvim builtin lsp
             use {
@@ -133,10 +143,10 @@ require('packer').startup({
             'Shougo/defx.nvim',
             run = ':UpdateRemotePlugins',
             requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
-            config = function() 
-                require('config/defx').config() 
+            config = function()
+                require('config/defx').config()
                 require('config/defx').map()
-            end,
+            end
         }
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
@@ -177,7 +187,7 @@ require('packer').startup({
         use {'romainl/vim-cool'}
         g.CoolTotalMatches = 1
 
-        use {'airblade/vim-gitgutter'}
+        -- use {'airblade/vim-gitgutter'}
         use {'tpope/vim-fugitive'}
         use {'junegunn/gv.vim'}
         use {'rhysd/git-messenger.vim'}
