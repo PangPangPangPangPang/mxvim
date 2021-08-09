@@ -15,12 +15,6 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
-        use {
-            'lewis6991/gitsigns.nvim',
-            requires = {'nvim-lua/plenary.nvim'},
-            config = function() require('gitsigns').setup() end
-        }
-
         use {'ryanoasis/vim-devicons'}
         g.devicons_install = 1
 
@@ -188,6 +182,11 @@ require('packer').startup({
         g.CoolTotalMatches = 1
 
         -- use {'airblade/vim-gitgutter'}
+        use {
+            'lewis6991/gitsigns.nvim',
+            requires = {'nvim-lua/plenary.nvim'},
+            config = function() require('_gitsigns').setup() end
+        }
         use {'tpope/vim-fugitive'}
         use {'junegunn/gv.vim'}
         use {'rhysd/git-messenger.vim'}
