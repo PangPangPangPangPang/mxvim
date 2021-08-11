@@ -1,8 +1,13 @@
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+nnoremap <leader>wh :call SynStack()<cr>
+
+" set background=light
 set background=dark
-" set background=light
-"     highlight color group
-nnoremap <silent> <leader>wh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" set background=light
 
 " Enable true color
 if exists('+termguicolors')

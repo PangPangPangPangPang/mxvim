@@ -86,10 +86,14 @@ require('packer').startup({
         vim.api.nvim_set_var('use_coc', true);
         if vim.api.nvim_get_var('use_coc') then
             -- coc lsp
+            -- use {
+            --     'PangPangPangPangPang/coc.nvim',
+            --     branch = 'master',
+            --     run = 'yarn install --frozen-lockfile'
+            -- }
             use {
-                'PangPangPangPangPang/coc.nvim',
-                branch = 'master',
-                run = 'yarn install --frozen-lockfile'
+                'neoclide/coc.nvim',
+                branch = 'release',
             }
         else
             -- nvim builtin lsp

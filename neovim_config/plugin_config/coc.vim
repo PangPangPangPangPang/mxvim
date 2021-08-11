@@ -187,7 +187,7 @@ function s:coc_highlight() abort
     hi default link CocErrorSign ErrorMsg
     hi default link CocWarningSign WarningMsg
     hi default link CocInfoSign Question
-    hi default link CocFloating clear
+    " hi default link CocFloating Normal
     hi! CocUnderline gui=undercurl term=undercurl guisp=#c4384b
     hi! CocErrorHighlight gui=undercurl term=undercurl guisp=#c4384b
     hi! CocInfoHighlight gui=undercurl term=undercurl guisp=#c4ab39
