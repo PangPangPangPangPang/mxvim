@@ -2,13 +2,13 @@ local map = require('utils').map
 local M = {}
 
 M.config = function()
+    vim.o.completeopt = "menuone,noselect"
     local opts = {noremap = true, silent = true, expr = true}
     map('i', '<C-Space>', "compe#complete()", opts)
     map('i', '<CR>', "compe#confirm('<CR>')", opts)
     map('i', '<C-e>', "compe#close('<C-e>')", opts)
     -- map('i', '<C-f>', "compe#scroll({ 'delta': +4 })", opts)
     -- map('i', '<C-d>', "compe#scroll({ 'delta': -4 })", opts)
-    map('n', '<leader>cp', ":Neoformat<CR>", {noremap = true, silent = true})
     require"compe".setup {
         enabled = true,
         autocomplete = true,

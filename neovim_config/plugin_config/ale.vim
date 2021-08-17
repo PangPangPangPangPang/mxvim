@@ -1,5 +1,6 @@
 " Set ale disable as default
 " let g:ale_sign_column_always = 0
+let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters_explicit = 1
@@ -25,10 +26,7 @@ let g:ale_sign_warning = ' '
 let g:ale_sign_error = ' '
 let g:ale_statusline_format = ['x %d', '> %d', '⬥ ok']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_sign_highlight_linenrs = 1
-" highlight clear ALEErrorSign
-" highlight clear ALEWarningSign
-"
+let g:ale_sign_highlight_linenrs = 0
 let g:ale_javascript_eslint_executable = '/usr/local/bin/eslint'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'],
@@ -78,5 +76,15 @@ let g:ale_fix_on_save_ignore = {
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+hi default link ALEErrorSign ErrorMsg
+hi default link ALEWarningSign WarningMsg
+hi default link ALEInfoSign Question
+hi default link ALEVirtualTextError LineNr
+hi default link ALEVirtualTextWarning LineNr
+hi default link ALEVirtualTextInfo LineNr
+hi! ALEError gui=undercurl term=undercurl guisp=#c4384b
+hi! ALEInfo gui=undercurl term=undercurl guisp=#c4ab39
+hi! ALEWarning gui=undercurl term=undercurl guisp=#c4ab39
 
 map <silent> <leader>s :ALEToggle<cr>

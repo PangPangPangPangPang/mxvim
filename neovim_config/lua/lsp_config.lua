@@ -32,8 +32,8 @@ M.config = function()
                        opts)
         buf_set_keymap('n', '<space>D',
                        '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.buf.rename()<CR>',
-                       opts)
+        -- buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.buf.rename()<CR>',
+        --                opts)
         buf_set_keymap('n', '<space>ca',
                        '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -50,6 +50,7 @@ M.config = function()
         -- if client.resolved_capabilities.document_range_formatting then
         --   buf_set_keymap("v", "<space>cp", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
         -- end
+        buf_set_keymap('n', '<space>cp', ":Neoformat<CR>", opts)
 
         -- Set autocommands conditional on server_capabilities
         if client.resolved_capabilities.document_highlight then
@@ -59,6 +60,7 @@ M.config = function()
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
                 autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
             augroup END
 
             hi! default link LspDiagnosticsVirtualTextError NonText
@@ -100,7 +102,7 @@ M.config = function()
     }
 
     local servers = {
-        "pyright", "rust_analyzer", "tsserver", "cssls", "stylelint_lsp", "html"
+        "pyright", "rust_analyzer", "tsserver", "cssls", "html"
     }
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}

@@ -83,7 +83,7 @@ require('packer').startup({
 
         use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
 
-        vim.api.nvim_set_var('use_coc', true);
+        vim.api.nvim_set_var('use_coc', false);
         if vim.api.nvim_get_var('use_coc') then
             -- coc lsp
             -- use {
@@ -125,6 +125,7 @@ require('packer').startup({
                     }, "rafamadriz/friendly-snippets"
                 }
             }
+            use{"dense-analysis/ale"}
         end
 
         use {
