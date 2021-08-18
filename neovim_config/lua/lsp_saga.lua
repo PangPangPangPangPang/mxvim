@@ -10,10 +10,10 @@ M.config = function()
         opts)
     map('n', '<space>cd',
         "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
-    map('n', '<space>c]',
+    map('n', '<space>c[',
         "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",
         opts)
-    map('n', '<space>c[',
+    map('n', '<space>c]',
         "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",
         opts)
     local saga = require 'lspsaga'
