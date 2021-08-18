@@ -1,9 +1,20 @@
 local M = {}
+
 M.config = function()
-    -- require'snippets'.use_suggested_mappings()
-    local nvim_lsp = require('lspconfig')
+    local lspconfig = require('lspconfig')
+
+    local signs = {
+        Error = " ",
+        Warning = " ",
+        Hint = " ",
+        Information = " "
+    }
 
     local on_attach = function(client, bufnr)
+        for type, icon in pairs(signs) do
+            local hl = "LspDiagnosticsSign" .. type
+            vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+        end
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
@@ -60,7 +71,7 @@ M.config = function()
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
                 autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
             hi! default link LspDiagnosticsVirtualTextError NonText
@@ -93,7 +104,7 @@ M.config = function()
             })
     end
 
-    -- Use a loop to conveniently both setup defined servers 
+    -- Use a loop to conveniently both setup defined servers
     -- and map buffer local keybindings when the language server attaches
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -101,12 +112,75 @@ M.config = function()
         properties = {'documentation', 'detail', 'additionalTextEdits'}
     }
 
-    local servers = {
-        "pyright", "rust_analyzer", "tsserver", "cssls", "html"
-    }
+    local servers = {"pyright", "rust_analyzer", "tsserver", "cssls", "html"}
     for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}
+        lspconfig[lsp].setup {
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
     end
 
+    local eslint = {
+        lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+        lintIgnoreExitCode = true,
+        lintStdin = true,
+        lintFormats = {"%f:%l:%c: %m"}
+    }
+
+    local languages = {
+        lua = {formatCommand = "lua-format -i", formatStdin = true},
+        typescript = eslint,
+        typescriptreact = eslint,
+        javascript = eslint,
+        javascriptreact = eslint
+    }
+
+    lspconfig.efm.setup {
+        -- root_dir = lspconfig.util
+        --     .root_pattern("yarn.lock", "lerna.json", ".git"),
+        filetypes = vim.tbl_keys(languages),
+        init_options = {
+            documentFormatting = true,
+            codeAction = true,
+            documentSymbol = true,
+            codeAction = true,
+            completion = true
+        },
+        settings = {
+            languages = languages,
+            verson = 2,
+            rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
+        },
+        on_attach = on_attach
+    }
 end
+
+M.modifyIcons = function()
+    local icons = {
+        Class = " פּ ",
+        Color = "  ",
+        Constant = "  ",
+        Constructor = "  ",
+        Enum = " 練",
+        EnumMember = "  ",
+        Field = "  ",
+        File = "  ",
+        Folder = " ﱮ ",
+        Function = "  ",
+        Interface = " 蘒",
+        Keyword = "  ",
+        Method = "  ",
+        Module = "  ",
+        Property = "  ",
+        Snippet = "  ",
+        Struct = "  ",
+        Text = "  ",
+        Unit = " 塞 ",
+        Value = "  ",
+        Variable = "[]"
+    }
+    local kinds = vim.lsp.protocol.CompletionItemKind
+    for i, kind in ipairs(kinds) do kinds[i] = M.icons[kind] or kind end
+end
+
 return M

@@ -125,7 +125,7 @@ require('packer').startup({
                     }, "rafamadriz/friendly-snippets"
                 }
             }
-            use{"dense-analysis/ale"}
+            -- use{"dense-analysis/ale"}
         end
 
         use {
