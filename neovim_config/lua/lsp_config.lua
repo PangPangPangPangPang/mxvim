@@ -104,22 +104,6 @@ M.config = function()
             })
     end
 
-    -- Use a loop to conveniently both setup defined servers
-    -- and map buffer local keybindings when the language server attaches
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {'documentation', 'detail', 'additionalTextEdits'}
-    }
-
-    local servers = {"pyright", "rust_analyzer", "tsserver", "cssls", "html"}
-    for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
-            on_attach = on_attach,
-            capabilities = capabilities
-        }
-    end
-
     local eslint = {
         lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
         lintIgnoreExitCode = true,
@@ -135,13 +119,41 @@ M.config = function()
         javascriptreact = eslint
     }
 
-    lspconfig.efm.setup {
-        -- root_dir = lspconfig.util
-        --     .root_pattern("yarn.lock", "lerna.json", ".git"),
+    -- lspconfig.efm.setup {
+    --     -- root_dir = lspconfig.util
+    --     --     .root_pattern("yarn.lock", "lerna.json", ".git"),
+    --     filetypes = vim.tbl_keys(languages),
+    --     init_options = {
+    --         documentFormatting = true,
+    --         codeAction = true,
+    --         documentSymbol = true,
+    --         codeAction = true,
+    --         completion = true
+    --     },
+    --     settings = {
+    --         languages = languages,
+    --         verson = 2,
+    --         rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
+    --     },
+    --     on_attach = on_attach
+    -- }
+    local function make_config()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        capabilities.textDocument.completion.completionItem.resolveSupport = {
+            properties = {'documentation', 'detail', 'additionalTextEdits'}
+        }
+        return {
+            -- enable snippet support
+            capabilities = capabilities,
+            -- map buffer local keybindings when the language server attaches
+            on_attach = on_attach,
+        }
+    end
+    local efm_config = {
         filetypes = vim.tbl_keys(languages),
         init_options = {
             documentFormatting = true,
-            codeAction = true,
             documentSymbol = true,
             codeAction = true,
             completion = true
@@ -151,8 +163,62 @@ M.config = function()
             verson = 2,
             rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
         },
-        on_attach = on_attach
+        on_attach = on_attach,
     }
+
+    -- Configure lua language server for neovim development
+    local lua_settings = {
+        Lua = {
+            runtime = {
+                -- LuaJIT in the case of Neovim
+                version = 'LuaJIT',
+                path = vim.split(package.path, ';'),
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                },
+            },
+        }
+    }
+
+    local lspinstall = require('lspinstall')
+    local function setup_servers()
+        lspinstall.setup()
+
+        -- get all installed servers
+        local servers = require'lspinstall'.installed_servers()
+        -- ... and add manually installed servers
+        local lsps = { "vimls", "tsserver", "cssls", "html", "bashls", "jsonls", "efm", "sumneko_lua"}
+        for _, lsp in pairs(lsps) do
+            table.insert(servers, lsp)
+        end
+
+        for _, server in pairs(servers) do
+            print(server)
+            local config = make_config()
+
+            -- language specific config
+            if server == "sumneko_lua" then
+                config.settings = lua_settings
+            end
+            if server == "efm" then
+                config = efm_config
+            end
+            lspconfig[server].setup(config)
+        end
+    end
+    setup_servers()
+    lspinstall.post_install_hook = function ()
+        setup_servers() -- reload installed servers
+        vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+    end
 end
 
 M.modifyIcons = function()
@@ -180,7 +246,7 @@ M.modifyIcons = function()
         Variable = "[]"
     }
     local kinds = vim.lsp.protocol.CompletionItemKind
-    for i, kind in ipairs(kinds) do kinds[i] = M.icons[kind] or kind end
+    for i, kind in ipairs(kinds) do kinds[i] = icons[kind] or kind end
 end
 
 return M

@@ -29,7 +29,7 @@ require('packer').startup({
 
         use {'mhinz/vim-startify'}
         use {'brglng/vim-im-select'}
-        g.im_select_default = 'com.apple.keylayout.US'
+        -- g.im_select_default = 'com.apple.keylayout.US'
 
         use {'kevinhwang91/nvim-bqf'}
 
@@ -99,6 +99,9 @@ require('packer').startup({
             -- nvim builtin lsp
             use {
                 "neovim/nvim-lspconfig",
+                requires = {
+                    'kabouzeid/nvim-lspinstall'
+                },
                 config = function()
                     require("lsp_config").config()
                 end
