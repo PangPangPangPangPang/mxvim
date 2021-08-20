@@ -201,7 +201,6 @@ M.config = function()
         end
 
         for _, server in pairs(servers) do
-            print(server)
             local config = make_config()
 
             -- language specific config
