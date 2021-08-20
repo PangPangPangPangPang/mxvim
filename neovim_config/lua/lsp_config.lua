@@ -139,7 +139,8 @@ M.config = function()
     -- }
     local function make_config()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        capabilities.textDocument.completion.completionItem.snippetSupport =
+            true
         capabilities.textDocument.completion.completionItem.resolveSupport = {
             properties = {'documentation', 'detail', 'additionalTextEdits'}
         }
@@ -147,7 +148,7 @@ M.config = function()
             -- enable snippet support
             capabilities = capabilities,
             -- map buffer local keybindings when the language server attaches
-            on_attach = on_attach,
+            on_attach = on_attach
         }
     end
     local efm_config = {
@@ -163,7 +164,7 @@ M.config = function()
             verson = 2,
             rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
         },
-        on_attach = on_attach,
+        on_attach = on_attach
     }
 
     -- Configure lua language server for neovim development
@@ -172,19 +173,19 @@ M.config = function()
             runtime = {
                 -- LuaJIT in the case of Neovim
                 version = 'LuaJIT',
-                path = vim.split(package.path, ';'),
+                path = vim.split(package.path, ';')
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
+                globals = {'vim'}
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = {
                     [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                },
-            },
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                }
+            }
         }
     }
 
@@ -195,10 +196,11 @@ M.config = function()
         -- get all installed servers
         local servers = require'lspinstall'.installed_servers()
         -- ... and add manually installed servers
-        local lsps = { "vimls", "tsserver", "cssls", "html", "bashls", "jsonls", "efm", "sumneko_lua"}
-        for _, lsp in pairs(lsps) do
-            table.insert(servers, lsp)
-        end
+        local lsps = {
+            "vimls", "tsserver", "cssls", "html", "bashls", "jsonls", "efm",
+            "sumneko_lua"
+        }
+        for _, lsp in pairs(lsps) do table.insert(servers, lsp) end
 
         for _, server in pairs(servers) do
             local config = make_config()
@@ -207,14 +209,12 @@ M.config = function()
             if server == "sumneko_lua" then
                 config.settings = lua_settings
             end
-            if server == "efm" then
-                config = efm_config
-            end
+            if server == "efm" then config = efm_config end
             lspconfig[server].setup(config)
         end
     end
     setup_servers()
-    lspinstall.post_install_hook = function ()
+    lspinstall.post_install_hook = function()
         setup_servers() -- reload installed servers
         vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
     end

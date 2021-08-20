@@ -24,6 +24,8 @@ require('packer').startup({
         use {"Mofiqul/vscode.nvim"}
         use {"PangPangPangPangPang/miramare", branch = 'develop'}
 
+        use {"ZSaberLv0/ZFVimIM", requires = {"ZSaberLv0/ZFVimJob"}}
+
         -- Readline style insertion
         use {'tpope/vim-rsi'}
 
@@ -91,17 +93,12 @@ require('packer').startup({
             --     branch = 'master',
             --     run = 'yarn install --frozen-lockfile'
             -- }
-            use {
-                'neoclide/coc.nvim',
-                branch = 'release',
-            }
+            use {'neoclide/coc.nvim', branch = 'release'}
         else
             -- nvim builtin lsp
             use {
                 "neovim/nvim-lspconfig",
-                requires = {
-                    'kabouzeid/nvim-lspinstall'
-                },
+                requires = {'kabouzeid/nvim-lspinstall'},
                 config = function()
                     require("lsp_config").config()
                 end

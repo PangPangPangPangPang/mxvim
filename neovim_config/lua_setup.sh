@@ -9,6 +9,13 @@ rm -rf ${dst_dir}
 mkdir -p ${dst_dir} 2>/dev/null
 # rm -rf ~/.config/coc/
 
+input_db="$(pwd)/pinyin.txt"
+if [ ! -f ${input_db} ];then
+    curl https://raw.githubusercontent.com/PangPangPangPangPang/ZFVimIM_pinyin_base/master/misc/pinyin.txt >> ${input_db}
+fi
+
+ln -s ${input_db} ${dst_dir}
+
 ln -s "$(pwd)/basic.vim" ${dst_dir}
 ln -s "$(pwd)/ginit.vim" ${dst_dir}
 ln -s "$(pwd)/colorscheme.vim" ${dst_dir}
