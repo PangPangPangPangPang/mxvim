@@ -161,8 +161,10 @@ require('packer').startup({
         use {
             'sbdchd/neoformat',
             cmd = 'Neoformat',
+            setup = function()
+                require('neoformat').config()
+            end,
         }
-        require('neoformat').config()
 
         use {'machakann/vim-highlightedyank'}
 
