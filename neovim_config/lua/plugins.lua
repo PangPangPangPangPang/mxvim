@@ -30,8 +30,6 @@ require('packer').startup({
         use {'tpope/vim-rsi'}
 
         use {'mhinz/vim-startify'}
-        use {'brglng/vim-im-select'}
-        -- g.im_select_default = 'com.apple.keylayout.US'
 
         use {'kevinhwang91/nvim-bqf'}
 
