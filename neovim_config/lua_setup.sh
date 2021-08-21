@@ -25,5 +25,6 @@ ln -s "$(pwd)/lazy_plugin_config" "${dst_dir}/lazy_plugin_config"
 ln -s "$(pwd)/lua" "${dst_dir}/lua"
 ln -s "$(pwd)/init.lua" "${dst_dir}/init.lua"
 
-nvim --headless +PackerCompile +qa
+nvim +'hi NormalFloat guibg=#1e222a' +PackerSync +qa
+
 
