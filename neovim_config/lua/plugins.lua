@@ -1,7 +1,9 @@
 local fn = vim.fn
 local cmd = vim.cmd
 local g = vim.g
+
 local map = require('utils').map
+local opts = {noremap = true, silent = true}
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
@@ -75,9 +77,9 @@ require('packer').startup({
 
         use {'PangPangPangPangPang/visual-selection-vim'}
         map('v', '*', ":<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>",
-            {silent = true})
+            opts)
         map('v', '#', ":<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>",
-            {silent = true})
+            opts)
         map('v', '<leader>r',
             ":call visual#replace('%s/foo//g')<CR><left><left>", {silent = true})
 
@@ -159,8 +161,8 @@ require('packer').startup({
         use {
             'sbdchd/neoformat',
             cmd = 'Neoformat',
-            config = function() require('neoformat') end
         }
+        require('neoformat').config()
 
         use {'machakann/vim-highlightedyank'}
 

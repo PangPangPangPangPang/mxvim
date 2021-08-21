@@ -1,37 +1,47 @@
 local g = vim.g
-g.neoformat_only_msg_on_error = 1
-g.neoformat_basic_format_align = 1
-g.neoformat_basic_format_retab = 1
-g.neoformat_basic_format_trim = 1
+local M = {}
+local map = require('utils').map
+local opts = {noremap = true, silent = true}
+M.config = function ()
+    map('n', '<space>cp', ":Neoformat<CR>", opts)
 
--- python
-g.neoformat_enabled_python = {'autopep8'}
-g.neoformat_python_autopep8 = {
-    exe = 'autopep8',
-    args = {'--max-line-length=100'}
-}
+    g.neoformat_only_msg_on_error = 1
+    g.neoformat_basic_format_align = 1
+    g.neoformat_basic_format_retab = 1
+    g.neoformat_basic_format_trim = 1
 
--- lua
-g.neoformat_enabled_lua = {'luaformat'}
-g.neoformat_lua_luaformat = {exe = 'lua-format'}
+    -- python
+    g.neoformat_enabled_python = {'autopep8'}
+    g.neoformat_python_autopep8 = {
+        exe = 'autopep8',
+        args = {'--max-line-length=100'}
+    }
 
--- javascript
-g.neoformat_enabled_javascript = {'prettier'}
+    -- lua
+    g.neoformat_enabled_lua = {'luaformat'}
+    g.neoformat_lua_luaformat = {exe = 'lua-format'}
 
--- typescript
-g.neoformat_enabled_typescript = {'prettier'}
+    -- javascript
+    g.neoformat_enabled_javascript = {'prettier'}
 
--- json
-g.neoformat_enabled_json = {'prettier'}
+    -- typescript
+    g.neoformat_enabled_typescript = {'prettier'}
 
--- yaml
-g.neoformat_enabled_yaml = {'prettier'}
-g.neoformat_yaml_prettier = {
-    exe = 'prettier',
-    args = {'--stdin-filepath', '"%:p"', '--tab-width=2'},
-    stdin = 1
-}
+    -- json
+    g.neoformat_enabled_json = {'prettier'}
 
--- sql
-g.neoformat_enabled_sql = {'sqlformatter'}
-g.neoformat_sql_sqlformatter = {exe = 'sql-formatter', stdin = 1}
+    -- yaml
+    g.neoformat_enabled_yaml = {'prettier'}
+    g.neoformat_yaml_prettier = {
+        exe = 'prettier',
+        args = {'--stdin-filepath', '"%:p"', '--tab-width=2'},
+        stdin = 1
+    }
+
+    -- sql
+    g.neoformat_enabled_sql = {'sqlformatter'}
+    g.neoformat_sql_sqlformatter = {exe = 'sql-formatter', stdin = 1}
+end
+
+return M
+
