@@ -123,6 +123,22 @@ require('packer').startup({
                     }, "rafamadriz/friendly-snippets"
                 }
             }
+            use {
+                "onsails/lspkind-nvim",
+                event = "BufEnter",
+                config = function()
+                    require("lsp_config").lspkind()
+                end,
+            }
+
+            use {
+                "ray-x/lsp_signature.nvim",
+                after = "nvim-lspconfig",
+                config = function()
+                    require("lsp_config").signature()
+                end,
+            }
+
             -- use{"dense-analysis/ale"}
         end
 
@@ -206,7 +222,6 @@ require('packer').startup({
         use {
             'rrethy/vim-hexokinase',
             run = 'make hexokinase',
-            event = "InsertEnter"
         }
         g.Illuminate_highlightUnderCursor = 1
         g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
