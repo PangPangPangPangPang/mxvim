@@ -92,6 +92,13 @@ require('packer').startup({
             --     run = 'yarn install --frozen-lockfile'
             -- }
             use {'neoclide/coc.nvim', branch = 'release'}
+
+            use {
+                'rrethy/vim-hexokinase',
+                run = 'make hexokinase',
+            }
+            g.Illuminate_highlightUnderCursor = 1
+            g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
         else
             -- nvim builtin lsp
             use {
@@ -139,7 +146,14 @@ require('packer').startup({
                 end,
             }
 
-            -- use{"dense-analysis/ale"}
+            use {
+                "norcalli/nvim-colorizer.lua",
+                event = "BufEnter",
+                config = function()
+                    require'colorizer'.setup()
+                end,
+            }
+
         end
 
         use {
@@ -219,12 +233,6 @@ require('packer').startup({
         use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}
         map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
 
-        use {
-            'rrethy/vim-hexokinase',
-            run = 'make hexokinase',
-        }
-        g.Illuminate_highlightUnderCursor = 1
-        g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
 
         -- html
         use {'mattn/emmet-vim'}
