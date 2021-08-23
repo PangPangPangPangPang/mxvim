@@ -168,15 +168,15 @@ require('packer').startup({
 
         use {'liuchengxu/vista.vim', cmd = {'Vista'}}
 
-        use {
-            'Shougo/defx.nvim',
-            run = ':UpdateRemotePlugins',
-            requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
-            config = function()
-                require('config/defx').config()
-                require('config/defx').map()
-            end
-        }
+        -- use {
+        --     'Shougo/defx.nvim',
+        --     run = ':UpdateRemotePlugins',
+        --     requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
+        --     config = function()
+        --         require('config/defx').config()
+        --         require('config/defx').map()
+        --     end
+        -- }
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
@@ -221,6 +221,11 @@ require('packer').startup({
             'lewis6991/gitsigns.nvim',
             requires = {'nvim-lua/plenary.nvim'},
             config = function() require('_gitsigns').setup() end
+        }
+        use {
+            'kyazdani42/nvim-tree.lua',
+            requires = 'kyazdani42/nvim-web-devicons',
+            config = function() require('tree') end
         }
         use {'tpope/vim-fugitive'}
         use {'junegunn/gv.vim'}

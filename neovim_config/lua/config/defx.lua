@@ -9,7 +9,7 @@ M.map = function()
     map({'n', 'i'}, '<F1>',
         ":Defx -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>",
         {silent = true})
-    map({'n', i}, '<leader>j',
+    map({'n'}, '<leader>j',
         ":Defx  -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>",
         {silent = true})
 end
