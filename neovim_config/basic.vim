@@ -269,3 +269,10 @@ function! Installed(value)
     endif
     return has_key(g:plugs, a:value)
 endfunction
+
+function! s:Source(path)
+   if !empty(glob(a:path))
+       exec ('source '. a:path)
+   endif
+endfunction
+call <SID>Source('~/.config/nvim/private.vim')

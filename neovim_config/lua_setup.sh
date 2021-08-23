@@ -17,6 +17,7 @@ fi
 ln -s ${input_db} ${dst_dir}
 
 ln -s "$(pwd)/basic.vim" ${dst_dir}
+ln -s "$(pwd)/private.vim" ${dst_dir}
 ln -s "$(pwd)/ginit.vim" ${dst_dir}
 ln -s "$(pwd)/colorscheme.vim" ${dst_dir}
 ln -s "$(pwd)/coc-settings.json" ${dst_dir}

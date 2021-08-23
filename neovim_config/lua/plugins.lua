@@ -26,7 +26,14 @@ require('packer').startup({
         use {"Mofiqul/vscode.nvim"}
         use {"PangPangPangPangPang/miramare", branch = 'develop'}
 
-        use {"ZSaberLv0/ZFVimIM", requires = {"ZSaberLv0/ZFVimJob"}}
+        use {
+            "ZSaberLv0/ZFVimIM",
+            requires = {
+                "ZSaberLv0/ZFVimJob", "ZSaberLv0/ZFVimGitUtil",
+                "PangPangPangPangPang/ZFVimIM_pinyin_base",
+                "ZSaberLv0/ZFVimIM_openapi"
+            }
+        }
 
         -- Readline style insertion
         use {'tpope/vim-rsi'}
@@ -76,10 +83,8 @@ require('packer').startup({
         use {'tpope/vim-surround'}
 
         use {'PangPangPangPangPang/visual-selection-vim'}
-        map('v', '*', ":<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>",
-            opts)
-        map('v', '#', ":<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>",
-            opts)
+        map('v', '*', ":<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>", opts)
+        map('v', '#', ":<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>", opts)
         map('v', '<leader>r',
             ":call visual#replace('%s/foo//g')<CR><left><left>", {silent = true})
 
@@ -95,10 +100,7 @@ require('packer').startup({
             -- }
             use {'neoclide/coc.nvim', branch = 'release'}
 
-            use {
-                'rrethy/vim-hexokinase',
-                run = 'make hexokinase',
-            }
+            use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
             g.Illuminate_highlightUnderCursor = 1
             g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
         else
@@ -137,7 +139,7 @@ require('packer').startup({
                 event = "BufEnter",
                 config = function()
                     require("lsp_config").lspkind()
-                end,
+                end
             }
 
             use {
@@ -145,15 +147,13 @@ require('packer').startup({
                 after = "nvim-lspconfig",
                 config = function()
                     require("lsp_config").signature()
-                end,
+                end
             }
 
             use {
                 "norcalli/nvim-colorizer.lua",
                 event = "BufEnter",
-                config = function()
-                    require'colorizer'.setup()
-                end,
+                config = function() require'colorizer'.setup() end
             }
 
         end
@@ -161,9 +161,7 @@ require('packer').startup({
         use {
             'sbdchd/neoformat',
             cmd = 'Neoformat',
-            setup = function()
-                require('neoformat').config()
-            end,
+            setup = function() require('neoformat').config() end
         }
 
         use {'machakann/vim-highlightedyank'}
@@ -236,7 +234,6 @@ require('packer').startup({
 
         use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}
         map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
-
 
         -- html
         use {'mattn/emmet-vim'}
