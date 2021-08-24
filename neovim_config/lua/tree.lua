@@ -8,8 +8,20 @@ function generate_cb_string(callback_name)
 end
 
 function open_luatree()
-   local content = {{"Copy File          &p", "generate_cb_string('vsplit')"}}
-   local opts = {title = "defx menu", ignore_case = 0}
+    local content = {
+        {"Copy File             &p", generate_cb_string('copy')},
+        {"Paste file            &p", generate_cb_string('paste')},
+        {"Rename file           &r", generate_cb_string('rename')},
+        {"Cut file              &c", generate_cb_string('cut')},
+        {"Delete file           &d", generate_cb_string('remove')},
+        {"New Directory         &N", generate_cb_string('vsplit')},
+        {"New Files             &n", generate_cb_string('create')},
+        {"Yank Path             &y", generate_cb_string('copy_path')},
+        {"Toggle ignored files  &.", generate_cb_string('toggle_ignored')},
+        {"Go back               &u", generate_cb_string('dir_up')},
+        {"Go Root               &R", "cd getcwd()"},
+    }
+   local opts = {title = "menu", ignore_case = 0}
    vim.call("quickui#context#open", content, opts)
 end
 vim.g.nvim_tree_bindings = {
@@ -27,7 +39,7 @@ vim.g.nvim_tree_bindings = {
     { key = "<Tab>",                       cb = ":lua open_luatree()<cr>" },
     { key = "K",                            cb = tree_cb("first_sibling") },
     { key = "J",                            cb = tree_cb("last_sibling") },
-    { key = "I",                            cb = tree_cb("toggle_ignored") },
+    { key = ".",                            cb = tree_cb("toggle_ignored") },
     { key = "H",                            cb = tree_cb("toggle_dotfiles") },
     { key = "R",                            cb = tree_cb("refresh") },
     { key = "a",                            cb = tree_cb("create") },
@@ -42,7 +54,7 @@ vim.g.nvim_tree_bindings = {
     { key = "gy",                           cb = tree_cb("copy_absolute_path") },
     { key = "[c",                           cb = tree_cb("prev_git_item") },
     { key = "]c",                           cb = tree_cb("next_git_item") },
-    { key = "-",                            cb = tree_cb("dir_up") },
+    { key = "u",                            cb = tree_cb("dir_up") },
     { key = "s",                            cb = tree_cb("system_open") },
     { key = "q",                            cb = tree_cb("close") },
     { key = "g?",                           cb = tree_cb("toggle_help") },
