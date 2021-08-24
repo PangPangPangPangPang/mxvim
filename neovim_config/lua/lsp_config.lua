@@ -221,6 +221,7 @@ M.signature = function()
             hint_enable = true,
             hint_prefix = " ",
             hint_scheme = "String",
+            transpancy = 20,
             use_lspsaga = false,
             hi_parameter = "Search",
             max_height = 22,
