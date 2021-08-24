@@ -4,7 +4,7 @@ if Installed('galaxyline.nvim')
 endif
 " let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#filename_modifier = ':t'
-let g:lightline#bufferline#enable_devicons = g:devicons_install
+" let g:lightline#bufferline#enable_devicons = g:devicons_install
 
 let g:lightline = {
             \ 'active':{},

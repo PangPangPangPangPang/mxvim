@@ -244,6 +244,7 @@ set ffs=unix,dos,mac
 " let g:netrw_list_hide = netrw_gitignore#Hide()
 " let g:netrw_list_hide = ',\(^\|\s\s\)\zs\.\S\+'
 
+let g:devicons_install = 0
 augroup BasicGroup
     " 1 tab == 4 spaces
     autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4

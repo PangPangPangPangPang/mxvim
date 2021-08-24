@@ -17,14 +17,16 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
-        -- use {'ryanoasis/vim-devicons'}
-        g.devicons_install = 0
-
         use {'tomasiser/vim-code-dark'}
         -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
         use {"lifepillar/vim-gruvbox8"}
         use {"Mofiqul/vscode.nvim"}
         use {"PangPangPangPangPang/miramare", branch = 'develop'}
+
+        use {
+            'glepnir/galaxyline.nvim',
+            config = function() require('_galaxyline') end
+        }
 
         use {
             "ZSaberLv0/ZFVimIM",
@@ -62,22 +64,10 @@ require('packer').startup({
         end
 
         use {'jiangmiao/auto-pairs'}
-        -- use {'Raimondi/delimitMate'}
 
-        -- Indentation tracking
-        g.indentLine_char = '│'
-        g.indent_blankline_use_treesitter = true
-        g.indentLine_faster = 1
-        g.indentLine_fileTypeExclude = {
-            'tex', 'markdown', 'txt', 'startify', 'packer', 'coc-explorer'
-        }
-        g.indent_blankline_show_first_indent_level = false
-        g.indent_blankline_show_trailing_blankline_indent = false
         use {
-            'lukas-reineke/indent-blankline.nvim'
-            -- requires = {'Yggdroot/indentLine'},
-            -- branch = 'lua',
-            -- setup = [[require('config.indentline')]]
+            'lukas-reineke/indent-blankline.nvim',
+            setup = function() require('indentline') end
         }
 
         use {'tpope/vim-surround'}
@@ -92,12 +82,6 @@ require('packer').startup({
 
         vim.api.nvim_set_var('use_coc', false);
         if vim.api.nvim_get_var('use_coc') then
-            -- coc lsp
-            -- use {
-            --     'PangPangPangPangPang/coc.nvim',
-            --     branch = 'master',
-            --     run = 'yarn install --frozen-lockfile'
-            -- }
             use {'neoclide/coc.nvim', branch = 'release'}
 
             use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
@@ -168,32 +152,15 @@ require('packer').startup({
 
         use {'liuchengxu/vista.vim', cmd = {'Vista'}}
 
-        -- use {
-        --     'Shougo/defx.nvim',
-        --     run = ':UpdateRemotePlugins',
-        --     requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
-        --     config = function()
-        --         require('config/defx').config()
-        --         require('config/defx').map()
-        --     end
-        -- }
-
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
-
-        use {
-            'glepnir/galaxyline.nvim',
-            config = function() require('_galaxyline') end
-        }
 
         use {
             'nvim-telescope/telescope.nvim',
             requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
             config = function() require('telescope_config').config() end,
-            cmd = {'Telescope'}
+            cmd = {'Telescope'},
+            setup = function() require('telescope_config').map() end
         }
-        require('telescope_config').map();
-        --[[ use {'junegunn/fzf', rtp = '~/.fzf', run = './install --all'}
-    use {'junegunn/fzf.vim'} ]]
 
         use {
             'iamcco/markdown-preview.nvim',
@@ -201,11 +168,11 @@ require('packer').startup({
             cmd = {'MarkdownPreview'}
         }
 
-        use {'voldikss/vim-floaterm', cmd = {'FloatermToggle', 'FloatermNew'}}
-        require('vim_floaterm').map()
-
-        -- g.lazygit_floating_window_use_plenary = 0
-        -- map('n', '<leader>lg', ":LazyGit<CR>", {silent = true})
+        use {
+            'voldikss/vim-floaterm',
+            cmd = {'FloatermToggle', 'FloatermNew'},
+            setup = function() require('vim_floaterm').map() end
+        }
 
         use {'szw/vim-maximizer', cmd = {'MaximizerToggle'}}
         map('n', '<c-w>z', ':MaximizerToggle<CR>', {silent = true})
@@ -215,10 +182,10 @@ require('packer').startup({
         use {'romainl/vim-cool'}
         g.CoolTotalMatches = 1
 
-        -- use {'airblade/vim-gitgutter'}
         use {
             'lewis6991/gitsigns.nvim',
             requires = {'nvim-lua/plenary.nvim'},
+            cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
             config = function() require('_gitsigns').setup() end
         }
         use {
@@ -231,7 +198,6 @@ require('packer').startup({
         use {'rhysd/git-messenger.vim'}
         use {'honza/vim-snippets'}
 
-        -- use {'rhysd/clever-f.vim'}
         use {'justinmk/vim-sneak'}
 
         use {'kshenoy/vim-signature'}
@@ -253,6 +219,17 @@ require('packer').startup({
         use {'kana/vim-textobj-function'}
         use {'kana/vim-textobj-indent'}
         use {'kana/vim-textobj-line'}
+
+        -- use {
+        --     'Shougo/defx.nvim',
+        --     run = ':UpdateRemotePlugins',
+        --     requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
+        --     config = function()
+        --         require('config/defx').config()
+        --         require('config/defx').map()
+        --     end
+        -- }
+
     end,
     config = {
         display = {

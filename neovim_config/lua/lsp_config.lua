@@ -122,24 +122,6 @@ M.config = function()
         javascriptreact = eslint
     }
 
-    -- lspconfig.efm.setup {
-    --     -- root_dir = lspconfig.util
-    --     --     .root_pattern("yarn.lock", "lerna.json", ".git"),
-    --     filetypes = vim.tbl_keys(languages),
-    --     init_options = {
-    --         documentFormatting = true,
-    --         codeAction = true,
-    --         documentSymbol = true,
-    --         codeAction = true,
-    --         completion = true
-    --     },
-    --     settings = {
-    --         languages = languages,
-    --         verson = 2,
-    --         rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
-    --     },
-    --     on_attach = on_attach
-    -- }
     local function make_config()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport =
