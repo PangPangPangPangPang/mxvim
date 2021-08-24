@@ -9,17 +9,17 @@ end
 
 function open_luatree()
     local content = {
-        {"Copy File             &p", generate_cb_string('copy')},
+        {"Copy File             &c", generate_cb_string('copy')},
         {"Paste file            &p", generate_cb_string('paste')},
         {"Rename file           &r", generate_cb_string('rename')},
-        {"Cut file              &c", generate_cb_string('cut')},
+        {"Move file             &m", generate_cb_string('cut')},
         {"Delete file           &d", generate_cb_string('remove')},
-        {"New Directory         &N", generate_cb_string('vsplit')},
         {"New Files             &n", generate_cb_string('create')},
         {"Yank Path             &y", generate_cb_string('copy_path')},
-        {"Toggle ignored files  &.", generate_cb_string('toggle_ignored')},
+        {"Toggle ignored files  &.", generate_cb_string('toggle_dotfiles')},
         {"Go back               &u", generate_cb_string('dir_up')},
         {"Go Root               &R", "cd getcwd()"},
+        {"System Open           &s", generate_cb_string('system_open')},
     }
    local opts = {title = "menu", ignore_case = 0}
    vim.call("quickui#context#open", content, opts)
@@ -27,8 +27,8 @@ end
 vim.g.nvim_tree_bindings = {
     { key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
     { key = {"<2-RightMouse>", "<C-]>"},    cb = tree_cb("cd") },
-    { key = "<C-v>",                        cb = tree_cb("vsplit") },
-    { key = "<C-x>",                        cb = tree_cb("split") },
+    { key = "v",                        cb = tree_cb("vsplit") },
+    { key = "s",                        cb = tree_cb("split") },
     { key = "<C-t>",                        cb = tree_cb("tabnew") },
     { key = "<",                            cb = tree_cb("prev_sibling") },
     { key = ">",                            cb = tree_cb("next_sibling") },
@@ -39,8 +39,8 @@ vim.g.nvim_tree_bindings = {
     { key = "<Tab>",                       cb = ":lua open_luatree()<cr>" },
     { key = "K",                            cb = tree_cb("first_sibling") },
     { key = "J",                            cb = tree_cb("last_sibling") },
-    { key = ".",                            cb = tree_cb("toggle_ignored") },
-    { key = "H",                            cb = tree_cb("toggle_dotfiles") },
+    -- { key = ".",                            cb = tree_cb("toggle_ignored") },
+    { key = ".",                            cb = tree_cb("toggle_dotfiles") },
     { key = "R",                            cb = tree_cb("refresh") },
     { key = "a",                            cb = tree_cb("create") },
     { key = "d",                            cb = tree_cb("remove") },
@@ -55,7 +55,6 @@ vim.g.nvim_tree_bindings = {
     { key = "[c",                           cb = tree_cb("prev_git_item") },
     { key = "]c",                           cb = tree_cb("next_git_item") },
     { key = "u",                            cb = tree_cb("dir_up") },
-    { key = "s",                            cb = tree_cb("system_open") },
     { key = "q",                            cb = tree_cb("close") },
     { key = "g?",                           cb = tree_cb("toggle_help") },
 }
