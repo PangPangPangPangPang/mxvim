@@ -118,6 +118,12 @@ require('packer').startup({
                     }, "rafamadriz/friendly-snippets"
                 }
             }
+            -- use {
+            --     'ms-jpq/coq_nvim',
+            --     branch = 'coq',
+            --     config = function() require("_coq").config() end
+            -- } -- main one
+            -- use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
             use {
                 "onsails/lspkind-nvim",
                 event = "BufEnter",
