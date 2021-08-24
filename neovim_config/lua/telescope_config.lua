@@ -33,8 +33,8 @@ M.config = function()
                     -- ["<C-i>"] = my_cool_custom_action,
                 }
             },
-            prompt_prefix = "❤  ",
-            selection_caret = "▶ ",
+            prompt_prefix = " ❤  ",
+            selection_caret = " ▶ ",
             entry_prefix = "  ",
             initial_mode = "insert",
             -- selection_strategy = "reset",

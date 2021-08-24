@@ -17,8 +17,8 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
-        use {'ryanoasis/vim-devicons'}
-        g.devicons_install = 1
+        -- use {'ryanoasis/vim-devicons'}
+        g.devicons_install = 0
 
         use {'tomasiser/vim-code-dark'}
         -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
@@ -180,7 +180,6 @@ require('packer').startup({
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
-        use {'kyazdani42/nvim-web-devicons'}
         use {
             'glepnir/galaxyline.nvim',
             config = function() require('_galaxyline') end

@@ -9,10 +9,10 @@ gl.short_line_list = {
 
 -- vscode
 local colors = {
-    -- bg = '#1E1E1E',
-    bg = '#264F78',
-    -- line_bg = '#1E1E1E',
-    line_bg = '#264F78',
+    -- bg = '#264F78',
+    -- line_bg = '#264F78',
+    bg = '#252526',
+    line_bg = '#252526',
     fg = '#9CDCFE',
     fg_green = '#B5CEA8',
 
@@ -242,8 +242,23 @@ gls.mid[1] = {
         highlight = {colors.yellow, colors.bg}
     }
 }
-
 gls.mid[2] = {
+    DiagnosticHint = {
+        provider = 'DiagnosticHint',
+        icon = '    ',
+        highlight = {colors.pink, colors.bg}
+    }
+}
+
+gls.mid[3] = {
+    DiagnosticInfo = {
+        provider = 'DiagnosticInfo',
+        icon = '    ',
+        highlight = {colors.cyan, colors.bg}
+    }
+}
+
+gls.mid[4] = {
     CocFunc = {
         provider = CocFunc,
         icon = '  λ ',
