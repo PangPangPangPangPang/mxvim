@@ -118,13 +118,19 @@ require('packer').startup({
             --         }, "rafamadriz/friendly-snippets"
             --     }
             -- }
+            use {'L3MON4D3/LuaSnip'}
             use {
                 "hrsh7th/nvim-cmp",
-                requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lua", "L3MON4D3/LuaSnip"},
+                -- requires = {"", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-vsnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path"},
                 config = function()
                     require("nvim_cmp").config()
                 end,
             }
+            use {"hrsh7th/cmp-buffer"}
+            use {"hrsh7th/cmp-nvim-lua"}
+            use {'saadparwaiz1/cmp_luasnip'}
+            use {"hrsh7th/cmp-nvim-lsp"}
+            use {"hrsh7th/cmp-path"}
             -- use {
             --     'ms-jpq/coq_nvim',
             --     branch = 'coq',
