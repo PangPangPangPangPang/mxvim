@@ -100,23 +100,30 @@ require('packer').startup({
                 'glepnir/lspsaga.nvim',
                 config = function() require("lsp_saga").config() end
             }
+            -- use {
+            --     "hrsh7th/nvim-compe",
+            --     event = "InsertEnter",
+            --     config = function()
+            --         require("nvim_compe").config()
+            --     end,
+            --     wants = {"LuaSnip"},
+            --     requires = {
+            --         {
+            --             "L3MON4D3/LuaSnip",
+            --             wants = "friendly-snippets",
+            --             event = "InsertCharPre",
+            --             config = function()
+            --                 require("nvim_compe").snippets()
+            --             end
+            --         }, "rafamadriz/friendly-snippets"
+            --     }
+            -- }
             use {
-                "hrsh7th/nvim-compe",
-                event = "InsertEnter",
+                "hrsh7th/nvim-cmp",
+                requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lua", "L3MON4D3/LuaSnip"},
                 config = function()
-                    require("nvim_compe").config()
+                    require("nvim_cmp").config()
                 end,
-                wants = {"LuaSnip"},
-                requires = {
-                    {
-                        "L3MON4D3/LuaSnip",
-                        wants = "friendly-snippets",
-                        event = "InsertCharPre",
-                        config = function()
-                            require("nvim_compe").snippets()
-                        end
-                    }, "rafamadriz/friendly-snippets"
-                }
             }
             -- use {
             --     'ms-jpq/coq_nvim',
