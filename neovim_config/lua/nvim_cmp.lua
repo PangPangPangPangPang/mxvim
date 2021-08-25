@@ -26,8 +26,12 @@ M.config = function()
 
     -- You should specify your *installed* sources.
     sources = {
-      { name = 'luasnip' },
-      { name = 'buffer' },
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'buffer' },
+        { name = 'path' },
+
     },
     completion = {
         completeopt = 'menu,menuone,noinsert',
