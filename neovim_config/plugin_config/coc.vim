@@ -133,6 +133,7 @@ function s:open_coc_menu() abort
     call quickui#context#open(content, opts)
 endfunction
 nmap <silent> <leader>c :call <SID>open_coc_menu()<CR>
+nmap <silent> <leader>cp :call <SID>open_coc_menu()<CR>
 
 " Visual Menu config
 function s:open_coc_visual_menu() abort

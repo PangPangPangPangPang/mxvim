@@ -2,8 +2,8 @@ local g = vim.g
 local M = {}
 local map = require('utils').map
 local opts = {noremap = true, silent = true}
-M.config = function ()
-    map('n', '<space>cp', ":Neoformat<CR>", opts)
+M.config = function()
+    -- map('n', '<space>cp', ":Neoformat<CR>", opts)
 
     g.neoformat_only_msg_on_error = 1
     g.neoformat_basic_format_align = 1

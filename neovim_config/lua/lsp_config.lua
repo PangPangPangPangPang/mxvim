@@ -59,12 +59,16 @@ M.config = function()
         -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
         -- Set some keybinds conditional on server capabilities
-        -- if client.resolved_capabilities.document_formatting then
-        --   buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        -- end
-        -- if client.resolved_capabilities.document_range_formatting then
-        --   buf_set_keymap("v", "<space>cp", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-        -- end
+        if client.resolved_capabilities.document_formatting then
+            buf_set_keymap("n", "<space>cp",
+                           "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        end
+        if client.resolved_capabilities.document_range_formatting then
+            buf_set_keymap("v", "=",
+                           "<cmd>'<,'>lua vim.lsp.buf.range_formatting()<CR><ESC>",
+                           opts)
+        end
+        buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
 
         -- Set autocommands conditional on server_capabilities
         if client.resolved_capabilities.document_highlight then
@@ -74,7 +78,7 @@ M.config = function()
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
                 autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
+                " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
             hi! default link LspDiagnosticsVirtualTextError NonText
