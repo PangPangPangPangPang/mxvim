@@ -121,29 +121,24 @@ require('packer').startup({
             use {'L3MON4D3/LuaSnip'}
             use {
                 "hrsh7th/nvim-cmp",
-                -- requires = {"", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-vsnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path"},
+                requires = {"onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path", "hrsh7th/cmp-buffer"},
                 config = function()
                     require("nvim_cmp").config()
                 end,
             }
-            use {"hrsh7th/cmp-buffer"}
-            use {"hrsh7th/cmp-nvim-lua"}
-            use {'saadparwaiz1/cmp_luasnip'}
-            use {"hrsh7th/cmp-nvim-lsp"}
-            use {"hrsh7th/cmp-path"}
             -- use {
             --     'ms-jpq/coq_nvim',
             --     branch = 'coq',
             --     config = function() require("_coq").config() end
             -- } -- main one
             -- use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
-            use {
-                "onsails/lspkind-nvim",
-                event = "BufEnter",
-                config = function()
-                    require("lsp_config").lspkind()
-                end
-            }
+            -- use {
+            --     "onsails/lspkind-nvim",
+            --     event = "BufEnter",
+            --     config = function()
+            --         -- require("lsp_config").lspkind()
+            --     end
+            -- }
 
             use {
                 "ray-x/lsp_signature.nvim",

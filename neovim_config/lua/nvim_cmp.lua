@@ -2,6 +2,8 @@ local M = {}
 
 M.config = function()
     local cmp = require('cmp')
+    local lspkind = require('lspkind')
+
     cmp.setup {
         snippet = {
             expand = function(args)
@@ -31,7 +33,14 @@ M.config = function()
         },
         completion = {
             completeopt = 'menu,menuone,noinsert',
-        }
+            keyword_length = 0,
+        },
+        formatting = {
+            format = function(entry, vim_item)
+                vim_item.kind = lspkind.presets.default[vim_item.kind] .. '  ' .. vim_item.kind
+                return vim_item
+            end
+  }
     }
 end
 return M
