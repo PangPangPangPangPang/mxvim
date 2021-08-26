@@ -89,6 +89,8 @@ require('packer').startup({
             use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
             g.Illuminate_highlightUnderCursor = 1
             g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
+
+            -- use {'liuchengxu/vista.vim', cmd = {'Vista'}}
         else
             -- nvim builtin lsp
             use {
@@ -152,6 +154,14 @@ require('packer').startup({
                 config = function() require'colorizer'.setup() end
             }
 
+            use {
+                "simrat39/symbols-outline.nvim",
+                cmd = {"SymbolsOutline"},
+                setup = function ()
+                    require('_outline').config();
+                end
+            }
+
         end
 
         use {
@@ -162,7 +172,6 @@ require('packer').startup({
 
         use {'machakann/vim-highlightedyank'}
 
-        use {'liuchengxu/vista.vim', cmd = {'Vista'}}
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 

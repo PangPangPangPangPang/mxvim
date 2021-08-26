@@ -1,3 +1,4 @@
+finish
 map <silent> <F2> :Vista!!<cr>
 imap <silent> <F2> <Esc>:Vista!!<cr>
 let g:vista_fzf_preview = ['right:50%']
