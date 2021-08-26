@@ -246,7 +246,7 @@ gls.mid[2] = {
     DiagnosticHint = {
         provider = 'DiagnosticHint',
         icon = '    ',
-        highlight = {colors.pink, colors.bg}
+        highlight = {colors.purple, colors.bg}
     }
 }
 
