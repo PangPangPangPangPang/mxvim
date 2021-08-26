@@ -18,18 +18,19 @@ M.config = function()
                     -- To disable a keymap, put [map] = false
                     -- So, to not map "<C-n>", just put
                     ["<c-x>"] = false,
-
                     -- Otherwise, just set the mapping to the function that you want it to be.
-                    ["<C-i>"] = actions.select_horizontal,
+                    ["<c-i>"] = actions.select_horizontal,
 
                     -- Add up multiple actions
                     ["<CR>"] = actions.select_default + actions.center,
 
                     -- You can perform as many actions in a row as you like
-                    ["<esc>"] = actions.close
+                    ["<esc>"] = actions.close,
+                    ["<C-l>"] = actions.send_to_qflist + actions.open_qflist,
                 },
                 n = {
-                    ["<esc>"] = false
+                    ["<esc>"] = false,
+                    ["<c-l>"] = actions.send_to_qflist + actions.open_qflist,
                     -- ["<C-i>"] = my_cool_custom_action,
                 }
             },
