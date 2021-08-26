@@ -9,4 +9,4 @@ function! s:myLocalDb()
                 \   'dbFile' : '/pinyin.txt', 
                 \ })
 endfunction
-" autocmd User ZFVimIM_event_OnDbInit call s:myLocalDb()
+autocmd User ZFVimIM_event_OnDbInit call s:myLocalDb()
