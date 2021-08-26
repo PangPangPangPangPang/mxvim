@@ -30,6 +30,7 @@ require('packer').startup({
 
         use {
             "ZSaberLv0/ZFVimIM",
+            event = "VimEnter",
             requires = {
                 "ZSaberLv0/ZFVimJob", "ZSaberLv0/ZFVimGitUtil",
                 "PangPangPangPangPang/ZFVimIM_pinyin",
@@ -67,6 +68,7 @@ require('packer').startup({
 
         use {
             'lukas-reineke/indent-blankline.nvim',
+            event = "VimEnter",
             setup = function() require('indentline') end
         }
 
@@ -103,15 +105,11 @@ require('packer').startup({
             use {
                 "hrsh7th/nvim-cmp",
                 requires = {
-                    "onsails/lspkind-nvim",
-                    "hrsh7th/cmp-nvim-lua",
-                    "hrsh7th/cmp-nvim-lsp",
-                    "hrsh7th/cmp-path",
-                    "hrsh7th/cmp-buffer",
+                    "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
+                    "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
+                    "hrsh7th/cmp-buffer"
                 },
-                config = function()
-                    require("nvim_cmp").config()
-                end
+                config = function() require("nvim_cmp").config() end
             }
             use {
                 "saadparwaiz1/cmp_luasnip",
@@ -170,10 +168,13 @@ require('packer').startup({
 
         use {
             'nvim-telescope/telescope.nvim',
-            requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
-            config = function() require('telescope_config').config() end,
+            requires = {
+                'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim',
+                {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+            },
+            config = function() require('_telescope').config() end,
             cmd = {'Telescope'},
-            setup = function() require('telescope_config').map() end
+            setup = function() require('_telescope').map() end
         }
 
         use {
