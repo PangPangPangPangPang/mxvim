@@ -33,7 +33,7 @@ M.config = function()
         },
         completion = {
             completeopt = 'menu,menuone,noinsert',
-            keyword_length = 0,
+            keyword_length = 1,
         },
         formatting = {
             format = function(entry, vim_item)
@@ -42,5 +42,15 @@ M.config = function()
             end
   }
     }
+end
+
+M.snippets = function()
+    local ls = require("luasnip")
+
+    ls.config.set_config({
+        history = true,
+        updateevents = "TextChanged,TextChangedI"
+    })
+    require("luasnip/loaders/from_vscode").load()
 end
 return M

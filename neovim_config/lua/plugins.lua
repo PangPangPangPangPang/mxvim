@@ -100,31 +100,31 @@ require('packer').startup({
                 'glepnir/lspsaga.nvim',
                 config = function() require("lsp_saga").config() end
             }
-            -- use {
-            --     "hrsh7th/nvim-compe",
-            --     event = "InsertEnter",
-            --     config = function()
-            --         require("nvim_compe").config()
-            --     end,
-            --     wants = {"LuaSnip"},
-            --     requires = {
-            --         {
-            --             "L3MON4D3/LuaSnip",
-            --             wants = "friendly-snippets",
-            --             event = "InsertCharPre",
-            --             config = function()
-            --                 require("nvim_compe").snippets()
-            --             end
-            --         }, "rafamadriz/friendly-snippets"
-            --     }
-            -- }
-            use {'L3MON4D3/LuaSnip'}
             use {
                 "hrsh7th/nvim-cmp",
-                requires = {"onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path", "hrsh7th/cmp-buffer"},
+                requires = {
+                    "onsails/lspkind-nvim",
+                    "hrsh7th/cmp-nvim-lua",
+                    "hrsh7th/cmp-nvim-lsp",
+                    "hrsh7th/cmp-path",
+                    "hrsh7th/cmp-buffer",
+                },
                 config = function()
                     require("nvim_cmp").config()
-                end,
+                end
+            }
+            use {
+                "saadparwaiz1/cmp_luasnip",
+                requires = {
+                    {
+                        "L3MON4D3/LuaSnip",
+                        wants = "friendly-snippets",
+                        requires = {"rafamadriz/friendly-snippets"},
+                        config = function()
+                            require("nvim_cmp").snippets()
+                        end
+                    }
+                }
             }
             -- use {
             --     'ms-jpq/coq_nvim',
