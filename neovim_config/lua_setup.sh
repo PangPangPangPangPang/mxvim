@@ -11,7 +11,7 @@ mkdir -p ${dst_dir} 2>/dev/null
 
 input_db="$(pwd)/pinyin.txt"
 if [ ! -f ${input_db} ];then
-    curl https://raw.githubusercontent.com/ZSaberLv0/ZFVimIM_pinyin/master/misc/pinyin.txt >> ${input_db}
+    curl https://raw.githubusercontent.com/PangPangPangPangPang/ZFVimIM_pinyin/master/misc/pinyin.txt >> ${input_db}
 fi
 
 ln -s ${input_db} ${dst_dir}

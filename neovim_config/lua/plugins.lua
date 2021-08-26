@@ -32,7 +32,7 @@ require('packer').startup({
             "ZSaberLv0/ZFVimIM",
             requires = {
                 "ZSaberLv0/ZFVimJob", "ZSaberLv0/ZFVimGitUtil",
-                "PangPangPangPangPang/ZFVimIM_pinyin_base",
+                "PangPangPangPangPang/ZFVimIM_pinyin",
                 "ZSaberLv0/ZFVimIM_openapi"
             }
         }
