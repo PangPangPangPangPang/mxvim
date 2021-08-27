@@ -111,20 +111,6 @@ M.config = function()
             })
     end
 
-    local eslint = {
-        lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-        lintIgnoreExitCode = true,
-        lintStdin = true,
-        lintFormats = {"%f:%l:%c: %m"}
-    }
-
-    local languages = {
-        lua = {formatCommand = "lua-format -i", formatStdin = true},
-        typescript = eslint,
-        typescriptreact = eslint,
-        javascript = eslint,
-        javascriptreact = eslint
-    }
 
     local function make_config()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -141,43 +127,6 @@ M.config = function()
             on_attach = on_attach
         }
     end
-    local efm_config = {
-        filetypes = vim.tbl_keys(languages),
-        init_options = {
-            documentFormatting = true,
-            documentSymbol = true,
-            codeAction = true,
-            completion = true
-        },
-        settings = {
-            languages = languages,
-            verson = 2,
-            rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
-        },
-        on_attach = on_attach
-    }
-
-    -- Configure lua language server for neovim development
-    local lua_settings = {
-        Lua = {
-            runtime = {
-                -- LuaJIT in the case of Neovim
-                version = 'LuaJIT',
-                path = vim.split(package.path, ';')
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
-                }
-            }
-        }
-    }
 
     local lspinstall = require('lspinstall')
     local function setup_servers()
@@ -197,9 +146,9 @@ M.config = function()
 
             -- language specific config
             if server == "sumneko_lua" then
-                config.settings = lua_settings
+                config.settings = require("lsp.lsp_lua").config()
             end
-            if server == "efm" then config = efm_config end
+            if server == "efm" then config = require("lsp.lsp_efm").config() end
             lspconfig[server].setup(config)
         end
     end
