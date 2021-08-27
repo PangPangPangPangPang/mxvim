@@ -35,7 +35,8 @@ require('packer').startup({
                 "ZSaberLv0/ZFVimJob", "ZSaberLv0/ZFVimGitUtil",
                 "PangPangPangPangPang/ZFVimIM_pinyin",
                 "ZSaberLv0/ZFVimIM_openapi"
-            }
+            },
+            config = function() require('_zfvimim').setup() end
         }
 
         -- Readline style insertion
