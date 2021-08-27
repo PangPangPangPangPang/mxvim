@@ -1,12 +1,16 @@
 local M = {}
 M.config = function ()
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
     -- Configure lua language server for neovim development
+    print(package.path)
     local lua_settings = {
         Lua = {
             runtime = {
                 -- LuaJIT in the case of Neovim
                 version = 'LuaJIT',
-                path = vim.split(package.path, ';')
+                path = runtime_path
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
@@ -15,10 +19,13 @@ M.config = function ()
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                    library = vim.api.nvim_get_runtime_file("", true),
                 }
-            }
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
         }
     }
     return lua_settings;

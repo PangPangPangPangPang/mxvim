@@ -35,7 +35,7 @@ M.config = function()
             local config = make_config()
 
             -- language specific config
-            if server == "sumneko_lua" then
+            if server == "lua" then
                 config.settings = require("lsp.lsp_lua").config()
             end
             if server == "efm" then config = require("lsp.lsp_efm").config() end
@@ -158,7 +158,6 @@ M.set_keymap = function (client, bufnr)
                 -- Disable a feature
                 update_in_insert = false
             })
-    
 end
 
 M.lspkind = function()
