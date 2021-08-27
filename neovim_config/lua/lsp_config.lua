@@ -3,6 +3,53 @@ local M = {}
 M.config = function()
     local lspconfig = require('lspconfig')
 
+    local on_attach = function(client, bufnr)
+        M.set_signature(bufnr)
+        M.set_keymap(client, bufnr)
+    end
+
+    local function make_config()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport =
+            true
+        capabilities.textDocument.completion.completionItem.resolveSupport = {
+            properties = {'documentation', 'detail', 'additionalTextEdits'}
+        }
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+        return {
+            -- enable snippet support
+            capabilities = capabilities,
+            -- map buffer local keybindings when the language server attaches
+            on_attach = on_attach
+        }
+    end
+
+    local lspinstall = require('lspinstall')
+    local function setup_servers()
+        lspinstall.setup()
+
+        -- get all installed servers
+        local servers = require'lspinstall'.installed_servers()
+        -- ... and add manually installed servers
+        for _, server in pairs(servers) do
+            local config = make_config()
+
+            -- language specific config
+            if server == "sumneko_lua" then
+                config.settings = require("lsp.lsp_lua").config()
+            end
+            if server == "efm" then config = require("lsp.lsp_efm").config() end
+            lspconfig[server].setup(config)
+        end
+    end
+    setup_servers()
+    lspinstall.post_install_hook = function()
+        setup_servers() -- reload installed servers
+        vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+    end
+end
+
+M.set_signature = function (bufnr)
     local signs = {
         Error = " ",
         Warning = " ",
@@ -10,15 +57,17 @@ M.config = function()
         Information = " "
     }
 
-    local on_attach = function(client, bufnr)
-        require"lsp_signature".on_attach({
-            bind = true, -- This is mandatory, otherwise border config won't get registered.
-            handler_opts = {border = "single"}
-        }, bufnr)
-        for type, icon in pairs(signs) do
-            local hl = "LspDiagnosticsSign" .. type
-            vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
-        end
+    require"lsp_signature".on_attach({
+        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        handler_opts = {border = "single"}
+    }, bufnr)
+    for type, icon in pairs(signs) do
+        local hl = "LspDiagnosticsSign" .. type
+        vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+    end
+end
+
+M.set_keymap = function (client, bufnr)
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
@@ -109,54 +158,7 @@ M.config = function()
                 -- Disable a feature
                 update_in_insert = false
             })
-    end
-
-
-    local function make_config()
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.completion.completionItem.snippetSupport =
-            true
-        capabilities.textDocument.completion.completionItem.resolveSupport = {
-            properties = {'documentation', 'detail', 'additionalTextEdits'}
-        }
-        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-        return {
-            -- enable snippet support
-            capabilities = capabilities,
-            -- map buffer local keybindings when the language server attaches
-            on_attach = on_attach
-        }
-    end
-
-    local lspinstall = require('lspinstall')
-    local function setup_servers()
-        lspinstall.setup()
-
-        -- get all installed servers
-        local servers = require'lspinstall'.installed_servers()
-        -- ... and add manually installed servers
-        local lsps = {
-            "vimls", "tsserver", "cssls", "html", "bashls", "jsonls", "efm",
-            "sumneko_lua"
-        }
-        for _, lsp in pairs(lsps) do table.insert(servers, lsp) end
-
-        for _, server in pairs(servers) do
-            local config = make_config()
-
-            -- language specific config
-            if server == "sumneko_lua" then
-                config.settings = require("lsp.lsp_lua").config()
-            end
-            if server == "efm" then config = require("lsp.lsp_efm").config() end
-            lspconfig[server].setup(config)
-        end
-    end
-    setup_servers()
-    lspinstall.post_install_hook = function()
-        setup_servers() -- reload installed servers
-        vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-    end
+    
 end
 
 M.lspkind = function()
