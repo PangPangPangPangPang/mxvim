@@ -21,7 +21,7 @@ ln -s "$(pwd)/private.vim" ${dst_dir}
 ln -s "$(pwd)/ginit.vim" ${dst_dir}
 ln -s "$(pwd)/colorscheme.vim" ${dst_dir}
 ln -s "$(pwd)/coc-settings.json" ${dst_dir}
-ln -s "$(pwd)/plugin_config" "${dst_dir}/plugin_config"
+# ln -s "$(pwd)/plugin_config" "${dst_dir}/plugin_config"
 ln -s "$(pwd)/lazy_plugin_config" "${dst_dir}/lazy_plugin_config"
 ln -s "$(pwd)/lua" "${dst_dir}/lua"
 ln -s "$(pwd)/init.lua" "${dst_dir}/init.lua"

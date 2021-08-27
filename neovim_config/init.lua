@@ -12,7 +12,7 @@ api.nvim_command('source ~/.config/nvim/colorscheme.vim')
 require('plugins')
 
 
-local files =fn.split(fn.glob('~/.config/nvim/plugin_config/*.vim'))
-for _, v in pairs(files) do
-        api.nvim_command('source '..v)
-end
+-- local files =fn.split(fn.glob('~/.config/nvim/plugin_config/*.vim'))
+-- for _, v in pairs(files) do
+--         api.nvim_command('source '..v)
+-- end

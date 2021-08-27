@@ -133,6 +133,7 @@ M.config = function()
         capabilities.textDocument.completion.completionItem.resolveSupport = {
             properties = {'documentation', 'detail', 'additionalTextEdits'}
         }
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
         return {
             -- enable snippet support
             capabilities = capabilities,

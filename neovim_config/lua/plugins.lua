@@ -64,7 +64,10 @@ require('packer').startup({
             g.rainbow_active = 1
         end
 
-        use {'jiangmiao/auto-pairs'}
+        use {
+            'jiangmiao/auto-pairs',
+            config = function() require('_autopairs').setup() end
+        }
 
         use {
             'lukas-reineke/indent-blankline.nvim',
@@ -80,7 +83,11 @@ require('packer').startup({
         map('v', '<leader>r',
             ":call visual#replace('%s/foo//g')<CR><left><left>", {silent = true})
 
-        use {'mhinz/vim-grepper', cmd = {'GrepperRg', 'Grepper'}}
+        use {
+            'mhinz/vim-grepper',
+            cmd = {'GrepperRg', 'Grepper'},
+            setup = function() require('_grep') end
+        }
 
         vim.api.nvim_set_var('use_coc', false);
         if vim.api.nvim_get_var('use_coc') then
@@ -157,9 +164,7 @@ require('packer').startup({
             use {
                 "simrat39/symbols-outline.nvim",
                 cmd = {"SymbolsOutline"},
-                setup = function ()
-                    require('_outline').config();
-                end
+                setup = function() require('_outline').config(); end
             }
 
         end
@@ -171,7 +176,6 @@ require('packer').startup({
         }
 
         use {'machakann/vim-highlightedyank'}
-
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
@@ -222,7 +226,10 @@ require('packer').startup({
         use {'rhysd/git-messenger.vim'}
         use {'honza/vim-snippets'}
 
-        use {'justinmk/vim-sneak'}
+        use {
+            'justinmk/vim-sneak',
+            config = function() require('_sneak').setup() end
+        }
 
         use {'kshenoy/vim-signature'}
 
