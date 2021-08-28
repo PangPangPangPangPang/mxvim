@@ -7,7 +7,6 @@ g.mapleader = ' '
 g.use_lua = 1
 
 api.nvim_command('source ~/.config/nvim/basic.vim')
--- api.nvim_command('source ~/.config/nvim/colorscheme.vim')
 
 require('plugins')
 require('colorscheme')
