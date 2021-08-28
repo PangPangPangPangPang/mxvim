@@ -4,7 +4,6 @@ M.config = function ()
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
     -- Configure lua language server for neovim development
-    print(package.path)
     local lua_settings = {
         Lua = {
             runtime = {
