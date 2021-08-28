@@ -16,6 +16,12 @@ M.config = function()
     map('n', '<space>c]',
         "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",
         opts)
+    map('n', '<space>ca',
+        "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>",
+        opts)
+    map('v', '<space>ca',
+        ":<C-U>lua require'lspsaga.codeaction'.range_code_action()<CR>",
+        opts)
     local saga = require 'lspsaga'
 
     saga.init_lsp_saga {
@@ -29,10 +35,10 @@ M.config = function()
         dianostic_header_icon = '   ',
         code_action_icon = ' ',
         code_action_prompt = {
-            enable = false,
-            sign = false,
+            enable = true,
+            sign = true,
             sign_priority = 20,
-            virtual_text = true
+            virtual_text = false
         },
         finder_definition_icon = '  ',
         finder_reference_icon = '  ',
@@ -45,15 +51,15 @@ M.config = function()
             scroll_down = '<C-f>',
             scroll_up = '<C-b>' -- quit can be a table
         },
-        code_action_keys = {quit = 'q', exec = '<CR>'},
+        code_action_keys = {quit = {'<esc>', '<C-c>'}, exec = '<CR>'},
         rename_action_keys = {
-            quit = '<C-c>',
+            quit = {'<esc>', '<C-c>'},
             exec = '<CR>' -- quit can be a table
         },
         definition_preview_icon = '  ',
         -- "single" "double" "round" "plus"
         border_style = "single",
-        rename_prompt_prefix = '➤',
+        rename_prompt_prefix = '➤ ',
         --[[ if you don't use nvim-lspconfig you must pass your server name and
         the related filetypes into this table ]]
         -- like server_filetype_map = {metals = {'sbt', 'scala'}}
