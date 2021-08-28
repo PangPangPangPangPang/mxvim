@@ -4,7 +4,7 @@ local gls = gl.section
 
 gl.short_line_list = {
     'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
-    'fugitiveblame', 'plug', 'defx'
+    'fugitiveblame', 'plug', 'defx','NvimTree'
 }
 
 -- vscode
@@ -340,9 +340,18 @@ gls.right[7] = {
     }
 }
 
+local function file_name()
+    local fileinfo = require('galaxyline.provider_fileinfo')
+    local name = fileinfo.get_current_file_name()
+    if string.find(name, 'NvimTree', 1) ~= nil then
+        return 'FileTree';
+    end
+    return fileinfo.get_current_file_name()
+end
+
 gls.short_line_left[1] = {
     BufferType = {
-        provider = {'FileName'},
+        provider = {file_name},
         icon = '  ',
         separator = ' ',
         condition = has_file_type,
