@@ -164,7 +164,7 @@ o.laststatus=2
 -- Whole format
 dmap({'n'}, '<leader>==', 'mzG=gg`z')
 -- Copy to system clipboard
-dmap({'n'}, 'Y', '"+y')
+dmap({'v'}, 'Y', '"+y')
 
 -- Set utf8 as standard encoding and en_US as the standard language
 o.encoding='utf8'
