@@ -27,7 +27,7 @@ require('packer').startup({
             'glepnir/galaxyline.nvim',
             branch = 'main',
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
-            config = function() require('_galaxyline') end
+            config = function() require('config._galaxyline') end
         }
 
         use {
@@ -38,8 +38,8 @@ require('packer').startup({
                 "PangPangPangPangPang/ZFVimIM_pinyin",
                 "ZSaberLv0/ZFVimIM_openapi"
             },
-            setup = function() require('_zfvimim').setup() end,
-            config = function() require('_zfvimim').config() end
+            setup = function() require('config._zfvimim').setup() end,
+            config = function() require('config._zfvimim').config() end
         }
 
         -- Readline style insertion
@@ -57,7 +57,7 @@ require('packer').startup({
             use {
                 'nvim-treesitter/nvim-treesitter',
                 run = ':TSUpdate',
-                config = function() require('treesitter') end
+                config = function() require('config._treesitter') end
             }
             use {'windwp/nvim-ts-autotag'}
             use {'JoosepAlviste/nvim-ts-context-commentstring'}
@@ -70,13 +70,13 @@ require('packer').startup({
 
         use {
             'jiangmiao/auto-pairs',
-            config = function() require('_autopairs').setup() end
+            config = function() require('config._autopairs').setup() end
         }
 
         use {
             'lukas-reineke/indent-blankline.nvim',
             event = "VimEnter",
-            setup = function() require('indentline') end
+            setup = function() require('config._indentline') end
         }
 
         use {'tpope/vim-surround'}
@@ -90,7 +90,7 @@ require('packer').startup({
         use {
             'mhinz/vim-grepper',
             cmd = {'GrepperRg', 'Grepper'},
-            setup = function() require('_grep') end
+            setup = function() require('config._grep') end
         }
 
         vim.api.nvim_set_var('use_coc', false);
@@ -108,13 +108,13 @@ require('packer').startup({
                 "neovim/nvim-lspconfig",
                 requires = {'kabouzeid/nvim-lspinstall'},
                 config = function()
-                    require("lsp_config").config()
+                    require("config._lsp_config").config()
                 end
             }
 
             use {
                 'glepnir/lspsaga.nvim',
-                config = function() require("lsp_saga").config() end
+                config = function() require("config._lsp_saga").config() end
             }
             use {
                 "hrsh7th/nvim-cmp",
@@ -123,7 +123,7 @@ require('packer').startup({
                     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
                     "hrsh7th/cmp-buffer"
                 },
-                config = function() require("nvim_cmp").config() end
+                config = function() require("config._nvim_cmp").config() end
             }
             use {
                 "saadparwaiz1/cmp_luasnip",
@@ -133,7 +133,7 @@ require('packer').startup({
                         wants = "friendly-snippets",
                         requires = {"rafamadriz/friendly-snippets"},
                         config = function()
-                            require("nvim_cmp").snippets()
+                            require("config._nvim_cmp").snippets()
                         end
                     }
                 }
@@ -156,7 +156,7 @@ require('packer').startup({
                 "ray-x/lsp_signature.nvim",
                 after = "nvim-lspconfig",
                 config = function()
-                    require("lsp_config").signature()
+                    require("config._lsp_config").signature()
                 end
             }
 
@@ -169,7 +169,7 @@ require('packer').startup({
             use {
                 "simrat39/symbols-outline.nvim",
                 cmd = {"SymbolsOutline"},
-                setup = function() require('_outline').config(); end
+                setup = function() require('config._outline').config(); end
             }
 
         end
@@ -177,7 +177,7 @@ require('packer').startup({
         use {
             'sbdchd/neoformat',
             cmd = 'Neoformat',
-            setup = function() require('neoformat').config() end
+            setup = function() require('config._neoformat').config() end
         }
 
         use {'machakann/vim-highlightedyank'}
@@ -190,9 +190,9 @@ require('packer').startup({
                 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim',
                 {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
             },
-            config = function() require('_telescope').config() end,
+            config = function() require('config._telescope').config() end,
             cmd = {'Telescope'},
-            setup = function() require('_telescope').map() end
+            setup = function() require('config._telescope').map() end
         }
 
         use {
@@ -204,7 +204,7 @@ require('packer').startup({
         use {
             'voldikss/vim-floaterm',
             cmd = {'FloatermToggle', 'FloatermNew'},
-            setup = function() require('vim_floaterm').map() end
+            setup = function() require('config._vim_floaterm').map() end
         }
 
         use {'szw/vim-maximizer', cmd = {'MaximizerToggle'}}
@@ -219,12 +219,12 @@ require('packer').startup({
             'lewis6991/gitsigns.nvim',
             requires = {'nvim-lua/plenary.nvim'},
             cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
-            config = function() require('_gitsigns').setup() end
+            config = function() require('config._gitsigns').setup() end
         }
         use {
             'kyazdani42/nvim-tree.lua',
             requires = 'kyazdani42/nvim-web-devicons',
-            config = function() require('tree') end
+            config = function() require('config._tree') end
         }
         use {'tpope/vim-fugitive'}
         use {'junegunn/gv.vim'}
@@ -233,7 +233,7 @@ require('packer').startup({
 
         use {
             'justinmk/vim-sneak',
-            config = function() require('_sneak').setup() end
+            config = function() require('config._sneak').setup() end
         }
 
         use {'kshenoy/vim-signature'}
