@@ -76,7 +76,7 @@ require('packer').startup({
         use {
             'lukas-reineke/indent-blankline.nvim',
             event = "VimEnter",
-            setup = function() require('config._indentline') end
+            config = function() require('config._indentline').setup() end
         }
 
         use {'tpope/vim-surround'}
