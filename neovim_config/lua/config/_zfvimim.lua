@@ -6,7 +6,7 @@ end
 M.config = function ()
     local map = require('utils').map
     local opts = {noremap = true, silent = true, expr = true}
-    map('i', '<c-j>', 'ZFVimIME_keymap_toggle_i()', opts)
+    map('i', ';;', 'ZFVimIME_keymap_toggle_i()', opts)
     M.setLocalDB();
 end
 
