@@ -1,8 +1,12 @@
 local o = vim.o
 local fn = vim.fn
 local g = vim.g
-o.mouse = 'a'
+local cmd = vim.cmd
+local dmap = require('utils').dmap
+g.mapleader = ' '
+g.use_lua = 1
 
+o.mouse = 'a'
 o.showmode = false
 
 if fn.has('nvim-0.5') then
@@ -110,7 +114,6 @@ o.mat = 2
 -- No annoying sound on errors
 o.errorbells = false
 o.visualbell = false
-o.t_vb = ''
 o.tm = 500
 
 --------------------------------------------------
@@ -148,3 +151,48 @@ o.sidescroll = 1
 
 o.splitright = true
 o.splitbelow = true
+
+o.switchbuf='useopen,usetab'
+o.showtabline=1
+
+dmap({'n', 'v'}, '<leader>q', ':cclose<cr> :pclose<cr>')
+------------------------------
+-- => Status line
+------------------------------
+-- Always show the status line
+o.laststatus=2
+-- Whole format
+dmap({'n'}, '<leader>==', 'mzG=gg`z')
+-- Copy to system clipboard
+dmap({'n'}, 'Y', '"+y')
+
+-- Set utf8 as standard encoding and en_US as the standard language
+o.encoding='utf8'
+
+-- Use Unix as the standard file type
+o.ffs='unix,dos,mac'
+
+cmd([[
+    augroup BasicGroup
+        " 1 tab == 4 spaces
+        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4
+        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set tabstop=4
+        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set sts=4
+
+        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set shiftwidth=2
+        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set tabstop=2
+        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set sts=2
+
+        " Return to last edit position when opening files (You want this!)
+        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    augroup End
+    augroup tt_ft
+        autocmd!
+        autocmd BufNewFile,BufRead *.ttss   set filetype=css
+        autocmd BufNewFile,BufRead *.ttml   set filetype=html
+    augroup END
+    let pfile = '~/.config/nvim/private.vim'
+   if !empty(glob(pfile))
+       exec ('source '. pfile)
+   endif
+]])

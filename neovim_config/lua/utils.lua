@@ -20,6 +20,11 @@ function M.map(modes, lhs, rhs, opts)
     end
 end
 
+function M.dmap(modes, lhs, rhs)
+    local opts = {noremap = true, silent = true}
+    M.map(modes, lhs, rhs, opts)
+end
+
 function M.create_augroups(definitions)
     for group_name, definition in pairs(definitions) do
         cmd('augroup ' .. group_name)
