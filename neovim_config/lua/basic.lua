@@ -173,6 +173,7 @@ o.encoding='utf8'
 o.ffs='unix,dos,mac'
 
 cmd([[
+    command! -nargs=0 CD :execute("cd %:p:h")
     augroup BasicGroup
         " 1 tab == 4 spaces
         autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4
