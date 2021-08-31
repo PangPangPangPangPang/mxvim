@@ -114,28 +114,27 @@ require('packer').startup({
 
             use {
                 'glepnir/lspsaga.nvim',
-                config = function() require("config._lsp_saga").config() end
+                config = function()
+                    require("config._lsp_saga").config()
+                end
             }
             use {
                 "hrsh7th/nvim-cmp",
                 requires = {
                     "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
                     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
-                    "hrsh7th/cmp-buffer"
+                    "hrsh7th/cmp-buffer", "hrsh7th/cmp-vsnip"
                 },
-                config = function() require("config._nvim_cmp").config() end
+                config = function()
+                    require("config._nvim_cmp").config()
+                end
             }
             use {
-                "saadparwaiz1/cmp_luasnip",
+                "hrsh7th/cmp-vsnip",
+                wants = "friendly-snippets",
                 requires = {
-                    {
-                        "L3MON4D3/LuaSnip",
-                        wants = "friendly-snippets",
-                        requires = {"rafamadriz/friendly-snippets"},
-                        config = function()
-                            require("config._nvim_cmp").snippets()
-                        end
-                    }
+                    'hrsh7th/vim-vsnip-integ', "hrsh7th/vim-vsnip",
+                    "rafamadriz/friendly-snippets"
                 }
             }
             -- use {
@@ -169,7 +168,9 @@ require('packer').startup({
             use {
                 "simrat39/symbols-outline.nvim",
                 cmd = {"SymbolsOutline"},
-                setup = function() require('config._outline').config(); end
+                setup = function()
+                    require('config._outline').config();
+                end
             }
 
         end

@@ -3,11 +3,10 @@ local M = {}
 M.config = function()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
-
     cmp.setup {
         snippet = {
             expand = function(args)
-                require'luasnip'.lsp_expand(args.body)
+                vim.fn["vsnip#anonymous"](args.body)
             end
         },
         -- You can set mapping if you want.
@@ -25,7 +24,7 @@ M.config = function()
         },
         -- You should specify your *installed* sources.
         sources = {
-            { name = 'luasnip' },
+            { name = 'vsnip' },
             { name = 'nvim_lsp' },
             { name = 'nvim_lua' },
             { name = 'buffer' },
@@ -41,23 +40,13 @@ M.config = function()
                 vim_item.menu = ({
                     buffer = "[Buffer]",
                     nvim_lsp = "[LSP]",
-                    luasnip = "[LuaSnip]",
+                    vsnip = "[Snip]",
                     nvim_lua = "[Lua]",
-                    latex_symbols = "[Latex]",
+                    path = "[Path]",
                 })[entry.source.name]
                 return vim_item
             end
   }
     }
-end
-
-M.snippets = function()
-    local ls = require("luasnip")
-
-    ls.config.set_config({
-        history = true,
-        updateevents = "TextChanged,TextChangedI"
-    })
-    require("luasnip/loaders/from_vscode").load()
 end
 return M
