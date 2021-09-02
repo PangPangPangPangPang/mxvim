@@ -2,9 +2,9 @@ local M = {}
 M.setup = function ()
     local g = vim.g
     g.indent_blankline_use_treesitter = true
-    vim.opt.listchars = {
-        space = "⋅",
-        -- eol = "↴",
+    g.indent_blankline_context_patterns = {
+        "declaration", "expression", "pattern", "primary_expression",
+        "statement", "switch_body"
     }
     require("indent_blankline").setup {
         char = '│',
