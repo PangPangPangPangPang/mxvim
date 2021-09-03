@@ -13,7 +13,11 @@ M.config = function ()
 end
 
 M.setLocalDB = function ()
-    local db = vim.fn.ZFVimIM_dbInit({name = 'MaxDB'})
-    vim.fn.ZFVimIM_cloudRegister({mode = 'local', dbId = db['dbId'], repoPath = '~/.config/nvim', dbFile = '/pinyin.txt'})
+    local fn = vim.fn
+    local file = '~/.config/nvim/private.vim'
+    if fn.empty(fn.glob(file)) ~= 0 then
+        local db = fn.ZFVimIM_dbInit({name = 'MaxDB'})
+        vim.fn.ZFVimIM_cloudRegister({mode = 'local', dbId = db['dbId'], repoPath = '~/.config/nvim', dbFile = '/pinyin.txt'})
+    end
 end
 return M

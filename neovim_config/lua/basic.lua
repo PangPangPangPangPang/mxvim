@@ -193,7 +193,7 @@ cmd([[
         autocmd BufNewFile,BufRead *.ttml   set filetype=html
     augroup END
     let pfile = '~/.config/nvim/private.vim'
-   if !empty(glob(pfile))
-       exec ('source '. pfile)
-   endif
+    if !empty(glob(pfile))
+        exec ('source '. pfile)
+    endif
 ]])
