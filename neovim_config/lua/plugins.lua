@@ -228,9 +228,8 @@ require('packer').startup({
             config = function() require('config._tree') end
         }
         use {'tpope/vim-fugitive'}
-        use {'junegunn/gv.vim'}
+        use {'rbong/vim-flog'}
         use {'rhysd/git-messenger.vim'}
-        use {'honza/vim-snippets'}
 
         use {
             'justinmk/vim-sneak',
