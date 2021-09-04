@@ -38,7 +38,7 @@ M.config = function()
             if server == "lua" then
                 config.settings = require("lsp.lsp_lua").config()
             end
-            if server == "efm" then config = require("lsp.lsp_efm").config() end
+            if server == "efm" then config = require("lsp.lsp_efm").config(on_attach) end
             lspconfig[server].setup(config)
         end
     end

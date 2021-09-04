@@ -1,5 +1,5 @@
 local M = {}
-M.config = function ()
+M.config = function (on_attach)
     local eslint = {
         lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
         lintIgnoreExitCode = true,
@@ -16,6 +16,7 @@ M.config = function ()
     local efm_config = {
         filetypes = vim.tbl_keys(languages),
         init_options = {
+            hover = true,
             documentFormatting = true,
             documentSymbol = true,
             codeAction = true,
