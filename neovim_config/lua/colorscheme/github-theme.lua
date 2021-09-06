@@ -20,8 +20,8 @@ M.colors = function()
         darkblue = colors.blue,
         green = colors.green,
         orange = colors.orange,
-        purple = colors.magenta,
-        magenta = colors.magenta,
+        purple = colors.brightMagenta,
+        magenta = colors.brightMagenta,
         blue = colors.brightBlue,
         red = colors.red,
     }
