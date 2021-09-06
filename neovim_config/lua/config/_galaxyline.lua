@@ -8,43 +8,8 @@ gl.short_line_list = {
 }
 
 -- vscode
-local colors = {
-    -- bg = '#264F78',
-    -- line_bg = '#264F78',
-    bg = '#252526',
-    line_bg = '#252526',
-    fg = '#9CDCFE',
-    fg_green = '#B5CEA8',
+local colors = require('colorscheme.'.. vim.g.current_theme).colors
 
-    yellow = '#DCDCAA',
-    cyan = '#4EC9B0',
-    darkblue = '#223E55',
-    green = '#6A9955',
-    orange = '#CE9178',
-    purple = '#C586C0',
-    magenta = '#C586C0',
-    blue = '#569CD6',
-    red = '#F44747'
-}
-
--- miramire
--- colors = {
---     bg = '#2A0000',
---     -- line_bg = '#1E1E1E',
---     line_bg = '#2A0000',
---     fg = '#e6d6ac',
---     fg_green = '#87c095',
-
---     yellow = '#d9bb80',
---     cyan = '#87c095',
---     darkblue = '#203a41',
---     green = '#a7c080',
---     orange = '#e39b7b',
---     purple = '#d3a0bc',
---     magenta = '#d3a0bc',
---     blue = '#89beba';
---     red = '#e68183'
--- }
 vim.api.nvim_command('hi! StatusLine guibg=' .. colors.line_bg .. ' guifg=' ..
                          colors.line_bg)
 -- vim.api.nvim_command('hi! StatusLine guibg=#1E1E1E guifg=#1E1E1E')
@@ -120,7 +85,6 @@ gls.left[2] = {
             local alias = {
                 n = 'NORMAL',
                 i = 'INSERT',
-                c = 'COMMAND',
                 V = 'VISUAL',
                 [''] = 'VISUAL',
                 v = 'VISUAL',
@@ -142,19 +106,13 @@ gls.left[2] = {
                 v = colors.magenta,
                 [''] = colors.blue,
                 V = colors.blue,
-                c = colors.red,
                 no = colors.magenta,
                 s = colors.orange,
                 S = colors.orange,
                 [''] = colors.orange,
                 ic = colors.yellow,
-                R = colors.purple,
-                Rv = colors.purple,
                 cv = colors.red,
                 ce = colors.red,
-                r = colors.cyan,
-                rm = colors.cyan,
-                ['r?'] = colors.cyan,
                 ['!'] = colors.green,
                 t = colors.green,
                 c = colors.purple,

@@ -83,13 +83,13 @@ require'nvim-treesitter.configs'.setup {
 
 }
 
-vim.cmd([[
-    hi! link TSError None
-    hi! link TSPunctBracket None
-    hi! link TSVariable NONE
-    hi! link TSParameter Parameter
-    hi! link TSConstructor NONE
-]])
+-- vim.cmd([[
+--     hi! link TSError None
+--     hi! link TSPunctBracket None
+--     hi! link TSVariable NONE
+--     hi! link TSParameter Parameter
+--     hi! link TSConstructor NONE
+-- ]])
 
 vim.g.kommentary_create_default_mappings = false
 vim.api.nvim_set_keymap("n", "<leader>/", "gcc", {})

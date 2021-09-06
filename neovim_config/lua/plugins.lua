@@ -17,11 +17,17 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
-        use {'tomasiser/vim-code-dark'}
-        -- use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-        use {"lifepillar/vim-gruvbox8"}
-        use {"Mofiqul/vscode.nvim"}
-        use {"PangPangPangPangPang/miramare", branch = 'develop'}
+        -- nightfly github-theme miramare
+        vim.g.current_theme = 'vscode'
+        use {
+            'Mofiqul/vscode.nvim',
+            'projekt0n/github-nvim-theme',
+            'bluz71/vim-nightfly-guicolors',
+            'PangPangPangPangPang/miramare',
+            config = function()
+                require('colorscheme.' .. vim.g.current_theme).config();
+            end
+        }
 
         use {
             'glepnir/galaxyline.nvim',
@@ -98,8 +104,6 @@ require('packer').startup({
             use {'neoclide/coc.nvim', branch = 'release'}
 
             use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
-            g.Illuminate_highlightUnderCursor = 1
-            g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
 
             -- use {'liuchengxu/vista.vim', cmd = {'Vista'}}
         else

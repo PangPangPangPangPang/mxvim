@@ -172,6 +172,12 @@ o.encoding='utf8'
 -- Use Unix as the standard file type
 o.ffs='unix,dos,mac'
 
+vim.o.background = 'dark'
+
+if vim.fn.exists('+termguicolors') then
+    vim.o.termguicolors = true
+end
+
 cmd([[
     command! -nargs=0 CD :execute("cd %:p:h")
     augroup BasicGroup

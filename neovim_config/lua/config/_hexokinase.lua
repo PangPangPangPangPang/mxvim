@@ -1,12 +1,5 @@
-vim.o.background = 'dark'
-
-if vim.fn.exists('+termguicolors') then
-    vim.o.termguicolors = true
-end
-
-vim.g.vscode_style = "dark"
-vim.cmd('colorscheme vscode')
-
+g.Illuminate_highlightUnderCursor = 1
+g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
 if vim.o.background == 'dark' then
     vim.api.nvim_exec([[
         highlight IlluminatedWord gui=none term=none guibg=#444444 guifg=none ctermbg=245 ctermfg=none
