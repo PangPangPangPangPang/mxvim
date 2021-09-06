@@ -85,15 +85,15 @@ require('packer').startup({
             config = function() require('config._autopairs').setup() end
         }
 
-        -- use {
-        --     'lukas-reineke/indent-blankline.nvim',
-        --     event = "VimEnter",
-        --     config = function() require('config._indentline').setup() end
-        -- }
         use {
-            'Yggdroot/indentLine',
-            config = function() require('config._indentline').setupIndent() end
+            'lukas-reineke/indent-blankline.nvim',
+            event = "VimEnter",
+            config = function() require('config._indentline').setup() end
         }
+        -- use {
+        --     'Yggdroot/indentLine',
+        --     config = function() require('config._indentline').setupIndent() end
+        -- }
 
         use {'tpope/vim-surround'}
 
@@ -109,7 +109,7 @@ require('packer').startup({
             setup = function() require('config._grep') end
         }
 
-        vim.api.nvim_set_var('use_coc', true);
+        vim.api.nvim_set_var('use_coc', false);
         if vim.api.nvim_get_var('use_coc') then
             use {
                 'neoclide/coc.nvim',
