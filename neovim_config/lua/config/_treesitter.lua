@@ -1,3 +1,4 @@
+local colors = require('colorscheme.' .. vim.g.current_theme).colors
 require'nvim-treesitter.configs'.setup {
     -- npm i -g tree-sitter-cli
     -- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
@@ -75,8 +76,8 @@ require'nvim-treesitter.configs'.setup {
     context_commentstring = {enable = true},
     rainbow = {
         colors = {
-            '#DCDCAA', '#6A9955', '#CE9178', '#C586C0', '#C586C0', '#569CD6',
-            '#F44747'
+            colors.yellow, colors.green, colors.orange, colors.magenta,
+            colors.cyan, colors.blue, colors.blue
         },
         enable = true
     }
