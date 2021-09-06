@@ -18,7 +18,7 @@ require('packer').startup({
         use {'wbthomason/packer.nvim', opt = true}
 
         -- nightfly github-theme miramare vscode
-        vim.g.current_theme = 'github-theme'
+        vim.g.current_theme = 'miramare'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
@@ -85,10 +85,14 @@ require('packer').startup({
             config = function() require('config._autopairs').setup() end
         }
 
+        -- use {
+        --     'lukas-reineke/indent-blankline.nvim',
+        --     event = "VimEnter",
+        --     config = function() require('config._indentline').setup() end
+        -- }
         use {
-            'lukas-reineke/indent-blankline.nvim',
-            event = "VimEnter",
-            config = function() require('config._indentline').setup() end
+            'Yggdroot/indentLine',
+            config = function() require('config._indentline').setupIndent() end
         }
 
         use {'tpope/vim-surround'}
@@ -105,9 +109,15 @@ require('packer').startup({
             setup = function() require('config._grep') end
         }
 
-        vim.api.nvim_set_var('use_coc', false);
+        vim.api.nvim_set_var('use_coc', true);
         if vim.api.nvim_get_var('use_coc') then
-            use {'neoclide/coc.nvim', branch = 'release'}
+            use {
+                'neoclide/coc.nvim',
+                branch = 'release',
+                config = function()
+                    require('config._coc').config()
+                end
+            }
 
             use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
 
