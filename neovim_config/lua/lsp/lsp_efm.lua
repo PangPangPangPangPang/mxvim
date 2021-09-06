@@ -1,7 +1,7 @@
 local M = {}
 M.config = function (on_attach)
     local eslint = {
-        lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+        lintCommand = "eslint -f unix --stdin --stdin-filename ${INPUT}",
         lintIgnoreExitCode = true,
         lintStdin = true,
         lintFormats = {"%f:%l:%c: %m"}
