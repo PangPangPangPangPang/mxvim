@@ -1,4 +1,5 @@
 local M = {}
+local colors = require('colorscheme.' .. vim.g.current_theme).colors()
 
 M.config = function()
     local lspconfig = require('lspconfig')
@@ -121,13 +122,13 @@ M.set_keymap = function (client, bufnr)
 
         -- Set autocommands conditional on server_capabilities
         if client.resolved_capabilities.document_highlight then
-            vim.api.nvim_exec([[
+            vim.api.nvim_exec(string.format([[
             augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-                " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
+            " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
             hi! default link LspDiagnosticsVirtualTextError NonText
@@ -135,16 +136,16 @@ M.set_keymap = function (client, bufnr)
             hi! default link LspDiagnosticsVirtualTextInformation NonText
             hi! default link LspDiagnosticsVirtualTextWarning NonText
 
-            hi! LspDiagnosticsDefaultInformation guifg=#444444
-            hi! LspDiagnosticsUnderlineError gui=undercurl term=undercurl guisp=#c4384b guifg=none
-            hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=#569cd6 guifg=none
-            hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=#c4ab39 guifg=none
-            hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=#569cd6 guifg=none
-            highlight LspReference guifg=NONE guibg=#444444 guisp=NONE gui=NONE cterm=NONE ctermfg=NONE ctermbg=59
+            hi! LspDiagnosticsDefaultInformation guifg=%s
+            hi! LspDiagnosticsUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
+            highlight LspReference guifg=NONE guibg=%s guisp=NONE gui=NONE cterm=NONE ctermfg=NONE ctermbg=59
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
             highlight! link LspReferenceWrite LspReference
-            ]], false)
+            ]], colors.cursor, colors.red, colors.blue, colors.yellow, colors.blue, colors.cursor), false)
         end
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                                                                   vim.lsp

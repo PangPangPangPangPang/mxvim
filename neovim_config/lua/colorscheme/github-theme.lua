@@ -23,7 +23,8 @@ M.colors = function()
         purple = colors.magenta,
         magenta = colors.magenta,
         blue = colors.brightBlue,
-        red = colors.red
+        red = colors.red,
+        cursor = colors.bg_search
     }
 
 end
