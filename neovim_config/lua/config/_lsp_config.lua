@@ -141,11 +141,11 @@ M.set_keymap = function (client, bufnr)
             hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
-            highlight LspReference guifg=NONE guibg=%s guisp=NONE gui=NONE cterm=NONE ctermfg=NONE ctermbg=59
+            highlight! link LspReference Search
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
             highlight! link LspReferenceWrite LspReference
-            ]], colors.cursor, colors.red, colors.blue, colors.yellow, colors.blue, colors.cursor), false)
+            ]], colors.cursor, colors.red, colors.blue, colors.yellow, colors.blue), false)
         end
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                                                                   vim.lsp

@@ -24,7 +24,6 @@ M.colors = function()
         magenta = colors.magenta,
         blue = colors.brightBlue,
         red = colors.red,
-        cursor = colors.bg_search
     }
 
 end
