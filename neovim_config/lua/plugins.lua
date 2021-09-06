@@ -109,7 +109,7 @@ require('packer').startup({
             setup = function() require('config._grep') end
         }
 
-        vim.api.nvim_set_var('use_coc', false);
+        vim.api.nvim_set_var('use_coc', true);
         if vim.api.nvim_get_var('use_coc') then
             use {
                 'neoclide/coc.nvim',
@@ -120,6 +120,7 @@ require('packer').startup({
             }
 
             use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
+            use {'honza/vim-snippets'}
 
             -- use {'liuchengxu/vista.vim', cmd = {'Vista'}}
         else

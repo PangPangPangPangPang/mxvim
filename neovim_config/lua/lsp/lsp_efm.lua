@@ -1,7 +1,7 @@
 local M = {}
 M.config = function (on_attach)
     local eslint = {
-        lintCommand = "eslint -f unix --stdin --stdin-filename ${INPUT}",
+        lintCommand = "eslint -f visualstudio --stdin --stdin-filename ${INPUT}",
         lintIgnoreExitCode = true,
         lintStdin = true,
         lintFormats = {"%f:%l:%c: %m"}
@@ -25,7 +25,7 @@ M.config = function (on_attach)
         settings = {
             languages = languages,
             verson = 2,
-            rootMarkers = {".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
+            rootMarkers = {".eslintrc", ".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
         },
         on_attach = on_attach
     }
