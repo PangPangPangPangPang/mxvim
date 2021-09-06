@@ -1,5 +1,9 @@
 local M = {}
-M.config = function() vim.cmd('colorscheme ' .. vim.g.current_theme) end
+M.config = function()
+    vim.g.nord_contrast = true
+    vim.g.nord_borders = true
+    vim.cmd('colorscheme ' .. vim.g.current_theme)
+end
 
 M.colors = function()
     local colors = require('nord.colors')
