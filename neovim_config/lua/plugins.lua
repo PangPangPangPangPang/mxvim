@@ -17,8 +17,8 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
-        -- nightfly github-theme miramare vscode
-        vim.g.current_theme = 'miramare'
+        -- nightfly github-theme miramare vscode nord
+        vim.g.current_theme = 'nord'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
