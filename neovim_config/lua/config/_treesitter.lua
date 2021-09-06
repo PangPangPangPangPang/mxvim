@@ -1,4 +1,4 @@
-local colors = require('colorscheme.' .. vim.g.current_theme).colors
+local colors = require('colorscheme.' .. vim.g.current_theme).colors()
 require'nvim-treesitter.configs'.setup {
     -- npm i -g tree-sitter-cli
     -- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages

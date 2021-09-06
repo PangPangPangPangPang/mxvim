@@ -18,13 +18,14 @@ require('packer').startup({
         use {'wbthomason/packer.nvim', opt = true}
 
         -- nightfly github-theme miramare vscode
-        vim.g.current_theme = 'miramare'
+        vim.g.current_theme = 'github-theme'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
                 {'projekt0n/github-nvim-theme'},
                 {'bluz71/vim-nightfly-guicolors'},
                 {'PangPangPangPangPang/miramare'},
+                {'shaunsingh/nord.nvim'},
             },
             config = function()
                 require('colorscheme.' .. vim.g.current_theme).config();

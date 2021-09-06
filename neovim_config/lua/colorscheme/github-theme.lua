@@ -1,21 +1,30 @@
 local M = {}
-M.config = function ()
-    require(vim.g.current_theme).setup()
+M.config = function()
+    require(vim.g.current_theme).setup({
+        themeStyle = 'dark',
+        commentStyle = 'italic'
+    })
 end
 
-M.colors = {
-    bg = '#252526',
-    line_bg = '#252526',
-    fg = '#9CDCFE',
-    fg_green = '#B5CEA8',
-    yellow = '#DCDCAA',
-    cyan = '#4EC9B0',
-    darkblue = '#223E55',
-    green = '#6A9955',
-    orange = '#CE9178',
-    purple = '#C586C0',
-    magenta = '#C586C0',
-    blue = '#252526',
-    red = '#F44747'
-}
+M.colors = function()
+    local configModule = require("github-theme.config")
+    local config = configModule.config
+    local colors = require("github-theme.colors").setup(config)
+    return {
+        bg = colors.bg2,
+        line_bg = colors.bg2,
+        fg = colors.fg,
+        fg_green = colors.green,
+        yellow = colors.yellow,
+        cyan = colors.cyan,
+        darkblue = colors.blue,
+        green = colors.green,
+        orange = colors.orange,
+        purple = colors.magenta,
+        magenta = colors.magenta,
+        blue = colors.brightBlue,
+        red = colors.red
+    }
+
+end
 return M

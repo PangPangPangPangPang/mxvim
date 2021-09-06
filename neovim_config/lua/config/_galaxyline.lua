@@ -8,7 +8,7 @@ gl.short_line_list = {
 }
 
 -- vscode
-local colors = require('colorscheme.'.. vim.g.current_theme).colors
+local colors = require('colorscheme.'.. vim.g.current_theme).colors()
 
 vim.api.nvim_command('hi! StatusLine guibg=' .. colors.line_bg .. ' guifg=' ..
                          colors.line_bg)

@@ -1,8 +1,5 @@
 local M = {}
-M.config = function()
-    vim.g.vscode_style = "dark"
-    vim.cmd('colorscheme ' .. vim.g.current_theme)
-end
+M.config = function() vim.cmd('colorscheme ' .. vim.g.current_theme) end
 
 M.colors = function()
     return {
@@ -20,6 +17,5 @@ M.colors = function()
         blue = '#569CD6',
         red = '#F44747'
     }
-
 end
 return M
