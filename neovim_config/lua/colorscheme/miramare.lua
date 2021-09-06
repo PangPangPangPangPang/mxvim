@@ -1,15 +1,13 @@
 local M = {}
-vim.g.current_theme = 'miramire'
-M.setup = {
+M.config = function ()
     vim.cmd('colorscheme '.. vim.g.current_theme)
-}
+end
+
 M.colors = {
     bg = '#2A0000',
-    -- line_bg = '#1E1E1E',
     line_bg = '#2A0000',
     fg = '#e6d6ac',
     fg_green = '#87c095',
-
     yellow = '#d9bb80',
     cyan = '#87c095',
     darkblue = '#203a41',

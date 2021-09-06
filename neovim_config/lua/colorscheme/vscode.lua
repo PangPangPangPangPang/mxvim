@@ -9,7 +9,6 @@ M.colors = {
     line_bg = '#252526',
     fg = '#9CDCFE',
     fg_green = '#B5CEA8',
-
     yellow = '#DCDCAA',
     cyan = '#4EC9B0',
     darkblue = '#223E55',

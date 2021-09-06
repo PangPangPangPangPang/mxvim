@@ -8,7 +8,6 @@ M.colors = {
     line_bg = '#252526',
     fg = '#9CDCFE',
     fg_green = '#B5CEA8',
-
     yellow = '#DCDCAA',
     cyan = '#4EC9B0',
     darkblue = '#223E55',
@@ -16,7 +15,7 @@ M.colors = {
     orange = '#CE9178',
     purple = '#C586C0',
     magenta = '#C586C0',
-    blue = '#569CD6',
+    blue = '#252526',
     red = '#F44747'
 }
 return M

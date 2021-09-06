@@ -17,8 +17,8 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
 
-        -- nightfly github-theme miramare
-        vim.g.current_theme = 'vscode'
+        -- nightfly github-theme miramare vscode
+        vim.g.current_theme = 'miramare'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
@@ -33,6 +33,9 @@ require('packer').startup({
 
         use {
             'glepnir/galaxyline.nvim',
+            after = {
+                'vscode.nvim',
+            },
             branch = 'main',
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
             config = function() require('config._galaxyline') end
