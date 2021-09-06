@@ -15,6 +15,24 @@
   "diagnostic.checkCurrentLine": false,
   "diagnostic.virtualTextLineSeparator": " \\ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.floatConfig": {
+    "border": true,
+    "highlight": "Normal",
+    "maxWidth": 100,
+    "focusable": false
+  },
+  "hover.floatConfig": {
+    "border": true,
+    "highlight": "Normal",
+    "maxWidth": 100,
+    "focusable": false
+  },
+  "signature.floatConfig": {
+    "border": true,
+    "highlight": "Normal",
+    "maxWidth": 100,
+    "focusable": false
+  },
   "suggest.floatEnable": true,
   "suggest.noselect": false,
   "suggest.enablePreselect": true,
