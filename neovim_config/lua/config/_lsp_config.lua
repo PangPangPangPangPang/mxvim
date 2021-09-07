@@ -5,8 +5,8 @@ M.config = function()
     local lspconfig = require('lspconfig')
 
     local on_attach = function(client, bufnr)
-        M.set_signature(bufnr)
         M.set_keymap(client, bufnr)
+        M.set_signature(bufnr)
     end
 
     local function make_config()
@@ -39,7 +39,9 @@ M.config = function()
             if server == "lua" then
                 config.settings = require("lsp.lsp_lua").config()
             end
-            if server == "efm" then config = require("lsp.lsp_efm").config(on_attach) end
+            if server == "efm" then
+                config = require("lsp.lsp_efm").config(on_attach)
+            end
             lspconfig[server].setup(config)
         end
     end
@@ -50,7 +52,7 @@ M.config = function()
     end
 end
 
-M.set_signature = function (bufnr)
+M.set_signature = function(bufnr)
     local signs = {
         Error = " ",
         Warning = " ",
@@ -68,61 +70,59 @@ M.set_signature = function (bufnr)
     end
 end
 
-M.set_keymap = function (client, bufnr)
-        local function buf_set_keymap(...)
-            vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
-        local function buf_set_option(...)
-            vim.api.nvim_buf_set_option(bufnr, ...)
-        end
-        buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-        -- Mappings.
-        -- lsp
-        local opts = {noremap = true, silent = true}
-        buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        buf_set_keymap('n', '<c-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>',
-                       opts)
-        -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
-                       opts)
-        buf_set_keymap('n', '<C-k>',
-                       '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        buf_set_keymap('n', '<space>wa',
-                       '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-        buf_set_keymap('n', '<space>wr',
-                       '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',
-                       opts)
-        buf_set_keymap('n', '<space>wl',
-                       '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-                       opts)
-        buf_set_keymap('n', '<space>D',
-                       '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        -- buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.buf.rename()<CR>',
-        --                opts)
-        buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        buf_set_keymap('n', '<space>cq',
-                       '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-        -- buf_set_keymap('n', '<space>ca',
-        --                '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        -- buf_set_keymap('n', '<space>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-        -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-        -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+M.set_keymap = function(client, bufnr)
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- Mappings.
+    -- lsp
+    local opts = {noremap = true, silent = true}
+    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', '<c-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
+                   opts)
+    buf_set_keymap('n', '<space>wa',
+                   '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wr',
+                   '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wl',
+                   '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+                   opts)
+    buf_set_keymap('n', '<space>D',
+                   '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    -- buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.buf.rename()<CR>',
+    --                opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', '<space>cq',
+                   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    -- buf_set_keymap('n', '<space>ca',
+    --                '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    -- buf_set_keymap('n', '<space>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<space>c[',
+                   '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', '<space>c]',
+                   '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
-        -- Set some keybinds conditional on server capabilities
-        if client.resolved_capabilities.document_formatting then
-            buf_set_keymap("n", "<space>cp",
-                           "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        end
-        if client.resolved_capabilities.document_range_formatting then
-            buf_set_keymap("v", "=",
-                           ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
-                           opts)
-        end
-        buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
+    -- Set some keybinds conditional on server capabilities
+    if client.resolved_capabilities.document_formatting then
+        buf_set_keymap("n", "<space>cp",
+                       "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    end
+    if client.resolved_capabilities.document_range_formatting then
+        buf_set_keymap("v", "=", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
+                       opts)
+    end
+    buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
 
-        -- Set autocommands conditional on server_capabilities
-        if client.resolved_capabilities.document_highlight then
-            vim.api.nvim_exec(string.format([[
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(string.format([[
             augroup lsp_document_highlight
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -141,24 +141,28 @@ M.set_keymap = function (client, bufnr)
             hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! LspDiagnosticsSignError gui=undercurl term=undercurl guisp=none guifg=%s
+            hi! LspDiagnosticsSignHint gui=undercurl term=undercurl guisp=none guifg=%s
+            hi! LspDiagnosticsSignWarning gui=undercurl term=undercurl guisp=none guifg=%s
+            hi! LspDiagnosticsSignInformation gui=undercurl term=undercurl guisp=none guifg=%s
             highlight! link LspReference %s
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
             highlight! link LspReferenceWrite LspReference
-            ]], colors.cursor, colors.red, colors.blue, colors.yellow, colors.blue, colors.highlight ~= nil and colors.highlight or "Visual"), false)
-        end
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                                                                  vim.lsp
-                                                                      .diagnostic
-                                                                      .on_publish_diagnostics,
-                                                                  {
-                -- Enable underline, use default values
-                underline = true,
-                -- Enable virtual text, override spacing to 4
-                virtual_text = {spacing = 4},
-                -- Disable a feature
-                update_in_insert = false
-            })
+            ]], colors.bg, colors.red, colors.blue, colors.yellow, colors.blue,
+                                        colors.red, colors.blue, colors.yellow,
+                                        colors.blue, colors.highlight ~= nil and
+                                            colors.highlight or "Visual"), false)
+    end
+    vim.lsp.handlers["textDocument/publishDiagnostics"] =
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            -- Enable underline, use default values
+            underline = true,
+            -- Enable virtual text, override spacing to 4
+            virtual_text = {spacing = 4},
+            -- Disable a feature
+            update_in_insert = false
+        })
 end
 
 M.lspkind = function()
@@ -175,7 +179,7 @@ M.signature = function()
             floating_window = true,
             fix_pos = false,
             hint_enable = true,
-            hint_prefix = "🐼 ",  -- Panda for parameter
+            hint_prefix = "🐼 ", -- Panda for parameter
             hint_scheme = "String",
             transpancy = 40,
             hi_parameter = "Search",
@@ -187,7 +191,7 @@ M.signature = function()
             zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
             padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
             shadow_blend = 36, -- if you using shadow as border use this set the opacity
-            shadow_guibg = 'Black', -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
+            shadow_guibg = 'Black' -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
 
         }
     end
