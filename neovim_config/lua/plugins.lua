@@ -4,6 +4,7 @@ local g = vim.g
 
 local map = require('utils').map
 local opts = {noremap = true, silent = true}
+pcall(require, 'impatient')
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
@@ -16,6 +17,9 @@ require('packer').startup({
     function(use)
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
+        use{
+            'lewis6991/impatient.nvim',
+        }
 
         -- nightfly github-theme miramare vscode nord
         vim.g.current_theme = 'vscode'
