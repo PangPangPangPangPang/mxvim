@@ -51,15 +51,25 @@ M.config = function()
         vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
     end
 end
+local signs = {
+    Error = " ",
+    Warning = " ",
+    Hint = " ",
+    Information = " "
+}
+
+local border = {
+    {"╭", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╮", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"╯", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╰", "FloatBorder"},
+    {"│", "FloatBorder"}
+}
 
 M.set_signature = function(bufnr)
-    local signs = {
-        Error = " ",
-        Warning = " ",
-        Hint = " ",
-        Information = " "
-    }
-
     require"lsp_signature".on_attach({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         handler_opts = {border = "single"}
@@ -68,6 +78,14 @@ M.set_signature = function(bufnr)
         local hl = "LspDiagnosticsSign" .. type
         vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
     end
+    vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+    vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
+    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+    })
 end
 
 M.set_keymap = function(client, bufnr)
@@ -83,7 +101,6 @@ M.set_keymap = function(client, bufnr)
     local opts = {noremap = true, silent = true}
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', '<c-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
                    opts)
@@ -101,13 +118,16 @@ M.set_keymap = function(client, bufnr)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     buf_set_keymap('n', '<space>cq',
                    '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    -- buf_set_keymap('n', '<space>ca',
-    --                '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    -- buf_set_keymap('n', '<space>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+
+    -- replace saga
+    buf_set_keymap('n', '<space>ca',
+                   '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', '<space>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     buf_set_keymap('n', '<space>c[',
                    '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', '<space>c]',
                    '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
@@ -127,7 +147,7 @@ M.set_keymap = function(client, bufnr)
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
+            autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false})
             " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
@@ -141,10 +161,10 @@ M.set_keymap = function(client, bufnr)
             hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! LspDiagnosticsSignError gui=undercurl term=undercurl guisp=none guifg=%s
-            hi! LspDiagnosticsSignHint gui=undercurl term=undercurl guisp=none guifg=%s
-            hi! LspDiagnosticsSignWarning gui=undercurl term=undercurl guisp=none guifg=%s
-            hi! LspDiagnosticsSignInformation gui=undercurl term=undercurl guisp=none guifg=%s
+            hi! LspDiagnosticsSignError gui=none guifg=%s
+            hi! LspDiagnosticsSignHint gui=none guifg=%s
+            hi! LspDiagnosticsSignWarning gui=none guifg=%s
+            hi! LspDiagnosticsSignInformation gui=none guifg=%s
             highlight! link LspReference %s
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference

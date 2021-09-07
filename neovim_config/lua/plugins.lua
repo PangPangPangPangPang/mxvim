@@ -22,7 +22,7 @@ require('packer').startup({
         }
 
         -- nightfly github-theme miramare vscode nord
-        vim.g.current_theme = 'miramare'
+        vim.g.current_theme = 'nord'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
@@ -137,12 +137,12 @@ require('packer').startup({
                 end
             }
 
-            use {
-                'glepnir/lspsaga.nvim',
-                config = function()
-                    require("config._lsp_saga").config()
-                end
-            }
+            -- use {
+            --     'glepnir/lspsaga.nvim',
+            --     config = function()
+            --         require("config._lsp_saga").config()
+            --     end
+            -- }
             use {
                 "hrsh7th/nvim-cmp",
                 requires = {
