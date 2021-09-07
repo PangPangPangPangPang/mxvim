@@ -109,7 +109,7 @@ require('packer').startup({
             setup = function() require('config._grep') end
         }
 
-        vim.api.nvim_set_var('use_coc', true);
+        vim.api.nvim_set_var('use_coc', false);
         if vim.api.nvim_get_var('use_coc') then
             use {
                 'neoclide/coc.nvim',

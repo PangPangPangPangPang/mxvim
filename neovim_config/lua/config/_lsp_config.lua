@@ -131,10 +131,10 @@ M.set_keymap = function (client, bufnr)
             " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
-            hi! default link LspDiagnosticsVirtualTextError NonText
-            hi! default link LspDiagnosticsVirtualTextHint NonText
-            hi! default link LspDiagnosticsVirtualTextInformation NonText
-            hi! default link LspDiagnosticsVirtualTextWarning NonText
+            hi! default link LspDiagnosticsVirtualTextError Comment
+            hi! default link LspDiagnosticsVirtualTextHint Comment
+            hi! default link LspDiagnosticsVirtualTextInformation Comment
+            hi! default link LspDiagnosticsVirtualTextWarning Comment
 
             hi! LspDiagnosticsDefaultInformation guifg=%s
             hi! LspDiagnosticsUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none

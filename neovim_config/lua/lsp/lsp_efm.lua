@@ -15,6 +15,7 @@ M.config = function (on_attach)
     }
     local efm_config = {
         filetypes = vim.tbl_keys(languages),
+        root_dir = require("lspconfig/util").root_pattern("package.json", ".eslintrc", ".git"),
         init_options = {
             hover = true,
             documentFormatting = true,
