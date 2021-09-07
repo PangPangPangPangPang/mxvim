@@ -22,7 +22,7 @@ require('packer').startup({
         }
 
         -- nightfly github-theme miramare vscode nord
-        vim.g.current_theme = 'vscode'
+        vim.g.current_theme = 'miramare'
         use {
             'Mofiqul/vscode.nvim',
             requires = {

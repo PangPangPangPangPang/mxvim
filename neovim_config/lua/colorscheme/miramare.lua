@@ -3,8 +3,8 @@ M.config = function() vim.cmd('colorscheme ' .. vim.g.current_theme) end
 
 M.colors = function()
     return {
-        bg = '#2A0000',
-        line_bg = '#2A0000',
+        bg = '#242021',
+        line_bg = '#242021',
         fg = '#e6d6ac',
         fg_green = '#87c095',
         yellow = '#d9bb80',
@@ -15,8 +15,8 @@ M.colors = function()
         purple = '#d3a0bc',
         magenta = '#d3a0bc',
         blue = '#89beba',
-        red = '#e68183'
-
+        red = '#e68183',
+        highlight = 'PmenuThumb'
     }
 end
 return M
