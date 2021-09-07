@@ -141,7 +141,7 @@ M.set_keymap = function (client, bufnr)
             hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
             hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
-            highlight! link LspReference Search
+            highlight! link LspReference Visual
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
             highlight! link LspReferenceWrite LspReference
