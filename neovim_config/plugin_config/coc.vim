@@ -24,6 +24,7 @@ let g:coc_global_extensions = [
             \'coc-lua',
             \'coc-stylelintplus',
             \'coc-spell-checker',
+            \'coc-sitter',
             \]
 " \'coc-flutter-tools',
 " \'coc-highlight',
