@@ -128,6 +128,7 @@ M.set_keymap = function(client, bufnr)
     buf_set_keymap('n', '<space>c]',
                    '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', '<space>cn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then

@@ -241,6 +241,8 @@ require('packer').startup({
         use {'romainl/vim-cool'}
         g.CoolTotalMatches = 1
 
+        use {'psliwka/vim-smoothie'}
+
         use {
             'lewis6991/gitsigns.nvim',
             requires = {'nvim-lua/plenary.nvim'},
