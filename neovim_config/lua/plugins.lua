@@ -120,6 +120,11 @@ require('packer').startup({
 
             use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
             use {'honza/vim-snippets'}
+            use {
+                'sbdchd/neoformat',
+                cmd = 'Neoformat',
+                setup = function() require('config._neoformat').config() end
+            }
 
             -- use {'liuchengxu/vista.vim', cmd = {'Vista'}}
         else
@@ -201,12 +206,6 @@ require('packer').startup({
             }
 
         end
-
-        use {
-            'sbdchd/neoformat',
-            cmd = 'Neoformat',
-            setup = function() require('config._neoformat').config() end
-        }
 
         use {'machakann/vim-highlightedyank'}
 

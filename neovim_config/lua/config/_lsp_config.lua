@@ -118,7 +118,7 @@ M.set_keymap = function(client, bufnr)
         buf_set_keymap("v", "=", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
                        opts)
     end
-    buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
+    -- buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -178,8 +178,8 @@ M.make_config = function()
     }
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
     return {
-        root_dir = require("lspconfig/util").root_pattern("package.json",
-                                                          ".eslintrc", ".git"),
+        -- root_dir = require("lspconfig/util").root_pattern("package.json",
+                                                          -- ".eslintrc", ".git"),
         -- enable snippet support
         capabilities = capabilities,
         -- map buffer local keybindings when the language server attaches
