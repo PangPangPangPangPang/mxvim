@@ -7,7 +7,7 @@ M.config = function ()
         -- yarn add global eslint_d
         local sources = {
             null_ls.builtins.diagnostics.eslint_d,
-            null_ls.builtins.diagnostics.codespell,
+            -- null_ls.builtins.diagnostics.codespell,
             null_ls.builtins.diagnostics.luacheck,
             null_ls.builtins.formatting.eslint_d,
             null_ls.builtins.formatting.stylua,
