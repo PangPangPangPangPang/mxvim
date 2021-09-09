@@ -14,6 +14,7 @@ M.config = function ()
             null_ls.builtins.diagnostics.luacheck,
             null_ls.builtins.formatting.eslint_d,
             null_ls.builtins.formatting.stylua,
+            prettier,
                     }
         null_ls.config({sources = sources, debug = true})
         lspconfig["null-ls"].setup(config)

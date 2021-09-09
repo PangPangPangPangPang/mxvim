@@ -178,8 +178,8 @@ M.make_config = function()
     }
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
     return {
-        -- root_dir = require("lspconfig/util").root_pattern("package.json",
-                                                          -- ".eslintrc", ".git"),
+        root_dir = require("lspconfig/util").root_pattern("package.json",
+                                                          ".eslintrc", ".git"),
         -- enable snippet support
         capabilities = capabilities,
         -- map buffer local keybindings when the language server attaches
