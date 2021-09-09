@@ -1,5 +1,4 @@
 local cmd = vim.cmd
-
 local M = {}
 
 function M.opt(o, v, scopes)
@@ -37,4 +36,19 @@ function M.create_augroups(definitions)
     end
 end
 
+function M.close_common()
+    local t = vim.fn.getbufinfo()
+    for _, i in pairs(t) do
+        local list = {'qf', 'fugitive'}
+        for _, type in ipairs(list) do
+            local filetype = vim.fn.getbufvar(i.bufnr, '&filetype')
+            if type == filetype then
+                for _, wid in ipairs(i.windows) do
+                    vim.cmd(string.format("exe %d . \"wincmd c\"",
+                                          vim.fn.win_id2win(wid)))
+                end
+            end
+        end
+    end
+end
 return M

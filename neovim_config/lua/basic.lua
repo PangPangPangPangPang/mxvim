@@ -155,7 +155,7 @@ o.splitbelow = true
 o.switchbuf='useopen,usetab'
 o.showtabline=1
 
-dmap({'n', 'v'}, '<leader>q', ':cclose<cr> :pclose<cr>')
+dmap({'n', 'v'}, '<leader>q', ':lua require("utils").close_common()<cr>')
 ------------------------------
 -- => Status line
 ------------------------------
