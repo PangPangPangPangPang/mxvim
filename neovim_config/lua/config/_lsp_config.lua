@@ -11,14 +11,17 @@ M.config = function()
         local servers = require'lspinstall'.installed_servers()
         -- ... and add manually installed servers
         for _, server in pairs(servers) do
-            local config = M.make_config()
-
+            local config
             -- language specific config
-            if server == "lua" then
-                config.settings = require("lsp.lsp_lua").config()
-            end
             if server == "efm" then
                 config = require("lsp.lsp_efm").config(M.on_attach)
+            else
+                config = M.make_config()
+                if server == "lua" then
+                    config.settings = require("lsp.lsp_lua").config()
+                elseif server == "typescript" then
+                    config.on_attach = require("lsp.lsp_ts").on_attach
+                end
             end
             lspconfig[server].setup(config)
         end
