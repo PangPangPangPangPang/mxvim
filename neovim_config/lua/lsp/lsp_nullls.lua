@@ -5,6 +5,7 @@ M.config = function ()
         local null_ls = require("null-ls")
         -- pip3 install codespell
         -- yarn add global eslint_d
+        -- luarocks install luacheck
         local prettier = null_ls.builtins.formatting.prettier
         prettier.filetypes = { "css", "scss", "html", "json", "yaml", "markdown" }
 
