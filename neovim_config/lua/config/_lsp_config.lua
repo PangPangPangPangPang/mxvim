@@ -3,28 +3,6 @@ local colors = require('colorscheme.' .. vim.g.current_theme).colors()
 
 M.config = function()
     local lspconfig = require('lspconfig')
-
-    local on_attach = function(client, bufnr)
-        M.set_keymap(client, bufnr)
-        M.set_signature(bufnr)
-    end
-
-    local function make_config()
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.completion.completionItem.snippetSupport =
-            true
-        capabilities.textDocument.completion.completionItem.resolveSupport = {
-            properties = {'documentation', 'detail', 'additionalTextEdits'}
-        }
-        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-        return {
-            -- enable snippet support
-            capabilities = capabilities,
-            -- map buffer local keybindings when the language server attaches
-            on_attach = on_attach
-        }
-    end
-
     local lspinstall = require('lspinstall')
     local function setup_servers()
         lspinstall.setup()
@@ -33,14 +11,14 @@ M.config = function()
         local servers = require'lspinstall'.installed_servers()
         -- ... and add manually installed servers
         for _, server in pairs(servers) do
-            local config = make_config()
+            local config = M.make_config()
 
             -- language specific config
             if server == "lua" then
                 config.settings = require("lsp.lsp_lua").config()
             end
             if server == "efm" then
-                config = require("lsp.lsp_efm").config(on_attach)
+                config = require("lsp.lsp_efm").config(M.on_attach)
             end
             lspconfig[server].setup(config)
         end
@@ -59,14 +37,9 @@ local signs = {
 }
 
 local border = {
-    {"╭", "FloatBorder"},
-    {"─", "FloatBorder"},
-    {"╮", "FloatBorder"},
-    {"│", "FloatBorder"},
-    {"╯", "FloatBorder"},
-    {"─", "FloatBorder"},
-    {"╰", "FloatBorder"},
-    {"│", "FloatBorder"}
+    {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"},
+    {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"},
+    {"╰", "FloatBorder"}, {"│", "FloatBorder"}
 }
 
 M.set_signature = function(bufnr)
@@ -78,14 +51,18 @@ M.set_signature = function(bufnr)
         local hl = "LspDiagnosticsSign" .. type
         vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
     end
-    vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
-    vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
-    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-    })
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+                                                 vim.lsp.handlers.hover,
+                                                 {border = border})
+    vim.lsp.handlers["textDocument/signatureHelp"] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
+    vim.lsp.handlers['textDocument/publishDiagnostics'] =
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            virtual_text = true,
+            signs = true,
+            underline = true,
+            update_in_insert = false
+        })
 end
 
 M.set_keymap = function(client, bufnr)
@@ -120,9 +97,11 @@ M.set_keymap = function(client, bufnr)
                    '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
     -- replace saga
-    buf_set_keymap('n', '<space>ca',
-                   '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', '<space>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+                   opts)
+    buf_set_keymap('n', '<space>cd',
+                   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
+                   opts)
     buf_set_keymap('n', '<space>c[',
                    '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', '<space>c]',
@@ -184,6 +163,28 @@ M.set_keymap = function(client, bufnr)
             -- Disable a feature
             update_in_insert = false
         })
+end
+
+M.on_attach = function(client, bufnr)
+    M.set_keymap(client, bufnr)
+    M.set_signature(bufnr)
+end
+
+M.make_config = function()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = {'documentation', 'detail', 'additionalTextEdits'}
+    }
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    return {
+        root_dir = require("lspconfig/util").root_pattern("package.json",
+                                                          ".eslintrc", ".git"),
+        -- enable snippet support
+        capabilities = capabilities,
+        -- map buffer local keybindings when the language server attaches
+        on_attach = M.on_attach
+    }
 end
 
 M.lspkind = function()

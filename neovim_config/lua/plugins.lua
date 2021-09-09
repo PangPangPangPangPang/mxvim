@@ -17,9 +17,7 @@ require('packer').startup({
     function(use)
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
-        use{
-            'lewis6991/impatient.nvim',
-        }
+        use {'lewis6991/impatient.nvim'}
 
         -- nightfly github-theme miramare vscode nord
         vim.g.current_theme = 'nord'
@@ -28,8 +26,7 @@ require('packer').startup({
             requires = {
                 {'projekt0n/github-nvim-theme'},
                 {'bluz71/vim-nightfly-guicolors'},
-                {'PangPangPangPangPang/miramare'},
-                {'shaunsingh/nord.nvim'},
+                {'PangPangPangPangPang/miramare'}, {'shaunsingh/nord.nvim'}
             },
             config = function()
                 require('colorscheme.' .. vim.g.current_theme).config();
@@ -38,9 +35,7 @@ require('packer').startup({
 
         use {
             'glepnir/galaxyline.nvim',
-            after = {
-                'vscode.nvim',
-            },
+            after = {'vscode.nvim'},
             branch = 'main',
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
             config = function() require('config._galaxyline') end
@@ -135,6 +130,13 @@ require('packer').startup({
                 config = function()
                     require("config._lsp_config").config()
                 end
+            }
+            use {
+                "jose-elias-alvarez/null-ls.nvim",
+                config = function()
+                    require("lsp.lsp_nullls").config();
+                end,
+                requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
             }
 
             -- use {
