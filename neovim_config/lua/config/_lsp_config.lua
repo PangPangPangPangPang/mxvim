@@ -130,7 +130,7 @@ M.set_keymap = function(client, bufnr)
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false})
+            autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
             " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
