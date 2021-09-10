@@ -39,7 +39,7 @@ end
 function M.close_common()
     local t = vim.fn.getbufinfo()
     for _, i in pairs(t) do
-        local list = {'qf', 'fugitive'}
+        local list = {'qf', 'fugitive', 'git'}
         for _, type in ipairs(list) do
             local filetype = vim.fn.getbufvar(i.bufnr, '&filetype')
             if type == filetype then
