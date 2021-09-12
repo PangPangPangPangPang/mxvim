@@ -179,8 +179,8 @@ M.make_config = function()
     capabilities.textDocument.completion.completionItem.resolveSupport = {
         properties = {'documentation', 'detail', 'additionalTextEdits'}
     }
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-    return {
+    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    local config = {
         root_dir = require("lspconfig/util").root_pattern("package.json",
                                                           ".eslintrc", ".git"),
         -- enable snippet support
@@ -188,6 +188,9 @@ M.make_config = function()
         -- map buffer local keybindings when the language server attaches
         on_attach = M.on_attach
     }
+    local coq = require('coq')
+    return coq.lsp_ensure_capabilities(config)
+    -- return config
 end
 
 M.lspkind = function()

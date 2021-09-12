@@ -143,8 +143,7 @@ require('packer').startup({
                 end,
                 requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
             }
-
-            -- use {
+-- use {
             --     'glepnir/lspsaga.nvim',
             --     config = function()
             --         require("config._lsp_saga").config()
@@ -152,16 +151,11 @@ require('packer').startup({
             -- }
             use {
                 "hrsh7th/nvim-cmp",
+                disable = true,
                 requires = {
                     "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
                     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
-                    "hrsh7th/cmp-buffer", "hrsh7th/cmp-vsnip"
-                },
-                config = function()
-                    require("config._nvim_cmp").config()
-                end
-            }
-            use {
+                    "hrsh7th/cmp-buffer", {
                 "hrsh7th/cmp-vsnip",
                 wants = "friendly-snippets",
                 requires = {
@@ -169,12 +163,18 @@ require('packer').startup({
                     "rafamadriz/friendly-snippets"
                 }
             }
-            -- use {
-            --     'ms-jpq/coq_nvim',
-            --     branch = 'coq',
-            --     config = function() require("_coq").config() end
-            -- } -- main one
-            -- use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
+                },
+                config = function()
+                    require("config._nvim_cmp").config()
+                end
+            }
+            use {
+                'ms-jpq/coq_nvim',
+                disable = false,
+                branch = 'coq',
+                setup = function() require("config._coq").config() end
+            } -- main one
+            use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
             -- use {
             --     "onsails/lspkind-nvim",
             --     event = "BufEnter",
