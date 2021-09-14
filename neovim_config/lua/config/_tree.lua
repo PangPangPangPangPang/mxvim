@@ -1,9 +1,11 @@
 local M = {}
-M.config = function ()
-    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+M.setup = function ()
     local map = require('utils').map
     map({'n', 'i'}, '<F1>', ":NvimTreeToggle<CR>", {silent = true})
     map({'n'}, '<leader>j', ":NvimTreeFindFile<CR>", {silent = true})
+end
+M.config = function ()
+    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
     local function generate_cb_string(callback_name)
         return string.format("lua require'nvim-tree'.on_keypress('%s')",
@@ -64,6 +66,8 @@ M.config = function ()
     vim.g.nvim_tree_follow_update_path = 1
     vim.g.nvim_tree_indent_markers = 1
     vim.g.nvim_tree_git_hl = 1
+
+    -- vim.g.nvim_tree_root_folder_modifier = ':t'
     -- vim.g.nvim_tree_highlight_opened_files = 1
     -- vim.g.nvim_tree_root_folder_modifier = '❤  '
     -- vim.g.nvim_tree_lsp_diagnostics = 1

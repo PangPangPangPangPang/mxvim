@@ -247,14 +247,18 @@ require('packer').startup({
         use {
             'lewis6991/gitsigns.nvim',
             requires = {'nvim-lua/plenary.nvim'},
-            cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
             config = function() require('config._gitsigns').setup() end
         }
         use {
             'kyazdani42/nvim-tree.lua',
             requires = 'kyazdani42/nvim-web-devicons',
-            config = function() require('config._tree').config() end
+            cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
+            config = function() require('config._tree').config() end,
+            setup = function ()
+                require('config._tree').setup()
+            end
         }
+
         use {'tpope/vim-fugitive'}
         use {'rbong/vim-flog'}
         use {'rhysd/git-messenger.vim'}
