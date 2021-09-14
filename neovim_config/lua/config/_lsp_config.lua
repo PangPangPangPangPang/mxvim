@@ -115,7 +115,7 @@ M.set_keymap = function(client, bufnr)
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<space>cp",
-                       "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+                       "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
     end
     if client.resolved_capabilities.document_range_formatting then
         buf_set_keymap("v", "=", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
@@ -179,7 +179,7 @@ M.make_config = function()
     capabilities.textDocument.completion.completionItem.resolveSupport = {
         properties = {'documentation', 'detail', 'additionalTextEdits'}
     }
-    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
     local config = {
         root_dir = require("lspconfig/util").root_pattern("package.json",
                                                           ".eslintrc", ".git"),
@@ -188,9 +188,9 @@ M.make_config = function()
         -- map buffer local keybindings when the language server attaches
         on_attach = M.on_attach
     }
-    local coq = require('coq')
-    return coq.lsp_ensure_capabilities(config)
-    -- return config
+    -- local coq = require('coq')
+    -- return coq.lsp_ensure_capabilities(config)
+    return config
 end
 
 M.lspkind = function()
@@ -204,7 +204,7 @@ M.signature = function()
         lspsignature.setup {
             bind = true,
             doc_lines = 2,
-            floating_window = true,
+            floating_window = false,
             fix_pos = false,
             hint_enable = true,
             hint_prefix = "🐼 ", -- Panda for parameter

@@ -20,7 +20,7 @@ require('packer').startup({
         use {'lewis6991/impatient.nvim'}
 
         -- nightfly github-theme miramare vscode nord
-        vim.g.current_theme = 'nord'
+        vim.g.current_theme = 'vscode'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
@@ -151,7 +151,7 @@ require('packer').startup({
             -- }
             use {
                 "hrsh7th/nvim-cmp",
-                disable = true,
+                disable = false,
                 requires = {
                     "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
                     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
@@ -170,7 +170,7 @@ require('packer').startup({
             }
             use {
                 'ms-jpq/coq_nvim',
-                disable = false,
+                disable = true,
                 branch = 'coq',
                 setup = function() require("config._coq").config() end
             } -- main one
