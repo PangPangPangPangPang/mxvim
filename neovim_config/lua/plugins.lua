@@ -30,6 +30,7 @@ require('packer').startup({
             },
             config = function()
                 require('colorscheme.' .. vim.g.current_theme).config();
+                require('config._tree').theme();
             end
         }
 
@@ -207,8 +208,6 @@ require('packer').startup({
 
         end
 
-        use {'machakann/vim-highlightedyank'}
-
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
         use {
@@ -254,7 +253,7 @@ require('packer').startup({
         use {
             'kyazdani42/nvim-tree.lua',
             requires = 'kyazdani42/nvim-web-devicons',
-            config = function() require('config._tree') end
+            config = function() require('config._tree').config() end
         }
         use {'tpope/vim-fugitive'}
         use {'rbong/vim-flog'}
