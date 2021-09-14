@@ -118,7 +118,7 @@ M.set_keymap = function(client, bufnr)
                        "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
     end
     if client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("v", "=", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
+        buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
                        opts)
     end
     -- buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
