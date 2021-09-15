@@ -169,6 +169,13 @@ dmap({'v'}, 'Y', '"+y')
 -- Set utf8 as standard encoding and en_US as the standard language
 o.encoding='utf8'
 
+-- Config netrw
+g.netrw_banner = 0
+g.netrw_liststyle = 3 -- tree view
+g.netrw_altv = 1 -- open splits to the right
+g.netrw_list_hide = vim.fn['netrw_gitignore#Hide']()
+g.netrw_list_hide = ',(^|ss)zs.S+'
+
 -- Use Unix as the standard file type
 o.ffs='unix,dos,mac'
 
