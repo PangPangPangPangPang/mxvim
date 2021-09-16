@@ -155,7 +155,7 @@ o.splitbelow = true
 o.switchbuf='useopen,usetab'
 o.showtabline=1
 
-o.guifont = 'MaxIosevka Nerd Font:h14'
+o.guifont = 'MaxIosevka Nerd Font:h16'
 
 dmap({'n', 'v'}, '<leader>q', ':lua require("utils").close_common()<cr>')
 ------------------------------

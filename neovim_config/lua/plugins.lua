@@ -244,6 +244,12 @@ require('packer').startup({
         g.smoothie_base_speed = 20
         use {
             'psliwka/vim-smoothie',
+            -- config = function ()
+            --     print(vim.fn.exists('g:neovide') == 1)
+            --     if vim.fn.exists('g:neovide') == 1 then
+            --         vim.g.smoothie_enabled = false
+            --     end
+            -- end
         }
 
         use {
