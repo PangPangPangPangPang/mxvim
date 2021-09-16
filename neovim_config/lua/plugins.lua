@@ -242,7 +242,9 @@ require('packer').startup({
         g.CoolTotalMatches = 1
 
         g.smoothie_base_speed = 20
-        use {'psliwka/vim-smoothie'}
+        use {
+            'psliwka/vim-smoothie',
+        }
 
         use {
             'lewis6991/gitsigns.nvim',
