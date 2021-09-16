@@ -213,3 +213,8 @@ cmd([[
         exec ('source '. pfile)
     endif
 ]])
+if fn.exists('g:neovide') == 1 then
+    g.neovide_cursor_trail_size = 0.1
+    g.neovide_cursor_vfx_mode = "railgun"
+    -- g.smoothie_enabled = false
+end
