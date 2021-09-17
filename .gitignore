@@ -1,5 +1,6 @@
 vimrc.additional.bundle
 private.vim
+private.lua
 tags
 .DS_Store
 path/
