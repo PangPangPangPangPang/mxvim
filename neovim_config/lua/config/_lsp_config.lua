@@ -106,9 +106,9 @@ M.set_keymap = function(client, bufnr)
                    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
                    opts)
     buf_set_keymap('n', '<space>c[',
-                   '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+                   '<cmd>lua vim.lsp.diagnostic.goto_prev({enable_popup=false})<CR>', opts)
     buf_set_keymap('n', '<space>c]',
-                   '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+                   '<cmd>lua vim.lsp.diagnostic.goto_next({enable_popup=false})<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', '<space>cn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
