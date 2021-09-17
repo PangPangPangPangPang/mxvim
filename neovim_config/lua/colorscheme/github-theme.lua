@@ -2,7 +2,8 @@ local M = {}
 M.config = function()
     require(vim.g.current_theme).setup({
         theme_style = 'dark',
-        comment_style = 'italic'
+        comment_style = 'italic',
+        sidebars = {"qf", "terminal", "packer", "fugitive"},
     })
 end
 
