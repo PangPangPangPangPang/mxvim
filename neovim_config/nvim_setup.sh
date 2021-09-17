@@ -4,33 +4,23 @@
 #brew install neovim/neovim/neovim
 #pip install neovim
 
-if [ -f ~/.config/nvim/init.vim ]; then
-    rm -rf  ~/.config/nvim/init.vim
-fi
-for var in $*
-do
-    if [ "$var" = "-r" ];  then
-        rm -rf ~/.config/nvim/
-        rm -rf ~/.config/coc/
-        curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
-done
+dst_dir="$HOME/.config/nvim"
+rm -rf ${dst_dir}
+mkdir -p ${dst_dir} 2>/dev/null
+# rm -rf ~/.config/coc/
 
-cp -r ./ ~/.config/nvim/
-
-if [ -f ~/.config/nvim/init.lua ]; then
-    rm -rf  ~/.config/nvim/init.lua
+input_db="$(pwd)/pinyin.txt"
+if [ ! -f ${input_db} ];then
+    curl https://raw.githubusercontent.com/PangPangPangPangPang/ZFVimIM_pinyin/master/misc/pinyin.txt >> ${input_db}
 fi
 
-for var in $*
-do
-    if [ "$var" = "--no-plugin" ];  then
-        exit
-    fi
-done
-nvim -E -s <<-EOF
-:source ~/.config/nvim/init.vim
-:qa
-EOF
-#nvim +PlugCompile +qall
+ln -s ${input_db} ${dst_dir}
+
+ln -s "$(pwd)/init.lua" "${dst_dir}/init.lua"
+ln -s "$(pwd)/lua" "${dst_dir}/lua"
+ln -s "$(pwd)/private.vim" ${dst_dir}
+ln -s "$(pwd)/ginit.vim" ${dst_dir}
+ln -s "$(pwd)/viml" "${dst_dir}/viml"
+ln -s "$(pwd)/coc-settings.json" ${dst_dir}
+
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

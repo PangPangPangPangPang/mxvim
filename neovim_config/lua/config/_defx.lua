@@ -1,7 +1,7 @@
 local M = {}
 M.config = function()
     local api = vim.api
-    api.nvim_command('source ~/.config/nvim/lazy_plugin_config/defx.vim')
+    api.nvim_command('source ~/.config/nvim/viml/defx.vim')
 end
 
 M.map = function()
