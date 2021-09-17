@@ -155,8 +155,6 @@ o.splitbelow = true
 o.switchbuf='useopen,usetab'
 o.showtabline=1
 
-o.guifont = 'MaxIosevka Nerd Font:h14'
-
 dmap({'n', 'v'}, '<leader>q', ':lua require("utils").close_common()<cr>')
 ------------------------------
 -- => Status line
@@ -215,5 +213,10 @@ pcall(require, 'private')
 if fn.exists('g:neovide') == 1 then
     g.neovide_cursor_trail_size = 0.1
     g.neovide_cursor_vfx_mode = "railgun"
+    if require('utils').system() == 'Linux' then
+        o.guifont = 'MaxIosevka Nerd Font:h10'
+    else
+        o.guifont = 'MaxIosevka Nerd Font:h14'
+    end
     -- g.smoothie_enabled = false
 end

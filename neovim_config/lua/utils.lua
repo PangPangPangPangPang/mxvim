@@ -80,4 +80,20 @@ M.is_module_available = function(name)
   end
 end
 
+M.systemName = nil
+M.system = function ()
+    if M.systemName ~= nil then
+       return M.systemName;
+    end
+    BinaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
+    if BinaryFormat == "dll" then
+        M.systemName = "Windows"
+    elseif BinaryFormat == "so" then
+        M.systemName = "Linux"
+    elseif BinaryFormat == "dylib" then
+        M.systemName = "MacOS"
+    end
+    return M.systemName
+end
+
 return M
