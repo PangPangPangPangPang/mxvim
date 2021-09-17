@@ -127,11 +127,11 @@ M.set_keymap = function(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec(string.format([[
             augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
-            " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
+                " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
             hi! default link LspDiagnosticsVirtualTextError Comment
