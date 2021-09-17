@@ -208,11 +208,10 @@ cmd([[
         autocmd BufNewFile,BufRead *.ttss   set filetype=css
         autocmd BufNewFile,BufRead *.ttml   set filetype=html
     augroup END
-    let pfile = '~/.config/nvim/private.vim'
-    if !empty(glob(pfile))
-        exec ('source '. pfile)
-    endif
 ]])
+
+pcall(require, 'private')
+
 if fn.exists('g:neovide') == 1 then
     g.neovide_cursor_trail_size = 0.1
     g.neovide_cursor_vfx_mode = "railgun"
