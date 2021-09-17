@@ -20,7 +20,7 @@ require('packer').startup({
         use {'lewis6991/impatient.nvim'}
 
         -- nightfly github-theme miramare vscode nord
-        vim.g.current_theme = 'vscode'
+        vim.g.current_theme = 'github-theme'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
@@ -98,10 +98,11 @@ require('packer').startup({
         use {'tpope/vim-surround'}
 
         use {'PangPangPangPangPang/visual-selection-vim'}
-        map('v', '*', ":<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>", opts)
-        map('v', '#', ":<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>", opts)
-        map('v', '<leader>r',
-            ":call visual#replace('%s/foo//g')<CR><left><left>", {silent = true})
+            cmd([[
+            vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
+            vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
+            vnoremap <leader>r :call visual#replace('%s/foo//g')
+            ]])
 
         use {
             'mhinz/vim-grepper',
@@ -275,7 +276,6 @@ require('packer').startup({
             'justinmk/vim-sneak',
             config = function() require('config._sneak').setup() end
         }
-
         use {'kshenoy/vim-signature'}
 
         use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}

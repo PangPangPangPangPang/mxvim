@@ -1,8 +1,8 @@
 local M = {}
 M.config = function()
     require(vim.g.current_theme).setup({
-        themeStyle = 'dark',
-        commentStyle = 'italic'
+        theme_style = 'dark',
+        comment_style = 'italic'
     })
 end
 
