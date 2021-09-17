@@ -19,8 +19,6 @@ require('packer').startup({
         use {'wbthomason/packer.nvim', opt = true}
         use {'lewis6991/impatient.nvim'}
 
-        -- nightfly github-theme miramare vscode nord
-        vim.g.current_theme = 'github-theme'
         use {
             'Mofiqul/vscode.nvim',
             requires = {
@@ -59,7 +57,7 @@ require('packer').startup({
 
         use {'mhinz/vim-startify'}
 
-        use {'kevinhwang91/nvim-bqf'}
+        use {'kevinhwang91/nvim-bqf', ft = 'qf', branch = 'dev'}
 
         -- commenter
         use {'tpope/vim-commentary'}
