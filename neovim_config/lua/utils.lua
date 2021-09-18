@@ -85,15 +85,25 @@ M.system = function ()
     if M.systemName ~= nil then
        return M.systemName;
     end
-    BinaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
-    if BinaryFormat == "dll" then
-        M.systemName = "Windows"
-    elseif BinaryFormat == "so" then
-        M.systemName = "Linux"
-    elseif BinaryFormat == "dylib" then
+    if vim.fn.has('macunix') then
         M.systemName = "MacOS"
+    elseif vim.fn.has('win32') then
+        M.systemName = "Windows"
+    elseif vim.fn.has('macunix') then
+        M.systemName = "Linux"
     end
     return M.systemName
+end
+
+function os.capture(cmd, raw)
+  local f = assert(io.popen(cmd, 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+  if raw then return s end
+  s = string.gsub(s, '^%s+', '')
+  s = string.gsub(s, '%s+$', '')
+  s = string.gsub(s, '[\n\r]+', ' ')
+  return s
 end
 
 return M
