@@ -85,13 +85,14 @@ M.system = function ()
     if M.systemName ~= nil then
        return M.systemName;
     end
-    if vim.fn.has('macunix') then
+    if vim.fn.has('macunix') == 1 then
         M.systemName = "MacOS"
-    elseif vim.fn.has('win32') then
+    elseif vim.fn.has('win32') == 1 then
         M.systemName = "Windows"
-    elseif vim.fn.has('macunix') then
+    elseif vim.fn.has('unix') == 1 then
         M.systemName = "Linux"
     end
+    print(M.systemName)
     return M.systemName
 end
 

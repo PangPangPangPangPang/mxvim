@@ -1,5 +1,5 @@
 -- nightfly github-theme miramare vscode nord
-vim.g.current_theme = 'vscode'
+vim.g.current_theme = 'nord'
 
 require('basic')
 require('plugins')
