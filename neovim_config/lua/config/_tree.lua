@@ -82,6 +82,7 @@ M.theme = function ()
     local empty_folder_foldername = string.format('hi! NvimTreeEmptyFolderName guifg=%s gui=bold', colors.blue);
     vim.cmd(string.format([[
         augroup NvimTree
+            hi! link NvimTreeIndentMarker Comment
             %s
             %s
             %s
