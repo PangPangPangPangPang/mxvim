@@ -8,8 +8,8 @@ M.setup = function ()
         map T <Plug>Sneak_T
         map cl <Plug>Sneak_s
         map cc <Plug>Sneak_S
-        highlight Sneak guifg=%s guibg=%s ctermfg=black ctermbg=red
-        highlight SneakScope guifg=%s guibg=%s ctermfg=red ctermbg=yellow
+        autocmd User SneakEnter highlight Sneak guifg=%s guibg=%s ctermfg=black ctermbg=red
+        autocmd User SneakEnter highlight SneakScope guifg=%s guibg=%s ctermfg=red ctermbg=yellow
     ]], colors.bg, colors.red, colors.red, colors.yellow), false)
 end
 return M
