@@ -33,7 +33,7 @@ require('packer').startup({
         }
 
         use {
-            'glepnir/galaxyline.nvim',
+            'NTBBloodbath/galaxyline.nvim',
             after = {'vscode.nvim'},
             branch = 'main',
             requires = {'kyazdani42/nvim-web-devicons', opt = true},

@@ -1,6 +1,6 @@
 local gl = require('galaxyline')
 local gls = gl.section
--- local extension = require('galaxyline.provider_extensions')
+-- local extension = require('galaxyline.providers.extensions')
 
 gl.short_line_list = {
     'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
@@ -135,7 +135,7 @@ gls.left[3] = {
         provider = 'FileIcon',
         condition = buffer_not_empty,
         highlight = {
-            require('galaxyline.provider_fileinfo').get_file_icon_color,
+            require('galaxyline.providers.fileinfo').get_file_icon_color,
             colors.line_bg
         }
     }
@@ -245,14 +245,14 @@ gls.mid[4] = {
 gls.right[1] = {
     GitIcon = {
         provider = function() return '    ' end,
-        condition = require('galaxyline.provider_vcs').check_git_workspace,
+        condition = require('galaxyline.providers.vcs').check_git_workspace,
         highlight = {colors.orange, colors.line_bg}
     }
 }
 gls.right[2] = {
     GitBranch = {
         provider = 'GitBranch',
-        condition = require('galaxyline.provider_vcs').check_git_workspace,
+        condition = require('galaxyline.providers.vcs').check_git_workspace,
         highlight = {colors.orange, colors.line_bg, 'bold'}
     }
 }
@@ -299,7 +299,7 @@ gls.right[7] = {
 }
 
 local function file_name()
-    local fileinfo = require('galaxyline.provider_fileinfo')
+    local fileinfo = require('galaxyline.providers.fileinfo')
     local name = fileinfo.get_current_file_name()
     if string.find(name, 'NvimTree', 1) ~= nil then
         return 'FileTree';
