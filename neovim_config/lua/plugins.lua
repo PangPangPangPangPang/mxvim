@@ -55,8 +55,6 @@ require('packer').startup({
         -- Readline style insertion
         use {'tpope/vim-rsi'}
 
-        use {'mhinz/vim-startify'}
-
         use {'kevinhwang91/nvim-bqf', ft = 'qf', branch = 'dev'}
 
         -- commenter
