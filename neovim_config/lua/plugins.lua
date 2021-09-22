@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local g = vim.g
 
 local map = require('utils').map
-local opts = {noremap = true, silent = true}
 pcall(require, 'impatient')
 
 -- Automatically install packer.nvim
@@ -77,28 +76,19 @@ require('packer').startup({
         end
 
         use {
-            'jiangmiao/auto-pairs',
-            config = function() require('config._autopairs').setup() end
-        }
-
-        use {
             'lukas-reineke/indent-blankline.nvim',
             event = "VimEnter",
             config = function() require('config._indentline').setup() end
         }
-        -- use {
-        --     'Yggdroot/indentLine',
-        --     config = function() require('config._indentline').setupIndent() end
-        -- }
 
         use {'tpope/vim-surround'}
 
         use {'PangPangPangPangPang/visual-selection-vim'}
-            cmd([[
-            vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
-            vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
-            vnoremap <leader>r :call visual#replace('%s/foo//g')
-            ]])
+        cmd([[
+        vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
+        vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
+        vnoremap <leader>r :call visual#replace('%s/foo//g')
+        ]])
 
         use {
             'mhinz/vim-grepper',
@@ -124,7 +114,6 @@ require('packer').startup({
                 setup = function() require('config._neoformat').config() end
             }
 
-            -- use {'liuchengxu/vista.vim', cmd = {'Vista'}}
         else
             -- nvim builtin lsp
             use {
@@ -141,12 +130,6 @@ require('packer').startup({
                 end,
                 requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
             }
--- use {
-            --     'glepnir/lspsaga.nvim',
-            --     config = function()
-            --         require("config._lsp_saga").config()
-            --     end
-            -- }
             use {
                 "hrsh7th/nvim-cmp",
                 disable = false,
@@ -154,16 +137,24 @@ require('packer').startup({
                     "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
                     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
                     "hrsh7th/cmp-buffer", {
-                "hrsh7th/cmp-vsnip",
-                wants = "friendly-snippets",
-                requires = {
-                    'hrsh7th/vim-vsnip-integ', "hrsh7th/vim-vsnip",
-                    "rafamadriz/friendly-snippets"
-                }
-            }
+                        "hrsh7th/cmp-vsnip",
+                        wants = "friendly-snippets",
+                        requires = {
+                            'hrsh7th/vim-vsnip-integ', "hrsh7th/vim-vsnip",
+                            "rafamadriz/friendly-snippets"
+                        }
+                    }
                 },
                 config = function()
                     require("config._nvim_cmp").config()
+                end
+            }
+
+            use {
+                "windwp/nvim-autopairs",
+                after = "nvim-cmp",
+                config = function ()
+                    require("config._autopairs").setup()
                 end
             }
             use {
@@ -173,14 +164,6 @@ require('packer').startup({
                 setup = function() require("config._coq").config() end
             } -- main one
             use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
-            -- use {
-            --     "onsails/lspkind-nvim",
-            --     event = "BufEnter",
-            --     config = function()
-            --         -- require("lsp_config").lspkind()
-            --     end
-            -- }
-
             use {
                 "ray-x/lsp_signature.nvim",
                 after = "nvim-lspconfig",
@@ -241,12 +224,6 @@ require('packer').startup({
         g.smoothie_base_speed = 20
         use {
             'psliwka/vim-smoothie',
-            -- config = function ()
-            --     print(vim.fn.exists('g:neovide') == 1)
-            --     if vim.fn.exists('g:neovide') == 1 then
-            --         vim.g.smoothie_enabled = false
-            --     end
-            -- end
         }
 
         use {
@@ -257,7 +234,7 @@ require('packer').startup({
         use {
             'kyazdani42/nvim-tree.lua',
             requires = 'kyazdani42/nvim-web-devicons',
-            -- cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
+            cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
             config = function() require('config._tree').config() end,
             setup = function ()
                 require('config._tree').setup()
@@ -291,17 +268,6 @@ require('packer').startup({
         use {'kana/vim-textobj-function'}
         use {'kana/vim-textobj-indent'}
         use {'kana/vim-textobj-line'}
-
-        -- use {
-        --     'Shougo/defx.nvim',
-        --     run = ':UpdateRemotePlugins',
-        --     requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
-        --     config = function()
-        --         require('config/defx').config()
-        --         require('config/defx').map()
-        --     end
-        -- }
-
     end,
     config = {
         display = {
