@@ -232,8 +232,8 @@ require('packer').startup({
             end
         }
 
-        use {'romainl/vim-cool'}
         g.CoolTotalMatches = 1
+        use {'romainl/vim-cool'}
 
         g.smoothie_base_speed = 20
         use {
