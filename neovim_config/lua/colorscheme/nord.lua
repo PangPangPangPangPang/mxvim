@@ -1,7 +1,6 @@
-local cmd = vim.cmd
 local M = {}
 M.setup = function()
-    cmd([[ PackerLoad nord.nvim ]])
+    vim.cmd([[ PackerLoad nord.nvim ]])
 end
 M.config = function()
     vim.g.nord_contrast = true

@@ -1,4 +1,7 @@
 local M = {}
+M.setup = function()
+    vim.cmd([[ PackerLoad github-nvim-theme ]])
+end
 M.config = function()
     require(vim.g.current_theme).setup({
         theme_style = 'dark',

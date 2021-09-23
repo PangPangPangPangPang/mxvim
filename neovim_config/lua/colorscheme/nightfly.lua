@@ -1,4 +1,7 @@
 local M = {}
+M.setup = function()
+    vim.cmd([[ PackerLoad vim-nightfly-guicolors]])
+end
 M.config = function()
     vim.cmd('colorscheme ' .. vim.g.current_theme)
 end
