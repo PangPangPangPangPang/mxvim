@@ -18,6 +18,9 @@ require('packer').startup({
         use {'wbthomason/packer.nvim', opt = true}
         use {'lewis6991/impatient.nvim'}
 
+        use {'nvim-lua/popup.nvim'}
+        use {'nvim-lua/plenary.nvim'}
+
         use {
             require('theme').theme('Mofiqul/vscode.nvim'),
             require('theme').theme('projekt0n/github-nvim-theme'),
@@ -58,8 +61,7 @@ require('packer').startup({
             end
         }
 
-        vim.api.nvim_set_var('use_treesitter', true);
-        if vim.api.nvim_get_var('use_treesitter') then
+        if g.use_treesitter then
             use {
                 'nvim-treesitter/nvim-treesitter',
                 run = ':TSUpdate',
@@ -95,8 +97,7 @@ require('packer').startup({
             setup = function() require('config._grep') end
         }
 
-        vim.api.nvim_set_var('use_coc', false);
-        if vim.api.nvim_get_var('use_coc') then
+        if g.use_coc == true then
             use {
                 'neoclide/coc.nvim',
                 branch = 'release',
@@ -195,21 +196,17 @@ require('packer').startup({
                     require('config._outline').config();
                 end
             }
-
         end
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
-
-        use {'nvim-lua/popup.nvim'}
-        use {'nvim-lua/plenary.nvim'}
 
         use {
             'nvim-telescope/telescope.nvim',
             requires = {
                 {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
             },
-            config = function() require('config._telescope').config() end,
             cmd = {'Telescope'},
+            config = function() require('config._telescope').config() end,
             setup = function() require('config._telescope').map() end
         }
 
