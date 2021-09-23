@@ -28,10 +28,8 @@ require('packer').startup({
 
         use {
             'NTBBloodbath/galaxyline.nvim',
-            after = {'vscode.nvim'},
             branch = 'main',
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
-            config = function() require('config._galaxyline') end
         }
         use {
             "ZSaberLv0/ZFVimIM",

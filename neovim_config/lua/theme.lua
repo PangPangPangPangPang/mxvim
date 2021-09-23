@@ -9,6 +9,7 @@ M.theme = function (name)
         config = function()
             require('colorscheme.' .. vim.g.current_theme).config();
             require('config._tree').theme();
+            require('config._galaxyline');
         end
     }
 end
