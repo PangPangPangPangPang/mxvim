@@ -4,6 +4,13 @@ M.setup = function ()
     vim.cmd([[
         let g:ZFVimIM_symbolMap = {'`' : ['·'],'!' : ['！'],'$' : ['￥'],'^' : ['……'],'-' : [''],'_' : ['——'],'(' : ['（'],')' : ['）'],'[' : ['【'],']' : ['】'],'<' : ['《'],'>' : ['》'],'\' : ['、'],'/' : ['、'],';' : ['；'],':' : ['：'],',' : ['，'],'.' : ['。'],'?' : ['？'],"'" : ['‘', '’'],'"' : ['“', '”'],}
     ]])
+    if vim.o.filetype == 'markdown' then
+        vim.cmd([[ PackerLoad ZFVimIM ]])
+    else
+        vim.defer_fn(function ()
+            vim.cmd([[ PackerLoad ZFVimIM ]])
+        end, 3000)
+    end
 end
 M.config = function ()
     local map = require('utils').map

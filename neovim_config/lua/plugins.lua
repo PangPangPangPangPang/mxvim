@@ -38,10 +38,9 @@ require('packer').startup({
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
             config = function() require('config._galaxyline') end
         }
-
         use {
             "ZSaberLv0/ZFVimIM",
-            event = "VimEnter",
+            opt = true,
             requires = {
                 "ZSaberLv0/ZFVimJob", "ZSaberLv0/ZFVimGitUtil",
                 "PangPangPangPangPang/ZFVimIM_pinyin",
@@ -264,10 +263,18 @@ require('packer').startup({
         g.quickui_border_style = 2
         g.quickui_color_scheme = 'system'
 
-        use {'kana/vim-textobj-user'}
-        use {'kana/vim-textobj-function'}
-        use {'kana/vim-textobj-indent'}
-        use {'kana/vim-textobj-line'}
+        use {
+            'kana/vim-textobj-user',
+            opt = true,
+            requires = {
+                {'kana/vim-textobj-function', opt = true},
+                {'kana/vim-textobj-indent', opt = true},
+                {'kana/vim-textobj-line', opt = true}
+            },
+            setup = function()
+                -- require("config._other").textobj_setup()
+            end
+        }
     end,
     config = {
         display = {
