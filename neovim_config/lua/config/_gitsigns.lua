@@ -1,5 +1,10 @@
 local M = {}
 M.setup = function()
+    vim.defer_fn(function ()
+        vim.cmd([[ PackerLoad gitsigns.nvim ]])
+    end, 1000)
+end
+M.config = function()
     require('gitsigns').setup {
         signs = {
             add = {

@@ -1,3 +1,4 @@
+---@diagnostic disable: lowercase-global, undefined-global
 local M = {}
 M.setup = function ()
     vim.g.ZFVimIM_keymap = 0
@@ -6,18 +7,22 @@ M.setup = function ()
     ]])
     if vim.o.filetype == 'markdown' then
         vim.cmd([[ PackerLoad ZFVimIM ]])
-    else
-        vim.defer_fn(function ()
-            vim.cmd([[ PackerLoad ZFVimIM ]])
-        end, 3000)
     end
+    local map = require('utils').map
+    local opts = {noremap = true, silent = true}
+    map('i', ';;', "<C-o>:lua toggle_zfvimim()<cr>", opts)
+end
+function toggle_zfvimim()
+    if packer_plugins["ZFVimIM"] and packer_plugins["ZFVimIM"].loaded then
+    else
+        vim.cmd([[ PackerLoad ZFVimIM ]])
+    end
+    vim.fn.ZFVimIME_keymap_toggle_i();
 end
 M.config = function ()
-    local map = require('utils').map
-    local opts = {noremap = true, silent = true, expr = true}
-    map('i', ';;', 'ZFVimIME_keymap_toggle_i()', opts)
     M.setLocalDB();
 end
+
 
 M.setLocalDB = function ()
     local fn = vim.fn

@@ -105,25 +105,33 @@ require('packer').startup({
                 cmd = 'Neoformat',
                 setup = function() require('config._neoformat').config() end
             }
-
         else
             -- nvim builtin lsp
             use {
                 "neovim/nvim-lspconfig",
+                opt = true,
                 requires = {'kabouzeid/nvim-lspinstall'},
+                setup = function()
+                    require("config._lsp_config").setup()
+                end,
                 config = function()
                     require("config._lsp_config").config()
                 end
             }
             use {
                 "jose-elias-alvarez/null-ls.nvim",
+                opt = true,
+                requires = {"neovim/nvim-lspconfig"},
+                setup = function()
+                    require("lsp.lsp_nullls").setup();
+                end,
                 config = function()
                     require("lsp.lsp_nullls").config();
-                end,
-                requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+                end
             }
             use {
                 "hrsh7th/nvim-cmp",
+                opt = true,
                 disable = false,
                 requires = {
                     "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
@@ -137,6 +145,9 @@ require('packer').startup({
                         }
                     }
                 },
+                setup = function()
+                    require("config._nvim_cmp").setup()
+                end,
                 config = function()
                     require("config._nvim_cmp").config()
                 end
@@ -182,10 +193,12 @@ require('packer').startup({
 
         use {'tweekmonster/startuptime.vim', cmd = {'StartupTime'}}
 
+        use {'nvim-lua/popup.nvim'}
+        use {'nvim-lua/plenary.nvim'}
+
         use {
             'nvim-telescope/telescope.nvim',
             requires = {
-                'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim',
                 {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
             },
             config = function() require('config._telescope').config() end,
@@ -220,8 +233,9 @@ require('packer').startup({
 
         use {
             'lewis6991/gitsigns.nvim',
-            requires = {'nvim-lua/plenary.nvim'},
-            config = function() require('config._gitsigns').setup() end
+            opt = true,
+            setup = function() require('config._gitsigns').setup() end,
+            config = function() require('config._gitsigns').config() end
         }
         use {
             'kyazdani42/nvim-tree.lua',

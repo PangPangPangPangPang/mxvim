@@ -1,5 +1,11 @@
 local M = {}
 
+M.setup = function()
+    vim.defer_fn(function ()
+        vim.cmd([[ PackerLoad nvim-cmp]])
+    end, 1000)
+end
+
 M.config = function()
     local cmp = require('cmp')
     local lspkind = require('lspkind')

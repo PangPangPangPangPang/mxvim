@@ -1,6 +1,11 @@
 local M = {}
 local colors = require('colorscheme.' .. vim.g.current_theme).colors()
 
+M.setup = function()
+    vim.defer_fn(function ()
+        vim.cmd([[ PackerLoad nvim-lspconfig]])
+    end, 1000)
+end
 M.config = function()
     local lspconfig = require('lspconfig')
     local lspinstall = require('lspinstall')
