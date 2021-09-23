@@ -80,6 +80,13 @@ M.is_module_available = function(name)
   end
 end
 
+M.safe_require = function(name, func)
+    local present, plug = pcall(require, name)
+    if present then
+        func(plug)
+    end
+end
+
 M.systemName = nil
 M.system = function ()
     if M.systemName ~= nil then
