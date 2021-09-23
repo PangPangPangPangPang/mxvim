@@ -44,10 +44,10 @@ M.config = function()
             format = function(entry, vim_item)
                 vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
                 vim_item.menu = ({
-                    buffer = "[Buffer]",
                     nvim_lsp = "[LSP]",
                     vsnip = "[Snip]",
                     nvim_lua = "[Lua]",
+                    buffer = "[Buffer]",
                     path = "[Path]",
                 })[entry.source.name]
                 return vim_item
