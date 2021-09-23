@@ -272,7 +272,7 @@ require('packer').startup({
                 {'kana/vim-textobj-line', opt = true}
             },
             setup = function()
-                -- require("config._other").textobj_setup()
+                require("config._other").textobj_setup()
             end
         }
     end,
