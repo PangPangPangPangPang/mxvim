@@ -173,8 +173,6 @@ o.encoding='utf8'
 g.netrw_banner = 0
 g.netrw_liststyle = 3 -- tree view
 g.netrw_altv = 1 -- open splits to the right
-g.netrw_list_hide = vim.fn['netrw_gitignore#Hide']()
-g.netrw_list_hide = ',(^|ss)zs.S+'
 
 -- Use Unix as the standard file type
 o.ffs='unix,dos,mac'
