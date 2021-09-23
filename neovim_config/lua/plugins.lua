@@ -49,7 +49,14 @@ require('packer').startup({
         use {'kevinhwang91/nvim-bqf', ft = 'qf', branch = 'dev'}
 
         -- commenter
-        use {'tpope/vim-commentary'}
+        use {
+            'tpope/vim-commentary',
+            config = function ()
+                vim.g.kommentary_create_default_mappings = false
+                vim.api.nvim_set_keymap("n", "<leader>/", "gcc", {})
+                vim.api.nvim_set_keymap("v", "<leader>/", "gc", {})
+            end
+        }
 
         vim.api.nvim_set_var('use_treesitter', true);
         if vim.api.nvim_get_var('use_treesitter') then
