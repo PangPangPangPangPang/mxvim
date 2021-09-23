@@ -259,21 +259,33 @@ require('packer').startup({
             end
         }
 
-        use {'tpope/vim-fugitive'}
+        use {
+            'tpope/vim-fugitive',
+            opt = true;
+            setup = function() require('config._fugitive').setup() end,
+        }
         use {'rbong/vim-flog'}
         use {'rhysd/git-messenger.vim'}
 
         use {
             'justinmk/vim-sneak',
+            opt = true;
             config = function() require('config._sneak').setup() end
         }
-        use {'kshenoy/vim-signature'}
+        use {
+            'kshenoy/vim-signature',
+            opt = true;
+            require("config._other").signature_setup()
+        }
 
         use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}
         map('n', '<F6>', ':MundoToggle<CR>', {silent = true})
 
         -- html
-        use {'mattn/emmet-vim'}
+        use {
+            'mattn/emmet-vim',
+            ft = {'css', 'javascriptreact', 'html', 'typescriptreact'}
+        }
         g.user_emmet_expandabbr_key = '<C-y><tab>'
         g.user_emmet_prev_key = '<C-y>p'
 
