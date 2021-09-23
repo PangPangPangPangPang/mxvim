@@ -6,12 +6,12 @@ local map = require('utils').map
 pcall(require, 'impatient')
 
 -- Automatically install packer.nvim
-local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd 'packadd packer.nvim'
 end
 
-cmd [[packadd packer.nvim]]
 require('packer').startup({
     function(use)
         -- Packer itself
@@ -19,16 +19,11 @@ require('packer').startup({
         use {'lewis6991/impatient.nvim'}
 
         use {
-            'Mofiqul/vscode.nvim',
-            requires = {
-                {'projekt0n/github-nvim-theme'},
-                {'bluz71/vim-nightfly-guicolors'},
-                {'PangPangPangPangPang/miramare'}, {'shaunsingh/nord.nvim'}
-            },
-            config = function()
-                require('colorscheme.' .. vim.g.current_theme).config();
-                require('config._tree').theme();
-            end
+            require('theme').theme('Mofiqul/vscode.nvim'),
+            require('theme').theme('projekt0n/github-nvim-theme'),
+            require('theme').theme('bluz71/vim-nightfly-guicolors'),
+            require('theme').theme('PangPangPangPangPang/miramare'),
+            require('theme').theme('shaunsingh/nord.nvim'),
         }
 
         use {
