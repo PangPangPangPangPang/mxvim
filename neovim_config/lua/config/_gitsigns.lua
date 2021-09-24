@@ -66,7 +66,7 @@ M.config = function()
             ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
             ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
         },
-        watch_index = {interval = 1000, follow_files = true},
+        watch_gitdir = {interval = 1000, follow_files = true},
         current_line_blame_opts = {delay = 1000},
         current_line_blame = false,
         sign_priority = 6,
