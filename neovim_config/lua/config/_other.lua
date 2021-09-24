@@ -6,7 +6,7 @@ M.textobj_setup = function ()
 end
 M.signature_setup = function ()
     vim.defer_fn(function ()
-        vim.cmd([[ PackerLoad vim-textobj-user ]])
+        vim.cmd([[ PackerLoad vim-signature ]])
     end, 200)
 end
 return M;

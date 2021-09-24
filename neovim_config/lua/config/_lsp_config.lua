@@ -5,16 +5,17 @@ M.setup = function()
     vim.defer_fn(function ()
         vim.cmd([[ 
             PackerLoad nvim-lspinstall
+            PackerLoad lsp_signature.nvim
             PackerLoad nvim-lspconfig
         ]])
     end, 1000)
 end
 M.config = function()
-    local lspconfig = require('lspconfig')
     local lspinstall = require('lspinstall')
+    local lspconfig = require('lspconfig')
+
     local function setup_servers()
         lspinstall.setup()
-
         -- get all installed servers
         local servers = require'lspinstall'.installed_servers()
         -- ... and add manually installed servers
@@ -59,7 +60,7 @@ M.set_signature = function(bufnr)
         handler_opts = {border = "single"}
     }, bufnr)
     for type, icon in pairs(signs) do
-        local hl = "LspDiagnosticsSign" .. type
+        local hl = "DiagnosticsSign" .. type
         vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
     end
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -142,20 +143,20 @@ M.set_keymap = function(client, bufnr)
                 " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
-            hi! default link LspDiagnosticsVirtualTextError Comment
-            hi! default link LspDiagnosticsVirtualTextHint Comment
-            hi! default link LspDiagnosticsVirtualTextInformation Comment
-            hi! default link LspDiagnosticsVirtualTextWarning Comment
+            hi! default link DiagnosticsVirtualTextError Comment
+            hi! default link DiagnosticsVirtualTextHint Comment
+            hi! default link DiagnosticsVirtualTextInformation Comment
+            hi! default link DiagnosticsVirtualTextWarning Comment
 
-            hi! LspDiagnosticsDefaultInformation guifg=%s
-            hi! LspDiagnosticsUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! LspDiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! LspDiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! LspDiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! LspDiagnosticsSignError gui=none guifg=%s
-            hi! LspDiagnosticsSignHint gui=none guifg=%s
-            hi! LspDiagnosticsSignWarning gui=none guifg=%s
-            hi! LspDiagnosticsSignInformation gui=none guifg=%s
+            hi! DiagnosticsDefaultInformation guifg=%s
+            hi! DiagnosticsUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticsSignError gui=none guifg=%s
+            hi! DiagnosticsSignHint gui=none guifg=%s
+            hi! DiagnosticsSignWarning gui=none guifg=%s
+            hi! DiagnosticsSignInformation gui=none guifg=%s
             highlight! link LspReference %s
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
@@ -165,15 +166,13 @@ M.set_keymap = function(client, bufnr)
                                         colors.blue, colors.highlight ~= nil and
                                             colors.highlight or "Visual"), false)
     end
-    vim.lsp.handlers["textDocument/publishDiagnostics"] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            -- Enable underline, use default values
-            underline = true,
-            -- Enable virtual text, override spacing to 4
-            virtual_text = {spacing = 4},
-            -- Disable a feature
-            update_in_insert = false
-        })
+    -- vim.lsp.handlers['textDocument/publishDiagnostics'] =
+    --     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    --         virtual_text = true,
+    --         signs = true,
+    --         underline = true,
+    --         update_in_insert = false
+    --     })
 end
 
 M.on_attach = function(client, bufnr)

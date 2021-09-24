@@ -177,7 +177,7 @@ require('packer').startup({
             use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
             use {
                 "ray-x/lsp_signature.nvim",
-                after = "nvim-lspconfig",
+                opt = true,
                 config = function()
                     require("config._lsp_config").signature()
                 end
@@ -267,7 +267,8 @@ require('packer').startup({
         use {
             'justinmk/vim-sneak',
             opt = true;
-            config = function() require('config._sneak').setup() end
+            setup = function() require('config._sneak').setup() end,
+            config = function() require('config._sneak').config() end
         }
         use {
             'kshenoy/vim-signature',

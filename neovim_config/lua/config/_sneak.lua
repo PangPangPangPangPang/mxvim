@@ -1,5 +1,10 @@
 local M = {}
-M.setup = function ()
+M.setup = function()
+    vim.defer_fn(function ()
+        vim.cmd([[ PackerLoad vim-sneak ]])
+    end, 1000)
+end
+M.config = function ()
     local colors = require('colorscheme.' .. vim.g.current_theme).colors()
     vim.api.nvim_exec(string.format([[
         map f <Plug>Sneak_f
