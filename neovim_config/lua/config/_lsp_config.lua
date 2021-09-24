@@ -8,7 +8,7 @@ M.setup = function()
             PackerLoad lsp_signature.nvim
             PackerLoad nvim-lspconfig
         ]])
-    end, 1000)
+    end, 500)
 end
 M.config = function()
     local lspinstall = require('lspinstall')
@@ -60,7 +60,7 @@ M.set_signature = function(bufnr)
         handler_opts = {border = "single"}
     }, bufnr)
     for type, icon in pairs(signs) do
-        local hl = "DiagnosticsSign" .. type
+        local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
     end
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -70,8 +70,12 @@ M.set_signature = function(bufnr)
         vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
         vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = true,
-            signs = true,
+            virtual_text = {
+                spacing = 4,
+            },
+            signs = function ()
+                return true
+            end,
             underline = true,
             update_in_insert = false
         })
@@ -106,18 +110,18 @@ M.set_keymap = function(client, bufnr)
     --                opts)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     buf_set_keymap('n', '<space>cq',
-                   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+                   '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
     -- replace saga
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
                    opts)
     buf_set_keymap('n', '<space>cd',
-                   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
+                   '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>',
                    opts)
     buf_set_keymap('n', '<space>c[',
-                   '<cmd>lua vim.lsp.diagnostic.goto_prev({enable_popup=false})<CR>', opts)
+                   '<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>', opts)
     buf_set_keymap('n', '<space>c]',
-                   '<cmd>lua vim.lsp.diagnostic.goto_next({enable_popup=false})<CR>', opts)
+                   '<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', '<space>cn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
@@ -139,24 +143,24 @@ M.set_keymap = function(client, bufnr)
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
+                autocmd CursorHold <buffer> lua vim.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
                 " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
             augroup END
 
-            hi! default link DiagnosticsVirtualTextError Comment
-            hi! default link DiagnosticsVirtualTextHint Comment
-            hi! default link DiagnosticsVirtualTextInformation Comment
-            hi! default link DiagnosticsVirtualTextWarning Comment
+            hi! default link DiagnosticVirtualTextError Comment
+            hi! default link DiagnosticVirtualTextHint Comment
+            hi! default link DiagnosticVirtualTextInformation Comment
+            hi! default link DiagnosticVirtualTextWarning Comment
 
-            hi! DiagnosticsDefaultInformation guifg=%s
-            hi! DiagnosticsUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticsUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticsUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticsUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticsSignError gui=none guifg=%s
-            hi! DiagnosticsSignHint gui=none guifg=%s
-            hi! DiagnosticsSignWarning gui=none guifg=%s
-            hi! DiagnosticsSignInformation gui=none guifg=%s
+            hi! DiagnosticDefaultInformation guifg=%s
+            hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticSignError gui=none guifg=%s
+            hi! DiagnosticSignHint gui=none guifg=%s
+            hi! DiagnosticSignWarning gui=none guifg=%s
+            hi! DiagnosticSignInformation gui=none guifg=%s
             highlight! link LspReference %s
             highlight! link LspReferenceText LspReference
             highlight! link LspReferenceRead LspReference
@@ -166,18 +170,11 @@ M.set_keymap = function(client, bufnr)
                                         colors.blue, colors.highlight ~= nil and
                                             colors.highlight or "Visual"), false)
     end
-    -- vim.lsp.handlers['textDocument/publishDiagnostics'] =
-    --     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    --         virtual_text = true,
-    --         signs = true,
-    --         underline = true,
-    --         update_in_insert = false
-    --     })
 end
 
 M.on_attach = function(client, bufnr)
-    M.set_keymap(client, bufnr)
     M.set_signature(bufnr)
+    M.set_keymap(client, bufnr)
 end
 
 M.make_config = function()
