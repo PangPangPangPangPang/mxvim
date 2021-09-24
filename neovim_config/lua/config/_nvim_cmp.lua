@@ -2,7 +2,10 @@ local M = {}
 
 M.setup = function()
     vim.defer_fn(function ()
-        vim.cmd([[ PackerLoad nvim-cmp]])
+        vim.cmd([[ 
+            PackerLoad lspkind-nvim
+            PackerLoad nvim-cmp
+        ]])
     end, 1000)
 end
 

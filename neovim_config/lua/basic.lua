@@ -1,8 +1,17 @@
+
 local o = vim.o
 local fn = vim.fn
 local g = vim.g
 local cmd = vim.cmd
 local dmap = require('utils').dmap
+
+-- disable netrw
+g.loaded_netrwPlugin = 1
+-- Config netrw
+-- g.netrw_banner = 0
+-- g.netrw_liststyle = 3 -- tree view
+-- g.netrw_altv = 1 -- open splits to the right
+
 g.mapleader = ' '
 g.use_lua = 1
 
@@ -168,11 +177,6 @@ dmap({'v'}, 'Y', '"+y')
 
 -- Set utf8 as standard encoding and en_US as the standard language
 o.encoding='utf8'
-
--- Config netrw
-g.netrw_banner = 0
-g.netrw_liststyle = 3 -- tree view
-g.netrw_altv = 1 -- open splits to the right
 
 -- Use Unix as the standard file type
 o.ffs='unix,dos,mac'

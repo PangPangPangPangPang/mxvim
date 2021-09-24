@@ -61,7 +61,7 @@ M.config = function ()
         }
         vim.g.nvim_tree_width = 40
         -- vim.g.nvim_tree_hijack_netrw = 0
-        -- vim.g.nvim_tree_disable_netrw = 0
+        vim.g.nvim_tree_disable_netrw = 1
         vim.g.nvim_tree_auto_open = 1
         vim.g.nvim_tree_disable_window_picker = 1
         vim.g.nvim_tree_follow_update_path = 1
