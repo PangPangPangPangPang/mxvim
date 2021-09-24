@@ -22,7 +22,7 @@ M.config = function ()
         null_ls.builtins.formatting.stylua,
         prettier,
     }
-    null_ls.config({sources = sources, debug = true})
+    null_ls.config({sources = sources, debug = false})
     lspconfig["null-ls"].setup(config)
 end
 return M;
