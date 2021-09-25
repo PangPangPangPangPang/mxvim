@@ -1,3 +1,4 @@
+local g = vim.g
 g.Illuminate_highlightUnderCursor = 1
 g.Illuminate_ftblacklist = {'defx', 'vista', 'nerdtree'}
 if vim.o.background == 'dark' then

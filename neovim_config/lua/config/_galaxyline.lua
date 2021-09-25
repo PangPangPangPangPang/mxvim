@@ -8,11 +8,10 @@ gl.short_line_list = {
 }
 
 -- vscode
-local colors = require('theme').galaxyline_colors()
+local colors = require('theme').theme_colors()
 
 vim.api.nvim_command('hi! StatusLine guibg=' .. colors.bg .. ' guifg=' ..
                          colors.bg)
--- vim.api.nvim_command('hi! StatusLine guibg=#1E1E1E guifg=#1E1E1E')
 
 local function lsp_status(status)
     shorter_stat = ''

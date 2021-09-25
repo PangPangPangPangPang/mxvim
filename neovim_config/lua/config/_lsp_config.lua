@@ -1,5 +1,5 @@
 local M = {}
-local colors = require('colorscheme.' .. mxvim.current_theme).colors()
+local colors = require('theme').theme_colors()
 
 M.setup = function()
     vim.defer_fn(function ()

@@ -6,7 +6,7 @@ M.setup = function ()
         "declaration", "expression", "pattern", "primary_expression",
         "statement", "switch_body"
     }
-    local colors = require('colorscheme.' .. mxvim.current_theme).colors()
+    local colors = require('theme').theme_colors()
     local shade = require("theme").shade;
     local percent = 0.4;
     local indent1 = string.format('hi! IndentBlanklineIndent1 guifg=%s blend=nocombine', shade(colors.red, percent));

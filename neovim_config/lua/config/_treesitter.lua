@@ -1,4 +1,4 @@
-local colors = require('colorscheme.' .. mxvim.current_theme).colors()
+local colors = require('theme').theme_colors()
 require'nvim-treesitter.configs'.setup {
     -- npm i -g tree-sitter-cli
     -- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages

@@ -34,13 +34,14 @@ M.shade = function (color, percent)
     end
 end
 
-M.galaxyline_colors = function ()
+M.theme_colors = function ()
     local colors = require('colorscheme.'.. mxvim.current_theme).colors()
-    local ret = require('utils').shallow_copy(colors)
     if mxvim.background == 'light' then
+        local ret = require('utils').shallow_copy(colors)
         ret.fg = colors.light_fg
         ret.bg = colors.light_bg
+        return ret
     end
-    return ret
+    return colors
 end
 return M;
