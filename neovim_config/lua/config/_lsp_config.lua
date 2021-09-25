@@ -4,10 +4,11 @@ local colors = require('colorscheme.' .. vim.g.current_theme).colors()
 M.setup = function()
     vim.defer_fn(function ()
         vim.cmd([[ 
-            PackerLoad nvim-lspinstall
-            PackerLoad lsp_signature.nvim
-            PackerLoad nvim-lspconfig
+        PackerLoad nvim-lspinstall
+        PackerLoad lsp_signature.nvim
+        PackerLoad nvim-lspconfig
         ]])
+        M.custom_handlers()
     end, 500)
 end
 M.config = function()
@@ -41,44 +42,11 @@ M.config = function()
         vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
     end
 end
-local signs = {
-    Error = " ",
-    Warn = " ",
-    Hint = " ",
-    Information = " "
-}
-
-local border = {
-    {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"},
-    {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"},
-    {"╰", "FloatBorder"}, {"│", "FloatBorder"}
-}
-
 M.set_signature = function(bufnr)
     require"lsp_signature".on_attach({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         handler_opts = {border = "single"}
     }, bufnr)
-    for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
-    end
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-                                                 vim.lsp.handlers.hover,
-                                                 {border = border})
-    vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
-    vim.lsp.handlers['textDocument/publishDiagnostics'] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = {
-                spacing = 2,
-            },
-            signs = function ()
-                return true
-            end,
-            underline = true,
-            update_in_insert = false
-        })
 end
 
 M.set_keymap = function(client, bufnr)
@@ -96,79 +64,79 @@ M.set_keymap = function(client, bufnr)
     buf_set_keymap('n', '<c-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-                   opts)
+    opts)
     buf_set_keymap('n', '<space>wa',
-                   '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<space>wr',
-                   '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<space>wl',
-                   '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-                   opts)
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+    opts)
     buf_set_keymap('n', '<space>D',
-                   '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     -- buf_set_keymap('n', '<space>cn', '<cmd>lua vim.lsp.buf.rename()<CR>',
     --                opts)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     buf_set_keymap('n', '<space>cq',
-                   '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+    '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
     -- replace saga
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-                   opts)
+    opts)
     buf_set_keymap('n', '<space>cd',
-                   '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>',
-                   opts)
+    '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>',
+    opts)
     buf_set_keymap('n', '<space>c[',
-                   '<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>', opts)
+    '<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>', opts)
     buf_set_keymap('n', '<space>c]',
-                   '<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>', opts)
+    '<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', '<space>cn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<space>cp",
-                       "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
+        "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
     end
     if client.resolved_capabilities.document_range_formatting then
         buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>",
-                       opts)
+        opts)
     end
     -- buf_set_keymap('n', '<space>cp', ':Neoformat<CR>', opts)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec(string.format([[
-            augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                autocmd CursorHold <buffer> lua vim.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
-                " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
-            augroup END
+        augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        autocmd CursorHold <buffer> lua vim.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
+        " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
+        augroup END
 
-            hi! default link DiagnosticVirtualTextError Comment
-            hi! default link DiagnosticVirtualTextHint Comment
-            hi! default link DiagnosticVirtualTextInformation Comment
-            hi! default link DiagnosticVirtualTextWarn Comment
+        hi! default link DiagnosticVirtualTextError Comment
+        hi! default link DiagnosticVirtualTextHint Comment
+        hi! default link DiagnosticVirtualTextInformation Comment
+        hi! default link DiagnosticVirtualTextWarn Comment
 
-            hi! DiagnosticDefaultInformation guifg=%s
-            hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticUnderlineWarn gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticSignError gui=none guifg=%s
-            hi! DiagnosticSignHint gui=none guifg=%s
-            hi! DiagnosticSignWarn gui=none guifg=%s
-            hi! DiagnosticSignInformation gui=none guifg=%s
-            highlight! link LspReference %s
-            highlight! link LspReferenceText LspReference
-            highlight! link LspReferenceRead LspReference
-            highlight! link LspReferenceWrite LspReference
-            ]], colors.bg, colors.red, colors.blue, colors.yellow, colors.blue,
-                                        colors.red, colors.blue, colors.yellow,
-                                        colors.blue, colors.highlight ~= nil and
-                                            colors.highlight or "Visual"), false)
+        hi! DiagnosticDefaultInformation guifg=%s
+        hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
+        hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
+        hi! DiagnosticUnderlineWarn gui=undercurl term=undercurl guisp=%s guifg=none
+        hi! DiagnosticUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
+        hi! DiagnosticSignError gui=none guifg=%s
+        hi! DiagnosticSignHint gui=none guifg=%s
+        hi! DiagnosticSignWarn gui=none guifg=%s
+        hi! DiagnosticSignInformation gui=none guifg=%s
+        highlight! link LspReference %s
+        highlight! link LspReferenceText LspReference
+        highlight! link LspReferenceRead LspReference
+        highlight! link LspReferenceWrite LspReference
+        ]], colors.bg, colors.red, colors.blue, colors.yellow, colors.blue,
+        colors.red, colors.blue, colors.yellow,
+        colors.blue, colors.highlight ~= nil and
+        colors.highlight or "Visual"), false)
     end
 end
 
@@ -186,7 +154,7 @@ M.make_config = function()
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
     local config = {
         root_dir = require("lspconfig/util").root_pattern("package.json",
-                                                          ".eslintrc", ".git"),
+        ".eslintrc", ".git"),
         -- enable snippet support
         capabilities = capabilities,
         -- map buffer local keybindings when the language server attaches
@@ -208,7 +176,7 @@ M.signature = function()
         lspsignature.setup {
             bind = true,
             doc_lines = 2,
-            floating_window = false,
+            floating_window = true,
             fix_pos = false,
             hint_enable = true,
             hint_prefix = "  ", -- Panda for parameter
@@ -228,6 +196,43 @@ M.signature = function()
 
         }
     end
+end
+
+M.custom_handlers = function()
+    local signs = {
+        Error = " ",
+        Warn = " ",
+        Hint = " ",
+        Information = " "
+    }
+
+    local border = {
+        {"╭", "FloatBorder"}, {"─", "FloatBorder"}, {"╮", "FloatBorder"},
+        {"│", "FloatBorder"}, {"╯", "FloatBorder"}, {"─", "FloatBorder"},
+        {"╰", "FloatBorder"}, {"│", "FloatBorder"}
+    }
+
+    for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+    end
+    local lsp = vim.lsp
+    lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    lsp.handlers.hover,
+    {border = border})
+    lsp.handlers["textDocument/signatureHelp"] =
+    lsp.with(vim.lsp.handlers.signature_help, {border = border})
+    lsp.handlers['textDocument/publishDiagnostics'] =
+    lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = {
+            spacing = 2,
+        },
+        signs = function ()
+            return true
+        end,
+        underline = true,
+        update_in_insert = false
+    })
 end
 
 return M
