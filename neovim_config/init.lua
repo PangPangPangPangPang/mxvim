@@ -1,7 +1,10 @@
+_G.mxvim = {}
+
 -- nightfly github-theme miramare vscode nord
-vim.g.current_theme = 'nord'
-vim.g.use_coc = false
-vim.g.use_treesitter = true
+mxvim.current_theme = 'vscode'
+mxvim.use_coc = false
+mxvim.use_treesitter = true
+
 
 require('basic')
 require('plugins')

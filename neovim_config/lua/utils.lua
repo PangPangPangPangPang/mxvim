@@ -99,7 +99,6 @@ M.system = function ()
     elseif vim.fn.has('unix') == 1 then
         M.systemName = "Linux"
     end
-    print(M.systemName)
     return M.systemName
 end
 

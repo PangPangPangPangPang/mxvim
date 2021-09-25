@@ -3,7 +3,7 @@ M.setup = function()
     vim.cmd([[ PackerLoad github-nvim-theme ]])
 end
 M.config = function()
-    require(vim.g.current_theme).setup({
+    require(mxvim.current_theme).setup({
         theme_style = 'dark',
         comment_style = 'italic',
         sidebars = {"qf", "terminal", "packer", "fugitive"},

@@ -1,17 +1,12 @@
 local M = {}
 M.setup = function()
     vim.cmd([[ PackerLoad nord.nvim ]])
-    -- vim.schedule(function ()
-    --     vim.defer_fn(function ()
-    --         vim.cmd([[ PackerLoad nord.nvim ]])
-    --     end, 0)
-    -- end)
 end
 M.config = function()
     vim.g.nord_contrast = true
     vim.g.nord_enable_sidebar_background = true
     vim.g.nord_borders = true
-    vim.cmd('colorscheme ' .. vim.g.current_theme)
+    vim.cmd('colorscheme ' .. mxvim.current_theme)
 end
 
 M.colors = function()

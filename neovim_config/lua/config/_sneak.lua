@@ -13,7 +13,7 @@ M.setup = function()
     end, 1000)
 end
 M.config = function ()
-    local colors = require('colorscheme.' .. vim.g.current_theme).colors()
+    local colors = require('colorscheme.' .. mxvim.current_theme).colors()
     vim.api.nvim_exec(string.format([[
         autocmd User SneakEnter highlight Sneak guifg=%s guibg=%s ctermfg=black ctermbg=red
         autocmd User SneakEnter highlight SneakScope guifg=%s guibg=%s ctermfg=red ctermbg=yellow

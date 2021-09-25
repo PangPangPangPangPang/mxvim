@@ -61,7 +61,7 @@ require('packer').startup({
             end
         }
 
-        if g.use_treesitter then
+        if mxvim.use_treesitter then
             use {
                 'nvim-treesitter/nvim-treesitter',
                 run = ':TSUpdate',
@@ -97,7 +97,7 @@ require('packer').startup({
             setup = function() require('config._grep') end
         }
 
-        if g.use_coc == true then
+        if mxvim.use_coc == true then
             use {
                 'neoclide/coc.nvim',
                 branch = 'release',

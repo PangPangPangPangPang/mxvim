@@ -3,7 +3,7 @@ M.setup = function()
     vim.cmd([[ PackerLoad vim-nightfly-guicolors]])
 end
 M.config = function()
-    vim.cmd('colorscheme ' .. vim.g.current_theme)
+    vim.cmd('colorscheme ' .. mxvim.current_theme)
 end
 
 M.colors = function()

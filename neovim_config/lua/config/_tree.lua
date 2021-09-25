@@ -78,7 +78,7 @@ M.config = function ()
 end
 
 M.theme = function ()
-    local colors = require('colorscheme.' .. vim.g.current_theme).colors()
+    local colors = require('colorscheme.' .. mxvim.current_theme).colors()
     local root_name = string.format('hi! NvimTreeRootFolder guifg=%s gui=bold' , colors.yellow);
     local folder_name = string.format('hi! NvimTreeFolderName guifg=%s gui=bold' , colors.blue);
     local opened_folder_name = string.format('hi! NvimTreeOpenedFolderName guifg=%s gui=bold', colors.blue);
