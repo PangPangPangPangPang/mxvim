@@ -6,7 +6,7 @@ M.setup = function()
             PackerLoad lspkind-nvim
             PackerLoad nvim-cmp
         ]])
-    end, 500)
+    end, 400)
 end
 
 M.config = function()

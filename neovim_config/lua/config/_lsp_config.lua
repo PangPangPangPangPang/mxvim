@@ -171,8 +171,8 @@ M.lspkind = function()
 end
 
 M.signature = function()
-    local present, lspsignature = pcall(require, "lsp_signature")
-    if present then
+    local safe_require = require('utils').safe_require;
+    safe_require('lsp_signature', function (lspsignature)
         lspsignature.setup {
             bind = true,
             doc_lines = 2,
@@ -195,7 +195,7 @@ M.signature = function()
             shadow_guibg = 'Black' -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
 
         }
-    end
+    end)
 end
 
 M.custom_handlers = function()
