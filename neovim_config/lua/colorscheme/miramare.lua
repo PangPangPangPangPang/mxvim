@@ -6,9 +6,10 @@ M.config = function() vim.cmd('colorscheme ' .. mxvim.current_theme) end
 
 M.colors = function()
     return {
-        bg = '#242021',
-        line_bg = '#242021',
         fg = '#e6d6ac',
+        bg = '#242021',
+        light_fg = '#242021',
+        light_bg = '#e6d6ac',
         fg_green = '#87c095',
         yellow = '#d9bb80',
         cyan = '#87c095',

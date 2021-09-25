@@ -15,9 +15,10 @@ M.colors = function()
     local config = configModule.config
     local colors = require("github-theme.colors").setup(config)
     return {
-        bg = colors.bg2,
-        line_bg = colors.bg2,
         fg = colors.fg,
+        bg = colors.bg2,
+        light_fg = colors.bg2,
+        light_bg = colors.fg,
         fg_green = colors.green,
         yellow = colors.yellow,
         cyan = colors.cyan,

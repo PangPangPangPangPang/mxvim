@@ -8,10 +8,10 @@ gl.short_line_list = {
 }
 
 -- vscode
-local colors = require('colorscheme.'.. mxvim.current_theme).colors()
+local colors = require('theme').galaxyline_colors()
 
-vim.api.nvim_command('hi! StatusLine guibg=' .. colors.line_bg .. ' guifg=' ..
-                         colors.line_bg)
+vim.api.nvim_command('hi! StatusLine guibg=' .. colors.bg .. ' guifg=' ..
+                         colors.bg)
 -- vim.api.nvim_command('hi! StatusLine guibg=#1E1E1E guifg=#1E1E1E')
 
 local function lsp_status(status)
@@ -75,7 +75,7 @@ end
 gls.left[1] = {
     FirstElement = {
         provider = function() return ' ' end,
-        highlight = {colors.blue, colors.line_bg}
+        highlight = {colors.blue, colors.bg}
     }
 }
 gls.left[2] = {
@@ -127,7 +127,7 @@ gls.left[2] = {
                                      mode_color[vim_mode])
             return alias[vim_mode] .. '  '
         end,
-        highlight = {colors.red, colors.line_bg, 'bold'}
+        highlight = {colors.red, colors.bg, 'bold'}
     }
 }
 gls.left[3] = {
@@ -136,7 +136,7 @@ gls.left[3] = {
         condition = buffer_not_empty,
         highlight = {
             require('galaxyline.providers.fileinfo').get_file_icon_color,
-            colors.line_bg
+            colors.bg
         }
     }
 }
@@ -144,7 +144,7 @@ gls.left[4] = {
     FileName = {
         provider = {'FileName', 'FileSize'},
         condition = buffer_not_empty,
-        highlight = {colors.fg, colors.line_bg, 'bold'}
+        highlight = {colors.fg, colors.bg, 'bold'}
     }
 }
 
@@ -159,7 +159,7 @@ gls.left[7] = {
         provider = 'DiffAdd',
         condition = checkwidth,
         icon = '    ',
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.green, colors.bg}
     }
 }
 gls.left[8] = {
@@ -167,7 +167,7 @@ gls.left[8] = {
         provider = 'DiffModified',
         condition = checkwidth,
         icon = '    ',
-        highlight = {colors.orange, colors.line_bg}
+        highlight = {colors.orange, colors.bg}
     }
 }
 gls.left[9] = {
@@ -175,7 +175,7 @@ gls.left[9] = {
         provider = 'DiffRemove',
         condition = checkwidth,
         icon = '    ',
-        highlight = {colors.red, colors.line_bg}
+        highlight = {colors.red, colors.bg}
     }
 }
 gls.left[10] = {
@@ -229,8 +229,8 @@ gls.mid[4] = {
 --   Vista = {
 --     provider = VistaPlugin,
 --     separator = '   ',
---     separator_highlight = {colors.bg,colors.line_bg},
---     highlight = {colors.fg,colors.line_bg,'bold'},
+--     separator_highlight = {colors.bg,colors.bg},
+--     highlight = {colors.fg,colors.bg,'bold'},
 --   }
 -- }
 
@@ -246,14 +246,14 @@ gls.right[1] = {
     GitIcon = {
         provider = function() return '    ' end,
         condition = require('galaxyline.providers.vcs').check_git_workspace,
-        highlight = {colors.orange, colors.line_bg}
+        highlight = {colors.orange, colors.bg}
     }
 }
 gls.right[2] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = require('galaxyline.providers.vcs').check_git_workspace,
-        highlight = {colors.orange, colors.line_bg, 'bold'}
+        highlight = {colors.orange, colors.bg, 'bold'}
     }
 }
 
@@ -261,23 +261,23 @@ gls.right[3] = {
     FileFormat = {
         provider = 'FileFormat',
         separator = ' ',
-        separator_highlight = {colors.bg, colors.line_bg},
-        highlight = {colors.yellow, colors.line_bg, 'bold'}
+        separator_highlight = {colors.bg, colors.bg},
+        highlight = {colors.yellow, colors.bg, 'bold'}
     }
 }
 gls.right[4] = {
     LineInfo = {
         provider = 'LineColumn',
         separator = ' | ',
-        separator_highlight = {colors.blue, colors.line_bg},
-        highlight = {colors.fg, colors.line_bg}
+        separator_highlight = {colors.blue, colors.bg},
+        highlight = {colors.fg, colors.bg}
     }
 }
 -- gls.right[5] = {
 --   PerCent = {
 --     provider = 'LinePercent',
 --     separator = ' ',
---     separator_highlight = {colors.line_bg,colors.line_bg},
+--     separator_highlight = {colors.bg,colors.bg},
 --     highlight = {colors.cyan,colors.darkblue,'bold'},
 --   }
 -- }
@@ -294,7 +294,7 @@ gls.right[6] = {
 gls.right[7] = {
     FirstElement = {
         provider = function() return ' ' end,
-        highlight = {colors.blue, colors.line_bg}
+        highlight = {colors.blue, colors.bg}
     }
 }
 

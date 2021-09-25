@@ -12,9 +12,10 @@ end
 M.colors = function()
     local colors = require('nord.colors')
     return {
-        bg = colors.nord1_gui,
-        line_bg = colors.nord1_gui,
         fg = colors.nord5_gui,
+        bg = colors.nord1_gui,
+        light_fg = colors.nord1_gui,
+        light_bg = colors.nord5_gui,
         fg_green = colors.nord14_gui,
         yellow = colors.nord13_gui,
         cyan = colors.nord8_gui,
@@ -27,4 +28,5 @@ M.colors = function()
         red = colors.nord11_gui
     }
 end
+
 return M

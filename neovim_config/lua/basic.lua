@@ -5,6 +5,8 @@ local g = vim.g
 local cmd = vim.cmd
 local dmap = require('utils').dmap
 
+vim.o.background = mxvim.background
+
 -- disable netrw
 g.loaded_netrwPlugin = 1
 -- Config netrw
@@ -180,8 +182,6 @@ o.encoding='utf8'
 
 -- Use Unix as the standard file type
 o.ffs='unix,dos,mac'
-
-vim.o.background = 'dark'
 
 if vim.fn.exists('+termguicolors') then
     vim.o.termguicolors = true

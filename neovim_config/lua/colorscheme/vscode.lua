@@ -3,15 +3,18 @@ M.setup = function()
     vim.cmd([[ PackerLoad vscode.nvim]])
 end
 M.config = function()
-    vim.g.vscode_style = "dark"
+    vim.g.vscode_style = vim.o.background
     vim.cmd('colorscheme ' .. mxvim.current_theme)
 end
 
 M.colors = function()
     return {
-        bg = '#252526',
-        line_bg = '#252526',
-        fg = '#9CDCFE',
+        -- for galaxyline
+        fg = '#9CDCFE', -- light text color
+        bg = '#252526', -- background color
+        light_fg = '#252526', -- text color
+        light_bg = '#E8E8E8', -- light background color
+
         fg_green = '#B5CEA8',
         yellow = '#DCDCAA',
         cyan = '#4EC9B0',
