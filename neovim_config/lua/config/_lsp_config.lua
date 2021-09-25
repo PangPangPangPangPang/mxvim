@@ -43,7 +43,7 @@ M.config = function()
 end
 local signs = {
     Error = " ",
-    Warning = " ",
+    Warn = " ",
     Hint = " ",
     Information = " "
 }
@@ -150,16 +150,16 @@ M.set_keymap = function(client, bufnr)
             hi! default link DiagnosticVirtualTextError Comment
             hi! default link DiagnosticVirtualTextHint Comment
             hi! default link DiagnosticVirtualTextInformation Comment
-            hi! default link DiagnosticVirtualTextWarning Comment
+            hi! default link DiagnosticVirtualTextWarn Comment
 
             hi! DiagnosticDefaultInformation guifg=%s
             hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
             hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
-            hi! DiagnosticUnderlineWarning gui=undercurl term=undercurl guisp=%s guifg=none
+            hi! DiagnosticUnderlineWarn gui=undercurl term=undercurl guisp=%s guifg=none
             hi! DiagnosticUnderlineInformation gui=undercurl term=undercurl guisp=%s guifg=none
             hi! DiagnosticSignError gui=none guifg=%s
             hi! DiagnosticSignHint gui=none guifg=%s
-            hi! DiagnosticSignWarning gui=none guifg=%s
+            hi! DiagnosticSignWarn gui=none guifg=%s
             hi! DiagnosticSignInformation gui=none guifg=%s
             highlight! link LspReference %s
             highlight! link LspReferenceText LspReference
