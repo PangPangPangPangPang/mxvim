@@ -17,4 +17,13 @@ M.theme = function (name)
         end
     }
 end
+
+-- color: #FFFFFF
+-- percent >= 0 && percent < 1
+M.shade = function (color, percent)
+    local r = string.format("%02x", tonumber(string.sub(color, 2, 3), 16) * percent);
+    local g = string.format("%02x", tonumber(string.sub(color, 4, 5), 16) * percent);
+    local b = string.format("%02x", tonumber(string.sub(color, 6, 7), 16) * percent);
+    return string.format("#%s%s%s", r, g, b)
+end
 return M;
