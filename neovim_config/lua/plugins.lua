@@ -86,6 +86,7 @@ require('packer').startup({
 
         use {
             'mhinz/vim-grepper',
+            fn = {'GrepperOperator'},
             cmd = {'GrepperRg', 'Grepper'},
             setup = function() require('config._grep').setup() end
         }

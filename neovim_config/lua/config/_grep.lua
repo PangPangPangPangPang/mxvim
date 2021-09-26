@@ -18,11 +18,7 @@ M.setup = function ()
             highlight = 1
         }
         local dmap = require('utils').dmap
-        if vim.fn.executable('rg') then
-            dmap({'v'}, '<leader>f', '"hy:GrepperRg <C-R>h<CR>')
-        elseif vim.fn.executable('ag') then
-            dmap({'v'}, '<leader>f', '"hy:GrepperAg <C-R>h<CR>')
-        end
+        dmap({'x'}, '<leader>f', ':<c-u>call GrepperOperator(visualmode())<cr>')
 
     end, 100)
 
