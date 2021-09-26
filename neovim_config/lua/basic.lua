@@ -177,6 +177,9 @@ dmap({'n'}, '<leader>==', 'mzG=gg`z')
 -- Copy to system clipboard
 dmap({'v'}, 'Y', '"+y')
 
+-- replace current word
+require('utils').map({'v'}, '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>', { noremap = true })
+
 -- Set utf8 as standard encoding and en_US as the standard language
 o.encoding='utf8'
 

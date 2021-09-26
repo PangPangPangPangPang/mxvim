@@ -10,14 +10,12 @@ vim.g.grepper = {
         grepprg = 'pt --nocolor --nogroup',
         grepformat = '%f:%l:%m',
         escape = '+*^$()[]'
-    }
+    },
+    highlight = 1
 }
-vim.api.nvim_exec([[
-let g:grepper.highlight = 1
-"     nnoremap <leader>f :Grepper<cr>
-if executable('rg') 
-    vnoremap <silent> <leader>f :call visual#action("GrepperRg 'foo'")<cr>
-elseif executable('ag')
-    vnoremap <silent> <leader>f :call visual#action("GrepperAg 'foo'")<cr>
-    endif
-    ]], false)
+local dmap = require('utils').dmap
+if vim.fn.executable('rg') then
+    dmap({'v'}, '<leader>f', '"hy:GrepperRg <C-R>h<CR>')
+elseif vim.fn.executable('ag') then
+    dmap({'v'}, '<leader>f', '"hy:GrepperAg <C-R>h<CR>')
+end

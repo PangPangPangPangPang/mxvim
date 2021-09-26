@@ -84,13 +84,6 @@ require('packer').startup({
 
         use {'tpope/vim-surround'}
 
-        use {'PangPangPangPangPang/visual-selection-vim'}
-        cmd([[
-        vnoremap <silent> * :<C-u>call visual#action('')<CR>/<C-R>=@/<CR><CR>
-        vnoremap <silent> # :<C-u>call visual#action('')<CR>?<C-R>=@/<CR><CR>
-        vnoremap <leader>r :call visual#replace('%s/foo//g')
-        ]])
-
         use {
             'mhinz/vim-grepper',
             cmd = {'GrepperRg', 'Grepper'},
