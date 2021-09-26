@@ -37,9 +37,23 @@ function M.create_augroups(definitions)
 end
 
 function M.close_common()
+    local list = {'qf', 'fugitive', 'git'}
+
+    -- go back to prev window
+    local cur = vim.fn.winnr()
+    local current_filetype = vim.fn.getwinvar(cur, '&filetype')
+    for _, value in pairs(list) do
+        if value == current_filetype then
+            local pre = vim.fn.winnr('#')
+            if pre ~= -1 then
+                vim.cmd([[ exe "wincmd p" ]])
+            end
+            break;
+        end
+    end
+
     local t = vim.fn.getbufinfo()
     for _, i in pairs(t) do
-        local list = {'qf', 'fugitive', 'git'}
         for _, type in ipairs(list) do
             local filetype = vim.fn.getbufvar(i.bufnr, '&filetype')
             if type == filetype then
