@@ -4,7 +4,7 @@ _G.mxvim = {}
 mxvim.current_theme = 'vscode'
 mxvim.use_coc = false
 mxvim.use_treesitter = true
-mxvim.background = 'light'
+mxvim.background = 'dark'
 
 require('basic')
 require('plugins')

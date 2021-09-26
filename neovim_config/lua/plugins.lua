@@ -248,6 +248,7 @@ require('packer').startup({
         }
         use {
             'kyazdani42/nvim-tree.lua',
+            commit = 'd7f73b5ae9c8fa85535c32e2861c2cb97df5d56b',
             requires = 'kyazdani42/nvim-web-devicons',
             -- cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
             config = function() require('config._tree').config() end,
@@ -255,6 +256,15 @@ require('packer').startup({
                 require('config._tree').setup()
             end
         }
+        -- use {
+        --     'Shougo/defx.nvim',
+        --     run = ':UpdateRemotePlugins',
+        --     requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
+        --     config = function()
+        --         require('config._defx').config()
+        --         require('config._defx').map()
+        --     end
+        -- }
 
         use {
             'tpope/vim-fugitive',
