@@ -87,7 +87,7 @@ require('packer').startup({
         use {
             'mhinz/vim-grepper',
             cmd = {'GrepperRg', 'Grepper'},
-            setup = function() require('config._grep') end
+            setup = function() require('config._grep').setup() end
         }
 
         if mxvim.use_coc == true then
