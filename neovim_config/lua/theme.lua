@@ -49,8 +49,17 @@ M.theme_colors = function ()
     return colors
 end
 
+M.shade_colors = function (percent)
+    local colors = require('colorscheme.'.. mxvim.current_theme).colors()
+    local ret = require('utils').shallow_copy(colors)
+    for index, _ in pairs(ret) do
+        ret[index] = M.shade(colors[index], percent)
+    end
+    return ret
+end
+
 local static_shade_colors
-M.shade_colors = function ()
+M.shade_colors_default = function ()
     if static_shade_colors ~= nil then
        return static_shade_colors
     end
