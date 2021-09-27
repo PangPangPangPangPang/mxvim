@@ -139,13 +139,17 @@ require('packer').startup({
                 opt = true,
                 disable = false,
                 requires = {
-                    "onsails/lspkind-nvim", "hrsh7th/cmp-nvim-lua",
-                    "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path",
-                    "hrsh7th/cmp-buffer", {
+                    "onsails/lspkind-nvim",
+                    "hrsh7th/cmp-nvim-lua",
+                    "hrsh7th/cmp-nvim-lsp",
+                    "hrsh7th/cmp-path",
+                    "hrsh7th/cmp-buffer",
+                    {
                         "hrsh7th/cmp-vsnip",
                         wants = "friendly-snippets",
                         requires = {
-                            'hrsh7th/vim-vsnip-integ', "hrsh7th/vim-vsnip",
+                            'hrsh7th/vim-vsnip-integ',
+                            "hrsh7th/vim-vsnip",
                             "rafamadriz/friendly-snippets"
                         }
                     }
@@ -165,6 +169,7 @@ require('packer').startup({
                     require("config._autopairs").setup()
                 end
             }
+
             use {
                 'ms-jpq/coq_nvim',
                 disable = true,
@@ -172,6 +177,7 @@ require('packer').startup({
                 setup = function() require("config._coq").config() end
             } -- main one
             use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
+
             use {
                 "ray-x/lsp_signature.nvim",
                 opt = true,
@@ -182,7 +188,8 @@ require('packer').startup({
 
             use {
                 "norcalli/nvim-colorizer.lua",
-                event = "BufEnter",
+                opt = true,
+                setup = function() require('config._other').colorizer_setup() end,
                 config = function() require'colorizer'.setup() end
             }
 
@@ -253,19 +260,10 @@ require('packer').startup({
                 require('config._tree').setup()
             end
         }
-        -- use {
-        --     'Shougo/defx.nvim',
-        --     run = ':UpdateRemotePlugins',
-        --     requires = {'kristijanhusak/defx-icons', 'kristijanhusak/defx-git'},
-        --     config = function()
-        --         require('config._defx').config()
-        --         require('config._defx').map()
-        --     end
-        -- }
 
         use {
             'tpope/vim-fugitive',
-            opt = true;
+            opt = true,
             setup = function() require('config._fugitive').setup() end,
         }
         use {'rbong/vim-flog'}
@@ -273,14 +271,14 @@ require('packer').startup({
 
         use {
             'justinmk/vim-sneak',
-            opt = true;
+            opt = true,
             setup = function() require('config._sneak').setup() end,
             config = function() require('config._sneak').config() end
         }
         use {
             'kshenoy/vim-signature',
-            opt = true;
-            require("config._other").signature_setup()
+            opt = true,
+            setup = function() require('config._other').signature_setup() end,
         }
 
         use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}
