@@ -52,7 +52,7 @@ require('packer').startup({
         -- Readline style insertion
         use {'tpope/vim-rsi'}
 
-        use {'kevinhwang91/nvim-bqf', ft = 'qf', branch = 'dev'}
+        use {'kevinhwang91/nvim-bqf', ft = 'qf', branch = 'main'}
 
         -- commenter
         use {
