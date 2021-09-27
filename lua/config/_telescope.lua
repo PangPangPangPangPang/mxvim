@@ -26,7 +26,7 @@ M.config = function()
                     ["<c-i>"] = actions.select_horizontal,
 
                     -- Add up multiple actions
-                    ["<CR>"] = actions.select_default + actions.center,
+                    -- ["<CR>"] = actions.select_default + actions.center,
 
                     -- You can perform as many actions in a row as you like
                     ["<esc>"] = actions.close,
