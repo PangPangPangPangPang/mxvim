@@ -1,9 +1,10 @@
 local fn = vim.fn
-local cmd = vim.cmd
 local g = vim.g
 
 local map = require('utils').map
 pcall(require, 'impatient')
+
+vim.g.did_load_filetypes = 1
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -17,6 +18,8 @@ require('packer').startup({
         -- Packer itself
         use {'wbthomason/packer.nvim', opt = true}
         use {'lewis6991/impatient.nvim'}
+        use{ 'nathom/filetype.nvim' }
+
 
         use {'nvim-lua/popup.nvim'}
         use {'nvim-lua/plenary.nvim'}
