@@ -25,9 +25,6 @@ M.config = function()
                     -- Otherwise, just set the mapping to the function that you want it to be.
                     ["<c-i>"] = actions.select_horizontal,
 
-                    -- Add up multiple actions
-                    -- ["<CR>"] = actions.select_default + actions.center,
-
                     -- You can perform as many actions in a row as you like
                     ["<esc>"] = actions.close,
                     ["<C-l>"] = actions.send_to_qflist + actions.open_qflist,
@@ -35,7 +32,6 @@ M.config = function()
                 n = {
                     ["<esc>"] = false,
                     ["<c-l>"] = actions.send_to_qflist + actions.open_qflist,
-                    -- ["<C-i>"] = my_cool_custom_action,
                 }
             },
             prompt_prefix = " ❤  ",
