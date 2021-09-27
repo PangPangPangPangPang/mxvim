@@ -54,7 +54,7 @@ require'nvim-treesitter.configs'.setup {
             swap_previous = {["<leader>A"] = "@parameter.inner"}
         },
         select = {
-            enable = false,
+            enable = true,
             keymaps = {
                 -- You can use the capture groups defined in textobjects.scm
                 ["af"] = "@function.outer",
@@ -80,7 +80,8 @@ require'nvim-treesitter.configs'.setup {
             colors.yellow, colors.green, colors.orange, colors.magenta,
             colors.cyan, colors.blue, colors.blue
         },
-        enable = true
+        enable = true,
+        extended_mode = true,
     }
 
 }

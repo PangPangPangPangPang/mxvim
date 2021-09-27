@@ -67,12 +67,15 @@ require('packer').startup({
         if mxvim.use_treesitter then
             use {
                 'nvim-treesitter/nvim-treesitter',
+                requires = {
+                    'nvim-treesitter/nvim-treesitter-textobjects',
+                    'p00f/nvim-ts-rainbow',
+                    'windwp/nvim-ts-autotag',
+                    'JoosepAlviste/nvim-ts-context-commentstring',
+                },
                 run = ':TSUpdate',
                 config = function() require('config._treesitter') end
             }
-            use {'windwp/nvim-ts-autotag'}
-            use {'JoosepAlviste/nvim-ts-context-commentstring'}
-            use {'p00f/nvim-ts-rainbow', disable = false}
         else
             use {'sheerun/vim-polyglot'}
             use {'luochen1990/rainbow'}
@@ -297,18 +300,18 @@ require('packer').startup({
         g.quickui_border_style = 2
         g.quickui_color_scheme = 'system'
 
-        use {
-            'kana/vim-textobj-user',
-            opt = true,
-            requires = {
-                {'kana/vim-textobj-function', opt = true},
-                {'kana/vim-textobj-indent', opt = true},
-                {'kana/vim-textobj-line', opt = true}
-            },
-            setup = function()
-                require("config._other").textobj_setup()
-            end
-        }
+        -- use {
+        --     'kana/vim-textobj-user',
+        --     opt = true,
+        --     requires = {
+        --         {'kana/vim-textobj-function', opt = true},
+        --         {'kana/vim-textobj-indent', opt = true},
+        --         {'kana/vim-textobj-line', opt = true}
+        --     },
+        --     setup = function()
+        --         require("config._other").textobj_setup()
+        --     end
+        -- }
     end,
     config = {
         display = {
