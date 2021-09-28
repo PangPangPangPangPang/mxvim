@@ -30,7 +30,7 @@ require'nvim-treesitter.configs'.setup {
     },
     textobjects = {
         move = {
-            enable = false,
+            enable = true,
             goto_next_start = {
                 ["]m"] = "@function.outer",
                 ["]]"] = "@class.outer"

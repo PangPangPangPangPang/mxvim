@@ -81,8 +81,8 @@ M.set_keymap = function(client, bufnr)
     '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
     -- replace saga
-    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-    opts)
+    -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+    -- opts)
     buf_set_keymap('n', '<space>cd',
     '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>',
     opts)
