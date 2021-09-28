@@ -4,7 +4,7 @@ local g = vim.g
 local map = require('utils').map
 pcall(require, 'impatient')
 
-vim.g.did_load_filetypes = 1
+vim.g.did_load_filetypes = 0
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -255,7 +255,6 @@ require('packer').startup({
         }
         use {
             'kyazdani42/nvim-tree.lua',
-            commit = 'd7f73b5ae9c8fa85535c32e2861c2cb97df5d56b',
             requires = 'kyazdani42/nvim-web-devicons',
             -- cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
             config = function() require('config._tree').config() end,

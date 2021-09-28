@@ -28,9 +28,12 @@ M.config = function()
                     -- You can perform as many actions in a row as you like
                     ["<esc>"] = actions.close,
                     ["<C-l>"] = actions.send_to_qflist + actions.open_qflist,
+                    ["<c-c>"] = { "<esc>", type = "command" },
+
                 },
                 n = {
-                    ["<esc>"] = false,
+                    ["<esc>"] = actions.close,
+                    ["<c-c>"] = false,
                     ["<c-l>"] = actions.send_to_qflist + actions.open_qflist,
                 }
             },
