@@ -4,7 +4,7 @@ local g = vim.g
 local map = require('utils').map
 pcall(require, 'impatient')
 
-vim.g.did_load_filetypes = 0
+vim.g.did_load_filetypes = 1
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
