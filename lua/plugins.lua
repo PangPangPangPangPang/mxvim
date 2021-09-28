@@ -20,6 +20,12 @@ require('packer').startup({
         use {'lewis6991/impatient.nvim'}
         use{ 'nathom/filetype.nvim' }
 
+        use {
+            "antoinemadec/FixCursorHold.nvim",
+            run = function()
+                vim.g.curshold_updatime = 100
+            end,
+        }
 
         use {'nvim-lua/popup.nvim'}
         use {'nvim-lua/plenary.nvim'}
@@ -163,6 +169,18 @@ require('packer').startup({
                 config = function()
                     require("config._nvim_cmp").config()
                 end
+            }
+
+            use {
+                "folke/lsp-trouble.nvim",
+                cmd = "LspTrouble",
+                config = function()
+                    -- Can use P to toggle auto movement
+                    require("trouble").setup {
+                        auto_preview = false,
+                        auto_fold = true,
+                    }
+                end,
             }
 
             use {
