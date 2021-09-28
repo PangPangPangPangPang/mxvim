@@ -175,11 +175,7 @@ require('packer').startup({
                 "folke/lsp-trouble.nvim",
                 cmd = "LspTrouble",
                 config = function()
-                    -- Can use P to toggle auto movement
-                    require("trouble").setup {
-                        auto_preview = false,
-                        auto_fold = true,
-                    }
+                    require('config._lsp_trouble').config()
                 end,
             }
 
