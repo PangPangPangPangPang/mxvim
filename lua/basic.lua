@@ -8,11 +8,11 @@ local dmap = require('utils').dmap
 vim.o.background = mxvim.background
 
 -- disable netrw
-g.loaded_netrwPlugin = 1
+-- g.loaded_netrwPlugin = 1
 -- Config netrw
--- g.netrw_banner = 0
--- g.netrw_liststyle = 3 -- tree view
--- g.netrw_altv = 1 -- open splits to the right
+g.netrw_banner = 0
+g.netrw_liststyle = 3 -- tree view
+g.netrw_altv = 1 -- open splits to the right
 
 g.mapleader = ' '
 g.use_lua = 1

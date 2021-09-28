@@ -1,8 +1,14 @@
 local M = {}
+local g = vim.g
 M.setup = function ()
-    local map = require('utils').map
-    map({'n', 'i'}, '<F1>', ":NvimTreeToggle<CR>", {silent = true})
-    map({'n'}, '<leader>j', ":NvimTreeFindFile<CR>", {silent = true})
+    vim.defer_fn(function ()
+        vim.cmd([[ 
+            PackerLoad nvim-tree.lua
+        ]])
+        local map = require('utils').map
+        map({'n', 'i'}, '<F1>', ":NvimTreeToggle<CR>", {silent = true})
+        map({'n'}, '<leader>j', ":NvimTreeFindFile<CR>", {silent = true})
+    end, 400)
 end
 M.config = function ()
     local safe_require = require('utils').safe_require;
@@ -32,14 +38,14 @@ M.config = function ()
             vim.call("quickui#context#open", content, opts)
         end
 
-        vim.g.nvim_tree_disable_window_picker = 1
-        vim.g.nvim_tree_indent_markers = 1
-        vim.g.nvim_tree_git_hl = 1
+        g.nvim_tree_disable_window_picker = 1
+        g.nvim_tree_indent_markers = 1
+        g.nvim_tree_git_hl = 1
 
         require'nvim-tree'.setup {
             disable_netrw       = true,
             hijack_netrw        = true,
-            open_on_setup       = true,
+            open_on_setup       = false,
             ignore_ft_on_setup  = {},
             auto_close          = true,
             open_on_tab         = false,
