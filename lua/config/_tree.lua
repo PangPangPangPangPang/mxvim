@@ -8,7 +8,7 @@ M.setup = function ()
         local map = require('utils').map
         map({'n', 'i'}, '<F1>', ":NvimTreeToggle<CR>", {silent = true})
         map({'n'}, '<leader>j', ":NvimTreeFindFile<CR>", {silent = true})
-    end, 400)
+    end, 200)
 end
 M.config = function ()
     local safe_require = require('utils').safe_require;
