@@ -10,12 +10,9 @@ mxvim.shade_percent = 0.4
 require('basic')
 require('plugins')
 
-local fn = vim.fn
-local cmd = vim.cmd
-local uv = vim.loop
-local conf_dir = fn.stdpath('config')
-if uv.fs_stat(conf_dir .. '/plugin/packer_compiled.lua') then
-    cmd([[
+local conf_dir = vim.fn.stdpath('config')
+if vim.uv.fs_stat(conf_dir .. '/plugin/packer_compiled.lua') then
+    vim.cmd([[
     com! PackerInstall lua require('packer').install()
     com! PackerUpdate lua require('packer').update()
     com! PackerSync lua require('packer').sync()
