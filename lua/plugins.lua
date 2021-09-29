@@ -173,7 +173,7 @@ require('packer').startup({
 
             use {
                 "folke/lsp-trouble.nvim",
-                cmd = "LspTrouble",
+                cmd ={"LspTrouble", "Trouble"},
                 config = function()
                     require('config._lsp_trouble').config()
                 end,

@@ -7,6 +7,14 @@ M.config = function ()
             jump = {"<tab>", "o"}, -- jump to the diagnostic or open / close folds
             jump_close = {"<cr>"}
         },
+        signs = {
+            -- icons / text used for a diagnostic
+            error = "",
+            warning = "",
+            hint = "",
+            information = "",
+            other = ""
+        },
         use_lsp_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
     }
 end
