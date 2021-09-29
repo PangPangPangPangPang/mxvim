@@ -40,6 +40,7 @@ M.config = function()
         sources = {
             { name = 'vsnip' },
             { name = 'nvim_lsp' },
+            { name = 'tags' },
             { name = 'nvim_lua' },
             { name = 'buffer' },
             { name = 'path' },
@@ -57,6 +58,7 @@ M.config = function()
                     nvim_lua = "[Lua]",
                     buffer = "[Buffer]",
                     path = "[Path]",
+                    tags = "[Tag]",
                 })[entry.source.name]
                 return vim_item
             end

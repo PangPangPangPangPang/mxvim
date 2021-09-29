@@ -161,6 +161,17 @@ require('packer').startup({
                             "hrsh7th/vim-vsnip",
                             "rafamadriz/friendly-snippets"
                         }
+                    },
+                    {
+                        'quangnguyen30192/cmp-nvim-tags',
+                        -- if you want the sources is available for some file types
+                        ft = {
+                            'javascriptreact',
+                            'typescriptreact',
+                            'javascript',
+                            'typescript',
+                            'lua'
+                        }
                     }
                 },
                 setup = function()
