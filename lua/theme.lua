@@ -14,6 +14,9 @@ M.theme = function (name)
             require('colorscheme.' .. mxvim.current_theme).config();
             require('config._tree').theme();
             require('config._galaxyline');
+            vim.cmd([[
+                hi! link NormalFloat cleared
+            ]])
         end
     }
 end

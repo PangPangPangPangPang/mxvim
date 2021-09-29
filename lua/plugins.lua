@@ -182,6 +182,16 @@ require('packer').startup({
                 end
             }
 
+            -- use {
+            --     "rinx/lspsaga.nvim",
+            --     setup = function()
+            --         require("config._lsp_saga").setup()
+            --     end,
+            --     config = function()
+            --         require("config._lsp_saga").config()
+            --     end
+            -- }
+
             use {
                 "folke/lsp-trouble.nvim",
                 cmd ={"LspTrouble", "Trouble"},
