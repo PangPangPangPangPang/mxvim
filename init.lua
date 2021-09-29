@@ -11,7 +11,7 @@ require('basic')
 require('plugins')
 
 local conf_dir = vim.fn.stdpath('config')
-if vim.uv.fs_stat(conf_dir .. '/plugin/packer_compiled.lua') then
+if vim.loop.fs_stat(conf_dir .. '/plugin/packer_compiled.lua') then
     vim.cmd([[
     com! PackerInstall lua require('packer').install()
     com! PackerUpdate lua require('packer').update()
