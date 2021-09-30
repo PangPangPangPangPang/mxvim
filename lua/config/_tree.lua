@@ -55,7 +55,7 @@ M.config = function ()
             update_focused_file = {
                 enable      = true,
                 update_cwd  = false,
-                ignore_list = {}
+                ignore_list = {'node_modules', '.git', 'build'}
             },
             system_open = {
                 cmd  = nil,
@@ -63,7 +63,7 @@ M.config = function ()
             },
 
             view = {
-                width = 40,
+                width = '15%',
                 side = 'left',
                 auto_resize = true,
                 mappings = {
