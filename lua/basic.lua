@@ -83,7 +83,7 @@ else
     o.wildignore = o.wildignore .. '*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store'
 end
 
-o.completeopt = 'menuone,noselect'
+o.completeopt = 'menu,menuone,noinsert'
 
 -- Always show current position
 o.ruler = true

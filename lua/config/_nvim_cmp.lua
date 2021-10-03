@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
 	vim.defer_fn(function()
-		vim.cmd([[ 
+		vim.cmd([[
             PackerLoad lspkind-nvim
             PackerLoad nvim-cmp
             " Jump forward or backward
