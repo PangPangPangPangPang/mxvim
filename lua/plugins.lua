@@ -45,6 +45,13 @@ require('packer').startup({
             requires = {'kyazdani42/nvim-web-devicons', opt = true},
         }
         use {
+            "nanozuki/tabby.nvim",
+            opt = true,
+            requires = "kyazdani42/nvim-web-devicons",
+            setup = function() require("config._tabby").setup() end,
+            config = function() require("config._tabby").config() end,
+        }
+        use {
             "ZSaberLv0/ZFVimIM",
             opt = true,
             requires = {
