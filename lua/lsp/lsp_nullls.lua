@@ -26,7 +26,6 @@ M.config = function()
 		"$FILENAME",
 		"-",
 	}
-    print(vim.inspect(luacheck))
 
 	local sources = {
 		null_ls.builtins.diagnostics.eslint_d,
