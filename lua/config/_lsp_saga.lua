@@ -17,14 +17,17 @@ M.config = function()
         opts)
     map('n', '<space>cd',
         "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", opts)
-    map('n', '<space>c[',
-        "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",
-        opts)
-    map('n', '<space>c]',
-        "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",
-        opts)
+    -- map('n', '<space>c[',
+    --     "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",
+    --     opts)
+    -- map('n', '<space>c]',
+    --     "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",
+    --     opts)
     map('n', '<space>ca',
         "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>",
+        opts)
+    map('n', 'gd',
+        "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>",
         opts)
     map('v', '<space>ca',
         ":<C-U>lua require'lspsaga.codeaction'.range_code_action()<CR>",

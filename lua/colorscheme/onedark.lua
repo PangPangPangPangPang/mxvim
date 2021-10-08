@@ -11,7 +11,7 @@ M.config = function()
             comments = "italic",
             functions = "NONE",
             keywords = "bold,italic",
-            strings = "NONE",
+            strings = "italic",
             variables = "NONE"
         }
     })

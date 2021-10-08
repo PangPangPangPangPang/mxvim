@@ -10,8 +10,8 @@ M.map = function()
     ]])
 end
 M.config = function()
-    local map = require('utils').map
-    map('n', '<leader>ca', ":lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({}))<cr>", {silent = true})
+    -- local map = require('utils').map
+    -- map('n', '<leader>ca', ":lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({}))<cr>", {silent = true})
     local actions = require('telescope.actions')
     require('telescope').setup {
         defaults = {
