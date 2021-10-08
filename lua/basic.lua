@@ -1,4 +1,3 @@
-
 local o = vim.o
 local fn = vim.fn
 local g = vim.g

@@ -17,7 +17,9 @@ M.config = function()
 	local luacheck = null_ls.builtins.diagnostics.luacheck
 	luacheck._opts.args = {
 		"--globals",
-        "vim mxvim packer_plugins",
+        "vim",
+        "mxvim",
+        "packer_plugins",
 		"--formatter",
 		"plain",
 		"--codes",
