@@ -14,15 +14,29 @@ M.config = function()
 	local prettier = null_ls.builtins.formatting.prettier
 	prettier.filetypes = { "css", "scss", "html", "json", "yaml", "markdown" }
 
+	local luacheck = null_ls.builtins.diagnostics.luacheck
+	luacheck._opts.args = {
+		"--globals",
+        "vim mxvim packer_plugins",
+		"--formatter",
+		"plain",
+		"--codes",
+		"--ranges",
+		"--filename",
+		"$FILENAME",
+		"-",
+	}
+    print(vim.inspect(luacheck))
+
 	local sources = {
 		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.diagnostics.codespell,
-		null_ls.builtins.diagnostics.luacheck,
+		luacheck,
 		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.formatting.stylua,
 		prettier,
 	}
-	null_ls.config({ sources = sources, debug = false })
+	null_ls.config({ sources = sources, debug = true })
 	lspconfig["null-ls"].setup(config)
 end
 return M

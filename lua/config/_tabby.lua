@@ -2,11 +2,11 @@ local fn = vim.fn
 local o = vim.o
 local M = {}
 M.setup = function()
-    -- vim.defer_fn(function ()
-    --     vim.cmd([[
-    --     PackerLoad tabby.nvim
-    --     ]])
-    -- end, 1500)
+    vim.defer_fn(function ()
+        vim.cmd([[
+        PackerLoad tabby.nvim
+        ]])
+    end, 1500)
 end
 M.config = function ()
     local util = require('tabby.util')

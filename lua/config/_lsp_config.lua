@@ -106,12 +106,16 @@ M.set_keymap = function(client, bufnr)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
+        local show_diag = "autocmd CursorHold <buffer> lua vim.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})"
+        if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
+            show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()"
+        end
         vim.cmd(string.format([[
         augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        " autocmd CursorHold <buffer> lua vim.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})
+        %s
         " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
         augroup END
 
@@ -133,7 +137,7 @@ M.set_keymap = function(client, bufnr)
         highlight! link LspReferenceText LspReference
         highlight! link LspReferenceRead LspReference
         highlight! link LspReferenceWrite LspReference
-        ]], colors.bg, colors.red, colors.blue, colors.yellow, colors.blue,
+        ]], show_diag, colors.bg, colors.red, colors.blue, colors.yellow, colors.blue,
         colors.red, colors.blue, colors.yellow,
         colors.blue, colors.highlight ~= nil and
         colors.highlight or "Visual"))

@@ -5,7 +5,7 @@ M.setup = function()
         vim.cmd([[
             PackerLoad lspsaga.nvim
         ]])
-    end, 1000)
+    end, 400)
 end
 M.config = function()
     local opts = {noremap = true, silent = true}
@@ -72,11 +72,11 @@ M.config = function()
         -- like server_filetype_map = {metals = {'sbt', 'scala'}}
         server_filetype_map = {}
     }
-    vim.cmd([[
-    augroup lsp_saga_document_highlight
-        autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-    augroup END
-    ]])
+    -- vim.cmd([[
+    -- augroup lsp_saga_document_highlight
+    --     autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
+    -- augroup END
+    -- ]])
 end
 
 return M
