@@ -3,7 +3,7 @@ local colors = require('theme').shade_colors(0.6)
 
 M.setup = function()
     vim.defer_fn(function ()
-        vim.cmd([[ 
+        vim.cmd([[
         PackerLoad nvim-lspinstall
         PackerLoad lsp_signature.nvim
         PackerLoad nvim-lspconfig
@@ -163,11 +163,6 @@ M.make_config = function()
     -- local coq = require('coq')
     -- return coq.lsp_ensure_capabilities(config)
     return config
-end
-
-M.lspkind = function()
-    local present, lspkind = pcall(require, "lspkind")
-    if present then lspkind.init() end
 end
 
 M.signature = function()

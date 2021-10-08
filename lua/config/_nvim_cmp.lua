@@ -49,20 +49,9 @@ M.config = function()
 			completeopt = "menu,menuone,noinsert",
 			keyword_length = 1,
 		},
-		formatting = {
-			format = function(entry, vim_item)
-				vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
-				vim_item.menu = ({
-					nvim_lsp = "[LSP]",
-					vsnip = "[Snip]",
-					nvim_lua = "[Lua]",
-					buffer = "[Buffer]",
-					path = "[Path]",
-					tags = "[Tag]",
-				})[entry.source.name]
-				return vim_item
-			end,
-		},
+        formatting = {
+            format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+        },
 	})
 end
 return M

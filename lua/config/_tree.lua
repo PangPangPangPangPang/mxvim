@@ -53,7 +53,7 @@ M.config = function ()
             update_cwd          = true,
             lsp_diagnostics     = false,
             update_focused_file = {
-                enable      = true,
+                enable      = false,
                 update_cwd  = false,
                 ignore_list = {'node_modules', '.git', 'build'}
             },
