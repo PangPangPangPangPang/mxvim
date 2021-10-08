@@ -162,9 +162,12 @@ M.make_config = function()
         -- map buffer local keybindings when the language server attaches
         on_attach = M.on_attach
     }
-    -- local coq = require('coq')
-    -- return coq.lsp_ensure_capabilities(config)
-    return config
+    if mxvim.use_cmp == false then
+        local coq = require('coq')
+        return coq.lsp_ensure_capabilities(config)
+    else
+        return config
+    end
 end
 
 M.signature = function()

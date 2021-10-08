@@ -23,6 +23,7 @@ M.config = function()
 				vim.fn["vsnip#anonymous"](args.body)
 			end,
 		},
+        preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
 		mapping = {
 			["<C-p>"] = cmp.mapping.select_prev_item(),
