@@ -189,7 +189,7 @@ if vim.fn.exists('+termguicolors') then
     vim.o.termguicolors = true
 end
 
-cmd([[source ~/.config/nvim/viml/indent.vim]])
+-- cmd([[source ~/.config/nvim/viml/indent.vim]])
 
 cmd([[
     command! -nargs=0 CD :execute("cd %:p:h")
