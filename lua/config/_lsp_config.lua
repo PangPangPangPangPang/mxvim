@@ -149,11 +149,13 @@ end
 
 M.make_config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {'documentation', 'detail', 'additionalTextEdits'}
-    }
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    -- capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- capabilities.textDocument.completion.completionItem.resolveSupport = {
+    --     properties = {'documentation', 'detail', 'additionalTextEdits'}
+    -- }
+    if mxvim.use_cmp == true then
+        capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    end
     local config = {
         root_dir = require("lspconfig/util").root_pattern("package.json",
         ".eslintrc", ".git"),
@@ -162,11 +164,11 @@ M.make_config = function()
         -- map buffer local keybindings when the language server attaches
         on_attach = M.on_attach
     }
-    if mxvim.use_cmp == false then
+    if mxvim.use_cmp == true then
+        return config
+    else
         local coq = require('coq')
         return coq.lsp_ensure_capabilities(config)
-    else
-        return config
     end
 end
 
