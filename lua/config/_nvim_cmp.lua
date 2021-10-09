@@ -23,7 +23,11 @@ M.config = function()
 				vim.fn["vsnip#anonymous"](args.body)
 			end,
 		},
-        preselect = cmp.PreselectMode.None,
+        experimental = {
+            native_menu = false,
+            ghost_text = { hl_group = 'Comment' }
+        },
+        -- preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
 		mapping = {
             ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
