@@ -243,14 +243,17 @@ require("packer").startup({
 				end,
 			})
 
-			use({
-				"windwp/nvim-autopairs",
-				after = "nvim-cmp",
-				config = function()
-					require("config._autopairs").setup()
-				end,
-			})
+			-- use({
+			-- 	"windwp/nvim-autopairs",
+			-- 	after = "nvim-cmp",
+			-- 	config = function()
+			-- 		require("config._autopairs").setup()
+			-- 	end,
+			-- })
 
+            use({
+                'jiangmiao/auto-pairs'
+            })
 			use({
 				"ray-x/lsp_signature.nvim",
 				opt = true,
