@@ -13,6 +13,9 @@ M.config = function()
             keywords = "bold,italic",
             strings = "italic",
             variables = "NONE"
+        },
+        colors = {
+            bg = '#282c34'
         }
     })
     onedark.load()
@@ -21,9 +24,11 @@ end
 M.colors = function()
     return {
         -- for galaxyline
+        -- bg = '#1E1E1E', -- background color
+        -- light_fg = '#1E1E1E', -- text color
         fg = '#abb2bf', -- light text color
-        bg = '#1E1E1E', -- background color
-        light_fg = '#1E1E1E', -- text color
+        bg = '#21252b', -- background color
+        light_fg = '#21252b', -- text color
         light_bg = '#abb2bf', -- light background color
 
         fg_green = '#98C379',
