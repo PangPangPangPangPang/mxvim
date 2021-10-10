@@ -86,7 +86,11 @@ M.config = function()
 					width = 0.75,
 					preview_cutoff = 120,
 				},
-				vertical = { mirror = true, width = 0.50 },
+				vertical = {
+					mirror = true,
+					width = 0.50,
+					prompt_position = "top",
+				},
 			},
 			file_sorter = require("telescope.sorters").get_fuzzy_file,
 			file_ignore_patterns = {},
