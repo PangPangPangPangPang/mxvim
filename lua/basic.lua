@@ -36,7 +36,10 @@ o.shortmess = o.shortmess .. 'c'
 
 -- show line numbers
 -- o.relativenumber = true
-o.nu = true
+o.nu = mxvim.line_number
+if mxvim.line_number == false then
+    require('ln')
+end
 
 if fn.has('patch-8.1.1564') or fn.has('nvim-0.5') then
     o.signcolumn = 'yes'

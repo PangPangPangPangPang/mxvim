@@ -203,7 +203,7 @@ M.custom_handlers = function()
 	-- 	Hint = " ",
 	-- 	Info = " ",
 	-- }
-	local signs = { Hint = "", Info = "", Warn = "", Error = "" }
+	local signs = { Hint = " ", Info = " ", Warn = " ", Error = " " }
 
 	local border = {
 		{ "╭", "FloatBorder" },

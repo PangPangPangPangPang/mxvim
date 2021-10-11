@@ -130,4 +130,10 @@ M.shallow_copy = function(orig)
     return copy
 end
 
+M.Set = function(list)
+  local set = {}
+  for _, l in ipairs(list) do set[l] = true end
+  return set
+end
+
 return M
