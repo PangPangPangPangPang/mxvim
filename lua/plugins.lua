@@ -28,6 +28,12 @@ require("packer").startup({
 		})
 
 		use({
+			"PangPangPangPangPang/bilibili_live_broadcast",
+			cmd = { "BiliLive" },
+			requires = { "rcarriga/nvim-notify" },
+		})
+
+		use({
 			"PangPangPangPangPang/prettier-number-line.nvim",
 			config = function()
 				require("prettier-number-line").setup({ mode = "virtual", exclusive_filetype = { "fugitive" } })
