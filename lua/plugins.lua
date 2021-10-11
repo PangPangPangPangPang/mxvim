@@ -27,6 +27,14 @@ require("packer").startup({
 			end,
 		})
 
+        use({
+            "PangPangPangPangPang/prettier-number-line.nvim",
+            config = function ()
+                -- current / virtual
+                require('prettier-number-line').setup({line_number_mode = 'virtual'})
+            end
+        })
+
 		use({ "nvim-lua/popup.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
 

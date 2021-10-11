@@ -38,15 +38,7 @@ o.shortmess = o.shortmess .. 'c'
 -- o.relativenumber = true
 
 o.nu = true
-if mxvim.line_number == false then
-    o.signcolumn = 'number'
-else
-    o.signcolumn = 'yes'
-end
-
-if mxvim.virtual_line_number then
-    require('ln')
-end
+o.signcolumn = 'yes'
 
 -- o.to auto read when a file is changed from the outside
 g.autoread = true

@@ -1,14 +1,12 @@
 _G.mxvim = {}
 
 -- nightfly github-theme miramare vscode nord onedark
-mxvim.current_theme = 'vscode'
+mxvim.current_theme = 'onedark'
 mxvim.use_coc = false
 mxvim.use_treesitter = true
 mxvim.background = 'dark'
 mxvim.shade_percent = 0.4
 mxvim.use_cmp = true
-mxvim.line_number = false;
-mxvim.virtual_line_number = false;
 
 require('basic')
 require('plugins')
