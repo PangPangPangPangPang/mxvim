@@ -11,7 +11,6 @@ function highlight_line()
 	if exclusive_filetype[vim.fn.getbufvar(vim.fn.bufnr(), "&filetype")] then
 		return
 	end
-
 	local line = vim.fn.line(".")
 	local namespace = get_namespace()
 	api.nvim_buf_clear_namespace(0, namespace, 0, -1)
