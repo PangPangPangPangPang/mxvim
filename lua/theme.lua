@@ -17,6 +17,7 @@ M.theme = function (name)
             vim.cmd([[
                 hi! link NormalFloat cleared
             ]])
+            vim.cmd([[hi! LineNr guifg=bg]])
         end
     }
 end

@@ -36,17 +36,16 @@ o.shortmess = o.shortmess .. 'c'
 
 -- show line numbers
 -- o.relativenumber = true
-o.nu = mxvim.line_number
+
+o.nu = true
 if mxvim.line_number == false then
-    require('ln')
+    o.signcolumn = 'number'
+else
+    o.signcolumn = 'yes'
 end
 
-if fn.has('patch-8.1.1564') or fn.has('nvim-0.5') then
-    o.signcolumn = 'yes'
-    o.foldcolumn = '0'
-else
-    -- o.signcolum = 'number'
-    o.foldcolumn = '0'
+if mxvim.virtual_line_number then
+    require('ln')
 end
 
 -- o.to auto read when a file is changed from the outside
