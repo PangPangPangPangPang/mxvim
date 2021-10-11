@@ -197,12 +197,13 @@ M.signature = function()
 end
 
 M.custom_handlers = function()
-	local signs = {
-		Error = " ",
-		Warn = " ",
-		Hint = " ",
-		Info = " ",
-	}
+	-- local signs = {
+	-- 	Error = " ",
+	-- 	Warn = " ",
+	-- 	Hint = " ",
+	-- 	Info = " ",
+	-- }
+	local signs = { Hint = "", Info = "", Warn = "", Error = "" }
 
 	local border = {
 		{ "╭", "FloatBorder" },
