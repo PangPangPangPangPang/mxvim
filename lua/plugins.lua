@@ -27,13 +27,12 @@ require("packer").startup({
 			end,
 		})
 
-        use({
-            "PangPangPangPangPang/prettier-number-line.nvim",
-            config = function ()
-                -- current / virtual
-                require('prettier-number-line').setup({line_number_mode = 'virtual'})
-            end
-        })
+		use({
+			"PangPangPangPangPang/prettier-number-line.nvim",
+			config = function()
+				require("prettier-number-line").setup({ mode = "virtual", exclusive_filetype = { "fugitive" } })
+			end,
+		})
 
 		use({ "nvim-lua/popup.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
@@ -259,9 +258,9 @@ require("packer").startup({
 			-- 	end,
 			-- })
 
-            use({
-                'jiangmiao/auto-pairs'
-            })
+			use({
+				"jiangmiao/auto-pairs",
+			})
 			use({
 				"ray-x/lsp_signature.nvim",
 				opt = true,
