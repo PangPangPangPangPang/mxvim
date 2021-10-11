@@ -7,7 +7,7 @@ end
 
 local exclusive_filetype = Set({ "NvimTree", "TelescopePrompt", "" })
 
-local function highlight_line()
+function highlight_line()
 	if exclusive_filetype[vim.fn.getbufvar(vim.fn.bufnr(), "&filetype")] then
 		return
 	end
@@ -24,4 +24,5 @@ end
 
 vim.cmd([[
 autocmd CursorMoved * lua highlight_line()
+autocmd CursorMovedI * lua highlight_line()
 ]])
