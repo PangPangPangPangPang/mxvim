@@ -8,14 +8,23 @@ vim.g.did_load_filetypes = 1
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-	vim.cmd("packadd packer.nvim")
+---@diagnostic disable-next-line: lowercase-global
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 end
+vim.cmd([[packadd packer.nvim]])
 
 require("packer").startup({
 	function(use)
-		-- Packer itself
+		-- -- Packer itself
 		use({ "wbthomason/packer.nvim", opt = true })
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nathom/filetype.nvim" })
@@ -26,12 +35,22 @@ require("packer").startup({
 				vim.g.curshold_updatime = 100
 			end,
 		})
-
-		use({
-			"PangPangPangPangPang/bilibili_live_broadcast",
-			cmd = { "BiliLive" },
-			requires = { "rcarriga/nvim-notify" },
-		})
+        use({ "rcarriga/nvim-notify" })
+		-- use({
+			-- "PangPangPangPangPang/bilibili_live_broadcast",
+			-- "~/bilibili_live_broadcast",
+			-- cmd = { "BiliLive" },
+			-- setup = function()
+			-- 	require("bilibili").setup({
+			-- 		handler = function(msg)
+			-- 			if msg.type ~= "INTERACT_WORD" then
+			-- 				require("notify")(msg.msg, "error", { title = msg.type })
+			-- 			end
+			-- 		end,
+			-- 	})
+			-- end,
+			-- requires = { "rcarriga/nvim-notify" },
+		-- })
 
 		use({
 			"PangPangPangPangPang/prettier-number-line.nvim",
@@ -422,8 +441,12 @@ require("packer").startup({
 		--         require("config._other").textobj_setup()
 		--     end
 		-- }
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
 	config = {
+        auto_clean = true,
 		display = {
 			open_fn = function()
 				return require("packer.util").float({ border = "single" })

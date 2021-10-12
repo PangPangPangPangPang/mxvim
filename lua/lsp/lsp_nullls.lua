@@ -20,6 +20,7 @@ M.config = function()
         "vim",
         "mxvim",
         "packer_plugins",
+        "packer_bootstrap",
 		"--formatter",
 		"plain",
 		"--codes",
