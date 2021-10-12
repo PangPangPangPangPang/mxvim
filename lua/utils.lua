@@ -95,7 +95,13 @@ M.is_module_available = function(name)
 end
 
 M.print = function (msg)
-    require('notify')(msg)
+    local mess = msg
+    if type(msg) == 'table' then
+        mess = vim.fn.json_encode(vim.inspect(msg))
+    elseif type(msg) == 'number' then
+        mess = string.format('%d', msg)
+    end
+    require('notify')(mess)
 end
 
 M.safe_require = function(name, func)
