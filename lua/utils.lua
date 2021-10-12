@@ -94,20 +94,35 @@ M.is_module_available = function(name)
   end
 end
 
+M.hook_print = function ()
+    _G.original_print = _G.print
+    _G.print = require('utils').print
+end
+
 M.print = function (msg)
     local mess = msg
+    if mxvim.use_notify == false then
+        _G.original_print(vim.inspect(msg))
+        return
+    end
     if type(msg) == 'table' then
         mess = vim.fn.json_encode(vim.inspect(msg))
     elseif type(msg) == 'number' then
         mess = string.format('%d', msg)
     end
-    require('notify')(mess)
+    M.safe_require('notify', function (notify)
+        notify(mess)
+    end, function ()
+        _G.original_print(vim.inspect(msg))
+    end)
 end
 
-M.safe_require = function(name, func)
+M.safe_require = function(name, func, err)
     local present, plug = pcall(require, name)
     if present then
         func(plug)
+    else
+        err()
     end
 end
 
