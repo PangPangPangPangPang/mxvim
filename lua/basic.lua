@@ -183,6 +183,10 @@ if vim.fn.exists('+termguicolors') then
     vim.o.termguicolors = true
 end
 
+if mxvim.use_notify == true then
+    _G.print = require('utils').print
+end
+
 -- cmd([[source ~/.config/nvim/viml/indent.vim]])
 
 cmd([[
