@@ -18,6 +18,7 @@ if vim.loop.fs_stat(conf_dir .. '/plugin/packer_compiled.lua') then
     com! PackerInstall lua require('packer').install()
     com! PackerUpdate lua require('packer').update()
     com! PackerSync lua require('packer').sync()
+    com! PS lua require('packer').sync()
     com! PackerClean lua require('packer').clean()
     com! PackerStatus lua require('packer').status()
     com! -nargs=? PackerCompile lua require('packer').compile(<q-args>)

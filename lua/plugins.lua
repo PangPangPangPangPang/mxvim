@@ -26,19 +26,12 @@ require("packer").startup({
 				vim.g.curshold_updatime = 100
 			end,
 		})
-        use({ "rcarriga/nvim-notify" })
 		use({
 			-- "~/bilibili_live_broadcast",
 			"PangPangPangPangPang/bilibili_live_broadcast",
 			cmd = { "BiliLive" },
 			config = function()
-				require("bilibili_live_broadcast").setup({
-					handler = function(msg)
-						if msg.type ~= "INTERACT_WORD" then
-							require("notify")(msg.msg, "info", { title = msg.type })
-						end
-					end,
-				})
+                require('config._bili_live').config()
 			end,
 			requires = { "rcarriga/nvim-notify" },
 		})
