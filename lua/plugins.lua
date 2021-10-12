@@ -274,7 +274,7 @@ require("packer").startup({
 				"ray-x/lsp_signature.nvim",
 				opt = true,
 				config = function()
-					require("config._lsp_config").signature()
+					require("config._signature").signature()
 				end,
 			})
 
