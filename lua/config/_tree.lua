@@ -2,13 +2,13 @@ local M = {}
 local g = vim.g
 M.setup = function()
 	vim.defer_fn(function()
-		vim.cmd([[ 
+		vim.cmd([[
             PackerLoad nvim-tree.lua
         ]])
-		local map = require("utils").map
-		map({ "n", "i" }, "<F1>", ":NvimTreeToggle<CR>", { silent = true })
-		map({ "n" }, "<leader>j", ":NvimTreeFindFile<CR>", { silent = true })
-	end, 200)
+		local map = require("utils").dmap
+		map({ "n", "i" }, "<F1>", ":NvimTreeToggle<CR>")
+		map({ "n" }, "<leader>j", ":NvimTreeFindFile<CR>")
+	end, 0)
 end
 M.config = function()
 	local safe_require = require("utils").safe_require
@@ -44,7 +44,7 @@ M.config = function()
 		require("nvim-tree").setup({
 			disable_netrw = true,
 			hijack_netrw = true,
-			open_on_setup = false,
+			open_on_setup = true,
 			ignore_ft_on_setup = {},
 			auto_close = true,
 			open_on_tab = false,
