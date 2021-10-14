@@ -5,43 +5,56 @@ M.setup = function()
 	end, 1000)
 end
 M.config = function()
+	local colors = require("theme").shade_colors_default()
+	vim.cmd(string.format(
+		[[
+        hi GitSignsAdd guifg=%s
+        hi GitSignsChange guifg=%s
+        hi GitSignsDelete guifg=%s
+        hi GitSignsChangeDelete guifg=%s
+    ]],
+		colors.green,
+		colors.yellow,
+		colors.red,
+		colors.purple
+	))
 	require("gitsigns").setup({
 		signs = {
-		    add = {
-		        hl = 'GitSignsAdd',
-		        text = '▎',
-		        numhl = 'GitSignsAddNr',
-		        linehl = 'GitSignsAddLn'
-		    },
-		    change = {
-		        hl = 'GitSignsChange',
-		        text = '▎',
-		        -- text = '░',
-		        numhl = 'GitSignsChangeNr',
-		        linehl = 'GitSignsChangeLn'
-		    },
-		    delete = {
-		        hl = 'GitSignsDelete',
-                text = "契",
-		        -- text = '▏',
-		        numhl = 'GitSignsDeleteNr',
-		        linehl = 'GitSignsDeleteLn'
-		    },
-		    topdelete = {
-		        hl = 'GitSignsDelete',
-                text = "契",
-		        -- text = '▔',
-		        numhl = 'GitSignsDeleteNr',
-		        linehl = 'GitSignsDeleteLn'
-		    },
-		    changedelete = {
-		        hl = 'GitSignsChange',
-		        -- text = '▔',
-		        text = '▎',
-		        -- text = '▒',
-		        numhl = 'GitSignsChangeNr',
-		        linehl = 'GitSignsChangeLn'
-		    }
+			add = {
+				hl = "GitSignsAdd",
+				text = "▋",
+				numhl = "GitSignsAddNr",
+				linehl = "GitSignsAddLn",
+			},
+			change = {
+				hl = "GitSignsChange",
+				text = "▋",
+				-- text = '░',
+				numhl = "GitSignsChangeNr",
+				linehl = "GitSignsChangeLn",
+			},
+			delete = {
+				hl = "GitSignsDelete",
+				text = "契",
+				-- text = '▏',
+				numhl = "GitSignsDeleteNr",
+				linehl = "GitSignsDeleteLn",
+			},
+			topdelete = {
+				hl = "GitSignsDelete",
+				text = "契",
+				-- text = '▔',
+				numhl = "GitSignsDeleteNr",
+				linehl = "GitSignsDeleteLn",
+			},
+			changedelete = {
+				hl = "GitSignsChangeDelete",
+				-- text = '▔',
+				text = "▌",
+				-- text = '▒',
+				numhl = "GitSignsChangeNr",
+				linehl = "GitSignsChangeLn",
+			},
 		},
 		numhl = false,
 		linehl = false,

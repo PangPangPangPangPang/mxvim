@@ -31,12 +31,6 @@ M.config = function()
 	)
 	map(
 		"n",
-		"gt",
-		":lua require'telescope.builtin'.lsp_type_definitions(require('telescope.themes').get_dropdown({}))<cr>",
-		{ silent = true }
-	)
-	map(
-		"n",
 		"gr",
 		":lua require'telescope.builtin'.lsp_references(require('telescope.themes').dropdownrsor({}))<cr>",
 		{ silent = true }
