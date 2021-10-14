@@ -18,7 +18,7 @@ M.config = function()
             bg = '#282c34'
         },
         hlgroups = {
-            CursorLine = { bg = '#21252b' },
+            CursorLine = { bg = '#4b4b4b' },
             NvimTreeNormalNC = { bg = '#21252b' },
             NvimTreeNormal = { bg = '#21252b' },
             NvimTreeSignColumn = { bg = '#21252b' }
