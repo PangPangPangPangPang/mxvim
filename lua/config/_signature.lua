@@ -14,21 +14,21 @@ M.signature = function()
 			-- This setting only take effect in insert mode, it does not affect signature help in normal
 			-- mode, 10 by default
 
-			floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+			floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
 
 			floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
 			-- will set to true when fully tested, set to false will use whichever side has more space
 			-- this setting will be helpful if you do not want the PUM and floating win overlap
 			fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
 			hint_enable = true, -- virtual hint enable
-			hint_prefix = " ", -- Panda for parameter
-			hint_scheme = "String",
+			hint_prefix = " 契", -- Panda for parameter
+			hint_scheme = "Comment",
 			use_lspsaga = false, -- set to true if you want to use lspsaga popup
 			hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
 			max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
 			-- to view the hiding contents
 			max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-			transpancy = 20, -- set this value if you want the floating windows to be transpant (100 fully transpant), nil to disable(default)
+			transpancy = 80, -- set this value if you want the floating windows to be transpant (100 fully transpant), nil to disable(default)
 			handler_opts = {
 				border = "single",   -- double, single, shadow, none
 			},
