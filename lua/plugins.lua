@@ -26,14 +26,15 @@ require("packer").startup({
 				vim.g.curshold_updatime = 100
 			end,
 		})
+		use({ "rcarriga/nvim-notify" })
 		use({
 			-- "~/bilibili_live_broadcast",
 			"PangPangPangPangPang/bilibili_live_broadcast",
 			cmd = { "BiliLive" },
 			config = function()
-                require('config._bili_live').config()
+				require("config._bili_live").config()
 			end,
-			requires = { "rcarriga/nvim-notify" },
+			-- requires = { "rcarriga/nvim-notify" },
 		})
 
 		use({
@@ -430,7 +431,7 @@ require("packer").startup({
 		-- end
 	end,
 	config = {
-        auto_clean = true,
+		auto_clean = true,
 		display = {
 			open_fn = function()
 				return require("packer.util").float({ border = "single" })
