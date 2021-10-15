@@ -6,6 +6,8 @@ local dmap = require('utils').dmap
 
 vim.o.background = mxvim.background
 
+o.winblend = 10
+
 -- disable netrw
 g.loaded_netrwPlugin = 1
 -- Config netrw

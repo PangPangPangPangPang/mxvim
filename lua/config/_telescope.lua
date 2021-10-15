@@ -90,7 +90,7 @@ M.config = function()
 			file_ignore_patterns = {},
 			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 			path_display = { "absolute" },
-			winblend = 0,
+			winblend = 10,
 			border = {},
 			borderchars = {
 				"─",
