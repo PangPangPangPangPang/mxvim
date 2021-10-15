@@ -20,12 +20,12 @@ require("packer").startup({
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nathom/filetype.nvim" })
 
-		use({
-			"antoinemadec/FixCursorHold.nvim",
-			run = function()
-				vim.g.curshold_updatime = 100
-			end,
-		})
+		-- use({
+		-- 	"antoinemadec/FixCursorHold.nvim",
+		-- 	run = function()
+		-- 		vim.g.curshold_updatime = 100
+		-- 	end,
+		-- })
 		use({
 			-- "~/bilibili_live_broadcast",
 			"PangPangPangPangPang/bilibili_live_broadcast",
