@@ -11,12 +11,6 @@ local colors = require('theme').theme_colors()
 vim.api.nvim_command('hi! StatusLine guibg=' .. colors.bg .. ' guifg=' ..
                          colors.bg)
 
-local function has_file_type()
-    local f_type = vim.bo.filetype
-    if not f_type or f_type == '' then return false end
-    return true
-end
-
 local buffer_not_empty = function()
     if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
     return false
@@ -241,13 +235,34 @@ local function file_name()
     return fileinfo.get_current_file_name()
 end
 
+local function has_file_type()
+    local f_type = vim.bo.filetype
+    if not f_type or f_type == '' then return false end
+    return true
+end
+
+local function has_file_type_and_other()
+    local f_type = vim.bo.filetype
+    if not f_type or f_type == '' or f_type == 'NvimTree' then return false end
+    return true
+end
+
 local shade_bg = require('theme').shade(colors.fg, 0.25);
 
 gls.short_line_left[1] = {
+    FileIconShort = {
+        icon = ' ',
+        provider = 'FileIcon',
+        condition = has_file_type_and_other,
+        highlight = {
+            colors.fg,
+            shade_bg
+        }
+    }
+}
+gls.short_line_left[2] = {
     BufferType = {
         provider = {file_name},
-        icon = '  ',
-        separator = ' ',
         condition = has_file_type,
         separator_highlight = {colors.purple, shade_bg},
         highlight = {colors.fg, shade_bg}
