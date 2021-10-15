@@ -34,7 +34,7 @@ M.config = function()
         opts)
     local saga = require 'lspsaga'
 
-    saga.init_lsp_saga {
+    saga.setup {
         -- add your config value here
         -- default value
         use_saga_diagnostic_sign = true,
@@ -42,7 +42,7 @@ M.config = function()
         warn_sign = '',
         hint_sign = '',
         infor_sign = '',
-        dianostic_header_icon = '   ',
+        diagnostic_header_icon = '   ',
         code_action_icon = ' ',
         -- code_action_icon = '💡',
         code_action_prompt = {
@@ -76,11 +76,6 @@ M.config = function()
         -- like server_filetype_map = {metals = {'sbt', 'scala'}}
         server_filetype_map = {}
     }
-    -- vim.cmd([[
-    -- augroup lsp_saga_document_highlight
-    --     autocmd CursorHold * lua require'lspsaga.diagnostic'.show_cursor_diagnostics()
-    -- augroup END
-    -- ]])
 end
 
 return M

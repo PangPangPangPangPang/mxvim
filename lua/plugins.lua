@@ -26,7 +26,6 @@ require("packer").startup({
 				vim.g.curshold_updatime = 100
 			end,
 		})
-		use({ "rcarriga/nvim-notify" })
 		use({
 			-- "~/bilibili_live_broadcast",
 			"PangPangPangPangPang/bilibili_live_broadcast",
@@ -34,7 +33,7 @@ require("packer").startup({
 			config = function()
 				require("config._bili_live").config()
 			end,
-			-- requires = { "rcarriga/nvim-notify" },
+			requires = { "rcarriga/nvim-notify" },
 		})
 
 		use({
