@@ -1,11 +1,14 @@
 local M = {}
 M.setup = function()
+    if mxvim.use_cmp == true then
+        return
+    end
 	vim.g.coq_settings = { auto_start = true, keymap = { recommended = false, jump_to_mark = "<tab>" } }
 	vim.defer_fn(function()
 		vim.cmd([[
             PackerLoad coq_nvim
         ]])
-	end, 400)
+	end, 200)
 end
 M.config = function()
 	vim.api.nvim_exec(

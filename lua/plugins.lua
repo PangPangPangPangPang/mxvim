@@ -173,7 +173,6 @@ require("packer").startup({
 					require("config._lsp_config").config()
 				end,
 			})
-			if mxvim.use_cmp == true then
 				use({
 					"jose-elias-alvarez/null-ls.nvim",
 					opt = true,
@@ -223,7 +222,6 @@ require("packer").startup({
 						require("config._nvim_cmp").config()
 					end,
 				})
-			else
 				use({
 					"ms-jpq/coq_nvim",
 					opt = true,
@@ -238,7 +236,6 @@ require("packer").startup({
 						require("config._coq").config()
 					end,
 				}) -- main one
-			end
 
 			use({
 				"tami5/lspsaga.nvim",

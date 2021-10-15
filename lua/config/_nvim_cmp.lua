@@ -1,6 +1,9 @@
 local M = {}
 
 M.setup = function()
+    if mxvim.use_cmp == false then
+        return
+    end
     vim.defer_fn(function()
         vim.cmd([[
         PackerLoad lspkind-nvim
