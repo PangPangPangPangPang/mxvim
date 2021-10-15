@@ -1,57 +1,15 @@
 local gl = require('galaxyline')
 local gls = gl.section
--- local extension = require('galaxyline.providers.extensions')
 
 gl.short_line_list = {
     'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
     'fugitiveblame', 'plug', 'defx','NvimTree'
 }
 
--- vscode
 local colors = require('theme').theme_colors()
 
 vim.api.nvim_command('hi! StatusLine guibg=' .. colors.bg .. ' guifg=' ..
                          colors.bg)
-
-local function lsp_status(status)
-    local shorter_stat = ''
-    for match in string.gmatch(status, "[^%s]+") do
-        local err_warn = string.find(match, "^[WE]%d+", 0)
-        if not err_warn then shorter_stat = shorter_stat .. ' ' .. match end
-    end
-    return shorter_stat
-end
-
-local function get_coc_lsp()
-    local status = vim.fn['coc#status']()
-    if not status or status == '' then return '' end
-    return lsp_status(status)
-end
-
-local function get_diagnostic_info()
-    if vim.fn.exists('*coc#rpc#start_server') == 1 then return get_coc_lsp() end
-    return ''
-end
-
-local function get_current_func()
-    local has_func, func_name = pcall(vim.fn.nvim_buf_get_var, 0,
-                                      'coc_current_function')
-    if not has_func then return end
-    return func_name
-end
-
-local function trailing_whitespace()
-    local trail = vim.fn.search("\\s$", "nw")
-    if trail ~= 0 then
-        return ' '
-    else
-        return nil
-    end
-end
-
-CocStatus = get_diagnostic_info
-CocFunc = get_current_func
-TrailingWhiteSpace = trailing_whitespace
 
 local function has_file_type()
     local f_type = vim.bo.filetype
@@ -170,13 +128,6 @@ gls.left[9] = {
         highlight = {colors.red, colors.bg}
     }
 }
-gls.left[10] = {
-    TrailingWhiteSpace = {
-        provider = TrailingWhiteSpace,
-        icon = '    ',
-        highlight = {colors.yellow, colors.bg}
-    }
-}
 
 gls.mid[0] = {
     DiagnosticError = {
@@ -208,22 +159,13 @@ gls.mid[3] = {
     }
 }
 
-gls.mid[4] = {
-    CocFunc = {
-        provider = CocFunc,
-        icon = '  λ ',
-        highlight = {colors.yellow, colors.bg}
-    }
-}
-
--- VistaPlugin = extension.vista_nearest
--- gls.mid[3] = {
---   Vista = {
---     provider = VistaPlugin,
---     separator = '   ',
---     separator_highlight = {colors.bg,colors.bg},
---     highlight = {colors.fg,colors.bg,'bold'},
---   }
+-- gls.mid[4] = {
+--     CocFunc = {
+--         provider = CocFunc,
+--         icon = '  λ ',
+--         separator_highlight = {colors.bg,colors.bg},
+--         highlight = {colors.yellow, colors.bg}
+--     }
 -- }
 
 -- gls.left[15] = {
@@ -253,7 +195,6 @@ gls.right[3] = {
     FileFormat = {
         provider = 'FileFormat',
         separator = ' ',
-        separator_highlight = {colors.bg, colors.bg},
         highlight = {colors.yellow, colors.bg, 'bold'}
     }
 }
@@ -261,7 +202,6 @@ gls.right[4] = {
     LineInfo = {
         provider = 'LineColumn',
         separator = ' | ',
-        separator_highlight = {colors.blue, colors.bg},
         highlight = {colors.fg, colors.bg}
     }
 }
@@ -299,14 +239,16 @@ local function file_name()
     return fileinfo.get_current_file_name()
 end
 
+local shade_bg = require('theme').shade(colors.fg, 0.25);
+
 gls.short_line_left[1] = {
     BufferType = {
         provider = {file_name},
         icon = '  ',
         separator = ' ',
         condition = has_file_type,
-        separator_highlight = {colors.purple, colors.bg},
-        highlight = {colors.fg, colors.bg}
+        separator_highlight = {colors.purple, shade_bg},
+        highlight = {colors.fg, shade_bg}
     }
 }
 
@@ -315,7 +257,7 @@ gls.short_line_right[1] = {
         provider = 'BufferIcon',
         separator = '',
         condition = has_file_type,
-        separator_highlight = {colors.purple, colors.bg},
-        highlight = {colors.fg, colors.bg}
+        separator_highlight = {colors.purple, shade_bg},
+        highlight = {colors.fg, shade_bg}
     }
 }
