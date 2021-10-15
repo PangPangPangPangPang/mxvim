@@ -7,6 +7,7 @@ mxvim.use_treesitter = true
 mxvim.background = 'dark'
 mxvim.shade_percent = 0.4
 mxvim.use_cmp = true
+mxvim.use_coq = false
 mxvim.use_notify = true
 
 require('basic')

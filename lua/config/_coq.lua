@@ -1,6 +1,6 @@
 local M = {}
 M.setup = function()
-    if mxvim.use_cmp == true then
+    if mxvim.use_coq == false then
         return
     end
 	vim.g.coq_settings = { auto_start = true, keymap = { recommended = false, jump_to_mark = "<tab>" } }
