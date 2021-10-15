@@ -97,37 +97,26 @@ gls.left[4] = {
         highlight = {colors.fg, colors.bg, 'bold'}
     }
 }
-
+gls.left[5] = {
+    GitIcon = {
+        provider = function() return '    ' end,
+        condition = require('galaxyline.providers.vcs').check_git_workspace,
+        highlight = {colors.orange, colors.bg}
+    }
+}
+gls.left[6] = {
+    GitBranch = {
+        provider = 'GitBranch',
+        condition = require('galaxyline.providers.vcs').check_git_workspace,
+        highlight = {colors.orange, colors.bg, 'bold'}
+    }
+}
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
     if squeeze_width > 40 then return true end
     return false
 end
 
-gls.left[7] = {
-    DiffAdd = {
-        provider = 'DiffAdd',
-        condition = checkwidth,
-        icon = '    ',
-        highlight = {colors.green, colors.bg}
-    }
-}
-gls.left[8] = {
-    DiffModified = {
-        provider = 'DiffModified',
-        condition = checkwidth,
-        icon = '    ',
-        highlight = {colors.orange, colors.bg}
-    }
-}
-gls.left[9] = {
-    DiffRemove = {
-        provider = 'DiffRemove',
-        condition = checkwidth,
-        icon = '    ',
-        highlight = {colors.red, colors.bg}
-    }
-}
 
 gls.mid[0] = {
     DiagnosticError = {
@@ -177,31 +166,44 @@ gls.mid[3] = {
 -- }
 
 gls.right[1] = {
-    GitIcon = {
-        provider = function() return '    ' end,
-        condition = require('galaxyline.providers.vcs').check_git_workspace,
-        highlight = {colors.orange, colors.bg}
-    }
-}
-gls.right[2] = {
-    GitBranch = {
-        provider = 'GitBranch',
-        condition = require('galaxyline.providers.vcs').check_git_workspace,
-        highlight = {colors.orange, colors.bg, 'bold'}
+    DiffAdd = {
+        provider = 'DiffAdd',
+        condition = checkwidth,
+        icon = '    ',
+        highlight = {colors.green, colors.bg}
     }
 }
 
+gls.right[2]    = {
+    DiffModified = {
+        provider = 'DiffModified',
+        condition = checkwidth,
+        icon = '  柳 ',
+        highlight = {colors.orange, colors.bg}
+    }
+}
 gls.right[3] = {
+    DiffRemove = {
+        provider = 'DiffRemove',
+        condition = checkwidth,
+        icon = '    ',
+        highlight = {colors.red, colors.bg}
+    }
+}
+
+gls.right[4] = {
     FileFormat = {
         provider = 'FileFormat',
         separator = ' ',
+        separator_highlight = {colors.bg, colors.bg},
         highlight = {colors.yellow, colors.bg, 'bold'}
     }
 }
-gls.right[4] = {
+gls.right[5] = {
     LineInfo = {
         provider = 'LineColumn',
         separator = ' | ',
+        separator_highlight = {colors.purple, colors.bg},
         highlight = {colors.fg, colors.bg}
     }
 }
@@ -213,17 +215,17 @@ gls.right[4] = {
 --     highlight = {colors.cyan,colors.darkblue,'bold'},
 --   }
 -- }
-gls.right[5] = {
+gls.right[6] = {
     Separator = {
         provider = function() return ' ' end,
         highlight = {colors.red, colors.bg}
     }
 }
 
-gls.right[6] = {
+gls.right[7] = {
     ScrollBar = {provider = 'ScrollBar', highlight = {colors.red, colors.bg}}
 }
-gls.right[7] = {
+gls.right[8] = {
     FirstElement = {
         provider = function() return ' ' end,
         highlight = {colors.blue, colors.bg}
