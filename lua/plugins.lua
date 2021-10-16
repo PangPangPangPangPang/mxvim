@@ -20,12 +20,6 @@ require("packer").startup({
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nathom/filetype.nvim" })
 
-		-- use({
-		-- 	"antoinemadec/FixCursorHold.nvim",
-		-- 	run = function()
-		-- 		vim.g.curshold_updatime = 100
-		-- 	end,
-		-- })
 		use({
 			-- "~/bilibili_live_broadcast",
 			"PangPangPangPangPang/bilibili_live_broadcast",
@@ -165,7 +159,7 @@ require("packer").startup({
 			use({
 				"neovim/nvim-lspconfig",
 				opt = true,
-				requires = { "kabouzeid/nvim-lspinstall" },
+				requires = { "williamboman/nvim-lsp-installer" },
 				setup = function()
 					require("config._lsp_config").setup()
 				end,

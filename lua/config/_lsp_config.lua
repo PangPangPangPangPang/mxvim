@@ -4,7 +4,7 @@ local colors = require("theme").shade_colors(0.6)
 M.setup = function()
 	vim.defer_fn(function()
 		vim.cmd([[
-        PackerLoad nvim-lspinstall
+        PackerLoad nvim-lsp-installer
         PackerLoad lsp_signature.nvim
         PackerLoad nvim-lspconfig
         ]])
@@ -12,38 +12,23 @@ M.setup = function()
 	end, 500)
 end
 M.config = function()
-	local lspinstall = require("lspinstall")
-	local lspconfig = require("lspconfig")
-
-	local function setup_servers()
-		lspinstall.setup()
-		-- get all installed servers
-		local servers = require("lspinstall").installed_servers()
-
-        -- npm i -g vscode-langservers-extracted
-        table.insert(servers, 'eslint')
-		-- ... and add manually installed servers
-		for _, server in pairs(servers) do
-			local config
-			-- language specific config
-			if server == "efm" then
-				config = require("lsp.lsp_efm").config(M.on_attach)
-			else
-				config = M.make_config()
-				if server == "lua" then
-					config.settings = require("lsp.lsp_lua").config()
-				elseif server == "typescript" then
-					config.on_attach = require("lsp.lsp_ts").on_attach
-				end
+	local lsp_installer = require("nvim-lsp-installer")
+	lsp_installer.on_server_ready(function(server)
+		local config
+		-- language specific config
+		if server.name == "efm" then
+			config = require("lsp.lsp_efm").config(M.on_attach)
+		else
+			config = M.make_config()
+			if server.name == "lua" then
+				config.settings = require("lsp.lsp_lua").config()
+			elseif server.name == "tsserver" then
+				config.on_attach = require("lsp.lsp_ts").on_attach
 			end
-			lspconfig[server].setup(config)
 		end
-	end
-	setup_servers()
-	lspinstall.post_install_hook = function()
-		setup_servers() -- reload installed servers
-		vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-	end
+		server:setup(config)
+        vim.cmd [[ do User LspAttachBuffers ]]
+	end)
 end
 M.set_signature = function(bufnr)
 	require("lsp_signature").on_attach({}, bufnr)
