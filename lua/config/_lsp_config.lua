@@ -117,10 +117,6 @@ end
 
 M.make_config = function()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	-- capabilities.textDocument.completion.completionItem.snippetSupport = true
-	-- capabilities.textDocument.completion.completionItem.resolveSupport = {
-	--     properties = {'documentation', 'detail', 'additionalTextEdits'}
-	-- }
 	if mxvim.use_cmp == true then
 		capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 	end

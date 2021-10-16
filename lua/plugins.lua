@@ -119,7 +119,6 @@ require("packer").startup({
 
 		use({
 			"lukas-reineke/indent-blankline.nvim",
-			event = "VimEnter",
 			config = function()
 				require("config._indentline").setup()
 			end,
@@ -194,7 +193,6 @@ require("packer").startup({
 			use({
 				"hrsh7th/nvim-cmp",
 				opt = true,
-				disable = false,
 				requires = {
 					"onsails/lspkind-nvim",
 					"hrsh7th/cmp-nvim-lua",
@@ -436,5 +434,7 @@ require("packer").startup({
 				return require("packer.util").float({ border = "single" })
 			end,
 		},
+        compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+
 	},
 })
