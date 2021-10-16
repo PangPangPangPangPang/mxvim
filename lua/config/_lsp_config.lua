@@ -1,34 +1,19 @@
 local M = {}
 local colors = require("theme").shade_colors(0.6)
 
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[
-        PackerLoad nvim-lsp-installer
-        PackerLoad lsp_signature.nvim
-        PackerLoad nvim-lspconfig
-        ]])
-		M.custom_handlers()
-	end, 500)
-end
+-- M.setup = function()
+-- 	vim.defer_fn(function()
+-- 		vim.cmd([[
+--         PackerLoad lsp_signature.nvim
+--         PackerLoad nvim-lspconfig
+--         PackerLoad nvim-lsp-installer
+--         ]])
+-- 		M.custom_handlers()
+-- 	end, 500)
+-- end
+
 M.config = function()
-	local lsp_installer = require("nvim-lsp-installer")
-	lsp_installer.on_server_ready(function(server)
-		local config
-		-- language specific config
-		if server.name == "efm" then
-			config = require("lsp.lsp_efm").config(M.on_attach)
-		else
-			config = M.make_config()
-			if server.name == "lua" then
-				config.settings = require("lsp.lsp_lua").config()
-			elseif server.name == "tsserver" then
-				config.on_attach = require("lsp.lsp_ts").on_attach
-			end
-		end
-		server:setup(config)
-        vim.cmd [[ do User LspAttachBuffers ]]
-	end)
+    M.custom_handlers()
 end
 M.set_signature = function(bufnr)
 	require("lsp_signature").on_attach({}, bufnr)

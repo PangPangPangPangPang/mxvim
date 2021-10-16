@@ -155,81 +155,94 @@ require("packer").startup({
 				end,
 			})
 		else
-			-- nvim builtin lsp
 			use({
-				"neovim/nvim-lspconfig",
-				opt = true,
-				requires = { "williamboman/nvim-lsp-installer" },
+				"williamboman/nvim-lsp-installer",
+				requires = {
+					{
+						"ray-x/lsp_signature.nvim",
+                        opt = true,
+						config = function()
+							require("config._signature").signature()
+						end,
+					},
+					{
+						"neovim/nvim-lspconfig",
+                        opt = true,
+						config = function()
+							require("config._lsp_config").config()
+						end,
+					},
+				},
 				setup = function()
-					require("config._lsp_config").setup()
+					require("config._lsp_installer").setup()
 				end,
 				config = function()
-					require("config._lsp_config").config()
+					require("config._lsp_installer").config()
 				end,
 			})
-				use({
-					"jose-elias-alvarez/null-ls.nvim",
-					opt = true,
-					requires = { "neovim/nvim-lspconfig" },
-					setup = function()
-						require("lsp.lsp_nullls").setup()
-					end,
-					config = function()
-						require("lsp.lsp_nullls").config()
-					end,
-				})
-				use({
-					"hrsh7th/nvim-cmp",
-					opt = true,
-					disable = false,
-					requires = {
-						"onsails/lspkind-nvim",
-						"hrsh7th/cmp-nvim-lua",
-						"hrsh7th/cmp-nvim-lsp",
-						"hrsh7th/cmp-path",
-						"hrsh7th/cmp-buffer",
-						{
-							"hrsh7th/cmp-vsnip",
-							wants = "friendly-snippets",
-							requires = {
-								"hrsh7th/vim-vsnip-integ",
-								"hrsh7th/vim-vsnip",
-								"rafamadriz/friendly-snippets",
-							},
-						},
-						{
-							"quangnguyen30192/cmp-nvim-tags",
-							-- if you want the sources is available for some file types
-							ft = {
-								"javascriptreact",
-								"typescriptreact",
-								"javascript",
-								"typescript",
-								"lua",
-							},
+			use({
+				"jose-elias-alvarez/null-ls.nvim",
+				opt = true,
+				requires = { "neovim/nvim-lspconfig" },
+				setup = function()
+					require("lsp.lsp_nullls").setup()
+				end,
+				config = function()
+					require("lsp.lsp_nullls").config()
+				end,
+			})
+			use({
+				"hrsh7th/nvim-cmp",
+				opt = true,
+				disable = false,
+				requires = {
+					"onsails/lspkind-nvim",
+					"hrsh7th/cmp-nvim-lua",
+					"hrsh7th/cmp-nvim-lsp",
+					"hrsh7th/cmp-path",
+					"hrsh7th/cmp-buffer",
+					{
+						"hrsh7th/cmp-vsnip",
+						wants = "friendly-snippets",
+						requires = {
+							"hrsh7th/vim-vsnip-integ",
+							"hrsh7th/vim-vsnip",
+							"rafamadriz/friendly-snippets",
 						},
 					},
-					setup = function()
-						require("config._nvim_cmp").setup()
-					end,
-					config = function()
-						require("config._nvim_cmp").config()
-					end,
-				})
-				use({
-					"ms-jpq/coq_nvim",
-					opt = true,
-					branch = "coq",
-					requires = {
-						{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+					{
+						"quangnguyen30192/cmp-nvim-tags",
+						-- if you want the sources is available for some file types
+						ft = {
+							"javascriptreact",
+							"typescriptreact",
+							"javascript",
+							"typescript",
+							"lua",
+						},
 					},
-					setup = function()
-						require("config._coq").setup()
-					end,
-					config = function()
-						require("config._coq").config()
-					end,
-				}) -- main one
+				},
+				setup = function()
+					require("config._nvim_cmp").setup()
+				end,
+				config = function()
+					require("config._nvim_cmp").config()
+				end,
+			})
+			use({
+				"ms-jpq/coq_nvim",
+				opt = true,
+				branch = "coq",
+				requires = {
+					{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+				},
+				setup = function()
+					require("config._coq").setup()
+				end,
+				config = function()
+					require("config._coq").config()
+				end,
+			}) -- main one
 
 			use({
 				"tami5/lspsaga.nvim",
@@ -260,13 +273,6 @@ require("packer").startup({
 
 			use({
 				"jiangmiao/auto-pairs",
-			})
-			use({
-				"ray-x/lsp_signature.nvim",
-				opt = true,
-				config = function()
-					require("config._signature").signature()
-				end,
 			})
 
 			use({
@@ -368,7 +374,10 @@ require("packer").startup({
 			end,
 		})
 		use({ "rbong/vim-flog" })
-		use({ "rhysd/git-messenger.vim" })
+        use({
+            "rhysd/git-messenger.vim",
+            cmd = { "GitMessenger" },
+        })
 
 		use({
 			"justinmk/vim-sneak",

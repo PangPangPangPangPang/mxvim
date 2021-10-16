@@ -1,14 +1,15 @@
 local M = {}
 M.setup = function()
     vim.defer_fn(function ()
-        vim.cmd([[ 
+        vim.cmd([[
+            let g:sneak#label = 1
             map f <Plug>Sneak_f
             map F <Plug>Sneak_F
             map t <Plug>Sneak_t
             map T <Plug>Sneak_T
             map cl <Plug>Sneak_s
             map cc <Plug>Sneak_S
-            PackerLoad vim-sneak 
+            PackerLoad vim-sneak
         ]])
     end, 1000)
 end
