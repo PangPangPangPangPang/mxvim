@@ -19,6 +19,9 @@ M.config = function()
 		lspinstall.setup()
 		-- get all installed servers
 		local servers = require("lspinstall").installed_servers()
+
+        -- npm i -g vscode-langservers-extracted
+        table.insert(servers, 'eslint')
 		-- ... and add manually installed servers
 		for _, server in pairs(servers) do
 			local config
