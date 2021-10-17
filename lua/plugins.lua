@@ -23,6 +23,7 @@ require("packer").startup({
 		use({
 			-- "~/bilibili_live_broadcast",
 			"PangPangPangPangPang/bilibili_live_broadcast",
+            opt = true,
 			cmd = { "BiliLive" },
 			config = function()
 				require("config._bili_live").config()
@@ -322,6 +323,18 @@ require("packer").startup({
 				require("config._vim_floaterm").map()
 			end,
 		})
+
+        use({
+            "RishabhRD/nvim-cheat.sh",
+            opt = true,
+            config = function ()
+                vim.g.cheat_default_window_layout = 'float'
+            end,
+            cmd = {"Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments"},
+            requires = {
+                "RishabhRD/popfix",
+            }
+        })
 
 		use({
 			"szw/vim-maximizer",

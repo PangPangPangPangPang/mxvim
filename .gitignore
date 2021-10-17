@@ -5,3 +5,4 @@ tags
 .DS_Store
 path/
 pinyin.txt
+packer_compiled.lua
