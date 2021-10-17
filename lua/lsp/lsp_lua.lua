@@ -13,7 +13,7 @@ M.config = function ()
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
+                globals = {'vim', 'packer_bootstrap'}
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files

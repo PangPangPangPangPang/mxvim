@@ -1,42 +1,30 @@
 local fn = vim.fn
 local g = vim.g
-
 local map = require("utils").map
-pcall(require, "impatient")
 
+-- for speedup start
+pcall(require, "impatient")
 vim.g.did_load_filetypes = 1
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-	vim.cmd("packadd packer.nvim")
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 end
 
 require("packer").startup({
 	function(use)
 		-- -- Packer itself
-		use({ "wbthomason/packer.nvim", opt = true })
+		use({ "wbthomason/packer.nvim" })
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nathom/filetype.nvim" })
-
-		use({
-			-- "~/bilibili_live_broadcast",
-			"PangPangPangPangPang/bilibili_live_broadcast",
-            opt = true,
-			cmd = { "BiliLive" },
-			config = function()
-				require("config._bili_live").config()
-			end,
-			requires = { "rcarriga/nvim-notify" },
-		})
-
-		use({
-			"PangPangPangPangPang/prettier-number-line.nvim",
-			config = function()
-				require("prettier-number-line").setup({ mode = "current", exclusive_filetype = { "fugitive" } })
-			end,
-		})
 
 		use({ "nvim-lua/popup.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
@@ -160,14 +148,14 @@ require("packer").startup({
 				requires = {
 					{
 						"ray-x/lsp_signature.nvim",
-                        opt = true,
+						opt = true,
 						config = function()
 							require("config._signature").signature()
 						end,
 					},
 					{
 						"neovim/nvim-lspconfig",
-                        opt = true,
+						opt = true,
 						config = function()
 							require("config._lsp_config").config()
 						end,
@@ -262,14 +250,6 @@ require("packer").startup({
 				end,
 			})
 
-			-- use({
-			-- 	"windwp/nvim-autopairs",
-			-- 	after = "nvim-cmp",
-			-- 	config = function()
-			-- 		require("config._autopairs").setup()
-			-- 	end,
-			-- })
-
 			use({
 				"jiangmiao/auto-pairs",
 			})
@@ -324,17 +304,17 @@ require("packer").startup({
 			end,
 		})
 
-        use({
-            "RishabhRD/nvim-cheat.sh",
-            opt = true,
-            config = function ()
-                vim.g.cheat_default_window_layout = 'float'
-            end,
-            cmd = {"Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments"},
-            requires = {
-                "RishabhRD/popfix",
-            }
-        })
+		use({
+			"RishabhRD/nvim-cheat.sh",
+			opt = true,
+			config = function()
+				vim.g.cheat_default_window_layout = "float"
+			end,
+			cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
+			requires = {
+				"RishabhRD/popfix",
+			},
+		})
 
 		use({
 			"szw/vim-maximizer",
@@ -385,10 +365,10 @@ require("packer").startup({
 			end,
 		})
 		use({ "rbong/vim-flog" })
-        use({
-            "rhysd/git-messenger.vim",
-            cmd = { "GitMessenger" },
-        })
+		use({
+			"rhysd/git-messenger.vim",
+			cmd = { "GitMessenger" },
+		})
 
 		use({
 			"justinmk/vim-sneak",
@@ -424,21 +404,27 @@ require("packer").startup({
 		g.quickui_border_style = 2
 		g.quickui_color_scheme = "system"
 
-		-- use {
-		--     'kana/vim-textobj-user',
-		--     opt = true,
-		--     requires = {
-		--         {'kana/vim-textobj-function', opt = true},
-		--         {'kana/vim-textobj-indent', opt = true},
-		--         {'kana/vim-textobj-line', opt = true}
-		--     },
-		--     setup = function()
-		--         require("config._other").textobj_setup()
-		--     end
-		-- }
-		-- if packer_bootstrap then
-		-- 	require("packer").sync()
-		-- end
+		use({
+			-- "~/bilibili_live_broadcast",
+			"PangPangPangPangPang/bilibili_live_broadcast",
+			opt = true,
+			cmd = { "BiliLive" },
+			config = function()
+				require("config._bili_live").config()
+			end,
+			requires = { "rcarriga/nvim-notify" },
+		})
+
+		use({
+			"PangPangPangPangPang/prettier-number-line.nvim",
+			config = function()
+				require("prettier-number-line").setup({ mode = "current", exclusive_filetype = { "fugitive" } })
+			end,
+		})
+
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
 	config = {
 		auto_clean = true,
@@ -447,7 +433,9 @@ require("packer").startup({
 				return require("packer.util").float({ border = "single" })
 			end,
 		},
-        compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
-
+		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
 	},
 })
+
+-- for impatient
+require("packer_compiled")
