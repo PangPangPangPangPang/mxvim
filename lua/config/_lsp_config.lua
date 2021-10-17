@@ -1,17 +1,6 @@
 local M = {}
 local colors = require("theme").shade_colors(0.6)
 
--- M.setup = function()
--- 	vim.defer_fn(function()
--- 		vim.cmd([[
---         PackerLoad lsp_signature.nvim
---         PackerLoad nvim-lspconfig
---         PackerLoad nvim-lsp-installer
---         ]])
--- 		M.custom_handlers()
--- 	end, 500)
--- end
-
 M.config = function()
     M.custom_handlers()
 end
