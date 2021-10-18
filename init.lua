@@ -8,7 +8,7 @@ mxvim.background = 'dark'
 mxvim.shade_percent = 0.4
 mxvim.use_cmp = true
 mxvim.use_coq = false
-mxvim.use_notify = false
+mxvim.use_notify = true
 
 require('basic')
 require('plugins')
