@@ -10,7 +10,7 @@ M.setup = function()
 end
 M.config = function ()
     local util = require('tabby.util')
-    local hl_tabline_sel = util.extract_nvim_hl('TabLineSel')
+    local hl_tabline_sel = util.extract_nvim_hl('Substitute')
     local hl_tabline = util.extract_nvim_hl('TabLine')
 
     local line = require("tabby.presets").active_wins_at_tail

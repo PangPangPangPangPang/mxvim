@@ -101,19 +101,21 @@ end
 
 M.print = function (msg)
     local mess = msg
-    if mxvim.use_notify == false then
-        _G.original_print(vim.inspect(msg))
-        return
-    end
     if type(msg) == 'table' then
         mess = vim.fn.json_encode(vim.inspect(msg))
     elseif type(msg) == 'number' then
         mess = string.format('%d', msg)
+    elseif type(msg) == 'userdata' then
+        mess = vim.fn.json_encode(vim.inspect(getmetatable(msg)))
+    end
+    if mxvim.use_notify == false then
+        _G.original_print(mess)
+        return
     end
     M.safe_require('notify', function (notify)
         notify(mess)
     end, function ()
-        _G.original_print(vim.inspect(msg))
+        _G.original_print(mess)
     end)
 end
 
