@@ -160,7 +160,7 @@ M.custom_handlers = function()
 			return true
 		end,
 		underline = true,
-		update_in_insert = true,
+		update_in_insert = false,
 	})
 end
 
