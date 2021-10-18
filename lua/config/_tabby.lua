@@ -9,22 +9,18 @@ M.setup = function()
     end, 1500)
 end
 M.config = function ()
-    local util = require('tabby.util')
-    local hl_tabline_sel = util.extract_nvim_hl('Substitute')
-    local hl_tabline = util.extract_nvim_hl('TabLine')
-
     local line = require("tabby.presets").active_wins_at_tail
     local label = function(tabid)
         return {
             '  ' .. fn.getcwd(-1, tabid) .. ' ',
-            hl = { fg = hl_tabline_sel.fg, bg = hl_tabline_sel.bg, style = 'bold' },
+            hl = 'Substitute',
         }
     end
     line.active_tab.label = label
     local inactive_label = function(tabid)
         return {
             '  ' .. fn.getcwd(-1, tabid) .. ' ',
-            hl = { fg = hl_tabline.fg, bg = hl_tabline.bg, style = 'bold' },
+            hl = 'TabLine',
         }
     end
     line.inactive_tab.label = inactive_label
