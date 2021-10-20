@@ -223,4 +223,10 @@ if fn.exists('g:neovide') == 1 then
         o.guifont = 'MaxIosevka Nerd Font:h14'
     end
     -- g.smoothie_enabled = false
+elseif fn.exists('g:gonvim_running') == 1 then
+    if require('utils').system() == 'Linux' then
+        o.guifont = 'MaxIosevka Nerd Font:h10'
+    else
+        o.guifont = 'MaxIosevka Nerd Font:h14'
+    end
 end

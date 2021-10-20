@@ -51,7 +51,7 @@ M.set_keymap = function(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
 		local show_diag =
-			"autocmd CursorHold <buffer> lua vim.diagnostic.show_position_diagnostics({focusable=false,border='rounded'})"
+			"autocmd CursorHold <buffer> lua vim.diagnostic.open_float(nil, {focusable=false,border='rounded'})"
 		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
 			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
 		end
