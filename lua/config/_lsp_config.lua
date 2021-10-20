@@ -2,7 +2,7 @@ local M = {}
 local colors = require("theme").shade_colors(0.6)
 
 M.config = function()
-    M.custom_handlers()
+	M.custom_handlers()
 end
 M.set_signature = function(bufnr)
 	require("lsp_signature").on_attach({}, bufnr)
@@ -19,14 +19,14 @@ M.set_keymap = function(client, bufnr)
 	-- Mappings.
 	-- lsp
 	local opts = { noremap = true, silent = true }
-    -- telescope remap
-	buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',opts)
-	buf_set_keymap('n', '<c-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+	-- telescope remap
+	buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	buf_set_keymap("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+	buf_set_keymap("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
@@ -51,7 +51,7 @@ M.set_keymap = function(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
 		local show_diag =
-			"autocmd CursorHold <buffer> lua vim.diagnostic.open_float(nil, {focusable=false,border='rounded'})"
+			"autocmd CursorHold <buffer> lua vim.diagnostic.open_float(nil, {focusable=false,border='rounded', scope='cursor', source='always'})"
 		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
 			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
 		end
