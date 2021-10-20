@@ -7,7 +7,7 @@ M.setup = function()
         PackerLoad nvim-lsp-installer
         ]])
         M.boot();
-	end, 500)
+	end, 200)
 end
 M.config = function()
     local lsp_config = require('config._lsp_config');

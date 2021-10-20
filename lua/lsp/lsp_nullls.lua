@@ -2,7 +2,7 @@ local M = {}
 M.setup = function()
 	vim.defer_fn(function()
 		vim.cmd([[ PackerLoad null-ls.nvim]])
-	end, 1000)
+	end, 300)
 end
 M.config = function()
 	local lspconfig = require("lspconfig")
