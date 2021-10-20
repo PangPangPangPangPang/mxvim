@@ -103,9 +103,12 @@ M.on_attach = function(client, bufnr)
 end
 
 M.make_config = function()
+	local safe_require = require("utils").safe_require
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	if mxvim.use_cmp == true then
-		capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+        safe_require("cmp_nvim_lsp", function (cmp)
+            capabilities = cmp.update_capabilities(capabilities)
+        end)
 	end
 	local config = {
 		root_dir = require("lspconfig/util").root_pattern("package.json", ".eslintrc", ".git"),
@@ -115,8 +118,9 @@ M.make_config = function()
 		on_attach = M.on_attach,
 	}
 	if mxvim.use_coq == true then
-		local coq = require("coq")
-		return coq.lsp_ensure_capabilities(config)
+        safe_require("coq", function (coq)
+            return coq.lsp_ensure_capabilities(config)
+        end)
 	else
 		return config
 	end
