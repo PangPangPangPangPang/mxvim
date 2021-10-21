@@ -2,6 +2,8 @@ local M = {}
 M.setup = function()
 	vim.defer_fn(function()
 		vim.cmd([[
+        PackerLoad popfix
+        PackerLoad nvim-lsputils
         PackerLoad lsp_signature.nvim
         PackerLoad nvim-lspconfig
         PackerLoad nvim-lsp-installer

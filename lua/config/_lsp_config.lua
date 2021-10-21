@@ -136,25 +136,26 @@ M.custom_handlers = function()
 	-- 	Info = " ",
 	-- }
 	local signs = { Hint = " ", Info = " ", Warn = " ", Error = " " }
-
-	local border = {
-		{ "╭", "FloatBorder" },
-		{ "─", "FloatBorder" },
-		{ "╮", "FloatBorder" },
-		{ "│", "FloatBorder" },
-		{ "╯", "FloatBorder" },
-		{ "─", "FloatBorder" },
-		{ "╰", "FloatBorder" },
-		{ "│", "FloatBorder" },
-	}
-
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
-	local lsp = vim.lsp
-	lsp.handlers["textDocument/hover"] = vim.lsp.with(lsp.handlers.hover, { border = border })
-	lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, { border = border })
+
+	local safe_require = require("utils").safe_require
+    safe_require("lsputil.codeAction", function(codeAction)
+        vim.lsp.handlers['textDocument/codeAction'] = codeAction.code_action_handler
+    end)
+    safe_require("lsputil.locations", function(locations)
+        vim.lsp.handlers['textDocument/references'] = locations.references_handler
+        vim.lsp.handlers['textDocument/definition'] = locations.definition_handler
+        vim.lsp.handlers['textDocument/declaration'] = locations.declaration_handler
+        vim.lsp.handlers['textDocument/typeDefinition'] = locations.typeDefinition_handler
+        vim.lsp.handlers['textDocument/implementation'] = locations.implementation_handler
+    end)
+    safe_require("lsputilsymbols", function(symbols)
+        vim.lsp.handlers['textDocument/documentSymbol'] = symbols.document_handler
+        vim.lsp.handlers['workspace/symbol'] = symbols.workspace_handler
+    end)
 	vim.diagnostic.config({
 		virtual_text = false,
 		-- virtual_text = {

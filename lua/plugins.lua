@@ -147,6 +147,8 @@ require("packer").startup({
 			use({
 				"williamboman/nvim-lsp-installer",
 				requires = {
+                    {"RishabhRD/popfix", opt=true},
+                    {"RishabhRD/nvim-lsputils", opt=true},
 					{
 						"ray-x/lsp_signature.nvim",
 						opt = true,
