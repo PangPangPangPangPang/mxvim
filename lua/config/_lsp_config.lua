@@ -156,7 +156,7 @@ M.custom_handlers = function()
 	vim.diagnostic.config({
 		-- virtual_text = false,
 		virtual_text = {
-			spacing = 10,
+			spacing = 2,
 		},
 		signs = function()
 			return true
