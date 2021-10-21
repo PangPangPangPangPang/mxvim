@@ -153,11 +153,11 @@ M.custom_handlers = function()
 	local lsp = vim.lsp
 	lsp.handlers["textDocument/hover"] = vim.lsp.with(lsp.handlers.hover, { border = border })
 	lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, { border = border })
-	lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		-- virtual_text = {
-		-- 	spacing = 2,
-		-- },
-		virtual_text = false,
+	vim.diagnostic.config({
+		-- virtual_text = false,
+		virtual_text = {
+			spacing = 10,
+		},
 		signs = function()
 			return true
 		end,
