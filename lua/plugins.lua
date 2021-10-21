@@ -169,6 +169,12 @@ require("packer").startup({
 					require("config._lsp_installer").config()
 				end,
 			})
+            use({
+                'https://gitlab.com/yorickpeterse/nvim-dd.git',
+                config = function ()
+                    require('dd').setup()
+                end
+            })
 			use({
 				"jose-elias-alvarez/null-ls.nvim",
 				opt = true,

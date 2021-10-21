@@ -19,9 +19,9 @@ M.set_keymap = function(client, bufnr)
 	-- Mappings.
 	-- lsp
 	local opts = { noremap = true, silent = true }
-	buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',opts)
-	buf_set_keymap('n', '<c-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+	buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	buf_set_keymap("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -36,7 +36,7 @@ M.set_keymap = function(client, bufnr)
 	buf_set_keymap("n", "g[", "<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>", opts)
 	buf_set_keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>", opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap('n', '<space>cn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+	buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
 	if client.resolved_capabilities.document_formatting then
@@ -106,9 +106,9 @@ M.make_config = function()
 	local safe_require = require("utils").safe_require
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	if mxvim.use_cmp == true then
-        safe_require("cmp_nvim_lsp", function (cmp)
-            capabilities = cmp.update_capabilities(capabilities)
-        end)
+		safe_require("cmp_nvim_lsp", function(cmp)
+			capabilities = cmp.update_capabilities(capabilities)
+		end)
 	end
 	local config = {
 		root_dir = require("lspconfig/util").root_pattern("package.json", ".eslintrc", ".git"),
@@ -118,9 +118,9 @@ M.make_config = function()
 		on_attach = M.on_attach,
 	}
 	if mxvim.use_coq == true then
-        safe_require("coq", function (coq)
-            return coq.lsp_ensure_capabilities(config)
-        end)
+		safe_require("coq", function(coq)
+			return coq.lsp_ensure_capabilities(config)
+		end)
 	else
 		return config
 	end
