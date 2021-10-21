@@ -128,7 +128,7 @@ end
 
 M.safe_require = function(name, func, err)
 	local present, plug = pcall(require, name)
-	if present then
+	if present and func ~= nil then
 		func(plug)
 	elseif err ~= nil then
 		err()
