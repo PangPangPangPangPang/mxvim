@@ -17,15 +17,15 @@ M.set_keymap = function(client, bufnr)
 	end
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 	-- Mappings.
-	-- lsp
 	local opts = { noremap = false, silent = true }
 
-    if not (packer_plugins["telescope.nvim"] and packer_plugins["telescope.nvim"].loaded) then
-        buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-        buf_set_keymap("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-        buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    end
+	if not (packer_plugins["telescope.nvim"] and packer_plugins["telescope.nvim"].loaded) then
+        local map = require("utils").map
+        map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+        map("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+        map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+        map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	end
 
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	-- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -145,20 +145,20 @@ M.custom_handlers = function()
 	end
 
 	local safe_require = require("utils").safe_require
-    safe_require("lsputil.codeAction", function(codeAction)
-        vim.lsp.handlers['textDocument/codeAction'] = codeAction.code_action_handler
-    end)
-    safe_require("lsputil.locations", function(locations)
-        vim.lsp.handlers['textDocument/references'] = locations.references_handler
-        vim.lsp.handlers['textDocument/definition'] = locations.definition_handler
-        vim.lsp.handlers['textDocument/declaration'] = locations.declaration_handler
-        vim.lsp.handlers['textDocument/typeDefinition'] = locations.typeDefinition_handler
-        vim.lsp.handlers['textDocument/implementation'] = locations.implementation_handler
-    end)
-    safe_require("lsputilsymbols", function(symbols)
-        vim.lsp.handlers['textDocument/documentSymbol'] = symbols.document_handler
-        vim.lsp.handlers['workspace/symbol'] = symbols.workspace_handler
-    end)
+	-- safe_require("lsputil.codeAction", function(codeAction)
+	--     vim.lsp.handlers['textDocument/codeAction'] = codeAction.code_action_handler
+	-- end)
+	safe_require("lsputil.locations", function(locations)
+		vim.lsp.handlers["textDocument/references"] = locations.references_handler
+		vim.lsp.handlers["textDocument/definition"] = locations.definition_handler
+		vim.lsp.handlers["textDocument/declaration"] = locations.declaration_handler
+		vim.lsp.handlers["textDocument/typeDefinition"] = locations.typeDefinition_handler
+		vim.lsp.handlers["textDocument/implementation"] = locations.implementation_handler
+	end)
+	safe_require("lsputilsymbols", function(symbols)
+		vim.lsp.handlers["textDocument/documentSymbol"] = symbols.document_handler
+		vim.lsp.handlers["workspace/symbol"] = symbols.workspace_handler
+	end)
 	vim.diagnostic.config({
 		virtual_text = false,
 		-- virtual_text = {
