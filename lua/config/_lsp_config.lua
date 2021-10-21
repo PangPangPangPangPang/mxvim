@@ -180,18 +180,19 @@ M.hide_cursor_diagnostic = function()
 	local namespace = _G.show_line_diagnostics_namespace
 	vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 end
+
 M.show_cursor_virt_diagnostic = function()
 	local pos = vim.api.nvim_win_get_cursor(0)
 	local lnum = pos[1] - 1
 	local col = pos[2]
 	local diagnostics = vim.diagnostic.get(0, { lnum = lnum })
+	if vim.tbl_isempty(diagnostics) then
+		return
+	end
 	local line_length = #vim.api.nvim_buf_get_lines(0, lnum, lnum + 1, true)[1]
 	diagnostics = vim.tbl_filter(function(d)
 		return d.lnum == lnum and math.min(d.col, line_length - 1) <= col and (d.end_col >= col or d.end_lnum > lnum)
 	end, diagnostics)
-	if vim.tbl_isempty(diagnostics) then
-		return
-	end
 	local lines = {}
 	for _, diagnostic in ipairs(diagnostics) do
 		local prefix = string.format("%s: ", diagnostic.source)
@@ -203,10 +204,10 @@ M.show_cursor_virt_diagnostic = function()
 	end
 	local namespace = _G.show_line_diagnostics_namespace
 
-    local raw_line = '  '
-    for _, line in ipairs(lines) do
-        raw_line = string.format('%s ■ %s', raw_line, line)
-    end
+	local raw_line = ""
+	for _, line in ipairs(lines) do
+		raw_line = string.format("%s ■ %s", raw_line, line)
+	end
 	vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 	vim.api.nvim_buf_set_extmark(0, namespace, lnum, -1, {
 		virt_text = { { raw_line, "Comment" } },
@@ -218,6 +219,5 @@ end
 M.show_cursor_diagnostic = function()
 	vim.diagnostic.open_float(nil, { focusable = false, border = "rounded", scope = "cursor", source = "always" })
 end
-
 
 return M
