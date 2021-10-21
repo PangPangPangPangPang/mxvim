@@ -37,6 +37,7 @@ M.set_keymap = function(client, bufnr)
 	buf_set_keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>", opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	buf_set_keymap("n", "<space>cd", "<Cmd>lua require('config._lsp_config').show_cursor_diagnostic()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
 	if client.resolved_capabilities.document_formatting then
@@ -48,7 +49,7 @@ M.set_keymap = function(client, bufnr)
 
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
-		local show_diag = "autocmd CursorHold <buffer> lua require('config._lsp_config').show_cursor_diagnostic()"
+		local show_diag = "autocmd CursorHold <buffer> lua require('config._lsp_config').show_cursor_virt_diagnostic()"
 		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
 			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
 		end
@@ -59,6 +60,8 @@ M.set_keymap = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         %s
+        autocmd CursorMoved <buffer> lua require('config._lsp_config').hide_cursor_diagnostic()
+        autocmd CursorMovedI <buffer> lua require('config._lsp_config').hide_cursor_diagnostic()
         " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
         augroup END
 
@@ -153,20 +156,68 @@ M.custom_handlers = function()
 	lsp.handlers["textDocument/hover"] = vim.lsp.with(lsp.handlers.hover, { border = border })
 	lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, { border = border })
 	vim.diagnostic.config({
-		-- virtual_text = false,
-		virtual_text = {
-			spacing = 2,
-		},
+		virtual_text = false,
+		-- virtual_text = {
+		-- 	spacing = 2,
+		-- },
 		signs = function()
 			return true
 		end,
 		underline = true,
 		update_in_insert = false,
+		float = {
+			show_header = true,
+			focusable = false,
+			border = "rounded",
+			source = "always",
+		},
+	})
+end
+
+_G.show_line_diagnostics_namespace = vim.api.nvim_create_namespace("show_line_diagnostics_namespace")
+
+M.hide_cursor_diagnostic = function()
+	local namespace = _G.show_line_diagnostics_namespace
+	vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
+end
+M.show_cursor_virt_diagnostic = function()
+	local pos = vim.api.nvim_win_get_cursor(0)
+	local lnum = pos[1] - 1
+	local col = pos[2]
+	local diagnostics = vim.diagnostic.get(0, { lnum = lnum })
+	local line_length = #vim.api.nvim_buf_get_lines(0, lnum, lnum + 1, true)[1]
+	diagnostics = vim.tbl_filter(function(d)
+		return d.lnum == lnum and math.min(d.col, line_length - 1) <= col and (d.end_col >= col or d.end_lnum > lnum)
+	end, diagnostics)
+	if vim.tbl_isempty(diagnostics) then
+		return
+	end
+	local lines = {}
+	for _, diagnostic in ipairs(diagnostics) do
+		local prefix = string.format("%s: ", diagnostic.source)
+		local message_lines = vim.split(diagnostic.message, "\n")
+		table.insert(lines, prefix .. message_lines[1])
+		for j = 2, #message_lines do
+			table.insert(lines, string.rep(" ", #prefix) .. message_lines[j])
+		end
+	end
+	local namespace = _G.show_line_diagnostics_namespace
+
+    local raw_line = '  '
+    for _, line in ipairs(lines) do
+        raw_line = string.format('%s ■ %s', raw_line, line)
+    end
+	vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
+	vim.api.nvim_buf_set_extmark(0, namespace, lnum, -1, {
+		virt_text = { { raw_line, "Comment" } },
+		virt_text_pos = "eol",
+		hl_mode = "combine",
 	})
 end
 
 M.show_cursor_diagnostic = function()
 	vim.diagnostic.open_float(nil, { focusable = false, border = "rounded", scope = "cursor", source = "always" })
 end
+
 
 return M
