@@ -1,9 +1,9 @@
 local M = {}
 M.setup = function()
-    vim.cmd([[ PackerLoad onedark.nvim]])
+    vim.cmd([[ PackerLoad onedarkpro.nvim]])
 end
 M.config = function()
-    local onedark = require('onedark')
+    local onedark = require('onedarkpro')
     onedark.setup({
         theme = 'onedark', -- Or
         -- theme = 'onelight'

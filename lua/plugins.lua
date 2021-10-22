@@ -35,7 +35,7 @@ require("packer").startup({
 			require("theme").theme("bluz71/vim-nightfly-guicolors"),
 			require("theme").theme("PangPangPangPangPang/miramare"),
 			require("theme").theme("shaunsingh/nord.nvim"),
-			require("theme").theme("olimorris/onedark.nvim"),
+			require("theme").theme("olimorris/onedarkpro.nvim"),
 		})
 
 		use({
