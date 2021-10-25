@@ -20,11 +20,11 @@ M.set_keymap = function(client, bufnr)
 	local opts = { noremap = false, silent = true }
 
 	if not (packer_plugins["telescope.nvim"] and packer_plugins["telescope.nvim"].loaded) then
-        local map = require("utils").map
-        map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-        map("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-        map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-        map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+		local map = require("utils").map
+		map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+		map("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+		map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+		map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	end
 
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -145,9 +145,6 @@ M.custom_handlers = function()
 	end
 
 	local safe_require = require("utils").safe_require
-	-- safe_require("lsputil.codeAction", function(codeAction)
-	--     vim.lsp.handlers['textDocument/codeAction'] = codeAction.code_action_handler
-	-- end)
 	safe_require("lsputil.locations", function(locations)
 		vim.lsp.handlers["textDocument/references"] = locations.references_handler
 		vim.lsp.handlers["textDocument/definition"] = locations.definition_handler
@@ -159,6 +156,19 @@ M.custom_handlers = function()
 		vim.lsp.handlers["textDocument/documentSymbol"] = symbols.document_handler
 		vim.lsp.handlers["workspace/symbol"] = symbols.workspace_handler
 	end)
+
+	local border = {
+		{ "╭", "FloatBorder" },
+		{ "─", "FloatBorder" },
+		{ "╮", "FloatBorder" },
+		{ "│", "FloatBorder" },
+		{ "╯", "FloatBorder" },
+		{ "─", "FloatBorder" },
+		{ "╰", "FloatBorder" },
+		{ "│", "FloatBorder" },
+	}
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 	vim.diagnostic.config({
 		virtual_text = false,
 		-- virtual_text = {
