@@ -124,11 +124,10 @@ M.make_config = function()
 	}
 	if mxvim.use_coq == true then
 		safe_require("coq", function(coq)
-			return coq.lsp_ensure_capabilities(config)
+			config = coq.lsp_ensure_capabilities(config)
 		end)
-	else
-		return config
 	end
+    return config
 end
 
 M.custom_handlers = function()

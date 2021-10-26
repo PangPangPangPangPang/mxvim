@@ -146,6 +146,7 @@ require("packer").startup({
 		else
 			use({
 				"williamboman/nvim-lsp-installer",
+                opt = true,
 				requires = {
                     {"RishabhRD/popfix", opt=true},
                     {"RishabhRD/nvim-lsputils", opt=true},

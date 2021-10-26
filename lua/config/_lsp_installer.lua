@@ -9,7 +9,7 @@ M.setup = function()
         PackerLoad nvim-lsp-installer
         ]])
         M.boot();
-	end, 200)
+	end, 300)
 end
 M.config = function()
     local lsp_config = require('config._lsp_config');
@@ -46,8 +46,6 @@ M.boot = function()
 		local ok, server = lsp_installer.get_server(server_name)
 		if ok then
 			if not server:is_installed() then
-                print(server_name)
-                print(server)
 				server:install()
 			end
 		end
