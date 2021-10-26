@@ -5,7 +5,7 @@ M.setup = function()
 	end
 	vim.g.coq_settings = {
 		auto_start = true,
-		keymap = { recommended = false, jump_to_mark = "<tab>" },
+		keymap = { recommended = false, jump_to_mark = "<tab>", pre_select = true },
 		display = { pum = { fast_close = false }, icons = { mode = 'none' } },
 	}
 	vim.defer_fn(function()
@@ -20,7 +20,7 @@ M.config = function()
     ino <silent><expr> <Esc>   pumvisible() ? "\<C-e><Esc>" : "\<Esc>"
     ino <silent><expr> <C-c>   pumvisible() ? "\<C-e><C-c>" : "\<C-c>"
     ino <silent><expr> <BS>    pumvisible() ? "\<C-e><BS>"  : "\<BS>"
-    ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"
+    ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-n>\<C-y>" : "\<C-y>") : "\<CR>"
     ]],
 		false
 	)
