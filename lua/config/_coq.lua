@@ -6,7 +6,7 @@ M.setup = function()
 	vim.g.coq_settings = {
 		auto_start = true,
 		keymap = { recommended = false, jump_to_mark = "<tab>" },
-		display = { pum = { fast_close = false } },
+		display = { pum = { fast_close = false }, icons = { mode = 'none' } },
 	}
 	vim.defer_fn(function()
 		vim.cmd([[
