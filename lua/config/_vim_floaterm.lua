@@ -28,6 +28,17 @@ M.map = function()
 	map("t", "<F5>", "<C-\\><C-n>:lua require('config._vim_floaterm').open_term()<CR>", { silent = true })
 	map("t", "<Esc>", "<C-\\><C-n>:lua require('config._vim_floaterm').close()<CR>", { silent = true })
 	map("n", "<leader>lg", ":lua require('config._vim_floaterm').open_lazygit()<CR>", { silent = true })
+	vim.cmd([[ autocmd FileType floaterm lua require('config._vim_floaterm').normal_map()]])
+end
+
+M.normal_map = function()
+	vim.api.nvim_buf_set_keymap(
+		0,
+		"n",
+		"<Esc>",
+		"<C-\\><C-n>:lua require('config._vim_floaterm').close()<CR>",
+		{ silent = true }
+	)
 end
 
 return M
