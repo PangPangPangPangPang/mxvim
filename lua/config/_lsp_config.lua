@@ -52,7 +52,7 @@ M.set_keymap = function(client, bufnr)
 
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
-		local show_diag = "autocmd CursorHold lua require('config._lsp_config').show_cursor_virt_diagnostic()"
+		local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"
 		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
 			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
 		end
