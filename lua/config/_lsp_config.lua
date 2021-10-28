@@ -207,6 +207,9 @@ M.show_cursor_virt_diagnostic = function()
 	diagnostics = vim.tbl_filter(function(d)
 		return d.lnum == lnum and math.min(d.col, line_length - 1) <= col and (d.end_col >= col or d.end_lnum > lnum)
 	end, diagnostics)
+    if next(diagnostics) == nil then
+        return;
+    end
 	local lines = {}
 	for _, diagnostic in ipairs(diagnostics) do
 		local prefix = string.format("%s: ", diagnostic.source)
