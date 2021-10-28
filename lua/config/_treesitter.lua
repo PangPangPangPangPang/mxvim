@@ -3,6 +3,7 @@ require("nvim-treesitter.configs").setup({
 	-- npm i -g tree-sitter-cli
 	-- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
 	highlight = {
+        disable = { "toml" },
 		enable = true, -- false will disable the whole extension
 		custom_captures = {
 			-- Highlight the @foo.bar capture group with the "Identifier" highlight group.
