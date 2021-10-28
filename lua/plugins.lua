@@ -89,6 +89,7 @@ require("packer").startup({
 		if mxvim.use_treesitter then
 			use({
 				"nvim-treesitter/nvim-treesitter",
+                disable = true,
 				requires = {
 					"nvim-treesitter/nvim-treesitter-textobjects",
 					"p00f/nvim-ts-rainbow",
@@ -200,6 +201,7 @@ require("packer").startup({
 					"hrsh7th/cmp-nvim-lsp",
 					"hrsh7th/cmp-path",
 					"hrsh7th/cmp-buffer",
+                    "hrsh7th/cmp-cmdline",
 					{
 						"hrsh7th/cmp-vsnip",
 						wants = "friendly-snippets",
@@ -433,6 +435,14 @@ require("packer").startup({
 				require("prettier-number-line").setup({ mode = "current", exclusive_filetype = { "fugitive" } })
 			end,
 		})
+
+        use({
+            'github/copilot.vim',
+			opt = true,
+			setup = function()
+				require("config._other").copilot_setup()
+			end,
+    })
 
 		if packer_bootstrap then
 			require("packer").sync()

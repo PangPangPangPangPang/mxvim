@@ -5,13 +5,18 @@ M.textobj_setup = function ()
     end, 200)
 end
 M.signature_setup = function ()
-    vim.defer_fn(function ()
-        vim.cmd([[ PackerLoad vim-signature ]])
-    end, 200)
+    -- vim.defer_fn(function ()
+    --     vim.cmd([[ PackerLoad vim-signature ]])
+    -- end, 200)
 end
 M.colorizer_setup = function ()
     vim.defer_fn(function ()
         vim.cmd([[ PackerLoad nvim-colorizer.lua ]])
+    end, 200)
+end
+M.copilot_setup = function ()
+    vim.defer_fn(function ()
+        vim.cmd([[ PackerLoad copilot.vim ]])
     end, 200)
 end
 return M;
