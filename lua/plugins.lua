@@ -89,7 +89,6 @@ require("packer").startup({
 		if mxvim.use_treesitter then
 			use({
 				"nvim-treesitter/nvim-treesitter",
-                disable = true,
 				requires = {
 					"nvim-treesitter/nvim-treesitter-textobjects",
 					"p00f/nvim-ts-rainbow",
