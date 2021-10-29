@@ -3,12 +3,12 @@ M.setup = function()
     vim.defer_fn(function ()
         vim.cmd([[
             let g:sneak#label = 1
-            map f <Plug>Sneak_f
-            map F <Plug>Sneak_F
-            map t <Plug>Sneak_t
-            map T <Plug>Sneak_T
-            map cl <Plug>Sneak_s
-            map cc <Plug>Sneak_S
+            nmap f <Plug>Sneak_f
+            nmap F <Plug>Sneak_F
+            nmap t <Plug>Sneak_t
+            nmap T <Plug>Sneak_T
+            nmap cl <Plug>Sneak_s
+            nmap cc <Plug>Sneak_S
             PackerLoad vim-sneak
         ]])
     end, 1000)
