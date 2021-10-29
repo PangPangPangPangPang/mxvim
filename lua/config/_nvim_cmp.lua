@@ -36,16 +36,21 @@ M.config = function()
 		-- preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
 		mapping = {
-			["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-			["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+			["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+			["<tab>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Replace }), { "c" }),
+			["<s-tab>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Replace }), { "c" }),
 			["<C-Space>"] = cmp.mapping.complete(),
 			-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
 			-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
 			-- ["<C-e>"] = cmp.mapping.close(),
-			["<CR>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = true,
-			}),
+			["<CR>"] = cmp.mapping(
+				cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = true,
+				}),
+				{ "i" }
+			),
 		},
 		-- You should specify your *installed* sources.
 		sources = {
@@ -75,6 +80,10 @@ M.config = function()
 	})
 	-- Use buffer source for `/`.
 	cmp.setup.cmdline("/", {
+		completion = {
+			completeopt = "menu,menuone,noinsert,noselect",
+			keyword_length = 1,
+		},
 		sources = {
 			{ name = "buffer" },
 		},
@@ -82,6 +91,10 @@ M.config = function()
 
 	-- Use cmdline & path source for ':'.
 	cmp.setup.cmdline(":", {
+		completion = {
+			completeopt = "menu,menuone,noinsert,noselect",
+			keyword_length = 1,
+		},
 		sources = cmp.config.sources({
 			{ name = "path" },
 		}, {
