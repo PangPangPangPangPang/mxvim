@@ -176,6 +176,10 @@ require("packer").startup({
 			})
             use({
                 'https://gitlab.com/yorickpeterse/nvim-dd.git',
+                opt=true,
+				setup = function()
+					require("config._other").dd_setup()
+				end,
                 config = function ()
                     require('dd').setup({
                         timeout = 0

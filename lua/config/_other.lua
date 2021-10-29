@@ -14,6 +14,11 @@ M.colorizer_setup = function()
 		vim.cmd([[ PackerLoad nvim-colorizer.lua ]])
 	end, 200)
 end
+M.dd_setup = function()
+	vim.defer_fn(function()
+		vim.cmd([[ PackerLoad nvim-dd.git ]])
+	end, 400)
+end
 M.copilot_setup = function()
 	-- vim.defer_fn(function()
 	-- 	vim.cmd([[

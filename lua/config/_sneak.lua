@@ -9,6 +9,12 @@ M.setup = function()
             nmap T <Plug>Sneak_T
             nmap cl <Plug>Sneak_s
             nmap cc <Plug>Sneak_S
+            xmap f <Plug>Sneak_f
+            xmap F <Plug>Sneak_F
+            xmap t <Plug>Sneak_t
+            xmap T <Plug>Sneak_T
+            xmap cl <Plug>Sneak_s
+            xmap cc <Plug>Sneak_S
             PackerLoad vim-sneak
         ]])
     end, 1000)
