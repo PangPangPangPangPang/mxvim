@@ -19,6 +19,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 end
 
+require("packer").init({ max_jobs = 60 })
+
 require("packer").startup({
 	function(use)
 		-- -- Packer itself
