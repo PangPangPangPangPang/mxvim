@@ -5,7 +5,6 @@ M.setup = function()
 	end, 300)
 end
 M.config = function()
-	local lspconfig = require("lspconfig")
 	local config = require("config._lsp_config").make_config()
 	local null_ls = require("null-ls")
 	-- pip3 install codespell
@@ -40,6 +39,9 @@ M.config = function()
         null_ls.builtins.code_actions.gitsigns,
 	}
 	null_ls.config({ sources = sources, debug = true })
-	lspconfig["null-ls"].setup(config)
+	local safe_require = require("utils").safe_require
+    safe_require('lspconfig', function (lspconfig)
+        lspconfig["null-ls"].setup(config)
+    end)
 end
 return M
