@@ -107,6 +107,9 @@ M.hook_print = function()
 end
 
 M.print = function(msg)
+    if msg == nil then
+        return
+    end
 	local mess = msg
 	if type(msg) == "table" then
 		mess = vim.fn.json_encode(vim.inspect(msg))
