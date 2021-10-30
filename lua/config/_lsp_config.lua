@@ -1,5 +1,6 @@
 local M = {}
 local colors = require("theme").shade_colors(0.6)
+local cmd = vim.cmd
 
 M.config = function()
 	M.custom_handlers()
@@ -56,24 +57,25 @@ M.set_keymap = function(client, bufnr)
 		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
 			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
 		end
-		vim.cmd(string.format(
+		cmd([[ augroup lsp_document_highlight ]])
+		cmd([[ autocmd! * <buffer> ]])
+		cmd([[ autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()  ]])
+		cmd([[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight() ]])
+        cmd([[ autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references() ]])
+		cmd(show_diag)
+		cmd([[ autocmd CursorMoved <buffer> lua require('config._lsp_config').hide_cursor_diagnostic() ]])
+		cmd([[ autocmd CursorMovedI <buffer> lua require('config._lsp_config').hide_cursor_diagnostic() ]])
+		-- cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)]])
+		cmd([[ augroup END ]])
+		cmd([[
+            hi! default link DiagnosticVirtualTextError Comment
+            hi! default link DiagnosticVirtualTextHint Comment
+            hi! default link DiagnosticVirtualTextInfo Comment
+            hi! default link DiagnosticVirtualTextWarn Comment
+        ]])
+
+		cmd(string.format(
 			[[
-        augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        %s
-        autocmd CursorMoved <buffer> lua require('config._lsp_config').hide_cursor_diagnostic()
-        autocmd CursorMovedI <buffer> lua require('config._lsp_config').hide_cursor_diagnostic()
-        " autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
-        augroup END
-
-        hi! default link DiagnosticVirtualTextError Comment
-        hi! default link DiagnosticVirtualTextHint Comment
-        hi! default link DiagnosticVirtualTextInfo Comment
-        hi! default link DiagnosticVirtualTextWarn Comment
-
         hi! DiagnosticDefaultInfo guifg=%s
         hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
         hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
@@ -88,7 +90,6 @@ M.set_keymap = function(client, bufnr)
         highlight! link LspReferenceRead LspReference
         highlight! link LspReferenceWrite LspReference
         ]],
-			show_diag,
 			colors.bg,
 			colors.red,
 			colors.blue,
@@ -128,7 +129,7 @@ M.make_config = function()
 			config = coq.lsp_ensure_capabilities(config)
 		end)
 	end
-    return config
+	return config
 end
 
 M.custom_handlers = function()
@@ -207,9 +208,9 @@ M.show_cursor_virt_diagnostic = function()
 	diagnostics = vim.tbl_filter(function(d)
 		return d.lnum == lnum and math.min(d.col, line_length - 1) <= col and (d.end_col >= col or d.end_lnum > lnum)
 	end, diagnostics)
-    if next(diagnostics) == nil then
-        return;
-    end
+	if next(diagnostics) == nil then
+		return
+	end
 	local lines = {}
 	for _, diagnostic in ipairs(diagnostics) do
 		local prefix = string.format("%s: ", diagnostic.source)
