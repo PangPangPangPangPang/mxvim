@@ -117,8 +117,12 @@ M.make_config = function()
 			capabilities = cmp.update_capabilities(capabilities)
 		end)
 	end
+    local root_dir
+    safe_require('lspconfig/util', function (util)
+        root_dir = util.root_pattern("package.json", ".eslintrc", ".git")
+    end)
 	local config = {
-		root_dir = require("lspconfig/util").root_pattern("package.json", ".eslintrc", ".git"),
+		root_dir = root_dir,
 		-- enable snippet support
 		capabilities = capabilities,
 		-- map buffer local keybindings when the language server attaches
