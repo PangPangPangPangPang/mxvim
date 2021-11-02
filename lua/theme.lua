@@ -17,10 +17,10 @@ M.theme = function(name)
 			vim.cmd([[
                 hi! link NormalFloat cleared
             ]])
-            vim.cmd [[
-                hi CmpItemAbbrMatch gui=bold guifg=#ecbf6f
-                hi CmpItemMenu guifg=#56b6c2
-            ]]
+            local colors = require('theme').theme_colors()
+            vim.cmd(string.format('hi CmpItemAbbrMatch gui=bold guifg=%s', colors.yellow))
+            vim.cmd(string.format('hi CmpItemMenu gui=bold guifg=%s', colors.cyan))
+            vim.cmd(string.format('hi CmpItemKind gui=bold guifg=%s', colors.blue))
 		end,
 	}
 end

@@ -400,13 +400,6 @@ require("packer").startup({
 			end,
 		})
 		use({
-			"phaazon/hop.nvim",
-			opt = true,
-			setup = function()
-				require("config._other").setup_hop()
-			end,
-		})
-		use({
 			"kshenoy/vim-signature",
 			opt = true,
 			setup = function()
