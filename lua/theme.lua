@@ -21,6 +21,7 @@ M.theme = function(name)
             vim.cmd(string.format('hi CmpItemAbbrMatch gui=bold guifg=%s', colors.yellow))
             vim.cmd(string.format('hi CmpItemMenu gui=bold guifg=%s', colors.cyan))
             vim.cmd(string.format('hi CmpItemKind gui=bold guifg=%s', colors.blue))
+            vim.cmd(string.format('hi! PmenuSel guifg=none'))
 		end,
 	}
 end

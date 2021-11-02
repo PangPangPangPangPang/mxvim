@@ -23,6 +23,7 @@ if vim.loop.fs_stat(conf_dir .. '/lua/packer_compiled.lua') then
     com! PackerClean lua require('packer').clean()
     com! PackerStatus lua require('packer').status()
     com! -nargs=? PackerCompile lua require('packer').compile(<q-args>)
+    com! -nargs=? PC lua require('packer').compile(<q-args>)
     com! -nargs=+ PackerLoad lua require('packer').loader(<q-args>)
     augroup packer_user_config
       autocmd!
