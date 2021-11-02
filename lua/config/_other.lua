@@ -19,6 +19,13 @@ M.dd_setup = function()
 		vim.cmd([[ PackerLoad nvim-dd.git ]])
 	end, 400)
 end
+M.setup_hop = function ()
+	vim.defer_fn(function()
+		vim.cmd([[ PackerLoad hop.nvim ]])
+        local map = require("utils").dmap
+        map({'n', 'x'}, 'cl', ':HopWord<cr>')
+	end, 400)
+end
 M.copilot_setup = function()
 	-- vim.defer_fn(function()
 	-- 	vim.cmd([[

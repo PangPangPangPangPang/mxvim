@@ -96,7 +96,7 @@ require("packer").startup({
 					"p00f/nvim-ts-rainbow",
 					"windwp/nvim-ts-autotag",
 					"JoosepAlviste/nvim-ts-context-commentstring",
-                    "nvim-treesitter/playground"
+					"nvim-treesitter/playground",
 				},
 				run = ":TSUpdate",
 				config = function()
@@ -148,10 +148,10 @@ require("packer").startup({
 		else
 			use({
 				"williamboman/nvim-lsp-installer",
-                opt = true,
+				opt = true,
 				requires = {
-                    {"RishabhRD/popfix", opt=true},
-                    {"RishabhRD/nvim-lsputils", opt=true},
+					{ "RishabhRD/popfix", opt = true },
+					{ "RishabhRD/nvim-lsputils", opt = true },
 					{
 						"ray-x/lsp_signature.nvim",
 						opt = true,
@@ -174,18 +174,18 @@ require("packer").startup({
 					require("config._lsp_installer").config()
 				end,
 			})
-            use({
-                'https://gitlab.com/yorickpeterse/nvim-dd.git',
-                opt=true,
+			use({
+				"https://gitlab.com/yorickpeterse/nvim-dd.git",
+				opt = true,
 				setup = function()
 					require("config._other").dd_setup()
 				end,
-                config = function ()
-                    require('dd').setup({
-                        timeout = 0
-                    })
-                end
-            })
+				config = function()
+					require("dd").setup({
+						timeout = 0,
+					})
+				end,
+			})
 			use({
 				"jose-elias-alvarez/null-ls.nvim",
 				opt = true,
@@ -206,7 +206,7 @@ require("packer").startup({
 					"hrsh7th/cmp-nvim-lsp",
 					"hrsh7th/cmp-path",
 					"hrsh7th/cmp-buffer",
-                    "hrsh7th/cmp-cmdline",
+					"hrsh7th/cmp-cmdline",
 					{
 						"hrsh7th/cmp-vsnip",
 						wants = "friendly-snippets",
@@ -400,6 +400,13 @@ require("packer").startup({
 			end,
 		})
 		use({
+			"phaazon/hop.nvim",
+			opt = true,
+			setup = function()
+				require("config._other").setup_hop()
+			end,
+		})
+		use({
 			"kshenoy/vim-signature",
 			opt = true,
 			setup = function()
@@ -441,13 +448,13 @@ require("packer").startup({
 			end,
 		})
 
-        use({
-            'github/copilot.vim',
+		use({
+			"github/copilot.vim",
 			opt = true,
 			setup = function()
 				require("config._other").copilot_setup()
 			end,
-    })
+		})
 
 		if packer_bootstrap then
 			require("packer").sync()

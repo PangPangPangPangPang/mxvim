@@ -17,6 +17,10 @@ M.theme = function(name)
 			vim.cmd([[
                 hi! link NormalFloat cleared
             ]])
+            vim.cmd [[
+                hi CmpItemAbbrMatch gui=bold guifg=#ecbf6f
+                hi CmpItemMenu guifg=#56b6c2
+            ]]
 		end,
 	}
 end

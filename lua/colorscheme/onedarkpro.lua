@@ -25,10 +25,6 @@ M.config = function()
         }
     })
     onedark.load()
-    vim.cmd [[
-    hi CmpItemAbbrMatch gui=bold guifg=#ecbf6f
-    hi CmpItemMenu guifg=#56b6c2
-    ]]
 end
 
 M.colors = function()
