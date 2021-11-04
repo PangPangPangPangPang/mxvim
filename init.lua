@@ -9,12 +9,12 @@ mxvim.shade_percent = 0.4
 mxvim.use_cmp = true
 mxvim.use_coq = false
 mxvim.use_notify = true
+mxvim.compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
 
 require('basic')
 require('plugins')
 
-local conf_dir = vim.fn.stdpath('config')
-if vim.loop.fs_stat(conf_dir .. '/lua/packer_compiled.lua') then
+if vim.loop.fs_stat(mxvim.compile_path) then
     vim.cmd([[
     com! PackerInstall lua require('packer').install()
     com! PackerUpdate lua require('packer').update()

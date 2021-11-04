@@ -460,7 +460,7 @@ require("packer").startup({
 				return require("packer.util").float({ border = "single" })
 			end,
 		},
-		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+		compile_path = mxvim.compile_path,
 	},
 })
 
