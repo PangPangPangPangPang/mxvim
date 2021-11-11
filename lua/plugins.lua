@@ -437,6 +437,7 @@ require("packer").startup({
 		use({
 			"PangPangPangPangPang/prettier-number-line.nvim",
 			config = function()
+                -- current virtual
 				require("prettier-number-line").setup({ mode = "current", exclusive_filetype = { "fugitive" } })
 			end,
 		})
