@@ -40,8 +40,8 @@ M.set_keymap = function(client, bufnr)
 	buf_set_keymap("n", "g[", "<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>", opts)
 	buf_set_keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>", opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	buf_set_keymap("n", "J", "<Cmd>lua require('config._lsp_config').show_cursor_diagnostic()<CR>", opts)
 	buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<space>cd", "<Cmd>lua require('config._lsp_config').show_cursor_diagnostic()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
 	if client.resolved_capabilities.document_formatting then
