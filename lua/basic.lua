@@ -203,7 +203,7 @@ cmd([[
 
         " Return to last edit position when opening files (You want this!)
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-        autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="PmenuSel", timeout=500}
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="MatchParen", timeout=500}
     augroup End
     augroup tt_ft
         autocmd!
