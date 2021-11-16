@@ -276,12 +276,11 @@ gls.right[8] = {
 }
 
 local function file_name()
-	local fileinfo = require("galaxyline.providers.fileinfo")
-	local name = fileinfo.get_current_file_name()
+	local name = get_current_file_name()
 	if string.find(name, "NvimTree", 1) ~= nil then
 		return "FileTree"
 	end
-	return fileinfo.get_current_file_name()
+	return get_current_file_name()
 end
 
 local function has_file_type()
