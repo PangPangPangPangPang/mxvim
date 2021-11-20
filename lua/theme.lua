@@ -23,7 +23,7 @@ M.theme = function(name)
             vim.cmd(string.format('hi! CmpItemMenu gui=bold guifg=%s', colors.cyan))
             vim.cmd(string.format('hi! CmpItemMenu gui=bold guifg=%s', colors.cyan))
             vim.cmd(string.format('hi! PmenuSel guifg=none'))
-            vim.cmd(string.format('hi! MatchParen cterm=reverse gui=reverse'))
+            vim.cmd(string.format('hi! MatchParen cterm=reverse gui=underline'))
 		end,
 	}
 end
