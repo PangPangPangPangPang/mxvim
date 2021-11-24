@@ -1,7 +1,7 @@
 _G.mxvim = {}
 
--- nightfly github-theme miramare vscode nord onedarkpro
-mxvim.current_theme = 'onedarkpro'
+-- nightfly github-theme miramare vscode nord onedarkpro rose-pine
+mxvim.current_theme = 'rose-pine'
 mxvim.use_coc = false
 mxvim.use_treesitter = true
 mxvim.background = 'dark'

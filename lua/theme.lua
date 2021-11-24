@@ -1,7 +1,7 @@
 mxvim.init_theme = false
 local M = {}
-M.theme = function(name)
-	return {
+M.theme = function(name, nick)
+    local ret = {
 		name,
 		opt = true,
 		setup = function()
@@ -26,6 +26,10 @@ M.theme = function(name)
             vim.cmd(string.format('hi! MatchParen cterm=reverse gui=underline'))
 		end,
 	}
+    if nick ~= nil then
+        ret['as'] = nick
+    end
+	return ret;
 end
 
 M.extract_nvim_hl = function(name)
