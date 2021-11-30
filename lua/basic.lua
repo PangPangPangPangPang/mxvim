@@ -68,7 +68,7 @@ o.pumheight = 20
 
 if fn.exists('&pumblend') then
     o.wildoptions = 'pum'
-    o.pumblend = 20
+    o.pumblend = 10
 end
 
 o.wildignore = '*.o,*~,*.pyc'
