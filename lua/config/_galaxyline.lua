@@ -167,14 +167,14 @@ gls.mid[0] = {
 gls.mid[1] = {
 	DiagnosticWarn = {
 		provider = "DiagnosticWarn",
-		icon = "    ",
+		icon = "    ",
 		highlight = { colors.yellow, colors.bg },
 	},
 }
 gls.mid[2] = {
 	DiagnosticHint = {
 		provider = "DiagnosticHint",
-		icon = "    ",
+		icon = "    ",
 		highlight = { colors.purple, colors.bg },
 	},
 }
@@ -182,7 +182,7 @@ gls.mid[2] = {
 gls.mid[3] = {
 	DiagnosticInfo = {
 		provider = "DiagnosticInfo",
-		icon = "    ",
+		icon = "    ",
 		highlight = { colors.cyan, colors.bg },
 	},
 }

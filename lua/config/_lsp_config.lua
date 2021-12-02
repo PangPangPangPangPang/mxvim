@@ -143,7 +143,7 @@ M.custom_handlers = function()
 	-- 	Hint = " ",
 	-- 	Info = " ",
 	-- }
-	local signs = { Hint = " ", Info = " ", Warn = " ", Error = " " }
+	local signs = { Warn = " ", Info = " ", Hint = " ", Error = " " }
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
