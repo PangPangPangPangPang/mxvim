@@ -38,7 +38,7 @@ require("packer").startup({
 			require("theme").theme("PangPangPangPangPang/miramare"),
 			require("theme").theme("shaunsingh/nord.nvim"),
 			require("theme").theme("olimorris/onedarkpro.nvim"),
-			require("theme").theme("rose-pine/neovim", 'rose-pine'),
+			require("theme").theme("rose-pine/neovim", "rose-pine"),
 		})
 
 		use({
@@ -391,7 +391,16 @@ require("packer").startup({
 		})
 
 		use({
+			"ggandor/lightspeed.nvim",
+			opt = true,
+			setup = function()
+				require("config._other").setup_lightspeed()
+			end,
+		})
+
+		use({
 			"justinmk/vim-sneak",
+            disable = true,
 			opt = true,
 			setup = function()
 				require("config._sneak").setup()
@@ -438,13 +447,14 @@ require("packer").startup({
 		use({
 			"PangPangPangPangPang/prettier-number-line.nvim",
 			config = function()
-                -- current virtual
+				-- current virtual
 				require("prettier-number-line").setup({ mode = "current", exclusive_filetype = { "fugitive" } })
 			end,
 		})
 
 		use({
 			"github/copilot.vim",
+            disable = true,
 			opt = true,
 			setup = function()
 				require("config._other").copilot_setup()

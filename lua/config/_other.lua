@@ -27,11 +27,23 @@ M.setup_hop = function ()
 	end, 400)
 end
 M.copilot_setup = function()
-	-- vim.defer_fn(function()
-	-- 	vim.cmd([[
-        -- inoremap <silent><expr> <C-j> copilot#Accept("")
-        -- let g:copilot_no_tab_map = 1
-        -- PackerLoad copilot.vim ]])
-	-- end, 200)
+	vim.defer_fn(function()
+		vim.cmd([[
+        inoremap <silent><expr> <C-j> copilot#Accept("")
+        let g:copilot_no_tab_map = 1
+        PackerLoad copilot.vim ]])
+	end, 200)
+end
+
+M.setup_lightspeed = function ()
+	vim.defer_fn(function()
+		vim.cmd([[
+            PackerLoad lightspeed.nvim
+            silent! unmap s
+            silent! unmap S
+            nmap cl <Plug>Lightspeed_s
+            nmap cc <Plug>Lightspeed_S
+        ]])
+	end, 400)
 end
 return M
