@@ -41,9 +41,18 @@ M.setup_lightspeed = function ()
             PackerLoad lightspeed.nvim
             silent! unmap s
             silent! unmap S
+            nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
+            nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
+            nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
+            nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
             nmap cl <Plug>Lightspeed_s
             nmap cc <Plug>Lightspeed_S
         ]])
+        local colors = require("theme").theme_colors()
+        vim.cmd(string.format("hi! LightspeedOneCharMatch gui=bold guibg=%s", colors.red))
+        vim.cmd(string.format("hi! LightspeedShortcut gui=bold guibg=%s", colors.red))
+        vim.cmd(string.format("hi! LightspeedLabel gui=bold guifg=%s", colors.red))
+        vim.cmd(string.format("hi! LightspeedLabelOverlapped guifg=%s", colors.red))
 	end, 400)
 end
 return M
