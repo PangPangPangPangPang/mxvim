@@ -299,7 +299,8 @@ local function has_file_type_and_other()
 	return true
 end
 
-local shade_bg = require("theme").shade(colors.fg, 0.9)
+local shade_bg = require("theme").shade_all(colors.bg, 0.3)
+local shade_fg = require("theme").shade_all(colors.fg, 0.4)
 
 gls.short_line_left[1] = {
 	FileIconShort = {
@@ -307,7 +308,7 @@ gls.short_line_left[1] = {
 		provider = "FileIcon",
 		condition = has_file_type_and_other,
 		highlight = {
-			colors.fg,
+			shade_fg,
 			shade_bg,
 		},
 	},
@@ -317,7 +318,7 @@ gls.short_line_left[2] = {
 		provider = { file_name },
 		condition = has_file_type,
 		separator_highlight = { colors.purple, shade_bg },
-		highlight = { colors.fg, shade_bg },
+		highlight = { shade_fg, shade_bg },
 	},
 }
 

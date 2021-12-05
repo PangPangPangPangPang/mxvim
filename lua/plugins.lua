@@ -38,7 +38,8 @@ require("packer").startup({
 			require("theme").theme("PangPangPangPangPang/miramare"),
 			require("theme").theme("shaunsingh/nord.nvim"),
 			require("theme").theme("olimorris/onedarkpro.nvim"),
-			require("theme").theme("rose-pine/neovim", "rose-pine"),
+			require("theme").theme("rose-pine/neovim", 'rose-pine'),
+			require("theme").theme("catppuccin/nvim", 'catppuccin'),
 		})
 
 		use({

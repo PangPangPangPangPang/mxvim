@@ -78,6 +78,34 @@ M.shade = function(color, percent)
 	end
 end
 
+M.shade_all = function(color, percent)
+	if mxvim.background == "dark" then
+		local shade_color = '#000000'
+		local bg_r = tonumber(string.sub(shade_color, 2, 3), 16)
+		local bg_g = tonumber(string.sub(shade_color, 4, 5), 16)
+		local bg_b = tonumber(string.sub(shade_color, 6, 7), 16)
+		local cur_r = tonumber(string.sub(color, 2, 3), 16)
+		local cur_g = tonumber(string.sub(color, 4, 5), 16)
+		local cur_b = tonumber(string.sub(color, 6, 7), 16)
+		local r = string.format("%02x", cur_r - (cur_r - bg_r) * percent)
+		local g = string.format("%02x", cur_g - (cur_g - bg_g) * percent)
+		local b = string.format("%02x", cur_b - (cur_b - bg_b) * percent)
+		return string.format("#%s%s%s", r, g, b)
+	else
+		local shade_color = '#FFFFFF'
+		local bg_r = tonumber(string.sub(shade_color, 2, 3), 16)
+		local bg_g = tonumber(string.sub(shade_color, 4, 5), 16)
+		local bg_b = tonumber(string.sub(shade_color, 6, 7), 16)
+		local cur_r = tonumber(string.sub(color, 2, 3), 16)
+		local cur_g = tonumber(string.sub(color, 4, 5), 16)
+		local cur_b = tonumber(string.sub(color, 6, 7), 16)
+		local r = string.format("%02x", cur_r + (bg_r - cur_r) * percent)
+		local g = string.format("%02x", cur_g + (bg_g - cur_g) * percent)
+		local b = string.format("%02x", cur_b + (bg_b - cur_b) * percent)
+		return string.format("#%s%s%s", r, g, b)
+	end
+end
+
 M.shade_default = function(color)
 	return M.shade(color, mxvim.shade_percent)
 end
