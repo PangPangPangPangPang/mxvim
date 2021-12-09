@@ -1,6 +1,7 @@
 local o = vim.o
 local fn = vim.fn
 local g = vim.g
+local opt = vim.opt
 local cmd = vim.cmd
 local dmap = require('utils').dmap
 
@@ -184,6 +185,8 @@ o.ffs='unix,dos,mac'
 if vim.fn.exists('+termguicolors') then
     vim.o.termguicolors = true
 end
+
+opt.fillchars:append { eob = " " }
 
 require('utils').hook_print()
 
