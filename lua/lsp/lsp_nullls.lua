@@ -8,7 +8,7 @@ M.config = function()
 	local config = require("config._lsp_config").make_config()
 	local null_ls = require("null-ls")
 	-- pip3 install codespell
-	-- yarn add global eslint_d
+	-- yarn global add eslint_d
 	-- luarocks install luacheck
 	local prettier = null_ls.builtins.formatting.prettier
 	prettier.filetypes = { "css", "scss", "html", "json", "yaml", "markdown" }
