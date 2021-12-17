@@ -38,7 +38,7 @@ M.config = function()
 		prettier,
         null_ls.builtins.code_actions.gitsigns,
 	}
-	null_ls.config({ sources = sources, debug = true })
+	null_ls.setup({ sources = sources, debug = true })
 	local safe_require = require("utils").safe_require
     safe_require('lspconfig', function (lspconfig)
         lspconfig["null-ls"].setup(config)
