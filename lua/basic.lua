@@ -212,6 +212,7 @@ cmd([[
         autocmd!
         autocmd BufNewFile,BufRead *.ttss   set filetype=css
         autocmd BufNewFile,BufRead *.ttml   set filetype=html
+        autocmd BufNewFile,BufRead *.podspec   set filetype=ruby
     augroup END
 ]])
 
