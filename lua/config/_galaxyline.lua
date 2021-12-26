@@ -299,8 +299,8 @@ local function has_file_type_and_other()
 	return true
 end
 
-local shade_bg = require("theme").shade_all(colors.bg, 0.3)
-local shade_fg = require("theme").shade_all(colors.fg, 0.4)
+local shade_bg = require("theme").shade_all(colors.bg, 0.2)
+local shade_fg = require("theme").shade_all(colors.fg, 0.5)
 
 gls.short_line_left[1] = {
 	FileIconShort = {
