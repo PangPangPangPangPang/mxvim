@@ -402,7 +402,7 @@ require("packer").startup({
 
 		use({
 			"justinmk/vim-sneak",
-            disable = true,
+			disable = true,
 			opt = true,
 			setup = function()
 				require("config._sneak").setup()
@@ -456,7 +456,7 @@ require("packer").startup({
 
 		use({
 			"github/copilot.vim",
-            disable = true,
+			disable = true,
 			opt = true,
 			setup = function()
 				require("config._other").copilot_setup()
@@ -466,6 +466,7 @@ require("packer").startup({
 		if packer_bootstrap then
 			require("packer").sync()
 		end
+		use({ "SolaWing/vim-objc-syntax", ft = { "objc", "objcpp" } })
 	end,
 	config = {
 		auto_clean = true,
