@@ -40,7 +40,7 @@ M.config = function()
 	}
 	null_ls.setup({ sources = sources, debug = true })
 	local safe_require = require("utils").safe_require
-    safe_require('lspconfig', function (lspconfig)
+    safe_require('lspconfig.config', function (lspconfig)
         lspconfig["null-ls"].setup(config)
     end)
 end
