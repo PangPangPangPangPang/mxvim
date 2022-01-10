@@ -2,7 +2,7 @@ local M = {}
 M.setup = function()
     vim.defer_fn(function ()
         vim.cmd([[
-            PackerLoad nvim-scrollbar
+            " PackerLoad nvim-scrollbar
         ]])
     end, 1000)
 end
@@ -12,6 +12,7 @@ M.config = function ()
     handle = {
         text = " ",
         color = colors.bg,
+        hide_if_all_visible = true, -- Hides handle if all lines are visible
     },
     marks = {
         Search = { text = { "-", "=" }, priority = 0, color = colors.orange },
@@ -40,7 +41,7 @@ M.config = function ()
     },
     handlers = {
         diagnostic = true,
-        search = true,
+        search = false,
     },
 })
 end

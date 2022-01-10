@@ -263,17 +263,17 @@ gls.right[6] = {
 	},
 }
 
--- gls.right[7] = {
--- 	ScrollBar = { provider = "ScrollBar", highlight = { colors.red, colors.bg } },
--- }
--- gls.right[8] = {
--- 	FirstElement = {
--- 		provider = function()
--- 			return " "
--- 		end,
--- 		highlight = { colors.blue, colors.bg },
--- 	},
--- }
+gls.right[7] = {
+	ScrollBar = { provider = "ScrollBar", highlight = { colors.red, colors.bg } },
+}
+gls.right[8] = {
+	FirstElement = {
+		provider = function()
+			return " "
+		end,
+		highlight = { colors.blue, colors.bg },
+	},
+}
 
 local function file_name()
 	local name = get_current_file_name()
