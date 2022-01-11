@@ -11,25 +11,21 @@ M.config = function()
 end
 
 M.colors = function()
-    local configModule = require("github-theme.config")
-    local config = configModule.config
-    local colors = require("github-theme.colors").setup(config)
     return {
-        fg = colors.fg,
-        bg = colors.bg2,
-        light_fg = colors.bg2,
-        light_bg = colors.fg,
-        fg_green = colors.green,
-        yellow = colors.yellow,
-        cyan = colors.cyan,
-        darkblue = colors.blue,
-        green = colors.green,
-        orange = colors.orange,
-        purple = colors.brightMagenta,
-        magenta = colors.brightMagenta,
-        blue = colors.brightBlue,
-        red = colors.red,
+        fg = '#e1e4e8',
+        bg = '#2c2b1c',
+        light_fg = '#2c2b1c',
+        light_bg = 'e1e4e8',
+        fg_green = '#85e89d',
+        yellow = '#e3b341',
+        cyan = '#fdaeb7',
+        darkblue = '#3b8eea',
+        green = '#23d18b',
+        orange = '#d18616',
+        purple = '#b392f0',
+        magenta = '#f97583',
+        blue = '#3b8eea',
+        red = '#f14c4c'
     }
-
 end
 return M
