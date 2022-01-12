@@ -191,6 +191,7 @@ opt.fillchars:append { eob = " " }
 require('utils').hook_print()
 
 -- cmd([[source ~/.config/nvim/viml/indent.vim]])
+cmd([[source ~/.config/nvim/viml/switch.vim]])
 
 cmd([[
     command! -nargs=0 CD :execute("cd %:p:h")
@@ -213,6 +214,7 @@ cmd([[
         autocmd BufNewFile,BufRead *.ttss   set filetype=css
         autocmd BufNewFile,BufRead *.ttml   set filetype=html
         autocmd BufNewFile,BufRead *.podspec   set filetype=ruby
+        autocmd BufNewFile,BufRead Podfile   set filetype=ruby
     augroup END
 ]])
 
