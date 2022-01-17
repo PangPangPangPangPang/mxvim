@@ -13,8 +13,8 @@ M.theme = function(name, nick)
 		config = function()
 			require("colorscheme." .. mxvim.current_theme).config()
 			require("config._tree").theme()
-			-- require("config._galaxyline")
-			require("config._lualine")
+			require("config._galaxyline")
+			-- require("config._lualine")
 			vim.cmd([[
                 hi! link NormalFloat cleared
             ]])
