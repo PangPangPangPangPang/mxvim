@@ -32,7 +32,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	textobjects = {
 		move = {
-			enable = true,
+			enable = false,
 			set_jumps = true, -- whether to set jumps in the jumplist
 			goto_next_start = {
 				["]m"] = "@function.outer",
@@ -57,7 +57,7 @@ require("nvim-treesitter.configs").setup({
 			swap_previous = { ["<leader>A"] = "@parameter.inner" },
 		},
 		select = {
-			enable = true,
+			enable = false,
 			keymaps = {
 				-- You can use the capture groups defined in textobjects.scm
 				["af"] = "@function.outer",
