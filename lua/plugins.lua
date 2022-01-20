@@ -312,7 +312,7 @@ require("packer").startup({
 			})
 		end
 
-		use({ "dstein64/vim-startuptime", cmd = { "StartupTime" } })
+		use({ "tweekmonster/startuptime.vim", cmd = { "StartupTime" } })
 
 		use({
 			"nvim-telescope/telescope.nvim",
