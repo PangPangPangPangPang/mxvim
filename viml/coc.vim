@@ -1,7 +1,3 @@
-if !g:use_coc
-    finish
-endif
-
 let g:coc_global_extensions = [
             \'coc-actions',
             \'coc-python',
