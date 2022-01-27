@@ -8,7 +8,6 @@ pcall(require, "impatient")
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
-
 -- Automatically install packer.nvim
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -51,10 +50,10 @@ require("packer").startup({
 			branch = "main",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
-        use {
-            'nvim-lualine/lualine.nvim',
-            requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-        }
+		use({
+			"nvim-lualine/lualine.nvim",
+			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		})
 		use({
 			"nanozuki/tabby.nvim",
 			opt = true,
@@ -185,6 +184,13 @@ require("packer").startup({
 				end,
 			})
 			use({
+				"j-hui/fidget.nvim",
+				opt = true,
+				config = function()
+					require("fidget").setup({})
+				end,
+			})
+			use({
 				"https://gitlab.com/yorickpeterse/nvim-dd.git",
 				opt = true,
 				setup = function()
@@ -270,15 +276,16 @@ require("packer").startup({
 					require("config._lsp_saga").config()
 				end,
 			})
-            use({"petertriho/nvim-scrollbar",
-            opt = true,
-            setup = function()
-                require("config._scrollbar").setup()
-            end,
-            config = function()
-                require("config._scrollbar").config()
-            end,
-        })
+			use({
+				"petertriho/nvim-scrollbar",
+				opt = true,
+				setup = function()
+					require("config._scrollbar").setup()
+				end,
+				config = function()
+					require("config._scrollbar").config()
+				end,
+			})
 
 			use({
 				"folke/lsp-trouble.nvim",

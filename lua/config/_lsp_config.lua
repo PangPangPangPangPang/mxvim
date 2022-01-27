@@ -44,12 +44,12 @@ M.set_keymap = function(client, bufnr)
 	buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
-	if client.resolved_capabilities.document_formatting then
+	-- if client.resolved_capabilities.document_formatting then
 		buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
-	end
-	if client.resolved_capabilities.document_range_formatting then
+	-- end
+	-- if client.resolved_capabilities.document_range_formatting then
 		buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>", opts)
-	end
+	-- end
 
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
@@ -61,7 +61,7 @@ M.set_keymap = function(client, bufnr)
 		cmd([[ autocmd! * <buffer> ]])
 		cmd([[ autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()  ]])
 		cmd([[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight() ]])
-        cmd([[ autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references() ]])
+		cmd([[ autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references() ]])
 		cmd(show_diag)
 		cmd([[ autocmd CursorMoved <buffer> lua require('config._lsp_config').hide_cursor_diagnostic() ]])
 		cmd([[ autocmd CursorMovedI <buffer> lua require('config._lsp_config').hide_cursor_diagnostic() ]])
@@ -117,10 +117,10 @@ M.make_config = function()
 			capabilities = cmp.update_capabilities(capabilities)
 		end)
 	end
-    local root_dir
-    safe_require('lspconfig/util', function (util)
-        root_dir = util.root_pattern("package.json", ".eslintrc", ".git")
-    end)
+	local root_dir
+	safe_require("lspconfig/util", function(util)
+		root_dir = util.root_pattern("package.json", ".eslintrc", ".git")
+	end)
 	local config = {
 		root_dir = root_dir,
 		-- enable snippet support
