@@ -58,7 +58,7 @@ M.config = function()
 					["<c-l>"] = actions.send_to_qflist + actions.open_qflist,
 				},
 			},
-			prompt_prefix = " ❤  ",
+            prompt_prefix = "   ",
 			selection_caret = " ▶ ",
 			entry_prefix = "  ",
 			initial_mode = "insert",
