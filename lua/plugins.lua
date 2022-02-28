@@ -185,7 +185,7 @@ require("packer").startup({
 			})
 			use({
 				"j-hui/fidget.nvim",
-				opt = true,
+				-- opt = true,
 				config = function()
 					require("fidget").setup({})
 				end,
