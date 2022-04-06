@@ -72,9 +72,6 @@
     "/usr/share/nvim/runtime/lua/vim/lsp": true
   },
   "Lua.diagnostics.globals": ["vim"],
-  "imselect.enableStatusItem": false,
-  "imselect.defaultInput": "com.apple.keylayout.US",
-  "imselect.enableFloating": false,
   "suggest.completionItemKindLabels": {
     "method": "  ",
     "function": "  ",
@@ -121,7 +118,8 @@
       "initializationOptions": {
         "usePlaceholders": true
       }
-    },
+    }
   },
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+  "clangd.arguments": [
+  ]
 }

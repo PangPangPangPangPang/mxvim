@@ -1,6 +1,7 @@
 let g:coc_default_semantic_highlight_groups = 1
 let g:coc_global_extensions = [
             \'coc-actions',
+            \'coc-clangd',
             \'coc-python',
             \'coc-sh',
             \'coc-json',
