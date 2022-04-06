@@ -296,10 +296,6 @@ require("packer").startup({
 			})
 
 			use({
-				"jiangmiao/auto-pairs",
-			})
-
-			use({
 				"norcalli/nvim-colorizer.lua",
 				opt = true,
 				setup = function()
@@ -318,6 +314,16 @@ require("packer").startup({
 				end,
 			})
 		end
+
+        -- use({
+        -- 	"jiangmiao/auto-pairs",
+        -- })
+        use({
+            "windwp/nvim-autopairs",
+            config = function()
+                require("config._autopairs").setup()
+            end,
+        })
 
 		use({ "tweekmonster/startuptime.vim", cmd = { "StartupTime" } })
 
