@@ -16,7 +16,7 @@
   "diagnostic.checkCurrentLine": false,
   "diagnostic.virtualTextLineSeparator": " \\ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "semanticTokens.filetypes": ["***"],
+  "semanticTokens.filetypes": ["*"],
   "diagnostic.floatConfig": {
     "border": true,
     "highlight": "Normal",

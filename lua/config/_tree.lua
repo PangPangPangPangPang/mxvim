@@ -62,11 +62,14 @@ M.config = function()
 				cmd = nil,
 				args = {},
 			},
-
 			view = {
+                height = 30,
+                side = "left",
+                preserve_window_proportions = false,
+                number = false,
+                relativenumber = false,
+                signcolumn = "yes",
 				width = "15%",
-				side = "left",
-				auto_resize = true,
 				mappings = {
 					custom_only = false,
 					list = {
