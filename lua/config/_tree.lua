@@ -53,7 +53,7 @@ M.config = function()
                 enable = false,
             },
             renderer = {
-                enable = true,
+                enable = false,
             },
 			update_focused_file = {
 				enable = false,
