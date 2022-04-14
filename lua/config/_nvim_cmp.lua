@@ -38,8 +38,6 @@ M.config = function()
 		mapping = {
 			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 			["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
-			["<tab>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Replace }), { "c" }),
-			["<s-tab>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Replace }), { "c" }),
 			["<C-Space>"] = cmp.mapping.complete(),
 			-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
 			-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -80,6 +78,7 @@ M.config = function()
 	})
 	-- Use buffer source for `/`.
 	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
 		completion = {
 			completeopt = "menu,menuone,noinsert,noselect",
 			keyword_length = 1,
@@ -91,6 +90,7 @@ M.config = function()
 
 	-- Use cmdline & path source for ':'.
 	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
 		completion = {
 			completeopt = "menu,menuone,noinsert,noselect",
 			keyword_length = 1,

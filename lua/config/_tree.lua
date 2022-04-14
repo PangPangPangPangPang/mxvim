@@ -37,7 +37,6 @@ M.config = function()
 			vim.call("quickui#context#open", content, opts)
 		end
 
-		g.nvim_tree_indent_markers = 1
 		g.nvim_tree_git_hl = 1
 
 		require("nvim-tree").setup({
@@ -51,7 +50,10 @@ M.config = function()
 			hijack_cursor = true,
 			update_cwd = true,
             diagnostics = {
-                enable = false;
+                enable = false,
+            },
+            renderer = {
+                enable = true,
             },
 			update_focused_file = {
 				enable = false,
