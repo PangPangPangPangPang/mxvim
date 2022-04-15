@@ -30,7 +30,6 @@ M.config = function()
 			end,
 		},
 		experimental = {
-			native_menu = false,
 			ghost_text = { hl_group = "Comment" },
 		},
 		-- preselect = cmp.PreselectMode.None,
@@ -62,6 +61,7 @@ M.config = function()
 			{ name = "nvim_lua" },
 			{ name = "buffer" },
 			{ name = "path" },
+            { name = 'nvim_lsp_signature_help' },
 		},
 		completion = {
 			completeopt = "menu,menuone,noinsert",
@@ -80,17 +80,19 @@ M.config = function()
 			}),
 		},
 	})
-	-- Use buffer source for `/`.
-	cmp.setup.cmdline("/", {
+
+    cmp.setup.cmdline('/', {
 		mapping = cmp.mapping.preset.cmdline(),
 		completion = {
 			completeopt = "menu,menuone,noinsert,noselect",
 			keyword_length = 1,
 		},
-		sources = {
-			{ name = "buffer" },
-		},
-	})
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp_document_symbol' }
+        }, {
+            { name = 'buffer' }
+        })
+    })
 
 	-- Use cmdline & path source for ':'.
 	cmp.setup.cmdline(":", {
