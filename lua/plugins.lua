@@ -384,6 +384,7 @@ require("packer").startup({
 
 		g.smoothie_base_speed = 20
 		use({
+			disable = true,
 			"psliwka/vim-smoothie",
 		})
 

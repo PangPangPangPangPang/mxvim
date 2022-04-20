@@ -25,9 +25,17 @@ if vim.loop.fs_stat(mxvim.compile_path) then
     com! -nargs=? PackerCompile lua require('packer').compile(<q-args>)
     com! -nargs=? PC lua require('packer').compile(<q-args>)
     com! -nargs=+ PackerLoad lua require('packer').loader(<q-args>)
-    augroup packer_user_config
-      autocmd!
-      autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-    augroup end
-    ]])
+    " augroup packer_user_config
+    "   autocmd!
+    "   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    " augroup end
+    " ]])
+    vim.api.nvim_create_autocmd({"BufWritePost"}, {
+        pattern = "plugins.lua",
+        callback = function ()
+            vim.cmd([[
+            source <afile> | PackerCompile
+            ]])
+        end
+    })
 end
