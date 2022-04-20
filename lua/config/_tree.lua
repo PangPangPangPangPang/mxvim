@@ -40,7 +40,6 @@ M.config = function()
 		g.nvim_tree_git_hl = 1
 
 		require("nvim-tree").setup({
-            disable_window_picker = true,
 			disable_netrw = true,
 			hijack_netrw = true,
 			open_on_setup = true,
@@ -49,12 +48,12 @@ M.config = function()
 			open_on_tab = true,
 			hijack_cursor = true,
 			update_cwd = true,
-            diagnostics = {
-                enable = false,
-            },
-            renderer = {
-                enable = false,
-            },
+			diagnostics = {
+				enable = false,
+			},
+			renderer = {
+				enable = false,
+			},
 			update_focused_file = {
 				enable = false,
 				update_cwd = false,
@@ -64,13 +63,32 @@ M.config = function()
 				cmd = nil,
 				args = {},
 			},
+			actions = {
+				use_system_clipboard = true,
+				change_dir = {
+					enable = true,
+					global = false,
+				},
+				open_file = {
+					quit_on_open = false,
+					resize_window = true,
+					window_picker = {
+						enable = false,
+						chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+						exclude = {
+							filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+							buftype = { "nofile", "terminal", "help" },
+						},
+					},
+				},
+			},
 			view = {
-                height = 30,
-                side = "left",
-                preserve_window_proportions = false,
-                number = false,
-                relativenumber = false,
-                signcolumn = "yes",
+				height = 30,
+				side = "left",
+				preserve_window_proportions = false,
+				number = false,
+				relativenumber = false,
+				signcolumn = "yes",
 				width = "15%",
 				mappings = {
 					custom_only = false,
