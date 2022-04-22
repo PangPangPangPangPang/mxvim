@@ -2,7 +2,7 @@ local colors = require("theme").theme_colors()
 local safe_require = require("utils").safe_require
 safe_require("hlargs", function(hlargs)
 	hlargs.setup({
-		color = colors.cyan,
+		color = colors.fg,
 		excluded_filetypes = {},
 		paint_arg_declarations = true,
 		paint_arg_usages = true,
