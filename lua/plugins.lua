@@ -102,6 +102,7 @@ require("packer").startup({
 				"nvim-treesitter/nvim-treesitter",
 				requires = {
 					"nvim-treesitter/nvim-treesitter-textobjects",
+                    "m-demare/hlargs.nvim",
 					"p00f/nvim-ts-rainbow",
 					"windwp/nvim-ts-autotag",
 					"JoosepAlviste/nvim-ts-context-commentstring",
