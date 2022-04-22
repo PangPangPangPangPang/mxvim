@@ -167,7 +167,7 @@ dmap({'n', 'v'}, '<leader>q', ':lua require("utils").close_common()<cr>')
 -- => Status line
 ------------------------------
 -- Always show the status line
-o.laststatus=3
+o.laststatus=2
 -- Whole format
 dmap({'n'}, '<leader>==', 'mzG=gg`z')
 -- Copy to system clipboard
