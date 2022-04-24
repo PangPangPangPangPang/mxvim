@@ -102,9 +102,9 @@ end
 gls.left[1] = {
 	FirstElement = {
 		provider = function()
-			return " "
+			return "▊"
 		end,
-		highlight = { colors.blue, colors.bg },
+		separator = " ",
 	},
 }
 gls.left[2] = {
@@ -346,26 +346,28 @@ gls.right[5] = {
 --     highlight = {colors.cyan,colors.darkblue,'bold'},
 --   }
 -- }
-gls.right[6] = {
-	Separator = {
-		provider = function()
-			return " "
-		end,
-		highlight = { colors.red, colors.bg },
-	},
-}
+-- gls.right[6] = {
+-- 	Separator = {
+-- 		provider = function()
+-- 			return " "
+-- 		end,
+-- 		highlight = { colors.red, colors.bg },
+-- 	},
+-- }
 
-gls.right[7] = {
-	ScrollBar = { provider = "ScrollBar", highlight = { colors.red, colors.bg } },
-}
+-- gls.right[7] = {
+-- 	ScrollBar = { provider = "ScrollBar", highlight = { colors.red, colors.bg } },
+-- }
 gls.right[8] = {
 	FirstElement = {
 		provider = function()
-			return " "
+			return "▊"
 		end,
-		highlight = { colors.blue, colors.bg },
+		separator = " ",
+		highlight = { colors.fg_green, colors.bg },
 	},
 }
+
 
 local function file_name()
 	local name = get_current_file_name()
