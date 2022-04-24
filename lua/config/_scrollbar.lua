@@ -68,6 +68,7 @@ M.config = function()
 		excluded_filetypes = {
 			"prompt",
 			"TelescopePrompt",
+            "NvimTree"
 		},
 		autocmd = {
 			render = {
