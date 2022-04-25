@@ -81,6 +81,7 @@ M.config = function()
 				"TextChanged",
 				"VimResized",
 				"WinScrolled",
+                "InsertLeave"
 			},
 		},
 		handlers = {
