@@ -44,7 +44,7 @@ M.config = function()
 			hijack_netrw = true,
 			open_on_setup = true,
 			ignore_ft_on_setup = {},
-			auto_close = false,
+			-- auto_close = false,
 			open_on_tab = true,
 			hijack_cursor = true,
 			update_cwd = true,
@@ -52,7 +52,9 @@ M.config = function()
 				enable = false,
 			},
 			renderer = {
-				enable = false,
+                indent_markers = {
+                    enable = false,
+                },
 			},
 			update_focused_file = {
 				enable = false,

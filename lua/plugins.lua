@@ -43,6 +43,7 @@ require("packer").startup({
 			require("theme").theme("rose-pine/neovim", "rose-pine"),
 			require("theme").theme("catppuccin/nvim", "catppuccin"),
 			require("theme").theme("sainnhe/gruvbox-material"),
+			require("theme").theme("rebelot/kanagawa.nvim"),
 		})
 
 		use({
