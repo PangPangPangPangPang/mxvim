@@ -1,8 +1,9 @@
 local colors = require("theme").theme_colors()
+local shade_colors = require("theme").shade_colors(0.2)
 local safe_require = require("utils").safe_require
 safe_require("hlargs", function(hlargs)
 	hlargs.setup({
-		color = colors.fg,
+		color = shade_colors.fg,
 		excluded_filetypes = {},
 		paint_arg_declarations = true,
 		paint_arg_usages = true,
