@@ -1,4 +1,6 @@
 local M = {}
+local ELLIPSIS_CHAR = "…"
+local MAX_LABEL_WIDTH = 60
 
 M.setup = function()
 	if mxvim.use_cmp == false then
@@ -61,7 +63,7 @@ M.config = function()
 			{ name = "nvim_lua" },
 			{ name = "buffer" },
 			{ name = "path" },
-            { name = 'nvim_lsp_signature_help' },
+			{ name = "nvim_lsp_signature_help" },
 		},
 		completion = {
 			completeopt = "menu,menuone,noinsert",
@@ -69,6 +71,14 @@ M.config = function()
 		},
 		formatting = {
 			format = require("lspkind").cmp_format({
+				before = function(_, vim_item)
+					local label = vim_item.abbr
+					local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+					if truncated_label ~= label then
+						vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+					end
+                    return vim_item
+				end,
 				with_text = true,
 				menu = {
 					vsnip = "[Snip]",
@@ -81,18 +91,18 @@ M.config = function()
 		},
 	})
 
-    cmp.setup.cmdline('/', {
+	cmp.setup.cmdline("/", {
 		mapping = cmp.mapping.preset.cmdline(),
 		completion = {
 			completeopt = "menu,menuone,noinsert,noselect",
 			keyword_length = 1,
 		},
-        sources = cmp.config.sources({
-            { name = 'nvim_lsp_document_symbol' }
-        }, {
-            { name = 'buffer' }
-        })
-    })
+		sources = cmp.config.sources({
+			{ name = "nvim_lsp_document_symbol" },
+		}, {
+			{ name = "buffer" },
+		}),
+	})
 
 	-- Use cmdline & path source for ':'.
 	cmp.setup.cmdline(":", {
