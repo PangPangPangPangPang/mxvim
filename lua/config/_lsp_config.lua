@@ -49,15 +49,11 @@ M.set_keymap = function(client, bufnr)
 	buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
-	-- if client.resolved_capabilities.document_formatting then
-		buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
-	-- end
-	-- if client.resolved_capabilities.document_range_formatting then
-		buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>", opts)
-	-- end
+    buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
+    buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.documentHighlightProvider then
 		local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"
 		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
 			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
