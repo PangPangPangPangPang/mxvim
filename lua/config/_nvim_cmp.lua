@@ -73,6 +73,7 @@ M.config = function()
 			format = require("lspkind").cmp_format({
 				before = function(_, vim_item)
 					local label = vim_item.abbr
+                    -- vim_item.abbr = label:gsub("^%s*(.-)%s*$", "%1")
 					local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
 					if truncated_label ~= label then
 						vim_item.abbr = truncated_label .. ELLIPSIS_CHAR

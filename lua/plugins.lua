@@ -165,6 +165,7 @@ require("packer").startup({
 					{ "RishabhRD/nvim-lsputils", opt = true },
 					{
 						"ray-x/lsp_signature.nvim",
+                        disable = true,
 						opt = true,
 						config = function()
 							require("config._signature").signature()

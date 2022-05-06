@@ -6,11 +6,9 @@ M.config = function()
 	M.custom_handlers()
 end
 M.set_signature = function(bufnr)
-	-- require("lsp_signature").on_attach({}, bufnr)
 	local safe_require = require("utils").safe_require
     safe_require('lsp_signature', function (lsp_signature)
         lsp_signature.on_attach({}, bufnr)
-        -- lspconfig["null-ls"].setup(config)
     end)
 end
 
