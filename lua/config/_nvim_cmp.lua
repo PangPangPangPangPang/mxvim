@@ -44,10 +44,10 @@ M.setup = function()
         " PackerLoad lspkind-nvim
         PackerLoad nvim-cmp
         " Jump forward or backward
-        imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-        smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-        imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-        smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        " imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+        " smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+        " imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        " smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
         ]])
 	end, 400)
 end
@@ -73,9 +73,6 @@ M.config = function()
 			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 			["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 			["<C-Space>"] = cmp.mapping.complete(),
-			-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-			-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-			-- ["<C-e>"] = cmp.mapping.close(),
 			["<CR>"] = cmp.mapping(
 				cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
@@ -83,6 +80,43 @@ M.config = function()
 				}),
 				{ "i" }
 			),
+			["<Tab>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item()
+				elseif vim.fn["vsnip#available"](1) == 1 then
+					vim.api.nvim_feedkeys(
+						vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true),
+						"",
+						true
+					)
+				elseif has_words_before() then
+					cmp.complete()
+				else
+					fallback()
+				end
+			end, {
+				"i",
+				"s",
+			}),
+			["<S-Tab>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item()
+				elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+					vim.api.nvim_feedkeys(
+						vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true, true),
+						"",
+						true
+					)
+				else
+					fallback()
+				end
+			end, {
+				"i",
+				"s",
+			}),
+			-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+			-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+			-- ["<C-e>"] = cmp.mapping.close(),
 		},
 		-- You should specify your *installed* sources.
 		sources = {
@@ -103,17 +137,14 @@ M.config = function()
 			fields = { "kind", "abbr", "menu" },
 			format = function(_, vim_item)
 				vim_item.menu = vim_item.kind
-				vim_item.kind = icons[vim_item.kind]
-				local label = vim_item.abbr
-				-- vim_item.abbr = label:gsub("^%s*(.-)%s*$", "%1")
+				vim_item.kind = string.format("%s ", icons[vim_item.kind])
+				local label = vim_item.abbr:gsub("^%s*(.-)%s*$", "%1")
 				local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
-				if truncated_label ~= label then
-					vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
-				end
+                vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
 				return vim_item
 			end,
 			-- format = require("lspkind").cmp_format({
-                -- maxwidth = MAX_LABEL_WIDTH,
+			-- maxwidth = MAX_LABEL_WIDTH,
 			-- 	before = function(_, vim_item)
 			-- 		return vim_item
 			-- 	end,
