@@ -140,7 +140,10 @@ M.config = function()
 				vim_item.kind = string.format("%s ", icons[vim_item.kind])
 				local label = vim_item.abbr:gsub("^%s*(.-)%s*$", "%1")
 				local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
-                vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+                if truncated_label ~= label then
+                    label = truncated_label .. ELLIPSIS_CHAR
+                end
+                vim_item.abbr = label
 				return vim_item
 			end,
 			-- format = require("lspkind").cmp_format({
