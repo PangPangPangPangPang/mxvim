@@ -103,7 +103,7 @@ require("packer").startup({
 				"nvim-treesitter/nvim-treesitter",
 				requires = {
 					"nvim-treesitter/nvim-treesitter-textobjects",
-                    "m-demare/hlargs.nvim",
+					"m-demare/hlargs.nvim",
 					"p00f/nvim-ts-rainbow",
 					"windwp/nvim-ts-autotag",
 					"JoosepAlviste/nvim-ts-context-commentstring",
@@ -165,7 +165,7 @@ require("packer").startup({
 					{ "RishabhRD/nvim-lsputils", opt = true },
 					{
 						"ray-x/lsp_signature.nvim",
-                        disable = true,
+						disable = true,
 						opt = true,
 						config = function()
 							require("config._signature").signature()
@@ -226,8 +226,8 @@ require("packer").startup({
 					"hrsh7th/cmp-path",
 					"hrsh7th/cmp-buffer",
 					"hrsh7th/cmp-cmdline",
-                    "hrsh7th/cmp-nvim-lsp-document-symbol",
-                    "hrsh7th/cmp-nvim-lsp-signature-help",
+					"hrsh7th/cmp-nvim-lsp-document-symbol",
+					"hrsh7th/cmp-nvim-lsp-signature-help",
 					{
 						"hrsh7th/cmp-vsnip",
 						wants = "friendly-snippets",
@@ -320,15 +320,15 @@ require("packer").startup({
 			})
 		end
 
-        -- use({
-        -- 	"jiangmiao/auto-pairs",
-        -- })
-        use({
-            "windwp/nvim-autopairs",
-            config = function()
-                require("config._autopairs").setup()
-            end,
-        })
+		-- use({
+		-- 	"jiangmiao/auto-pairs",
+		-- })
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("config._autopairs").setup()
+			end,
+		})
 
 		use({ "tweekmonster/startuptime.vim", cmd = { "StartupTime" } })
 
@@ -348,8 +348,9 @@ require("packer").startup({
 
 		use({
 			"iamcco/markdown-preview.nvim",
+			-- disable = true,
 			run = "cd app && yarn install",
-			cmd = { "MarkdownPreview" },
+			-- cmd = { "MarkdownPreview" },
 		})
 
 		use({
