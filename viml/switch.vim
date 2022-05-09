@@ -74,7 +74,8 @@ function! GetVisualSelection(type) abort
   endif
 
   let &selection = selsave
-  let ret = @@
+  let s:ret = @@
   let @@ = regsave
-  return escape(ret, ' \^$.*+?()[]{}|')
+  let s:sub = substitute(s:ret, "\\n", "", "g")
+  return escape(s:sub, ' \^$.*+?()[]{}|')
 endfunction
