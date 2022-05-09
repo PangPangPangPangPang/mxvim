@@ -3,7 +3,7 @@ local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
-local dmap = require('utils').dmap
+local dmap = require("utils").dmap
 
 vim.o.background = mxvim.background
 
@@ -16,14 +16,14 @@ g.netrw_banner = 0
 g.netrw_liststyle = 3 -- tree view
 g.netrw_altv = 1 -- open splits to the right
 
-g.mapleader = ' '
+g.mapleader = " "
 g.use_lua = 1
 
-o.mouse = 'a'
+o.mouse = "a"
 o.showmode = false
 
-if fn.has('nvim-0.5') then
-    o.jumpoptions = 'stack'
+if fn.has("nvim-0.5") then
+	o.jumpoptions = "stack"
 end
 
 o.cursorline = true
@@ -35,22 +35,22 @@ o.updatetime = 400
 o.history = 500
 
 -- Don't pass messages to |ins-completion-menu|.
-o.shortmess = o.shortmess .. 'c'
+o.shortmess = o.shortmess .. "c"
 
 -- show line numbers
 -- o.relativenumber = true
 
 o.nu = true
-o.signcolumn = 'yes'
+o.signcolumn = "yes"
 
 -- o.to auto read when a file is changed from the outside
 g.autoread = true
 
 -- Search down into subfolders
-o.path = o.path .. '**'
+o.path = o.path .. "**"
 
 -- Search tags
-o.tags = './.tags;,.tags'
+o.tags = "./.tags;,.tags"
 
 -- vim.cmd('filetype on')
 -- vim.cmd('filetype indent on')
@@ -59,7 +59,7 @@ o.tags = './.tags;,.tags'
 o.so = 3
 
 -- Avoid garbled characters in Chinese language windows OS
-o.langmenu = 'en'
+o.langmenu = "en"
 
 -- Turn on the wild menu
 o.wildmenu = true
@@ -67,19 +67,19 @@ o.wildmenu = true
 -- Popup menu height
 o.pumheight = 20
 
-if fn.exists('&pumblend') then
-    o.wildoptions = 'pum'
-    o.pumblend = 10
+if fn.exists("&pumblend") then
+	o.wildoptions = "pum"
+	o.pumblend = 10
 end
 
-o.wildignore = '*.o,*~,*.pyc'
-if fn.has('win16') or fn.has('win32') then
-    o.wildignore = o.wildignore .. '.git*,.hg*,.svn*'
+o.wildignore = "*.o,*~,*.pyc"
+if fn.has("win16") or fn.has("win32") then
+	o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
 else
-    o.wildignore = o.wildignore .. '*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store'
+	o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
 end
 
-o.completeopt = 'menu,menuone,noinsert,noselect'
+o.completeopt = "menu,menuone,noinsert,noselect"
 
 -- Always show current position
 o.ruler = true
@@ -91,15 +91,14 @@ o.cmdheight = 1
 o.hid = true
 
 -- Configure backspace so it acts as it should act
-o.backspace = 'eol,start,indent'
-o.whichwrap = o.whichwrap .. '<,>,h,l'
+o.backspace = "eol,start,indent"
+o.whichwrap = o.whichwrap .. "<,>,h,l"
 
 -- Ignore case when searching
 o.ignorecase = true
 
 -- When searching try to be smart about cases
 o.smartcase = true
-
 
 -- Highlight search results
 o.hlsearch = true
@@ -143,52 +142,51 @@ o.smarttab = true
 -- o.shiftwidth=4
 -- o.tabstop=4
 
-
 -- Linebreak on 500 characters
 o.lbr = true
-o.tw=500
+o.tw = 500
 
 -- Auto indent
-o.ai  = true
+o.ai = true
 -- Smart indent
-o.si  = true
+o.si = true
 -- Wrap lines
-o.wrap  = false
+o.wrap = false
 o.sidescroll = 1
 
 o.splitright = true
 o.splitbelow = true
 
-o.switchbuf='useopen,usetab'
-o.showtabline=1
+o.switchbuf = "useopen,usetab"
+o.showtabline = 1
 
-dmap({'n', 'v'}, '<leader>q', ':lua require("utils").close_common()<cr>')
+dmap({ "n", "v" }, "<leader>q", ':lua require("utils").close_common()<cr>')
 ------------------------------
 -- => Status line
 ------------------------------
 -- Always show the status line
-o.laststatus=2
+o.laststatus = 2
 -- Whole format
-dmap({'n'}, '<leader>==', 'mzG=gg`z')
+dmap({ "n" }, "<leader>==", "mzG=gg`z")
 -- Copy to system clipboard
-dmap({'v'}, 'Y', '"+y')
+dmap({ "v" }, "Y", '"+y')
 
 -- replace current word
-require('utils').map({'v'}, '<leader>r', '"hy:%s/<C-r>h//g<left><left>', { noremap = true })
+require("utils").map({ "v" }, "<leader>r", '"hy:%s/<C-r>h//g<left><left>', { noremap = true })
 
 -- Set utf8 as standard encoding and en_US as the standard language
-o.encoding='utf8'
+o.encoding = "utf8"
 
 -- Use Unix as the standard file type
-o.ffs='unix,dos,mac'
+o.ffs = "unix,dos,mac"
 
-if vim.fn.exists('+termguicolors') then
-    vim.o.termguicolors = true
+if vim.fn.exists("+termguicolors") then
+	vim.o.termguicolors = true
 end
 
-opt.fillchars:append { eob = " " }
+opt.fillchars:append({ eob = " " })
 
-require('utils').hook_print()
+require("utils").hook_print()
 
 -- cmd([[source ~/.config/nvim/viml/indent.vim]])
 cmd([[source ~/.config/nvim/viml/switch.vim]])
@@ -218,21 +216,21 @@ cmd([[
     augroup END
 ]])
 
-pcall(require, 'private')
+pcall(require, "private")
 
-if fn.exists('g:neovide') == 1 then
-    g.neovide_cursor_trail_size = 0.1
-    g.neovide_cursor_vfx_mode = "railgun"
-    if require('utils').system() == 'Linux' then
-        o.guifont = 'MaxIosevka Nerd Font:h10'
-    else
-        o.guifont = 'MaxIosevka Nerd Font:h14'
-    end
-    -- g.smoothie_enabled = false
-elseif fn.exists('g:gonvim_running') == 1 then
-    if require('utils').system() == 'Linux' then
-        o.guifont = 'MaxIosevka Nerd Font:h10'
-    else
-        o.guifont = 'MaxIosevka Nerd Font:h14'
-    end
+if fn.exists("g:neovide") == 1 then
+	g.neovide_cursor_trail_size = 0.1
+	g.neovide_cursor_vfx_mode = "railgun"
+	if require("utils").system() == "Linux" then
+		o.guifont = "MaxIosevka Nerd Font:h10"
+	else
+		o.guifont = "MaxIosevka Nerd Font:h14"
+	end
+	-- g.smoothie_enabled = false
+elseif fn.exists("g:gonvim_running") == 1 then
+	if require("utils").system() == "Linux" then
+		o.guifont = "MaxIosevka Nerd Font:h10"
+	else
+		o.guifont = "MaxIosevka Nerd Font:h14"
+	end
 end

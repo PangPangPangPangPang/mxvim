@@ -8,30 +8,30 @@ local has_words_before = function()
 end
 
 local icons = {
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "⌘",
-	Field = "ﰠ",
-	Variable = "",
-	Class = "ﴯ",
-	Interface = "",
-	Module = "",
-	Property = "ﰠ",
+	Text = " ",
+	Method = " ",
+	Function = " ",
+	Constructor = "⌘ ",
+	Field = "ﰠ ",
+	Variable = " ",
+	Class = "ﴯ ",
+	Interface = " ",
+	Module = " ",
+	Property = "ﰠ ",
 	Unit = "塞",
-	Value = "",
-	Enum = "",
+	Value = " ",
+	Enum = " ",
 	Keyword = "廓",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "פּ",
-	Event = "",
-	Operator = "",
+	Snippet = " ",
+	Color = " ",
+	File = " ",
+	Reference = " ",
+	Folder = " ",
+	EnumMember = " ",
+	Constant = " ",
+	Struct = "פּ ",
+	Event = " ",
+	Operator = " ",
 	TypeParameter = "",
 }
 
@@ -66,7 +66,7 @@ M.config = function()
 		-- preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
 		window = {
-			-- completion = cmp.config.window.bordered(),
+			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
 		mapping = {
@@ -137,13 +137,15 @@ M.config = function()
 			fields = { "kind", "abbr", "menu" },
 			format = function(_, vim_item)
 				vim_item.menu = vim_item.kind
-				vim_item.kind = string.format("%s ", icons[vim_item.kind])
-				local label = vim_item.abbr:gsub("^%s*(.-)%s*$", "%1")
+				-- vim_item.kind = string.format("%s ", icons[vim_item.kind])
+                vim_item.kind = icons[vim_item.kind]
+				local label = vim_item.abbr
+				-- local trim_label = label:gsub("^%s*(.-)%s*$", "%1")
 				local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
-                if truncated_label ~= label then
-                    label = truncated_label .. ELLIPSIS_CHAR
-                end
-                vim_item.abbr = label
+				if truncated_label ~= label then
+					label = truncated_label .. ELLIPSIS_CHAR
+				end
+				vim_item.abbr = label
 				return vim_item
 			end,
 			-- format = require("lspkind").cmp_format({
