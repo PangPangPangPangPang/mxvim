@@ -1,33 +1,35 @@
 local M = {}
+
 M.map = function()
 	local map = require("utils").map
-    map("n", "<c-p>", ":Telescope find_files<cr>", { silent = true })
+	map("n", "<c-p>", ":Telescope find_files<cr>", { silent = true })
 	map("n", "<leader>b", ":Telescope buffers<cr>", { silent = true })
 	map("n", "<leader>f", ":Telescope live_grep<cr>", { silent = true })
 	vim.cmd([[
+        xnoremap <leader>f :<c-u>execute 'Telescope live_grep default_text=' . GetVisualSelection(visualmode())<cr>
         command! -nargs=0 LS :Telescope buffers
         cnoreabbrev ls LS
     ]])
 end
 M.config = function()
 	local map = require("utils").dmap
-    if mxvim.use_coc == false then
-        map(
-        "n",
-        "<leader>ca",
-        ":lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({}))<cr>"
-        )
-        map(
-        "n",
-        "<c-]>",
-        ":lua require'telescope.builtin'.lsp_definitions(require('telescope.themes').get_dropdown({}))<cr>"
-        )
-        map(
-        "n",
-        "gi",
-        ":lua require'telescope.builtin'.lsp_implementations(require('telescope.themes').get_dropdown({}))<cr>"
-        )
-    end
+	if mxvim.use_coc == false then
+		map(
+			"n",
+			"<leader>ca",
+			":lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({}))<cr>"
+		)
+		map(
+			"n",
+			"<c-]>",
+			":lua require'telescope.builtin'.lsp_definitions(require('telescope.themes').get_dropdown({}))<cr>"
+		)
+		map(
+			"n",
+			"gi",
+			":lua require'telescope.builtin'.lsp_implementations(require('telescope.themes').get_dropdown({}))<cr>"
+		)
+	end
 	map("n", "gr", ":lua require'telescope.builtin'.lsp_references(require('telescope.themes').dropdownrsor({}))<cr>")
 	local actions = require("telescope.actions")
 	require("telescope").setup({
@@ -60,7 +62,7 @@ M.config = function()
 					["<c-l>"] = actions.send_to_qflist + actions.open_qflist,
 				},
 			},
-            prompt_prefix = "   ",
+			prompt_prefix = "   ",
 			selection_caret = " ▶ ",
 			entry_prefix = "  ",
 			initial_mode = "insert",

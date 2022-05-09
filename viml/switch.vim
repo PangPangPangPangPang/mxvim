@@ -59,3 +59,22 @@ endfunction
 command! -nargs=0 -bar A :call <SID>mx_switch_in_window()<CR>
 nnoremap <silent><leader><up> :call <SID>mx_switch_in_window()<CR>
 nnoremap <silent><leader><down> :call <SID>mx_switch_split()<CR>
+
+function! GetVisualSelection(type) abort
+  let regsave = @@
+  let selsave = &selection
+  let &selection = 'inclusive'
+
+  if a:type =~? 'v'
+    silent execute "normal! gvy"
+  elseif a:type == 'line'
+    silent execute "normal! '[V']y"
+  else
+    silent execute "normal! `[v`]y"
+  endif
+
+  let &selection = selsave
+  let ret = @@
+  let @@ = regsave
+  return escape(ret, ' \^$.*+?()[]{}|')
+endfunction

@@ -348,9 +348,8 @@ require("packer").startup({
 
 		use({
 			"iamcco/markdown-preview.nvim",
-			-- disable = true,
 			run = "cd app && yarn install",
-			-- cmd = { "MarkdownPreview" },
+			cmd = { "MarkdownPreview" },
 		})
 
 		use({
