@@ -1,5 +1,5 @@
 local M = {}
-M.config = function()
+M.modify = function(config)
 	local runtime_path = vim.split(package.path, ";")
 	table.insert(runtime_path, "lua/?.lua")
 	table.insert(runtime_path, "lua/?/init.lua")
@@ -27,6 +27,6 @@ M.config = function()
 			},
 		},
 	}
-	return lua_settings
+    config.settings = lua_settings
 end
 return M

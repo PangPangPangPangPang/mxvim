@@ -22,9 +22,11 @@ M.config = function()
 		else
 			config = lsp_config.make_config()
 			if server.name == "sumneko_lua" then
-				config.settings = require("lsp.lsp_lua").config()
+				require("lsp.lsp_lua").modify(config)
 			elseif server.name == "tsserver" then
-				config.on_attach = require("lsp.lsp_ts").on_attach
+				require("lsp.lsp_ts").modify(config)
+			elseif server.name == "clangd" then
+				require("lsp.lsp_clang").modify(config)
 			end
 		end
 		server:setup(config)
