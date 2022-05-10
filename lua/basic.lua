@@ -220,11 +220,12 @@ pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
 	g.neovide_cursor_trail_size = 0.1
-	g.neovide_cursor_vfx_mode = "railgun"
+    g.neovide_fullscreen = true
+	g.neovide_cursor_vfx_mode = "sonicboom"
 	if require("utils").system() == "Linux" then
 		o.guifont = "MaxIosevka Nerd Font:h10"
 	else
-		o.guifont = "MaxIosevka Nerd Font:h14"
+		o.guifont = "MaxIosevka Nerd Font:h16"
 	end
 	-- g.smoothie_enabled = false
 elseif fn.exists("g:gonvim_running") == 1 then
