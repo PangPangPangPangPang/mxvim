@@ -2,6 +2,8 @@ _G.mxvim = {}
 
 -- nightfly github-theme miramare vscode nord onedarkpro rose-pine catppuccin gruvbox-material kanagawa
 mxvim.current_theme = "kanagawa"
+-- galaxy lualine
+mxvim.current_line = "lualine"
 mxvim.use_coc = false
 mxvim.use_treesitter = true
 mxvim.background = "dark"

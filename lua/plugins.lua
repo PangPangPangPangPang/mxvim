@@ -32,6 +32,7 @@ require("packer").startup({
 
 		use({ "nvim-lua/popup.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
+		use({ "kyazdani42/nvim-web-devicons" })
 
 		use({
 			require("theme").theme("Mofiqul/vscode.nvim"),
@@ -48,17 +49,16 @@ require("packer").startup({
 
 		use({
 			"NTBBloodbath/galaxyline.nvim",
+			disable = mxvim.current_line ~= "galaxy",
 			branch = "main",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+			disable = mxvim.current_line ~= "lualine",
 		})
 		use({
 			"nanozuki/tabby.nvim",
 			opt = true,
-			requires = "kyazdani42/nvim-web-devicons",
 			setup = function()
 				require("config._tabby").setup()
 			end,
@@ -403,7 +403,6 @@ require("packer").startup({
 		})
 		use({
 			"kyazdani42/nvim-tree.lua",
-			requires = "kyazdani42/nvim-web-devicons",
 			opt = true,
 			-- cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
 			config = function()
