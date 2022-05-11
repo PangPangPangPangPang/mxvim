@@ -86,6 +86,7 @@ M.config = function()
 			},
 			view = {
 				height = 30,
+                hide_root_folder = true,
 				side = "left",
 				preserve_window_proportions = false,
 				number = false,

@@ -279,50 +279,7 @@ gls.mid[3] = {
 	},
 }
 
--- gls.mid[4] = {
---     CocFunc = {
---         provider = CocFunc,
---         icon = '  λ ',
---         separator_highlight = {colors.bg,colors.bg},
---         highlight = {colors.yellow, colors.bg}
---     }
--- }
-
--- gls.left[15] = {
---     CocStatus = {
---      provider = CocStatus,
---      highlight = {colors.green,colors.bg},
---      icon = '  🗱  '
---     }
--- }
-
--- gls.right[1] = {
--- 	DiffAdd = {
--- 		provider = "DiffAdd",
--- 		condition = checkwidth,
--- 		icon = "    ",
--- 		highlight = { colors.green, colors.bg },
--- 	},
--- }
-
--- gls.right[2] = {
--- 	DiffModified = {
--- 		provider = "DiffModified",
--- 		condition = checkwidth,
--- 		icon = "  柳 ",
--- 		highlight = { colors.orange, colors.bg },
--- 	},
--- }
--- gls.right[3] = {
--- 	DiffRemove = {
--- 		provider = "DiffRemove",
--- 		condition = checkwidth,
--- 		icon = "    ",
--- 		highlight = { colors.red, colors.bg },
--- 	},
--- }
-
-gls.right[4] = {
+gls.right[1] = {
 	FileFormat = {
 		provider = "FileFormat",
 		separator = " ",
@@ -330,7 +287,7 @@ gls.right[4] = {
 		highlight = { colors.yellow, colors.bg, "bold" },
 	},
 }
-gls.right[5] = {
+gls.right[2] = {
 	LineInfo = {
 		provider = "LineColumn",
 		separator = " | ",
@@ -338,27 +295,8 @@ gls.right[5] = {
 		highlight = { colors.fg, colors.bg },
 	},
 }
--- gls.right[5] = {
---   PerCent = {
---     provider = 'LinePercent',
---     separator = ' ',
---     separator_highlight = {colors.bg,colors.bg},
---     highlight = {colors.cyan,colors.darkblue,'bold'},
---   }
--- }
--- gls.right[6] = {
--- 	Separator = {
--- 		provider = function()
--- 			return " "
--- 		end,
--- 		highlight = { colors.red, colors.bg },
--- 	},
--- }
 
--- gls.right[7] = {
--- 	ScrollBar = { provider = "ScrollBar", highlight = { colors.red, colors.bg } },
--- }
-gls.right[8] = {
+gls.right[3] = {
 	FirstElement = {
 		provider = function()
 			return "▊"
