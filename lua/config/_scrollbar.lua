@@ -85,7 +85,7 @@ M.config = function()
 			},
 		},
 		handlers = {
-			diagnostic = true,
+			diagnostic = false,
 			search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
 		},
 	})
