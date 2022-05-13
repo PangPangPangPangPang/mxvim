@@ -310,7 +310,7 @@ gls.right[3] = {
 local function file_name()
 	local name = get_current_file_name()
 	if string.find(name, "NvimTree", 1) ~= nil then
-		return "FileTree"
+        return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 	end
 	return get_current_file_name()
 end
@@ -360,6 +360,6 @@ gls.short_line_right[1] = {
 		separator = "",
 		condition = has_file_type,
 		separator_highlight = { colors.purple, shade_bg },
-		highlight = { colors.fg, shade_bg },
+		highlight = { colors.blue, shade_bg },
 	},
 }
