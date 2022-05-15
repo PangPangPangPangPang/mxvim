@@ -35,6 +35,10 @@ M.theme = function(name, nick)
 			-- vim.cmd(string.format('hi! CmpItemKind gui=bold guifg=%s', colors.yellow))
 			vim.cmd(string.format("hi! PmenuSel guifg=none"))
 			vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
+
+			vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
+			vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
+			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
 		end,
 	}
 	if nick ~= nil then
