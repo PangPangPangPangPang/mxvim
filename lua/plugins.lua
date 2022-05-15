@@ -320,6 +320,17 @@ require("packer").startup({
 			})
 		end
 
+		-- debugger
+		use({
+			"ravenxrz/nvim-dap",
+			requires = {
+				"ravenxrz/DAPInstall.nvim",
+				"theHamsta/nvim-dap-virtual-text",
+				"rcarriga/nvim-dap-ui",
+				"nvim-telescope/telescope-dap.nvim",
+			},
+		})
+
 		-- use({
 		-- 	"jiangmiao/auto-pairs",
 		-- })
