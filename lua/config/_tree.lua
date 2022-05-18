@@ -53,7 +53,7 @@ M.config = function()
 			},
 			renderer = {
                 indent_markers = {
-                    enable = true,
+                    enable = false,
                 },
 			},
 			update_focused_file = {
