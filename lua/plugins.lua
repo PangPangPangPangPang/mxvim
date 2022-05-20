@@ -45,6 +45,7 @@ require("packer").startup({
 			require("theme").theme("catppuccin/nvim", "catppuccin"),
 			require("theme").theme("sainnhe/gruvbox-material"),
 			require("theme").theme("rebelot/kanagawa.nvim"),
+			require("theme").theme("EdenEast/nightfox.nvim"),
 		})
 
 		use({
