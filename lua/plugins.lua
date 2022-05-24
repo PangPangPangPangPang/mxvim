@@ -512,7 +512,7 @@ require("packer").startup({
 		if packer_bootstrap then
 			require("packer").sync()
 		end
-		use({ "SolaWing/vim-objc-syntax", ft = { "objc", "objcpp" } })
+		-- use({ "SolaWing/vim-objc-syntax", ft = { "objc", "objcpp" } })
 	end,
 	config = {
 		auto_clean = true,

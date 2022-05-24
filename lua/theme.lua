@@ -39,6 +39,8 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
 			vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
 			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
+
+			vim.cmd("hi! link FloatBorder Normal")
 		end,
 	}
 	if nick ~= nil then
