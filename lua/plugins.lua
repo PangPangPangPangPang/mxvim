@@ -49,7 +49,7 @@ require("packer").startup({
 		})
 
 		use({
-			"NTBBloodbath/galaxyline.nvim",
+			"glepnir/galaxyline.nvim",
 			disable = mxvim.current_line ~= "galaxy",
 			branch = "main",
 		})
