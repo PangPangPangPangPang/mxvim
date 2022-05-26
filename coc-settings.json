@@ -110,6 +110,10 @@
   "less.validate": false,
   "scss.validate": false,
   "wxss.validate": false,
+  "sourcekit.enable": true,
+  "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+  "sourcekit.sdkPath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk",
+  "sourcekit.targetArch": "x86_64-apple-ios15.5-simulator",
   "languageserver": {
     "golang": {
       "command": "gopls",
