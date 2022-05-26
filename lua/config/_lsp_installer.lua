@@ -27,6 +27,8 @@ M.config = function()
 				require("lsp.lsp_ts").modify(config)
 			elseif server.name == "clangd" then
 				require("lsp.lsp_clang").modify(config)
+			elseif server.name == "sourcekit" then
+				require("lsp.lsp_swift").modify(config)
 			end
 		end
 		server:setup(config)
@@ -42,6 +44,7 @@ M.boot = function()
 		'cssls',
 		'html',
 		'bashls',
+		'sourcekit',
 	}
 	local lsp_installer = require("nvim-lsp-installer")
 	for _, server_name in pairs(desired_servers) do
