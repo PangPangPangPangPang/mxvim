@@ -283,17 +283,6 @@ require("packer").startup({
 				end,
 			})
 			use({
-				"petertriho/nvim-scrollbar",
-				opt = true,
-				setup = function()
-					require("config._scrollbar").setup()
-				end,
-				config = function()
-					require("config._scrollbar").config()
-				end,
-			})
-
-			use({
 				"folke/lsp-trouble.nvim",
 				cmd = { "LspTrouble", "Trouble" },
 				config = function()
@@ -320,6 +309,18 @@ require("packer").startup({
 				end,
 			})
 		end
+
+        use({
+            "petertriho/nvim-scrollbar",
+            opt = true,
+            setup = function()
+                require("config._scrollbar").setup()
+            end,
+            config = function()
+                require("config._scrollbar").config()
+            end,
+        })
+
 
 		-- debugger
 		use({

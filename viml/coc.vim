@@ -32,6 +32,7 @@ let g:coc_global_extensions = [
 nmap <silent> <c-]> :call <SID>GotoDefinition()<CR>
 nmap <silent> <Esc> :call coc#float#close_all() <CR>
 
+nmap <silent> <F2> :call CocAction('showOutline') <CR>
 function! s:GotoDefinition() abort
     let l:current_tag = expand('<cWORD>')
 
@@ -80,12 +81,12 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
+nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
+function! ShowDocumentation()
+    if CocAction('hasProvider', 'hover')
+        call CocActionAsync('doHover')
     else
-        call CocAction('doHover')
+        call feedkeys('K', 'in')
     endif
 endfunction
 
