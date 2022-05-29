@@ -15,25 +15,25 @@ gl.short_line_list = {
 	"NvimTree",
 }
 local function get_hunks_data()
-  -- diff data 1:add 2:modified 3:remove
-  local diff_data = {0,0,0}
-  if vim.fn.exists('*GitGutterGetHunkSummary') == 1 then
-    for idx,v in pairs(vim.fn.GitGutterGetHunkSummary()) do
-      diff_data[idx] = v
-    end
-    return diff_data
-  elseif vim.fn.exists('*sy#repo#get_stats') == 1 then
-    diff_data[1] = vim.fn['sy#repo#get_stats']()[1]
-    diff_data[2] = vim.fn['sy#repo#get_stats']()[2]
-    diff_data[3] = vim.fn['sy#repo#get_stats']()[3]
-    return diff_data
-  elseif vim.fn.exists('b:gitsigns_status') == 1 then
-    local gitsigns_dict = vim.api.nvim_buf_get_var(0, 'gitsigns_status')
-    diff_data[1] = tonumber(gitsigns_dict:match('+(%d+)')) or 0
-    diff_data[2] = tonumber(gitsigns_dict:match('~(%d+)')) or 0
-    diff_data[3] = tonumber(gitsigns_dict:match('-(%d+)')) or 0
-  end
-  return diff_data
+	-- diff data 1:add 2:modified 3:remove
+	local diff_data = { 0, 0, 0 }
+	if vim.fn.exists("*GitGutterGetHunkSummary") == 1 then
+		for idx, v in pairs(vim.fn.GitGutterGetHunkSummary()) do
+			diff_data[idx] = v
+		end
+		return diff_data
+	elseif vim.fn.exists("*sy#repo#get_stats") == 1 then
+		diff_data[1] = vim.fn["sy#repo#get_stats"]()[1]
+		diff_data[2] = vim.fn["sy#repo#get_stats"]()[2]
+		diff_data[3] = vim.fn["sy#repo#get_stats"]()[3]
+		return diff_data
+	elseif vim.fn.exists("b:gitsigns_status") == 1 then
+		local gitsigns_dict = vim.api.nvim_buf_get_var(0, "gitsigns_status")
+		diff_data[1] = tonumber(gitsigns_dict:match("+(%d+)")) or 0
+		diff_data[2] = tonumber(gitsigns_dict:match("~(%d+)")) or 0
+		diff_data[3] = tonumber(gitsigns_dict:match("-(%d+)")) or 0
+	end
+	return diff_data
 end
 local checkwidth = function()
 	local squeeze_width = vim.fn.winwidth(0) / 2
@@ -44,18 +44,17 @@ local checkwidth = function()
 end
 
 local function get_hunk_data(index)
-    local data = get_hunks_data()[index]
-    if data > 0 then
-        return data
-    end
+	local data = get_hunks_data()[index]
+	if data > 0 then
+		return data
+	end
 end
 local function has_hunk_data()
-    if get_hunks_data()[1] > 0 or get_hunks_data()[2] > 0 or get_hunks_data()[3] > 0 then
-        return true
-    end
-    return false
+	if get_hunks_data()[1] > 0 or get_hunks_data()[2] > 0 or get_hunks_data()[3] > 0 then
+		return true
+	end
+	return false
 end
-
 
 local colors = require("theme").theme_colors()
 
@@ -194,10 +193,10 @@ gls.left[6] = {
 }
 gls.left[7] = {
 	DiffLeft = {
-		provider = function ()
-            if has_hunk_data() then
-                return '('
-            end
+		provider = function()
+			if has_hunk_data() then
+				return "("
+			end
 		end,
 		condition = checkwidth,
 		highlight = { colors.purple, colors.bg },
@@ -205,8 +204,8 @@ gls.left[7] = {
 }
 gls.left[8] = {
 	DiffAdd = {
-		provider = function ()
-		    return get_hunk_data(1)
+		provider = function()
+			return get_hunk_data(1)
 		end,
 		condition = checkwidth,
 		separator = "",
@@ -217,8 +216,8 @@ gls.left[8] = {
 
 gls.left[9] = {
 	DiffRemove = {
-		provider = function ()
-		    return get_hunk_data(3)
+		provider = function()
+			return get_hunk_data(3)
 		end,
 		condition = checkwidth,
 		separator = "",
@@ -229,8 +228,8 @@ gls.left[9] = {
 
 gls.left[10] = {
 	DiffModified = {
-		provider = function ()
-		    return get_hunk_data(2)
+		provider = function()
+			return get_hunk_data(2)
 		end,
 		condition = checkwidth,
 		separator = "",
@@ -241,10 +240,10 @@ gls.left[10] = {
 
 gls.left[11] = {
 	DiffRight = {
-		provider = function ()
-            if has_hunk_data() then
-                return ')'
-            end
+		provider = function()
+			if has_hunk_data() then
+				return ")"
+			end
 		end,
 		condition = checkwidth,
 		highlight = { colors.purple, colors.bg },
@@ -307,11 +306,10 @@ gls.right[3] = {
 	},
 }
 
-
 local function file_name()
 	local name = get_current_file_name()
 	if string.find(name, "NvimTree", 1) ~= nil then
-        return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+		return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 	end
 	return get_current_file_name()
 end
@@ -364,3 +362,11 @@ gls.short_line_right[1] = {
 		highlight = { colors.blue, shade_bg },
 	},
 }
+vim.defer_fn(function()
+    vim.api.nvim_exec(
+    [[
+    au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+    ]],
+    false
+    )
+end, 2000)

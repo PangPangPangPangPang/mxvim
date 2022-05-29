@@ -37,8 +37,6 @@ M.config = function()
 			vim.call("quickui#context#open", content, opts)
 		end
 
-		g.nvim_tree_git_hl = 1
-
 		require("nvim-tree").setup({
 			disable_netrw = true,
 			hijack_netrw = true,
@@ -52,9 +50,14 @@ M.config = function()
 				enable = false,
 			},
 			renderer = {
-                indent_markers = {
-                    enable = false,
-                },
+				add_trailing = false,
+				group_empty = false,
+				highlight_git = false,
+				highlight_opened_files = "none",
+				root_folder_modifier = ":~",
+				indent_markers = {
+					enable = false,
+				},
 			},
 			update_focused_file = {
 				enable = false,
@@ -86,7 +89,7 @@ M.config = function()
 			},
 			view = {
 				height = 30,
-                hide_root_folder = true,
+				hide_root_folder = true,
 				side = "left",
 				preserve_window_proportions = false,
 				number = false,
@@ -132,6 +135,10 @@ M.config = function()
 			},
 		})
 	end)
+	vim.cmd([[
+                hi! link NvimTreeStatusLineNC NvimTreeNormal
+            ]])
+	vim.cmd(string.format("hi! NvimTreeStatusLine cterm=bold,reverse guibg=%s", require("theme").extract_nvim_hl("NvimTreeNormal").bg))
 end
 
 M.theme = function()

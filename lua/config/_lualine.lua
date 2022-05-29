@@ -1,5 +1,7 @@
 local lualine = require("lualine")
 local colors = require("theme").theme_colors()
+local shade_bg = require("theme").shade_all(colors.bg, 0.2)
+local shade_fg = require("theme").shade_all(colors.fg, 0.5)
 
 local conditions = {
 	buffer_not_empty = function()
@@ -18,17 +20,29 @@ local conditions = {
 -- Config
 local config = {
 	options = {
+		disabled_filetypes = { "NvimTree" },
 		icons_enabled = true,
 
 		-- Disable sections and component separators
+		-- component_separators = { right = " | " },
 		component_separators = "",
 		section_separators = "",
 		theme = {
 			-- We are going to use lualine_c an lualine_x as left and
 			-- right section. Both are highlighted by c theme .  So we
 			-- are just setting default looks o statusline
-			normal = { c = { fg = colors.fg, bg = colors.bg } },
-			inactive = { c = { fg = colors.fg, bg = colors.bg } },
+			normal = {
+				a = { fg = colors.fg, bg = colors.bg },
+				c = { fg = colors.fg, bg = colors.bg },
+				x = { fg = colors.fg, bg = colors.bg },
+				z = { fg = colors.fg, bg = colors.bg },
+			},
+			inactive = {
+				a = { fg = shade_fg, bg = shade_bg },
+				c = { fg = shade_fg, bg = shade_bg },
+				x = { fg = shade_fg, bg = shade_bg },
+				z = { fg = shade_fg, bg = shade_bg },
+			},
 		},
 	},
 	sections = {
@@ -62,14 +76,45 @@ local function ins_right(component)
 	table.insert(config.sections.lualine_x, component)
 end
 
+local function ins_inactive_left(component)
+	table.insert(config.inactive_sections.lualine_c, component)
+end
+
+ins_inactive_left("filename")
+
+function mode_color()
+	local mode_color = {
+		n = colors.green,
+		i = colors.blue,
+		v = colors.magenta,
+		[""] = colors.blue,
+		V = colors.blue,
+		no = colors.magenta,
+		s = colors.orange,
+		S = colors.orange,
+		[""] = colors.orange,
+		ic = colors.yellow,
+		cv = colors.red,
+		ce = colors.red,
+		["!"] = colors.green,
+		t = colors.green,
+		c = colors.purple,
+		["r?"] = colors.red,
+		["r"] = colors.red,
+		rm = colors.red,
+		R = colors.yellow,
+		Rv = colors.magenta,
+	}
+	return { fg = mode_color[vim.fn.mode()], gui = "bold" }
+end
+
 ins_left({
 	function()
 		return "▊"
 	end,
 	padding = { right = 1 },
-	color = { fg = colors.fg_green },
+	color = mode_color,
 })
-
 ins_left({
 	-- mode component
 	function()
@@ -93,33 +138,8 @@ ins_left({
 		}
 		return alias[vim.fn.mode()]
 	end,
-	color = function()
-		-- auto change color according to neovims mode
-		local mode_color = {
-			n = colors.green,
-			i = colors.blue,
-			v = colors.magenta,
-			[""] = colors.blue,
-			V = colors.blue,
-			no = colors.magenta,
-			s = colors.orange,
-			S = colors.orange,
-			[""] = colors.orange,
-			ic = colors.yellow,
-			cv = colors.red,
-			ce = colors.red,
-			["!"] = colors.green,
-			t = colors.green,
-			c = colors.purple,
-			["r?"] = colors.red,
-			["r"] = colors.red,
-			rm = colors.red,
-			R = colors.yellow,
-			Rv = colors.magenta,
-		}
-		return { fg = mode_color[vim.fn.mode()], gui = "bold" }
-	end,
-	padding = { right = 1 },
+	color = mode_color,
+	padding = { right = 2 },
 })
 ins_left({
 	"filetype",
@@ -130,17 +150,74 @@ ins_left({
 
 ins_left({
 	"filename",
+	padding = { right = 1 },
 	cond = conditions.buffer_not_empty,
 	color = { fg = colors.fg, gui = "bold" },
 })
 
 ins_left({
 	"filesize",
+	padding = { right = 1 },
+})
+
+ins_left({
+	"branch",
+	icon = "  ",
+	color = { fg = colors.orange, gui = "bold" },
 })
 ins_left({
-    function ()
-        return " "
-    end
+	"diff",
+	padding = { right = 1 },
+})
+
+ins_left({ "%=" })
+ins_left({
+	"diagnostics",
+	-- Table of diagnostic sources, available sources are:
+	--   'nvim_lsp', 'nvim_diagnostic', 'coc', 'ale', 'vim_lsp'.
+	-- or a function that returns a table as such:
+	--   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
+	sources = { "nvim_diagnostic", "coc" },
+
+	-- Displays diagnostics for the defined severity types
+	sections = { "error", "warn", "info", "hint" },
+
+	diagnostics_color = {
+		-- Same values as the general color option can be used here.
+		error = { fg = colors.red },
+		warn = { fg = colors.orange },
+		info = { fg = colors.blue },
+		hint = { fg = colors.cyan },
+	},
+	-- color = function()
+	-- 	-- auto change color according to neovims mode
+	-- 	return { bg = colors.bg }
+	-- end,
+	symbols = { error = "    ", warn = "    ", info = "    ", hint = "    " },
+	colored = true, -- Displays diagnostics status in color if set to true.
+	update_in_insert = false, -- Update diagnostics in insert mode.
+	always_visible = false, -- Show diagnostics even if there are none.
+})
+ins_right({
+	"location",
+	color = { fg = colors.fg },
+})
+ins_right({
+	"fileformat",
+	padding = { right = 1 },
+	color = { fg = colors.yellow },
+})
+ins_right({
+	"encoding",
+	padding = { right = 1 },
+	color = { fg = colors.yellow },
+})
+ins_right({
+	function()
+		return "▊"
+	end,
+	padding = { left = 1 },
+	color = mode_color
 })
 
 local normal_config = {
@@ -153,7 +230,7 @@ local normal_config = {
 		section_separators = "",
 		disabled_filetypes = {},
 		always_divide_middle = true,
-		globalstatus = true,
+		globalstatus = false,
 	},
 	sections = {
 		lualine_a = { "mode" },
@@ -177,4 +254,4 @@ local normal_config = {
 	extensions = {},
 }
 
-lualine.setup(normal_config)
+lualine.setup(config)
