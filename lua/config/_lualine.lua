@@ -20,7 +20,7 @@ local conditions = {
 -- Config
 local config = {
 	options = {
-		disabled_filetypes = { "NvimTree" },
+		disabled_filetypes = { "NvimTree", "fugitive" },
 		icons_enabled = true,
 
 		-- Disable sections and component separators
@@ -82,8 +82,8 @@ end
 
 ins_inactive_left("filename")
 
-function mode_color()
-	local mode_color = {
+local function mode_color()
+	local color = {
 		n = colors.green,
 		i = colors.blue,
 		v = colors.magenta,
@@ -105,7 +105,7 @@ function mode_color()
 		R = colors.yellow,
 		Rv = colors.magenta,
 	}
-	return { fg = mode_color[vim.fn.mode()], gui = "bold" }
+	return { fg = color[vim.fn.mode()], gui = "bold" }
 end
 
 ins_left({
