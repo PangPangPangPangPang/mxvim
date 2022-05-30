@@ -1,4 +1,7 @@
-local lualine = require("lualine")
+local present, lualine = pcall(require, "lualine")
+if not present then
+	return
+end
 local colors = require("theme").theme_colors()
 local shade_bg = require("theme").shade_all(colors.bg, 0.2)
 local shade_fg = require("theme").shade_all(colors.fg, 0.5)
@@ -20,17 +23,14 @@ local conditions = {
 -- Config
 local config = {
 	options = {
-		disabled_filetypes = { "NvimTree", "fugitive" },
+		disabled_filetypes = { "NvimTree" },
 		icons_enabled = true,
 
 		-- Disable sections and component separators
-		-- component_separators = { right = " | " },
 		component_separators = "",
 		section_separators = "",
+		-- section_separators = { right = " | " },
 		theme = {
-			-- We are going to use lualine_c an lualine_x as left and
-			-- right section. Both are highlighted by c theme .  So we
-			-- are just setting default looks o statusline
 			normal = {
 				a = { fg = colors.fg, bg = colors.bg },
 				c = { fg = colors.fg, bg = colors.bg },
@@ -64,6 +64,11 @@ local config = {
 		lualine_c = {},
 		lualine_x = {},
 	},
+	extensions = {
+		"fugitive",
+		"toggleterm",
+		"quickfix",
+	},
 }
 
 -- Inserts a component in lualine_c at left section
@@ -73,14 +78,12 @@ end
 
 -- Inserts a component in lualine_x ot right section
 local function ins_right(component)
-	table.insert(config.sections.lualine_x, component)
+	table.insert(config.sections.lualine_z, component)
 end
 
 local function ins_inactive_left(component)
 	table.insert(config.inactive_sections.lualine_c, component)
 end
-
-ins_inactive_left("filename")
 
 local function mode_color()
 	local color = {
@@ -116,7 +119,6 @@ ins_left({
 	color = mode_color,
 })
 ins_left({
-	-- mode component
 	function()
 		local alias = {
 			n = "NORMAL",
@@ -143,9 +145,8 @@ ins_left({
 })
 ins_left({
 	"filetype",
-	colored = true, -- Displays filetype icon in color if set to true
-	icon_only = true, -- Display only an icon for filetype
-	-- icon = { align = "right" }, -- Display filetype icon on the right hand sid
+	colored = true,
+	icon_only = true,
 })
 
 ins_left({
@@ -170,37 +171,32 @@ ins_left({
 	padding = { right = 1 },
 })
 
+-- center
 ins_left({ "%=" })
 ins_left({
 	"diagnostics",
-	-- Table of diagnostic sources, available sources are:
-	--   'nvim_lsp', 'nvim_diagnostic', 'coc', 'ale', 'vim_lsp'.
-	-- or a function that returns a table as such:
-	--   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
 	sources = { "nvim_diagnostic", "coc" },
-
-	-- Displays diagnostics for the defined severity types
 	sections = { "error", "warn", "info", "hint" },
-
 	diagnostics_color = {
-		-- Same values as the general color option can be used here.
 		error = { fg = colors.red },
 		warn = { fg = colors.orange },
 		info = { fg = colors.blue },
 		hint = { fg = colors.cyan },
 	},
-	-- color = function()
-	-- 	-- auto change color according to neovims mode
-	-- 	return { bg = colors.bg }
-	-- end,
-	symbols = { error = "    ", warn = "    ", info = "    ", hint = "    " },
-	colored = true, -- Displays diagnostics status in color if set to true.
-	update_in_insert = false, -- Update diagnostics in insert mode.
-	always_visible = false, -- Show diagnostics even if there are none.
+	symbols = { error = "   ", warn = "   ", info = "   ", hint = "   " },
+	colored = true,
+	update_in_insert = false,
+	always_visible = false,
 })
 ins_right({
 	"location",
+	padding = { left = 1 },
 	color = { fg = colors.fg },
+})
+ins_right({
+	function()
+		return " | "
+	end,
 })
 ins_right({
 	"fileformat",
@@ -217,41 +213,19 @@ ins_right({
 		return "▊"
 	end,
 	padding = { left = 1 },
-	color = mode_color
+	color = mode_color,
 })
 
-local normal_config = {
-	options = {
-		icons_enabled = true,
-		theme = "auto",
-		-- component_separators = { left = "", right = "" },
-		-- section_separators = { left = "", right = "" },
-		component_separators = "",
-		section_separators = "",
-		disabled_filetypes = {},
-		always_divide_middle = true,
-		globalstatus = false,
-	},
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = {
-			"filename",
-		},
-		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
-	tabline = {},
-	extensions = {},
-}
+ins_inactive_left({
+	"filetype",
+	icon_only = true,
+	color = { fg = shade_fg, gui = "bold" },
+})
+ins_inactive_left({
+	"filename",
+	padding = { right = 1 },
+	cond = conditions.buffer_not_empty,
+	color = { fg = shade_fg, gui = "bold" },
+})
 
 lualine.setup(config)
