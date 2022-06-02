@@ -2,6 +2,14 @@ local present, lualine = pcall(require, "lualine")
 if not present then
 	return
 end
+
+vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter"}, {
+    pattern = "*",
+    callback = function ()
+        vim.cmd(string.format("LualineRenameTab %s", vim.fn.getcwd(0)))
+    end
+})
+
 local colors = require("theme").theme_colors()
 local shade_bg = require("theme").shade_all(colors.bg, 0.2)
 local shade_fg = require("theme").shade_all(colors.fg, 0.5)
@@ -63,6 +71,28 @@ local config = {
 		lualine_z = {},
 		lualine_c = {},
 		lualine_x = {},
+	},
+	tabline = {
+		lualine_a = {
+			{
+				"tabs",
+				max_length = vim.o.columns / 3,
+				mode = 2,
+			},
+		},
+		lualine_b = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {
+			{
+				"buffers",
+				buffers_color = {
+					active = { fg = colors.fg, bg = colors.bg, gui = "bold" },
+					inactive = { fg = shade_fg, bg = colors.bg, },
+				},
+			},
+		},
 	},
 	extensions = {
 		"fugitive",
@@ -148,12 +178,16 @@ ins_left({
 	colored = true,
 	icon_only = true,
 })
-
 ins_left({
 	"filename",
 	padding = { right = 1 },
 	cond = conditions.buffer_not_empty,
 	color = { fg = colors.fg, gui = "bold" },
+	symbols = {
+		modified = "  ",
+		readonly = "  ",
+		unnamed = "[No Name]",
+	},
 })
 
 ins_left({
@@ -229,3 +263,7 @@ ins_inactive_left({
 })
 
 lualine.setup(config)
+
+vim.cmd[[
+    set showtabline=1
+]]

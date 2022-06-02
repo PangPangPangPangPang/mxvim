@@ -5,7 +5,7 @@ local M = {}
 M.setup = function()
     vim.defer_fn(function ()
         vim.cmd([[
-        PackerLoad tabby.nvim
+        " PackerLoad tabby.nvim
         ]])
     end, 1500)
 end
