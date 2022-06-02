@@ -58,16 +58,6 @@ require("packer").startup({
 			disable = mxvim.current_line ~= "lualine",
 		})
 		use({
-			"nanozuki/tabby.nvim",
-			opt = true,
-			setup = function()
-				require("config._tabby").setup()
-			end,
-			config = function()
-				require("config._tabby").config()
-			end,
-		})
-		use({
 			"ZSaberLv0/ZFVimIM",
 			opt = true,
 			requires = {
