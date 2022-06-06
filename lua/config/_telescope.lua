@@ -6,7 +6,7 @@ M.map = function()
 	map("n", "<leader>b", ":Telescope buffers<cr>", { silent = true })
 	map("n", "<leader>f", ":Telescope live_grep<cr>", { silent = true })
 	vim.cmd([[
-        xnoremap <leader>f :<c-u>execute 'Telescope live_grep default_text=' . GetVisualSelection(visualmode())<cr>
+        xnoremap<silent> <leader>f :<c-u>execute 'Telescope live_grep default_text=' . GetVisualSelection(visualmode())<cr>
         command! -nargs=0 LS :Telescope buffers
         cnoreabbrev ls LS
     ]])
