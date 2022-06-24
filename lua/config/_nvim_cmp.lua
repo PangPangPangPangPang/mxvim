@@ -66,14 +66,12 @@ M.config = function()
 		-- preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
         window = {
-            completion = {
-                border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-                winhighlight = 'NormalFloat:VertSplit,FloatBorder:VertSplit',
-            },
-            documentation = {
-                border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-                winhighlight = 'NormalFloat:VertSplit,FloatBorder:VertSplit',
-            },
+            completion = cmp.config.window.bordered({
+                winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None'
+            }),
+            documentation = cmp.config.window.bordered({
+                winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None'
+            }),
         },
 		mapping = {
 			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
