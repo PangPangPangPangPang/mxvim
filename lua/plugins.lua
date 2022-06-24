@@ -439,6 +439,7 @@ require("packer").startup({
 
 		use({
 			"chentoast/marks.nvim",
+			-- disable = true,
 			opt = true,
 			setup = function()
 				require("config._mark").setup()
@@ -461,6 +462,7 @@ require("packer").startup({
 		})
 		use({
 			"kshenoy/vim-signature",
+			disable = true,
 			opt = true,
 			setup = function()
 				require("config._other").signature_setup()
