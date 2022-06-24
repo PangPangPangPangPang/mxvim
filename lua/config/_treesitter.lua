@@ -111,12 +111,12 @@ require("nvim-treesitter.configs").setup({
 	context_commentstring = { enable = true },
 	rainbow = {
 		colors = {
+			colors.magenta,
+			colors.orange,
 			colors.yellow,
 			colors.green,
-			colors.orange,
-			colors.magenta,
-			colors.cyan,
 			colors.blue,
+			colors.cyan,
 			colors.blue,
 		},
 		enable = true,

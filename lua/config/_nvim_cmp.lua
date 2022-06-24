@@ -134,7 +134,8 @@ M.config = function()
 			keyword_length = 1,
 		},
 		formatting = {
-			fields = { "kind", "abbr", "menu" },
+			fields = { "kind", "abbr" },
+			-- fields = { "kind", "abbr", "menu" },
 			format = function(_, vim_item)
 				vim_item.menu = vim_item.kind
 				-- vim_item.kind = string.format("%s ", icons[vim_item.kind])

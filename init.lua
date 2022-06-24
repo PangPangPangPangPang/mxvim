@@ -16,7 +16,6 @@ mxvim.compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
 require("basic")
 require("plugins")
 
-
 if vim.loop.fs_stat(mxvim.compile_path) then
 	vim.cmd([[
     com! PackerInstall lua require('packer').install()
