@@ -438,6 +438,17 @@ require("packer").startup({
 		})
 
 		use({
+			"chentoast/marks.nvim",
+			opt = true,
+			setup = function()
+				require("config._mark").setup()
+			end,
+			config = function()
+				require("config._mark").config()
+			end,
+		})
+
+		use({
 			"justinmk/vim-sneak",
 			disable = true,
 			opt = true,
