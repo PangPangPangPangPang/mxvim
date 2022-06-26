@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter"}, {
 
 local colors = require("theme").theme_colors()
 local shade_bg = require("theme").shade_all(colors.bg, 0.2)
-local shade_fg = require("theme").shade_all(colors.fg, 0.5)
+local shade_colors = require("theme").shade_colors(0.4)
 
 local conditions = {
 	buffer_not_empty = function()

@@ -32,7 +32,7 @@ end
 
 M.colors = function()
 	return {
-		fg = "#DCD7BA",
+		fg = "#dfdfe0",
 		bg = "#16161D",
 		light_fb = "#717C7C",
 		light_bg = "#1F1F28",
@@ -40,11 +40,11 @@ M.colors = function()
 		yellow = "#E6C384",
 		cyan = "#7AA89F",
 		darkblue = "#658594",
-		green = "#98BB6C",
+		green = "#81b29a",
 		orange = "#FFA066",
 		purple = "#957FB8",
-		magenta = "#D27E99",
-		blue = "#7FB4CA",
+		magenta = "#d67ad2",
+		blue = "#86abdc",
 		red = "#FF5D62",
 	}
 end
