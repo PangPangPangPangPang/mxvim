@@ -16,7 +16,7 @@ M.theme = function(name, nick)
             if mxvim.current_line == "galaxy" then
                 require("config._galaxyline")
             else
-                require("config._lualine")
+                require("config._lualine_pure")
             end
 			vim.cmd([[
                 hi! link NormalFloat cleared
