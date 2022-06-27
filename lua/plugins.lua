@@ -438,7 +438,7 @@ require("packer").startup({
 
 		use({
 			"chentoast/marks.nvim",
-			-- disable = true,
+			disable = true,
 			opt = true,
 			setup = function()
 				require("config._mark").setup()
@@ -499,7 +499,7 @@ require("packer").startup({
 			"PangPangPangPangPang/prettier-number-line.nvim",
 			config = function()
 				-- current virtual
-				require("prettier-number-line").setup({ mode = "current", show_col = true, exclusive_filetype = { "fugitive" }, col_highlight = "VertSplit" })
+				require("prettier-number-line").setup({ mode = "current", show_col = false, exclusive_filetype = { "fugitive" }, col_highlight = "VertSplit" })
 			end,
 		})
 		use({
@@ -510,6 +510,17 @@ require("packer").startup({
 				require("config._other").copilot_setup()
 			end,
 		})
+
+        use({
+            "b0o/incline.nvim",
+            opt = true,
+			setup = function()
+				require("config._incline").setup()
+			end,
+			config = function()
+				require("config._incline").config()
+			end,
+        })
 
 		if packer_bootstrap then
 			require("packer").sync()

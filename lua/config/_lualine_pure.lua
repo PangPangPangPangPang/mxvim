@@ -1,3 +1,4 @@
+vim.o.laststatus = 3
 local present, lualine = pcall(require, "lualine")
 if not present then
 	return
@@ -57,7 +58,7 @@ end
 -- Config
 local config = {
 	options = {
-		disabled_filetypes = { "NvimTree" },
+		-- disabled_filetypes = { "NvimTree" },
 		icons_enabled = true,
 
 		-- Disable sections and component separators
@@ -179,23 +180,23 @@ ins_left({
 	color = mode_color,
 })
 
-ins_left({
-	"filetype",
-	colored = false,
-	icon_only = true,
-	color = mode_color,
-})
-ins_left({
-	"filename",
-	padding = { right = 1 },
-	cond = conditions.buffer_not_empty,
-	color = mode_color,
-	symbols = {
-		modified = "  ",
-		readonly = "  ",
-		unnamed = "[No Name]",
-	},
-})
+-- ins_left({
+-- 	"filetype",
+-- 	colored = false,
+-- 	icon_only = true,
+-- 	color = mode_color,
+-- })
+-- ins_left({
+-- 	"filename",
+-- 	padding = { right = 1 },
+-- 	cond = conditions.buffer_not_empty,
+-- 	color = mode_color,
+-- 	symbols = {
+-- 		modified = "  ",
+-- 		readonly = "  ",
+-- 		unnamed = "[No Name]",
+-- 	},
+-- })
 
 ins_left({
 	"filesize",
