@@ -299,9 +299,8 @@ require("packer").startup({
 				end,
 			})
 		end
-
         use({
-            "petertriho/nvim-scrollbar",
+            "lewis6991/satellite.nvim",
             opt = true,
             setup = function()
                 require("config._scrollbar").setup()
@@ -500,10 +499,9 @@ require("packer").startup({
 			"PangPangPangPangPang/prettier-number-line.nvim",
 			config = function()
 				-- current virtual
-				require("prettier-number-line").setup({ mode = "current", show_col = true, exclusive_filetype = { "fugitive" } })
+				require("prettier-number-line").setup({ mode = "current", show_col = true, exclusive_filetype = { "fugitive" }, col_highlight = "VertSplit" })
 			end,
 		})
-
 		use({
 			"github/copilot.vim",
 			disable = true,
