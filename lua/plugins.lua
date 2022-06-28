@@ -154,6 +154,7 @@ require("packer").startup({
 				requires = {
 					{ "RishabhRD/popfix", opt = true },
 					{ "RishabhRD/nvim-lsputils", opt = true },
+					{ "nvim-lua/lsp-status.nvim", opt = true },
 					{
 						"ray-x/lsp_signature.nvim",
 						disable = true,

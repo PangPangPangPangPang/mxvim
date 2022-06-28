@@ -4,6 +4,7 @@ M.setup = function()
 		vim.cmd([[
         PackerLoad popfix
         PackerLoad nvim-lsputils
+        " PackerLoad lsp-status.nvim
         " PackerLoad lsp_signature.nvim
         PackerLoad nvim-lspconfig
         PackerLoad nvim-lsp-installer

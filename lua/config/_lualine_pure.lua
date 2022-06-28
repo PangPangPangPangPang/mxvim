@@ -156,28 +156,10 @@ ins_left({
 })
 
 -- ins_left({
--- 	"filetype",
--- 	colored = false,
--- 	icon_only = true,
+-- 	"filesize",
 -- 	color = mode_color,
--- })
--- ins_left({
--- 	"filename",
 -- 	padding = { right = 1 },
--- 	cond = conditions.buffer_not_empty,
--- 	color = mode_color,
--- 	symbols = {
--- 		modified = "  ",
--- 		readonly = "  ",
--- 		unnamed = "[No Name]",
--- 	},
 -- })
-
-ins_left({
-	"filesize",
-	color = mode_color,
-	padding = { right = 1 },
-})
 
 ins_left({
 	"diagnostics",
@@ -192,10 +174,16 @@ ins_left({
 	symbols = { error = " ", warn = " ", info = " ", hint = " " },
 	colored = false,
 	update_in_insert = false,
-	always_visible = false,
+	always_visible = true,
 	color = mode_color,
 	-- padding = { right = 1 },
 })
+-- ins_left({
+--     "data"
+-- })
+-- ins_left({
+--     "require'lsp-status'.status()"
+-- })
 
 ins_left({
 	function()
@@ -248,6 +236,10 @@ ins_right({
     icons_enabled = false,
 	padding = { right = 1 },
 	color = mode_color,
+})
+
+ins_right({
+    "os.date('%a')"
 })
 
 ins_inactive_left({
