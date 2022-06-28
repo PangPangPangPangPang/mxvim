@@ -12,7 +12,8 @@ vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter"}, {
 })
 
 local origin_colors = require("theme").theme_colors()
-local colors = require("theme").shade_colors(0.3)
+-- local colors = require("theme").shade_colors(0.3)
+local colors = require("theme").theme_colors()
 local shade_bg = require("theme").shade_all(colors.bg, 0.2)
 local shade_fg = require("theme").shade_all(colors.fg, 0.5)
 
@@ -143,32 +144,6 @@ local function ins_inactive_left(component)
 end
 
 ins_left({
-	function()
-		local alias = {
-			n = "NORMAL",
-			i = "INSERT",
-			V = "VISUAL",
-			[""] = "VISUAL",
-			v = "VISUAL",
-			c = "COMMAND-LINE",
-			["r?"] = ":CONFIRM",
-			rm = "--MORE",
-			R = "REPLACE",
-			Rv = "VIRTUAL",
-			s = "SELECT",
-			S = "SELECT",
-			["r"] = "HIT-ENTER",
-			[""] = "SELECT",
-			t = "TERMINAL",
-			["!"] = "SHELL",
-		}
-		return alias[vim.fn.mode()]
-	end,
-	color = mode_color,
-	padding = { left = 1 },
-})
-
-ins_left({
 	"branch",
 	icon = "",
 	color = mode_color,
@@ -220,6 +195,33 @@ ins_left({
 	always_visible = false,
 	color = mode_color,
 	-- padding = { right = 1 },
+})
+
+ins_left({
+	function()
+		local alias = {
+			n = "NORMAL",
+			i = "INSERT",
+			V = "VISUAL",
+			[""] = "VISUAL",
+			v = "VISUAL",
+			c = "COMMAND-LINE",
+			["r?"] = ":CONFIRM",
+			rm = "--MORE",
+			R = "REPLACE",
+			Rv = "VIRTUAL",
+			s = "SELECT",
+			S = "SELECT",
+			["r"] = "HIT-ENTER",
+			[""] = "SELECT",
+			t = "TERMINAL",
+			["!"] = "SHELL",
+		}
+		-- return alias[vim.fn.mode()]
+		return string.format("-- %s --", alias[vim.fn.mode()])
+	end,
+	color = mode_color,
+	padding = { left = 1 },
 })
 local function location()
   return 'Ln%2l, Col%2v'
