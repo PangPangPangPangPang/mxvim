@@ -36,7 +36,7 @@ M.colors = function()
         orange = "#FFA066",
         purple = "#957FB8",
         magenta = "#D27E99",
-        blue = "#7FB4CA",
+        blue = "#7E9CD8",
         red = "#FF5D62",
     }
 end
