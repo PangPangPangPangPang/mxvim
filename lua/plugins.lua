@@ -55,6 +55,9 @@ require("packer").startup({
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
+			requires = {
+				"bercly0b/lualine-lsp-progress",
+			},
 			disable = mxvim.current_line ~= "lualine",
 		})
 		use({
@@ -180,6 +183,7 @@ require("packer").startup({
 			})
 			use({
 				"j-hui/fidget.nvim",
+                disable = true,
 				-- opt = true,
 				config = function()
 					require("fidget").setup({})
@@ -300,17 +304,16 @@ require("packer").startup({
 				end,
 			})
 		end
-        use({
-            "lewis6991/satellite.nvim",
-            opt = true,
-            setup = function()
-                require("config._scrollbar").setup()
-            end,
-            config = function()
-                require("config._scrollbar").config()
-            end,
-        })
-
+		use({
+			"lewis6991/satellite.nvim",
+			opt = true,
+			setup = function()
+				require("config._scrollbar").setup()
+			end,
+			config = function()
+				require("config._scrollbar").config()
+			end,
+		})
 
 		-- debugger
 		use({
@@ -500,7 +503,12 @@ require("packer").startup({
 			"PangPangPangPangPang/prettier-number-line.nvim",
 			config = function()
 				-- current virtual
-				require("prettier-number-line").setup({ mode = "current", show_col = false, exclusive_filetype = { "fugitive" }, col_highlight = "VertSplit" })
+				require("prettier-number-line").setup({
+					mode = "current",
+					show_col = false,
+					exclusive_filetype = { "fugitive" },
+					col_highlight = "VertSplit",
+				})
 			end,
 		})
 		use({
@@ -512,16 +520,16 @@ require("packer").startup({
 			end,
 		})
 
-        use({
-            "b0o/incline.nvim",
-            opt = true,
+		use({
+			"b0o/incline.nvim",
+			opt = true,
 			setup = function()
 				require("config._incline").setup()
 			end,
 			config = function()
 				require("config._incline").config()
 			end,
-        })
+		})
 
 		if packer_bootstrap then
 			require("packer").sync()

@@ -4,11 +4,11 @@ if not present then
 	return
 end
 
-vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter"}, {
-    pattern = "*",
-    callback = function ()
-        vim.cmd(string.format("LualineRenameTab %s", vim.fn.getcwd(0)))
-    end
+vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter" }, {
+	pattern = "*",
+	callback = function()
+		vim.cmd(string.format("LualineRenameTab %s", vim.fn.getcwd(0)))
+	end,
 })
 
 local origin_colors = require("theme").theme_colors()
@@ -54,7 +54,7 @@ local function mode_color()
 		R = colors.yellow,
 		Rv = colors.magenta,
 	}
-	return { bg = color[vim.fn.mode()], fg = origin_colors.fg, gui = 'bold' }
+	return { bg = color[vim.fn.mode()], fg = origin_colors.fg, gui = "bold" }
 end
 -- Config
 local config = {
@@ -117,7 +117,7 @@ local config = {
 				"buffers",
 				buffers_color = {
 					active = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-					inactive = { fg = shade_fg, bg = colors.bg, },
+					inactive = { fg = shade_fg, bg = colors.bg },
 				},
 			},
 		},
@@ -178,13 +178,22 @@ ins_left({
 	color = mode_color,
 	-- padding = { right = 1 },
 })
--- ins_left({
---     "data"
--- })
--- ins_left({
---     "require'lsp-status'.status()"
--- })
 
+ins_left({
+	"lsp_progress",
+	display_components = { "lsp_client_name", { "title", "percentage", "message" } },
+    display_lsp_name_after_initialization = true,
+	separators = {
+		component = " ",
+		progress = " | ",
+		percentage = { pre = "", post = "%% " },
+		title = { pre = "", post = ": " },
+		lsp_client_name = { pre = "", post = "" },
+		spinner = { pre = "", post = "" },
+		message = { commenced = "In Progress", completed = "Completed" },
+	},
+	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
+})
 ins_left({
 	function()
 		local alias = {
@@ -212,7 +221,7 @@ ins_left({
 	padding = { left = 1 },
 })
 local function location()
-  return 'Ln%2l, Col%2v'
+	return "Ln%2l, Col%2v"
 end
 ins_right({
 	location,
@@ -222,24 +231,24 @@ ins_right({
 ins_right({
 	"filetype",
 	colored = false,
-    icons_enabled = false,
+	icons_enabled = false,
 	icon_only = false,
 	color = mode_color,
 	padding = { right = 2 },
 })
 
 local function encoding()
-  return string.upper(vim.opt.fileencoding:get())
+	return string.upper(vim.opt.fileencoding:get())
 end
 ins_right({
 	encoding,
-    icons_enabled = false,
+	icons_enabled = false,
 	padding = { right = 1 },
 	color = mode_color,
 })
 
 ins_right({
-    "os.date('%a')"
+	"os.date('%a')",
 })
 
 ins_inactive_left({
@@ -256,6 +265,6 @@ ins_inactive_left({
 
 lualine.setup(config)
 
-vim.cmd[[
+vim.cmd([[
     set showtabline=1
-]]
+]])
