@@ -248,7 +248,7 @@ ins_right({
 })
 
 ins_right({
-	"os.date('%a')",
+	"os.date('%b %d, %a')",
 })
 
 ins_inactive_left({
