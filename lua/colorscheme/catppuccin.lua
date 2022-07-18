@@ -9,7 +9,7 @@ end
 M.colors = function()
     return {
         -- for galaxyline
-        fg = '#C2E7F0', -- light text color
+        fg = '#4C4F69', -- light text color
         bg = '#2D293B', -- background color
         light_fg = '#2D293B', -- text color
         light_bg = '#C2E7F0', -- light background color
