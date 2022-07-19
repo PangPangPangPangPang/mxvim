@@ -1,9 +1,9 @@
 local colors = require("theme").theme_colors()
-local shade_colors = require("theme").shade_colors(0.2)
+local theme = require("theme")
 local safe_require = require("utils").safe_require
 safe_require("hlargs", function(hlargs)
 	hlargs.setup({
-		color = shade_colors.fg,
+		color = theme.shade(theme.extract_nvim_hl("Normal").fg, 0.2),
 		excluded_filetypes = {},
 		paint_arg_declarations = true,
 		paint_arg_usages = true,
