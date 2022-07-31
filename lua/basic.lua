@@ -85,7 +85,7 @@ o.completeopt = "menu,menuone,noinsert,noselect"
 o.ruler = true
 
 -- Height of the command bar
-o.cmdheight = 1
+o.cmdheight = 0
 
 -- A buffer becomes hidden when it is abandoned
 o.hid = true
