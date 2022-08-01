@@ -30,6 +30,18 @@ local conditions = {
 		return gitdir and #gitdir > 0 and #gitdir < #filepath
 	end,
 }
+local function search_count()
+    local search = vim.fn.searchcount({maxcount = 0}) -- maxcount = 0 makes the number not be capped at 99
+    local searchCurrent = search.current
+    local searchTotal = search.total
+    if searchCurrent > 0 then
+        return vim.fn.getreg("/").." ["..searchCurrent.."/"..searchTotal.."]"
+    else
+        return ""
+    end
+end
+
+
 
 local function mode_color()
 	local color = {
@@ -223,6 +235,11 @@ ins_left({
 local function location()
 	return "Ln%2l, Col%2v"
 end
+ins_right({
+	search_count,
+	padding = { right = 2 },
+	color = mode_color,
+})
 ins_right({
 	location,
 	padding = { right = 2 },
