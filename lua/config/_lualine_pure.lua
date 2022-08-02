@@ -42,7 +42,6 @@ local function search_count()
 end
 
 
-
 local function mode_color()
 	local color = {
 		n = colors.blue,
