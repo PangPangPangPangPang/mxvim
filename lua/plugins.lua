@@ -302,6 +302,16 @@ require("packer").startup({
 			})
 		end
 		use({
+			"karb94/neoscroll.nvim",
+			opt = true,
+			setup = function()
+				require("config._neoscroll").setup()
+			end,
+			config = function()
+				require("config._neoscroll").config()
+			end,
+		})
+		use({
 			"lewis6991/satellite.nvim",
 			opt = true,
 			setup = function()
