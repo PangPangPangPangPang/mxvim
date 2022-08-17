@@ -333,15 +333,15 @@ require("packer").startup({
 			},
 		})
 
-		use({
-			"jiangmiao/auto-pairs",
-		})
 		-- use({
-		-- 	"windwp/nvim-autopairs",
-		-- 	config = function()
-		-- 		require("config._autopairs").setup()
-		-- 	end,
+		-- 	"jiangmiao/auto-pairs",
 		-- })
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("config._autopairs").setup()
+			end,
+		})
 
 		use({ "tweekmonster/startuptime.vim", cmd = { "StartupTime" } })
 
