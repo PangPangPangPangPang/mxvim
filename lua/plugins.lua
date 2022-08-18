@@ -180,7 +180,7 @@ require("packer").startup({
 			})
 			use({
 				"j-hui/fidget.nvim",
-                disable = true,
+				disable = true,
 				-- opt = true,
 				config = function()
 					require("fidget").setup({})
