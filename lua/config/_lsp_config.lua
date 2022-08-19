@@ -23,28 +23,28 @@ M.set_keymap = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = false, silent = true }
 
-	if not (packer_plugins["telescope.nvim"] and packer_plugins["telescope.nvim"].loaded) then
-		local map = require("utils").map
+    local map = require("utils").map
+	if not (packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded) then
 		map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-		map("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 		map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 		map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+        buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+        buf_set_keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>", opts)
+        buf_set_keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>", opts)
+        buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+        buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+        buf_set_keymap("n", "J", "<Cmd>lua require('config._lsp_config').show_cursor_diagnostic()<CR>", opts)
 	end
 
+    map("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	-- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 	buf_set_keymap("n", "<space>cq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 	-- buf_set_keymap("n", "<space>cd", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", opts)
-	buf_set_keymap("n", "g[", "<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>", opts)
-	buf_set_keymap("n", "g]", "<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>", opts)
-	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "J", "<Cmd>lua require('config._lsp_config').show_cursor_diagnostic()<CR>", opts)
-	buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 	-- Set some keybinds conditional on server capabilities
     buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
@@ -53,9 +53,6 @@ M.set_keymap = function(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.documentHighlightProvider then
 		local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"
-		if packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded then
-			show_diag = "autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()"
-		end
 		cmd([[ augroup lsp_document_highlight ]])
 		cmd([[ autocmd! * <buffer> ]])
 		cmd([[ autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()  ]])

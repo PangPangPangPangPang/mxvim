@@ -13,24 +13,6 @@ M.map = function()
 end
 M.config = function()
 	local map = require("utils").dmap
-	if mxvim.use_coc == false then
-		map(
-			"n",
-			"<leader>ca",
-			":lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({}))<cr>"
-		)
-		map(
-			"n",
-			"<c-]>",
-			":lua require'telescope.builtin'.lsp_definitions(require('telescope.themes').get_dropdown({}))<cr>"
-		)
-		map(
-			"n",
-			"gi",
-			":lua require'telescope.builtin'.lsp_implementations(require('telescope.themes').get_dropdown({}))<cr>"
-		)
-	end
-	map("n", "gr", ":lua require'telescope.builtin'.lsp_references(require('telescope.themes').dropdownrsor({}))<cr>")
 	local actions = require("telescope.actions")
 	require("telescope").setup({
 		defaults = {
