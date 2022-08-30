@@ -96,7 +96,9 @@ M.config = function()
 		-- You can set mapping if you want.
         window = {
             completion = cmp.config.window.bordered({
-                winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None'
+                winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None',
+                col_offset = -4,
+                side_padding = 1,
             }),
             documentation = cmp.config.window.bordered({
                 winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None'
