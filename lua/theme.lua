@@ -41,8 +41,8 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
             vim.cmd([[
             hi! link FloatBorder Normal
-            hi! StatusLineNC guibg=none
-            hi! StatusLine guibg=none
+            " hi! StatusLineNC guibg=none
+            " hi! StatusLine guibg=none
             ]])
 		end,
 	}
