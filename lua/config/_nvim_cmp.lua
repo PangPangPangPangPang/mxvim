@@ -1,5 +1,4 @@
 local M = {}
-local ELLIPSIS_CHAR = "…"
 local MAX_LABEL_WIDTH = 60
 
 local has_words_before = function()
@@ -7,70 +6,13 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-  local icons = {
--- if you change or add symbol here
--- replace corresponding line in readme
-    Text = " ",
-    Method = " ",
-    Function = " ",
-    Constructor = " ",
-    Field = "ﰠ ",
-    Variable = " ",
-    Class = "ﴯ ",
-    Interface = " ",
-    Module = " ",
-    Property = "ﰠ ",
-    Unit = "塞",
-    Value = " ",
-    Enum = " ",
-    Keyword = " ",
-    Snippet = " ",
-    Color = " ",
-    File = " ",
-    Reference = " ",
-    Folder = " ",
-    EnumMember = " ",
-    Constant = " ",
-    Struct = "פּ ",
-    Event = " ",
-    Operator = " ",
-    TypeParameter = ""
-  }
--- local icons = {
---     Text = " ",
---     Method = " ",
---     Function = " ",
---     Constructor = " ",
---     Field = " ",
---     Variable = " ",
---     Class = " ",
---     Interface = " ",
---     Module = " ",
---     Property = " ",
---     Unit = " ",
---     Value = " ",
---     Enum = " ",
---     Keyword = " ",
---     Snippet = " ",
---     Color = " ",
---     File = " ",
---     Reference = " ",
---     Folder = " ",
---     EnumMember = " ",
---     Constant = " ",
---     Struct = " ",
---     Event = " ",
---     Operator = " ",
---     TypeParameter = " ",
---   }
-
 M.setup = function()
 	if mxvim.use_cmp == false then
 		return
 	end
 	vim.defer_fn(function()
 		vim.cmd([[
-        " PackerLoad lspkind-nvim
+        PackerLoad lspkind-nvim
         PackerLoad nvim-cmp
         " Jump forward or backward
         " imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
@@ -94,16 +36,28 @@ M.config = function()
 		},
 		-- preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
-        window = {
-            completion = cmp.config.window.bordered({
-                winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None',
-                col_offset = -4,
-                side_padding = 1,
-            }),
-            documentation = cmp.config.window.bordered({
-                winhighlight = 'Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None'
-            }),
-        },
+		window = {
+			completion = cmp.config.window.bordered({
+				-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+				-- col_offset = -3,
+				-- side_padding = 0,
+			}),
+			documentation = cmp.config.window.bordered({
+				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+			}),
+		},
+		formatting = {
+			fields = { "kind", "abbr", "menu" },
+			format = function(entry, vim_item)
+				local kind = require("lspkind").cmp_format({ mode = "symbol", maxwidth = MAX_LABEL_WIDTH })(entry, vim_item)
+				-- local strings = vim.split(kind.kind, "%s", { trimempty = true })
+				kind.kind = kind.kind .. " "
+				-- kind.menu = "    (" .. strings[2] .. ")"
+				return kind
+			end,
+		},
+
 		mapping = {
 			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 			["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
@@ -167,37 +121,6 @@ M.config = function()
 			completeopt = "menu,menuone,noinsert",
 			keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
 			keyword_length = 1,
-		},
-		formatting = {
-			fields = { "kind", "abbr" },
-			-- fields = { "kind", "abbr", "menu" },
-			format = function(_, vim_item)
-				vim_item.menu = vim_item.kind
-				-- vim_item.kind = string.format("%s ", icons[vim_item.kind])
-                vim_item.kind = icons[vim_item.kind]
-				local label = vim_item.abbr
-				-- local trim_label = label:gsub("^%s*(.-)%s*$", "%1")
-				local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
-				if truncated_label ~= label then
-					label = truncated_label .. ELLIPSIS_CHAR
-				end
-				vim_item.abbr = label
-				return vim_item
-			end,
-			-- format = require("lspkind").cmp_format({
-			-- maxwidth = MAX_LABEL_WIDTH,
-			-- 	before = function(_, vim_item)
-			-- 		return vim_item
-			-- 	end,
-			-- 	with_text = true,
-			-- 	menu = {
-			-- 		vsnip = "[Snip]",
-			-- 		nvim_lsp = "[LSP]",
-			-- 		nvim_lua = "[Lua]",
-			-- 		buffer = "[Buffer]",
-			-- 		path = "[Path]",
-			-- 	},
-			-- }),
 		},
 	})
 
