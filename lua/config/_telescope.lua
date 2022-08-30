@@ -12,7 +12,6 @@ M.map = function()
     ]])
 end
 M.config = function()
-	local map = require("utils").dmap
 	local actions = require("telescope.actions")
 	require("telescope").setup({
 		defaults = {

@@ -85,7 +85,9 @@ o.completeopt = "menu,menuone,noinsert,noselect"
 o.ruler = true
 
 -- Height of the command bar
-o.cmdheight = 0
+if fn.has("nvim-0.8") then
+    o.cmdheight = 0
+end
 
 -- A buffer becomes hidden when it is abandoned
 o.hid = true

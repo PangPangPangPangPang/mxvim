@@ -1,7 +1,7 @@
 _G.mxvim = {}
 
 -- nightfly github-theme miramare vscode nord onedarkpro rose-pine catppuccin gruvbox-material kanagawa nightfox
-mxvim.current_theme = "catppuccin"
+mxvim.current_theme = "vscode"
 -- galaxy lualine
 mxvim.current_line = "lualine"
 mxvim.use_coc = false
