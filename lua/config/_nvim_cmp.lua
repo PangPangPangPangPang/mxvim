@@ -37,11 +37,16 @@ M.config = function()
 		-- preselect = cmp.PreselectMode.None,
 		-- You can set mapping if you want.
 		window = {
+			-- completion = {
+			-- 	winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+			-- 	col_offset = -3,
+			-- 	side_padding = 0,
+			-- },
 			completion = cmp.config.window.bordered({
 				-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-				-- col_offset = -3,
-				-- side_padding = 0,
+				col_offset = -4,
+				side_padding = 1,
 			}),
 			documentation = cmp.config.window.bordered({
 				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
@@ -50,7 +55,10 @@ M.config = function()
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = function(entry, vim_item)
-				local kind = require("lspkind").cmp_format({ mode = "symbol", maxwidth = MAX_LABEL_WIDTH })(entry, vim_item)
+				local kind = require("lspkind").cmp_format({ mode = "symbol", maxwidth = MAX_LABEL_WIDTH })(
+					entry,
+					vim_item
+				)
 				-- local strings = vim.split(kind.kind, "%s", { trimempty = true })
 				kind.kind = kind.kind .. " "
 				-- kind.menu = "    (" .. strings[2] .. ")"

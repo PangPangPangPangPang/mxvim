@@ -13,7 +13,7 @@ M.setup = function()
 	end)
 	local map = require("utils").map
 	local opts = { noremap = true, silent = true }
-	map("i", "<c-k>", "<C-o>:lua toggle_zfvimim()<cr>", opts)
+	map({ "n", "i" }, "<M-i>", "<C-o>:lua toggle_zfvimim()<cr>", opts)
 	vim.cmd([[
         autocmd User TelescopeFindPre lua stop_zfvimim()
     ]])

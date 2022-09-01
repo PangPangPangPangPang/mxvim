@@ -44,6 +44,7 @@ require("packer").startup({
 			require("theme").theme("rebelot/kanagawa.nvim"),
 			require("theme").theme("EdenEast/nightfox.nvim"),
 		})
+        use({"drmikehenry/vim-fixkey"})
 
 		use({
 			"glepnir/galaxyline.nvim",
@@ -57,6 +58,7 @@ require("packer").startup({
 			},
 			disable = mxvim.current_line ~= "lualine",
 		})
+        
 		use({
 			"ZSaberLv0/ZFVimIM",
 			opt = true,
