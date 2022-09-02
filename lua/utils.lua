@@ -14,6 +14,10 @@ function M.opt(o, v, scopes)
 	end
 end
 
+function M.loaded(plugin)
+    return packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded
+end
+
 function M.map(modes, lhs, rhs, opts)
 	opts = opts or {}
 	opts.noremap = opts.noremap == nil and true or opts.noremap

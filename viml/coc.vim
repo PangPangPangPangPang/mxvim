@@ -77,9 +77,9 @@ let g:coc_snippet_prev = '<S-TAB>'
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 function! ShowDocumentation()
@@ -89,6 +89,8 @@ function! ShowDocumentation()
         call feedkeys('K', 'in')
     endif
 endfunction
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
