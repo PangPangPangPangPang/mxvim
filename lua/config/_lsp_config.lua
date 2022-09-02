@@ -24,7 +24,7 @@ M.set_keymap = function(client, bufnr)
 	local opts = { noremap = false, silent = true }
 
     local map = require("utils").map
-	if not (packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded) then
+	if not (require("utils").loaded("lspsaga.nvim")) then
 		map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 		map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 		map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
