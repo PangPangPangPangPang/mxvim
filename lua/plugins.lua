@@ -328,9 +328,6 @@ require("packer").startup({
             },
         })
 
-        -- use({
-        -- 	"jiangmiao/auto-pairs",
-        -- })
         use({
             "windwp/nvim-autopairs",
             config = function()
