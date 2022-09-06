@@ -25,7 +25,6 @@ require("packer").startup({
         -- -- Packer itself
         use({ "wbthomason/packer.nvim" })
         use({ "lewis6991/impatient.nvim" })
-        -- use({ "nathom/filetype.nvim" })
 
         use({ "nvim-lua/popup.nvim" })
         use({ "nvim-lua/plenary.nvim" })
@@ -157,14 +156,6 @@ require("packer").startup({
                     { "williamboman/mason.nvim", opt = true },
                     { "nvim-lua/lsp-status.nvim", opt = true },
                     {
-                        "ray-x/lsp_signature.nvim",
-                        disable = true,
-                        opt = true,
-                        config = function()
-                            require("config._signature").signature()
-                        end,
-                    },
-                    {
                         "neovim/nvim-lspconfig",
                         opt = true,
                         config = function()
@@ -179,36 +170,6 @@ require("packer").startup({
                     require("config._mason").config()
                 end,
             })
-            -- use({
-            -- 	"williamboman/nvim-lsp-installer",
-            -- 	opt = true,
-            -- 	requires = {
-            -- 		{ "RishabhRD/popfix", opt = true },
-            -- 		{ "RishabhRD/nvim-lsputils", opt = true },
-            -- 		{ "nvim-lua/lsp-status.nvim", opt = true },
-            -- 		{
-            -- 			"ray-x/lsp_signature.nvim",
-            -- 			disable = true,
-            -- 			opt = true,
-            -- 			config = function()
-            -- 				require("config._signature").signature()
-            -- 			end,
-            -- 		},
-            -- 		{
-            -- 			"neovim/nvim-lspconfig",
-            -- 			opt = true,
-            -- 			config = function()
-            -- 				require("config._lsp_config").config()
-            -- 			end,
-            -- 		},
-            -- 	},
-            -- 	setup = function()
-            -- 		require("config._lsp_installer").setup()
-            -- 	end,
-            -- 	config = function()
-            -- 		require("config._lsp_installer").config()
-            -- 	end,
-            -- })
             use({
                 "j-hui/fidget.nvim",
                 disable = true,
@@ -231,7 +192,8 @@ require("packer").startup({
             })
             use({
                 "jose-elias-alvarez/null-ls.nvim",
-                opt = true,
+                disable = true,
+                -- opt = true,
                 requires = { "neovim/nvim-lspconfig" },
                 setup = function()
                     require("lsp.lsp_nullls").setup()
@@ -282,7 +244,8 @@ require("packer").startup({
             })
             use({
                 "ms-jpq/coq_nvim",
-                opt = true,
+                disable = true,
+                -- opt = true,
                 branch = "coq",
                 requires = {
                     { "ms-jpq/coq.artifacts", branch = "artifacts" },
@@ -344,7 +307,8 @@ require("packer").startup({
         })
         use({
             "lewis6991/satellite.nvim",
-            opt = true,
+            disable = true,
+            -- opt = true,
             setup = function()
                 require("config._scrollbar").setup()
             end,
