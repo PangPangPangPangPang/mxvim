@@ -26,6 +26,7 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("hi! CmpItemAbbrMatch gui=bold guifg=%s", colors.blue))
 			vim.cmd(string.format("hi! CmpItemAbbrMatchFuzzy gui=bold guifg=%s", colors.blue))
 			vim.cmd(string.format("hi! CmpItemMenu gui=bold guifg=%s", shade_colors.fg))
+			vim.cmd(string.format("hi! markdownBoldItalic gui=bold,italic guifg=%s", colors.blue))
 
             local bg = "bg"
             local fg = "fg"
@@ -57,7 +58,7 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("highlight! CmpItemKindColor gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
 			vim.cmd(string.format("highlight! CmpItemKindTypeParameter gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
 
-			vim.cmd(string.format("hi! PmenuSel guifg=none"))
+			-- vim.cmd(string.format("hi! PmenuSel guifg=none"))
 			vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
 
 			vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
