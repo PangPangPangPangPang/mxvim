@@ -26,7 +26,7 @@ M.setup = function ()
     require("indent_blankline").setup {
         char = '▏',
         buftype_exclude = {'tex', 'markdown', 'txt', 'startify', 'packer', 'terminal'},
-        filetype_exclude = {'NvimTree', 'TelescopePrompt'},
+        filetype_exclude = {'NvimTree', 'TelescopePrompt', 'mason'},
         show_end_of_line = true,
         space_char_blankline = " ",
         char_highlight_list = {
