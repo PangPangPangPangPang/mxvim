@@ -29,6 +29,7 @@ M.config = function()
             require("lspconfig")[server_name].setup(config)
         end,
     })
+    require("lsp.lsp_swift").setup()
     vim.cmd([[ LspStart ]])
 end
 return M
