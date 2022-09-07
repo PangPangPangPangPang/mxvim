@@ -29,7 +29,7 @@ M.config = function()
 			virtual_text = true,
 		},
 		symbol_in_winbar = {
-			in_custom = true,
+			in_custom = vim.fn.has("nvim-0.8") == 1,
 		},
 	})
 
