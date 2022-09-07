@@ -36,12 +36,5 @@ M.setup = function()
 			end)
 			:use_key("]"),
 	})
-
-	-- If you want insert `(` after select function or method item
-    if require("utils").loaded("cmp") then
-        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-        local cmp = require("cmp")
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end
 end
 return M

@@ -158,5 +158,10 @@ M.config = function()
 			{ name = "cmdline" },
 		}),
 	})
+	-- If you want insert `(` after select function or method item
+    if require("utils").loaded("nvim-autopairs") then
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end
 end
 return M
