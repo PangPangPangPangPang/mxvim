@@ -419,10 +419,13 @@ require("packer").startup({
             end,
         })
 
-        use { 
+        use {
             'sindrets/diffview.nvim',
             requires = 'nvim-lua/plenary.nvim',
-            cmd = {'DiffviewOpen', 'DiffviewClose'}
+            cmd = { 'DiffviewOpen', 'DiffviewClose' },
+            config = function()
+                require("config._diffview").config()
+            end,
         }
         map("n", "<F3>", ":lua require(\"utils\").toggleDiffView()<CR>", { silent = true })
 

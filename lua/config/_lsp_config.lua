@@ -49,7 +49,7 @@ M.set_keymap = function(client, bufnr)
     -- buf_set_keymap("n", "<space>cd", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", opts)
 
     -- Set some keybinds conditional on server capabilities
-    buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+    buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
     -- Set autocommands conditional on server_capabilities
