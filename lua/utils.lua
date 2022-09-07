@@ -15,7 +15,7 @@ function M.opt(o, v, scopes)
 end
 
 function M.loaded(plugin)
-    return packer_plugins["lspsaga.nvim"] and packer_plugins["lspsaga.nvim"].loaded
+    return packer_plugins[plugin] and packer_plugins[plugin].loaded
 end
 
 function M.map(modes, lhs, rhs, opts)
@@ -73,6 +73,18 @@ function M.close_common()
 			end
 		end
 	end
+end
+
+function M.toggleDiffView()
+	local t = vim.fn.getbufinfo()
+	for _, i in pairs(t) do
+        local filetype = vim.fn.getbufvar(i.bufnr, "&filetype")
+        if "DiffviewFiles" == filetype then
+            vim.cmd([[ DiffviewClose ]])
+            return
+        end
+	end
+    vim.cmd [[ DiffviewOpen ]]
 end
 
 M.dump = function(o)

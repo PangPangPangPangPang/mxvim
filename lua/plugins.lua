@@ -289,7 +289,8 @@ require("packer").startup({
 
             use({
                 "simrat39/symbols-outline.nvim",
-                cmd = { "SymbolsOutline" },
+                disable = true,
+                -- cmd = { "SymbolsOutline" },
                 setup = function()
                     require("config._outline").config()
                 end,
@@ -423,6 +424,7 @@ require("packer").startup({
             requires = 'nvim-lua/plenary.nvim',
             cmd = {'DiffviewOpen', 'DiffviewClose'}
         }
+        map("n", "<F3>", ":lua require(\"utils\").toggleDiffView()<CR>", { silent = true })
 
         use({
             "tpope/vim-fugitive",
@@ -477,7 +479,7 @@ require("packer").startup({
         })
 
         use({ "simnalamburt/vim-mundo", cmd = { "MundoToggle" } })
-        map("n", "<F6>", ":MundoToggle<CR>", { silent = true })
+        map("n", "<F7>", ":MundoToggle<CR>", { silent = true })
 
         -- html
         use({
