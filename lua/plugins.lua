@@ -431,7 +431,6 @@ require("packer").startup({
                 require("config._fugitive").setup()
             end,
         })
-        use({ "rbong/vim-flog" })
         use({
             "rhysd/git-messenger.vim",
             cmd = { "GitMessenger" },
