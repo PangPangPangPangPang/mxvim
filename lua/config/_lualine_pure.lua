@@ -41,31 +41,37 @@ local function search_count()
     end
 end
 
+local color = {
+    n = colors.blue,
+    i = colors.green,
+    v = colors.magenta,
+    [""] = colors.magenta,
+    V = colors.magenta,
+    no = colors.magenta,
+    s = colors.orange,
+    S = colors.orange,
+    [""] = colors.orange,
+    ic = colors.yellow,
+    cv = colors.red,
+    ce = colors.red,
+    ["!"] = colors.green,
+    t = colors.green,
+    c = colors.purple,
+    ["r?"] = colors.red,
+    ["r"] = colors.red,
+    rm = colors.red,
+    R = colors.yellow,
+    Rv = colors.magenta,
+}
 
 local function mode_color()
-	local color = {
-		n = colors.blue,
-		i = colors.green,
-		v = colors.magenta,
-		[""] = colors.magenta,
-		V = colors.magenta,
-		no = colors.magenta,
-		s = colors.orange,
-		S = colors.orange,
-		[""] = colors.orange,
-		ic = colors.yellow,
-		cv = colors.red,
-		ce = colors.red,
-		["!"] = colors.green,
-		t = colors.green,
-		c = colors.purple,
-		["r?"] = colors.red,
-		["r"] = colors.red,
-		rm = colors.red,
-		R = colors.yellow,
-		Rv = colors.magenta,
-	}
 	return { bg = color[vim.fn.mode()], fg = origin_colors.fg, gui = "bold" }
+end
+local function inactive_mode_color()
+	return { bg = color[vim.fn.mode()], fg = origin_colors.fg }
+end
+local function active_mode_color()
+	return { bg = color[vim.fn.mode()], fg = origin_colors.red, gui = "bold" }
 end
 -- Config
 local config = {
@@ -117,6 +123,10 @@ local config = {
 				"tabs",
 				max_length = vim.o.columns / 3,
 				mode = 2,
+				tabs_color = {
+					active = active_mode_color,
+					inactive = inactive_mode_color,
+				},
 			},
 		},
 		lualine_b = {},
@@ -127,8 +137,8 @@ local config = {
 			{
 				"buffers",
 				buffers_color = {
-					active = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-					inactive = { fg = shade_fg, bg = colors.bg },
+					active = active_mode_color,
+					inactive = inactive_mode_color,
 				},
 			},
 		},
