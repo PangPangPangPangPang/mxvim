@@ -43,6 +43,7 @@ require("packer").startup({
             require("theme").theme("rebelot/kanagawa.nvim"),
             require("theme").theme("EdenEast/nightfox.nvim"),
             require("theme").theme("sam4llis/nvim-tundra"),
+            require("theme").theme("luisiacc/gruvbox-baby"),
         })
         use({ "drmikehenry/vim-fixkey" })
 
