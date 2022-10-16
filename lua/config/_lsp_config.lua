@@ -112,7 +112,7 @@ M.make_config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     if mxvim.use_cmp == true then
         safe_require("cmp_nvim_lsp", function(cmp)
-            capabilities = cmp.update_capabilities(capabilities)
+            capabilities = cmp.default_capabilities(capabilities)
         end)
     end
     local root_dir
