@@ -15,7 +15,6 @@ M.config = function()
             "sumneko_lua",
             "rust_analyzer",
             "tsserver",
-            "sourcekit",
             "jsonls",
             "cssls",
             "html",
