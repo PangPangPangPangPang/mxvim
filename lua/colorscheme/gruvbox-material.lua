@@ -3,9 +3,11 @@ M.setup = function()
     vim.cmd([[ PackerLoad gruvbox-material]])
 end
 M.config = function()
-    vim.g.gruvbox_material_background = 'soft'
+    -- hard medium soft
+    vim.g.gruvbox_material_background = 'hard'
     vim.g.gruvbox_material_enable_bold = 1
     vim.g.gruvbox_material_enable_italic = 1
+    -- original material mix
     vim.g.gruvbox_material_palette = 'original'
     vim.cmd('colorscheme ' .. mxvim.current_theme)
 end
