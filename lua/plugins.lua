@@ -444,10 +444,10 @@ require("packer").startup({
         })
 
         use({
-            "ggandor/lightspeed.nvim",
+            "ggandor/leap.nvim",
             opt = true,
             setup = function()
-                require("config._other").setup_lightspeed()
+                require("config._leap").setup()
             end,
         })
 
