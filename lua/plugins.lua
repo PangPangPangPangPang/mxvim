@@ -541,11 +541,9 @@ require("packer").startup({
                 require("config._incline").config()
             end,
         })
-
         if packer_bootstrap then
             require("packer").sync()
         end
-        -- use({ "SolaWing/vim-objc-syntax", ft = { "objc", "objcpp" } })
     end,
     config = {
         auto_clean = true,
