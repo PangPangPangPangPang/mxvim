@@ -64,11 +64,13 @@ local color = {
     Rv = colors.magenta,
 }
 
+local fg = origin_colors.line_fg or origin_colors.line_fg
+
 local function mode_color()
-	return { bg = color[vim.fn.mode()], fg = origin_colors.fg, gui = "bold" }
+	return { bg = color[vim.fn.mode()], fg = fg, gui = "bold" }
 end
 local function inactive_mode_color()
-	return { bg = color[vim.fn.mode()], fg = origin_colors.fg }
+	return { bg = color[vim.fn.mode()], fg = fg }
 end
 local function active_mode_color()
 	return { bg = color[vim.fn.mode()], fg = origin_colors.red, gui = "bold" }

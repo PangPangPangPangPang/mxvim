@@ -50,6 +50,7 @@ M.colors = function()
 		magenta = "#D27E99",
 		blue = "#7E9CD8",
 		red = "#FF5D62",
+        line_fg = "#16161D",
 	}
 end
 return M

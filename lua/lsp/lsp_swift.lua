@@ -18,7 +18,7 @@ M.modify = function(config)
 			"-Xswiftc",
 			"-target",
 			"-Xswiftc",
-			"x86_64-apple-ios13.6-simulator",
+			"x86_64-apple-ios16.1-simulator",
 		},
 		root_dir = require("lspconfig/util").root_pattern("Package.swift"),
 		filetypes = { "swift" },
