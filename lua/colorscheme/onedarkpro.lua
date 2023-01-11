@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad onedarkpro.nvim]])
-end
 M.config = function()
     local onedark = require('onedarkpro')
     onedark.setup({

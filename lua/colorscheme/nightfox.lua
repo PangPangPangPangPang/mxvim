@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-	vim.cmd([[ PackerLoad nightfox.nvim]])
-end
 M.config = function()
 	require("nightfox").setup({
 		options = {

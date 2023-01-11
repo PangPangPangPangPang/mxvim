@@ -1,11 +1,4 @@
 local M = {}
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[
-            PackerLoad marks.nvim
-        ]])
-	end, 1000)
-end
 M.config = function()
 	require("marks").setup({
 		-- whether to map keybinds or not. default true

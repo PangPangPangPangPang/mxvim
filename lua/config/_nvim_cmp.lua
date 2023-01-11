@@ -6,23 +6,6 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-M.setup = function()
-	if mxvim.use_cmp == false then
-		return
-	end
-	vim.defer_fn(function()
-		vim.cmd([[
-        PackerLoad lspkind-nvim
-        PackerLoad nvim-cmp
-        " Jump forward or backward
-        " imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-        " smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-        " imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-        " smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-        ]])
-	end, 400)
-end
-
 M.config = function()
 	local cmp = require("cmp")
 	cmp.setup({
@@ -158,10 +141,5 @@ M.config = function()
 			{ name = "cmdline" },
 		}),
 	})
-	-- If you want insert `(` after select function or method item
-    if require("utils").loaded("nvim-autopairs") then
-        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end
 end
 return M

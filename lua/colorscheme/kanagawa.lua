@@ -1,6 +1,5 @@
 local M = {}
-M.setup = function()
-	vim.cmd([[ PackerLoad kanagawa.nvim]])
+M.config = function()
 	vim.opt.fillchars:append({
 		horiz = "━",
 		horizup = "┻",
@@ -10,8 +9,6 @@ M.setup = function()
 		vertright = "┣",
 		verthoriz = "╋",
 	})
-end
-M.config = function()
 	local default_colors = require("kanagawa.colors").setup()
 	require("kanagawa").setup({
 		undercurl = true, -- enable undercurls

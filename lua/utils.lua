@@ -14,9 +14,9 @@ function M.opt(o, v, scopes)
 	end
 end
 
-function M.loaded(plugin)
-    return packer_plugins[plugin] and packer_plugins[plugin].loaded
-end
+-- function M.loaded(plugin)
+--     return packer_plugins[plugin] and packer_plugins[plugin].loaded
+-- end
 
 function M.map(modes, lhs, rhs, opts)
 	opts = opts or {}

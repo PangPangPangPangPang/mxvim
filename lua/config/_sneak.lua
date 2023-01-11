@@ -1,7 +1,6 @@
 local M = {}
-M.setup = function()
-    vim.defer_fn(function ()
-        vim.cmd([[
+M.config = function()
+    vim.cmd([[
             let g:sneak#label = 1
             nmap f <Plug>Sneak_f
             nmap F <Plug>Sneak_F
@@ -17,9 +16,6 @@ M.setup = function()
             xmap cc <Plug>Sneak_S
             PackerLoad vim-sneak
         ]])
-    end, 1000)
-end
-M.config = function ()
     local colors = require('theme').theme_colors()
     vim.api.nvim_exec(string.format([[
         autocmd User SneakEnter highlight Sneak guifg=%s guibg=%s ctermfg=black ctermbg=red

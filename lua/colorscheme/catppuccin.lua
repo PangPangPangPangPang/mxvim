@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad catppuccin]])
-end
 M.config = function()
     vim.cmd('colorscheme ' .. mxvim.current_theme)
 end

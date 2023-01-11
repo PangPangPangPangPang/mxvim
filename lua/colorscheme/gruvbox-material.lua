@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad gruvbox-material]])
-end
 M.config = function()
     -- hard medium soft
     vim.g.gruvbox_material_background = 'hard'

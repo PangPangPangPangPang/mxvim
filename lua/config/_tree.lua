@@ -5,12 +5,12 @@ M.setup = function()
 		vim.cmd([[
             PackerLoad nvim-tree.lua
         ]])
-		local map = require("utils").dmap
-		map({ "n", "i" }, "<F1>", ":NvimTreeToggle<CR>")
-		map({ "n" }, "<leader>j", ":NvimTreeFindFile<CR>")
 	end, 0)
 end
 M.config = function()
+    local map = require("utils").dmap
+    map({ "n", "i" }, "<F1>", ":NvimTreeToggle<CR>")
+    map({ "n" }, "<leader>j", ":NvimTreeFindFile<CR>")
 	local safe_require = require("utils").safe_require
 	safe_require("nvim-tree.config", function(config)
 		local tree_cb = config.nvim_tree_callback

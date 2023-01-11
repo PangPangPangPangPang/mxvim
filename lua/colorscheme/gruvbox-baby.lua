@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad gruvbox-baby]])
-end
 M.config = function()
     -- Example config in Lua
     vim.g.gruvbox_baby_function_style = "NONE"

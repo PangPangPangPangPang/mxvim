@@ -1,15 +1,8 @@
-mxvim.init_theme = false
 local M = {}
 M.theme = function(name, nick)
 	local ret = {
 		name,
-		opt = true,
-		setup = function()
-			if mxvim.init_theme == false then
-				require("colorscheme." .. mxvim.current_theme).setup()
-				mxvim.init_theme = true
-			end
-		end,
+		lazy = mxvim.current_theme ~= nick,
 		config = function()
 			require("colorscheme." .. mxvim.current_theme).config()
 			require("config._tree").theme()
@@ -73,7 +66,7 @@ M.theme = function(name, nick)
 		end,
 	}
 	if nick ~= nil then
-		ret["as"] = nick
+		ret["name"] = nick
 	end
 	return ret
 end

@@ -22,4 +22,4 @@ ln -s "$(pwd)/viml" "${dst_dir}/viml"
 ln -s "$(pwd)/coc-settings.json" ${dst_dir}
 ln -s "$(pwd)/ginit.vim" ${dst_dir}
 
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless "+Lazy! sync" +qa

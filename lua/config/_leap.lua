@@ -1,19 +1,12 @@
 local M = {}
-M.setup = function()
-    vim.defer_fn(function()
-        vim.cmd([[
-            PackerLoad leap.nvim
-        ]])
-        vim.keymap.set({ 'n', 'x', 'o' }, 'cl', '<Plug>(leap-forward-to)')
-        vim.keymap.set({ 'n', 'x', 'o' }, 'cc', '<Plug>(leap-backforward-to)')
-        local colors = require("theme").theme_colors()
-        vim.cmd(string.format("hi! LeapMatch gui=bold guibg=%s guifg=%s", colors.red, colors.bg))
-        vim.cmd(string.format("hi! LeapLabelPrimary gui=bold guibg=%s guifg=%s", colors.green, colors.bg))
-        vim.cmd(string.format("hi! LeapLabelSecondary gui=bold guibg=%s guifg=%s", colors.blue, colors.bg))
-        vim.cmd(string.format("hi! LeapLabelSelected guibg=%s guifg=%s", colors.purple, colors.sbg))
-    end, 100)
-end
 M.config = function()
+    vim.keymap.set({ 'n', 'x', 'o' }, 'cl', '<Plug>(leap-forward-to)')
+    vim.keymap.set({ 'n', 'x', 'o' }, 'cc', '<Plug>(leap-backforward-to)')
+    local colors = require("theme").theme_colors()
+    vim.cmd(string.format("hi! LeapMatch gui=bold guibg=%s guifg=%s", colors.red, colors.bg))
+    vim.cmd(string.format("hi! LeapLabelPrimary gui=bold guibg=%s guifg=%s", colors.green, colors.bg))
+    vim.cmd(string.format("hi! LeapLabelSecondary gui=bold guibg=%s guifg=%s", colors.blue, colors.bg))
+    vim.cmd(string.format("hi! LeapLabelSelected guibg=%s guifg=%s", colors.purple, colors.sbg))
     require("leap").ops = {
         max_phase_one_targets = 0,
         highlight_unlabeled_phase_one_targets = false,

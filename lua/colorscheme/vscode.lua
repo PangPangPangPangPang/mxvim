@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad vscode.nvim]])
-end
 M.config = function()
     vim.g.vscode_style = vim.o.background
     vim.cmd('colorscheme ' .. mxvim.current_theme)

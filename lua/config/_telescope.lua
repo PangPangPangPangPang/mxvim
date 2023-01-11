@@ -1,6 +1,6 @@
 local M = {}
 
-M.map = function()
+M.config = function()
 	local map = require("utils").map
 	map("n", "<c-p>", ":Telescope find_files<cr>", { silent = true })
 	map("n", "<leader>b", ":Telescope buffers<cr>", { silent = true })
@@ -10,8 +10,6 @@ M.map = function()
         command! -nargs=0 LS :Telescope buffers
         cnoreabbrev ls LS
     ]])
-end
-M.config = function()
 	local actions = require("telescope.actions")
 	require("telescope").setup({
 		defaults = {

@@ -1,9 +1,4 @@
 local M = {}
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[ PackerLoad gitsigns.nvim ]])
-	end, 1000)
-end
 M.config = function()
 	local colors = require("theme").shade_colors_default()
 	vim.cmd(string.format(

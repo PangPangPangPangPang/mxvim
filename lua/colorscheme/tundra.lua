@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad nvim-tundra]])
-end
 M.config = function()
     require('nvim-tundra').setup({
         transparent_background = false,

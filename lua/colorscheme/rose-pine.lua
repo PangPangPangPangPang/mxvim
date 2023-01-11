@@ -1,7 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.cmd([[ PackerLoad rose-pine]])
-end
 M.config = function()
     -- base / moon / dawn
     vim.g.rose_pine_variant = 'moon'
