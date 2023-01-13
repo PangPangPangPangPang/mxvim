@@ -10,6 +10,7 @@ end
 M.config = function()
     local keymap = vim.keymap.set
     local saga = require("lspsaga")
+    local colors = require("theme").theme_colors()
 
     saga.setup({
         finder_action_keys = {
@@ -29,14 +30,40 @@ M.config = function()
             virtual_text = true,
         },
         symbol_in_winbar = {
-            in_custom = vim.fn.has("nvim-0.8") == 1,
-        },
-        symbol_in_winbar = {
-            enable = true,
+            enable = vim.fn.has("nvim-0.8") == 1,
             separator = '  ',
             hide_keyword = true,
             show_file = true,
             folder_level = 2,
+        },
+        ui = {
+            theme = 'round',
+            border = 'solid',
+            winblend = 0,
+            expand = '',
+            collaspe = '',
+            preview = ' ',
+            code_action = '💡',
+            diagnostic = '🐞',
+            incoming = ' ',
+            outgoing = ' ',
+            colors = {
+                --float window normal bakcground color
+                normal_bg = colors.bg,
+                --title background color
+                title_bg = colors.green,
+                red = colors.red,
+                magenta = colors.magenta,
+                orange = colors.orange,
+                yellow = colors.yellow,
+                green = colors.green,
+                cyan = colors.cyan,
+                blue = colors.blue,
+                purple = colors.purple,
+                white = colors.white,
+                black = colors.black,
+            },
+            kind = {},
         },
     })
 
