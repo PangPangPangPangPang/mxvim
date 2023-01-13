@@ -2,7 +2,7 @@ local fn = vim.fn
 local g = vim.g
 
 -- for speedup start
-pcall(require, "impatient")
+-- pcall(require, "impatient")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     -- -- Packer itself
     { "wbthomason/packer.nvim" },
-    { "lewis6991/impatient.nvim" },
+    -- { "lewis6991/impatient.nvim" },
 
     { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
@@ -476,6 +476,8 @@ require("lazy").setup({
 
     {
         "PangPangPangPangPang/prettier-number-line.nvim",
+        lazy = true,
+        event = "VimEnter",
         config = function()
             -- current virtual
             require("prettier-number-line").setup({
