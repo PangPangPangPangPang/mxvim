@@ -58,6 +58,10 @@ require("lazy").setup({
     {
         "ZSaberLv0/ZFVimIM",
         lazy = true,
+        keys = {
+            { "<M-i>", "<cmd>lua toggle_zfvimim()<cr>", mode = "n" },
+            { "<M-i>", "<c-o>:lua toggle_zfvimim()<cr>", mode = "i" },
+        },
         dependencies = {
             "ZSaberLv0/ZFVimJob",
             "ZSaberLv0/ZFVimGitUtil",
@@ -377,7 +381,7 @@ require("lazy").setup({
         cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
         keys = {
             { "<F1>", "<cmd>NvimTreeToggle<cr>", mode = "n" },
-            { "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n", "i" } },
+            { "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" } },
         },
         config = function()
             require("config._tree").config()
@@ -503,7 +507,8 @@ require("lazy").setup({
         end,
     },
     { "ybian/smartim",
-        event = { "InsertEnter" },
+        lazy = true,
+        -- event = { "InsertEnter" },
         config = function()
             -- default IME mode
             vim.g.smartim_default = "com.apple.keylayout.ABC"

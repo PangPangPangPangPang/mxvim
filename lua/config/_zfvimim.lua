@@ -1,41 +1,28 @@
 ---@diagnostic disable: lowercase-global, undefined-global
 local M = {}
+local is_zf_load = false
 M.setup = function()
 	vim.g.ZFVimIM_keymap = 0
 	vim.cmd([[
         let g:ZFVimIM_symbolMap = {'`' : ['·'],'!' : ['！'],'$' : ['￥'],'^' : ['……'],'-' : [''],'_' : ['——'],'(' : ['（'],')' : ['）'],'[' : ['【'],']' : ['】'],'<' : ['《'],'>' : ['》'],'\' : ['、'],'/' : ['、'],';' : ['；'],':' : ['：'],',' : ['，'],'.' : ['。'],'?' : ['？'],"'" : ['‘', '’'],'"' : ['“', '”'],}
     ]])
-
-	vim.schedule(function()
-		if vim.o.filetype == "markdown" then
-			vim.cmd([[ PackerLoad ZFVimIM ]])
-		end
-	end)
-	local map = require("utils").map
-	local opts = { noremap = true, silent = true }
-	map("i", "<M-i>", "<C-o>:lua toggle_zfvimim()<cr>", opts)
-	map("n", "<M-i>", ":lua toggle_zfvimim()<cr>", opts)
-	vim.cmd([[
-        autocmd User TelescopeFindPre lua stop_zfvimim()
-    ]])
 end
 function stop_zfvimim()
-	if packer_plugins["ZFVimIM"] and packer_plugins["ZFVimIM"].loaded then
-		if vim.fn.ZFVimIME_started() == 1 then
-			vim.fn.ZFVimIME_stop()
-		end
-	end
+    if is_zf_load then
+        vim.fn.ZFVimIME_stop()
+    end
 end
 
 function toggle_zfvimim()
-	if packer_plugins["ZFVimIM"] and packer_plugins["ZFVimIM"].loaded then
-	else
-		vim.cmd([[ PackerLoad ZFVimIM ]])
-	end
+    is_zf_load = true
 	vim.fn.ZFVimIME_keymap_toggle_i()
 end
+
 M.config = function()
 	M.setLocalDB()
+	vim.cmd([[
+        autocmd User TelescopeFindPre lua stop_zfvimim()
+    ]])
 end
 
 M.setLocalDB = function()
