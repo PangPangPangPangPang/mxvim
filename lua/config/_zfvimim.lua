@@ -6,14 +6,9 @@ M.setup = function()
     vim.cmd([[
         let g:ZFVimIM_symbolMap = {'`' : ['·'],'!' : ['！'],'$' : ['￥'],'^' : ['……'],'-' : [''],'_' : ['——'],'(' : ['（'],')' : ['）'],'[' : ['【'],']' : ['】'],'<' : ['《'],'>' : ['》'],'\' : ['、'],'/' : ['、'],';' : ['；'],':' : ['：'],',' : ['，'],'.' : ['。'],'?' : ['？'],"'" : ['‘', '’'],'"' : ['“', '”'],}
     ]])
-    -- vim.api.nvim_create_autocmd({ "User TelescopeFindPre" }, {
-    --     callback = function(ev)
-    --         stop_zfvimim()
-    --     end
-    -- })
+
 end
 function stop_zfvimim()
-    print('abc')
     if is_zf_load then
         vim.fn.ZFVimIME_stop()
     end
@@ -26,6 +21,11 @@ end
 
 M.config = function()
     M.setLocalDB()
+    -- vim.api.nvim_create_autocmd({ "User TelescopeFindPre" }, {
+    --     callback = function(ev)
+    --         stop_zfvimim()
+    --     end
+    -- })
 end
 
 M.setLocalDB = function()
