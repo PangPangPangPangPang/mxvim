@@ -1,12 +1,5 @@
 local map = require("utils").map
 local M = {}
-M.setup = function()
-    vim.defer_fn(function()
-        vim.cmd([[
-            PackerLoad lspsaga.nvim
-        ]])
-    end, 400)
-end
 M.config = function()
     local keymap = vim.keymap.set
     local saga = require("lspsaga")

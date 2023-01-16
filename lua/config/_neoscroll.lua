@@ -1,12 +1,5 @@
 local M = {}
 -- local colors = require("theme").shade_colors(0.8)
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[
-            PackerLoad neoscroll.nvim
-        ]])
-	end, 1000)
-end
 M.config = function()
 	require("neoscroll").setup({
 		-- All these keys will be mapped to their corresponding default scrolling animation

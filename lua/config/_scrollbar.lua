@@ -1,12 +1,5 @@
 local M = {}
 -- local colors = require("theme").shade_colors(0.8)
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[
-            PackerLoad satellite.nvim
-        ]])
-	end, 1000)
-end
 M.config = function()
 	require("satellite").setup({
 		current_only = false,

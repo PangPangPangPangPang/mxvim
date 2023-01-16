@@ -8,11 +8,6 @@ M.setup = function()
 		keymap = { recommended = false, jump_to_mark = "<tab>", pre_select = true },
 		display = { pum = { fast_close = false }, icons = { mode = 'none' } },
 	}
-	vim.defer_fn(function()
-		vim.cmd([[
-            PackerLoad coq_nvim
-        ]])
-	end, 200)
 end
 M.config = function()
 	vim.api.nvim_exec(

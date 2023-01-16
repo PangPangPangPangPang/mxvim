@@ -14,7 +14,6 @@ M.config = function()
             xmap T <Plug>Sneak_T
             xmap cl <Plug>Sneak_s
             xmap cc <Plug>Sneak_S
-            PackerLoad vim-sneak
         ]])
     local colors = require('theme').theme_colors()
     vim.api.nvim_exec(string.format([[

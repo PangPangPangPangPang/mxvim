@@ -1,24 +1,4 @@
 local M = {}
-M.textobj_setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[ PackerLoad vim-textobj-user ]])
-	end, 200)
-end
-M.signature_setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[ PackerLoad vim-signature ]])
-	end, 200)
-end
-M.colorizer_setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[ PackerLoad nvim-colorizer.lua ]])
-	end, 200)
-end
-M.dd_setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[ PackerLoad nvim-dd.git ]])
-	end, 400)
-end
 M.setup_hop = function ()
 	vim.defer_fn(function()
 		vim.cmd([[ PackerLoad hop.nvim ]])

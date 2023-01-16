@@ -1,12 +1,5 @@
 local M = {}
 local g = vim.g
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[
-            PackerLoad nvim-tree.lua
-        ]])
-	end, 0)
-end
 M.config = function()
     local map = require("utils").dmap
     map({ "n", "i" }, "<F1>", ":NvimTreeToggle<CR>")

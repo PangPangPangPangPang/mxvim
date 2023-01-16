@@ -120,9 +120,9 @@ require("lazy").setup({
 
     {
         "mhinz/vim-grepper",
-        lazy = true,
-        fn = { "GrepperOperator" },
-        cmd = { "GrepperRg", "Grepper" },
+        -- lazy = true,
+        -- fn = { "GrepperOperator" },
+        -- cmd = { "GrepperRg", "Grepper" },
         init = function()
             require("config._grep").setup()
         end,
@@ -304,7 +304,8 @@ require("lazy").setup({
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
         keys = {
-            { "<c-p>", "<cmd>Telescope find_files<cr>" }
+            { "<c-p>", "<cmd>Telescope find_files<cr>" },
+            { "<leader>f", "<cmd>Telescope live_grep<cr>", { "n" } },
         },
         config = function()
             require("config._telescope").config()

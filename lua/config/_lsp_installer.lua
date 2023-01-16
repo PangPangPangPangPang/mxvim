@@ -1,17 +1,4 @@
 local M = {}
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[
-        PackerLoad popfix
-        PackerLoad nvim-lsputils
-        " PackerLoad lsp-status.nvim
-        " PackerLoad lsp_signature.nvim
-        PackerLoad nvim-lspconfig
-        PackerLoad nvim-lsp-installer
-        ]])
-        M.boot();
-	end, 300)
-end
 M.config = function()
     local lsp_config = require('config._lsp_config');
 	local lsp_installer = require("nvim-lsp-installer")

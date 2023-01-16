@@ -1,13 +1,4 @@
 local M = {}
-M.setup = function()
-    vim.defer_fn(function()
-        vim.cmd([[
-        PackerLoad nvim-lspconfig
-        PackerLoad mason.nvim
-        PackerLoad mason-lspconfig.nvim
-        ]])
-    end, 300)
-end
 M.config = function()
     require("mason").setup()
     require("mason-lspconfig").setup({

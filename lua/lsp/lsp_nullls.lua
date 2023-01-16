@@ -1,9 +1,4 @@
 local M = {}
-M.setup = function()
-	vim.defer_fn(function()
-		vim.cmd([[ PackerLoad null-ls.nvim]])
-	end, 300)
-end
 M.config = function()
 	local config = require("config._lsp_config").make_config()
 	local null_ls = require("null-ls")
