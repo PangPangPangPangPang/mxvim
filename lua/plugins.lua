@@ -1,9 +1,6 @@
 local fn = vim.fn
 local g = vim.g
 
--- for speedup start
--- pcall(require, "impatient")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -19,10 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup({
-    -- -- Packer itself
-    { "wbthomason/packer.nvim" },
-    -- { "lewis6991/impatient.nvim" },
-
     { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
     { "kyazdani42/nvim-web-devicons" },
@@ -100,6 +93,12 @@ require("lazy").setup({
             "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
             "nvim-treesitter/playground",
+            {
+                "windwp/nvim-autopairs",
+                config = function()
+                    require("config._autopairs").setup()
+                end,
+            },
         },
         build = ":TSUpdate",
         config = function()
@@ -120,9 +119,8 @@ require("lazy").setup({
 
     {
         "mhinz/vim-grepper",
-        -- lazy = true,
-        -- fn = { "GrepperOperator" },
-        -- cmd = { "GrepperRg", "Grepper" },
+        lazy = true,
+        event = "VeryLazy",
         init = function()
             require("config._grep").setup()
         end,
@@ -180,6 +178,7 @@ require("lazy").setup({
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
+        event = "VeryLazy",
         dependencies = {
             "onsails/lspkind-nvim",
             "hrsh7th/cmp-nvim-lua",
@@ -199,14 +198,16 @@ require("lazy").setup({
             },
             {
                 "quangnguyen30192/cmp-nvim-tags",
+                lazy = true,
+                event = "VeryLazy",
                 -- if you want the sources is available for some file types
-                ft = {
-                    "javascriptreact",
-                    "typescriptreact",
-                    "javascript",
-                    "typescript",
-                    "lua",
-                },
+                -- ft = {
+                --     "javascriptreact",
+                --     "typescriptreact",
+                --     "javascript",
+                --     "typescript",
+                --     "lua",
+                -- },
             },
         },
         config = function()
@@ -289,12 +290,6 @@ require("lazy").setup({
         },
     },
 
-    {
-        "windwp/nvim-autopairs",
-        config = function()
-            require("config._autopairs").setup()
-        end,
-    },
 
     { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } },
 
@@ -462,6 +457,8 @@ require("lazy").setup({
 
     { "tpope/vim-dadbod", cmd = { "DB" } },
     { "skywind3000/vim-quickui",
+        lazy = true,
+        event = "VeryLazy",
         init = function()
             g.quickui_border_style = 2
             g.quickui_color_scheme = "system"

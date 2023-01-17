@@ -23,7 +23,8 @@ M.config = function()
             virtual_text = true,
         },
         symbol_in_winbar = {
-            enable = vim.fn.has("nvim-0.8") == 1,
+            -- enable = vim.fn.has("nvim-0.8") == 1,
+            enable = false,
             separator = '  ',
             hide_keyword = true,
             show_file = true,
