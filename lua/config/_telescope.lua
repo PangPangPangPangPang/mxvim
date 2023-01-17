@@ -1,16 +1,4 @@
 local M = {}
-
-local zfvim = require("config._zfvimim")
-function findFiles()
-    if zfvim.is_zf_load then
-        stop_zfvimim(0)
-    end
-    vim.cmd(
-        "Telescope find_files"
-    )
-
-end
-
 M.config = function()
     local map = require("utils").map
     map("n", "<c-p>", "<cmd>lua findFiles()<cr>", { silent = true })
@@ -110,4 +98,15 @@ M.config = function()
     })
     require("telescope").load_extension("fzf")
 end
+
+local zfvim = require("config._zfvimim")
+function findFiles()
+    if zfvim.is_zf_load then
+        stop_zfvimim(0)
+    end
+    vim.cmd(
+        "Telescope find_files"
+    )
+end
+
 return M
