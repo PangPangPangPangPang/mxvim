@@ -16,7 +16,7 @@ function stop_zfvimim()
 end
 
 function toggle_zfvimim()
-    if M.zf_method ~= "en" then
+    if M.zf_method ~= "zh" then
         M.zf_method = "zh"
     else
         M.zf_method = "en"

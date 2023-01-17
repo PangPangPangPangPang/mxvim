@@ -69,6 +69,9 @@ local fg = origin_colors.line_fg or origin_colors.line_fg
 local function mode_color()
 	return { bg = color[vim.fn.mode()], fg = fg, gui = "bold" }
 end
+local function inverse_mode_color()
+	return { fg = color[vim.fn.mode()], bg = fg, gui = "bold" }
+end
 local function inactive_mode_color()
 	return { bg = color[vim.fn.mode()], fg = fg }
 end
@@ -249,20 +252,21 @@ end
 
 local zf = require("config._zfvimim")
 ins_right({
-	padding = { right = 2 },
+	-- padding = { right = 2 },
     function ()
         return zf.zf_method
-    end
+    end,
+	color = inverse_mode_color,
 })
 
 ins_right({
 	search_count,
-	padding = { right = 2 },
+	padding = { right = 1, left = 1 },
 	color = mode_color,
 })
 ins_right({
 	location,
-	padding = { right = 2 },
+	padding = { right = 2, left = 1 },
 	color = mode_color,
 })
 ins_right({
