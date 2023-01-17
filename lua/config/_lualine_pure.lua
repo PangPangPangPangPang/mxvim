@@ -246,6 +246,15 @@ ins_left({
 local function location()
 	return "Ln%2l, Col%2v"
 end
+
+local zf = require("config._zfvimim")
+ins_right({
+	padding = { right = 2 },
+    function ()
+        return zf.zf_method
+    end
+})
+
 ins_right({
 	search_count,
 	padding = { right = 2 },
@@ -278,6 +287,7 @@ ins_right({
 ins_right({
 	"os.date('%b %d, %a')",
 })
+
 
 ins_inactive_left({
 	"filetype",

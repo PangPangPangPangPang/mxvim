@@ -1,6 +1,7 @@
 ---@diagnostic disable: lowercase-global, undefined-global
 local M = {}
-local is_zf_load = false
+M.is_zf_load = false
+M.zf_method = "en"
 M.setup = function()
     vim.g.ZFVimIM_keymap = 0
     vim.cmd([[
@@ -9,23 +10,23 @@ M.setup = function()
 
 end
 function stop_zfvimim()
-    if is_zf_load then
+    if M.is_zf_load then
         vim.fn.ZFVimIME_stop()
     end
 end
 
 function toggle_zfvimim()
-    is_zf_load = true
+    if M.zf_method == "en" then
+        M.zf_method = "zh"
+    else
+        M.zf_method = "en"
+    end
     vim.fn.ZFVimIME_keymap_toggle_i()
 end
 
 M.config = function()
+    M.is_zf_load = true
     M.setLocalDB()
-    -- vim.api.nvim_create_autocmd({ "User TelescopeFindPre" }, {
-    --     callback = function(ev)
-    --         stop_zfvimim()
-    --     end
-    -- })
 end
 
 M.setLocalDB = function()
