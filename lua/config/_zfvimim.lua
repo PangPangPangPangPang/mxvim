@@ -1,7 +1,7 @@
 ---@diagnostic disable: lowercase-global, undefined-global
 local M = {}
 M.is_zf_load = false
-M.zf_method = "en"
+M.zf_method = ""
 M.setup = function()
     vim.g.ZFVimIM_keymap = 0
     vim.cmd([[
@@ -16,7 +16,7 @@ function stop_zfvimim()
 end
 
 function toggle_zfvimim()
-    if M.zf_method == "en" then
+    if M.zf_method ~= "en" then
         M.zf_method = "zh"
     else
         M.zf_method = "en"
