@@ -13,12 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.cmd [[ com! PS lua require('lazy').sync() ]]
 
 
 require("lazy").setup({
     { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "kyazdani42/nvim-web-devicons" },
 
     require("theme").theme("Mofiqul/vscode.nvim", "vscode"),
     require("theme").theme("projekt0n/github-nvim-theme", "github-theme"),
