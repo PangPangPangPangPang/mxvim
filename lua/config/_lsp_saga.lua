@@ -97,7 +97,7 @@ M.config = function()
     })
 
     -- Outline
-    keymap("n", "<F2>", "<cmd>LSoutlineToggle<CR>", { silent = true })
+    keymap("n", "<F2>", "<cmd>Lspsaga outline<CR>", { silent = true })
 
     -- Hover Doc
     keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })

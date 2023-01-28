@@ -234,7 +234,7 @@ require("lazy").setup({
         lazy = true,
         enabled = mxvim.enable_lspsage,
         event = "VeryLazy",
-        dependencies = { "neovim/nvim-lspconfig" },
+        dependencies = { { "nvim-tree/nvim-web-devicons" } },
         config = function()
             require("config._lsp_saga").config()
         end,
