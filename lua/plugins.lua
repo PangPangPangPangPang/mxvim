@@ -377,6 +377,9 @@ require("lazy").setup({
         "kyazdani42/nvim-tree.lua",
         lazy = true,
         cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
+        init = function ()
+            require("config._tree").init()
+        end,
         keys = {
             { "<F1>", "<cmd>NvimTreeToggle<cr>", mode = "n" },
             { "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" } },
