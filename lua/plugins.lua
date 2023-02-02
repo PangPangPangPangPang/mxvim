@@ -90,7 +90,6 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            "m-demare/hlargs.nvim",
             "p00f/nvim-ts-rainbow",
             "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
@@ -105,6 +104,16 @@ require("lazy").setup({
         build = ":TSUpdate",
         config = function()
             require("config._treesitter")
+        end,
+    },
+
+    {
+        "m-demare/hlargs.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        lazy = true,
+        event = "VeryLazy",
+        config = function()
+            require("config._treesitter").inithlargs()
         end,
     },
 
@@ -377,7 +386,7 @@ require("lazy").setup({
         "kyazdani42/nvim-tree.lua",
         lazy = true,
         cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
-        init = function ()
+        init = function()
             require("config._tree").init()
         end,
         keys = {
