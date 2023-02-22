@@ -301,9 +301,6 @@ require("lazy").setup({
         },
     },
 
-
-    { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } },
-
     {
         "nvim-telescope/telescope.nvim",
         dependencies = {
