@@ -14,7 +14,6 @@ mxvim.use_cmp = true
 mxvim.use_coq = false
 mxvim.use_notify = true
 mxvim.enable_lspsage = true
-mxvim.compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
 
 require("basic")
 require("plugins")
