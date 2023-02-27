@@ -70,7 +70,6 @@ require("lazy").setup({
             require("config._zfvimim").config()
         end,
     },
-
     -- Readline style insertion
     { "tpope/vim-rsi" },
 
