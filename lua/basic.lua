@@ -23,7 +23,7 @@ o.mouse = "a"
 o.showmode = false
 
 if fn.has("nvim-0.5") then
-	o.jumpoptions = "stack"
+    o.jumpoptions = "stack"
 end
 
 o.cursorline = true
@@ -68,15 +68,15 @@ o.wildmenu = true
 o.pumheight = 20
 
 if fn.exists("&pumblend") then
-	o.wildoptions = "pum"
-	o.pumblend = 10
+    o.wildoptions = "pum"
+    o.pumblend = 10
 end
 
 o.wildignore = "*.o,*~,*.pyc"
 if fn.has("win16") or fn.has("win32") then
-	o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
+    o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
 else
-	o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
+    o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
 end
 
 o.completeopt = "menu,menuone,noinsert,noselect"
@@ -183,12 +183,46 @@ o.encoding = "utf8"
 o.ffs = "unix,dos,mac"
 
 if vim.fn.exists("+termguicolors") then
-	vim.o.termguicolors = true
+    vim.o.termguicolors = true
 end
 
 opt.fillchars:append({ eob = " " })
 
 require("utils").hook_print()
+
+if vim.fn.has('nvim-0.9') == 1 then
+    do
+        return
+    end
+
+    local function get_signs()
+        local buf = vim.api.nvim_get_current_buf()
+        return vim.tbl_map(function(sign)
+            return vim.fn.sign_getdefined(sign.name)[1]
+        end, vim.fn.sign_getplaced(buf, { group = '*', lnum = vim.v.lnum })[1].signs)
+    end
+
+    function _G.show_stc()
+        local sign, git_sign
+        for _, s in ipairs(get_signs()) do
+            if s.name:find('GitSign') then
+                git_sign = s
+            else
+                sign = s
+            end
+        end
+        local components = {
+            sign and ('%#' .. sign.texthl .. '#' .. sign.text .. '%*') or ' ',
+            -- '%=',
+            [[%{v:virtnum ? repeat(" ", float2nr(ceil(log10(v:lnum))))."↳":v:lnum}]],
+            git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
+        }
+        return table.concat(components, '')
+    end
+    print(_G.show_stc())
+
+    opt.stc = [[%!v:lua.show_stc()]]
+end
 
 -- cmd([[source ~/.config/nvim/viml/indent.vim]])
 cmd([[source ~/.config/nvim/viml/switch.vim]])
@@ -221,19 +255,19 @@ cmd([[
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
-	g.neovide_cursor_trail_size = 0.1
+    g.neovide_cursor_trail_size = 0.1
     g.neovide_fullscreen = true
-	g.neovide_cursor_vfx_mode = "sonicboom"
-	if require("utils").system() == "Linux" then
-		o.guifont = "MaxIosevka Nerd Font:h10"
-	else
-		o.guifont = "MaxIosevka Nerd Font:h16"
-	end
-	g.smoothie_enabled = true
+    g.neovide_cursor_vfx_mode = "sonicboom"
+    if require("utils").system() == "Linux" then
+        o.guifont = "MaxIosevka Nerd Font:h10"
+    else
+        o.guifont = "MaxIosevka Nerd Font:h16"
+    end
+    g.smoothie_enabled = true
 elseif fn.exists("g:gonvim_running") == 1 then
-	if require("utils").system() == "Linux" then
-		o.guifont = "MaxIosevka Nerd Font:h10"
-	else
-		o.guifont = "MaxIosevka Nerd Font:h14"
-	end
+    if require("utils").system() == "Linux" then
+        o.guifont = "MaxIosevka Nerd Font:h10"
+    else
+        o.guifont = "MaxIosevka Nerd Font:h14"
+    end
 end

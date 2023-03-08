@@ -110,7 +110,8 @@ require("lazy").setup({
     {
         "m-demare/hlargs.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
-        lazy = true,
+        enabled = false,
+        -- lazy = true,
         event = "VeryLazy",
         config = function()
             require("config._treesitter").inithlargs()
