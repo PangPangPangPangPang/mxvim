@@ -12,7 +12,7 @@ mxvim.background = "dark"
 mxvim.shade_percent = 0.7
 mxvim.use_cmp = true
 mxvim.use_coq = false
-mxvim.use_notify = true
+mxvim.use_notify = false
 mxvim.enable_lspsage = true
 
 require("basic")
