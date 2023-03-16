@@ -210,7 +210,7 @@ if vim.fn.has('nvim-0.9') == 1 then
         local components = {
             sign and ('%#' .. sign.texthl .. '#' .. sign.text .. '%*') or
                 ' %=%{v:lnum}',
-            git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
+            git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or ' ',
         }
         return table.concat(components, '')
     end
