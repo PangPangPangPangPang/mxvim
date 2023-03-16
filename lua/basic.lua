@@ -7,6 +7,7 @@ local dmap = require("utils").dmap
 
 vim.o.background = mxvim.background
 
+
 o.winblend = 10
 
 -- disable netrw
@@ -189,12 +190,7 @@ end
 opt.fillchars:append({ eob = " " })
 
 require("utils").hook_print()
-
 if vim.fn.has('nvim-0.9') == 1 then
-    do
-        return
-    end
-
     local function get_signs()
         local buf = vim.api.nvim_get_current_buf()
         return vim.tbl_map(function(sign)
@@ -212,14 +208,12 @@ if vim.fn.has('nvim-0.9') == 1 then
             end
         end
         local components = {
-            sign and ('%#' .. sign.texthl .. '#' .. sign.text .. '%*') or ' ',
-            -- '%=',
-            [[%{v:virtnum ? repeat(" ", float2nr(ceil(log10(v:lnum))))."↳":v:lnum}]],
+            sign and ('%#' .. sign.texthl .. '#' .. sign.text .. '%*') or
+                ' %=%{v:lnum}',
             git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
         }
         return table.concat(components, '')
     end
-    print(_G.show_stc())
 
     opt.stc = [[%!v:lua.show_stc()]]
 end
