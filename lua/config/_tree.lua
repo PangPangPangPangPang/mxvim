@@ -6,7 +6,7 @@ end
 M.config = function()
     local map = require("utils").dmap
     map({ "n", "i" }, "<F1>", ":NvimTreeToggle<CR>")
-    map({ "n" }, "<leader>j", ":NvimTreeFindFile<CR>")
+    map({ "n" }, "<leader>j", ":NvimTreeFocus<CR>")
     local safe_require = require("utils").safe_require
     safe_require("nvim-tree.config", function(config)
         local tree_cb = config.nvim_tree_callback
@@ -55,7 +55,7 @@ M.config = function()
                 },
             },
             update_focused_file = {
-                enable = false,
+                enable = true,
                 update_cwd = false,
                 ignore_list = { "node_modules", ".git", "build" },
             },
