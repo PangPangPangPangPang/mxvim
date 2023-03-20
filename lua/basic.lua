@@ -199,31 +199,32 @@ if vim.fn.has('nvim-0.9') == 1 then
     end
 
     function _G.show_stc()
-        local sign, git_sign
+        local sign, git_sign, space
         local num = tostring(vim.v.lnum)
         for _, s in ipairs(get_signs()) do
             if s.name:find('GitSign') then
                 git_sign = s
             else
                 sign = s
+                num = sign.text
             end
         end
         if sign ~= nil then
-            local space = #(tostring(vim.fn.line('$'))) - 1
-            if space > 0 then
-                -- sign.text = string.rep(" ", space) .. sign.text
-                sign.text = string.rep(" ", space) .. sign.text
-            end
+            space = #(tostring(vim.fn.line('$'))) - 1
+            -- if space > 0 then
+            --     -- sign.text = string.rep(" ", space) .. sign.text
+            --     sign.text = string.rep(" ", space) .. sign.text
+            -- end
         else
-            local space = #(tostring(vim.fn.line('$'))) - #num + 1
-            if space > 0 then
-                num = string.rep(" ", space) .. num
-            end
+            space = #(tostring(vim.fn.line('$'))) - #num + 1
                 
+        end
+        if space > 0 then
+            num = string.rep(" ", space) .. num
         end
 
         local components = {
-            sign and ('%#' .. sign.texthl .. '#' .. sign.text .. '%*') or num,
+            sign and ('%#' .. sign.texthl .. '#' .. num .. '%*') or num,
             git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
         }
         return table.concat(components, '')
