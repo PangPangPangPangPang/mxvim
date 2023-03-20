@@ -191,6 +191,9 @@ opt.fillchars:append({ eob = " " })
 
 require("utils").hook_print()
 if vim.fn.has('nvim-0.9') == 1 then
+    do
+        return
+    end
     local function get_signs()
         local buf = vim.api.nvim_get_current_buf()
         return vim.tbl_map(function(sign)
@@ -211,13 +214,8 @@ if vim.fn.has('nvim-0.9') == 1 then
         end
         if sign ~= nil then
             space = #(tostring(vim.fn.line('$'))) - 1
-            -- if space > 0 then
-            --     -- sign.text = string.rep(" ", space) .. sign.text
-            --     sign.text = string.rep(" ", space) .. sign.text
-            -- end
         else
             space = #(tostring(vim.fn.line('$'))) - #num + 1
-                
         end
         if space > 0 then
             num = string.rep(" ", space) .. num
