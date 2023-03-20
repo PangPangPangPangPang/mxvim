@@ -208,11 +208,10 @@ if vim.fn.has('nvim-0.9') == 1 then
             end
         end
         if sign ~= nil then
-            local space = #(tostring(vim.v.lnum)) - 1
+            local space = #(tostring(vim.fn.line('$'))) - 1
             if space > 0 then
                 sign.text = string.rep(" ", space) .. sign.text
             end
-
         end
 
         local components = {
