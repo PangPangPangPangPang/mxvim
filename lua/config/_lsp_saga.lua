@@ -15,7 +15,7 @@ M.config = function()
             scroll_down = "<C-f>",
             scroll_up = "<C-b>", -- quit can be a table
         },
-        code_action_lightbulb = {
+        lightbulb = {
             enable = false,
             sign = true,
             enable_in_insert = true,
