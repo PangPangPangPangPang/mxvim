@@ -87,18 +87,6 @@ require("lazy").setup({
 
         {
                 "nvim-treesitter/nvim-treesitter",
-                dependencies = {
-                        "nvim-treesitter/nvim-treesitter-textobjects",
-                        "windwp/nvim-ts-autotag",
-                        "JoosepAlviste/nvim-ts-context-commentstring",
-                        "nvim-treesitter/playground",
-                        {
-                                "windwp/nvim-autopairs",
-                                config = function()
-                                        require("config._autopairs").setup()
-                                end,
-                        },
-                },
                 build = ":TSUpdate",
                 config = function()
                         require("config._treesitter")
@@ -106,17 +94,54 @@ require("lazy").setup({
         },
         {
                 "HiPhish/nvim-ts-rainbow2",
-                lazy = true,
+                event = "VeryLazy",
                 dependencies = {
                         "nvim-treesitter/nvim-treesitter",
                 },
+        },
+        {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                event = "VeryLazy",
+                dependencies = {
+                        "nvim-treesitter/nvim-treesitter",
+                },
+        },
+        {
+                "windwp/nvim-ts-autotag",
+                event = "VeryLazy",
+                dependencies = {
+                        "nvim-treesitter/nvim-treesitter",
+                },
+        },
+        {
+                "JoosepAlviste/nvim-ts-context-commentstring",
+                event = "VeryLazy",
+                dependencies = {
+                        "nvim-treesitter/nvim-treesitter",
+                },
+        },
+        {
+                "nvim-treesitter/playground",
+                event = "VeryLazy",
+                dependencies = {
+                        "nvim-treesitter/nvim-treesitter",
+                },
+        },
+        {
+                "windwp/nvim-autopairs",
+                event = "VeryLazy",
+                dependencies = {
+                        "nvim-treesitter/nvim-treesitter",
+                },
+                config = function()
+                        require("config._autopairs").setup()
+                end,
         },
 
         {
                 "m-demare/hlargs.nvim",
                 dependencies = { "nvim-treesitter/nvim-treesitter" },
                 enabled = false,
-                -- lazy = true,
                 event = "VeryLazy",
                 config = function()
                         require("config._treesitter").inithlargs()
