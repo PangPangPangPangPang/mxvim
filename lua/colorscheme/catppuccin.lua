@@ -21,7 +21,8 @@ M.colors = function()
         purple = '#C6AAE8',
         magenta = '#F0AFE1',
         blue = '#A4B9EF',
-        red = '#E28C8C'
+        red = '#E28C8C',
+        line_fg = "#2D293B",
     }
 end
 return M
