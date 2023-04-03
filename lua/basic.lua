@@ -190,10 +190,8 @@ end
 opt.fillchars:append({ eob = " " })
 
 require("utils").hook_print()
-if vim.fn.has('nvim-0.9') == 1 then
-    do
-        return
-    end
+-- if vim.fn.has('nvim-0.9') == 1 then
+if false then
     local function get_signs()
         local buf = vim.api.nvim_get_current_buf()
         return vim.tbl_map(function(sign)
