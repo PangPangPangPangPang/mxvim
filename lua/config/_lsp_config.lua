@@ -137,17 +137,17 @@ M.make_config = function()
 end
 
 M.custom_handlers = function()
-    -- local signs = {
-    -- 	Error = " ",
-    -- 	Warn = " ",
-    -- 	Hint = " ",
-    -- 	Info = " ",
-    -- }
-    local signs = { Warn = " ", Info = " ", Hint = " ", Error = " " }
-    for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local sign = function(opts)
+        vim.fn.sign_define(opts.name, {
+            texthl = opts.name,
+            text = "",
+            numhl = opts.name,
+        })
     end
+    sign({ name = "DiagnosticSignError", text = " " })
+    sign({ name = "DiagnosticSignWarn", text = " " })
+    sign({ name = "DiagnosticSignHint", text = " " })
+    sign({ name = "DiagnosticSignInfo", text = " " })
 
     local safe_require = require("utils").safe_require
     safe_require("lsputil.locations", function(locations)
