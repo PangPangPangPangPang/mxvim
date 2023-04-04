@@ -17,7 +17,7 @@ M.setup = function()
         highlight = 1
     }
     local dmap = require('utils').dmap
-    dmap({'x'}, '<leader>f', ':<c-u>call GrepperOperator(visualmode())<cr>')
+    dmap({'x'}, '<leader>f', ':<c-u>silent call GrepperOperator(visualmode())<cr>')
 
 
 end
