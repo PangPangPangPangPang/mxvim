@@ -47,16 +47,16 @@ M.config = function()
             folder_level = 2,
         },
         ui = {
-            theme = 'round',
-            border = 'solid',
+            title = true,
+            -- Border type can be single, double, rounded, solid, shadow.
+            border = "rounded",
             winblend = 0,
-            expand = '',
-            collaspe = '',
-            preview = ' ',
-            code_action = '💡',
-            diagnostic = '🐞',
-            incoming = ' ',
-            outgoing = ' ',
+            expand = "",
+            collapse = "",
+            code_action = "💡",
+            incoming = " ",
+            outgoing = " ",
+            hover = ' ',
             colors = {
                 --float window normal bakcground color
                 normal_bg = colors.bg,
