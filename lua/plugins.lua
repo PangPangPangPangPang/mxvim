@@ -1,4 +1,3 @@
-local fn = vim.fn
 local g = vim.g
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

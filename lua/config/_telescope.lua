@@ -100,6 +100,8 @@ M.config = function()
 end
 
 local zfvim = require("config._zfvimim")
+
+---@diagnostic disable-next-line: lowercase-global
 function findFiles()
     if zfvim.is_zf_load then
         stop_zfvimim(0)
