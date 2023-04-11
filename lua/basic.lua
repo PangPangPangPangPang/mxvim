@@ -5,8 +5,8 @@ local opt = vim.opt
 local cmd = vim.cmd
 local dmap = require("utils").dmap
 
-vim.o.background = mxvim.background
-
+o.background = mxvim.background
+g.editorconfig = true
 
 o.winblend = 10
 
@@ -229,34 +229,7 @@ if false then
     opt.stc = [[%!v:lua.show_stc()]]
 end
 
--- cmd([[source ~/.config/nvim/viml/indent.vim]])
 cmd([[source ~/.config/nvim/viml/switch.vim]])
-
-cmd([[
-    command! -nargs=0 CD :execute("cd %:p:h")
-    augroup BasicGroup
-        " 1 tab == 4 spaces
-        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4
-        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set tabstop=4
-        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set sts=4
-
-        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set shiftwidth=2
-        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set tabstop=2
-        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set sts=2
-
-        " Return to last edit position when opening files (You want this!)
-        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-        autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="PmenuSel", timeout=500}
-    augroup End
-    augroup tt_ft
-        autocmd!
-        autocmd BufNewFile,BufRead *.ttss   set filetype=css
-        autocmd BufNewFile,BufRead *.ttml   set filetype=html
-        autocmd BufNewFile,BufRead *.podspec   set filetype=ruby
-        autocmd BufNewFile,BufRead Podfile   set filetype=ruby
-    augroup END
-]])
-
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
