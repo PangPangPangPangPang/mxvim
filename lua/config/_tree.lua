@@ -43,7 +43,6 @@ M.config = function()
         on_attach = on_attach,
         disable_netrw = true,
         hijack_netrw = true,
-        ignore_ft_on_setup = {},
         -- auto_close = false,
         open_on_tab = true,
         hijack_cursor = true,
@@ -57,6 +56,7 @@ M.config = function()
             highlight_git = false,
             highlight_opened_files = "none",
             root_folder_modifier = ":~",
+			root_folder_label = false,
             indent_markers = {
                 enable = false,
             },
@@ -90,7 +90,6 @@ M.config = function()
             },
         },
         view = {
-            hide_root_folder = true,
             side = "left",
             preserve_window_proportions = false,
             number = false,
