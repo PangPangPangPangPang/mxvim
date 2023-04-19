@@ -36,7 +36,7 @@ M.config = function()
 
         api.config.mappings.default_on_attach(bufnr)
 
-        vim.keymap.set('n', '<Tab>', ":lua open_luatree()<cr>", { buffer = bufnr }, opts('Open menu'))
+        vim.keymap.set('n', '<Tab>', ":lua open_luatree()<cr>", { buffer = bufnr, silent = true }, opts('Open menu'))
     end
 
     require("nvim-tree").setup({

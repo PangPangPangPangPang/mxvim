@@ -110,7 +110,7 @@ o.hlsearch = true
 o.incsearch = true
 
 -- Don't redraw while executing macros (good performance config)
-o.lazyredraw = true
+o.lazyredraw = false
 
 -- For regular expressions turn magic on
 o.magic = true

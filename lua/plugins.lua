@@ -48,6 +48,19 @@ require("lazy").setup({
 		},
 		enabled = mxvim.current_line == "lualine",
 	},
+	{
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup({
+				background_color = "#000000"
+				-- add any options here
+			})
+		end,
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+		}
+	},
 
 	{
 		"ZSaberLv0/ZFVimIM",
