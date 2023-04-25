@@ -15,4 +15,3 @@ mxvim.enable_lspsage = true
 
 require("basic")
 require("plugins")
-
