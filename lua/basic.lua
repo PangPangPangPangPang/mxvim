@@ -189,6 +189,13 @@ end
 
 opt.fillchars:append({ eob = " " })
 
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+	pattern = {"*.podspec", "Podfile"},
+	callback = function ()
+		vim.cmd("set filetype=ruby")
+	end
+})
+
 require("utils").hook_print()
 -- if vim.fn.has('nvim-0.9') == 1 then
 if false then
