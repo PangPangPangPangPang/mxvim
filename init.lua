@@ -13,6 +13,7 @@ mxvim.use_coq = false
 mxvim.use_notify = false
 mxvim.enable_lspsage = true
 mxvim.enable_treesitter = false
+mxvim.enable_neotree = true
 
 require("basic")
 require("plugins")

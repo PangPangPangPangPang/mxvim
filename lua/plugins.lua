@@ -397,24 +397,26 @@ require("lazy").setup({
 			require("config._gitsigns").config()
 		end,
 	},
-	-- {
-	-- 	"kyazdani42/nvim-tree.lua",
-	-- 	lazy = true,
-	-- 	cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-	-- 	init = function()
-	-- 		require("config._tree").init()
-	-- 	end,
-	-- 	keys = {
-	-- 		{ "<F1>", "<cmd>NvimTreeToggle<cr>", mode = "n" },
-	-- 		{ "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" } },
-	-- 	},
-	-- 	config = function()
-	-- 		require("config._tree").config()
-	-- 	end,
-	-- },
+	{
+		"kyazdani42/nvim-tree.lua",
+		enabled = not mxvim.enable_neotree,
+		lazy = true,
+		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+		init = function()
+			require("config._tree").init()
+		end,
+		keys = {
+			{ "<F1>", "<cmd>NvimTreeToggle<cr>", mode = "n" },
+			{ "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" } },
+		},
+		config = function()
+			require("config._tree").config()
+		end,
+	},
 
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		enabled = mxvim.enable_neotree,
 		cmd = { "Neotree" },
 		keys = {
 			{ "<F1>",      "<cmd>Neotree filesystem left toggle<cr>", mode = "n" },
