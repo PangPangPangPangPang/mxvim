@@ -290,6 +290,7 @@ require("lazy").setup({
 	},
 	{
 		"karb94/neoscroll.nvim",
+		enabled = not g.neovide,
 		lazy = true,
 		event = "VeryLazy",
 		config = function()

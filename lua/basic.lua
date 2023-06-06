@@ -244,12 +244,12 @@ if fn.exists("g:neovide") == 1 then
     g.neovide_fullscreen = true
     g.neovide_cursor_vfx_mode = "sonicboom"
     if require("utils").system() == "Linux" then
-        o.guifont = "MaxIosevka Nerd Font:h10"
+        o.guifont = "Iosevka Nerd Font:h10"
     else
-        o.guifont = "MaxIosevka Nerd Font:h16"
+        o.guifont = "Iosevka Nerd Font:h16"
     end
-    g.smoothie_enabled = true
-elseif fn.exists("g:gonvim_running") == 1 then
+	g.neovide_scroll_animation_length = 0.3
+elseif g.gonvim_running == 1 then
     if require("utils").system() == "Linux" then
         o.guifont = "MaxIosevka Nerd Font:h10"
     else
