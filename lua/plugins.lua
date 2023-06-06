@@ -66,7 +66,7 @@ require("lazy").setup({
 		"ZSaberLv0/ZFVimIM",
 		lazy = true,
 		keys = {
-			{ "<M-i>", "<cmd>lua toggle_zfvimim()<cr>", mode = "n" },
+			{ "<M-i>", "<cmd>lua toggle_zfvimim()<cr>",  mode = "n" },
 			{ "<M-i>", "<c-o>:lua toggle_zfvimim()<cr>", mode = "i" },
 		},
 		dependencies = {
@@ -96,70 +96,44 @@ require("lazy").setup({
 			vim.api.nvim_set_keymap("v", "<leader>/", "gc", {})
 		end,
 	},
-
+	{
+		"luochen1990/rainbow",
+		enabled = not mxvim.enable_treesitter,
+		lazy = true,
+		event = "VimEnter",
+		init = function()
+			local colors = require("theme").theme_colors()
+			g.rainbow_active = 1
+			g.rainbow_conf = { guifgs = { colors.magenta, colors.cyan, colors.purple, colors.yellow } }
+		end,
+		config = function()
+			vim.cmd("RainbowToggleOn")
+		end
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		enabled = mxvim.enable_treesitter,
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			"nvim-treesitter/playground",
+			"HiPhish/nvim-ts-rainbow2",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"windwp/nvim-ts-autotag",
+			"m-demare/hlargs.nvim",
+		},
 		build = ":TSUpdate",
 		config = function()
 			require("config._treesitter")
+			require("config._treesitter").inithlargs()
 		end,
-	},
-	{
-		"HiPhish/nvim-ts-rainbow2",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
-	{
-		"windwp/nvim-ts-autotag",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
-	{
-		"nvim-treesitter/playground",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
 	},
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
 		config = function()
 			require("config._autopairs").setup()
 		end,
 	},
-
-	{
-		"m-demare/hlargs.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		enabled = false,
-		event = "VeryLazy",
-		config = function()
-			require("config._treesitter").inithlargs()
-		end,
-	},
-
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		lazy = true,
@@ -185,7 +159,7 @@ require("lazy").setup({
 		lazy = true,
 		event = "VeryLazy",
 		dependencies = {
-			{ "williamboman/mason.nvim", lazy = true },
+			{ "williamboman/mason.nvim",  lazy = true },
 			{ "nvim-lua/lsp-status.nvim", lazy = true },
 			{
 				"neovim/nvim-lspconfig",
@@ -350,7 +324,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 		keys = {
-			{ "<c-p>", "<cmd>Telescope find_files<cr>" },
+			{ "<c-p>",     "<cmd>Telescope find_files<cr>" },
 			{ "<leader>f", "<cmd>Telescope live_grep<cr>", { "n" } },
 		},
 		config = function()
@@ -368,10 +342,10 @@ require("lazy").setup({
 		"voldikss/vim-floaterm",
 		cmd = { "FloatermToggle", "FloatermNew" },
 		keys = {
-			{ "<F5>", "<cmd>lua require('config._vim_floaterm').open_term()<cr>", mode = "n" },
-			{ "<F5>", "<C-\\><C-n>:lua require('config._vim_floaterm').open_term()<CR>", mode = "t" },
-			{ "<Esc>", "<C-\\><C-n>:lua require('config._vim_floaterm').close()<CR>", mode = "t" },
-			{ "<leader>lg", ":lua require('config._vim_floaterm').open_lazygit()<CR>", mode = "n" },
+			{ "<F5>",       "<cmd>lua require('config._vim_floaterm').open_term()<cr>",        mode = "n" },
+			{ "<F5>",       "<C-\\><C-n>:lua require('config._vim_floaterm').open_term()<CR>", mode = "t" },
+			{ "<Esc>",      "<C-\\><C-n>:lua require('config._vim_floaterm').close()<CR>",     mode = "t" },
+			{ "<leader>lg", ":lua require('config._vim_floaterm').open_lazygit()<CR>",         mode = "n" },
 		},
 		config = function()
 			require("config._vim_floaterm").map()
@@ -423,19 +397,31 @@ require("lazy").setup({
 			require("config._gitsigns").config()
 		end,
 	},
+	-- {
+	-- 	"kyazdani42/nvim-tree.lua",
+	-- 	lazy = true,
+	-- 	cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+	-- 	init = function()
+	-- 		require("config._tree").init()
+	-- 	end,
+	-- 	keys = {
+	-- 		{ "<F1>", "<cmd>NvimTreeToggle<cr>", mode = "n" },
+	-- 		{ "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" } },
+	-- 	},
+	-- 	config = function()
+	-- 		require("config._tree").config()
+	-- 	end,
+	-- },
+
 	{
-		"kyazdani42/nvim-tree.lua",
-		lazy = true,
-		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-		init = function()
-			require("config._tree").init()
-		end,
+		"nvim-neo-tree/neo-tree.nvim",
+		cmd = { "Neotree" },
 		keys = {
-			{ "<F1>", "<cmd>NvimTreeToggle<cr>", mode = "n" },
-			{ "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" } },
+			{ "<F1>",      "<cmd>Neotree filesystem left toggle<cr>", mode = "n" },
+			{ "<leader>j", "<cmd>Neotree reveal left<cr>",            mode = { "n" } },
 		},
 		config = function()
-			require("config._tree").config()
+			require("config._neotree").config()
 		end,
 	},
 
@@ -511,7 +497,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{ "tpope/vim-dadbod", cmd = { "DB" } },
+	{ "tpope/vim-dadbod",  cmd = { "DB" } },
 	{
 		"skywind3000/vim-quickui",
 		lazy = true,
@@ -525,6 +511,7 @@ require("lazy").setup({
 	{
 		-- "~/bilibili_live_broadcast",
 		"PangPangPangPangPang/bilibili_live_broadcast",
+		enabled = false,
 		lazy = true,
 		cmd = { "BiliLive" },
 		config = function()
@@ -532,7 +519,6 @@ require("lazy").setup({
 		end,
 		dependencies = { "rcarriga/nvim-notify" },
 	},
-
 	{
 		"PangPangPangPangPang/prettier-number-line.nvim",
 		lazy = true,

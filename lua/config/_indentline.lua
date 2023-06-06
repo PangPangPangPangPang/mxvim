@@ -45,8 +45,8 @@ M.setup = function ()
             "IndentBlanklineIndent6",
         },
         space_char_blankline = " ",
-        show_current_context = true,
-        show_current_context_start = true,
+        show_current_context = mxvim.enable_treesitter,
+        show_current_context_start = mxvim.enable_treesitter,
     }
 end
 M.setupIndent = function()
@@ -55,4 +55,3 @@ M.setupIndent = function()
 end
 
 return M
-

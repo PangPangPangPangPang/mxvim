@@ -11,7 +11,6 @@ vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter" }, {
 	end,
 })
 
-local origin_colors = require("theme").theme_colors()
 -- local colors = require("theme").shade_colors(0.3)
 local colors = require("theme").theme_colors()
 local shade_bg = require("theme").shade_all(colors.bg, 0.2)
@@ -64,7 +63,7 @@ local color = {
     Rv = colors.magenta,
 }
 
-local fg = origin_colors.line_fg or origin_colors.line_fg
+local fg = colors.line_fg or colors.line_fg
 
 local function mode_color()
 	return { bg = color[vim.fn.mode()], fg = fg, gui = "bold" }
@@ -76,7 +75,7 @@ local function inactive_mode_color()
 	return { bg = color[vim.fn.mode()], fg = fg }
 end
 local function active_mode_color()
-	return { bg = color[vim.fn.mode()], fg = origin_colors.red, gui = "bold" }
+	return { bg = color[vim.fn.mode()], fg = colors.red, gui = "bold" }
 end
 -- Config
 local config = {

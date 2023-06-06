@@ -17,7 +17,8 @@ M.colors = function()
         magenta = '#d3a0bc',
         blue = '#89beba',
         red = '#e68183',
-        highlight = 'PmenuThumb'
+        highlight = 'PmenuThumb',
+        line_fg = "#16161D",
     }
 end
 return M

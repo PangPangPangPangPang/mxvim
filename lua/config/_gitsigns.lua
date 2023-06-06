@@ -23,7 +23,7 @@ M.config = function()
             -- untracked    = { text = '▒' },
             add          = { text = '▌' },
             change       = { text = '▌' },
-            delete       = { text = '契' },
+            delete       = { text = '▌' },
             topdelete    = { text = '▔' },
             changedelete = { text = '▌' },
             untracked    = { text = '▌' },
