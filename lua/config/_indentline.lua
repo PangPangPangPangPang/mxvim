@@ -33,8 +33,8 @@ M.setup = function ()
     require("indent_blankline").setup {
         char = '▏',
         context_char = '▏',
-        buftype_exclude = {'tex', 'markdown', 'txt', 'startify', 'packer', 'terminal', "noice"},
-        filetype_exclude = {'NvimTree', 'TelescopePrompt', 'mason'},
+        buftype_exclude = {'tex', 'markdown', 'txt', 'startify', 'packer', 'terminal'},
+        filetype_exclude = {'NvimTree', 'TelescopePrompt', 'mason', 'noice'},
         show_end_of_line = true,
         char_highlight_list = {
             "IndentBlanklineIndent1",
