@@ -11,7 +11,7 @@ mxvim.shade_percent = 0.7
 mxvim.use_cmp = true
 mxvim.use_coq = false
 mxvim.use_notify = false
-mxvim.enable_lspsage = true
+mxvim.enable_lspsage = false
 mxvim.enable_treesitter = false
 mxvim.enable_neotree = true
 
