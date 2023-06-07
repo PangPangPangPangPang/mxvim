@@ -31,7 +31,7 @@ require("lazy").setup({
 	require("theme").theme("EdenEast/nightfox.nvim", "nightfox"),
 	require("theme").theme("sam4llis/nvim-tundra", "tundra"),
 	require("theme").theme("luisiacc/gruvbox-baby", "gruvbox-baby"),
-	require("theme").theme("Yazeed1s/oh-lucy.nvim", "oh-lucy"),
+	require("theme").theme("PangPangPangPangPang/oh-lucy.nvim", "oh-lucy"),
 	require("theme").theme("savq/melange-nvim", "melange"),
 	require("theme").theme("AlexvZyl/nordic.nvim", "nordic"),
 	require("theme").theme("loctvl842/monokai-pro.nvim", "monokai"),

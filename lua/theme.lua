@@ -6,25 +6,25 @@ M.theme = function(name, nick)
 		config = function()
 			require("colorscheme." .. mxvim.current_theme).config()
 			require("config._tree").theme()
-            if mxvim.current_line == "galaxy" then
-                require("config._galaxyline")
-            else
-                require("config._lualine_pure")
-            end
+			if mxvim.current_line == "galaxy" then
+				require("config._galaxyline")
+			else
+				require("config._lualine_pure")
+			end
 			vim.cmd([[
                 hi! link NormalFloat cleared
             ]])
 			local colors = require("theme").theme_colors()
-            local shade_colors = require("theme").shade_colors(0.4)
+			local shade_colors = require("theme").shade_colors(0.4)
 			vim.cmd(string.format("hi! CmpItemAbbrMatch gui=bold guifg=%s", colors.blue))
 			vim.cmd(string.format("hi! CmpItemAbbrMatchFuzzy gui=bold guifg=%s", colors.blue))
 			vim.cmd(string.format("hi! CmpItemMenu gui=bold guifg=%s", shade_colors.fg))
 			vim.cmd(string.format("hi! markdownBoldItalic gui=bold,italic guifg=%s", colors.blue))
 			vim.cmd(string.format("hi! Cursor gui=bold guibg=%s guifg=%s", colors.fg, colors.bg))
 
-            local bg = "bg"
-            local fg = "fg"
-            local hi = "NONE"
+			local bg = "bg"
+			local fg = "fg"
+			local hi = "NONE"
 
 			vim.cmd(string.format("highlight! CmpItemKindField gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
 			vim.cmd(string.format("highlight! CmpItemKindProperty gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
@@ -58,7 +58,7 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
 			vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
 			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
-            vim.cmd([[
+			vim.cmd([[
             hi! link FloatBorder Normal
             " hi! StatusLineNC guibg=none
             " hi! StatusLine guibg=none
