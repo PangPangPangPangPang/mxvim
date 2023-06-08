@@ -10,7 +10,7 @@ M.config = function()
 			sources = {
 				{ source = "filesystem", display_name = " 󰈙  Files " },
 				{ source = "git_status", display_name = "   Git " },
-				{ source = "buffers", display_name = "   Buffers " },
+				{ source = "buffers",    display_name = "   Buffers " },
 			},
 		},
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
@@ -46,13 +46,13 @@ M.config = function()
 				expander_highlight = "NeoTreeExpander",
 			},
 			icon = {
-				folder_closed = " ",
-				folder_open = " ",
-				folder_empty = "ﰊ ",
+				folder_closed = "",
+				folder_open = "",
+				folder_empty = "ﰊ",
 				-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 				-- then these will never be used.
 				default = "*",
-				highlight = "NeoTreeFileIcon"
+				highlight = "NeoTreeFileIcon",
 			},
 			modified = {
 				symbol = "[+]",
@@ -68,14 +68,14 @@ M.config = function()
 					-- Change type
 					added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
 					modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-					deleted   = "✖", -- this can only be used in the git_status source
-					renamed   = "", -- this can only be used in the git_status source
+					deleted   = "✖ ", -- this can only be used in the git_status source
+					renamed   = " ", -- this can only be used in the git_status source
 					-- Status type
-					untracked = "",
-					ignored   = "",
-					unstaged  = "",
-					staged    = "",
-					conflict  = "",
+					untracked = " ",
+					ignored   = " ",
+					unstaged  = " ",
+					staged    = " ",
+					conflict  = " ",
 				}
 			},
 		},
