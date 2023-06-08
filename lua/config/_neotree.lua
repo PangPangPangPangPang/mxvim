@@ -13,7 +13,7 @@ M.config = function()
 				{ source = "buffers", display_name = "   Buffers " },
 			},
 		},
-		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
@@ -41,14 +41,14 @@ M.config = function()
 				highlight = "NeoTreeIndentMarker",
 				-- expander config, needed for nesting files
 				with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-				expander_collapsed = "",
-				expander_expanded = "",
+				expander_collapsed = " ",
+				expander_expanded = " ",
 				expander_highlight = "NeoTreeExpander",
 			},
 			icon = {
-				folder_closed = "",
-				folder_open = "",
-				folder_empty = "ﰊ",
+				folder_closed = " ",
+				folder_open = " ",
+				folder_empty = "ﰊ ",
 				-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
 				-- then these will never be used.
 				default = "*",
