@@ -568,6 +568,7 @@ require("lazy").setup({
 	{
 		"jackMort/ChatGPT.nvim",
 		lazy = true,
+		cmd = { "ChatGPT" },
 		config = function()
 			require("chatgpt").setup({
 				keymaps = {
