@@ -457,14 +457,29 @@ require("lazy").setup({
 	},
 
 	{
-		"ggandor/leap.nvim",
-		lazy = true,
+		"folke/flash.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("config._leap").config()
-		end,
+		opts = {},
+		keys = {
+			{
+				"cl",
+				mode = { "n", "x", "o" },
+				function()
+					require("config._flash").jump()
+					-- require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
+		},
 	},
-
 	{
 		"chentoast/marks.nvim",
 		enabled = false,

@@ -58,7 +58,8 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
 			vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
 			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
-			vim.cmd(string.format("hi! TelescopeSelection guifg=%s guibg=%s", colors.bg, colors.blue))
+			vim.cmd(string.format("hi! TelescopeSelection guifg=%s guibg=%s", colors.bg, colors.green))
+			vim.cmd(string.format("hi! TelescopeMatching gui=bold guifg=%s", colors.red))
 			vim.cmd([[
             hi! link FloatBorder Normal
             " hi! StatusLineNC guibg=none
