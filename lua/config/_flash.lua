@@ -14,8 +14,8 @@ M.jump = function()
 			autojump = true,
 		},
 		label = {
-			after = false,
-			before = true,
+			after = true,
+			before = false,
 			style = "overlay",
 			rainbow = {
 				enabled = true,
