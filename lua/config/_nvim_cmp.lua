@@ -9,6 +9,16 @@ end
 M.config = function()
 	local cmp = require("cmp")
 	cmp.setup({
+		sorting = {
+			priority_weight = 1.0,
+			comparators = {
+				cmp.config.compare.locality,
+				cmp.config.compare.rencently_used,
+				cmp.config.compare.score,
+				cmp.config.compare.offset,
+				cmp.config.compare.order,
+			}
+		},
 		snippet = {
 			expand = function(args)
 				vim.fn["vsnip#anonymous"](args.body)
@@ -38,8 +48,11 @@ M.config = function()
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = function(entry, vim_item)
-				local kind = require("lspkind").cmp_format({ mode = "symbol", preset = 'codicons',
-					maxwidth = MAX_LABEL_WIDTH })(
+				local kind = require("lspkind").cmp_format({
+					mode = "symbol",
+					preset = 'codicons',
+					maxwidth = MAX_LABEL_WIDTH
+				})(
 					entry,
 					vim_item
 				)
@@ -105,15 +118,15 @@ M.config = function()
 		},
 		-- You should specify your *installed* sources.
 		sources = cmp.config.sources({
-			{ name = "vsnip" },
-			{ name = "nvim_lsp" },
+			{ name = "vsnip",                   priority = 8 },
+			{ name = "nvim_lsp",                priority = 8 },
 			-- { name = "tags" },
-			{ name = "nvim_lua" },
+			-- { name = "nvim_lua",                priority = 5 },
 			-- { name = "buffer" },
-			{ name = "path" },
-			{ name = "nvim_lsp_signature_help" },
+			{ name = "path",                    priority = 4 },
+			{ name = "nvim_lsp_signature_help", priority = 5 },
 		}, {
-			{ name = 'buffer' },
+			{ name = 'buffer', priority = 7 },
 		}),
 		completion = {
 			completeopt = "menu,menuone,noinsert",
