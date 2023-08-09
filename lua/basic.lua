@@ -232,16 +232,7 @@ end
 cmd([[source ~/.config/nvim/viml/switch.vim]])
 cmd([[
     command! -nargs=0 CD :execute("cd %:p:h")
-    augroup BasicGroup
-        " 1 tab == 4 spaces
-        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4
-        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set tabstop=4
-        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set sts=4
-
-        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set shiftwidth=2
-        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set tabstop=2
-        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set sts=2
-
+    augroup last_edit_group
         " Return to last edit position when opening files (You want this!)
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
         autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="PmenuSel", timeout=500}
@@ -254,6 +245,35 @@ cmd([[
         autocmd BufNewFile,BufRead Podfile   set filetype=ruby
     augroup END
 ]])
+
+local ftgroup = vim.api.nvim_create_augroup('ft_group', { clear = true })
+vim.api.nvim_create_autocmd({ "FileType" },
+	{
+		group = ftgroup,
+		pattern = { "php", "python", "c", "java", "perl", "shell", "sh", "vim", "ruby", "cpp", "go", "objc", "swift",
+			"lua" },
+		callback = function()
+			-- 1 tab == 4 spaces
+			o.shiftwidth = 4
+			o.tabstop = 4
+			o.sts = 4
+		end
+	}
+)
+vim.api.nvim_create_autocmd({ "FileType" },
+	{
+		group = ftgroup,
+		pattern = { "javascriptreact", "javascript", "typescript", "typescriptreact", "html", "css", "xml", "dart",
+			"json", "less", "markdown"
+		},
+		callback = function()
+			-- 1 tab == 4 spaces
+			o.shiftwidth = 2
+			o.tabstop = 2
+			o.sts = 2
+		end
+	}
+)
 
 pcall(require, "private")
 
