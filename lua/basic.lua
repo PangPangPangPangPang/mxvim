@@ -15,7 +15,7 @@ g.loaded_netrwPlugin = 1
 -- Config netrw
 g.netrw_banner = 0
 g.netrw_liststyle = 3 -- tree view
-g.netrw_altv = 1 -- open splits to the right
+g.netrw_altv = 1      -- open splits to the right
 
 g.mapleader = " "
 g.use_lua = 1
@@ -24,7 +24,7 @@ o.mouse = "a"
 o.showmode = false
 
 if fn.has("nvim-0.5") then
-    o.jumpoptions = "stack"
+	o.jumpoptions = "stack"
 end
 
 o.cursorline = true
@@ -69,15 +69,15 @@ o.wildmenu = true
 o.pumheight = 20
 
 if fn.exists("&pumblend") then
-    o.wildoptions = "pum"
-    o.pumblend = 10
+	o.wildoptions = "pum"
+	o.pumblend = 10
 end
 
 o.wildignore = "*.o,*~,*.pyc"
 if fn.has("win16") or fn.has("win32") then
-    o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
+	o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
 else
-    o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
+	o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
 end
 
 o.completeopt = "menu,menuone,noinsert,noselect"
@@ -87,7 +87,7 @@ o.ruler = true
 
 -- Height of the command bar
 if fn.has("nvim-0.8") then
-    o.cmdheight = 0
+	o.cmdheight = 0
 end
 
 -- A buffer becomes hidden when it is abandoned
@@ -184,75 +184,93 @@ o.encoding = "utf8"
 o.ffs = "unix,dos,mac"
 
 if vim.fn.exists("+termguicolors") then
-    vim.o.termguicolors = true
+	vim.o.termguicolors = true
 end
 
 opt.fillchars:append({ eob = " " })
 
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-	pattern = {"*.podspec", "Podfile"},
-	callback = function ()
-		vim.cmd("set filetype=ruby")
-	end
-})
-
 require("utils").hook_print()
 -- if vim.fn.has('nvim-0.9') == 1 then
 if false then
-    local function get_signs()
-        local buf = vim.api.nvim_get_current_buf()
-        return vim.tbl_map(function(sign)
-            return vim.fn.sign_getdefined(sign.name)[1]
-        end, vim.fn.sign_getplaced(buf, { group = '*', lnum = vim.v.lnum })[1].signs)
-    end
+	local function get_signs()
+		local buf = vim.api.nvim_get_current_buf()
+		return vim.tbl_map(function(sign)
+			return vim.fn.sign_getdefined(sign.name)[1]
+		end, vim.fn.sign_getplaced(buf, { group = '*', lnum = vim.v.lnum })[1].signs)
+	end
 
-    function _G.show_stc()
-        local sign, git_sign, space
-        local num = tostring(vim.v.lnum)
-        for _, s in ipairs(get_signs()) do
-            if s.name:find('GitSign') then
-                git_sign = s
-            else
-                sign = s
-                num = sign.text
-            end
-        end
-        if sign ~= nil then
-            space = #(tostring(vim.fn.line('$'))) - 1
-        else
-            space = #(tostring(vim.fn.line('$'))) - #num + 1
-        end
-        if space > 0 then
-            num = string.rep(" ", space) .. num
-        end
+	function _G.show_stc()
+		local sign, git_sign, space
+		local num = tostring(vim.v.lnum)
+		for _, s in ipairs(get_signs()) do
+			if s.name:find('GitSign') then
+				git_sign = s
+			else
+				sign = s
+				num = sign.text
+			end
+		end
+		if sign ~= nil then
+			space = #(tostring(vim.fn.line('$'))) - 1
+		else
+			space = #(tostring(vim.fn.line('$'))) - #num + 1
+		end
+		if space > 0 then
+			num = string.rep(" ", space) .. num
+		end
 
-        local components = {
-            sign and ('%#' .. sign.texthl .. '#' .. num .. '%*') or num,
-            git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
-        }
-        return table.concat(components, '')
-    end
+		local components = {
+			sign and ('%#' .. sign.texthl .. '#' .. num .. '%*') or num,
+			git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
+		}
+		return table.concat(components, '')
+	end
 
-    opt.stc = [[%!v:lua.show_stc()]]
+	opt.stc = [[%!v:lua.show_stc()]]
 end
 
 cmd([[source ~/.config/nvim/viml/switch.vim]])
+cmd([[
+    command! -nargs=0 CD :execute("cd %:p:h")
+    augroup BasicGroup
+        " 1 tab == 4 spaces
+        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set shiftwidth=4
+        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set tabstop=4
+        autocmd FileType php,python,c,java,perl,shell,sh,vim,ruby,cpp,go,objc,swift,lua set sts=4
+
+        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set shiftwidth=2
+        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set tabstop=2
+        autocmd FileType javascriptreact,javascript,typescript,typescriptreact,html,css,xml,dart,json,less,markdown set sts=2
+
+        " Return to last edit position when opening files (You want this!)
+        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="PmenuSel", timeout=500}
+    augroup End
+    augroup tt_ft
+        autocmd!
+        autocmd BufNewFile,BufRead *.ttss   set filetype=css
+        autocmd BufNewFile,BufRead *.ttml   set filetype=html
+        autocmd BufNewFile,BufRead *.podspec   set filetype=ruby
+        autocmd BufNewFile,BufRead Podfile   set filetype=ruby
+    augroup END
+]])
+
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
-    g.neovide_cursor_trail_size = 0.1
-    g.neovide_fullscreen = true
-    g.neovide_cursor_vfx_mode = "sonicboom"
-    if require("utils").system() == "Linux" then
-        o.guifont = "Iosevka Nerd Font:h10"
-    else
-        o.guifont = "Iosevka Nerd Font:h16"
-    end
+	g.neovide_cursor_trail_size = 0.1
+	g.neovide_fullscreen = true
+	g.neovide_cursor_vfx_mode = "sonicboom"
+	if require("utils").system() == "Linux" then
+		o.guifont = "Iosevka Nerd Font:h10"
+	else
+		o.guifont = "Iosevka Nerd Font:h16"
+	end
 	g.neovide_scroll_animation_length = 0.3
 elseif g.gonvim_running == 1 then
-    if require("utils").system() == "Linux" then
-        o.guifont = "MaxIosevka Nerd Font:h10"
-    else
-        o.guifont = "MaxIosevka Nerd Font:h14"
-    end
+	if require("utils").system() == "Linux" then
+		o.guifont = "MaxIosevka Nerd Font:h10"
+	else
+		o.guifont = "MaxIosevka Nerd Font:h14"
+	end
 end

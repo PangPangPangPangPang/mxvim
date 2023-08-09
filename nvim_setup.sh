@@ -21,5 +21,6 @@ ln -s "$(pwd)/lua" "${dst_dir}/lua"
 ln -s "$(pwd)/viml" "${dst_dir}/viml"
 ln -s "$(pwd)/coc-settings.json" ${dst_dir}
 ln -s "$(pwd)/ginit.vim" ${dst_dir}
+ln -s "$(pwd)/.editorconfig" ${dst_dir}
 
 nvim --headless "+Lazy! sync" +qa
