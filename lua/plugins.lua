@@ -86,6 +86,15 @@ require("lazy").setup({
 	{ "tpope/vim-rsi" },
 
 	{ "kevinhwang91/nvim-bqf", ft = "qf", branch = "main" },
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = 'kevinhwang91/promise-async',
+		lazy = true,
+		event = "VimEnter",
+		config = function()
+			require("config._other").ufo_config(0)
+		end
+	},
 
 	-- commenter
 	{
