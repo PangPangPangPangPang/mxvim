@@ -71,11 +71,11 @@ end
 local function inverse_mode_color()
 	return { fg = color[vim.fn.mode()], bg = fg, gui = "bold" }
 end
-local function inactive_mode_color()
-	return { bg = color[vim.fn.mode()], fg = fg }
+local function active_tab_color()
+	return { bg = colors.red, fg = fg, gui = "bold" }
 end
-local function active_mode_color()
-	return { bg = color[vim.fn.mode()], fg = colors.red, gui = "bold" }
+local function inactive_tab_color()
+	return { bg = color[vim.fn.mode()], fg = fg, gui = "bold" }
 end
 -- Config
 local config = {
@@ -128,8 +128,8 @@ local config = {
 				max_length = vim.o.columns / 3,
 				mode = 2,
 				tabs_color = {
-					active = active_mode_color,
-					inactive = inactive_mode_color,
+					active = active_tab_color,
+					inactive = inactive_tab_color,
 				},
 			},
 		},
@@ -141,8 +141,8 @@ local config = {
 			{
 				"buffers",
 				buffers_color = {
-					active = active_mode_color,
-					inactive = inactive_mode_color,
+					active = active_tab_color,
+					inactive = inactive_tab_color,
 				},
 			},
 		},
