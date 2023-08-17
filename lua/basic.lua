@@ -241,8 +241,6 @@ cmd([[
         autocmd!
         autocmd BufNewFile,BufRead *.ttss   set filetype=css
         autocmd BufNewFile,BufRead *.ttml   set filetype=html
-        autocmd BufNewFile,BufRead *.podspec   set filetype=ruby
-        autocmd BufNewFile,BufRead Podfile   set filetype=ruby
     augroup END
 ]])
 
@@ -271,6 +269,17 @@ vim.api.nvim_create_autocmd({ "FileType" },
 			o.shiftwidth = 2
 			o.tabstop = 2
 			o.sts = 2
+		end
+	}
+)
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
+	{
+		group = ftgroup,
+		pattern = { "*.podspec", "Podfile"
+		},
+		callback = function()
+			o.filetype = "ruby"
+
 		end
 	}
 )
