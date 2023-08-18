@@ -30,37 +30,37 @@ local conditions = {
 	end,
 }
 local function search_count()
-    local search = vim.fn.searchcount({maxcount = 0}) -- maxcount = 0 makes the number not be capped at 99
-    local searchCurrent = search.current
-    local searchTotal = search.total
-    if searchCurrent > 0 then
-        return vim.fn.getreg("/").." ["..searchCurrent.."/"..searchTotal.."]"
-    else
-        return ""
-    end
+	local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 makes the number not be capped at 99
+	local searchCurrent = search.current
+	local searchTotal = search.total
+	if searchCurrent > 0 then
+		return vim.fn.getreg("/") .. " [" .. searchCurrent .. "/" .. searchTotal .. "]"
+	else
+		return ""
+	end
 end
 
 local color = {
-    n = colors.blue,
-    i = colors.green,
-    v = colors.magenta,
-    [""] = colors.magenta,
-    V = colors.magenta,
-    no = colors.magenta,
-    s = colors.orange,
-    S = colors.orange,
-    [""] = colors.orange,
-    ic = colors.yellow,
-    cv = colors.red,
-    ce = colors.red,
-    ["!"] = colors.green,
-    t = colors.cyan,
-    c = colors.purple,
-    ["r?"] = colors.red,
-    ["r"] = colors.red,
-    rm = colors.red,
-    R = colors.yellow,
-    Rv = colors.magenta,
+	n = colors.blue,
+	i = colors.green,
+	v = colors.magenta,
+	[""] = colors.magenta,
+	V = colors.magenta,
+	no = colors.magenta,
+	s = colors.orange,
+	S = colors.orange,
+	[""] = colors.orange,
+	ic = colors.yellow,
+	cv = colors.red,
+	ce = colors.red,
+	["!"] = colors.green,
+	t = colors.cyan,
+	c = colors.purple,
+	["r?"] = colors.red,
+	["r"] = colors.red,
+	rm = colors.red,
+	R = colors.yellow,
+	Rv = colors.magenta,
 }
 
 local fg = colors.line_fg or colors.line_fg
@@ -126,7 +126,7 @@ local config = {
 			{
 				"tabs",
 				max_length = vim.o.columns / 3,
-				mode = 2,
+				mode = 0,
 				tabs_color = {
 					active = active_tab_color,
 					inactive = inactive_tab_color,
@@ -207,7 +207,7 @@ ins_left({
 ins_left({
 	"lsp_progress",
 	display_components = { "lsp_client_name", { "title", "percentage", "message" } },
-    display_lsp_name_after_initialization = true,
+	display_lsp_name_after_initialization = true,
 	separators = {
 		component = " ",
 		progress = " | ",
@@ -252,9 +252,9 @@ end
 local zf = require("config._zfvimim")
 ins_right({
 	-- padding = { right = 2 },
-    function ()
-        return zf.zf_method
-    end,
+	function()
+		return zf.zf_method
+	end,
 	color = inverse_mode_color,
 })
 
