@@ -90,7 +90,7 @@ require("lazy").setup({
 		"kevinhwang91/nvim-ufo",
 		dependencies = 'kevinhwang91/promise-async',
 		lazy = true,
-		event = "VimEnter",
+		event = "VeryLazy",
 		config = function()
 			require("config._other").ufo_config(0)
 		end
@@ -160,6 +160,17 @@ require("lazy").setup({
 		event = "VeryLazy",
 		init = function()
 			require("config._grep").setup()
+		end,
+	},
+
+	{
+		"pmizio/typescript-tools.nvim",
+		lazy = true,
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+		config = function ()
+			require("lsp.lsp_ts").config()
 		end,
 	},
 
