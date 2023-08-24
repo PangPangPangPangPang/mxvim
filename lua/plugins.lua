@@ -170,7 +170,7 @@ require("lazy").setup({
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
-		config = function ()
+		config = function()
 			require("lsp.lsp_ts").config()
 		end,
 	},
@@ -341,9 +341,34 @@ require("lazy").setup({
 	},
 
 	{
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			local actions = require "fzf-lua.actions"
+			require('fzf-lua').setup {
+				actions = {
+					files = {
+						["enter"]  = actions.file_edit,
+						["ctrl-s"] = actions.file_split,
+						["ctrl-v"] = actions.file_vsplit,
+						["ctrl-t"] = actions.file_tabedit,
+						["alt-q"]  = actions.file_sel_to_qf,
+						["alt-l"]  = actions.file_sel_to_ll,
+					}
+				}
+			}
+			local lmap = require("utils").map
+			lmap("n", "<c-p>", ":lua require('fzf-lua').files()<cr>", { silent = true })
+		end
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{
+				'nvim-telescope/telescope-fzf-native.nvim',
+				build =
+				'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+			}
 		},
 		keys = {
 			{ "<c-p>",     "<cmd>Telescope find_files<cr>" },
