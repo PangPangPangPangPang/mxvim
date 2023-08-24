@@ -40,6 +40,7 @@ M.config = function()
                     ["<c-l>"] = actions.send_to_qflist + actions.open_qflist,
                 },
             },
+			dynamic_preview_title = true,
             prompt_prefix = "   ",
             selection_caret = " ▶ ",
             entry_prefix = "  ",
