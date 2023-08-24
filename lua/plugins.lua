@@ -355,6 +355,9 @@ require("lazy").setup({
 						["alt-q"]  = actions.file_sel_to_qf,
 						["alt-l"]  = actions.file_sel_to_ll,
 					}
+				},
+				files = {
+					prompt = 'Files: ',
 				}
 			}
 			local lmap = require("utils").map
