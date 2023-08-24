@@ -1,7 +1,7 @@
 local M = {}
 M.config = function()
 	require("mason").setup()
-	require("lsp.lsp_ts").register()
+	-- require("lsp.lsp_ts").register()
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"rust_analyzer",
@@ -9,6 +9,7 @@ M.config = function()
 			"cssls",
 			"html",
 			"bashls",
+			"tsserver",
 		},
 	})
 	require("mason-lspconfig").setup_handlers({

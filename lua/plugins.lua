@@ -165,6 +165,7 @@ require("lazy").setup({
 
 	{
 		"pmizio/typescript-tools.nvim",
+		enabled = false,
 		lazy = true,
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
