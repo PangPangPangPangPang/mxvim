@@ -23,11 +23,13 @@ M.config = function()
 			}
 		},
 		files = {
-			prompt = "   ",
+			prompt = "  ",
 			file_icons = true,
 			cwd_prompt = false,
 			fzf_opts = {
 				['--info'] = 'inline',
+				['--separator'] = " ",
+				['--no-scrollbar'] = ""
 			},
 		},
 		winopts = {
@@ -44,6 +46,5 @@ M.config = function()
 	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
 	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
 	local lmap = require("utils").map
-	lmap("n", "<c-p>", ":lua require('fzf-lua').files()<cr>", { silent = true })
 end
 return M
