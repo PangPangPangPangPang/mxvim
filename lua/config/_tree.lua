@@ -90,6 +90,7 @@ M.config = function()
             },
         },
         view = {
+			adaptive_size = true,
             side = "left",
             preserve_window_proportions = false,
             number = false,

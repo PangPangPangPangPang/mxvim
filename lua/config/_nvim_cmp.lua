@@ -13,7 +13,7 @@ M.config = function()
 			priority_weight = 1.0,
 			comparators = {
 				cmp.config.compare.locality,
-				cmp.config.compare.rencently_used,
+				-- cmp.config.compare.rencently_used,
 				cmp.config.compare.score,
 				cmp.config.compare.offset,
 				cmp.config.compare.order,
