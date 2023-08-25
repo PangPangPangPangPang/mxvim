@@ -4,6 +4,7 @@ local cmd = vim.cmd
 
 M.config = function()
     M.custom_handlers()
+    M.set_keymap()
 end
 M.set_signature = function(bufnr)
     local safe_require = require("utils").safe_require
@@ -12,47 +13,67 @@ M.set_signature = function(bufnr)
     end)
 end
 
-M.set_keymap = function(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+M.set_keymap = function()
+    vim.api.nvim_create_autocmd("LspAttach", {
+        desc = "General LSP Attach",
+        callback = function(args)
+            local bufnr = args.buf
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            local function buf_set_option(...)
+                vim.api.nvim_buf_set_option(bufnr, ...)
+            end
 
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+            M.set_diagnostic(client)
 
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-    -- Mappings.
-    local opts = { noremap = false, silent = true }
+            buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    local map = require("utils").map
+            -- Setup keymaps
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover" })
+            vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help,
+                { buffer = bufnr, desc = "LSP: Signature help" })
+            vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { buffer = bufnr, desc = "Diagnostic" })
+            vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { buffer = bufnr, desc = "Diagnostic" })
 
-    if not mxvim.enable_lspsage then
-        map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-        map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-        map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-        buf_set_keymap("n", "<space>cn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-        buf_set_keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({enable_popup=false})<CR>", opts)
-        buf_set_keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({enable_popup=false})<CR>", opts)
-        buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-        buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-        buf_set_keymap("n", "J", "<Cmd>lua require('config._lsp_config').show_cursor_diagnostic()<CR>", opts)
-    end
+            vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
+            vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
+            vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
+            vim.keymap.set("n", "gr", function()
+                vim.lsp.buf.references { include_declaration = false }
+            end, { buffer = bufnr, desc = "References" })
 
-    map("n", "<c-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-    buf_set_keymap("n", "<space>cq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+            vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+            vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
+            vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
 
-    -- buf_set_keymap("n", "<space>cd", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", opts)
+            vim.keymap.set("n", "<leader>cp", function()
+                vim.lsp.buf.format { async = true }
+            end, { buffer = bufnr, desc = "Format document" })
 
-    -- Set some keybinds conditional on server capabilities
-    buf_set_keymap("n", "<space>cp", "<cmd>lua vim.lsp.buf.format({async=true})<CR>", opts)
-    buf_set_keymap("v", "<space>cp", ":'<,'>lua vim.lsp.buf.range_formatting()<CR>", opts)
-
+            vim.keymap.set(
+                "n",
+                "<leader>wa",
+                vim.lsp.buf.add_workspace_folder,
+                { buffer = bufnr, desc = "Add workspace folder" }
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>wr",
+                vim.lsp.buf.remove_workspace_folder,
+                { buffer = bufnr, desc = "Remove workspace folder" }
+            )
+            vim.keymap.set("n", "<leader>wl", function()
+                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end, { buffer = bufnr, desc = "List workspace folders" })
+            if vim.fn.has("nvim-1.0") == 1 then
+                if client and client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint(bufnr, true)
+                end
+            end
+        end,
+    })
+end
+M.set_diagnostic = function(client)
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.documentHighlightProvider then
         local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"
@@ -88,7 +109,7 @@ M.set_keymap = function(client, bufnr)
         highlight! link LspReferenceText LspReference
         highlight! link LspReferenceRead LspReference
         highlight! link LspReferenceWrite LspReference
-        ]]   ,
+        ]],
             colors.bg,
             colors.red,
             colors.blue,
@@ -105,7 +126,6 @@ end
 
 M.on_attach = function(client, bufnr)
     M.set_signature(bufnr)
-    M.set_keymap(client, bufnr)
 end
 
 M.make_config = function()
