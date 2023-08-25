@@ -4,21 +4,14 @@ M.config = function()
 	require('fzf-lua').setup {
 		"default",
 		fzf_colors = {
-			-- ["fg"]      = { "fg", "CursorLine" },
-			-- ["bg"]      = { "bg", "Normal" },
-			-- ["hl"]      = { "fg", "Comment" },
 			["fg+"]     = { "fg", "Normal" },
 			["bg+"]     = { "bg", "CursorLine" },
-			-- ["hl+"]     = { "fg", "Statement" },
-			["info"]    = { "fg", "PreProc" },
-			-- ["prompt"]  = { "fg", "Conditional" },
+			["info"]    = { "fg", "Float" },
 			["pointer"] = { "fg", "ErrorMsg" },
-			-- ["marker"]  = { "fg", "Keyword" },
 			["spinner"] = { "fg", "ErrorMsg" },
-			-- ["header"]  = { "fg", "Comment" },
+			["header"]  = { "fg", "Comment" },
 			["gutter"]  = { "bg", "Normal" },
 		},
-
 		actions = {
 			files = {
 				["enter"]  = actions.file_edit,
@@ -33,6 +26,9 @@ M.config = function()
 			prompt = "   ",
 			file_icons = true,
 			cwd_prompt = false,
+			fzf_opts = {
+				['--info'] = 'inline',
+			},
 		},
 		winopts = {
 			preview = {
@@ -44,7 +40,6 @@ M.config = function()
 				prompt = "asd"
 			}
 		}
-
 	}
 	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
 	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
