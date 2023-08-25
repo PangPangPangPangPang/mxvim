@@ -184,7 +184,6 @@ require("lazy").setup({
 			{ "nvim-lua/lsp-status.nvim", lazy = true },
 			{
 				"neovim/nvim-lspconfig",
-				lazy = true,
 				config = function()
 					require("config._lsp_config").config()
 				end,
