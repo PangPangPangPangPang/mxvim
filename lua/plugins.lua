@@ -385,7 +385,7 @@ require("lazy").setup({
 			}
 		},
 		keys = {
-			{ "<c-p>",     "<cmd>Telescope find_files<cr>" },
+			-- { "<c-p>",     "<cmd>Telescope find_files<cr>" },
 			{ "<leader>f", "<cmd>Telescope live_grep<cr>", { "n" } },
 		},
 		config = function()
