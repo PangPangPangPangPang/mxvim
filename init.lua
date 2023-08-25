@@ -16,4 +16,5 @@ mxvim.enable_treesitter = false
 mxvim.enable_neotree = false
 
 require("basic")
+require("map")
 require("plugins")

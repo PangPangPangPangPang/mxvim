@@ -3,7 +3,6 @@ local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
-local dmap = require("utils").dmap
 
 o.background = mxvim.background
 g.editorconfig = true
@@ -27,6 +26,8 @@ if fn.has("nvim-0.5") then
 	o.jumpoptions = "stack"
 end
 
+o.laststatus = 2
+--
 o.cursorline = true
 
 -- Time for swap fill will be written to disk.
@@ -163,16 +164,6 @@ o.splitbelow = true
 o.switchbuf = "useopen,usetab"
 o.showtabline = 1
 
-dmap({ "n", "v" }, "<leader>q", ':lua require("utils").close_common()<cr>')
-------------------------------
--- => Status line
-------------------------------
--- Always show the status line
-o.laststatus = 2
--- Whole format
-dmap({ "n" }, "<leader>==", "mzG=gg`z")
--- Copy to system clipboard
-dmap({ "v" }, "Y", '"+y')
 
 -- replace current word
 require("utils").map({ "v" }, "<leader>r", '"hy:%s/<C-r>h//g<left><left>', { noremap = true })
