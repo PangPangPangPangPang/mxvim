@@ -23,12 +23,12 @@ M.config = function()
 			}
 		},
 		files = {
-			prompt = "  ",
+			prompt = "   ",
 			file_icons = true,
 			cwd_prompt = false,
 			fzf_opts = {
-				['--info'] = 'inline',
-				['--separator'] = " ",
+				['--info'] = 'default', -- inline
+				-- ['--separator'] = " ",
 				['--no-scrollbar'] = ""
 			},
 		},

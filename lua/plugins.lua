@@ -1,8 +1,9 @@
 local g = vim.g
+local fn = vim.fn
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
+	fn.system({
 		"git",
 		"clone",
 		"--filter=blob:none",
@@ -355,7 +356,7 @@ require("lazy").setup({
 		"ibhagwan/fzf-lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<c-p>",     "<cmd>lua require('fzf-lua').files()<cr>" },
+			{ "<c-p>", "<cmd>lua require('fzf-lua').files()<cr>" },
 		},
 		config = function()
 			require("config._fzf").config()
@@ -368,7 +369,8 @@ require("lazy").setup({
 				'nvim-telescope/telescope-fzf-native.nvim',
 				build =
 				'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-			}
+			},
+			'nvim-telescope/telescope-ui-select.nvim'
 		},
 		keys = {
 			-- { "<c-p>",     "<cmd>Telescope find_files<cr>" },
@@ -548,7 +550,6 @@ require("lazy").setup({
 		enabled = false,
 		lazy = true,
 	},
-
 	{
 		"simnalamburt/vim-mundo",
 		cmd = { "MundoToggle" },
@@ -556,7 +557,27 @@ require("lazy").setup({
 			{ "<F7>", "<cmd>MundoToggle<cr>", mode = "n" },
 		},
 	},
-
+	{
+		'goolord/alpha-nvim',
+		enabled = fn.exists("g:neovide") == 1,
+		dependencies = {
+			'nvim-tree/nvim-web-devicons',
+			"Shatur/neovim-session-manager"
+		},
+		config = function()
+			require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+		end
+	},
+	{
+		"Shatur/neovim-session-manager",
+		cmd = { "SessionManager" },
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		keys = {
+			{ "<leader>s", "<cmd>SessionManager load_session<cr>", mode = "n" },
+		},
+	},
 	-- html
 	{
 		"mattn/emmet-vim",
