@@ -1,26 +1,51 @@
-local M = {}
-local lsp_config = require("config._lsp_config")
-M.modify = function(config)
-	config.on_attach = function(client, bufnr)
-		lsp_config.set_keymap(client, bufnr)
-		lsp_config.set_signature(bufnr)
-	end
-end
+return {
+	"pmizio/typescript-tools.nvim",
+	event = {
+		"BufRead *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx",
+		"BufNewFile *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx",
+	},
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"neovim/nvim-lspconfig",
+	},
+	opts = {
+		on_attach = function(client, bufnr)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
 
-M.register = function()
-	local mason_registry = require('mason-registry')
-	local tsserver_path = mason_registry.get_package('typescript-language-server'):get_install_path()
-	require("typescript-tools").setup({
+			vim.keymap.set("n", "gD", "<Cmd>TSToolsGoToSourceDefinition<CR>",
+				{ buffer = bufnr, desc = "Source Definition" })
+
+			vim.keymap.set(
+				"n",
+				"<localleader>i",
+				"<Cmd>TSToolsAddMissingImports<CR>",
+				{ buffer = bufnr, desc = "Add missing imports" }
+			)
+			vim.keymap.set(
+				"n",
+				"<localleader>o",
+				"<Cmd>TSToolsOrganizeImports<CR>",
+				{ buffer = bufnr, desc = "Organize imports" }
+			)
+			vim.keymap.set(
+				"n",
+				"<localleader>r",
+				"<Cmd>TSToolsRemoveUnused<CR>",
+				{ buffer = bufnr, desc = "Remove unused variables" }
+			)
+			vim.keymap.set("n", "<localleader>f", "<Cmd>TSToolsFixAll<CR>", { buffer = bufnr, desc = "Fix all" })
+		end,
 		settings = {
-			tsserver_path = tsserver_path .. '/node_modules/typescript/lib/tsserver.js',
-		}
-	})
-end
-
-M.config = function()
-	local config = lsp_config.make_config()
-	require("typescript-tools").setup {
-		on_attach = require("config._lsp_config").on_attach
-	}
-end
-return M
+			tsserver_file_preferences = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
+}

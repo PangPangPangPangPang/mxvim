@@ -1,11 +1,26 @@
 local M = {}
-M.modify = function(config)
+M.setup = function()
 	local runtime_path = vim.split(package.path, ";")
 	table.insert(runtime_path, "lua/?.lua")
 	table.insert(runtime_path, "lua/?/init.lua")
 	-- Configure lua language server for neovim development
+	local lsp_config = require('config._lsp_config');
+	local config = lsp_config.make_config()
 	local lua_settings = {
 		Lua = {
+			hint = {
+				enable = true,
+				setType = true,
+			},
+			codelens = {
+				enable = true,
+			},
+			completion = {
+				callSnippet = "Replace",
+				postfix = ".",
+				showWord = "Disable",
+				workspaceWord = false,
+			},
 			runtime = {
 				-- LuaJIT in the case of Neovim
 				version = "LuaJIT",
@@ -27,6 +42,7 @@ M.modify = function(config)
 			},
 		},
 	}
-    config.settings = lua_settings
+	config.settings = lua_settings
+	require("lspconfig").lua_ls.setup(config)
 end
 return M

@@ -8,6 +8,9 @@ return {
 			{ "nvim-lua/lsp-status.nvim", lazy = true },
 			{
 				"neovim/nvim-lspconfig",
+				opts = {
+					inlay_hints = { enabled = true },
+				},
 				config = function()
 					require("config._lsp_config").config()
 				end,
@@ -109,17 +112,18 @@ return {
 		enabled = false,
 		-- cmd = { "SymbolsOutline" },
 	},
-	{
-		"pmizio/typescript-tools.nvim",
-		enabled = false,
-		lazy = true,
-		event = "VeryLazy",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-		config = function()
-			require("lsp.lsp_ts").config()
-		end,
-	},
+	require("lsp.lsp_ts"),
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	enabled = false,
+	-- 	lazy = true,
+	-- 	event = "VeryLazy",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		require("lsp.lsp_ts").config()
+	-- 	end,
+	-- },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		enabled = false,
