@@ -17,4 +17,4 @@ mxvim.enable_neotree = false
 
 require("basic")
 require("map")
-require("plugins")
+require("utils").load_plugins()

@@ -78,13 +78,13 @@ end
 function M.toggleDiffView()
 	local t = vim.fn.getbufinfo()
 	for _, i in pairs(t) do
-        local filetype = vim.fn.getbufvar(i.bufnr, "&filetype")
-        if "DiffviewFiles" == filetype then
-            vim.cmd([[ DiffviewClose ]])
-            return
-        end
+		local filetype = vim.fn.getbufvar(i.bufnr, "&filetype")
+		if "DiffviewFiles" == filetype then
+			vim.cmd([[ DiffviewClose ]])
+			return
+		end
 	end
-    vim.cmd [[ DiffviewOpen ]]
+	vim.cmd [[ DiffviewOpen ]]
 end
 
 M.dump = function(o)
@@ -123,9 +123,9 @@ M.hook_print = function()
 end
 
 M.print = function(msg)
-    if msg == nil then
-        return
-    end
+	if msg == nil then
+		return
+	end
 	local mess = msg
 	if type(msg) == "table" then
 		mess = vim.fn.json_encode(vim.inspect(msg))
@@ -189,6 +189,24 @@ M.Set = function(list)
 		set[l] = true
 	end
 	return set
+end
+
+M.load_plugins = function()
+	local fn = vim.fn
+	local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
+	if not vim.loop.fs_stat(lazypath) then
+		fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable", -- latest stable release
+			lazypath,
+		})
+	end
+	vim.opt.rtp:prepend(lazypath)
+	vim.cmd([[ com! PS lua require('lazy').sync() ]])
+	require("lazy").setup("plugins")
 end
 
 return M
