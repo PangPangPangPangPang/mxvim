@@ -159,16 +159,14 @@ end
 
 M.custom_handlers = function()
 	local sign = function(opts)
-		vim.fn.sign_define(opts.name, {
-			texthl = opts.name,
-			text = "",
-			numhl = opts.name,
-		})
+		vim.fn.sign_define(opts.name, { texthl = opts.name, text = opts.icon, numhl = "" })
+		-- vim.fn.sign_define(opts.name, { text = opts.icon, texthl = opts.name, numhl = "" })
+		-- sfdsasdf
 	end
-	sign({ name = "DiagnosticSignError", text = " " })
-	sign({ name = "DiagnosticSignWarn", text = " " })
-	sign({ name = "DiagnosticSignHint", text = " " })
-	sign({ name = "DiagnosticSignInfo", text = " " })
+	sign({ name = "DiagnosticSignError", icon = " " })
+	sign({ name = "DiagnosticSignWarn", icon = " " })
+	sign({ name = "DiagnosticSignHint", icon = " " })
+	sign({ name = "DiagnosticSignInfo", icon = " " })
 
 	local safe_require = require("utils").safe_require
 	safe_require("lsputil.locations", function(locations)

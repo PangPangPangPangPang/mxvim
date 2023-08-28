@@ -66,7 +66,6 @@ return {
 				mode = { "n", "x", "o" },
 				function()
 					require("config._flash").jump()
-					-- require("flash").jump()
 				end,
 				desc = "Flash",
 			},

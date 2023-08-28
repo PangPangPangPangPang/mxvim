@@ -108,6 +108,7 @@ return {
 	},
 	{
 		"PangPangPangPangPang/prettier-number-line.nvim",
+		enabled = not mxvim.enable_statuscol,
 		lazy = true,
 		event = "VimEnter",
 		config = function()
@@ -128,4 +129,28 @@ return {
 			require("config._incline").config()
 		end,
 	},
+	{
+		"luukvbaal/statuscol.nvim",
+		enabled = mxvim.enable_statuscol,
+		config = function()
+			vim.cmd([[hi! LineNr guifg=bg]])
+			local statuscol = require "statuscol"
+			local builtin = require "statuscol.builtin"
+			statuscol.setup {
+				bt_ignore = { "nofile", "terminal" },
+				segments = {
+					{
+						text = { builtin.lnumfunc },
+						-- sign = { name = { "Diagnostic" } },
+					},
+					{
+						sign = { name = { "GitSigns" }, colwidth = 1, wrap = true },
+						fillchar = "%#LineNr#%=│",
+						click = "v:lua.ScSa",
+					},
+					-- { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+				},
+			}
+		end,
+	}
 }
