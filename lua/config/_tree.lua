@@ -60,6 +60,9 @@ M.config = function()
             indent_markers = {
                 enable = false,
             },
+			icons = {
+				padding = "  "
+			}
         },
         update_focused_file = {
             enable = true,
