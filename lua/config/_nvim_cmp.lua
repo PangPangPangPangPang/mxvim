@@ -27,16 +27,8 @@ M.config = function()
 		experimental = {
 			ghost_text = { hl_group = "Comment" },
 		},
-		-- preselect = cmp.PreselectMode.None,
-		-- You can set mapping if you want.
 		window = {
-			-- completion = {
-			-- 	winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-			-- 	col_offset = -3,
-			-- 	side_padding = 0,
-			-- },
 			completion = cmp.config.window.bordered({
-				-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
 				col_offset = -4,
 				side_padding = 1,
@@ -56,9 +48,7 @@ M.config = function()
 					entry,
 					vim_item
 				)
-				-- local strings = vim.split(kind.kind, "%s", { trimempty = true })
 				kind.kind = kind.kind .. " "
-				-- kind.menu = "    (" .. strings[2] .. ")"
 				return kind
 			end,
 		},
@@ -120,9 +110,6 @@ M.config = function()
 		sources = cmp.config.sources({
 			{ name = "vsnip",                   priority = 8 },
 			{ name = "nvim_lsp",                priority = 8 },
-			-- { name = "tags" },
-			-- { name = "nvim_lua",                priority = 5 },
-			-- { name = "buffer" },
 			{ name = "path",                    priority = 4 },
 			{ name = "nvim_lsp_signature_help", priority = 5 },
 		}, {
