@@ -45,6 +45,5 @@ M.config = function()
 	}
 	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
 	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
-	local lmap = require("utils").map
 end
 return M

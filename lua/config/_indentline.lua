@@ -34,7 +34,7 @@ M.setup = function ()
         char = '▏',
         context_char = '▏',
         buftype_exclude = {'tex', 'markdown', 'txt', 'startify', 'packer', 'terminal'},
-        filetype_exclude = {'NvimTree', 'TelescopePrompt', 'mason', 'noice'},
+        filetype_exclude = {'NvimTree', 'TelescopePrompt', 'mason', 'noice', "alpha"},
         show_end_of_line = true,
         char_highlight_list = {
             "IndentBlanklineIndent1",

@@ -131,6 +131,8 @@ return {
 	},
 	{
 		"luukvbaal/statuscol.nvim",
+		lazy = true,
+		event = "VimEnter",
 		enabled = mxvim.enable_statuscol,
 		config = function()
 			vim.cmd([[hi! LineNr guifg=bg]])
