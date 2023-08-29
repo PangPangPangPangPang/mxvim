@@ -113,17 +113,6 @@ return {
 		-- cmd = { "SymbolsOutline" },
 	},
 	require("lsp.lsp_ts"),
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- 	enabled = false,
-	-- 	lazy = true,
-	-- 	event = "VeryLazy",
-	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	-- 	opts = {},
-	-- 	config = function()
-	-- 		require("lsp.lsp_ts").config()
-	-- 	end,
-	-- },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		enabled = false,
