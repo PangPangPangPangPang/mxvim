@@ -164,7 +164,6 @@ o.splitbelow = true
 o.switchbuf = "useopen,usetab"
 o.showtabline = 1
 
-
 -- replace current word
 require("utils").map({ "v" }, "<leader>r", '"hy:%s/<C-r>h//g<left><left>', { noremap = true })
 

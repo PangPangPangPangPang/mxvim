@@ -59,7 +59,20 @@ return {
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			continue = false,
+			modes = {
+				search = {
+					enabled = false
+				},
+				char = {
+					multi_line = true,
+					jump_labels = true,
+					keys = { "f", "F", "t", "T", ";", ","},
+					highlight = { backdrop = false },
+				}
+			}
+		},
 		keys = {
 			{
 				"cl",

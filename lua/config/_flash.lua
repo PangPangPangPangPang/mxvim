@@ -21,8 +21,7 @@ M.jump = function()
 				enabled = true,
 				shade = 5,
 			}
-
-		}
+		},
 	})
 end
 return M

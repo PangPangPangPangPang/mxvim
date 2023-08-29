@@ -209,4 +209,8 @@ M.load_plugins = function()
 	require("lazy").setup("plugins")
 end
 
+M.is_alacritty = function ()
+	return os.getenv("TERM") == "alacritty"
+end
+
 return M
