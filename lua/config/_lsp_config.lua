@@ -159,9 +159,11 @@ end
 
 M.custom_handlers = function()
 	local sign = function(opts)
-		vim.fn.sign_define(opts.name, { texthl = opts.name, text = opts.icon, numhl = "" })
-		-- vim.fn.sign_define(opts.name, { text = opts.icon, texthl = opts.name, numhl = "" })
-		-- sfdsasdf
+		vim.fn.sign_define(opts.name, {
+			texthl = opts.name,
+			text = "",
+			numhl = opts.name,
+		})
 	end
 	sign({ name = "DiagnosticSignError", icon = " " })
 	sign({ name = "DiagnosticSignWarn", icon = " " })

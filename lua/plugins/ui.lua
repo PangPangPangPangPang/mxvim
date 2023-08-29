@@ -143,14 +143,12 @@ return {
 				segments = {
 					{
 						text = { builtin.lnumfunc },
-						-- sign = { name = { "Diagnostic" } },
 					},
 					{
 						sign = { name = { "GitSigns" }, colwidth = 1, wrap = true },
 						fillchar = "%#LineNr#%=│",
 						click = "v:lua.ScSa",
 					},
-					-- { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
 				},
 			}
 		end,
