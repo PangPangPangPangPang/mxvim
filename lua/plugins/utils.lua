@@ -22,13 +22,13 @@ return {
 		end,
 	},
 	{
-		"szw/vim-maximizer",
-		cmd = { "MaximizerToggle" },
-		init = function()
-			local lmap = require("utils").map
-			lmap("n", "<c-w>z", ":MaximizerToggle<CR>", { silent = true })
-			lmap("v", "<c-w>z", ":MaximizerToggle<CR>gv", { silent = true })
-		end,
+		"0x00-ketsu/maximizer.nvim",
+		keys = {
+			{ "<c-w>z", "<cmd>lua require('maximizer').toggle()<CR>", mode = "n" }
+		},
+		config = function()
+			require("maximizer").setup {}
+		end
 	},
 	{ "tpope/vim-dadbod", cmd = { "DB" } },
 	{
