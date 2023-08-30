@@ -2,7 +2,7 @@ local M = {}
 M.theme = function(name, nick)
 	local ret = {
 		name,
-		lazy = mxvim.current_theme ~= nick,
+		enabled = mxvim.current_theme == nick,
 		config = function()
 			require("colorscheme." .. mxvim.current_theme).config()
 			require("config._tree").theme()

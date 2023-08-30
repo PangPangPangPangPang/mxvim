@@ -1,5 +1,6 @@
 return {
 	require("theme").theme("Mofiqul/vscode.nvim", "vscode"),
+	require("theme").theme("folke/tokyonight.nvim", "tokyonight"),
 	require("theme").theme("projekt0n/github-nvim-theme", "github-theme"),
 	require("theme").theme("bluz71/vim-nightfly-guicolors", "nightfly"),
 	require("theme").theme("PangPangPangPangPang/miramare", "miramare"),
