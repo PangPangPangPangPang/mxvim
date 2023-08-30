@@ -111,7 +111,6 @@ M.config = function()
 			{ name = "vsnip",                   priority = 8 },
 			{ name = "nvim_lsp",                priority = 8 },
 			{ name = "path",                    priority = 4 },
-			{ name = "nvim_lsp_signature_help", priority = 5 },
 		}, {
 			{ name = 'buffer', priority = 7 },
 		}),
