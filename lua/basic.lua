@@ -3,6 +3,7 @@ local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
+local dmap = require("utils").dmap
 
 o.background = mxvim.background
 g.editorconfig = true
@@ -277,12 +278,23 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
+	-- for paste
+	dmap({ "n", "v" }, "<c-v>", '"+p')
+	dmap({ "n", "v" }, "<c-c>", '"+y')
+	dmap({ "c", "i" }, "<c-v>", '<c-r>+')
+	dmap({ "i" }, "<c-r>", '<c-v>')
+	dmap({ "n", "v" }, "<D-v>", '"+p')
+	dmap({ "n", "v" }, "<D-c>", '"+y')
+	dmap({ "c", "i" }, "<D-v>", '<c-r>+')
+	dmap({ "i" }, "<D-r>", '<D-v>')
+
 	g.neovide_cursor_trail_size = 0.1
 	g.neovide_fullscreen = true
 	g.neovide_cursor_vfx_mode = "sonicboom"
 	g.neovide_floating_opacity = 1
 	if require("utils").system() == "Linux" then
 		o.guifont = "Iosevka Nerd Font:h10"
+
 		o.guifont = "MaxIosevka Nerd Font:h10"
 	else
 		-- o.guifont = "MaxIosevka Nerd Font:h16"
