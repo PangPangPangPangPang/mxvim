@@ -11,9 +11,9 @@ return {
 		"sindrets/diffview.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		cmd = { "DiffviewOpen", "DiffviewClose" },
-		keys = {
-			{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
-		},
+		-- keys = {
+		-- 	{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
+		-- },
 		config = function()
 			require("config._diffview").config()
 		end,
@@ -21,8 +21,10 @@ return {
 
 	{
 		"tpope/vim-fugitive",
-		lazy = true,
-		event = "VeryLazy",
+		-- lazy = true,
+		cmd = { "Git" },
+		-- enabled = false,
+		-- event = "VeryLazy",
 	},
 	{
 		"rhysd/git-messenger.vim",
@@ -34,8 +36,32 @@ return {
 			"nvim-lua/plenary.nvim", -- required
 			"nvim-telescope/telescope.nvim", -- optional
 			"sindrets/diffview.nvim", -- optional
-			"ibhagwan/fzf-lua",      -- optional
+			"ibhagwan/fzf-lua",     -- optional
 		},
-		config = true
+		keys = {
+			{ "<F3>", '<cmd>Neogit<cr>', mode = "n" },
+		},
+		setup = {
+			vim.cmd([[ com! G lua require("neogit").open({ kind = "vsplit" })]])
+		},
+		config = function()
+			local neogit = require("neogit")
+			neogit.setup({
+				signs = {
+					-- { CLOSED, OPENED }
+					hunk = { "", "" },
+					item = { "", "" },
+					section = { "󰨙", "󰔡" },
+				},
+				mappings = {
+					status = {
+						["o"] = "Toggle",
+						["a"] = "Stage",
+						["="] = "Toggle",
+
+					}
+				}
+			})
+		end
 	}
 }
