@@ -23,8 +23,8 @@ return {
 		"ZSaberLv0/ZFVimIM",
 		lazy = true,
 		keys = {
-			{ "<M-i>", "<cmd>lua toggle_zfvimim()<cr>",  mode = "n" },
-			{ "<M-i>", "<c-o>:lua toggle_zfvimim()<cr>", mode = "i" },
+			{ "<c-x>", "<cmd>lua toggle_zfvimim()<cr>",  mode = "n" },
+			{ "<c-x>", "<c-o>:lua toggle_zfvimim()<cr>", mode = "i" },
 		},
 		dependencies = {
 			"ZSaberLv0/ZFVimJob",

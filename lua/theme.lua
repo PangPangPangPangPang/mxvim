@@ -114,6 +114,9 @@ M.shade = function(color, percent)
 end
 
 M.shade_all = function(color, percent)
+	if color == nil then
+		return
+	end
 	if mxvim.background == "dark" then
 		local shade_color = '#000000'
 		local bg_r = tonumber(string.sub(shade_color, 2, 3), 16)
@@ -127,9 +130,7 @@ M.shade_all = function(color, percent)
 		local b = string.format("%02x", cur_b - (cur_b - bg_b) * percent)
 		return string.format("#%s%s%s", r, g, b)
 	else
-		-- local colors = require("colorscheme." .. mxvim.current_theme).colors()
 		local shade_color = '#FFFFFF'
-		-- local shade_color = colors.light_bg
 		local bg_r = tonumber(string.sub(shade_color, 2, 3), 16)
 		local bg_g = tonumber(string.sub(shade_color, 4, 5), 16)
 		local bg_b = tonumber(string.sub(shade_color, 6, 7), 16)
