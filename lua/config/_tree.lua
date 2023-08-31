@@ -61,8 +61,14 @@ M.config = function()
 				enable = false,
 			},
 			icons = {
-				padding = require("utils").is_alacritty() == true and " " or "  "
-			}
+				padding = require("utils").is_alacritty() == true and " " or "  ",
+				glyphs = {
+					folder = {
+						arrow_closed = "",
+						arrow_open = "",
+					}
+				}
+			},
 		},
 		update_focused_file = {
 			enable = true,
