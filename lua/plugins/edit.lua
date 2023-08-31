@@ -68,7 +68,7 @@ return {
 				char = {
 					multi_line = true,
 					jump_labels = true,
-					keys = { "f", "F", "t", "T", ";", ","},
+					keys = { "f", "F", "t", "T", ";", "," },
 					highlight = { backdrop = false },
 				}
 			}
@@ -105,13 +105,7 @@ return {
 		enabled = false,
 		lazy = true,
 	},
-	{
-		"simnalamburt/vim-mundo",
-		cmd = { "MundoToggle" },
-		keys = {
-			{ "<F7>", "<cmd>MundoToggle<cr>", mode = "n" },
-		},
-	},
+
 	{
 		"iamcco/markdown-preview.nvim",
 		build = "cd app && yarn install",
