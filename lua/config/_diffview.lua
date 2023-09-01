@@ -137,7 +137,9 @@ M.config = function()
 				["P"]            = function()
 					vim.cmd('Neogit push')
 				end,
-				["q"]     = actions.close,
+				["q"]     = function()
+					vim.cmd('tabc')
+				end
 			},
 			file_history_panel = {
 				["g!"]            = actions.options,          -- Open the option panel
