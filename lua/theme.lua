@@ -65,6 +65,11 @@ M.theme = function(name, nick)
             " hi! StatusLineNC guibg=none
             " hi! StatusLine guibg=none
             ]])
+			local shade_default_colors = require('theme').shade_colors_default()
+			vim.cmd(string.format("hi! DiffViewDiffAdd guibg=%s guifg=none", shade_default_colors.green))
+			vim.cmd(string.format("hi! DiffViewDiffDelete guibg=%s guifg=none", shade_default_colors.red))
+			vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
+			vim.cmd(string.format("hi! DiffChange guibg=%s guifg=none", shade_default_colors.green))
 		end,
 	}
 	if nick ~= nil then
@@ -83,7 +88,6 @@ M.extract_nvim_hl = function(name)
 	}
 end
 
--- color: #FFFFFF
 -- percent >= 0 && percent < 1
 M.shade = function(color, percent)
 	if mxvim.background == "dark" then

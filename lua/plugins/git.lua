@@ -9,7 +9,10 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"NeogitOrg/neogit",
+		},
 		cmd = { "DiffviewOpen", "DiffviewClose" },
 		-- keys = {
 		-- 	{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
@@ -47,6 +50,9 @@ return {
 		config = function()
 			local neogit = require("neogit")
 			neogit.setup({
+				integrations = {
+					diffview = true
+				},
 				signs = {
 					-- { CLOSED, OPENED }
 					hunk = { "", "" },
