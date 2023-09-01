@@ -15,7 +15,7 @@ return {
 		lazy = true,
 		event = "VeryLazy",
 		config = function()
-			require("config._other").ufo_config(0)
+			require("config._other").ufo_config()
 		end
 	},
 	-- input method

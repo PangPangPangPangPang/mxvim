@@ -66,10 +66,10 @@ M.theme = function(name, nick)
             " hi! StatusLine guibg=none
             ]])
 			local shade_default_colors = require('theme').shade_colors_default()
-			vim.cmd(string.format("hi! DiffViewDiffAdd guibg=%s guifg=none", shade_default_colors.green))
-			vim.cmd(string.format("hi! DiffViewDiffDelete guibg=%s guifg=none", shade_default_colors.red))
-			vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
-			vim.cmd(string.format("hi! DiffChange guibg=%s guifg=none", shade_default_colors.green))
+			vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
+			vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
+			vim.cmd(string.format("hi! DiffViewDiffText guibg=%s guifg=none", shade_colors.green))
+			vim.cmd(string.format("hi! DiffViewDiffChange guibg=%s guifg=none", shade_default_colors.green))
 		end,
 	}
 	if nick ~= nil then

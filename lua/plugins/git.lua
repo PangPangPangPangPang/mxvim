@@ -14,9 +14,9 @@ return {
 			"NeogitOrg/neogit",
 		},
 		cmd = { "DiffviewOpen", "DiffviewClose" },
-		-- keys = {
-		-- 	{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
-		-- },
+		keys = {
+			{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
+		},
 		config = function()
 			require("config._diffview").config()
 		end,
@@ -41,9 +41,9 @@ return {
 			"sindrets/diffview.nvim", -- optional
 			"ibhagwan/fzf-lua",     -- optional
 		},
-		keys = {
-			{ "<F3>", '<cmd>Neogit<cr>', mode = "n" },
-		},
+		-- keys = {
+		-- 	{ "<F3>", '<cmd>Neogit<cr>', mode = "n" },
+		-- },
 		setup = {
 			vim.cmd([[ com! G lua require("neogit").open({ kind = "vsplit" })]])
 		},

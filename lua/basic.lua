@@ -178,7 +178,15 @@ if vim.fn.exists("+termguicolors") then
 	vim.o.termguicolors = true
 end
 
-opt.fillchars:append({ eob = " " })
+opt.fillchars:append({
+	eob = " ",
+	vert = "│",
+	diff = "╱",
+	foldclose = "",
+	foldopen = "",
+	fold = " ",
+	msgsep = "─",
+})
 
 require("utils").hook_print()
 -- if vim.fn.has('nvim-0.9') == 1 then
@@ -270,7 +278,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
 		},
 		callback = function()
 			o.filetype = "ruby"
-
 		end
 	}
 )

@@ -80,8 +80,8 @@ M.config = function()
 				["<leader>e"]  = actions.focus_files,               -- Bring focus to the file panel
 				["<leader>b"]  = actions.toggle_files,              -- Toggle the file panel.
 				["g<C-x>"]     = actions.cycle_layout,              -- Cycle through available layouts.
-				["[x"]         = actions.prev_conflict,             -- In the merge_tool: jump to the previous conflict
-				["]x"]         = actions.next_conflict,             -- In the merge_tool: jump to the next conflict
+				["[e"]         = actions.prev_conflict,             -- In the merge_tool: jump to the previous conflict
+				["]e"]         = actions.next_conflict,             -- In the merge_tool: jump to the next conflict
 				["<leader>do"] = actions.conflict_choose("ours"),   -- Choose the OURS version of a conflict
 				["<leader>dt"] = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
 				["<leader>db"] = actions.conflict_choose("base"),   -- Choose the BASE version of a conflict
@@ -129,11 +129,15 @@ M.config = function()
 				["<leader>e"]     = actions.focus_files,
 				["<leader>b"]     = actions.toggle_files,
 				["g<C-x>"]        = actions.cycle_layout,
-				["[x"]            = actions.prev_conflict,
-				["]x"]            = actions.next_conflict,
-				["cc"]            = function()
-					vim.cmd('<cmd>Neogit commit<cr>')
+				["[e"]            = actions.prev_conflict,
+				["]e"]            = actions.next_conflict,
+				["c"]            = function()
+					vim.cmd('Neogit commit')
 				end,
+				["P"]            = function()
+					vim.cmd('Neogit push')
+				end,
+				["q"]     = actions.close,
 			},
 			file_history_panel = {
 				["g!"]            = actions.options,          -- Open the option panel
