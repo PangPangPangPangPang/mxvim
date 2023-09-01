@@ -49,7 +49,7 @@ M.config = function()
 				folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
 			},
 			win_config = {           -- See ':h diffview-config-win_config'
-				position = "left",
+				position = "right",
 				width = 35,
 			},
 		},
@@ -74,17 +74,11 @@ M.config = function()
 				-- tabpage is a Diffview.
 				["<tab>"]      = actions.select_next_entry, -- Open the diff for the next file
 				["<s-tab>"]    = actions.select_prev_entry, -- Open the diff for the previous file
-				["a"]             = function ()
-					vim.cmd("Gitsigns stage_hunk")
-				end,
-				["u"]             = function ()
-					vim.cmd("Gitsigns undo_stage_hunk")
-				end,
-				["s"]             = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
+				["s"]          = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
 				["gf"]         = actions.goto_file,     -- Open the file in a new split in the previous tabpage
 				["<C-w><C-f>"] = actions.goto_file_split, -- Open the file in a new split
 				["<C-w>gf"]    = actions.goto_file_tab, -- Open the file in a new tabpage
-				["<leader>e"]  = actions.focus_files,   -- Bring focus to the file panel
+				["<cr>"]  = actions.focus_files,   -- Bring focus to the file panel
 				["<leader>b"]  = actions.toggle_files,  -- Toggle the file panel.
 				["g<C-x>"]     = actions.cycle_layout,  -- Cycle through available layouts.
 				["[e"]         = actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
@@ -94,20 +88,20 @@ M.config = function()
 				["<leader>db"] = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
 				["<leader>da"] = actions.conflict_choose("all"), -- Choose all the versions of a conflict
 				["dx"]         = actions.conflict_choose("none"), -- Delete the conflict region
-				["c"]             = function()
+				["c"]          = function()
 					vim.cmd('Neogit commit')
 				end,
-				["P"]             = function()
+				["P"]          = function()
 					vim.cmd('Neogit push')
 				end,
-				["q"]             = function()
+				["q"]          = function()
 					vim.cmd('tabc')
 				end
 			},
 			diff1 = { --[[ Mappings in single window diff layouts ]] },
 			diff2 = {
 
-				},
+			},
 			diff3 = {
 				-- Mappings in 3-way diff layouts
 				{ { "n", "x" }, "2do", actions.diffget("ours") }, -- Obtain the diff hunk from the OURS version of the file
@@ -120,32 +114,32 @@ M.config = function()
 				{ { "n", "x" }, "3do", actions.diffget("theirs") }, -- Obtain the diff hunk from the THEIRS version of the file
 			},
 			file_panel = {
-				["j"]             = actions.next_entry, -- Bring the cursor to the next file entry
-				["<down>"]        = actions.next_entry,
-				["k"]             = actions.prev_entry, -- Bring the cursor to the previous file entry.
-				["<up>"]          = actions.prev_entry,
-				["<cr>"]          = actions.select_entry, -- Open the diff for the selected entry.
-				["o"]             = actions.select_entry,
-				["<2-LeftMouse>"] = actions.select_entry,
-				["a"]             = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
-				["s"]             = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
-				["S"]             = actions.stage_all, -- Stage all entries.
-				["U"]             = actions.unstage_all, -- Unstage all entries.
-				["X"]             = actions.restore_entry, -- Restore entry to the state on the left side.
-				["x"]             = actions.restore_entry, -- Restore entry to the state on the left side.
-				["R"]             = actions.refresh_files, -- Update stats and entries in the file list.
-				["L"]             = actions.open_commit_log, -- Open the commit log panel.
-				["<c-b>"]         = actions.scroll_view(-0.25), -- Scroll the view up
-				["<c-f>"]         = actions.scroll_view(0.25), -- Scroll the view down
-				["i"]             = actions.listing_style, -- Toggle between 'list' and 'tree' views
-				["f"]             = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
-				["c"]             = function()
+				["j"]      = actions.next_entry, -- Bring the cursor to the next file entry
+				["<down>"] = actions.next_entry,
+				["k"]      = actions.prev_entry, -- Bring the cursor to the previous file entry.
+				["<up>"]   = actions.prev_entry,
+				-- ["<cr>"]          = actions.select_entry, -- Open the diff for the selected entry.
+				["o"]      = actions.select_entry,
+				["<cr>"]   = actions.focus_entry,   -- Open the entry under the cursor in a diffview
+				["a"]      = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
+				["s"]      = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
+				["S"]      = actions.stage_all,      -- Stage all entries.
+				["U"]      = actions.unstage_all,    -- Unstage all entries.
+				["X"]      = actions.restore_entry,  -- Restore entry to the state on the left side.
+				["x"]      = actions.restore_entry,  -- Restore entry to the state on the left side.
+				["R"]      = actions.refresh_files,  -- Update stats and entries in the file list.
+				["L"]      = actions.open_commit_log, -- Open the commit log panel.
+				["<c-b>"]  = actions.scroll_view(-0.25), -- Scroll the view up
+				["<c-f>"]  = actions.scroll_view(0.25), -- Scroll the view down
+				["i"]      = actions.listing_style,  -- Toggle between 'list' and 'tree' views
+				["f"]      = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
+				["c"]      = function()
 					vim.cmd('Neogit commit')
 				end,
-				["P"]             = function()
+				["P"]      = function()
 					vim.cmd('Neogit push')
 				end,
-				["q"]             = function()
+				["q"]      = function()
 					vim.cmd('tabc')
 				end
 			},
