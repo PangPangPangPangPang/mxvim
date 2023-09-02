@@ -1,11 +1,11 @@
 local dmap = require("utils").dmap
 
-dmap({ "n", "v" }, "<leader>q", ':lua require("utils").close_common()<cr>')
+dmap({ "n", "v" }, "<leader>q", ':lua require("utils").close_common()<cr>', "Close common buffer")
 ------------------------------
 -- => Status line
 ------------------------------
 -- Always show the status line
-dmap({ "n" }, "<leader>==", "mzG=gg`z")
+dmap({ "n" }, "<leader>=", "mzG=gg`z", "Format all")
 -- Copy to system clipboard
 dmap({ "v" }, "Y", '"+y')
 

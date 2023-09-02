@@ -21,12 +21,12 @@ function M.map(modes, lhs, rhs, opts)
 		modes = { modes }
 	end
 	for _, mode in ipairs(modes) do
-		vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+		vim.keymap.set(mode, lhs, rhs, opts)
 	end
 end
 
-function M.dmap(modes, lhs, rhs)
-	local opts = { noremap = true, silent = true }
+function M.dmap(modes, lhs, rhs, desc)
+	local opts = { noremap = true, silent = true, desc = desc }
 	M.map(modes, lhs, rhs, opts)
 end
 

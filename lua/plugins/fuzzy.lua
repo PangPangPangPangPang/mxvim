@@ -31,8 +31,8 @@ return {
 		},
 		keys = {
 			-- { "<c-p>",     "<cmd>Telescope find_files<cr>" },
-			{ "<leader>f", "<cmd>Telescope live_grep<cr>", { "n" } },
-			{ "<leader>b", "<cmd>Telescope buffers<cr>", { "n" } },
+			{ "<leader>f", "<cmd>Telescope live_grep<cr>", mode = { "n" }, desc ="Live grep" },
+			{ "<leader>b", "<cmd>Telescope buffers<cr>", mode = { "n" }, desc = "Open buffers" },
 			{ "<F7>", "<cmd>Telescope undo<cr>", { "n", "i" } },
 		},
 		config = function()

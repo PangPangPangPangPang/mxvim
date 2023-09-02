@@ -3,9 +3,10 @@ return {
 	{
 		"tpope/vim-commentary",
 		config = function()
+			local dmap = require("utils").dmap
 			vim.g.kommentary_create_default_mappings = false
-			vim.api.nvim_set_keymap("n", "<leader>/", "gcc", {})
-			vim.api.nvim_set_keymap("v", "<leader>/", "gc", {})
+			dmap("n", "<leader>/", "gcc", "Comment")
+			dmap("v", "<leader>/", "gc", "Comment")
 		end,
 	},
 	-- fold
@@ -73,7 +74,7 @@ return {
 				},
 				char = {
 					multi_line = true,
-					jump_labels = true,
+					jump_labels = false,
 					keys = { "f", "F", "t", "T", ";", "," },
 					highlight = { backdrop = false },
 				}

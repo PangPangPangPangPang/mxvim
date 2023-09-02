@@ -5,13 +5,13 @@ M.config = function()
 end
 
 M.map = function()
-    local map = require('utils').map
-    map({'n', 'i'}, '<F1>',
+    local dmap = require('utils').dmap
+    dmap({'n', 'i'}, '<F1>',
         ":Defx -toggle -resume -winwidth=40 -direction=topleft -split=vertical -ignored-files=.*,*.d<cr>",
-        {silent = true})
-    map({'n'}, '<leader>j',
+        "Open file tree")
+    dmap({'n'}, '<leader>j',
         ":Defx  -split=vertical -ignored-files=.*,*.d -winwidth=40 -direction=topleft `getcwd()` -search=`expand('%:p')`<cr>",
-        {silent = true})
+        "Open file tree")
 end
 
 return M;

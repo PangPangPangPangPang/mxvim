@@ -40,7 +40,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		keys = {
-			{ "<leader>s", "<cmd>SessionManager load_session<cr>", mode = "n" },
+			{ "<leader>s", "<cmd>SessionManager load_session<cr>", mode = "n", desc = "Load sessions"},
 		},
 	},
 }

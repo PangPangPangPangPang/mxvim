@@ -82,4 +82,65 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		config = function()
+			local wk = require("which-key")
+			wk.setup({
+				icons = {
+					breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+					separator = "➜", -- symbol used between a key and it's label
+					group = "+", -- symbol prepended to a group
+				},
+				window = {
+					border = "single", -- none, single, double, shadow
+					position = "bottom", -- bottom, top
+					margin = { 1, 0, 1, 0.5 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+					padding = { 1, 2, 0, 2 }, -- extra window padding [top, right, bottom, left]
+					winblend = 20, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+					zindex = 1000, -- positive value to position WhichKey above other floating windows.
+				},
+				show_help = false, -- show a help message in the command line for using WhichKey
+				show_keys = false, -- show the currently pressed key and its label as a message in the command line
+			})
+			wk.register({
+				g = {
+					name = "Git",
+					a = "Stage hunk",
+					u = "Undo stage hunk",
+					x = "Reset hunk",
+				},
+			}, { prefix = "<leader>" })
+			wk.register({
+				w = {
+					name = "Workspace",
+					a = "Add workspace folder"
+				},
+			}, { prefix = "<leader>" })
+			wk.register({
+				l = {
+					name = "Diagnostic",
+				},
+			}, { prefix = "<leader>" })
+			wk.register({
+				c = {
+					name = "Language Server",
+					a = "Code action",
+				},
+			}, { prefix = "<leader>" })
+			wk.register({
+				["<Down>"] = {
+					name = "Change"
+				},
+				["<Up>"] = {
+					name = "Change"
+				},
+			}, { prefix = "<leader>" })
+		end
+	}
 }

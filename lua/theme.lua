@@ -60,11 +60,7 @@ M.theme = function(name, nick)
 			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
 			vim.cmd(string.format("hi! TelescopeSelection guifg=%s guibg=%s", colors.bg, colors.green))
 			vim.cmd(string.format("hi! TelescopeMatching gui=bold guifg=%s", colors.red))
-			vim.cmd([[
-            hi! link FloatBorder Normal
-            " hi! StatusLineNC guibg=none
-            " hi! StatusLine guibg=none
-            ]])
+			vim.cmd(string.format("hi! FloatBorder guifg=%s guibg=none", colors.magenta))
 			local shade_default_colors = require('theme').shade_colors_default()
 			vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
 			vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
