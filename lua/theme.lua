@@ -11,67 +11,82 @@ M.theme = function(name, nick)
 			else
 				require("config._lualine_pure")
 			end
-			vim.cmd([[
-                hi! link NormalFloat cleared
-            ]])
+
+			M.hl_common()
 			local colors = require("theme").theme_colors()
 			local shade_colors = require("theme").shade_colors(0.4)
-			vim.cmd(string.format("hi! CmpItemAbbrMatch gui=bold guifg=%s", colors.blue))
-			vim.cmd(string.format("hi! CmpItemAbbrMatchFuzzy gui=bold guifg=%s", colors.blue))
-			vim.cmd(string.format("hi! CmpItemMenu gui=bold guifg=%s", shade_colors.fg))
-			vim.cmd(string.format("hi! markdownBoldItalic gui=bold,italic guifg=%s", colors.blue))
-			vim.cmd(string.format("hi! Cursor gui=bold guibg=%s guifg=%s", colors.fg, colors.bg))
-
-			local bg = "bg"
-			local fg = "fg"
-			local hi = "NONE"
-
-			vim.cmd(string.format("highlight! CmpItemKindField gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
-			vim.cmd(string.format("highlight! CmpItemKindProperty gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
-			vim.cmd(string.format("highlight! CmpItemKindEvent gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
-			vim.cmd(string.format("highlight! CmpItemKindText gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
-			vim.cmd(string.format("highlight! CmpItemKindEnum gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
-			vim.cmd(string.format("highlight! CmpItemKindKeyword gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
-			vim.cmd(string.format("highlight! CmpItemKindConstant gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
-			vim.cmd(string.format("highlight! CmpItemKindConstructor gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
-			vim.cmd(string.format("highlight! CmpItemKindReference gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
-			vim.cmd(string.format("highlight! CmpItemKindFunction gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
-			vim.cmd(string.format("highlight! CmpItemKindStruct gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
-			vim.cmd(string.format("highlight! CmpItemKindClass gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
-			vim.cmd(string.format("highlight! CmpItemKindModule gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
-			vim.cmd(string.format("highlight! CmpItemKindOperator gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
-			vim.cmd(string.format("highlight! CmpItemKindVariable gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
-			vim.cmd(string.format("highlight! CmpItemKindFile gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
-			vim.cmd(string.format("highlight! CmpItemKindUnit gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
-			vim.cmd(string.format("highlight! CmpItemKindSnippet gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
-			vim.cmd(string.format("highlight! CmpItemKindFolder gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
-			vim.cmd(string.format("highlight! CmpItemKindMethod gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
-			vim.cmd(string.format("highlight! CmpItemKindValue gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
-			vim.cmd(string.format("highlight! CmpItemKindEnumMember gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
-			vim.cmd(string.format("highlight! CmpItemKindInterface gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
-			vim.cmd(string.format("highlight! CmpItemKindColor gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
-			vim.cmd(string.format("highlight! CmpItemKindTypeParameter gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
-
-			-- vim.cmd(string.format("hi! PmenuSel guifg=none"))
-			vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
-
-			vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
-			vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
-			vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
-			vim.cmd(string.format("hi! TelescopeSelection guifg=%s guibg=%s", colors.bg, colors.green))
-			vim.cmd(string.format("hi! TelescopeMatching gui=bold guifg=%s", colors.red))
-			vim.cmd(string.format("hi! FloatBorder guifg=%s guibg=none", colors.magenta))
-			local shade_default_colors = require('theme').shade_colors_default()
-			vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
-			vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
-			vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
-			vim.cmd(string.format("hi! DiffChange guibg=%s guifg=none", shade_default_colors.green))
+			M.hl_cmp(shade_colors)
+			M.hl_telescope()
+			M.hl_diff(shade_colors)
 		end,
 	}
 	if nick ~= nil then
 		ret["name"] = nick
 	end
 	return ret
+end
+
+M.hl_common = function ()
+	vim.cmd([[ hi! link NormalFloat cleared ]])
+	vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
+end
+
+M.hl_diff = function (shade_colors)
+	local shade_default_colors = require('theme').shade_colors_default()
+	vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
+	vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
+	vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
+	vim.cmd(string.format("hi! DiffChange guibg=%s guifg=none", shade_default_colors.green))
+
+end
+
+M.hl_telescope = function()
+	local colors = require("theme").theme_colors()
+	vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
+	vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
+	vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
+	vim.cmd(string.format("hi! TelescopeSelection guifg=%s guibg=%s", colors.bg, colors.green))
+	vim.cmd(string.format("hi! TelescopeMatching gui=bold guifg=%s", colors.red))
+	vim.cmd(string.format("hi! FloatBorder guifg=%s guibg=none", colors.magenta))
+end
+
+M.hl_cmp = function(shade_colors)
+	local colors = require("theme").theme_colors()
+	vim.cmd(string.format("hi! CmpItemAbbrMatch gui=bold guifg=%s", colors.blue))
+	vim.cmd(string.format("hi! CmpItemAbbrMatchFuzzy gui=bold guifg=%s", colors.blue))
+	vim.cmd(string.format("hi! CmpItemMenu gui=bold guifg=%s", shade_colors.fg))
+	vim.cmd(string.format("hi! markdownBoldItalic gui=bold,italic guifg=%s", colors.blue))
+	vim.cmd(string.format("hi! Cursor gui=bold guibg=%s guifg=%s", colors.fg, colors.bg))
+
+	local bg = "bg"
+	local fg = "fg"
+	local hi = "NONE"
+
+	vim.cmd(string.format("highlight! CmpItemKindField gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
+	vim.cmd(string.format("highlight! CmpItemKindProperty gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
+	vim.cmd(string.format("highlight! CmpItemKindEvent gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
+	vim.cmd(string.format("highlight! CmpItemKindText gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
+	vim.cmd(string.format("highlight! CmpItemKindEnum gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
+	vim.cmd(string.format("highlight! CmpItemKindKeyword gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
+	vim.cmd(string.format("highlight! CmpItemKindConstant gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
+	vim.cmd(string.format("highlight! CmpItemKindConstructor gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
+	vim.cmd(string.format("highlight! CmpItemKindReference gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
+	vim.cmd(string.format("highlight! CmpItemKindFunction gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
+	vim.cmd(string.format("highlight! CmpItemKindStruct gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
+	vim.cmd(string.format("highlight! CmpItemKindClass gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
+	vim.cmd(string.format("highlight! CmpItemKindModule gui%s=%s gui%s=%s", bg, hi, fg, colors.yellow))
+	vim.cmd(string.format("highlight! CmpItemKindOperator gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
+	vim.cmd(string.format("highlight! CmpItemKindVariable gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
+	vim.cmd(string.format("highlight! CmpItemKindFile gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
+	vim.cmd(string.format("highlight! CmpItemKindUnit gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
+	vim.cmd(string.format("highlight! CmpItemKindSnippet gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
+	vim.cmd(string.format("highlight! CmpItemKindFolder gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
+	vim.cmd(string.format("highlight! CmpItemKindMethod gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
+	vim.cmd(string.format("highlight! CmpItemKindValue gui%s=%s gui%s=%s", bg, hi, fg, colors.magenta))
+	vim.cmd(string.format("highlight! CmpItemKindEnumMember gui%s=%s gui%s=%s", bg, hi, fg, colors.red))
+	vim.cmd(string.format("highlight! CmpItemKindInterface gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
+	vim.cmd(string.format("highlight! CmpItemKindColor gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
+	vim.cmd(string.format("highlight! CmpItemKindTypeParameter gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
 end
 
 M.extract_nvim_hl = function(name)
