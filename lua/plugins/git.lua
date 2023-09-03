@@ -64,8 +64,8 @@ return {
 						["o"] = "Toggle",
 						["a"] = "Stage",
 						["="] = "Toggle",
-						["p"] = "PullPopup",
-						["P"] = "PushPopup",
+						["P"] = "PullPopup",
+						["p"] = "PushPopup",
 					}
 				}
 			})
