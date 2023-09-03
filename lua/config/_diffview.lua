@@ -91,8 +91,11 @@ M.config = function()
 				["c"]          = function()
 					vim.cmd('Neogit commit')
 				end,
-				["P"]          = function()
+				["p"]          = function()
 					vim.cmd('Neogit push')
+				end,
+				["P"]          = function()
+					vim.cmd('Neogit pull')
 				end,
 				["q"]          = function()
 					vim.cmd('tabc')
@@ -136,8 +139,11 @@ M.config = function()
 				["c"]      = function()
 					vim.cmd('Neogit commit')
 				end,
-				["P"]      = function()
+				["p"]      = function()
 					vim.cmd('Neogit push')
+				end,
+				["P"]      = function()
+					vim.cmd('Neogit pull')
 				end,
 				["q"]      = function()
 					vim.cmd('tabc')
