@@ -3,10 +3,9 @@ return {
 	{
 		"tpope/vim-commentary",
 		config = function()
-			local dmap = require("utils").dmap
 			vim.g.kommentary_create_default_mappings = false
-			dmap("n", "<leader>/", "gcc", "Comment")
-			dmap("v", "<leader>/", "gc", "Comment")
+			vim.api.nvim_set_keymap("n", "<leader>/", "gcc", { desc = "Comment" })
+			vim.api.nvim_set_keymap("v", "<leader>/", "gc", { desc = "Comment" })
 		end,
 	},
 	-- fold
