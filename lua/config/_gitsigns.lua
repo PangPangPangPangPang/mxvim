@@ -1,9 +1,5 @@
 local M = {}
 M.config = function()
-	local dmap = require("utils").dmap
-	dmap({ "n", "v" }, "<leader>ga", '<cmd>Gitsigns stage_hunk<cr>')
-	dmap({ "n", "v" }, "<leader>gu", '<cmd>Gitsigns undo_stage_hunk<cr>')
-	dmap({ "n", "v" }, "<leader>gx", '<cmd>Gitsigns reset_hunk<cr>')
     local colors = require("theme").shade_colors(0.2)
     vim.cmd(string.format(
         [[

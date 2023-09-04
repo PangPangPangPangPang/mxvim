@@ -43,7 +43,7 @@ function M.create_augroups(definitions)
 end
 
 function M.close_common()
-	local list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus" }
+	local list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
 
 	-- go back to prev window
 	local cur = vim.fn.winnr()

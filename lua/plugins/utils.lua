@@ -111,9 +111,6 @@ return {
 			wk.register({
 				g = {
 					name = "Git",
-					a = "Stage hunk",
-					u = "Undo stage hunk",
-					x = "Reset hunk",
 				},
 			}, { prefix = "<leader>" })
 			wk.register({
