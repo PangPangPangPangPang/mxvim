@@ -3,7 +3,6 @@
 #install neovim first
 #brew install neovim/neovim/neovim
 #pip install neovim
-
 dst_dir="$HOME/.config/nvim"
 rm -rf ${dst_dir}
 mkdir -p ${dst_dir} 2>/dev/null
