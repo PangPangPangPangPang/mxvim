@@ -15,6 +15,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		lazy = true,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"NeogitOrg/neogit",
@@ -30,17 +31,12 @@ return {
 
 	{
 		"tpope/vim-fugitive",
-		-- lazy = true,
+		lazy = true,
 		cmd = { "Git" },
-		-- enabled = false,
-		-- event = "VeryLazy",
-	},
-	{
-		"rhysd/git-messenger.vim",
-		cmd = { "GitMessenger" },
 	},
 	{
 		"NeogitOrg/neogit",
+		lazy = true,
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
 			"nvim-telescope/telescope.nvim", -- optional
@@ -79,6 +75,7 @@ return {
 	},
 	{
 		"kdheepak/lazygit.nvim",
+		lazy = true,
 		-- optional for floating window border decoration
 		cmd = { "LazyGit" },
 		dependencies = {
