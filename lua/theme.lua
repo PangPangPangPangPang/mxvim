@@ -29,8 +29,11 @@ end
 
 M.hl_common = function(shade_colors)
 	local shade_default_colors = require('theme').shade_colors_default()
-	vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = shade_colors.blue })
-	vim.api.nvim_set_hl(0, "Search", { fg = "none", bg = shade_colors.magenta })
+	local colors = require("theme").theme_colors()
+	vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = shade_default_colors.blue })
+	vim.api.nvim_set_hl(0, "CursorLine", { fg = "none", bg = shade_default_colors.yellow })
+	vim.api.nvim_set_hl(0, "Search", { fg = "none", bg = shade_default_colors.magenta })
+	vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.magenta, bg = "none" })
 	vim.cmd([[ hi! link NormalFloat cleared ]])
 	vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
 end
@@ -50,7 +53,6 @@ M.hl_telescope = function()
 	vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bold = true, fg = colors.blue })
 	vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = colors.bg, bg = colors.green })
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
-	vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.magenta, bg = "none" })
 end
 
 M.hl_fzf = function(shade_colors)
