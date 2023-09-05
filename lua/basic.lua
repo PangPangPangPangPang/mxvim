@@ -282,14 +282,14 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
 	}
 )
 vim.api.nvim_create_autocmd({ "InsertEnter" }, { callback = function ()
-	vim.cmd([[
-		:silent !/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
+	os.execute([[
+		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
 	]])
 end })
 
 vim.api.nvim_create_autocmd({ "InsertLeave" }, { callback = function ()
-	vim.cmd([[
-		:silent !/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode 1
+	os.execute([[
+		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode 1
 	]])
 end })
 pcall(require, "private")
