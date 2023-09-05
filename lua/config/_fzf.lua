@@ -4,13 +4,19 @@ M.config = function()
 	require('fzf-lua').setup {
 		"default",
 		fzf_colors = {
-			["fg+"]     = { "fg", "Normal" },
-			["bg+"]     = { "bg", "CursorLine" },
-			["info"]    = { "fg", "Float" },
-			["pointer"] = { "fg", "ErrorMsg" },
-			["spinner"] = { "fg", "ErrorMsg" },
-			["header"]  = { "fg", "Comment" },
-			["gutter"]  = { "bg", "Normal" },
+          ["fg"]          = { "fg", "CursorLine" },
+          ["bg"]          = { "bg", "Normal" },
+          ["hl"]          = { "fg", "Comment" },
+          ["fg+"]         = { "fg", "Normal" },
+          ["bg+"]         = { "bg", "CursorLine" },
+          ["hl+"]         = { "fg", "Statement" },
+          ["info"]        = { "fg", "PreProc" },
+          ["prompt"]      = { "fg", "Conditional" },
+          ["pointer"]     = { "fg", "Float" },
+          ["marker"]      = { "fg", "Keyword" },
+          ["spinner"]     = { "fg", "Float" },
+          ["header"]      = { "fg", "Comment" },
+          ["gutter"]      = { "bg", "Normal" },
 		},
 		actions = {
 			files = {

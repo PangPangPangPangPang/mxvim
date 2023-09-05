@@ -56,9 +56,6 @@ end
 M.hl_fzf = function(shade_colors)
 	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
 	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
-	vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Float" })
-	vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })
-	vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "Float" })
 end
 
 M.hl_cmp = function(shade_colors)
