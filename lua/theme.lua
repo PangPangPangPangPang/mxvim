@@ -12,12 +12,13 @@ M.theme = function(name, nick)
 				require("config._lualine_pure")
 			end
 
-			M.hl_common()
 			local colors = require("theme").theme_colors()
 			local shade_colors = require("theme").shade_colors(0.4)
+			M.hl_common(shade_colors)
 			M.hl_cmp(shade_colors)
 			M.hl_telescope()
 			M.hl_diff(shade_colors)
+			M.hl_fzf(shade_colors)
 		end,
 	}
 	if nick ~= nil then
@@ -26,28 +27,38 @@ M.theme = function(name, nick)
 	return ret
 end
 
-M.hl_common = function ()
+M.hl_common = function(shade_colors)
+	local shade_default_colors = require('theme').shade_colors_default()
+	vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = shade_colors.blue })
+	vim.api.nvim_set_hl(0, "Search", { fg = "none", bg = shade_colors.magenta })
 	vim.cmd([[ hi! link NormalFloat cleared ]])
 	vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
 end
 
-M.hl_diff = function (shade_colors)
+M.hl_diff = function(shade_colors)
 	local shade_default_colors = require('theme').shade_colors_default()
 	vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
 	vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
 	vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
 	vim.cmd(string.format("hi! DiffChange guibg=%s guifg=none", shade_default_colors.green))
-
 end
 
 M.hl_telescope = function()
 	local colors = require("theme").theme_colors()
-	vim.cmd(string.format("hi! TelescopePromptTitle gui=bold guifg=%s", colors.red))
-	vim.cmd(string.format("hi! TelescopePreviewTitle gui=bold guifg=%s", colors.green))
-	vim.cmd(string.format("hi! TelescopeResultsTitle gui=bold guifg=%s", colors.blue))
-	vim.cmd(string.format("hi! TelescopeSelection guifg=%s guibg=%s", colors.bg, colors.green))
-	vim.cmd(string.format("hi! TelescopeMatching gui=bold guifg=%s", colors.red))
-	vim.cmd(string.format("hi! FloatBorder guifg=%s guibg=none", colors.magenta))
+	vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bold = true, fg = colors.red })
+	vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bold = true, fg = colors.green })
+	vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bold = true, fg = colors.blue })
+	vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = colors.bg, bg = colors.green })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
+	vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.magenta, bg = "none" })
+end
+
+M.hl_fzf = function(shade_colors)
+	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
+	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
+	vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Float" })
+	vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })
+	vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "Float" })
 end
 
 M.hl_cmp = function(shade_colors)
