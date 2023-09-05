@@ -12,8 +12,8 @@ M.theme = function(name, nick)
 				require("config._lualine_pure")
 			end
 
-			local colors = require("theme").theme_colors()
-			local shade_colors = require("theme").shade_colors(0.4)
+			local colors = require("theme").colors()
+			local shade_colors = require("theme").colors(0.4)
 			M.hl_common(shade_colors)
 			M.hl_cmp(shade_colors)
 			M.hl_telescope()
@@ -28,18 +28,19 @@ M.theme = function(name, nick)
 end
 
 M.hl_common = function(shade_colors)
-	local shade_default_colors = require('theme').shade_colors_default()
-	local colors = require("theme").theme_colors()
-	vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = shade_default_colors.blue })
-	vim.api.nvim_set_hl(0, "CursorLine", { fg = "none", bg = shade_default_colors.yellow })
-	vim.api.nvim_set_hl(0, "Search", { fg = "none", bg = shade_default_colors.magenta })
+	local lighter = require('theme').colors(0.8)
+	local darker = require('theme').colors(0.6)
+	local colors = require("theme").colors()
+	vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = darker.blue })
+	vim.api.nvim_set_hl(0, "CursorLine", { fg = "none", bg = lighter.blue })
+	vim.api.nvim_set_hl(0, "Search", { fg = "none", bg = darker.magenta })
 	vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.magenta, bg = "none" })
 	vim.cmd([[ hi! link NormalFloat cleared ]])
 	vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
 end
 
 M.hl_diff = function(shade_colors)
-	local shade_default_colors = require('theme').shade_colors_default()
+	local shade_default_colors = require('theme').colors(0.7)
 	vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
 	vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
 	vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
@@ -47,7 +48,7 @@ M.hl_diff = function(shade_colors)
 end
 
 M.hl_telescope = function()
-	local colors = require("theme").theme_colors()
+	local colors = require("theme").colors()
 	vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bold = true, fg = colors.red })
 	vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bold = true, fg = colors.green })
 	vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bold = true, fg = colors.blue })
@@ -61,7 +62,7 @@ M.hl_fzf = function(shade_colors)
 end
 
 M.hl_cmp = function(shade_colors)
-	local colors = require("theme").theme_colors()
+	local colors = require("theme").colors()
 	vim.cmd(string.format("hi! CmpItemAbbrMatch gui=bold guifg=%s", colors.blue))
 	vim.cmd(string.format("hi! CmpItemAbbrMatchFuzzy gui=bold guifg=%s", colors.blue))
 	vim.cmd(string.format("hi! CmpItemMenu gui=bold guifg=%s", shade_colors.fg))
@@ -97,6 +98,23 @@ M.hl_cmp = function(shade_colors)
 	vim.cmd(string.format("highlight! CmpItemKindInterface gui%s=%s gui%s=%s", bg, hi, fg, colors.green))
 	vim.cmd(string.format("highlight! CmpItemKindColor gui%s=%s gui%s=%s", bg, hi, fg, colors.orange))
 	vim.cmd(string.format("highlight! CmpItemKindTypeParameter gui%s=%s gui%s=%s", bg, hi, fg, colors.darkblue))
+end
+
+local static_shade_colors = {}
+M.colors = function(percent)
+	if percent == nil then
+		return M.theme_colors()
+	end
+	if static_shade_colors[percent] ~= nil then
+		return static_shade_colors[percent]
+	end
+	local colors = require("colorscheme." .. mxvim.current_theme).colors()
+	local shadow_colors = require("utils").shallow_copy(colors)
+	for index, _ in pairs(shadow_colors) do
+		shadow_colors[index] = M.shade(colors[index], percent)
+	end
+	static_shade_colors[percent] = shadow_colors
+	return static_shade_colors[percent]
 end
 
 M.extract_nvim_hl = function(name)
@@ -169,9 +187,6 @@ M.shade_all = function(color, percent)
 	end
 end
 
-M.shade_default = function(color)
-	return M.shade(color, mxvim.shade_percent)
-end
 
 M.theme_colors = function()
 	local colors = require("colorscheme." .. mxvim.current_theme).colors()
@@ -184,25 +199,4 @@ M.theme_colors = function()
 	return colors
 end
 
-M.shade_colors = function(percent)
-	local colors = require("colorscheme." .. mxvim.current_theme).colors()
-	local ret = require("utils").shallow_copy(colors)
-	for index, _ in pairs(ret) do
-		ret[index] = M.shade(colors[index], percent)
-	end
-	return ret
-end
-
-local static_shade_colors
-M.shade_colors_default = function()
-	if static_shade_colors ~= nil then
-		return static_shade_colors
-	end
-	local colors = require("colorscheme." .. mxvim.current_theme).colors()
-	static_shade_colors = require("utils").shallow_copy(colors)
-	for index, _ in pairs(static_shade_colors) do
-		static_shade_colors[index] = M.shade_default(colors[index])
-	end
-	return static_shade_colors
-end
 return M

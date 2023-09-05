@@ -1,5 +1,5 @@
 local M = {}
-local colors = require("theme").shade_colors(0.4)
+local colors = require("theme").colors(0.4)
 local cmd = vim.cmd
 
 M.config = function()

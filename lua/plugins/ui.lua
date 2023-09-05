@@ -42,7 +42,7 @@ return {
 		lazy = true,
 		event = "VimEnter",
 		init = function()
-			local colors = require("theme").theme_colors()
+			local colors = require("theme").colors()
 			vim.g.rainbow_active = 1
 			vim.g.rainbow_conf = { guifgs = { colors.magenta, colors.cyan, colors.purple, colors.yellow } }
 		end,

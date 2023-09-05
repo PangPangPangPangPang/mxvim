@@ -11,8 +11,7 @@ vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter" }, {
 	end,
 })
 
--- local colors = require("theme").shade_colors(0.3)
-local colors = require("theme").theme_colors()
+local colors = require("theme").colors()
 local shade_bg = require("theme").shade_all(colors.bg, 0.2)
 local shade_fg = require("theme").shade_all(colors.fg, 0.5)
 

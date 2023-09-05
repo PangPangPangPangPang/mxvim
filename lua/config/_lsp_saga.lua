@@ -3,7 +3,7 @@ local M = {}
 M.config = function()
     local keymap = vim.keymap.set
     local saga = require("lspsaga")
-    local colors = require("theme").theme_colors()
+    local colors = require("theme").colors()
 
     saga.setup({
         finder_action_keys = {

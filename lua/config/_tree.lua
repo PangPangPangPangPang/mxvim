@@ -126,7 +126,7 @@ function open_nvim_tree(data)
 end
 
 M.theme = function()
-	local colors = require("theme").theme_colors()
+	local colors = require("theme").colors()
 	local root_name = string.format("hi! NvimTreeRootFolder guifg=%s gui=bold", colors.yellow)
 	local folder_name = string.format("hi! NvimTreeFolderName guifg=%s gui=bold", colors.blue)
 	local opened_folder_name = string.format("hi! NvimTreeOpenedFolderName guifg=%s gui=bold", colors.blue)

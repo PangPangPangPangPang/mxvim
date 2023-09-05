@@ -1,4 +1,4 @@
-local colors = require("theme").theme_colors()
+local colors = require("theme").colors()
 local theme = require("theme")
 local safe_require = require("utils").safe_require
 require("nvim-treesitter.configs").setup({

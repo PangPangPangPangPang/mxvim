@@ -7,7 +7,6 @@ mxvim.background = "dark"
 mxvim.current_line = "lualine"
 mxvim.use_coc = false
 mxvim.use_treesitter = true
-mxvim.shade_percent = 0.7
 mxvim.use_cmp = true
 mxvim.use_coq = false
 mxvim.use_notify = false

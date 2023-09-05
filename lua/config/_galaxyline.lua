@@ -59,7 +59,7 @@ local function has_hunk_data()
 	return false
 end
 
-local colors = require("theme").theme_colors()
+local colors = require("theme").colors()
 
 vim.api.nvim_command("hi! StatusLine guibg=" .. colors.bg .. " guifg=" .. colors.bg)
 

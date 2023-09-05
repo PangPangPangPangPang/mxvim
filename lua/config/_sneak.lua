@@ -15,7 +15,7 @@ M.config = function()
             xmap cl <Plug>Sneak_s
             xmap cc <Plug>Sneak_S
         ]])
-    local colors = require('theme').theme_colors()
+    local colors = require('theme').colors()
     vim.api.nvim_exec(string.format([[
         autocmd User SneakEnter highlight Sneak guifg=%s guibg=%s ctermfg=black ctermbg=red
         autocmd User SneakEnter highlight SneakScope guifg=%s guibg=%s ctermfg=red ctermbg=yellow

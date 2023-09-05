@@ -6,8 +6,8 @@ M.setup = function ()
         "declaration", "expression", "pattern", "primary_expression",
         "statement", "switch_body"
     }
-    local colors = require('theme').shade_colors_default()
-    local commonColors = require('theme').theme_colors()
+    local colors = require('theme').colors(0.7)
+    local commonColors = require('theme').colors()
     local indent1 = string.format('hi! IndentBlanklineIndent1 guifg=%s blend=nocombine', colors.red);
     local indent2 = string.format('hi! IndentBlanklineIndent2 guifg=%s blend=nocombine', colors.yellow);
     local indent3 = string.format('hi! IndentBlanklineIndent3 guifg=%s blend=nocombine', colors.green);
