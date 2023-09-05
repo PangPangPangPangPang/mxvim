@@ -138,6 +138,15 @@ return {
 					name = "Change"
 				},
 			}, { prefix = "<leader>" })
+			wk.register({
+				d = {
+					name = "Git Diff",
+					o = "Choose ours",
+					t = "Choose theirs",
+					b = "Choose base",
+					a = "Choose all",
+				}
+			}, { prefix = "<leader>" })
 		end
 	}
 }

@@ -37,6 +37,10 @@ M.hl_common = function(shade_colors)
 	vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.magenta, bg = "none" })
 	vim.cmd([[ hi! link NormalFloat cleared ]])
 	vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
+
+	vim.api.nvim_set_hl(0, "Greenbg", { fg = "none", bg = colors.green })
+	vim.api.nvim_set_hl(0, "Blackfg", { fg = colors.bg, bg = "none" })
+	vim.api.nvim_set_hl(0, "Redfg", { fg = colors.red, bg = "none" })
 end
 
 M.hl_diff = function(shade_colors)
