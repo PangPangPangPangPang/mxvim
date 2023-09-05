@@ -282,22 +282,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
 	}
 )
 
-local squirrel = vim.fn.executable("/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel")
-vim.api.nvim_create_autocmd({ "InsertEnter" }, { callback = function ()
-	if squirrel then
-		os.execute([[
-		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
-		]])
-	end
-end })
-
-vim.api.nvim_create_autocmd({ "InsertLeave" }, { callback = function ()
-	if squirrel then
-		os.execute([[
-		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode 1
-		]])
-	end
-end })
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
