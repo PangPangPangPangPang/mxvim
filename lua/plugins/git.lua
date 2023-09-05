@@ -63,7 +63,7 @@ return {
 					-- { CLOSED, OPENED }
 					hunk = { "", "" },
 					item = { "", "" },
-					section = { "󰨙", "󰔡" },
+					section = { "󰨙 ", "󰨚 " },
 				},
 				mappings = {
 					status = {
