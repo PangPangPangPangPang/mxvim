@@ -29,16 +29,6 @@ return {
 		end,
 	},
 	{
-		"https://gitlab.com/yorickpeterse/nvim-dd.git",
-		lazy = true,
-		event = "VeryLazy",
-		config = function()
-			require("dd").setup({
-				timeout = 0,
-			})
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
 		event = "VeryLazy",
