@@ -68,8 +68,8 @@ return {
 	},
 	{
 		"lewis6991/satellite.nvim",
+		enable = vim.fn.has('nvim-1.0') == 1,
 		lazy = true,
-		event = "VeryLazy",
 		config = function()
 			require("config._scrollbar").config()
 		end,

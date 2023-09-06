@@ -34,8 +34,8 @@ M.config = function()
 			cwd_prompt = false,
 			fzf_opts = {
 				['--info'] = 'default', -- inline
-				-- ['--separator'] = " ",
-				['--no-scrollbar'] = ""
+				['--no-scrollbar'] = "",
+				-- ['--extended'] = "",
 			},
 		},
 		winopts = {
