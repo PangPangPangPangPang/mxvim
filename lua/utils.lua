@@ -43,7 +43,7 @@ function M.create_augroups(definitions)
 end
 
 function M.close_common()
-	local list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
+	local list = mxvim.ignore_list
 
 	-- go back to prev window
 	local cur = vim.fn.winnr()
@@ -205,7 +205,7 @@ M.load_plugins = function()
 	require("lazy").setup("plugins")
 end
 
-M.is_alacritty = function ()
+M.is_alacritty = function()
 	return os.getenv("TERM") == "alacritty"
 end
 

@@ -14,3 +14,6 @@ mxvim.enable_lspsage = false
 mxvim.enable_treesitter = false
 mxvim.enable_neotree = false
 mxvim.enable_statuscol = true
+
+-- map q to quick close
+mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
