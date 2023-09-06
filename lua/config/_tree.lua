@@ -51,6 +51,7 @@ M.config = function()
 			enable = false,
 		},
 		renderer = {
+			full_name = true,
 			add_trailing = false,
 			group_empty = false,
 			highlight_git = false,
@@ -99,13 +100,16 @@ M.config = function()
 			},
 		},
 		view = {
-			adaptive_size = true,
+			adaptive_size = false,
 			side = "left",
 			preserve_window_proportions = false,
 			number = false,
 			relativenumber = false,
 			signcolumn = "yes",
 			width = "15%",
+			float = {
+				enable = false,
+			}
 		},
 	})
 	vim.cmd([[
