@@ -13,6 +13,8 @@ return {
 	},
 	{
 		"folke/noice.nvim",
+		lazy = true,
+		event = "VimEnter",
 		opts = {
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -155,6 +157,8 @@ return {
 	},
 	{
 		"levouh/tint.nvim",
+		lazy = true,
+		event = "VimEnter",
 		config = function()
 			require("tint").setup({
 				saturation = 0.6,                                         -- Saturation to preserve

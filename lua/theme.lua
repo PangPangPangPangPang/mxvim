@@ -12,13 +12,12 @@ M.theme = function(name, nick)
 				require("config._lualine_pure")
 			end
 
-			local colors = require("theme").colors()
 			local shade_colors = require("theme").colors(0.4)
-			M.hl_common(shade_colors)
+			M.hl_common()
 			M.hl_cmp(shade_colors)
 			M.hl_telescope()
 			M.hl_diff(shade_colors)
-			M.hl_fzf(shade_colors)
+			M.hl_fzf()
 		end,
 	}
 	if nick ~= nil then
@@ -27,7 +26,7 @@ M.theme = function(name, nick)
 	return ret
 end
 
-M.hl_common = function(shade_colors)
+M.hl_common = function()
 	local lighter = require('theme').colors(0.8)
 	local darker = require('theme').colors(0.6)
 	local colors = require("theme").colors()
@@ -60,7 +59,7 @@ M.hl_telescope = function()
 	vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
 end
 
-M.hl_fzf = function(shade_colors)
+M.hl_fzf = function()
 	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
 	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
 end
