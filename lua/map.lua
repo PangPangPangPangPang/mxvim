@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 	callback = function()
 		if squirrel then
 			vim.fn.system([[
-		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode 1
+		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode
 		]])
 		end
 	end
