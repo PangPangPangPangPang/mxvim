@@ -94,28 +94,28 @@ M.set_diagnostic = function(client)
 		-- cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 1000)]])
 		cmd([[ augroup END ]])
 		cmd([[
-            hi! default link DiagnosticVirtualTextError Comment
-            hi! default link DiagnosticVirtualTextHint Comment
-            hi! default link DiagnosticVirtualTextInfo Comment
-            hi! default link DiagnosticVirtualTextWarn Comment
-        ]])
+		hi! default link DiagnosticVirtualTextError Comment
+		hi! default link DiagnosticVirtualTextHint Comment
+		hi! default link DiagnosticVirtualTextInfo Comment
+		hi! default link DiagnosticVirtualTextWarn Comment
+		]])
 
 		cmd(string.format(
 			[[
-        hi! DiagnosticDefaultInfo guifg=%s
-        hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
-        hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
-        hi! DiagnosticUnderlineWarn gui=undercurl term=undercurl guisp=%s guifg=none
-        hi! DiagnosticUnderlineInfo gui=undercurl term=undercurl guisp=%s guifg=none
-        hi! DiagnosticSignError gui=none guifg=%s
-        hi! DiagnosticSignHint gui=none guifg=%s
-        hi! DiagnosticSignWarn gui=none guifg=%s
-        hi! DiagnosticSignInfo gui=none guifg=%s
-        highlight! link LspReference %s
-        highlight! link LspReferenceText LspReference
-        highlight! link LspReferenceRead LspReference
-        highlight! link LspReferenceWrite LspReference
-        ]],
+		hi! DiagnosticDefaultInfo guifg=%s
+		hi! DiagnosticUnderlineError gui=undercurl term=undercurl guisp=%s guifg=none
+		hi! DiagnosticUnderlineHint gui=undercurl term=undercurl guisp=%s guifg=none
+		hi! DiagnosticUnderlineWarn gui=undercurl term=undercurl guisp=%s guifg=none
+		hi! DiagnosticUnderlineInfo gui=undercurl term=undercurl guisp=%s guifg=none
+		hi! DiagnosticSignError gui=none guifg=%s
+		hi! DiagnosticSignHint gui=none guifg=%s
+		hi! DiagnosticSignWarn gui=none guifg=%s
+		hi! DiagnosticSignInfo gui=none guifg=%s
+		highlight! link LspReference %s
+		highlight! link LspReferenceText LspReference
+		highlight! link LspReferenceRead LspReference
+		highlight! link LspReferenceWrite LspReference
+		]],
 			colors.bg,
 			colors.red,
 			colors.blue,

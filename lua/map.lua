@@ -4,7 +4,7 @@ local dmap = require("utils").dmap
 -- => Status line
 ------------------------------
 -- Always show the status line
-dmap({ "n" }, "<leader>=", "mzG=gg`z", "Format all")
+dmap({ "n" }, "<leader>==", "mzG=gg`z", "Format all")
 -- Copy to system clipboard
 dmap({ "v" }, "Y", '"+y')
 

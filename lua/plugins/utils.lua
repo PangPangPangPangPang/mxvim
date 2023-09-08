@@ -125,6 +125,11 @@ return {
 				},
 			}, { prefix = "<leader>" })
 			wk.register({
+				["="] = {
+					name = "Format",
+				},
+			}, { prefix = "<leader>" })
+			wk.register({
 				c = {
 					name = "Language Server",
 					a = "Code action",
