@@ -226,11 +226,6 @@ local get_color = function(name)
 	return { byte(color, 16), byte(color, 8), byte(color, 0) }
 end
 
----Get visually transparent volour
----@param fg string like 'pink' or '#fa8072'
----@param bg string like 'pink' or '#fa8072'
----@param alpha integer number between 0 and 1
----@return string
 M.blend = function(fg, bg, alpha)
 	local bg_color = get_color(bg)
 	local fg_color = get_color(fg)

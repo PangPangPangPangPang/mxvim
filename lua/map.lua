@@ -35,9 +35,3 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 })
 
 dmap({ "n", "v" }, "<leader>q", ':lua require("utils").close_common()<cr>', "Close ignore buffer")
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = mxvim.ignore_list,
-	callback = function()
-		dmap({ "n" }, "q", "<cmd>lua require('utils').close_common()<cr>", "Close ignore buffer")
-	end
-})
