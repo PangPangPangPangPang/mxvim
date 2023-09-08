@@ -13,7 +13,7 @@ M.theme = function(name, nick)
 			end
 
 			M.hl_common()
-			local shade_colors = require("theme").colors(0.4)
+			local shade_colors = require("theme").colors(0.6)
 			require("config._nvim_cmp").hl_cmp(shade_colors)
 			require("config._telescope").hl_telescope()
 			require("config._fzf").hl_fzf()
@@ -27,8 +27,8 @@ M.theme = function(name, nick)
 end
 
 M.hl_common = function()
-	local lighter = require('theme').colors(0.8)
-	local darker = require('theme').colors(0.6)
+	local lighter = require('theme').colors(0.2)
+	local darker = require('theme').colors(0.4)
 	local colors = require("theme").colors()
 	vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = darker.blue })
 	vim.api.nvim_set_hl(0, "CursorLine", { fg = "none", bg = lighter.blue })
@@ -70,35 +70,13 @@ M.extract_nvim_hl = function(name)
 	}
 end
 
--- percent >= 0 && percent < 1
-M.shade = function(color, percent, full)
-	local shade_color
-	if mxvim.background == "dark" then
-		shade_color = full and "#000000" or require("colorscheme." .. mxvim.current_theme).colors().bg
-		local colors = require("colorscheme." .. mxvim.current_theme).colors()
-		local bg_r = tonumber(string.sub(shade_color, 2, 3), 16)
-		local bg_g = tonumber(string.sub(shade_color, 4, 5), 16)
-		local bg_b = tonumber(string.sub(shade_color, 6, 7), 16)
-		local cur_r = tonumber(string.sub(color, 2, 3), 16)
-		local cur_g = tonumber(string.sub(color, 4, 5), 16)
-		local cur_b = tonumber(string.sub(color, 6, 7), 16)
-		local r = string.format("%02x", cur_r - (cur_r - bg_r) * percent)
-		local g = string.format("%02x", cur_g - (cur_g - bg_g) * percent)
-		local b = string.format("%02x", cur_b - (cur_b - bg_b) * percent)
-		return string.format("#%s%s%s", r, g, b)
-	else
-		shade_color = full and "#FFFFFF" or require("colorscheme." .. mxvim.current_theme).colors().fg
-		local bg_r = tonumber(string.sub(shade_color, 2, 3), 16)
-		local bg_g = tonumber(string.sub(shade_color, 4, 5), 16)
-		local bg_b = tonumber(string.sub(shade_color, 6, 7), 16)
-		local cur_r = tonumber(string.sub(color, 2, 3), 16)
-		local cur_g = tonumber(string.sub(color, 4, 5), 16)
-		local cur_b = tonumber(string.sub(color, 6, 7), 16)
-		local r = string.format("%02x", cur_r + (bg_r - cur_r) * percent)
-		local g = string.format("%02x", cur_g + (bg_g - cur_g) * percent)
-		local b = string.format("%02x", cur_b + (bg_b - cur_b) * percent)
-		return string.format("#%s%s%s", r, g, b)
+-- alpha >= 0 && alpha < 1
+M.shade = function(color, alpha, full)
+	local bg = full and "#000000" or require("colorscheme." .. mxvim.current_theme).colors().bg
+	if mxvim.background == "light" then
+		bg = full and "#FFFFFF" or require("colorscheme." .. mxvim.current_theme).colors().fg
 	end
+	return require("utils").blend(color, bg, alpha)
 end
 
 M.theme_colors = function()

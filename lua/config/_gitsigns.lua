@@ -1,6 +1,6 @@
 local M = {}
 M.config = function()
-    local colors = require("theme").colors(0.2)
+    local colors = require("theme").colors(0.8)
     vim.cmd(string.format(
         [[
         hi GitSignsAdd guifg=%s

@@ -18,8 +18,8 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 	callback = function()
 		if squirrel then
 			vim.fn.system([[
-		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
-		]])
+			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
+			]])
 		end
 	end
 })
@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 	callback = function()
 		if squirrel then
 			vim.fn.system([[
-		/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode
-		]])
+			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode
+			]])
 		end
 	end
 })
