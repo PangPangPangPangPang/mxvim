@@ -146,4 +146,14 @@ function findFiles()
 	)
 end
 
+M.hl_telescope = function()
+	local colors = require("theme").colors()
+	vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bold = true, fg = colors.red })
+	vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bold = true, fg = colors.green })
+	vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bold = true, fg = colors.blue })
+	vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = colors.bg, bg = colors.green })
+	vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
+end
+
+
 return M

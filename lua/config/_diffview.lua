@@ -176,4 +176,12 @@ M.config = function()
 		},
 	})
 end
+
+M.hl_diff = function(shade_colors)
+	local shade_default_colors = require('theme').colors(0.7)
+	vim.cmd(string.format("hi! DiffAdd guibg=%s guifg=none", shade_default_colors.green))
+	vim.cmd(string.format("hi! DiffDelete guibg=%s guifg=%s", shade_default_colors.red, shade_default_colors.bg))
+	vim.cmd(string.format("hi! DiffText guibg=%s guifg=none", shade_colors.green))
+	vim.cmd(string.format("hi! DiffChange guibg=%s guifg=none", shade_default_colors.green))
+end
 return M

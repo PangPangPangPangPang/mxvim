@@ -50,4 +50,9 @@ M.config = function()
 	vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })
 	vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "Float" })
 end
+
+M.hl_fzf = function()
+	vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
+	vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
+end
 return M

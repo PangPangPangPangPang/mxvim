@@ -164,7 +164,7 @@ return {
 				saturation = 0.6,                                         -- Saturation to preserve
 				transforms = require("tint").transforms.SATURATE_TINT,    -- Showing default behavior, but value here can be predefined set of transforms
 				tint_background_colors = false,                           -- Tint background portions of highlight groups
-				highlight_ignore_patterns = { "WinSeparator", "Status.*", "LineNr"}, -- Highlight group patterns to ignore, see `string.find`
+				highlight_ignore_patterns = { "WinSeparator", "Status.*", "LineNr" }, -- Highlight group patterns to ignore, see `string.find`
 			})
 		end
 
