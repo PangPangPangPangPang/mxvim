@@ -10,12 +10,12 @@ return {
 				local alpha = require 'alpha'
 				local dashboard = require 'alpha.themes.dashboard'
 				dashboard.section.header.val = {
-					[[_|      _|                                              _|    _|      _|            _|      _|  _|                ]],
-					[[_|_|  _|_|    _|_|_|  _|    _|      _|      _|      _|      _|_|_|_|  _|_|_|        _|      _|      _|_|_|  _|_|  ]],
-					[[_|  _|  _|  _|    _|    _|_|        _|      _|      _|  _|    _|      _|    _|      _|      _|  _|  _|    _|    _|]],
-					[[_|      _|  _|    _|  _|    _|        _|  _|  _|  _|    _|    _|      _|    _|        _|  _|    _|  _|    _|    _|]],
-					[[_|      _|    _|_|_|  _|    _|          _|      _|      _|      _|_|  _|    _|          _|      _|  _|    _|    _|]],
+					[[   __  ___                     _  __   __     _   __ _      ]],
+					[[  /  |/  /___ ___ __  _    __ (_)/ /_ / /    | | / /(_)__ _ ]],
+					[[ / /|_/ // _ `/\ \ / | |/|/ // // __// _ \   | |/ // //  ' \]],
+					[[/_/  /_/ \_,_//_\_\  |__,__//_/ \__//_//_/   |___//_//_/_/_/]],
 				}
+
 				dashboard.section.buttons.val = {
 					dashboard.button("<leader> S", "  Open Session", "<cmd>SessionManager load_session<CR>"),
 					dashboard.button("q", "󰅚  Quit NVIM", "<cmd>qa<CR>"),
@@ -40,7 +40,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		keys = {
-			{ "<leader>s", "<cmd>SessionManager load_session<cr>", mode = "n", desc = "Load sessions"},
+			{ "<leader>s", "<cmd>SessionManager load_session<cr>", mode = "n", desc = "Load sessions" },
 		},
 	},
 }
