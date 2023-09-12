@@ -43,9 +43,10 @@ return {
 			"sindrets/diffview.nvim", -- optional
 			"ibhagwan/fzf-lua",     -- optional
 		},
-		-- keys = {
-		-- 	{ "<F3>", '<cmd>Neogit<cr>', mode = "n" },
-		-- },
+		keys = {
+			{ "<leader>gl", "<cmd>Neogit log<cr>", mode = { "n", "v" }, desc = "Git log" },
+			-- { "<F3>", '<cmd>Neogit<cr>', mode = "n" },
+		},
 		setup = {
 			vim.cmd([[ com! G lua require("neogit").open({ kind = "vsplit" })]])
 		},
