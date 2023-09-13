@@ -6,12 +6,6 @@ M.config = function()
 	M.custom_handlers()
 	M.set_keymap()
 end
-M.set_signature = function(bufnr)
-	local safe_require = require("utils").safe_require
-	safe_require("lsp_signature", function(lsp_signature)
-		lsp_signature.on_attach({}, bufnr)
-	end)
-end
 
 M.set_keymap = function()
 	vim.api.nvim_create_autocmd("LspAttach", {
@@ -19,13 +13,9 @@ M.set_keymap = function()
 		callback = function(args)
 			local bufnr = args.buf
 			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			local function buf_set_option(...)
-				vim.api.nvim_buf_set_option(bufnr, ...)
-			end
-
 			M.set_diagnostic(client)
 
-			buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+			vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
 			-- Setup keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover" })
@@ -130,10 +120,6 @@ M.set_diagnostic = function(client)
 	end
 end
 
-M.on_attach = function(client, bufnr)
-	M.set_signature(bufnr)
-end
-
 M.make_config = function()
 	local safe_require = require("utils").safe_require
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -151,14 +137,7 @@ M.make_config = function()
 		root_dir = root_dir,
 		-- enable snippet support
 		capabilities = capabilities,
-		-- map buffer local keybindings when the language server attaches
-		on_attach = M.on_attach,
 	}
-	if mxvim.use_coq == true then
-		safe_require("coq", function(coq)
-			config = coq.lsp_ensure_capabilities(config)
-		end)
-	end
 	return config
 end
 

@@ -21,14 +21,6 @@ return {
 		end,
 	},
 	{
-		"j-hui/fidget.nvim",
-		enabled = false,
-		-- lazy = true,
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
 		event = "VeryLazy",
@@ -52,30 +44,10 @@ return {
 				"quangnguyen30192/cmp-nvim-tags",
 				lazy = true,
 				event = "VeryLazy",
-				-- if you want the sources is available for some file types
-				-- ft = {
-				--     "javascriptreact",
-				--     "typescriptreact",
-				--     "javascript",
-				--     "typescript",
-				--     "lua",
-				-- },
 			},
 		},
 		config = function()
 			require("config._nvim_cmp").config()
-		end,
-	},
-	{
-		"ms-jpq/coq_nvim",
-		enabled = false,
-		-- lazy = true,
-		branch = "coq",
-		dependencies = {
-			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
-		},
-		config = function()
-			require("config._coq").config()
 		end,
 	},
 	{

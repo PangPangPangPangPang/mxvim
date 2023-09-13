@@ -18,10 +18,10 @@ M.config = function()
 			require("lspconfig")[server_name].setup(config)
 		end,
 		lua_ls = function()
-			require("lsp.lsp_lua").setup(config)
+			require("lsp.lsp_lua").setup()
 		end
 	})
 	require("lsp.lsp_swift").setup()
-	-- vim.cmd([[ LspStart ]])
+	vim.cmd([[ LspStart ]])
 end
 return M

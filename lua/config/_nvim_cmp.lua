@@ -102,15 +102,14 @@ M.config = function()
 				"i",
 				"s",
 			}),
-			-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-			-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-			-- ["<C-e>"] = cmp.mapping.close(),
+			['<S-up>'] = cmp.mapping.scroll_docs(-4),
+			['<S-down>'] = cmp.mapping.scroll_docs(4),
 		},
 		-- You should specify your *installed* sources.
 		sources = cmp.config.sources({
-			{ name = "vsnip",                   priority = 8 },
-			{ name = "nvim_lsp",                priority = 7 },
-			{ name = "path",                    priority = 4 },
+			{ name = "vsnip",    priority = 8 },
+			{ name = "nvim_lsp", priority = 7 },
+			{ name = "path",     priority = 4 },
 		}, {
 			{ name = 'buffer', priority = 6 },
 		}),

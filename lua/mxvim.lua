@@ -8,7 +8,6 @@ mxvim.current_line = "lualine"
 mxvim.use_coc = false
 mxvim.use_treesitter = true
 mxvim.use_cmp = true
-mxvim.use_coq = false
 mxvim.use_notify = false
 mxvim.enable_lspsage = false
 mxvim.enable_treesitter = false
