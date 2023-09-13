@@ -37,8 +37,6 @@ M.hl_common = function()
 	vim.api.nvim_set_hl(0, "NormalFloat", { link = "cleared" })
 	vim.api.nvim_set_hl(0, "MsgArea", { link = "cleared" })
 	vim.api.nvim_set_hl(0, "MatchParen", { reverse = true, underline = true })
-	-- vim.cmd(string.format("hi! MatchParen cterm=reverse gui=underline"))
-
 	vim.api.nvim_set_hl(0, "Greenbg", { fg = "none", bg = colors.green })
 	vim.api.nvim_set_hl(0, "Blackfg", { fg = colors.bg, bg = "none" })
 	vim.api.nvim_set_hl(0, "Redfg", { fg = colors.red, bg = "none" })
