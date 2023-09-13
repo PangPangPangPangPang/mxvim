@@ -109,10 +109,10 @@ M.config = function()
 		-- You should specify your *installed* sources.
 		sources = cmp.config.sources({
 			{ name = "vsnip",                   priority = 8 },
-			{ name = "nvim_lsp",                priority = 8 },
+			{ name = "nvim_lsp",                priority = 7 },
 			{ name = "path",                    priority = 4 },
 		}, {
-			{ name = 'buffer', priority = 7 },
+			{ name = 'buffer', priority = 6 },
 		}),
 		completion = {
 			completeopt = "menu,menuone,noinsert",
