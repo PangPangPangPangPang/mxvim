@@ -4,26 +4,28 @@ return {
 		lazy = true,
 		event = "VeryLazy",
 		dependencies = {
-			{ "williamboman/mason.nvim",  lazy = true },
-			{ "nvim-lua/lsp-status.nvim", lazy = true },
-			{
-				"neovim/nvim-lspconfig",
-				opts = {
-					inlay_hints = { enabled = true },
-				},
-				config = function()
-					require("config._lsp_config").config()
-				end,
-			},
+			{ "williamboman/mason.nvim" },
+			{ "nvim-lua/lsp-status.nvim" },
+			{ "hrsh7th/nvim-cmp", },
+			{ "neovim/nvim-lspconfig", },
 		},
 		config = function()
 			require("config._mason").config()
 		end,
 	},
 	{
+		"neovim/nvim-lspconfig",
+		lazy = true,
+		opts = {
+			inlay_hints = { enabled = true },
+		},
+		config = function()
+			require("config._lsp_config").config()
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
-		event = "VeryLazy",
 		dependencies = {
 			"onsails/lspkind-nvim",
 			"hrsh7th/cmp-nvim-lua",
@@ -42,8 +44,6 @@ return {
 			},
 			{
 				"quangnguyen30192/cmp-nvim-tags",
-				lazy = true,
-				event = "VeryLazy",
 			},
 		},
 		config = function()
@@ -67,11 +67,6 @@ return {
 		config = function()
 			require("config._lsp_trouble").config()
 		end,
-	},
-	{
-		"simrat39/symbols-outline.nvim",
-		enabled = false,
-		-- cmd = { "SymbolsOutline" },
 	},
 	{
 		'stevearc/aerial.nvim',

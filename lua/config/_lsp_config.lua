@@ -123,11 +123,9 @@ end
 M.make_config = function()
 	local safe_require = require("utils").safe_require
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	if mxvim.use_cmp == true then
-		safe_require("cmp_nvim_lsp", function(cmp)
-			capabilities = cmp.default_capabilities(capabilities)
-		end)
-	end
+	safe_require("cmp_nvim_lsp", function(cmp)
+		capabilities = cmp.default_capabilities(capabilities)
+	end)
 	local root_dir
 	safe_require("lspconfig/util", function(util)
 		root_dir = util.root_pattern("package.json", ".eslintrc", ".git")
