@@ -20,29 +20,6 @@ return {
 	-- },
 	-- input method
 	{
-		"ZSaberLv0/ZFVimIM",
-		lazy = true,
-		keys = {
-			{ "<c-x>", "<cmd>lua toggle_zfvimim()<cr>",  mode = "n" },
-			{ "<c-x>", "<c-o>:lua toggle_zfvimim()<cr>", mode = "i" },
-		},
-
-
-
-		dependencies = {
-			"ZSaberLv0/ZFVimJob",
-			"ZSaberLv0/ZFVimGitUtil",
-			"PangPangPangPangPang/ZFVimIM_pinyin",
-			"ZSaberLv0/ZFVimIM_openapi",
-		},
-		init = function()
-			require("config._zfvimim").setup()
-		end,
-		config = function()
-			require("config._zfvimim").config()
-		end,
-	},
-	{
 		"ybian/smartim",
 		lazy = true,
 		-- event = { "InsertEnter" },
