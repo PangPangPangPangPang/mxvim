@@ -18,7 +18,7 @@ M.jump = function()
 			before = false,
 			style = "overlay",
 			rainbow = {
-				enabled = true,
+				enabled = false,
 				shade = 5,
 			}
 		},
