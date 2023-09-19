@@ -9,15 +9,15 @@ return {
 		end,
 	},
 	-- fold
-	-- {
-	-- 	"kevinhwang91/nvim-ufo",
-	-- 	dependencies = 'kevinhwang91/promise-async',
-	-- 	lazy = true,
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		require("config._other").ufo_config()
-	-- 	end
-	-- },
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = 'kevinhwang91/promise-async',
+		lazy = true,
+		event = "VeryLazy",
+		config = function()
+			require("config._other").ufo_config()
+		end
+	},
 	-- input method
 	{
 		"ybian/smartim",
