@@ -17,4 +17,5 @@ return {
 	require("theme").theme("savq/melange-nvim", "melange"),
 	require("theme").theme("AlexvZyl/nordic.nvim", "nordic"),
 	require("theme").theme("loctvl842/monokai-pro.nvim", "monokai"),
+	require("theme").theme("nyoom-engineering/oxocarbon.nvim", "oxocarbon"),
 }
