@@ -67,6 +67,8 @@ return {
 						["o"] = "Toggle",
 						["a"] = "Stage",
 						["="] = "Toggle",
+					},
+					popup = {
 						["P"] = "PullPopup",
 						["p"] = "PushPopup",
 					}
