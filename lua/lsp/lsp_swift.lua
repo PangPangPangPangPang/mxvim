@@ -3,14 +3,15 @@ M.setup = function ()
     local lsp_config = require('config._lsp_config');
     local config = lsp_config.make_config()
     M.modify(config)
+	require("lspconfig").sourcekit.setup(config)
     -- require("lspconfig").sourcekit.setup(config)
 end
 M.modify = function(config)
 	config.default_config = {
 		cmd = {
-			"xcrun",
-			"sourcekit-lsp",
-			-- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+			"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+			-- "xcrun",
+			-- "sourcekit-lsp",
 			"-Xswiftc",
 			"-sdk",
 			"-Xswiftc",
