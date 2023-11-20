@@ -9,6 +9,8 @@ M.jump = function()
 		}
 	end
 
+	local colors = require("theme").colors()
+	vim.api.nvim_set_hl(0, "FlashLabel", { bold = true, fg = colors.bg, bg = colors.red })
 	Flash.jump({
 		jump = {
 			autojump = true,
