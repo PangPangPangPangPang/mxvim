@@ -184,6 +184,7 @@ opt.fillchars:append({
 	diff = "╱",
 	foldclose = "",
 	foldopen = "",
+	foldsep = " ",
 	fold = " ",
 	msgsep = "─",
 })
