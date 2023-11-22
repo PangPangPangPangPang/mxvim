@@ -12,71 +12,17 @@ vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter" }, {
 })
 
 local colors = require("theme").colors()
-local shade_bg = require("theme").shade(colors.bg, 0.2, true)
-local shade_fg = require("theme").shade(colors.fg, 0.5, true)
-
-local conditions = {
-	buffer_not_empty = function()
-		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
-	end,
-	hide_in_width = function()
-		return vim.fn.winwidth(0) > 80
-	end,
-	check_git_workspace = function()
-		local filepath = vim.fn.expand("%:p:h")
-		local gitdir = vim.fn.finddir(".git", filepath .. ";")
-		return gitdir and #gitdir > 0 and #gitdir < #filepath
-	end,
-}
-local function search_count()
-	local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 makes the number not be capped at 99
-	local searchCurrent = search.current
-	local searchTotal = search.total
-	if searchCurrent > 0 then
-		return vim.fn.getreg("/") .. " [" .. searchCurrent .. "/" .. searchTotal .. "]"
-	else
-		return ""
-	end
-end
-
-local color = {
-	n = colors.blue,
-	i = colors.green,
-	v = colors.magenta,
-	[""] = colors.magenta,
-	V = colors.magenta,
-	no = colors.magenta,
-	s = colors.orange,
-	S = colors.orange,
-	[""] = colors.orange,
-	ic = colors.yellow,
-	cv = colors.red,
-	ce = colors.red,
-	["!"] = colors.green,
-	t = colors.cyan,
-	c = colors.purple,
-	["r?"] = colors.red,
-	["r"] = colors.red,
-	rm = colors.red,
-	R = colors.yellow,
-	Rv = colors.magenta,
-}
 
 local fg = colors.line_fg or colors.line_fg
 
-local function mode_color()
-	return { bg = color[vim.fn.mode()], fg = fg, gui = "bold" }
-end
-local function inverse_mode_color()
-	return { fg = color[vim.fn.mode()], bg = fg, gui = "bold" }
-end
-local function active_tab_color()
-	return { bg = colors.red, fg = fg, gui = "bold" }
-end
-local function inactive_tab_color()
-	return { bg = color[vim.fn.mode()], fg = fg, gui = "bold" }
-end
--- Config
+local bubbles_theme = {
+  normal = { a = { fg = fg, bg = colors.blue, gui = "bold" } },
+  insert = { a = { fg = fg, bg = colors.green, gui = "bold" } },
+  visual = { a = { fg = fg, bg = colors.magenta, gui = "bold" } },
+  replace = { a = { fg = fg, bg = colors.red, gui = "bold" } },
+  terminal = { a = { fg = fg, bg = colors.purple, gui = "bold" } },
+
+}
 local config = {
 	options = {
 		-- disabled_filetypes = { "NvimTree" },
@@ -85,21 +31,8 @@ local config = {
 		-- Disable sections and component separators
 		component_separators = "",
 		section_separators = "",
+		theme = bubbles_theme,
 		-- section_separators = { right = " | " },
-		theme = {
-			normal = {
-				a = mode_color,
-				c = mode_color,
-				x = mode_color,
-				z = mode_color,
-			},
-			inactive = {
-				a = { fg = shade_fg, bg = shade_bg },
-				c = { fg = shade_fg, bg = shade_bg },
-				x = { fg = shade_fg, bg = shade_bg },
-				z = { fg = shade_fg, bg = shade_bg },
-			},
-		},
 	},
 	sections = {
 		-- these are to remove the defaults
@@ -126,10 +59,6 @@ local config = {
 				"tabs",
 				max_length = vim.o.columns / 3,
 				mode = 0,
-				tabs_color = {
-					active = active_tab_color,
-					inactive = inactive_tab_color,
-				},
 			},
 		},
 		lualine_b = {},
@@ -139,10 +68,6 @@ local config = {
 		lualine_z = {
 			{
 				"buffers",
-				buffers_color = {
-					active = active_tab_color,
-					inactive = inactive_tab_color,
-				},
 			},
 		},
 	},
@@ -155,7 +80,7 @@ local config = {
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-	table.insert(config.sections.lualine_c, component)
+	table.insert(config.sections.lualine_a, component)
 end
 
 -- Inserts a component in lualine_x ot right section
@@ -170,13 +95,11 @@ end
 ins_left({
 	"branch",
 	icon = "",
-	color = mode_color,
 })
 ins_left({
 	"diff",
 	padding = { right = 1 },
 	colored = false,
-	color = mode_color,
 })
 
 -- ins_left({
@@ -189,18 +112,16 @@ ins_left({
 	"diagnostics",
 	sources = { "nvim_diagnostic", "coc" },
 	sections = { "error", "warn", "info", "hint" },
-	diagnostics_color = {
-		error = { fg = colors.red },
-		warn = { fg = colors.orange },
-		info = { fg = colors.blue },
-		hint = { fg = colors.cyan },
-	},
+	-- diagnostics_color = {
+	-- 	error = { fg = colors.red },
+	-- 	warn = { fg = colors.orange },
+	-- 	info = { fg = colors.blue },
+	-- 	hint = { fg = colors.cyan },
+	-- },
 	symbols = { error = " ", warn = " ", info = " ", hint = " " },
 	colored = false,
 	update_in_insert = false,
 	always_visible = true,
-	color = mode_color,
-	-- padding = { right = 1 },
 })
 
 ins_left({
@@ -241,7 +162,6 @@ ins_left({
 		-- return alias[vim.fn.mode()]
 		return string.format("-- %s --", alias[vim.fn.mode()])
 	end,
-	color = mode_color,
 	padding = { left = 1 },
 })
 local function location()
@@ -254,25 +174,32 @@ ins_right({
 	function()
 		return zf.zf_method
 	end,
-	color = inverse_mode_color,
 })
+
+local function search_count()
+	local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 makes the number not be capped at 99
+	local searchCurrent = search.current
+	local searchTotal = search.total
+	if searchCurrent > 0 then
+		return vim.fn.getreg("/") .. " [" .. searchCurrent .. "/" .. searchTotal .. "]"
+	else
+		return ""
+	end
+end
 
 ins_right({
 	search_count,
 	padding = { right = 1, left = 1 },
-	color = mode_color,
 })
 ins_right({
 	location,
 	padding = { right = 2, left = 1 },
-	color = mode_color,
 })
 ins_right({
 	"filetype",
-	colored = false,
+	-- colored = false,
 	icons_enabled = false,
 	icon_only = false,
-	color = mode_color,
 	padding = { right = 2 },
 })
 
@@ -283,7 +210,6 @@ ins_right({
 	encoding,
 	icons_enabled = false,
 	padding = { right = 1 },
-	color = mode_color,
 })
 
 ins_right({
@@ -294,13 +220,25 @@ ins_right({
 ins_inactive_left({
 	"filetype",
 	icon_only = true,
-	color = { fg = shade_fg, gui = "bold" },
 })
+
+local conditions = {
+	buffer_not_empty = function()
+		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+	end,
+	hide_in_width = function()
+		return vim.fn.winwidth(0) > 80
+	end,
+	check_git_workspace = function()
+		local filepath = vim.fn.expand("%:p:h")
+		local gitdir = vim.fn.finddir(".git", filepath .. ";")
+		return gitdir and #gitdir > 0 and #gitdir < #filepath
+	end,
+}
 ins_inactive_left({
 	"filename",
 	padding = { right = 1 },
 	cond = conditions.buffer_not_empty,
-	color = { fg = shade_fg, gui = "bold" },
 })
 
 lualine.setup(config)

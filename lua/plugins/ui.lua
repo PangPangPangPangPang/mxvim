@@ -6,6 +6,7 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		lazy = true,
 		dependencies = {
 			"bercly0b/lualine-lsp-progress",
 		},
