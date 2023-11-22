@@ -14,8 +14,15 @@ return {
 		dependencies = 'kevinhwang91/promise-async',
 		lazy = true,
 		event = "VeryLazy",
-		config = function()
-			require("config._other").ufo_config()
+		init = function()
+			vim.o.foldcolumn = "1"
+			vim.o.foldlevel = 99
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
+		end,
+		opts = require("config._other").ufo_opts,
+		config = function(_, opts)
+			require("config._other").ufo_config(opts)
 		end
 	},
 	-- input method

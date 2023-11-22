@@ -25,7 +25,6 @@ M.theme = function(name, nick)
 	end
 	return ret
 end
-
 M.hl_common = function()
 	local lighter = require('theme').colors(0.2)
 	local darker = require('theme').colors(0.4)

@@ -14,31 +14,15 @@ M.copilot_setup = function()
         PackerLoad copilot.vim ]])
 	end, 200)
 end
-M.ufo_config = function()
-	vim.o.foldcolumn = '0' -- '0' is not bad
-	vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-	vim.o.foldlevelstart = 99
-	vim.o.foldenable = true
+M.ufo_config = function(opts)
 	vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 	vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-	-- Option 2: nvim lsp as LSP client
-	-- Tell the server the capability of foldingRange,
-	-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true
-	}
-	local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-	for _, ls in ipairs(language_servers) do
-		require('lspconfig')[ls].setup({
-			capabilities = capabilities
-			-- you can add other fields for setting up lsp server in this table
-		})
-	end
+	require("ufo").setup(opts)
+end
+M.ufo_opts = function()
 	local handler = function(virtText, lnum, endLnum, width, truncate)
 		local newVirtText = {}
-		local suffix = (' 󰘖 %d '):format(endLnum - lnum)
+		local suffix = (" ... 󰁂 %d "):format(endLnum - lnum)
 		local sufWidth = vim.fn.strdisplaywidth(suffix)
 		local targetWidth = width - sufWidth
 		local curWidth = 0
@@ -54,17 +38,33 @@ M.ufo_config = function()
 				chunkWidth = vim.fn.strdisplaywidth(chunkText)
 				-- str width returned from truncate() may less than 2nd argument, need padding
 				if curWidth + chunkWidth < targetWidth then
-					suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+					suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
 				end
 				break
 			end
 			curWidth = curWidth + chunkWidth
 		end
-		table.insert(newVirtText, { suffix, 'MoreMsg' })
+		table.insert(newVirtText, { suffix, "MoreMsg" })
 		return newVirtText
 	end
-	require('ufo').setup({
-		fold_virt_text_handler = handler
-	})
+
+	return {
+		fold_virt_text_handler = handler,
+		provider_selector = function()
+			return { "indent" }
+		end,
+		open_fold_hl_timeout = 400,
+		close_fold_kinds = { "imports", "comment" },
+		preview = {
+			win_config = { border = { "", "─", "", "", "", "─", "", "" }, winblend = 0 },
+			mappings = {
+				scrollU = "<C-b>",
+				scrollD = "<C-f>",
+				jumpTop = "[",
+				jumpBot = "]",
+			},
+		},
+	}
 end
+
 return M

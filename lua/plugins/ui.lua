@@ -153,28 +153,34 @@ return {
 			require("config._incline").config()
 		end,
 	},
-	{
+	{ -- better statuscolumn
 		"luukvbaal/statuscol.nvim",
-		lazy = true,
-		event = "VimEnter",
-		enabled = mxvim.enable_statuscol,
-		config = function()
+		event = { "BufRead", "BufNewFile" },
+		opts = function()
 			vim.cmd([[hi! LineNr guifg=bg]])
-			local statuscol = require "statuscol"
-			local builtin = require "statuscol.builtin"
-			statuscol.setup {
-				bt_ignore = { "nofile", "terminal" },
+			local builtin = require("statuscol.builtin")
+			return {
+				ft_ignore = { "neo-tree", "neo-tree-popup", "alpha", "lazy", "mason", "nofile" },
 				segments = {
 					{
 						text = { builtin.lnumfunc },
+						click = "v:lua.ScLa"
 					},
 					{
-						sign = { name = { "GitSigns" }, colwidth = 1, wrap = true },
+						sign = { name = { "GitSigns" }, text = { ".*" }, maxwidth = 1, colwidth = 1, wrap = true },
 						fillchar = "%#LineNr#%=│",
 						click = "v:lua.ScSa",
 					},
+					{
+						text = { builtin.foldfunc, " " },
+						fillchar = "",
+					},
 				},
 			}
+		end,
+		init = function() end,
+		config = function(_, opts)
+			require("statuscol").setup(opts)
 		end,
 	},
 	{
