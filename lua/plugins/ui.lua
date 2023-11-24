@@ -62,7 +62,7 @@ return {
 	},
 	{
 		"luochen1990/rainbow",
-		enabled = not mxvim.enable_treesitter,
+		-- enabled = not mxvim.enable_treesitter,
 		lazy = true,
 		event = "VimEnter",
 		init = function()

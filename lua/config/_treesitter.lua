@@ -79,7 +79,6 @@ require("nvim-treesitter.configs").setup({
     },
     autotag = { enable = true },
     autopairs = { enable = true },
-    context_commentstring = { enable = true },
     rainbow = {
         colors = {
             colors.magenta,
@@ -90,7 +89,7 @@ require("nvim-treesitter.configs").setup({
             colors.cyan,
             colors.blue,
         },
-        enable = true,
+        enable = false,
         extended_mode = true,
     },
     playground = {
@@ -112,7 +111,8 @@ require("nvim-treesitter.configs").setup({
         },
     },
 })
-
+require('ts_context_commentstring').setup {}
+vim.g.skip_ts_context_commentstring_module = true
 local M = {}
 M.inithlargs = function()
     safe_require("hlargs", function(hlargs)

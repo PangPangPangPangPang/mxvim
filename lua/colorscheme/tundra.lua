@@ -28,7 +28,7 @@ M.config = function()
         },
         plugins = {
             lsp = true,
-            treesitter = true,
+            treesitter = mxvim.enable_treesitter,
             cmp = true,
             context = true,
             dbui = true,
