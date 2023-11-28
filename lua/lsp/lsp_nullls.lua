@@ -11,10 +11,10 @@ M.config = function()
 	local luacheck = null_ls.builtins.diagnostics.luacheck
 	luacheck._opts.args = {
 		"--globals",
-        "vim",
-        "mxvim",
-        "packer_plugins",
-        "packer_bootstrap",
+		"vim",
+		"mxvim",
+		"packer_plugins",
+		"packer_bootstrap",
 		"--formatter",
 		"plain",
 		"--codes",
@@ -31,12 +31,16 @@ M.config = function()
 		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.formatting.stylua,
 		prettier,
-        null_ls.builtins.code_actions.gitsigns,
+		null_ls.builtins.code_actions.gitsigns,
 	}
 	null_ls.setup({ sources = sources, debug = true })
 	local safe_require = require("utils").safe_require
-    safe_require('lspconfig.config', function (lspconfig)
-        lspconfig["null-ls"].setup(config)
-    end)
+	safe_require("lspconfig.config", function(lspconfig)
+		lspconfig["null-ls"].setup(config)
+	end)
+	require("mason-null-ls").setup({
+		ensure_installed = nil,
+		automatic_installation = true,
+	})
 end
 return M

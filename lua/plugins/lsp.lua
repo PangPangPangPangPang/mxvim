@@ -81,13 +81,13 @@ return {
 	},
 	require("lsp.lsp_ts"),
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		enabled = false,
-		-- lazy = true,
-		dependencies = { "neovim/nvim-lspconfig" },
-		setup = function()
-			require("lsp.lsp_nullls").setup()
-		end,
+		"jay-babu/mason-null-ls.nvim",
+		lazy = true,
+		event = "VeryLazy",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"nvimtools/none-ls.nvim",
+		},
 		config = function()
 			require("lsp.lsp_nullls").config()
 		end,
