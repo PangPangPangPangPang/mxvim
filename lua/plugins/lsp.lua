@@ -83,7 +83,7 @@ return {
 	{
 		"jay-babu/mason-null-ls.nvim",
 		lazy = true,
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"nvimtools/none-ls.nvim",
