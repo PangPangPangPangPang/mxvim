@@ -16,4 +16,4 @@ mxvim.enable_statuscol = true
 mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
 
 mxvim.treesitter_filetype = { "markdown" }
-mxvim.enable_treesitter = true
+mxvim.enable_treesitter = false

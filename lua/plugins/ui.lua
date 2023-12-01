@@ -64,7 +64,7 @@ return {
 		"luochen1990/rainbow",
 		-- enabled = not mxvim.enable_treesitter,
 		lazy = true,
-		event = "VimEnter",
+		event = "VeryLazy",
 		init = function()
 			local colors = require("theme").colors()
 			vim.g.rainbow_active = 1
