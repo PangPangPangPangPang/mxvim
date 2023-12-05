@@ -21,6 +21,7 @@ local bubbles_theme = {
   visual = { a = { fg = fg, bg = colors.magenta, gui = "bold" } },
   replace = { a = { fg = fg, bg = colors.red, gui = "bold" } },
   terminal = { a = { fg = fg, bg = colors.purple, gui = "bold" } },
+  command = { a = { fg = fg, bg = colors.purple, gui = "bold" } },
 
 }
 local config = {
