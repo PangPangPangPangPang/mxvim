@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		enabled = mxvim.enable_treesitter,
-		ft = mxvim.treesitter_filetype,
+		-- ft = mxvim.treesitter_filetype,
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/playground",
@@ -20,7 +20,7 @@ return {
 	{
 		"lukas-reineke/headlines.nvim",
 		enabled = mxvim.enable_treesitter,
-		ft = mxvim.treesitter_filetype,
+		-- ft = mxvim.treesitter_filetype,
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("headlines").setup {

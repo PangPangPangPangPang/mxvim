@@ -15,5 +15,5 @@ mxvim.enable_statuscol = true
 -- map q to quick close
 mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
 
-mxvim.treesitter_filetype = { "markdown" }
-mxvim.enable_treesitter = false
+mxvim.treesitter_filetype = { "markdown", "javascript", "javascriptreact", "lua" }
+mxvim.enable_treesitter = true

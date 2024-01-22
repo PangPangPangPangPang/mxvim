@@ -1,7 +1,7 @@
 local M = {}
 M.setup = function()
 	local g = vim.g
-	g.indent_blankline_use_treesitter = mxvim.enable_treesitter
+	g.indent_blankline_use_treesitter = false
 	g.indent_blankline_context_patterns = {
 		"declaration", "expression", "pattern", "primary_expression",
 		"statement", "switch_body"
