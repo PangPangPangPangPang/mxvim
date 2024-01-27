@@ -20,6 +20,7 @@ return {
 	{
 		"lukas-reineke/headlines.nvim",
 		enabled = mxvim.enable_treesitter,
+		ft = { "markdown" },
 		-- ft = mxvim.treesitter_filetype,
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
