@@ -1,25 +1,25 @@
-if require("utils").system() == "MacOS" then
-	local squirrel = vim.fn.executable("/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel")
-	vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-		callback = function()
-			if squirrel then
-				vim.fn.system([[
-			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
-			]])
-			end
-		end
-	})
+-- if require("utils").system() == "MacOS" then
+-- 	local squirrel = vim.fn.executable("/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel")
+-- 	vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+-- 		callback = function()
+-- 			if squirrel then
+-- 				vim.fn.system([[
+-- 			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
+-- 			]])
+-- 			end
+-- 		end
+-- 	})
 
-	vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-		callback = function()
-			if squirrel then
-				vim.fn.system([[
-			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode
-			]])
-			end
-		end
-	})
-end
+-- 	vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+-- 		callback = function()
+-- 			if squirrel then
+-- 				vim.fn.system([[
+-- 			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode
+-- 			]])
+-- 			end
+-- 		end
+-- 	})
+-- end
 
 return {
 	{
