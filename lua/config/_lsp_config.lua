@@ -179,7 +179,7 @@ M.custom_handlers = function()
 			severity_sort = true,
 			source = "if_many",
 			show_header = true,
-			focusable = false,
+			focusable = true,
 			border = "rounded"
 		},
 	})
@@ -231,7 +231,7 @@ M.show_cursor_virt_diagnostic = function()
 end
 
 M.show_cursor_diagnostic = function()
-	vim.diagnostic.open_float(nil, { focusable = false, border = "rounded", scope = "cursor", source = "always" })
+	vim.diagnostic.open_float(nil, { focusable = true, border = "rounded", scope = "cursor", source = "always" })
 end
 
 return M

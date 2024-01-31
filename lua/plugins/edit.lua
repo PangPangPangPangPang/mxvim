@@ -65,7 +65,6 @@ return {
   },
   {
     "windwp/nvim-autopairs",
-    enabled = not mxvim.enable_treesitter,
     event = "VeryLazy",
     config = function()
       require("config._autopairs").setup()
