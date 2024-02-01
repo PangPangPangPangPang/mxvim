@@ -39,9 +39,6 @@ M.set_keymap = function()
       vim.keymap.set("n", "<leader>cp", function()
         vim.lsp.buf.format({
           async = true,
-          filter = function(c)
-            return c.name ~= "tsserver"
-          end,
         })
       end, { buffer = bufnr, desc = "Format document" })
 
