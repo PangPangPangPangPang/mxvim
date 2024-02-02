@@ -113,7 +113,6 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-local rainbow_delimiters = require("rainbow-delimiters")
 require("rainbow-delimiters.setup").setup({
   highlight = {
     "Redfg",
