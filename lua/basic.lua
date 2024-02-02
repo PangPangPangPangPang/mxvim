@@ -191,13 +191,6 @@ opt.fillchars:append({
 
 require("utils").hook_print()
 -- if vim.fn.has('nvim-0.9') == 1 then
-if false then
-	local function get_signs()
-		local buf = vim.api.nvim_get_current_buf()
-		return vim.tbl_map(function(sign)
-			return vim.fn.sign_getdefined(sign.name)[1]
-		end, vim.fn.sign_getplaced(buf, { group = '*', lnum = vim.v.lnum })[1].signs)
-	end
 
 cmd([[source ~/.config/nvim/viml/switch.vim]])
 cmd([[
