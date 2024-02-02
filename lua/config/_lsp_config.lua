@@ -55,7 +55,6 @@ M.set_keymap = function()
         { buffer = bufnr, desc = "Remove workspace folder" }
       )
       vim.keymap.set("n", "<leader>wl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, { buffer = bufnr, desc = "List workspace folders" })
       if vim.fn.has("nvim-0.10") == 1 then
         if client and client.server_capabilities.inlayHintProvider then

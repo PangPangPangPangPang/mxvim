@@ -15,11 +15,9 @@ M.config = function()
 	local config = lsp_config.make_config()
 	require("mason-lspconfig").setup_handlers({
 		function(server_name) -- default handler (optional)
-			-- print(server_name)
 			require("lspconfig")[server_name].setup(config)
 		end,
 		lua_ls = function()
-			-- print("lua")
 			require("lsp.lsp_lua").setup()
 		end
 	})
