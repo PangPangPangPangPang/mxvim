@@ -199,36 +199,6 @@ if false then
 		end, vim.fn.sign_getplaced(buf, { group = '*', lnum = vim.v.lnum })[1].signs)
 	end
 
-	function _G.show_stc()
-		local sign, git_sign, space
-		local num = tostring(vim.v.lnum)
-		for _, s in ipairs(get_signs()) do
-			if s.name:find('GitSign') then
-				git_sign = s
-			else
-				sign = s
-				num = sign.text
-			end
-		end
-		if sign ~= nil then
-			space = #(tostring(vim.fn.line('$'))) - 1
-		else
-			space = #(tostring(vim.fn.line('$'))) - #num + 1
-		end
-		if space > 0 then
-			num = string.rep(" ", space) .. num
-		end
-
-		local components = {
-			sign and ('%#' .. sign.texthl .. '#' .. num .. '%*') or num,
-			git_sign and ('%#' .. git_sign.texthl .. '#' .. git_sign.text .. '%*') or '  ',
-		}
-		return table.concat(components, '')
-	end
-
-	opt.stc = [[%!v:lua.show_stc()]]
-end
-
 cmd([[source ~/.config/nvim/viml/switch.vim]])
 cmd([[
     command! -nargs=0 CD :execute("cd %:p:h")
