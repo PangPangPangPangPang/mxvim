@@ -27,6 +27,9 @@ return {
         },
       },
       lsp = {
+        progress = {
+          enabled = false,
+        },
         signature = {
           enabled = true,
           auto_open = {
