@@ -182,7 +182,6 @@ return {
     "luukvbaal/statuscol.nvim",
     event = { "BufRead", "BufNewFile" },
     opts = function()
-      vim.cmd([[hi! LineNr guifg=bg]])
       local builtin = require("statuscol.builtin")
       return {
         ft_ignore = { "neo-tree", "neo-tree-popup", "alpha", "lazy", "mason", "nofile" },
@@ -214,7 +213,6 @@ return {
         },
       }
     end,
-    init = function() end,
     config = function(_, opts)
       require("statuscol").setup(opts)
     end,
