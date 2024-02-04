@@ -30,9 +30,9 @@ M.close = function()
 	elseif M.lazygit_open_status == true then
 		vim.cmd([[ exe "FloatermKill" ]])
 		M.lazygit_open_status = false
-	elseif M.bottom_open_status == 1 then
-		M.bottom_open_status = 2
-		vim.cmd([[ exe "FloatermHide bottom" ]])
+	-- elseif M.bottom_open_status == 1 then
+	-- 	M.bottom_open_status = 2
+	-- 	vim.cmd([[ exe "FloatermHide bottom" ]])
 	end
 end
 M.map = function()
