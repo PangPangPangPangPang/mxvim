@@ -25,16 +25,16 @@ M.set_keymap = function()
       vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { buffer = bufnr, desc = "Diagnostic" })
 
       vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
-      vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
-      vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
-      vim.keymap.set("n", "gr", function()
+      vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
+      vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
+      vim.keymap.set("n", "<leader>cr", function()
         vim.lsp.buf.references({ include_declaration = false })
-      end, { buffer = bufnr, desc = "References" })
+      end, { buffer = bufnr, desc = "Show references" })
 
       vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
-      vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
-      vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
+      vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
+      vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
 
       vim.keymap.set("n", "<leader>cp", function()
         vim.lsp.buf.format({
@@ -44,17 +44,17 @@ M.set_keymap = function()
 
       vim.keymap.set(
         "n",
-        "<leader>wa",
+        "<leader>cwa",
         vim.lsp.buf.add_workspace_folder,
         { buffer = bufnr, desc = "Add workspace folder" }
       )
       vim.keymap.set(
         "n",
-        "<leader>wr",
+        "<leader>cwr",
         vim.lsp.buf.remove_workspace_folder,
         { buffer = bufnr, desc = "Remove workspace folder" }
       )
-      vim.keymap.set("n", "<leader>wl", function()
+      vim.keymap.set("n", "<leader>cwl", function()
       end, { buffer = bufnr, desc = "List workspace folders" })
       if vim.fn.has("nvim-0.10") == 1 then
         if client and client.server_capabilities.inlayHintProvider then
