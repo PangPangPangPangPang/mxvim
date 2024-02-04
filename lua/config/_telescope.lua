@@ -109,7 +109,7 @@ M.config = function()
 				},
 			},
 			["ui-select"] = {
-				require("telescope.themes").get_dropdown {
+				require("telescope.themes").get_cursor {
 					-- even more opts
 				}
 
