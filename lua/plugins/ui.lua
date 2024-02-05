@@ -199,18 +199,18 @@ return {
           --   text = { builtin.foldfunc, " " },
           --   fillchar = "",
           -- },
-          {
-            text = {
-              function(args)
-                args.fold.close = ""
-                args.fold.open = ""
-                -- args.fold.sep = "│"
-                args.fold.sep = "▕"
-                return builtin.foldfunc(args)
-              end,
-            },
-            click = "v:lua.ScFa",
-          },
+          -- {
+          --   text = {
+          --     function(args)
+          --       args.fold.close = ""
+          --       args.fold.open = ""
+          --       -- args.fold.sep = "│"
+          --       args.fold.sep = "▕"
+          --       return builtin.foldfunc(args)
+          --     end,
+          --   },
+          --   click = "v:lua.ScFa",
+          -- },
         },
       }
     end,

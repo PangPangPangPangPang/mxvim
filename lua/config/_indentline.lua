@@ -24,12 +24,12 @@ M.setupIndent = function(opts)
     vim.api.nvim_set_hl(0, "RainbowViolet", { fg = colors.purple })
     vim.api.nvim_set_hl(0, "RainbowCyan", { fg = colors.cyan })
   end)
-  hooks.register(hooks.type.VIRTUAL_TEXT, function(_, _, _, virt_text)
-    if virt_text[1] and virt_text[1][1] == opts.indent.char then
-      virt_text[1] = { " ", { "@ibl.whitespace.char.1" } }
-    end
-    return virt_text
-  end)
+  -- hooks.register(hooks.type.VIRTUAL_TEXT, function(_, _, _, virt_text)
+  --   if virt_text[1] and virt_text[1][1] == opts.indent.char then
+  --     virt_text[1] = { " ", { "@ibl.whitespace.char.1" } }
+  --   end
+  --   return virt_text
+  -- end)
   require("ibl").setup(opts)
 
 end
