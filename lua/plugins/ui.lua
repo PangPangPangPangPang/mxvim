@@ -108,7 +108,7 @@ return {
     end,
   },
   {
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
     lazy = true,
     event = "VeryLazy",
     config = function()
