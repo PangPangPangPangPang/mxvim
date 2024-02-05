@@ -99,8 +99,8 @@ return {
       },
       scope = {
         -- Rely on treesitter, bad performance
-        enabled = false,
-        -- highlight = highlight,
+        enabled = true,
+        highlight = { "Yellowfg" },
       },
     },
     config = function(_, opts)
