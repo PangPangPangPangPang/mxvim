@@ -269,9 +269,9 @@ if fn.exists("g:neovide") == 1 then
 		o.guifont = "Iosevka Nerd Font:h10"
 		o.guifont = "MaxIosevka Nerd Font:h10"
 	else
-		-- o.guifont = "MaxIosevka Nerd Font:h16"
-		o.guifont = "DinaTtf10px Nerd Font:h20:#h-normal:#e-subpixelantialias"
-		g.neovide_padding_top = 10
+		o.guifont = "MaxIosevka Nerd Font:h16"
+		-- o.guifont = "DinaTtf10px Nerd Font:h20"
+		-- g.neovide_padding_top = 8
 		-- vim.opt.linespace = 4
 	end
 	g.neovide_scroll_animation_length = 0.3
