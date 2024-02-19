@@ -163,4 +163,14 @@ return {
       vim.g.gpt_commit_key = os.getenv("OPENAI_API_KEY")
     end,
   },
+  {
+    "github/copilot.vim",
+    enabled = false,
+    config = function()
+      vim.cmd([[
+		imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+		let g:copilot_no_tab_map = v:true
+			]])
+    end,
+  },
 }
