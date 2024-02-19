@@ -116,11 +116,18 @@ return {
     end,
   },
   {
-    "lewis6991/satellite.nvim",
-    enable = vim.fn.has("nvim-1.0") == 1,
+    "dstein64/nvim-scrollview",
     lazy = true,
+    event = "VeryLazy",
     config = function()
-      require("config._scrollbar").config()
+      require("scrollview").setup({
+        excluded_filetypes = { "NvimTree" },
+        current_only = true,
+        -- base = "buffer",
+        -- column = 80,
+        signs_on_startup = { "all" },
+        diagnostics_severities = { vim.diagnostic.severity.ERROR },
+      })
     end,
   },
   {
@@ -167,6 +174,7 @@ return {
         show_col = false,
         exclusive_filetype = { "fugitive" },
         col_highlight = "VertSplit",
+        scrollview_base = "right",
       })
     end,
   },
