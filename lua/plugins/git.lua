@@ -20,7 +20,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"NeogitOrg/neogit",
 		},
-		cmd = { "DiffviewOpen", "DiffviewClose" },
+		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
 		keys = {
 			{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
 		},
