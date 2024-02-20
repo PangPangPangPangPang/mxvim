@@ -22,10 +22,10 @@ M.set_keymap = function()
       -- vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help,
       -- { buffer = bufnr, desc = "LSP: Signature help" })
       vim.keymap.set("n", "[e", function()
-        vim.diagnostic.goto_prev({ float = false })
+        vim.diagnostic.goto_prev({ float = true })
       end, { buffer = bufnr, desc = "Diagnostic" })
       vim.keymap.set("n", "]e", function()
-        vim.diagnostic.goto_next({ float = false })
+        vim.diagnostic.goto_next({ float = true })
       end, { buffer = bufnr, desc = "Diagnostic" })
 
       vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
