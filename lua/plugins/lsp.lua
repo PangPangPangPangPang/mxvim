@@ -124,4 +124,24 @@ return {
       })
     end,
   },
+  {
+    "RaafatTurki/corn.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    config = function()
+      vim.diagnostic.config({ virtual_text = false })
+      require("corn").setup({
+        icons = {
+          error = " ",
+          warn = " ",
+          hint = " ",
+          info = " ",
+        },
+        border_style = "none",
+        on_toggle = function(is_hidden)
+          vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
+        end,
+      })
+    end,
+  },
 }
