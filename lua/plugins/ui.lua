@@ -120,6 +120,7 @@ return {
     lazy = true,
     event = "VeryLazy",
     config = function()
+      vim.api.nvim_set_hl(0, "ScrollView", { link = "CursorLine" })
       require("scrollview").setup({
         diagnostics_error_symbol = "━",
         diagnostics_warn_symbol = "━",
