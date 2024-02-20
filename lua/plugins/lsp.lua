@@ -137,6 +137,7 @@ return {
           hint = " ",
           info = " ",
         },
+        blacklisted_modes = { "i" },
         border_style = "none",
         on_toggle = function(is_hidden)
           vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })

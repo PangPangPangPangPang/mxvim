@@ -21,8 +21,12 @@ M.set_keymap = function()
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover" })
       -- vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help,
       -- { buffer = bufnr, desc = "LSP: Signature help" })
-      vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { buffer = bufnr, desc = "Diagnostic" })
-      vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { buffer = bufnr, desc = "Diagnostic" })
+      vim.keymap.set("n", "[e", function()
+        vim.diagnostic.goto_prev({ float = false })
+      end, { buffer = bufnr, desc = "Diagnostic" })
+      vim.keymap.set("n", "]e", function()
+        vim.diagnostic.goto_next({ float = false })
+      end, { buffer = bufnr, desc = "Diagnostic" })
 
       vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
       vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
@@ -54,8 +58,7 @@ M.set_keymap = function()
         vim.lsp.buf.remove_workspace_folder,
         { buffer = bufnr, desc = "Remove workspace folder" }
       )
-      vim.keymap.set("n", "<leader>cwl", function()
-      end, { buffer = bufnr, desc = "List workspace folders" })
+      vim.keymap.set("n", "<leader>cwl", function() end, { buffer = bufnr, desc = "List workspace folders" })
       if vim.fn.has("nvim-0.10") == 1 then
         if client and client.server_capabilities.inlayHintProvider then
           vim.lsp.inlay_hint(bufnr, true)
