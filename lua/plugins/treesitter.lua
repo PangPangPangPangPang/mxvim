@@ -2,6 +2,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     enabled = mxvim.enable_treesitter,
+    lazy = true,
+
     -- ft = mxvim.treesitter_filetype,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
