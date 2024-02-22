@@ -59,7 +59,7 @@ M.config = function()
 					Search = "None",
 				},
 			},
-			zindex = 0,
+			zindex = 1,
 		},
 	})
 end
