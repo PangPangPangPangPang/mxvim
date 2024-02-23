@@ -12,7 +12,6 @@ return {
   {
     "numToStr/Comment.nvim",
     enabled = mxvim.enable_treesitter,
-    lazy = true,
     event = "VeryLazy",
     config = function()
       require("Comment").setup({
@@ -41,7 +40,6 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
-    lazy = true,
     event = "VeryLazy",
     init = function()
       vim.o.foldcolumn = "1"

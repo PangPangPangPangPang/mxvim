@@ -14,7 +14,7 @@ return {
   },
   {
     "folke/noice.nvim",
-    event = "VimEnter",
+    event = "VeryLazy",
     opts = {
       cmdline = {
         format = {
@@ -66,7 +66,6 @@ return {
   {
     "luochen1990/rainbow",
     enabled = not mxvim.enable_treesitter,
-    lazy = true,
     event = "VeryLazy",
     init = function()
       local colors = require("theme").colors()
@@ -81,7 +80,6 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    lazy = true,
     event = "VeryLazy",
     opts = {
       indent = {
@@ -109,7 +107,6 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       require("colorizer").setup()
@@ -117,7 +114,6 @@ return {
   },
   {
     "dstein64/nvim-scrollview",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       vim.api.nvim_set_hl(0, "ScrollView", { link = "CursorLine" })
@@ -185,7 +181,6 @@ return {
   },
   {
     "b0o/incline.nvim",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       require("config._incline").config()
@@ -233,7 +228,6 @@ return {
   },
   {
     "levouh/tint.nvim",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       require("tint").setup({

@@ -17,7 +17,7 @@ M.config = function()
 				cmp.config.compare.score,
 				cmp.config.compare.offset,
 				cmp.config.compare.order,
-			}
+			},
 		},
 		snippet = {
 			expand = function(args)
@@ -42,22 +42,18 @@ M.config = function()
 			format = function(entry, vim_item)
 				local kind = require("lspkind").cmp_format({
 					mode = "symbol",
-					preset = 'codicons',
-					maxwidth = MAX_LABEL_WIDTH
-				})(
-					entry,
-					vim_item
-				)
+					preset = "codicons",
+					maxwidth = MAX_LABEL_WIDTH,
+					symbol_map = { Codeium = "" },
+				})(entry, vim_item)
 				kind.kind = kind.kind .. " "
 				return kind
 			end,
 		},
 
 		mapping = {
-			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-				{ "i" }),
-			["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-				{ "i" }),
+			["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+			["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<CR>"] = cmp.mapping(
 				cmp.mapping.confirm({
@@ -71,8 +67,7 @@ M.config = function()
 					cmp.select_next_item()
 				elseif vim.fn["vsnip#available"](1) == 1 then
 					vim.api.nvim_feedkeys(
-						vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true
-						, true),
+						vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true),
 						"",
 						true
 					)
@@ -89,12 +84,7 @@ M.config = function()
 				if cmp.visible() then
 					cmp.select_prev_item()
 				elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-					vim.api.nvim_feedkeys(
-						vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true,
-							true),
-						"",
-						true
-					)
+					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true, true), "", true)
 				else
 					fallback()
 				end
@@ -102,16 +92,17 @@ M.config = function()
 				"i",
 				"s",
 			}),
-			['<S-up>'] = cmp.mapping.scroll_docs(-4),
-			['<S-down>'] = cmp.mapping.scroll_docs(4),
+			["<S-up>"] = cmp.mapping.scroll_docs(-4),
+			["<S-down>"] = cmp.mapping.scroll_docs(4),
 		},
 		-- You should specify your *installed* sources.
 		sources = cmp.config.sources({
+			{ name = "codeium",  priority = 9 },
 			{ name = "vsnip",    priority = 8 },
 			{ name = "nvim_lsp", priority = 7 },
 			{ name = "path",     priority = 4 },
 		}, {
-			{ name = 'buffer', priority = 6 },
+			{ name = "buffer", priority = 6 },
 		}),
 		completion = {
 			completeopt = "menu,menuone,noinsert",

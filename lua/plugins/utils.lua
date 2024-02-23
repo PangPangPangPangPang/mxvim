@@ -17,7 +17,6 @@ return {
   {
     "karb94/neoscroll.nvim",
     enabled = not vim.g.neovide,
-    lazy = true,
     event = "VeryLazy",
     config = function()
       require("config._neoscroll").config()
@@ -35,7 +34,6 @@ return {
   { "tpope/vim-dadbod", cmd = { "DB" } },
   {
     "skywind3000/vim-quickui",
-    lazy = true,
     event = "VeryLazy",
     init = function()
       vim.g.quickui_border_style = 2

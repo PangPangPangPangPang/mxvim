@@ -44,7 +44,6 @@ return {
 	},
 	{
 		"keaising/im-select.nvim",
-		lazy = true,
 		enabled = require("utils").system() == "Linux",
 		event = "VeryLazy",
 		config = function()

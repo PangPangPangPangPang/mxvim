@@ -1,7 +1,6 @@
 return {
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = true,
     event = "VeryLazy",
     dependencies = {
       { "williamboman/mason.nvim" },
@@ -52,7 +51,6 @@ return {
   },
   {
     "glepnir/lspsaga.nvim",
-    lazy = true,
     enabled = mxvim.enable_lspsage,
     event = "VeryLazy",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
@@ -82,7 +80,6 @@ return {
   -- require("lsp.lsp_ts"),
   {
     "jay-babu/mason-null-ls.nvim",
-    lazy = true,
     event = "VeryLazy",
     dependencies = {
       "williamboman/mason.nvim",
@@ -104,7 +101,6 @@ return {
   },
   {
     "aznhe21/actions-preview.nvim",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions, { desc = "Code action" })
@@ -126,7 +122,6 @@ return {
   },
   {
     "RaafatTurki/corn.nvim",
-    lazy = true,
     event = "VeryLazy",
     config = function()
       vim.diagnostic.config({ virtual_text = false })
@@ -143,6 +138,17 @@ return {
           vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
         end,
       })
+    end,
+  },
+  {
+    "Exafunction/codeium.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({})
     end,
   },
 }

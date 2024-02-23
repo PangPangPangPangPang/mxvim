@@ -1,7 +1,6 @@
 return {
 	{
 		"mhinz/vim-grepper",
-		lazy = true,
 		event = "VeryLazy",
 		init = function()
 			require("config._grep").setup()
@@ -19,7 +18,6 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = true,
 		event = "VeryLazy",
 		dependencies = {
 			{

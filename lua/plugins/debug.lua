@@ -2,7 +2,6 @@ return {
 	-- debugger
 	{
 		"ravenxrz/nvim-dap",
-		lazy = true,
 		event = "VeryLazy",
 		dependencies = {
 			"ravenxrz/DAPInstall.nvim",
