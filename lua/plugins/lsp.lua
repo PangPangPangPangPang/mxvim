@@ -101,22 +101,12 @@ return {
   },
   {
     "aznhe21/actions-preview.nvim",
+    enabled = mxvim.enable_action_preview,
     event = "VeryLazy",
     config = function()
       vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions, { desc = "Code action" })
       require("actions-preview").setup({
-        telescope = vim.tbl_extend(
-          "force",
-          require("telescope.themes").get_cursor({
-            layout_config = {
-              width = 0.5,
-            },
-          }),
-          {
-            make_value = nil,
-            make_make_display = nil,
-          }
-        ),
+        telescope = require("telescope.themes").get_dropdown({ winblend = 10 }),
       })
     end,
   },
@@ -142,7 +132,7 @@ return {
   },
   {
     "Exafunction/codeium.nvim",
-		enabled = mxvim.enable_codeium,
+    enabled = mxvim.enable_codeium,
     event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",

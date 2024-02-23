@@ -36,10 +36,12 @@ M.set_keymap = function()
       end, { buffer = bufnr, desc = "Show references" })
 
       vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
-      -- vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
       vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
       vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
 
+			if not mxvim.enable_action_preview then
+				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+			end
       vim.keymap.set("n", "<leader>cp", function()
         vim.lsp.buf.format({
           async = true,
