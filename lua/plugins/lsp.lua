@@ -142,6 +142,7 @@ return {
   },
   {
     "Exafunction/codeium.nvim",
+		enabled = mxvim.enable_codeium,
     event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
