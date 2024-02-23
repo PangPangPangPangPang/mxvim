@@ -4,7 +4,6 @@ return {
     enabled = mxvim.enable_treesitter,
     lazy = true,
     event = "VeryLazy",
-    -- ft = mxvim.treesitter_filetype,
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/playground",
