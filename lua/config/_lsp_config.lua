@@ -74,6 +74,7 @@ M.set_keymap = function()
 end
 
 M.set_diagnostic = function(client)
+	client.server_capabilities.documentFormattingProvider = true
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
     local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"

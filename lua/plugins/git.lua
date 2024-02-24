@@ -22,6 +22,8 @@ return {
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
 		keys = {
 			{ "<F3>", '<cmd>lua require("utils").toggleDiffView()<cr>', mode = "n" },
+			{ "<leader>gl", "<cmd>DiffviewFileHistory<cr>", mode = { "n", "v" }, desc = "Git log" },
+			{ "<leader>gc", "<cmd>DiffviewFileHistory %<cr>", mode = { "n", "v" }, desc = "Current file git log" },
 		},
 		config = function()
 			require("config._diffview").config()
@@ -43,7 +45,7 @@ return {
 			"ibhagwan/fzf-lua",     -- optional
 		},
 		keys = {
-			{ "<leader>gl", "<cmd>Neogit log<cr>", mode = { "n", "v" }, desc = "Git log" },
+			-- { "<leader>gl", "<cmd>Neogit log<cr>", mode = { "n", "v" }, desc = "Git log" },
 			-- { "<F3>", '<cmd>Neogit<cr>', mode = "n" },
 		},
 		setup = {

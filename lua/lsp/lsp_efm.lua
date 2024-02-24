@@ -25,7 +25,7 @@ M.config = function (on_attach)
         },
         settings = {
             languages = languages,
-            verson = 2,
+            version = 2,
             rootMarkers = {".eslintrc", ".eslintrc.js", ".git/", "yarn.lock", "lerna.json"}
         },
         on_attach = on_attach

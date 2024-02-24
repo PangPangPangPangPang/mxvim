@@ -8,33 +8,14 @@ M.config = function()
 	local prettier = null_ls.builtins.formatting.prettier
 	prettier.filetypes = { "css", "scss", "html", "json", "yaml", "markdown" }
 
-	local luacheck = null_ls.builtins.diagnostics.luacheck
-	luacheck._opts.args = {
-		"--globals",
-		"vim",
-		"mxvim",
-		"packer_plugins",
-		"packer_bootstrap",
-		"--formatter",
-		"plain",
-		"--codes",
-		"--ranges",
-		"--filename",
-		"$FILENAME",
-		"-",
-	}
-
 	local sources = {
-		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.diagnostics.codespell,
-		luacheck,
-		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.diagnostics.selene,
 		null_ls.builtins.formatting.stylua,
-		prettier,
-		null_ls.builtins.code_actions.eslint_d,
 		null_ls.builtins.code_actions.gitsigns,
+		prettier,
 	}
-	null_ls.setup({ sources = sources, debug = true })
+	null_ls.setup({ sources = sources, debug = false })
 	local safe_require = require("utils").safe_require
 	safe_require("lspconfig.config", function(lspconfig)
 		lspconfig["null-ls"].setup(config)

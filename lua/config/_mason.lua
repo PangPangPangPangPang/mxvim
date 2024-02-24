@@ -9,6 +9,7 @@ M.config = function()
 			"cssls",
 			"html",
 			"bashls",
+			"eslint"
 		},
 	})
 	local lsp_config = require('config._lsp_config');
@@ -19,7 +20,7 @@ M.config = function()
 		end,
 		lua_ls = function()
 			require("lsp.lsp_lua").setup()
-		end
+		end,
 	})
 	require("lsp.lsp_swift").setup()
 	vim.cmd([[ LspStart ]])
