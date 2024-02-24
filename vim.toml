@@ -1,2 +1,4 @@
 [vim]
 any = true
+[mxvim]
+any = true

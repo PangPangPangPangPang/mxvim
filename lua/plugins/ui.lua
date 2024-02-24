@@ -79,8 +79,9 @@ return {
   -- -	g.indentLine_char = '▏'
   {
     "lukas-reineke/indent-blankline.nvim",
+		lazy = true,
     main = "ibl",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     opts = {
       indent = {
         char = "▏", -- Thiner, not suitable when enable scope

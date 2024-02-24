@@ -9,6 +9,8 @@ return {
       "HiPhish/rainbow-delimiters.nvim",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag",
+      "lukas-reineke/indent-blankline.nvim",
+      "numToStr/Comment.nvim",
       -- "m-demare/hlargs.nvim",
     },
     build = ":TSUpdate",
