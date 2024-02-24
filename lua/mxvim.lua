@@ -20,5 +20,5 @@ mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblam
 
 mxvim.treesitter_filetype = { "markdown", "javascript", "javascriptreact", "lua" }
 mxvim.enable_treesitter = true
-mxvim.enable_codeium = true
+mxvim.enable_codeium = false
 mxvim.enable_action_preview = false
