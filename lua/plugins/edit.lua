@@ -170,5 +170,8 @@ return {
 
       -- see below for full list of options 👇
     },
+		init = function ()
+			vim.o.conceallevel = 1
+		end
   },
 }
