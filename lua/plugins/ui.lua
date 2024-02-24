@@ -39,7 +39,6 @@ return {
             throttle = 50, -- Debounce lsp signature help request by 50ms
           },
           view = nil, -- when nil, use defaults from documentation
-          ---@type NoiceViewOptions
           opts = {}, -- merged with defaults from documentation
         },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
