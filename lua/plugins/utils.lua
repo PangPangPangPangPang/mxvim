@@ -111,6 +111,11 @@ return {
       wk.register({
         g = {
           name = "Git",
+          o = "Diff Choose ours",
+          t = "Diff Choose theirs",
+          B = "Diff Choose base",
+          A = "Diff Choose all",
+          X = "Diff Choose none",
         },
       }, { prefix = "<leader>" })
       wk.register({
@@ -141,15 +146,6 @@ return {
         },
         ["<Up>"] = {
           name = "Change",
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        d = {
-          name = "Git Diff",
-          o = "Choose ours",
-          t = "Choose theirs",
-          b = "Choose base",
-          a = "Choose all",
         },
       }, { prefix = "<leader>" })
     end,

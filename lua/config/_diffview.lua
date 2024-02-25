@@ -83,11 +83,11 @@ M.config = function()
 				["g<C-x>"]     = actions.cycle_layout,  -- Cycle through available layouts.
 				["[e"]         = actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
 				["]e"]         = actions.next_conflict, -- In the merge_tool: jump to the next conflict
-				["<leader>do"] = actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
-				["<leader>dt"] = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
-				["<leader>db"] = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
-				["<leader>da"] = actions.conflict_choose("all"), -- Choose all the versions of a conflict
-				["dx"]         = actions.conflict_choose("none"), -- Delete the conflict region
+				["<leader>go"] = actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
+				["<leader>gt"] = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
+				["<leader>gB"] = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
+				["<leader>gA"] = actions.conflict_choose("all"), -- Choose all the versions of a conflict
+				["<leader>gX"] = actions.conflict_choose("none"), -- Delete the conflict region
 				["c"]          = function()
 					vim.cmd('Neogit commit')
 				end,
