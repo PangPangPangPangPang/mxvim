@@ -189,6 +189,7 @@ return {
   {
     "gen740/SmoothCursor.nvim",
     lazy = true,
+    enabled = mxvim.enable_cursor,
     config = function()
       require("smoothcursor").setup({
         -- cursor = "▷ ",
