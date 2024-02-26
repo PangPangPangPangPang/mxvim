@@ -167,4 +167,9 @@ return {
 			]])
     end,
   },
+  {
+    "stevearc/stickybuf.nvim",
+		event = "VeryLazy",
+    opts = {},
+  },
 }
