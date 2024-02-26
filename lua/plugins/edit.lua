@@ -42,7 +42,9 @@ return {
     dependencies = "kevinhwang91/promise-async",
     event = "VeryLazy",
     init = function()
-      -- vim.o.foldcolumn = "1"
+			if mxvim.show_fold then
+				vim.o.foldcolumn = "1"
+			end
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
