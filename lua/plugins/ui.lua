@@ -102,7 +102,7 @@ return {
       },
     },
     config = function(_, opts)
-      require("config._indentline").setupIndent(opts)
+      require("config._indentline").setup(opts)
     end,
   },
   {
