@@ -141,12 +141,5 @@ return {
     config = function()
       require("codeium").setup({})
     end,
-  },
-  {
-    "dmmulroy/ts-error-translator.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("ts-error-translator").setup()
-    end,
-  },
+  }
 }
