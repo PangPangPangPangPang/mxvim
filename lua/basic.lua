@@ -250,7 +250,7 @@ pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
 	-- for paste
-	dmap({ "n", "v" }, "<c-v>", '"+p')
+	dmap({ "i", "v" }, "<c-v>", '"+p')
 	dmap({ "n", "v" }, "<c-c>", '"+y')
 	dmap({ "c", "i" }, "<c-v>", '<c-r>+')
 	dmap({ "i" }, "<c-r>", '<c-v>')

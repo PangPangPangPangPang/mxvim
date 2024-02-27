@@ -25,14 +25,15 @@ return {
         "<Cmd>TSToolsOrganizeImports<CR>",
         { buffer = bufnr, desc = "Organize imports" }
       )
-		end,
+    end,
     handlers = {
-      ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        update_in_insert = true,
-      }),
+      ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+        require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
+        vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+      end,
     },
     settings = {
-			publish_diagnostic_on = "change",
+      publish_diagnostic_on = "change",
       -- expose_as_code_action = "all",
       tsserver_file_preferences = {
         includeCompletionsForModuleExports = true,
