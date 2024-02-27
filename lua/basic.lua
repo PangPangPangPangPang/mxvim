@@ -266,7 +266,6 @@ if fn.exists("g:neovide") == 1 then
 	g.neovide_cursor_vfx_mode = "sonicboom"
 	g.neovide_floating_opacity = 1
 	if require("utils").system() == "Linux" then
-		o.guifont = "Iosevka Nerd Font:h10"
 		o.guifont = "MaxIosevka Nerd Font:h10"
 	else
 		o.guifont = "MaxIosevka Nerd Font:h16"

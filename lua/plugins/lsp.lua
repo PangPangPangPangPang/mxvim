@@ -77,7 +77,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
   },
-  -- require("lsp.lsp_ts"),
+  require("lsp.lsp_ts"),
   {
     "jay-babu/mason-null-ls.nvim",
     event = "VeryLazy",
@@ -140,6 +140,13 @@ return {
     },
     config = function()
       require("codeium").setup({})
+    end,
+  },
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("ts-error-translator").setup()
     end,
   },
 }

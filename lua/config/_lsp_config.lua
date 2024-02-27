@@ -39,9 +39,9 @@ M.set_keymap = function()
       vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
       vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
 
-			if not mxvim.enable_action_preview then
-				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
-			end
+      if not mxvim.enable_action_preview then
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+      end
       vim.keymap.set("n", "<leader>cp", function()
         vim.lsp.buf.format({
           async = true,
@@ -74,7 +74,7 @@ M.set_keymap = function()
 end
 
 M.set_diagnostic = function(client)
-	client.server_capabilities.documentFormattingProvider = true
+  client.server_capabilities.documentFormattingProvider = true
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
     local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"
@@ -150,7 +150,7 @@ M.custom_handlers = function()
   local sign = function(opts)
     vim.fn.sign_define(opts.name, {
       texthl = opts.name,
-			text = mxvim.enable_cursor and opts.icon or "",
+      text = mxvim.enable_cursor and opts.icon or "",
       numhl = opts.name,
     })
   end
