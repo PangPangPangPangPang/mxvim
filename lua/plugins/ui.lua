@@ -192,10 +192,10 @@ return {
     enabled = mxvim.enable_cursor,
     config = function()
       require("smoothcursor").setup({
-        -- cursor = "▷ ",
+        cursor = "▷ ",
         -- cursor = '▶ '
         -- cursor = "⫸ ",
-				cursor = "㊡",
+				-- cursor = "㊡",
 				disabled_filetypes = {"NeogitStatus"},   -- Disable for these file types, ignored if enabled_filetypes is set. e.g., { "TelescopePrompt", "NvimTree" }
         disable_float_win = true,
         always_redraw = false, -- Redraw the screen on each update
