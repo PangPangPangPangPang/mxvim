@@ -1,8 +1,6 @@
-if not mxvim.enable_ts_tools then
-  return
-end
 return {
   "pmizio/typescript-tools.nvim",
+	enabled = mxvim.enable_ts_tools,
   event = {
     "BufRead *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx",
     "BufNewFile *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx",

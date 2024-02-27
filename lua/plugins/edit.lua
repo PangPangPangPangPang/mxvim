@@ -3,6 +3,10 @@ return {
   {
     "tpope/vim-commentary",
     enabled = not mxvim.enable_treesitter,
+    event = "VeryLazy",
+    dependencies = {
+      "lukas-reineke/indent-blankline.nvim",
+    },
     config = function()
       vim.g.kommentary_create_default_mappings = false
       vim.api.nvim_set_keymap("n", "<leader>/", "gcc", { desc = "Comment" })
@@ -12,7 +16,7 @@ return {
   {
     "numToStr/Comment.nvim",
     enabled = mxvim.enable_treesitter,
-		lazy = true,
+    lazy = true,
     config = function()
       require("Comment").setup({
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -42,9 +46,9 @@ return {
     dependencies = "kevinhwang91/promise-async",
     event = "VeryLazy",
     init = function()
-			if mxvim.show_fold then
-				vim.o.foldcolumn = "1"
-			end
+      if mxvim.show_fold then
+        vim.o.foldcolumn = "1"
+      end
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
@@ -169,8 +173,8 @@ return {
         },
       },
     },
-		config = function ()
-			vim.o.conceallevel = 1
-		end,
+    config = function()
+      vim.o.conceallevel = 1
+    end,
   },
 }
