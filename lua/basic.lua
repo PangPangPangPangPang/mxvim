@@ -259,7 +259,7 @@ if fn.exists("g:neovide") == 1 then
 	dmap({ "c", "i" }, "<D-v>", '<c-r>+')
 	dmap({ "i" }, "<D-r>", '<D-v>')
 
-	g.neovide_transparency = 1.0
+	g.neovide_transparency = 0.8
 	g.neovide_cursor_trail_size = 0.1
 	g.neovide_window_blurred = true
 	g.neovide_fullscreen = true
