@@ -1,7 +1,6 @@
 local M = {}
 local colors = require("theme").colors(0.6)
 local cmd = vim.cmd
-
 M.config = function()
   M.custom_handlers()
   M.set_keymap()
@@ -39,9 +38,7 @@ M.set_keymap = function()
       vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
       vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
 
-      if not mxvim.enable_action_preview then
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
-      end
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
       vim.keymap.set("n", "<leader>cp", function()
         vim.lsp.buf.format({
           async = true,
@@ -181,7 +178,7 @@ M.custom_handlers = function()
       return true
     end,
     underline = true,
-    update_in_insert = false,
+    update_in_insert = true,
     float = {
       severity_sort = true,
       source = "if_many",

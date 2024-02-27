@@ -16,13 +16,24 @@ return {
     },
   },
   opts = {
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+      vim.keymap.set(
+        "n",
+        "<leader>cs",
+        "<Cmd>TSToolsOrganizeImports<CR>",
+        { buffer = bufnr, desc = "Organize imports" }
+      )
+		end,
     handlers = {
       ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         update_in_insert = true,
       }),
     },
     settings = {
-      expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
+			publish_diagnostic_on = "change",
+      -- expose_as_code_action = "all",
       tsserver_file_preferences = {
         includeCompletionsForModuleExports = true,
         includeInlayParameterNameHints = "all",

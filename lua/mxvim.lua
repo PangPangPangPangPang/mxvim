@@ -24,4 +24,4 @@ mxvim.enable_codeium = false
 mxvim.enable_action_preview = false
 mxvim.show_fold = false
 mxvim.enable_cursor = true
-mxvim.enable_ts_tools = false
+mxvim.enable_ts_tools = true
