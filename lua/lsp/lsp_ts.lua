@@ -17,8 +17,8 @@ return {
   },
   opts = {
     on_attach = function(client, bufnr)
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
+      client.server_capabilities.documentFormattingProvider = true
+      client.server_capabilities.documentRangeFormattingProvider = true
       vim.keymap.set(
         "n",
         "<leader>cs",
