@@ -64,7 +64,7 @@ M.set_keymap = function()
         end
       end
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        update_in_insert = true,
+        update_in_insert = false,
       })
     end,
   })
@@ -178,7 +178,7 @@ M.custom_handlers = function()
       return true
     end,
     underline = true,
-    update_in_insert = true,
+    update_in_insert = false,
     float = {
       severity_sort = true,
       source = "if_many",

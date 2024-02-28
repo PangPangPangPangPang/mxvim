@@ -22,6 +22,17 @@ return {
       require("config._lsp_config").config()
     end,
   },
+	-- defer all NeoVim diagnostics for a less distracting coding experience
+  {
+    "https://gitlab.com/yorickpeterse/nvim-dd.git",
+    event = "VeryLazy",
+    config = function()
+      require("dd").setup({
+        timeout = 0,
+      })
+    end,
+  },
+
   {
     "hrsh7th/nvim-cmp",
     lazy = true,
@@ -141,5 +152,5 @@ return {
     config = function()
       require("codeium").setup({})
     end,
-  }
+  },
 }
