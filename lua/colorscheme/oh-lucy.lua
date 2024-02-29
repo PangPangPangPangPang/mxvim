@@ -1,26 +1,26 @@
 local M = {}
 M.config = function()
-    vim.cmd('colorscheme ' .. mxvim.current_theme)
+  vim.cmd("colorscheme " .. mxvim.current_theme)
 end
 
 M.colors = function()
-    return {
-        fg = '#4C4F69', -- light text color
-        bg = '#2D293B', -- background color
-        light_fg = '#2D293B', -- text color
-        light_bg = '#C2E7F0', -- light background color
+  return {
+    fg = "#E9E9E9",
+    bg = "#14161D",
+    light_bg = "#E9E9E9",
+    light_fg = "#14161D",
 
-        fg_green = '#B3E1A3',
-        yellow = '#EADDA0',
-        cyan = '#4EC9B0',
-        darkblue = '#A4B9EF',
-        green = '#B3E1A3',
-        orange = '#F7C196',
-        purple = '#C6AAE8',
-        magenta = '#F0AFE1',
-        blue = '#A4B9EF',
-        red = '#E28C8C',
-        line_fg = '#16161D',
-    }
+    fg_green = "#76C5A4",
+    yellow = "#E3CF65",
+    cyan = "#76C5A4",
+    darkblue = "#568BB4",
+    green = "#76C5A4",
+    orange = "#E39A65",
+    purple = "#AF98E6",
+    magenta = "#BDA9D4",
+    blue = "#8DBBD3",
+    red = "#FB7DA7",
+    line_fg = "#14161D",
+  }
 end
 return M

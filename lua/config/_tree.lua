@@ -57,7 +57,9 @@ M.config = function()
 			highlight_git = false,
 			highlight_opened_files = "none",
 			root_folder_modifier = ":~",
-			root_folder_label = false,
+			root_folder_label = function ()
+				return ""
+			end,
 			indent_markers = {
 				enable = false,
 			},

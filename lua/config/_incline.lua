@@ -50,7 +50,7 @@ M.config = function()
 			winhighlight = {
 				active = {
 					EndOfBuffer = "None",
-					Normal = "Label",
+					Normal = "RedfgBold",
 					Search = "Search",
 				},
 				inactive = {
