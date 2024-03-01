@@ -1,5 +1,4 @@
 local M = {}
-local g = vim.g
 M.init = function()
 	vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 end
@@ -37,6 +36,7 @@ M.config = function()
 		api.config.mappings.default_on_attach(bufnr)
 
 		vim.keymap.set('n', '<Tab>', ":lua open_luatree()<cr>", { buffer = bufnr, silent = true }, opts('Open menu'))
+		vim.keymap.set('n', '<RightMouse>', ":lua open_luatree()<cr>", { buffer = bufnr, silent = true }, opts('Open menu'))
 	end
 
 	require("nvim-tree").setup({
