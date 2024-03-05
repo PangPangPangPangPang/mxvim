@@ -1,4 +1,4 @@
-if require("utils").system() == "MacOS" then
+if require("utils").system() == "MacOS"  and mxvim.enable_squirrel then
 	local squirrel = vim.fn.executable("/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel")
 	vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 		callback = function()
