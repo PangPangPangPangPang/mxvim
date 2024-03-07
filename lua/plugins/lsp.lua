@@ -22,7 +22,7 @@ return {
       require("config._lsp_config").config()
     end,
   },
-	-- defer all NeoVim diagnostics for a less distracting coding experience
+  -- defer all NeoVim diagnostics for a less distracting coding experience
   {
     "https://gitlab.com/yorickpeterse/nvim-dd.git",
     event = "VeryLazy",
@@ -151,6 +151,20 @@ return {
     },
     config = function()
       require("codeium").setup({})
+    end,
+  },
+  {
+    "dnlhc/glance.nvim",
+		event = "VeryLazy",
+    config = function()
+      require("glance").setup({
+        -- your configuration
+      })
+      -- Lua
+      vim.keymap.set("n", "<leader>cgd", "<CMD>Glance definitions<CR>")
+      vim.keymap.set("n", "<leader>cgr", "<CMD>Glance references<CR>")
+      vim.keymap.set("n", "<leader>cgy", "<CMD>Glance type_definitions<CR>")
+      vim.keymap.set("n", "<leader>cgm", "<CMD>Glance implementations<CR>")
     end,
   },
 }
