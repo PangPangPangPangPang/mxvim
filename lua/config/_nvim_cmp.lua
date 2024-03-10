@@ -25,7 +25,7 @@ M.config = function()
 			end,
 		},
 		experimental = {
-			ghost_text = { hl_group = "Comment" },
+			ghost_text = mxvim.enable_codeium and { hl_group = "Comment" } or false,
 		},
 		window = {
 			completion = cmp.config.window.bordered({
