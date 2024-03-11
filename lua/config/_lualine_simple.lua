@@ -139,7 +139,7 @@ ins_right({
 		message = { commenced = "In Progress", completed = "Completed" },
 	},
 	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-	padding = { left = 2 },
+	padding = { left = 2, right = 2 },
 })
 local function location()
 	return "Ln%2l, Col%2v"
@@ -168,7 +168,7 @@ ins_left({
 	search_count,
 	padding = { right = 2, left = 2 },
 })
-ins_right({
+ins_left({
 	location,
 	padding = { right = 2, left = 2 },
 })
