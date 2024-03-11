@@ -11,7 +11,7 @@ mxvim.style = "simple"
 mxvim.use_coc = false
 mxvim.use_cmp = true
 mxvim.use_notify = false
-mxvim.enable_lspsage = false
+mxvim.enable_lspsaga = true
 mxvim.enable_neotree = false
 mxvim.enable_statuscol = true
 

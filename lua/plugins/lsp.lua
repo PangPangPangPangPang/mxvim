@@ -62,8 +62,8 @@ return {
   },
   {
     "glepnir/lspsaga.nvim",
-    enabled = mxvim.enable_lspsage,
-    event = "VeryLazy",
+    enabled = mxvim.enable_lspsaga,
+		event = 'LspAttach',
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
     config = function()
       require("config._lsp_saga").config()
