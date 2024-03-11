@@ -126,12 +126,13 @@ return {
     event = "VeryLazy",
     config = function()
       vim.diagnostic.config({ virtual_text = false })
+			local icon = require("theme").lsp_icon
       require("corn").setup({
         icons = {
-          error = " ",
-          warn = " ",
-          hint = " ",
-          info = " ",
+          error = icon.error,
+          warn = icon.warn,
+          hint = icon.hint,
+          info = icon.info,
         },
         blacklisted_modes = { "i" },
         border_style = "none",

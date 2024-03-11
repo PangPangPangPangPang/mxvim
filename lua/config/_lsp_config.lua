@@ -151,10 +151,11 @@ M.custom_handlers = function()
       numhl = opts.name,
     })
   end
-  sign({ name = "DiagnosticSignError", icon = " " })
-  sign({ name = "DiagnosticSignWarn", icon = " " })
-  sign({ name = "DiagnosticSignHint", icon = " " })
-  sign({ name = "DiagnosticSignInfo", icon = " " })
+	local icon = require("theme").lsp_icon
+  sign({ name = "DiagnosticSignError", icon = icon.error })
+  sign({ name = "DiagnosticSignWarn", icon = icon.warn })
+  sign({ name = "DiagnosticSignHint", icon = icon.hint })
+  sign({ name = "DiagnosticSignInfo", icon = icon.info })
 
   local safe_require = require("utils").safe_require
   safe_require("lsputil.locations", function(locations)

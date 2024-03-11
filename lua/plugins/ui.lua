@@ -1,16 +1,10 @@
 return {
   {
-    "glepnir/galaxyline.nvim",
-    enabled = mxvim.current_line == "galaxy",
-    branch = "main",
-  },
-  {
     "nvim-lualine/lualine.nvim",
     lazy = true,
     dependencies = {
       "bercly0b/lualine-lsp-progress",
     },
-    enabled = mxvim.current_line == "lualine",
   },
   {
     "folke/noice.nvim",

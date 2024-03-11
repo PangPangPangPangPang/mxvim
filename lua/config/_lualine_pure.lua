@@ -109,6 +109,7 @@ ins_left({
 -- 	padding = { right = 1 },
 -- })
 
+local icons = require("theme").lsp_icon
 ins_left({
 	"diagnostics",
 	sources = { "nvim_diagnostic", "coc" },
@@ -119,7 +120,7 @@ ins_left({
 	-- 	info = { fg = colors.blue },
 	-- 	hint = { fg = colors.cyan },
 	-- },
-	symbols = { error = " ", warn = " ", info = " ", hint = " " },
+	symbols = { error = icons.error, warn = icons.warn, info = icons.info, hint = icons.hint },
 	colored = false,
 	update_in_insert = false,
 	always_visible = true,

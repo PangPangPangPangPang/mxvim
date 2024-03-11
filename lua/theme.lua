@@ -6,16 +6,12 @@ M.theme = function(name, nick)
     config = function()
       require("colorscheme." .. mxvim.current_theme).config()
       require("config._tree").theme()
-      if mxvim.current_line == "galaxy" then
-        require("config._galaxyline")
+      if mxvim.style == "pure" then
+        require("config._lualine_pure")
+      elseif mxvim.style == "simple" then
+        require("config._lualine_simple")
       else
-        if mxvim.line_style == "pure" then
-          require("config._lualine_pure")
-        elseif mxvim.line_style == "simple" then
-          require("config._lualine_simple")
-        else
-          require("config._lualine")
-        end
+        require("config._lualine")
       end
 
       M.hl_common()
@@ -104,6 +100,22 @@ M.theme_colors = function()
     return ret
   end
   return colors
+end
+
+if mxvim.style == "simple" then
+  M.lsp_icon = {
+    error = "⏺︎ ",
+    warn = "⏺︎ ",
+    hint = "⏺︎ ",
+    info = "⏺︎ ",
+  }
+else
+  M.lsp_icon = {
+    error = " ",
+    warn = " ",
+    hint = " ",
+    info = " ",
+  }
 end
 
 return M

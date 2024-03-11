@@ -6,10 +6,8 @@ _G.mxvim = {}
 mxvim.current_theme = "vscode"
 -- light / dark
 mxvim.background = "dark"
--- galaxy lualine
-mxvim.current_line = "lualine"
 -- simple / pure / normal
-mxvim.line_style = "simple"
+mxvim.style = "simple"
 mxvim.use_coc = false
 mxvim.use_cmp = true
 mxvim.use_notify = false
