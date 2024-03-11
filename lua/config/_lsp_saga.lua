@@ -12,9 +12,11 @@ M.config = function()
       split = "i",
       tabe = "t",
       quit = "<esc>",
-      scroll_down = "<S-down>",
-      scroll_up = "<S-up>",
     },
+		scroll_preview = {
+			scroll_down = "<C-n>",
+			scroll_up = "<C-p>",
+		},
     lightbulb = {
       enable = false,
       sign = true,
@@ -33,7 +35,7 @@ M.config = function()
       text_hl_follow = true,
       border_follow = true,
       keys = {
-        exec_action = "o",
+        exec_action = "<cr>",
         quit = { "q", "<ESC>" },
         go_action = "g",
       },
