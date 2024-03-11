@@ -8,6 +8,8 @@ mxvim.current_theme = "vscode"
 mxvim.background = "dark"
 -- galaxy lualine
 mxvim.current_line = "lualine"
+-- simple / pure / normal
+mxvim.line_style = "simple"
 mxvim.use_coc = false
 mxvim.use_cmp = true
 mxvim.use_notify = false

@@ -9,7 +9,13 @@ M.theme = function(name, nick)
       if mxvim.current_line == "galaxy" then
         require("config._galaxyline")
       else
-        require("config._lualine_pure")
+        if mxvim.line_style == "pure" then
+          require("config._lualine_pure")
+        elseif mxvim.line_style == "simple" then
+          require("config._lualine_simple")
+        else
+          require("config._lualine")
+        end
       end
 
       M.hl_common()
@@ -48,7 +54,7 @@ M.hl_common = function()
   vim.api.nvim_set_hl(0, "Cyanfg", { fg = colors.cyan, bg = "none" })
 
   if mxvim.enable_statuscol then
-	  vim.api.nvim_set_hl(0, "LineNr", { fg = "bg", bg = "none" })
+    vim.api.nvim_set_hl(0, "LineNr", { fg = "bg", bg = "none" })
   end
 end
 
