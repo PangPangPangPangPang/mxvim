@@ -180,14 +180,14 @@ ins_right({
 	padding = { right = 2 },
 })
 
-local function encoding()
-	return string.upper(vim.opt.fileencoding:get())
-end
-ins_right({
-	encoding,
-	icons_enabled = false,
-	padding = { right = 2 },
-})
+-- local function encoding()
+-- 	return string.upper(vim.opt.fileencoding:get())
+-- end
+-- ins_right({
+-- 	encoding,
+-- 	icons_enabled = false,
+-- 	padding = { right = 2 },
+-- })
 
 ins_inactive_left({
 	"filetype",
