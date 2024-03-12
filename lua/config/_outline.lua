@@ -5,7 +5,7 @@ M.config = function()
 	map({ "n", "i" }, "<F2>", ":SymbolsOutline<CR>", opts)
 
 	vim.g.symbols_outline = {
-        border = "rounded",
+		border = require("theme").border,
 		highlight_hovered_item = true,
 		show_guides = true,
 		auto_preview = true,

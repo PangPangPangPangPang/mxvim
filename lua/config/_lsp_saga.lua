@@ -65,7 +65,7 @@ M.config = function()
     ui = {
       title = false,
       -- Border type can be single, double, rounded, solid, shadow.
-      border = "rounded",
+      border = require("theme").border,
       devicon = true,
       winblend = 0,
       expand = "",

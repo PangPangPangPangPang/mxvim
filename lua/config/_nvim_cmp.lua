@@ -8,6 +8,30 @@ end
 
 M.config = function()
 	local cmp = require("cmp")
+	local window
+	if mxvim.style == "simple" then
+		window = {
+			completion = {
+				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+				col_offset = -3,
+				side_padding = 1,
+			},
+			documentation = {
+				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+			}
+		}
+	else
+		window = {
+			completion = cmp.config.window.bordered({
+				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+				col_offset = -4,
+				side_padding = 1,
+			}),
+			documentation = cmp.config.window.bordered({
+				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+			}),
+		}
+	end
 	cmp.setup({
 		sorting = {
 			priority_weight = 1.0,
@@ -27,16 +51,7 @@ M.config = function()
 		experimental = {
 			ghost_text = mxvim.enable_codeium ~= true and { hl_group = "Comment" } or false,
 		},
-		window = {
-			completion = cmp.config.window.bordered({
-				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-				col_offset = -4,
-				side_padding = 1,
-			}),
-			documentation = cmp.config.window.bordered({
-				winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-			}),
-		},
+		window = window,
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = function(entry, vim_item)
