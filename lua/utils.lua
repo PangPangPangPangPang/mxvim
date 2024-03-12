@@ -80,7 +80,7 @@ function M.toggleDiffView()
 			return
 		end
 	end
-	vim.cmd [[ DiffviewOpen ]]
+	vim.cmd([[ DiffviewOpen ]])
 end
 
 M.dump = function(o)
@@ -209,10 +209,18 @@ M.is_alacritty = function()
 	return os.getenv("TERM") == "alacritty"
 end
 
+M.is_buffer_active = function(bufnr)
+  return bufnr == vim.api.nvim_get_current_buf()
+end
+
+M.capitalize_first_letter = function (str)
+    return str:gsub("^%l", string.upper)
+end
+
 local get_color = function(name)
 	local color = vim.api.nvim_get_color_by_name(name)
 	if color == -1 then
-		color = vim.opt.background:get() == 'dark' and 000 or 255255255
+		color = vim.opt.background:get() == "dark" and 000 or 255255255
 	end
 
 	---Convert colour to hex
@@ -237,7 +245,7 @@ M.blend = function(fg, bg, alpha)
 		return math.floor(math.min(math.max(0, ret), 255) + 0.5)
 	end
 
-	return string.format('#%02X%02X%02X', channel(1), channel(2), channel(3))
+	return string.format("#%02X%02X%02X", channel(1), channel(2), channel(3))
 end
 
 return M

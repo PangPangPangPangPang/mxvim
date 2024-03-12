@@ -122,27 +122,6 @@ return {
     end,
   },
   {
-    "RaafatTurki/corn.nvim",
-    event = "VeryLazy",
-    config = function()
-      vim.diagnostic.config({ virtual_text = false })
-			local icon = require("theme").lsp_icon
-      require("corn").setup({
-        icons = {
-          error = icon.error,
-          warn = icon.warn,
-          hint = icon.hint,
-          info = icon.info,
-        },
-        blacklisted_modes = { "i" },
-        border_style = "none",
-        on_toggle = function(is_hidden)
-          vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
-        end,
-      })
-    end,
-  },
-  {
     "dnlhc/glance.nvim",
     event = "VeryLazy",
     config = function()
