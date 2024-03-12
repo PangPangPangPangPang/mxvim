@@ -33,15 +33,17 @@ M.config = function()
       file_icons = true,
       cwd_prompt = false,
       fzf_opts = {
-        ["--info"] = "default", -- inline
+        ["--info"] = "inline", -- inline / default
         ["--no-scrollbar"] = "",
         -- ['--extended'] = "",
       },
       actions = { ["ctrl-g"] = false },
     },
     winopts = {
+      border = mxvim.style == "simple" and { " ", "─", " ", " ", " ", "─", " ", " " } or "rounded",
       preview = {
         layout = "vertical",
+        border = "noborder",
       },
     },
   })
