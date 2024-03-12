@@ -3,7 +3,6 @@ M.config = function()
   local colors = require("theme").colors()
   local green = colors.green
   local shade_green = require("theme").shade(colors.green, 0.6, true)
-  local devicons = require("nvim-web-devicons")
   local lsp_icon = require("theme").lsp_icon
   require("incline").setup({
     render = function(props)
