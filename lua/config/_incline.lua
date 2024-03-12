@@ -40,7 +40,7 @@ M.config = function()
           end
         end
         if #label > 0 then
-          table.insert(label, { " ▏ " })
+          table.insert(label, { " ▏ ", group = "NonText"})
         end
         return label
       end
