@@ -93,11 +93,11 @@ local function ins_inactive_left(component)
 	table.insert(config.inactive_sections.lualine_c, component)
 end
 
-ins_left({
-	"diff",
-	padding = { right = 2 },
-	colored = false,
-})
+-- ins_left({
+-- 	"diff",
+-- 	padding = { right = 2 },
+-- 	colored = false,
+-- })
 
 ins_left({
 	function()

@@ -11,10 +11,9 @@ M.config = function()
       if filename == "" then
         filename = "[No Name]"
       end
-      local ft_icon, ft_color = devicons.get_icon_color(filename)
 
       local function get_git_diff()
-        local icons = { removed = "D ", changed = "C ", added = "A " }
+        local icons = { removed = "○ ", changed = "○ ", added = "○ " }
         local signs = vim.b[props.buf].gitsigns_status_dict
         local labels = {}
         if signs == nil then
@@ -50,7 +49,6 @@ M.config = function()
       return {
         { get_diagnostic_label() },
         { get_git_diff() },
-        { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
         {
           filename .. " ",
           gui = vim.bo[props.buf].modified and "bold,italic" or "bold",
