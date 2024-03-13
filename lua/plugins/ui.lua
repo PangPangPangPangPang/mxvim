@@ -53,7 +53,7 @@ return {
       scope = {
         -- Rely on treesitter, bad performance
         enabled = true,
-        highlight = { "Todo" },
+        highlight = { "CursorLineNr" },
       },
     },
     config = function(_, opts)

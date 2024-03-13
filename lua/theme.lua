@@ -109,7 +109,7 @@ if mxvim.style == "simple" then
     hint = "⏺︎ ",
     info = "⏺︎ ",
   }
-	M.border = "shadow"
+  M.border = "shadow"
 else
   M.lsp_icon = {
     error = " ",
@@ -117,8 +117,7 @@ else
     hint = " ",
     info = " ",
   }
-	M.border = "rounded"
+  M.border = "rounded"
 end
-
 
 return M
