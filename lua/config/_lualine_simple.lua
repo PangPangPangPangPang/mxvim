@@ -122,7 +122,7 @@ ins_left({
 		-- return alias[vim.fn.mode()]
 		return string.format("%s", alias[vim.fn.mode()])
 	end,
-	padding = { left = 1 },
+	padding = { left = 2 },
 })
 
 ins_right({
@@ -168,15 +168,8 @@ ins_left({
 	search_count,
 	padding = { right = 2, left = 2 },
 })
-ins_left({
-	location,
-	padding = { right = 2, left = 2 },
-})
 ins_right({
-	"filetype",
-	-- colored = false,
-	icons_enabled = false,
-	icon_only = false,
+	location,
 	padding = { right = 2 },
 })
 
