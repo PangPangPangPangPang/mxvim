@@ -3,7 +3,7 @@ _G.mxvim = {}
 -- nightfly github-theme miramare vscode nord onedarkpro rose-pine catppuccin
 -- gruvbox-material gruvbox-baby kanagawa nightfox tundra oh-lucy oh-lucy-evening
 -- melange monokai tokyonight-day oxocarbon bamboo
-mxvim.current_theme = "rose-pine"
+mxvim.current_theme = "kanagawa"
 -- light / dark
 mxvim.background = "dark"
 -- simple / pure / normal
