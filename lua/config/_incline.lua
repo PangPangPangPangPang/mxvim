@@ -5,6 +5,11 @@ M.config = function()
   local shade_green = require("theme").shade(colors.green, 0.6, true)
   local lsp_icon = require("theme").lsp_icon
   require("incline").setup({
+		window = {
+			options = {
+				winblend = 100
+			}
+		},
     render = function(props)
       local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
       if filename == "" then
