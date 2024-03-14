@@ -125,22 +125,22 @@ ins_left({
 	padding = { left = 2 },
 })
 
-ins_right({
-	"lsp_progress",
-	display_components = { "lsp_client_name", { "title", "percentage", "message" } },
-	display_lsp_name_after_initialization = true,
-	separators = {
-		component = " ",
-		progress = " | ",
-		percentage = { pre = "", post = "%% " },
-		title = { pre = "", post = ": " },
-		lsp_client_name = { pre = "", post = "" },
-		spinner = { pre = "", post = "" },
-		message = { commenced = "In Progress", completed = "Completed" },
-	},
-	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-	padding = { left = 2, right = 2 },
-})
+-- ins_right({
+-- 	"lsp_progress",
+-- 	display_components = { "lsp_client_name", { "title", "percentage", "message" } },
+-- 	display_lsp_name_after_initialization = true,
+-- 	separators = {
+-- 		component = " ",
+-- 		progress = " | ",
+-- 		percentage = { pre = "", post = "%% " },
+-- 		title = { pre = "", post = ": " },
+-- 		lsp_client_name = { pre = "", post = "" },
+-- 		spinner = { pre = "", post = "" },
+-- 		message = { commenced = "In Progress", completed = "Completed" },
+-- 	},
+-- 	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
+-- 	padding = { left = 2, right = 2 },
+-- })
 local function location()
 	return "Ln%2l, Col%2v"
 end
