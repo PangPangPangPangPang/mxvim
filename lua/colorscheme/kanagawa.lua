@@ -60,6 +60,7 @@ M.colors = function()
         blue = "#7E9CD8",
         red = "#FF5D62",
         line_fg = "#DCD7BA",
+        line_bg = "#1F1F28",
     }
 end
 return M
