@@ -40,7 +40,6 @@ M.config = function()
       actions = { ["ctrl-g"] = false },
     },
     winopts = {
-      -- border = mxvim.style == "simple" and { " ", "─", " ", " ", " ", "─", " ", " " } or "rounded",
       border = mxvim.style == "simple" and { " ", "━", " ", " ", " ", "━", " ", " " } or "rounded",
       preview = {
         layout = "vertical",
@@ -53,6 +52,11 @@ M.config = function()
   vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "Float" })
+
+
+	-- map fzf-lua to default if fzf called once
+	local dmap = require("utils").dmap
+	dmap({ "i", "n" }, "<c-p>", '<cmd>lua require("fzf-lua").files()<cr>')
 end
 
 M.hl_fzf = function()

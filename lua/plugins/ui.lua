@@ -88,7 +88,8 @@ return {
         current_only = true,
         -- base = "buffer",
         -- column = 80,
-        signs_on_startup = { "all" },
+        -- signs_on_startup = { "all" },
+        signs_on_startup = {},
         diagnostics_severities = { vim.diagnostic.severity.ERROR },
       })
     end,

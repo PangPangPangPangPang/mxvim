@@ -46,7 +46,7 @@ end
 M.colors = function()
     return {
         fg = "#DCD7BA",
-        bg = "#16161D",
+        bg = "#1F1F28",
         light_fb = "#717C7C",
         light_bg = "#1F1F28",
         fg_green = "#76946A",
