@@ -60,7 +60,10 @@ M.setup = function()
         filter = {
           event = "lsp",
           kind = "progress",
-          find = "on_open",
+          cond = function(message)
+            local client = vim.tbl_get(message.opts, "progress", "client")
+            return client == "null-ls" -- skip null-ls
+          end,
         },
         opts = { skip = true },
       },

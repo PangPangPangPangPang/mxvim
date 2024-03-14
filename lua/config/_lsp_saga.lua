@@ -133,7 +133,7 @@ M.config = function()
   keymap("n", "<F2>", "<cmd>Lspsaga outline<CR>", { silent = true })
 
   -- Hover Doc
-  keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+  -- keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 
   -- Signature help
   keymap("n", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
