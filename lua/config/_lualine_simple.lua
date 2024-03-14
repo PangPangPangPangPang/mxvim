@@ -81,7 +81,7 @@ local config = {
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-	table.insert(config.sections.lualine_a, component)
+	-- table.insert(config.sections.lualine_a, component)
 end
 
 -- Inserts a component in lualine_x ot right section
@@ -141,10 +141,31 @@ ins_left({
 -- 	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
 -- 	padding = { left = 2, right = 2 },
 -- })
-local function location()
-	return "Ln%2l, Col%2v"
-end
-
+ins_right({
+	function()
+		local alias = {
+			n = "N",
+			i = "I",
+			V = "V",
+			[""] = "V",
+			v = "V",
+			c = "C",
+			["r?"] = "C",
+			rm = "R",
+			R = "R",
+			Rv = "V",
+			s = "S",
+			S = "S",
+			["r"] = "H",
+			[""] = "S",
+			t = "T",
+			["!"] = "S",
+		}
+		-- return alias[vim.fn.mode()]
+		return string.format("%s", alias[vim.fn.mode()])
+	end,
+	padding = { right = 2 },
+})
 local zf = require("config._zfvimim")
 ins_right({
 	-- padding = { right = 2 },
@@ -168,6 +189,11 @@ ins_left({
 	search_count,
 	padding = { right = 2, left = 2 },
 })
+
+local function location()
+	return "Ln%2l, Col%2v"
+end
+
 ins_right({
 	location,
 	padding = { right = 2 },
