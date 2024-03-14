@@ -42,7 +42,6 @@ return {
 			"nvim-lua/plenary.nvim", -- required
 			"nvim-telescope/telescope.nvim", -- optional
 			"sindrets/diffview.nvim", -- optional
-			"ibhagwan/fzf-lua",     -- optional
 		},
 		keys = {
 			-- { "<leader>gl", "<cmd>Neogit log<cr>", mode = { "n", "v" }, desc = "Git log" },
