@@ -10,7 +10,7 @@ return {
 		"ibhagwan/fzf-lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<c-p>", "<cmd>lua require('fzf-lua').files()<cr>" },
+			{ "<leader>p", "<cmd>lua require('fzf-lua').files()<cr>" },
 		},
 		config = function()
 			require("config._fzf").config()
@@ -30,7 +30,7 @@ return {
 
 		},
 		keys = {
-			-- { "<c-p>",     "<cmd>Telescope find_files<cr>" },
+			{ "<c-p>",     "<cmd>Telescope find_files<cr>" },
 			{ "<leader>f", "<cmd>Telescope live_grep<cr>", mode = { "n" }, desc ="Live grep" },
 			{ "<leader>b", "<cmd>Telescope buffers<cr>", mode = { "n" }, desc = "Open buffers" },
 			{ "<F7>", "<cmd>Telescope undo<cr>", { "n", "i" } },
