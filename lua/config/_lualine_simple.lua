@@ -92,11 +92,6 @@ end
 local function ins_inactive_left(component)
   table.insert(config.inactive_sections.lualine_c, component)
 end
-ins_left({
-  function()
-    return " "
-  end,
-})
 
 -- ins_left({
 -- 	"diff",
@@ -186,7 +181,7 @@ local function search_count()
   if searchCurrent > 0 then
     return vim.fn.getreg("/") .. " [" .. searchCurrent .. "/" .. searchTotal .. "]"
   else
-    return ""
+    return " "
   end
 end
 

@@ -1,15 +1,16 @@
 local M = {}
+local colors = require("theme").colors()
+local green = colors.green
+local magenta = colors.red
+local shade_green = require("theme").shade(colors.green, 0.6, true)
+local lsp_icon = require("theme").lsp_icon
 M.config = function()
-  local colors = require("theme").colors()
-  local green = colors.green
-  local shade_green = require("theme").shade(colors.green, 0.6, true)
-  local lsp_icon = require("theme").lsp_icon
   require("incline").setup({
-		window = {
-			options = {
-				winblend = 100
-			}
-		},
+    window = {
+      options = {
+        winblend = 100,
+      },
+    },
     render = function(props)
       local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
       if filename == "" then
@@ -25,11 +26,14 @@ M.config = function()
         end
         for name, icon in pairs(icons) do
           if tonumber(signs[name]) and signs[name] > 0 then
-            table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. require("utils").capitalize_first_letter(name) })
+            table.insert(
+              labels,
+              { icon .. signs[name] .. " ", group = "Diff" .. require("utils").capitalize_first_letter(name) }
+            )
           end
         end
         if #labels > 0 then
-          table.insert(labels, { " ▏ ", group = "NonText"})
+          table.insert(labels, { " ▏ ", group = "NonText" })
         end
         return labels
       end
@@ -45,7 +49,7 @@ M.config = function()
           end
         end
         if #label > 0 then
-          table.insert(label, { " ▏ ", group = "NonText"})
+          table.insert(label, { " ▏ ", group = "NonText" })
         end
         return label
       end
@@ -54,9 +58,13 @@ M.config = function()
         { get_diagnostic_label() },
         { get_git_diff() },
         {
-          filename .. " ",
+          filename,
           gui = vim.bo[props.buf].modified and "bold,italic" or "bold",
           guifg = require("utils").is_buffer_active(props.buf) and green or shade_green,
+        },
+        {
+          vim.bo[props.buf].modified and " [+] " or " ",
+          guifg = magenta,
         },
       }
     end,
