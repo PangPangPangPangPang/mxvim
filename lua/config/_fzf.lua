@@ -40,7 +40,8 @@ M.config = function()
       actions = { ["ctrl-g"] = false },
     },
     winopts = {
-      border = mxvim.style == "simple" and { " ", "─", " ", " ", " ", "─", " ", " " } or "rounded",
+      -- border = mxvim.style == "simple" and { " ", "─", " ", " ", " ", "─", " ", " " } or "rounded",
+      border = mxvim.style == "simple" and { " ", "━", " ", " ", " ", "━", " ", " " } or "rounded",
       preview = {
         layout = "vertical",
         border = "noborder",
