@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "DirChanged", "TabEnter" }, {
 
 local colors = require("theme").colors()
 
-local fg = colors.line_fg
+local fg = colors.fg
 local bg = colors.line_bg or "none"
 
 local bubbles_theme = {

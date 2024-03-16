@@ -5,16 +5,16 @@ end
 
 M.colors = function()
   return {
-    fg = "#E9E9E9",
-    bg = "#14161D",
-    light_bg = "#E9E9E9",
-    light_fg = "#14161D",
+    fg = "#D7D7D7",
+    bg = "#1B1D26",
+    light_bg = "#D7D7D7",
+    light_fg = "#1B1D26",
 
     fg_green = "#76C5A4",
     yellow = "#E3CF65",
     cyan = "#76C5A4",
     darkblue = "#568BB4",
-    green = "#76C5A4",
+    green = "#74C7A4",
     orange = "#E39A65",
     purple = "#AF98E6",
     magenta = "#BDA9D4",
