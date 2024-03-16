@@ -4,7 +4,7 @@ M.setup = function()
   if mxvim.style == "simple" then
     center_pos = {
       size = { width = "50%" },
-      border = { style = "shadow", padding = { top = 1, bottom = 1, left = 1, right = 1 } },
+      border = { style = "none", padding = { top = 1, bottom = 1, left = 1, right = 1 } },
     }
   end
 
