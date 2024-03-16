@@ -2,6 +2,7 @@ local M = {}
 M.config = function()
   local config = require("config._lsp_config").make_config()
   local null_ls = require("null-ls")
+	null_ls.register(require("none-ls-luacheck.diagnostics.luacheck"))
   -- pip3 install codespell
   -- yarn global add eslint_d
   -- luarocks install luacheck
@@ -10,7 +11,7 @@ M.config = function()
 
   local sources = {
     null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.diagnostics.selene,
+    -- null_ls.builtins.diagnostics.selene,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.code_actions.gitsigns,
     prettier,

@@ -94,7 +94,12 @@ return {
     event = "VeryLazy",
     dependencies = {
       "williamboman/mason.nvim",
-      "nvimtools/none-ls.nvim",
+      {
+        "nvimtools/none-ls.nvim",
+        dependencies = {
+          "gbprod/none-ls-luacheck.nvim",
+        },
+      },
     },
     config = function()
       require("lsp.lsp_nullls").config()
