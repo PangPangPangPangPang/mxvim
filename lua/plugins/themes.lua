@@ -19,4 +19,5 @@ return {
 	require("theme").theme("loctvl842/monokai-pro.nvim", "monokai"),
 	require("theme").theme("nyoom-engineering/oxocarbon.nvim", "oxocarbon"),
 	require("theme").theme("ribru17/bamboo.nvim", "bamboo"),
+	require("theme").theme("miikanissi/modus-themes.nvim", "modus"),
 }
