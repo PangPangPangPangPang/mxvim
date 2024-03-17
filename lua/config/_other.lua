@@ -54,7 +54,7 @@ M.ufo_opts = function()
 			return { "indent" }
 		end,
 		open_fold_hl_timeout = 400,
-		close_fold_kinds = { "imports", "comment" },
+		close_fold_kinds_for_ft = { "imports", "comment" },
 		preview = {
 			win_config = { border = { "", "─", "", "", "", "─", "", "" }, winblend = 0 },
 			mappings = {
