@@ -12,7 +12,7 @@ mxvim.use_coc = false
 mxvim.use_cmp = true
 mxvim.use_notify = false
 mxvim.enable_lspsaga = true
-mxvim.enable_neotree = false
+mxvim.enable_neotree = true
 mxvim.enable_statuscol = true
 
 -- map q to quick close
