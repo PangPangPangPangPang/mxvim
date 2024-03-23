@@ -9,6 +9,7 @@ M.config = function()
 	vim.cmd('colorscheme ' .. mxvim.current_theme)
 end
 
+
 M.colors = function()
 	return {
 		fg = '#ebdbb2',           -- light text color

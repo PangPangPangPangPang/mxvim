@@ -9,7 +9,8 @@ end
 M.config = function()
   local cmp = require("cmp")
   local window
-  if mxvim.style == "simple" then
+  -- if mxvim.style == "simple" then
+  if false then
     window = {
       completion = {
         winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
