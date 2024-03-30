@@ -7,21 +7,21 @@ M.colors = function()
     return {
         -- bg = '#1E1E1E', -- background color
         -- light_fg = '#1E1E1E', -- text color
-        fg = '#abb2bf', -- light text color
-        bg = '#21252b', -- background color
-        light_fg = '#21252b', -- text color
-        light_bg = '#abb2bf', -- light background color
+        fg = '#D0D0D0', -- light text color
+        bg = '#161616', -- background color
+        light_fg = '#161616', -- text color
+        light_bg = '#D0D0D0', -- light background color
 
-        fg_green = '#98C379',
-        yellow = '#ecbf6f',
-        cyan = '#56b6c2',
-        darkblue = '#223E55',
-        green = '#98C379',
-        orange = '#CE9178',
-        purple = '#c678dd',
-        magenta = '#C586C0',
-        blue = '#61afef',
-        red = '#e06c75'
+        fg_green = '#8CFF48',
+        yellow = '#CBCB02',
+        cyan = '#3DDBD9',
+        darkblue = '#65799B',
+        green = '#8CFF48',
+        orange = '#E7A27E',
+        purple = '#EE5396',
+        magenta = '#FF7EB6',
+        blue = '#78A9FF',
+        red = '#EE5396'
     }
 
 end

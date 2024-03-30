@@ -3,7 +3,7 @@ _G.mxvim = {}
 -- nightfly github-theme miramare vscode nord onedarkpro rose-pine catppuccin
 -- gruvbox-material gruvbox-baby kanagawa nightfox tundra oh-lucy oh-lucy-evening
 -- melange monokai tokyonight oxocarbon bamboo modus
-mxvim.current_theme = "bamboo"
+mxvim.current_theme = "oxocarbon"
 -- light / dark
 mxvim.background = "dark"
 -- simple / pure / normal
@@ -11,7 +11,7 @@ mxvim.style = "simple"
 mxvim.use_coc = false
 mxvim.use_cmp = true
 mxvim.use_notify = false
-mxvim.enable_lspsaga = true
+mxvim.enable_lspsaga = false
 mxvim.enable_neotree = true
 mxvim.enable_statuscol = true
 
