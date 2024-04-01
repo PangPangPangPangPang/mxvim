@@ -34,6 +34,11 @@ M.config = function()
     }
   end
   cmp.setup({
+    view = {
+      entries = {
+        follow_cursor = true,
+      },
+    },
     sorting = {
       priority_weight = 1.0,
       comparators = {
