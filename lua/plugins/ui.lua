@@ -13,9 +13,9 @@ return {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
     },
-		config = function ()
-			require("config._noice").setup()
-		end
+    config = function()
+      require("config._noice").setup()
+    end,
   },
   {
     "luochen1990/rainbow",
@@ -33,9 +33,9 @@ return {
   -- -	g.indentLine_char = '▏'
   {
     "lukas-reineke/indent-blankline.nvim",
+		enabled = not mxvim.enable_hlchunk,
     lazy = true,
     main = "ibl",
-    -- event = "VeryLazy",
     opts = {
       indent = {
         char = "▏", -- Thiner, not suitable when enable scope
@@ -58,6 +58,38 @@ return {
     },
     config = function(_, opts)
       require("config._indentline").setup(opts)
+    end,
+  },
+  {
+    "shellRaining/hlchunk.nvim",
+		enabled = mxvim.enable_hlchunk,
+    event = { "UIEnter" },
+    config = function()
+      local colors = require("theme").colors(0.3)
+      local origin_colors = require("theme").colors()
+      require("hlchunk").setup({
+        blank = {
+          enable = false,
+        },
+        chunk = {
+          style = {
+            { fg = origin_colors.yellow },
+            { fg = origin_colors.red },
+          },
+        },
+        indent = {
+          chars = { "▏" },
+          style = {
+            { fg = colors.red },
+            { fg = colors.yellow },
+            { fg = colors.blue },
+            { fg = colors.orange },
+            { fg = colors.green },
+            { fg = colors.purple },
+            { fg = colors.cyan },
+          },
+        },
+      })
     end,
   },
   {
@@ -153,8 +185,8 @@ return {
     "gen740/SmoothCursor.nvim",
     enabled = mxvim.enable_cursor,
     config = function()
-			-- require("config._cursor").setup()
-			require("config._cursor").config()
+      -- require("config._cursor").setup()
+      require("config._cursor").config()
     end,
   },
 
