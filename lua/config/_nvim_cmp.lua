@@ -8,31 +8,16 @@ end
 
 M.config = function()
   local cmp = require("cmp")
-  local window
-  -- if mxvim.style == "simple" then
-  if false then
-    window = {
-      completion = {
-        winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-        col_offset = -3,
-        side_padding = 1,
-      },
-      documentation = {
-        winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-      },
-    }
-  else
-    window = {
-      completion = cmp.config.window.bordered({
-        winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-        col_offset = -4,
-        side_padding = 1,
-      }),
-      documentation = cmp.config.window.bordered({
-        winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
-      }),
-    }
-  end
+  local window = {
+    completion = cmp.config.window.bordered({
+      winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+      -- col_offset = -4,
+      side_padding = 1,
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = "Normal:Normal,FloatBorder:VertSplit,CursorLine:Visual,Search:None",
+    }),
+  }
   cmp.setup({
     view = {
       entries = {
