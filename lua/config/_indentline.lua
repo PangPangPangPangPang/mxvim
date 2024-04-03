@@ -19,7 +19,34 @@ M.setup = function(opts)
   --   return virt_text
   -- end)
   require("ibl").setup(opts)
+end
 
+M.setup_hlchunk = function()
+  local colors = require("theme").colors(0.3)
+  local origin_colors = require("theme").colors()
+  require("hlchunk").setup({
+    blank = {
+      enable = false,
+    },
+    chunk = {
+      style = {
+        { fg = origin_colors.yellow },
+        { fg = origin_colors.red },
+      },
+    },
+    indent = {
+      chars = { "▏" },
+      style = {
+        { fg = colors.red },
+        { fg = colors.blue },
+        { fg = colors.orange },
+        { fg = colors.green },
+        { fg = colors.purple },
+        { fg = colors.cyan },
+        { fg = colors.yellow },
+      },
+    },
+  })
 end
 
 return M
