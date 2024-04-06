@@ -12,6 +12,14 @@ return {
       "dmmulroy/ts-error-translator.nvim",
       config = function()
         require("ts-error-translator").setup()
+				vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+					pattern = { "*.tsx", "*.ts", "*.css", "*.html", "*.js", "*.jsx" },
+					callback = function()
+						vim.lsp.buf.format({
+						  async = true,
+						})
+					end,
+})
       end,
     },
   },
