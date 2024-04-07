@@ -1,3 +1,2 @@
-std = {
-   globals = { "_G", "require", "vim", "mxvim"}, -- these globals can be set and accessed.
-}
+std = "luajit"
+globals = { "_G", "vim", "mxvim" }
