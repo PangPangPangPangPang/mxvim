@@ -15,7 +15,7 @@ return {
         vim.api.nvim_create_autocmd({ "BufWritePost" }, {
           pattern = { "*.tsx", "*.ts", "*.css", "*.html", "*.js", "*.jsx" },
           callback = function()
-						vim.cmd("TSToolsOrganizeImports")
+						-- vim.cmd("TSToolsOrganizeImports")
             vim.lsp.buf.format({
               async = true,
             })
