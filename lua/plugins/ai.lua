@@ -32,4 +32,9 @@ return {
       vim.keymap.set("i", "<C-Enter>", neocodeium.accept)
     end,
   },
+	{
+		"FittenTech/fittencode.vim",
+		enabled = not mxvim.enable_codeium,
+    event = "VeryLazy",
+	}
 }
