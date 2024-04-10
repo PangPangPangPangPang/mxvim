@@ -20,4 +20,5 @@ return {
 	require("theme").theme("nyoom-engineering/oxocarbon.nvim", "oxocarbon"),
 	require("theme").theme("ribru17/bamboo.nvim", "bamboo"),
 	require("theme").theme("miikanissi/modus-themes.nvim", "modus"),
+	require("theme").theme("Verf/deepwhite.nvim", "deepwhite"),
 }
