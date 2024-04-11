@@ -5,7 +5,7 @@ _G.mxvim = {}
 -- melange monokai tokyonight oxocarbon bamboo modus citruszest newpaper
 mxvim.current_theme = "newpaper"
 -- light / dark
-mxvim.background = "light"
+mxvim.background = "dark"
 -- simple / pure / normal
 mxvim.style = "simple"
 mxvim.use_coc = false

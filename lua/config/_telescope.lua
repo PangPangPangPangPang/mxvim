@@ -9,6 +9,8 @@ M.config = function()
   local actions = require("telescope.actions")
   require("telescope").setup({
     defaults = {
+			dynamic_preview_title = true,
+			results_title = mxvim.style ~= "simple",
       vimgrep_arguments = {
         "rg",
         "--color=never",
@@ -146,23 +148,21 @@ end
 
 M.hl_telescope = function()
   local colors = require("theme").colors()
+	local shade_colors = require("theme").colors(0.1)
   vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = colors.bg, bg = colors.green })
   vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
   if mxvim.style == "simple" then
-		local shade_bg = require("theme").shade(colors.bg, 0.40, true)
-		local shade_bg1 = require("theme").shade(colors.bg, 0.70, true)
-		local shade_bg2 = require("theme").shade(colors.bg, 0.80, true)
     vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bold = true, bg = colors.red, fg = colors.bg })
-    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bold = true, bg = shade_bg, fg = colors.fg })
-    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bold = true, bg = shade_bg, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bold = true, bg = shade_colors.red, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bold = true, bg = shade_colors.red, fg = colors.fg })
 
     vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bold = true, bg = colors.green, fg = colors.bg })
-    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bold = true, bg = shade_bg2, fg = colors.fg })
-    vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bold = true, bg = shade_bg2, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bold = true, bg = shade_colors.green, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bold = true, bg = shade_colors.green, fg = colors.fg })
 
     vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bold = true, bg = colors.blue, fg = colors.bg })
-    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bold = true, bg = shade_bg1, fg = colors.fg })
-    vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bold = true, bg = shade_bg1, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bold = true, bg = shade_colors.blue, fg = colors.fg })
+    vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bold = true, bg = shade_colors.blue, fg = colors.fg })
   else
     vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bold = true, fg = colors.red })
     vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bold = true, fg = colors.green })

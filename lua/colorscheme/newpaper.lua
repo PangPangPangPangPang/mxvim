@@ -1,5 +1,6 @@
 local M = {}
 M.config = function()
+	mxvim.background = "light"
   require("newpaper").setup({
   })
 end
