@@ -44,6 +44,7 @@ M.config = function()
 end
 
 M.colors = function()
+	if mxvim.background == "light" then
     return {
         fg = "#DCD7BA",
         bg = "#1F1F28",
@@ -60,5 +61,23 @@ M.colors = function()
         red = "#FF5D62",
         line_fg = "#DCD7BA",
     }
+	else
+    return {
+        fg = "#DCD7BA",
+        bg = "#1F1F28",
+        light_fb = "#717C7C",
+        light_bg = "#1F1F28",
+        yellow = "#E6C384",
+        cyan = "#7AA89F",
+        darkblue = "#658594",
+        green = "#98BB6C",
+        orange = "#FFA066",
+        purple = "#957FB8",
+        magenta = "#D27E99",
+        blue = "#7E9CD8",
+        red = "#FF5D62",
+        line_fg = "#DCD7BA",
+    }
+	end
 end
 return M
