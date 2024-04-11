@@ -13,7 +13,6 @@ M.colors = function()
     bg = colors.nord1_gui,
     light_fg = colors.nord1_gui,
     light_bg = colors.nord5_gui,
-    fg_green = colors.nord14_gui,
     yellow = colors.nord13_gui,
     cyan = colors.nord8_gui,
     darkblue = colors.nord10_gui,

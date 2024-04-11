@@ -57,7 +57,6 @@ M.colors = function()
 		bg = '#2c2b1c',
 		light_fg = '#2c2b1c',
 		light_bg = '#e1e4e8',
-		fg_green = '#85e89d',
 		yellow = '#e3b341',
 		cyan = '#fdaeb7',
 		darkblue = '#3b8eea',
