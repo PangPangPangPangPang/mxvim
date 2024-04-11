@@ -48,7 +48,7 @@ M.config = function()
 		},
 	})
 
-	vim.cmd('colorscheme github_dark')
+	vim.cmd('colorscheme github_' ..mxvim.background .. '_high_contrast')
 end
 
 M.colors = function()
