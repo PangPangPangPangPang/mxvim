@@ -1,5 +1,6 @@
 local M = {}
 M.config= function()
+  local yellow = require("theme").colors().yellow
   require("smoothcursor").setup({
     cursor = "⏺︎ ",
     -- cursor = '▶ '
@@ -10,6 +11,7 @@ M.config= function()
     always_redraw = false, -- Redraw the screen on each update
     speed = 100, -- Max speed is 100 to stick with your current position
     priority = 99, -- Set marker priority
+		texthl = "Yellowfg",
   })
 end
 M.setup= function()

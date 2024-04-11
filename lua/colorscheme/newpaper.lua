@@ -2,6 +2,7 @@ local M = {}
 M.config = function()
 	mxvim.background = "light"
   require("newpaper").setup({
+		sidebars_contrast = {"NvimTree"}
   })
 end
 
