@@ -7,9 +7,6 @@ M.colors = function()
     return {
         fg = '#D4D4D4', -- light text color
         bg = '#252526', -- background color
-        light_fg = '#252526', -- text color
-        light_bg = '#E8E8E8', -- light background color
-
         yellow = '#DCDCAA',
         cyan = '#4EC9B0',
         darkblue = '#223E55',

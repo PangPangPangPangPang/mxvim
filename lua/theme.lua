@@ -98,8 +98,8 @@ M.theme_colors = function()
   local colors = require("colorscheme." .. mxvim.current_theme).colors()
   if mxvim.background == "light" then
     local ret = require("utils").shallow_copy(colors)
-    ret.fg = colors.light_fg
-    ret.bg = colors.light_bg
+    ret.fg = colors.bg
+    ret.bg = colors.fg
     return ret
   end
   return colors

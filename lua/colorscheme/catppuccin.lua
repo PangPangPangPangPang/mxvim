@@ -8,9 +8,6 @@ M.colors = function()
         -- fg = '#CDD6F4', -- light text color
         fg = '#4C4F69', -- light text color
         bg = '#2D293B', -- background color
-        light_fg = '#2D293B', -- text color
-        light_bg = '#C2E7F0', -- light background color
-
         yellow = '#EADDA0',
         cyan = '#4EC9B0',
         darkblue = '#A4B9EF',

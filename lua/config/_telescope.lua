@@ -149,7 +149,7 @@ M.hl_telescope = function()
   vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = colors.bg, bg = colors.green })
   vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
   if mxvim.style == "simple" then
-		local shade_bg = require("theme").shade(colors.bg, 0.60, true)
+		local shade_bg = require("theme").shade(colors.bg, 0.40, true)
 		local shade_bg1 = require("theme").shade(colors.bg, 0.70, true)
 		local shade_bg2 = require("theme").shade(colors.bg, 0.80, true)
     vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bold = true, bg = colors.red, fg = colors.fg })
