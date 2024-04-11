@@ -21,4 +21,5 @@ return {
 	require("theme").theme("ribru17/bamboo.nvim", "bamboo"),
 	require("theme").theme("miikanissi/modus-themes.nvim", "modus"),
 	require("theme").theme("Verf/deepwhite.nvim", "deepwhite"),
+	require("theme").theme("zootedb0t/citruszest.nvim", "citruszest"),
 }
