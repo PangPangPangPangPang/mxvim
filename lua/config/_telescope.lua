@@ -49,13 +49,14 @@ M.config = function()
       entry_prefix = "  ",
       initial_mode = "insert",
       sorting_strategy = "ascending",
-      layout_strategy = "vertical",
+      layout_strategy = "horizontal",
       layout_config = {
         horizontal = {
           mirror = false,
           prompt_position = "top",
           width = 0.75,
           preview_cutoff = 120,
+					preview_width = 0.60,
         },
         vertical = {
           mirror = true,
