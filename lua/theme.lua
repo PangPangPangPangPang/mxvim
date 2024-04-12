@@ -13,10 +13,6 @@ M.theme = function(name, nick)
       else
         require("config._lualine")
       end
-
-      -- if mxvim.background == "light" then
-      --   return
-      -- end
       M.hl_common()
       local shade_colors = require("theme").colors(0.6)
       require("config._nvim_cmp").hl_cmp(shade_colors)

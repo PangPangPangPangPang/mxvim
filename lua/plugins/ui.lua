@@ -161,7 +161,6 @@ return {
     "gen740/SmoothCursor.nvim",
     enabled = mxvim.enable_cursor,
     config = function()
-      -- require("config._cursor").setup()
       require("config._cursor").config()
     end,
   },
