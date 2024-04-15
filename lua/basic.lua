@@ -180,7 +180,7 @@ end
 
 opt.fillchars:append({
 	eob = " ",
-	vert = "│",
+	vert = "▏",
 	diff = "╱",
 	foldclose = "",
 	foldopen = "",
