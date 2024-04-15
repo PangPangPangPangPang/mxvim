@@ -1,22 +1,23 @@
 local M = {}
 M.config = function()
   local actions = require("fzf-lua.actions")
+  local shade_colors = require("theme").colors(0.1)
   require("fzf-lua").setup({
     "default",
     fzf_colors = {
       ["fg"] = { "fg", "CursorLine" },
-      ["bg"] = { "bg", "Normal" },
+      ["bg"] = shade_colors.green,
       ["hl"] = { "fg", "Redfg" },
       ["fg+"] = { "fg", "Blackfg" },
       ["bg+"] = { "bg", "Greenbg" },
-      ["hl+"] = { "fg", "Redfg" },
+      ["hl+"] = { "fg", "Greenfg" },
       ["info"] = { "fg", "PreProc" },
-      ["prompt"] = { "fg", "Conditional" },
+      ["prompt"] = shade_colors.blue,
       ["pointer"] = { "fg", "Execption" },
       ["marker"] = { "fg", "Keyword" },
       ["spinner"] = { "fg", "Float" },
       ["header"] = { "fg", "Comment" },
-      ["gutter"] = { "bg", "Normal" },
+      ["gutter"] = shade_colors.green,
     },
     actions = {
       files = {
@@ -33,34 +34,38 @@ M.config = function()
       file_icons = true,
       cwd_prompt = false,
       fzf_opts = {
-        ["--info"] = "inline", -- inline / default
+        ["--info"] = "default", -- inline / default
         ["--no-scrollbar"] = "",
         -- ['--extended'] = "",
       },
       actions = { ["ctrl-g"] = false },
     },
     winopts = {
-      border = "rounded",
+			border = "none",
       preview = {
         layout = "vertical",
         border = "noborder",
       },
     },
   })
-  vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
+  vim.api.nvim_set_hl(0, "FzfLuaNormal", { bg = shade_colors.red })
   vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
+  vim.api.nvim_set_hl(0, "FzfLuaPreviewTitle", { fg = "red", bg = shade_colors.red })
+  vim.api.nvim_set_hl(0, "FzfLuaPreviewBorder", { bg = shade_colors.red })
+  vim.api.nvim_set_hl(0, "FzfLuaBorder", { bg = shade_colors.green, fg = "red" })
+  vim.api.nvim_set_hl(0, "FzfLuaBufName", { bg = shade_colors.green, fg = "red" })
   vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "Float" })
 
-
-	-- map fzf-lua to default if fzf called once
-	local dmap = require("utils").dmap
-	dmap({ "i", "n" }, "<c-p>", '<cmd>lua require("fzf-lua").files()<cr>')
+  -- map fzf-lua to default if fzf called once
+  local dmap = require("utils").dmap
+  dmap({ "i", "n" }, "<c-p>", '<cmd>lua require("fzf-lua").files()<cr>')
 end
 
 M.hl_fzf = function()
-  vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Directory" })
+  local shade_colors = require("theme").colors(0.1)
+  vim.api.nvim_set_hl(0, "FzfLuaBorder", { bg = shade_colors.green, fg = "red" })
   vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
 end
 return M
