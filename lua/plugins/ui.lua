@@ -33,7 +33,7 @@ return {
   -- -	g.indentLine_char = '▏'
   {
     "lukas-reineke/indent-blankline.nvim",
-		enabled = not mxvim.enable_hlchunk,
+    enabled = not mxvim.enable_hlchunk,
     lazy = true,
     main = "ibl",
     opts = {
@@ -52,7 +52,7 @@ return {
       },
       scope = {
         -- Rely on treesitter, bad performance
-        enabled = true,
+        enabled = false,
         highlight = { "CursorLineNr" },
       },
     },
@@ -62,10 +62,22 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-		enabled = mxvim.enable_hlchunk,
+    enabled = mxvim.enable_hlchunk,
     event = { "UIEnter" },
     config = function()
-			require("config._indentline").setup_hlchunk()
+      require("config._indentline").setup_hlchunk()
+    end,
+  },
+  {
+    "echasnovski/mini.indentscope",
+    version = false,
+    enabled = not mxvim.enable_hlchunk,
+    config = function()
+      require("mini.indentscope").setup({
+        symbol = "▏",
+        options = { try_as_border = true },
+      })
+			vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Yellowfg" })
     end,
   },
   {
