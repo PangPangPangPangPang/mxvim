@@ -32,9 +32,37 @@ return {
       vim.keymap.set("i", "<C-Enter>", neocodeium.accept)
     end,
   },
-	{
-		"FittenTech/fittencode.vim",
-		enabled = not mxvim.enable_codeium,
+  {
+    "FittenTech/fittencode.vim",
+    enabled = not mxvim.enable_codeium,
     event = "VeryLazy",
-	}
+  },
+  {
+    "skywind3000/vim-gpt-commit",
+    cmd = { "GptCommit" },
+
+    config = function()
+      -- if you don't want to set your api key directly, add to your .zshrc:
+      -- export OPENAI_API_KEY='sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+      -- vim.g.gpt_commit_key = os.getenv("OPENAI_API_KEY")
+      -- uncomment this line below to enable proxy
+      -- vim.g.gpt_commit_proxy = 'socks5://127.0.0.1:1080'
+
+      -- uncomment the following lines if you want to use Ollama:
+      vim.g.gpt_commit_engine = "ollama"
+      vim.g.gpt_commit_ollama_url = "http://127.0.0.1:11434/api/chat"
+      vim.g.gpt_commit_ollama_model = "llama2"
+			vim.g.gpt_commit_concise = 1
+      local dmap = require("utils").dmap
+      vim.api.nvim_create_autocmd({ "FileType" }, {
+        pattern = {
+          "NeogitCommitMessage",
+        },
+        callback = function()
+					print('echo map')
+          dmap({ "i", "v" }, "gc", ":GptCommit<cr>")
+        end,
+      })
+    end,
+  },
 }

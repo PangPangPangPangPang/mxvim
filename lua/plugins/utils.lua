@@ -151,13 +151,6 @@ return {
     end,
   },
   {
-    "skywind3000/vim-gpt-commit",
-    cmd = { "GptCommit" },
-    config = function()
-      vim.g.gpt_commit_key = os.getenv("OPENAI_API_KEY")
-    end,
-  },
-  {
     "github/copilot.vim",
     enabled = false,
     config = function()
