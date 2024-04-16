@@ -47,7 +47,7 @@ return {
 					"NeogitCommitMessage",
 				},
 				callback = function()
-					dmap({ "i", "v" }, "gc", "<cmd>GptCommit<cr>")
+					dmap({ "i", "v" }, "<c-c>", "<cmd>GptCommit<cr>")
 				end,
 			})
 		end,
