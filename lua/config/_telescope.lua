@@ -137,16 +137,6 @@ M.config = function()
   require("telescope").load_extension("undo")
 end
 
-local zfvim = require("config._zfvimim")
-
----@diagnostic disable-next-line: lowercase-global
-function findFiles()
-  if zfvim.is_zf_load then
-    stop_zfvimim(0)
-  end
-  vim.cmd("Telescope find_files")
-end
-
 M.hl_telescope = function()
   local colors = require("theme").colors()
 	local shade_colors = require("theme").colors(0.1)
