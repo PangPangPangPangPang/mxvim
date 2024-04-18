@@ -2,6 +2,7 @@ local M = {}
 M.config = function()
   local actions = require("fzf-lua.actions")
   local shade_colors = require("theme").colors(0.1)
+  local colors = require("theme").colors()
   require("fzf-lua").setup({
     "default",
     fzf_colors = {
@@ -41,7 +42,8 @@ M.config = function()
       actions = { ["ctrl-g"] = false },
     },
     winopts = {
-			border = "none",
+			-- border = "none",
+			border = { " "," "," "," "," "," "," "," " },
       preview = {
         layout = "vertical",
         border = "noborder",
@@ -50,9 +52,10 @@ M.config = function()
   })
   vim.api.nvim_set_hl(0, "FzfLuaNormal", { bg = shade_colors.red })
   vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "Float" })
-  vim.api.nvim_set_hl(0, "FzfLuaPreviewTitle", { fg = "red", bg = shade_colors.red })
+  vim.api.nvim_set_hl(0, "FzfLuaPreviewTitle", { fg = colors.red, bg = shade_colors.red })
   vim.api.nvim_set_hl(0, "FzfLuaPreviewBorder", { bg = shade_colors.red })
   vim.api.nvim_set_hl(0, "FzfLuaBorder", { bg = shade_colors.green, fg = "red" })
+  vim.api.nvim_set_hl(0, "FloatBorderTerm", { bg = shade_colors.green, fg = "red" })
   vim.api.nvim_set_hl(0, "FzfLuaBufName", { bg = shade_colors.green, fg = "red" })
   vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })

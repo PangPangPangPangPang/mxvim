@@ -1,10 +1,13 @@
 local M = {}
 M.config = function()
-	mxvim.background = "light"
+  mxvim.background = "light"
   require("newpaper").setup({
-		sidebars_contrast = {"NvimTree"},
-		colors = {
-			lightsilver = "#F1F3F2"
+    sidebars_contrast = { "NvimTree" },
+    colors = {
+      lightsilver = "#F1F3F2",
+    },
+		custom_highlights = {
+			LineNr = { fg = "#2B2B2B", bg = 'none' },
 		}
   })
 end
