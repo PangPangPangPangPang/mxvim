@@ -8,7 +8,7 @@ M.config = function()
   require("incline").setup({
     window = {
       options = {
-        winblend = 100,
+        winblend = vim.fn.exists("g:neovide") == 1 and 100 or 0,
       },
     },
     render = function(props)
