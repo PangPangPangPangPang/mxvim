@@ -9,8 +9,8 @@ M.config = function()
   local actions = require("telescope.actions")
   require("telescope").setup({
     defaults = {
-			dynamic_preview_title = true,
-			results_title = mxvim.style ~= "simple",
+      dynamic_preview_title = true,
+      results_title = mxvim.style ~= "simple",
       vimgrep_arguments = {
         "rg",
         "--color=never",
@@ -43,7 +43,12 @@ M.config = function()
           ["<S-down>"] = actions.preview_scrolling_down,
         },
       },
-      path_display = { "truncate" },
+      path_display = {
+        "truncate",
+        filename_first = {
+          reverse_directories = false,
+        },
+      },
       prompt_prefix = "   ",
       selection_caret = " ▶ ",
       entry_prefix = "  ",
@@ -56,7 +61,7 @@ M.config = function()
           prompt_position = "top",
           width = 0.75,
           preview_cutoff = 120,
-					preview_width = 0.60,
+          preview_width = 0.60,
         },
         vertical = {
           mirror = true,
@@ -139,7 +144,7 @@ end
 
 M.hl_telescope = function()
   local colors = require("theme").colors()
-	local shade_colors = require("theme").colors(0.1)
+  local shade_colors = require("theme").colors(0.1)
   vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = colors.bg, bg = colors.green })
   vim.api.nvim_set_hl(0, "TelescopeMatching", { bold = true, fg = colors.red })
   if mxvim.style == "simple" then
