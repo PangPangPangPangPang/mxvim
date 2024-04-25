@@ -1,29 +1,31 @@
 local M = {}
 M.config = function()
-	local files = {
-      prompt = "   ",
-      file_icons = true,
-      cwd_prompt = false,
-      fzf_opts = {
-        ["--info"] = "default", -- inline / default
-        ["--no-scrollbar"] = "",
-        -- ['--extended'] = "",
-      },
-      actions = { ["ctrl-g"] = false },
-			ignore_current_file = true
-    }
-	if vim.fn.executable('fd') == 1 then
-		    local fzfutils = require('fzf-lua.utils')
-		files.cmd = string.format(
+  local files = {
+    prompt = "   ",
+    file_icons = true,
+    cwd_prompt = false,
+    fzf_opts = {
+      ["--info"] = "default", -- inline / default
+      ["--no-scrollbar"] = "",
+      -- ['--extended'] = "",
+    },
+    actions = { ["ctrl-g"] = false },
+    ignore_current_file = true,
+  }
+  if vim.fn.executable("fd") == 1 then
+    local fzfutils = require("fzf-lua.utils")
+    files.cmd = string.format(
       [[fd --color=never --type f --hidden --follow --exclude .git -x printf "{}: {/} %s\n"]],
-      fzfutils.ansi_codes.grey('{//}')
+      fzfutils.ansi_codes.grey("{//}")
     )
     files.fzf_opts = {
       -- process ansi colors
-      ['--ansi'] = '',
-      ['--with-nth'] = '2..',
-      ['--delimiter'] = '\\s',
-      ['--tiebreak'] = 'begin,index',
+      ["--ansi"] = "",
+      ["--with-nth"] = "2..",
+      ["--delimiter"] = "\\s",
+      ["--tiebreak"] = "begin,index",
+      ["--info"] = "default", -- inline / default
+      ["--no-scrollbar"] = "",
     }
   end
   local actions = require("fzf-lua.actions")
@@ -58,8 +60,8 @@ M.config = function()
     },
     files = files,
     winopts = {
-			-- border = "none",
-			border = { " "," "," "," "," "," "," "," " },
+      -- border = "none",
+      border = { " ", " ", " ", " ", " ", " ", " ", " " },
       preview = {
         layout = "vertical",
         border = "noborder",
