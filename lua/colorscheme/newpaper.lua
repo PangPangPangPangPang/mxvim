@@ -7,7 +7,7 @@ M.config = function()
       lightsilver = "#F1F3F2",
     },
 		custom_highlights = {
-			LineNr = { fg = "#2B2B2B", bg = 'none' },
+			LineNr = { fg = "#585858", bg = 'none' },
 		}
   })
 end
