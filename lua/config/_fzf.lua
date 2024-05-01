@@ -11,23 +11,8 @@ M.config = function()
     },
     actions = { ["ctrl-g"] = false },
     ignore_current_file = true,
+		formatter = "path.filename_first"
   }
-  if vim.fn.executable("fd") == 1 then
-    local fzfutils = require("fzf-lua.utils")
-    files.cmd = string.format(
-      [[fd --color=never --type f --hidden --follow --exclude .git -x printf "{}: {/} %s\n"]],
-      fzfutils.ansi_codes.grey("{//}")
-    )
-    files.fzf_opts = {
-      -- process ansi colors
-      ["--ansi"] = "",
-      ["--with-nth"] = "2..",
-      ["--delimiter"] = "\\s",
-      ["--tiebreak"] = "begin,index",
-      ["--info"] = "default", -- inline / default
-      ["--no-scrollbar"] = "",
-    }
-  end
   local actions = require("fzf-lua.actions")
   local shade_colors = require("theme").colors(0.1)
   local colors = require("theme").colors()
