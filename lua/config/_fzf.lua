@@ -11,7 +11,8 @@ M.config = function()
     },
     actions = { ["ctrl-g"] = false },
     ignore_current_file = true,
-		formatter = "path.filename_first"
+    -- path_shorten = 1,
+    formatter = "path.filename_first",
   }
   local actions = require("fzf-lua.actions")
   local shade_colors = require("theme").colors(0.1)
