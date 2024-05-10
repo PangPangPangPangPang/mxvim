@@ -18,6 +18,9 @@ M.set_keymap = function()
 
       if not mxvim.enable_lspsaga then
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+        vim.keymap.set({ "n", "v" }, "<leader>cs", function ()
+					vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+        end, { buffer = bufnr, desc = "Organize imports" })
         vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
         -- Setup keymaps
         vim.keymap.set("n", "[e", function()
@@ -69,9 +72,13 @@ M.set_keymap = function()
         --   vim.lsp.inlay_hint(bufnr, true)
         -- end
       -- end
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        update_in_insert = false,
-      })
+			vim.lsp.handlers["textDocument/publishDiagnostics"] =  function (err, result, ctx, config)
+          require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
+          vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+			end
+      -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      --   update_in_insert = false,
+      -- })
     end,
   })
 end
