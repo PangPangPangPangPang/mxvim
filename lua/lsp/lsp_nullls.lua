@@ -13,7 +13,7 @@ M.config = function()
     null_ls.builtins.diagnostics.codespell,
     -- null_ls.builtins.diagnostics.selene,
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.code_actions.gitsigns,
+    -- null_ls.builtins.code_actions.gitsigns,
     prettier,
   }
   null_ls.setup({ sources = sources, debug = false })
