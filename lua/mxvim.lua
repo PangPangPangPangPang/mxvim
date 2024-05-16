@@ -13,7 +13,6 @@ mxvim.use_cmp = true
 mxvim.use_notify = false
 mxvim.enable_lspsaga = false
 mxvim.enable_neotree = true
-mxvim.enable_statuscol = true
 
 -- map q to quick close
 mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
@@ -23,7 +22,7 @@ mxvim.enable_treesitter = true
 mxvim.enable_codeium = true
 mxvim.enable_action_preview = false
 mxvim.show_fold = false
-mxvim.enable_cursor = true
+mxvim.enable_cursor = false
 mxvim.enable_ts_tools = false
 mxvim.enable_squirrel = false
 mxvim.enable_hlchunk = false
