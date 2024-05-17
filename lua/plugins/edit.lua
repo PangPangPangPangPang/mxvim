@@ -125,7 +125,14 @@ return {
     enabled = false,
     lazy = true,
   },
-
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("render-markdown").setup({})
+    end,
+  },
   -- install without yarn or npm
   {
     "iamcco/markdown-preview.nvim",
@@ -184,7 +191,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-		init = function ()
+    init = function()
       vim.keymap.set("x", "<leader>re", ":Refactor extract ")
       vim.keymap.set("x", "<leader>rf", ":Refactor extract_to_file ")
 
@@ -196,7 +203,7 @@ return {
 
       vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
       vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
-		end,
+    end,
     config = function()
       require("refactoring").setup()
     end,
