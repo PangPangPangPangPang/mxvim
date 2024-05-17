@@ -1,7 +1,25 @@
-return {
+local M = {}
+M.setup = function()
+  local lsp_config = require("config._lsp_config")
+  local config = lsp_config.make_config()
+  config.init_options = {
+    preferences = {
+      includeInlayParameterNameHints = "all",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+      importModuleSpecifierPreference = "non-relative",
+    },
+  }
+  require("lspconfig").tsserver.setup(config)
+end
+M.ts_tools = {
   {
     "dmmulroy/ts-error-translator.nvim",
-		event = "LspAttach",
+    event = "LspAttach",
     enabled = not mxvim.enable_ts_tools,
     config = function()
       require("ts-error-translator").setup({
@@ -81,3 +99,4 @@ return {
     },
   },
 }
+return M

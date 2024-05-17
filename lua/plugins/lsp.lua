@@ -88,7 +88,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
   },
-  require("lsp.lsp_ts"),
+  require("lsp.lsp_ts").ts_tools,
   {
     "jay-babu/mason-null-ls.nvim",
     event = "VeryLazy",
