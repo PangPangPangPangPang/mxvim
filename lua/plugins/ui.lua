@@ -200,6 +200,7 @@ return {
 
   { -- better statuscolumn
     "luukvbaal/statuscol.nvim",
+		branch = "0.10",
     event = { "BufRead", "BufNewFile" },
     dependencies = { "gen740/SmoothCursor.nvim" },
     opts = function()
