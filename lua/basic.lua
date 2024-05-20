@@ -158,6 +158,7 @@ o.si = true
 -- Wrap lines
 o.wrap = false
 o.sidescroll = 1
+o.sidescrolloff = 999
 
 o.splitright = true
 o.splitbelow = true
