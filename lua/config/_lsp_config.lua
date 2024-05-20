@@ -18,8 +18,8 @@ M.set_keymap = function()
 
       if not mxvim.enable_lspsaga then
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
-        vim.keymap.set({ "n", "v" }, "<leader>cs", function ()
-					vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cs", function()
+          vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
         end, { buffer = bufnr, desc = "Organize imports" })
         vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
         -- Setup keymaps
@@ -41,8 +41,8 @@ M.set_keymap = function()
       vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
       vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
       vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
-      vim.keymap.set("n", "<leader>ch", function ()
-      	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+      vim.keymap.set("n", "<leader>ch", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
       end, { buffer = bufnr, desc = "Toggle inlay hint" })
       vim.keymap.set("n", "<leader>cr", function()
         vim.lsp.buf.references({ include_declaration = false })
@@ -71,14 +71,14 @@ M.set_keymap = function()
       )
       vim.keymap.set("n", "<leader>cwl", function() end, { buffer = bufnr, desc = "List workspace folders" })
       -- if vim.fn.has("nvim-0.10") == 1 then
-        -- if client and client.server_capabilities.inlayHintProvider then
-        --   vim.lsp.inlay_hint(bufnr, true)
-        -- end
+      -- if client and client.server_capabilities.inlayHintProvider then
+      --   vim.lsp.inlay_hint(bufnr, true)
       -- end
-			vim.lsp.handlers["textDocument/publishDiagnostics"] =  function (err, result, ctx, config)
-          require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
-          vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
-			end
+      -- end
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+        require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
+        vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+      end
       -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       --   update_in_insert = false,
       -- })
@@ -160,7 +160,7 @@ M.make_config = function()
 end
 
 M.custom_handlers = function()
-	vim.lsp.inlay_hint.enable()
+  vim.lsp.inlay_hint.enable()
   local sign = function(opts)
     vim.fn.sign_define(opts.name, {
       texthl = opts.name,

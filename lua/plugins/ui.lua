@@ -192,6 +192,7 @@ return {
   },
   {
     "gen740/SmoothCursor.nvim",
+    event = "VeryLazy",
     enabled = mxvim.enable_cursor,
     config = function()
       require("config._cursor").config()
