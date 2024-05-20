@@ -70,11 +70,6 @@ M.set_keymap = function()
         { buffer = bufnr, desc = "Remove workspace folder" }
       )
       vim.keymap.set("n", "<leader>cwl", function() end, { buffer = bufnr, desc = "List workspace folders" })
-      -- if vim.fn.has("nvim-0.10") == 1 then
-      -- if client and client.server_capabilities.inlayHintProvider then
-      --   vim.lsp.inlay_hint(bufnr, true)
-      -- end
-      -- end
       vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
         require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
         vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
