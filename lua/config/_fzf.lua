@@ -5,9 +5,12 @@ M.config = function()
     file_icons = true,
     cwd_prompt = false,
     fzf_opts = {
-      ["--info"] = "default", -- inline / default
+      ["--info"] = "inline-right", -- inline / default
       ["--no-scrollbar"] = "",
-      -- ['--extended'] = "",
+      ["--extended"] = "",
+      ["--no-separator"] = "",
+      ["--pointer"] = "▶ ",
+      ["--header"] = " ",
     },
     actions = { ["ctrl-g"] = false },
     ignore_current_file = true,
@@ -27,7 +30,7 @@ M.config = function()
       ["bg+"] = { "bg", "Greenbg" },
       ["hl+"] = { "fg", "Redfg" },
       ["info"] = { "fg", "PreProc" },
-      ["prompt"] = shade_colors.blue,
+      ["prompt"] = {"fg", "Bluefg"},
       ["pointer"] = { "fg", "Execption" },
       ["marker"] = { "fg", "Keyword" },
       ["spinner"] = { "fg", "Float" },

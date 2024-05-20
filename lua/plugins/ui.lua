@@ -75,6 +75,7 @@ return {
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
+					"fzf",
           "help",
           "alpha",
           "dashboard",
