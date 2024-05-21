@@ -48,11 +48,15 @@ return {
 			-- { "<F3>", '<cmd>Neogit<cr>', mode = "n" },
 		},
 		setup = {
-			vim.cmd([[ com! G lua require("neogit").open({ kind = "vsplit" })]])
+			vim.cmd([[ com! G lua require("neogit").open({ kind = "auto" })]])
 		},
 		config = function()
 			local neogit = require("neogit")
 			neogit.setup({
+				kind= 'vsplit',
+				  auto_show_console = false,
+
+				graph_style = "unicode",
 				integrations = {
 					diffview = true
 				},
