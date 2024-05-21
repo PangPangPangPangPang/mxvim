@@ -59,8 +59,18 @@ return {
       local neogit = require("neogit")
       neogit.setup({
         log_view = {
-					kind = "auto",
-				},
+          kind = "auto",
+        },
+        commit_editor = {
+          kind = "vsplit",
+          show_staged_diff = true,
+          -- Accepted values:
+          -- "split" to show the staged diff below the commit editor
+          -- "vsplit" to show it to the right
+          -- "split_above" Like :top split
+          -- "auto" "vsplit" if window would have 80 cols, otherwise "split"
+          staged_diff_split_kind = "split",
+        },
         kind = "vsplit",
         auto_show_console = false,
         graph_style = "unicode",
