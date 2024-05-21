@@ -17,7 +17,38 @@ return {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",
-    enabled = vim.fn.has("nvim-0.10.0") == 1,
+    enabled = false,
+    config = function()
+      vim.api.nvim_set_keymap("n", "<leader>/", "gcc", { desc = "Comment" })
+      vim.api.nvim_set_keymap("v", "<leader>/", "gc", { desc = "Comment" })
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    enabled = mxvim.enable_treesitter,
+    lazy = true,
+    config = function()
+      require("Comment").setup({
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+        toggler = {
+          ---Line-comment toggle keymap
+          line = "<leader>/",
+          ---Block-comment toggle keymap
+          block = "gbc",
+        },
+        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+        opleader = {
+          ---Line-comment keymap
+          line = "<leader>/",
+          ---Block-comment keymap
+          block = "gb",
+        },
+      })
+    end,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
   -- fold
   {

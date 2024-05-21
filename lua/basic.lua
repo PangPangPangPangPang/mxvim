@@ -247,10 +247,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
 	}
 )
 
--- Comment
-vim.api.nvim_set_keymap("n", "<leader>/", "gcc", { desc = "Comment" })
-vim.api.nvim_set_keymap("v", "<leader>/", "gc", { desc = "Comment" })
-
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
