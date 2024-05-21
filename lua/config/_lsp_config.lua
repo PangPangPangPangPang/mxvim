@@ -71,8 +71,11 @@ M.set_keymap = function()
       )
       vim.keymap.set("n", "<leader>cwl", function() end, { buffer = bufnr, desc = "List workspace folders" })
       vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
-        require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
-        vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+        local safe_require = require("utils").safe_require
+        safe_require("ts-error-translator", function(ts_error_translator)
+          ts_error_translator.translate_diagnostics(err, result, ctx, config)
+          vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+        end)
       end
       -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       --   update_in_insert = false,

@@ -7,7 +7,7 @@ M.config = function()
       lightsilver = "#F1F3F2",
     },
 		custom_highlights = {
-			LineNr = mxvim.enable_cursor and { fg = "#585858", bg = 'none' } or nil,
+			LineNr = mxvim.enable_cursor and { fg = "#878787", bg = 'none' } or nil,
 		}
   })
 end
