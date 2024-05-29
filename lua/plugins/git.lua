@@ -80,7 +80,7 @@ return {
         },
         mappings = {
           status = {
-            ["o"] = "Toggle",
+            -- ["o"] = "Toggle",
             ["a"] = "Stage",
             ["="] = "Toggle",
           },

@@ -30,10 +30,8 @@ return {
       vim.cmd("RainbowToggleOn")
     end,
   },
-  -- -	g.indentLine_char = '▏'
   {
     "lukas-reineke/indent-blankline.nvim",
-    enabled = not mxvim.enable_hlchunk,
     lazy = true,
     main = "ibl",
     opts = {
@@ -61,9 +59,12 @@ return {
     end,
   },
   {
-    "shellRaining/hlchunk.nvim",
+    "Mr-LLLLL/cool-chunk.nvim",
     enabled = mxvim.enable_hlchunk,
-    event = { "UIEnter" },
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
     config = function()
       require("config._indentline").setup_hlchunk()
     end,
@@ -75,7 +76,7 @@ return {
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
-					"fzf",
+          "fzf",
           "help",
           "alpha",
           "dashboard",
@@ -202,7 +203,7 @@ return {
 
   { -- better statuscolumn
     "luukvbaal/statuscol.nvim",
-		branch = "0.10",
+    branch = "0.10",
     event = { "BufRead", "BufNewFile" },
     dependencies = { "gen740/SmoothCursor.nvim" },
     opts = function()

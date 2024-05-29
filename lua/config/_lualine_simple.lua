@@ -93,6 +93,18 @@ local function ins_inactive_left(component)
   table.insert(config.inactive_sections.lualine_c, component)
 end
 
+if mxvim.enable_codeium then
+  ins_left({
+    function()
+			local status = vim.api.nvim_call_function("codeium#GetStatusString", {})
+			if not string.find(status, "/") then
+				status = ""
+			end
+			return status
+    end,
+  })
+end
+
 -- ins_left({
 -- 	"diff",
 -- 	padding = { right = 2 },

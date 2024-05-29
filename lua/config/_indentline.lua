@@ -22,29 +22,56 @@ M.setup = function(opts)
 end
 
 M.setup_hlchunk = function()
-  local colors = require("theme").colors(0.3)
-  local origin_colors = require("theme").colors()
-  require("hlchunk").setup({
-    blank = {
-      enable = false,
-    },
+  local ft = require("cool-chunk.utils.filetype").support_filetypes
+  require("cool-chunk").setup({
     chunk = {
-      style = {
-        { fg = origin_colors.yellow },
-        { fg = origin_colors.red },
+      notify = true,
+      support_filetypes = ft.support_filetypes, -- ft = require("cool-chunk.utils.filetype").support_filetypes
+      exclude_filetypes = ft.exclude_filetypes,
+      hl_group = {
+        chunk = "Yellowfg",
+        error = "Error",
       },
+      chars = {
+        horizontal_line = "─",
+        vertical_line = "│",
+        left_top = "╭",
+        left_bottom = "╰",
+        left_arrow = "<",
+        bottom_arrow = "v",
+        right_arrow = ">",
+      },
+      textobject = "ah",
+      animate_duration = 100,
+      fire_event = { "CursorHold", "CursorHoldI" },
     },
-    indent = {
-      chars = { "▏" },
-      style = {
-        { fg = colors.red },
-        { fg = colors.blue },
-        { fg = colors.orange },
-        { fg = colors.green },
-        { fg = colors.purple },
-        { fg = colors.cyan },
-        { fg = colors.yellow },
+    context = {
+      enable = false,
+      notify = true,
+      chars = {
+        "│",
       },
+      hl_group = {
+        context = "LineNr",
+      },
+      exclude_filetypes = ft.exclude_filetypes,
+      support_filetypes = ft.support_filetypes,
+      textobject = "ih",
+      jump_support_filetypes = { "lua", "python" },
+      jump_start = "[{",
+      jump_end = "]}",
+      fire_event = { "CursorHold", "CursorHoldI" },
+    },
+    line_num = {
+      notify = true,
+      hl_group = {
+        chunk = "CursorLineNr",
+        context = "LineNr",
+        error = "Error",
+      },
+      support_filetypes = ft.support_filetypes,
+      exclude_filetypes = ft.exclude_filetypes,
+      fire_event = { "CursorHold", "CursorHoldI" },
     },
   })
 end

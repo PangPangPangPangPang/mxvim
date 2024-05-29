@@ -1,30 +1,29 @@
 return {
   {
     "Exafunction/codeium.vim",
-    enabled = mxvim.enable_codeium and vim.fn.has("nvim-0.10") ~= 1,
+    enabled = mxvim.enable_codeium,
     event = "VeryLazy",
     config = function()
       vim.g.codeium_no_map_tab = 1
       vim.keymap.set("n", "<leader>cc", function()
-        return vim.fn["codeium#Chat"]()
+        vim.fn["codeium#Chat"]()
       end, { expr = true, silent = true, desc = "Chat with codeium" })
       vim.keymap.set("i", "<C-Enter>", function()
         return vim.fn["codeium#Accept"]()
       end, { expr = true, silent = true })
       vim.keymap.set("i", "<c-;>", function()
+        require("cmp").close()
         return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true, silent = true })
+      end)
       vim.keymap.set("i", "<c-'>", function()
+        require("cmp").close()
         return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true, silent = true })
-      -- vim.keymap.set("i", "<c-x>", function()
-      --   return vim.fn["codeium#Clear"]()
-      -- end, { expr = true, silent = true })
+      end)
     end,
   },
   {
     "monkoose/neocodeium",
-    enabled = mxvim.enable_codeium and vim.fn.has("nvim-0.10") == 1,
+    enabled = not mxvim.enable_codeium,
     event = "VeryLazy",
     config = function()
       local neocodeium = require("neocodeium")
@@ -39,11 +38,6 @@ return {
         neocodeium.cycle()
       end)
     end,
-  },
-  {
-    "FittenTech/fittencode.vim",
-    enabled = not mxvim.enable_codeium,
-    event = "VeryLazy",
   },
   {
     "skywind3000/vim-gpt-commit",
