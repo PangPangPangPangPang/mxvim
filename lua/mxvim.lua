@@ -15,7 +15,7 @@ mxvim.enable_lspsaga = false
 mxvim.enable_neotree = false
 
 -- map q to quick close
-mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help" }
+mxvim.ignore_list = { "qf", "fugitive", "git", "Trouble", "noice", "fugitiveblame", "NeogitStatus", "help", "trouble" }
 
 mxvim.treesitter_filetype = { "markdown", "javascript", "javascriptreact", "lua" }
 mxvim.enable_treesitter = true
@@ -26,3 +26,4 @@ mxvim.enable_cursor = true
 mxvim.enable_ts_tools = false
 mxvim.enable_squirrel = false
 mxvim.enable_hlchunk = false
+mxvim.enable_trouble = true

@@ -37,16 +37,19 @@ M.set_keymap = function()
         )
       end
 
+			if not mxvim.enable_trouble then
+				vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
+				vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
+				vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
+				vim.keymap.set("n", "<leader>cr", function()
+					vim.lsp.buf.references({ include_declaration = false })
+				end, { buffer = bufnr, desc = "Show references" })
+			end
+
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover" })
-      vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
-      vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
-      vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
       vim.keymap.set("n", "<leader>ch", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
       end, { buffer = bufnr, desc = "Toggle inlay hint" })
-      vim.keymap.set("n", "<leader>cr", function()
-        vim.lsp.buf.references({ include_declaration = false })
-      end, { buffer = bufnr, desc = "Show references" })
 
       vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
       vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
