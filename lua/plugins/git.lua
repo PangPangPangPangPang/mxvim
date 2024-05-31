@@ -62,8 +62,8 @@ return {
           kind = "auto",
         },
         commit_editor = {
-          kind = "auto",
-          show_staged_diff = true,
+          kind = "split",
+          show_staged_diff = false,
           staged_diff_split_kind = "split",
         },
         kind = "vsplit",
