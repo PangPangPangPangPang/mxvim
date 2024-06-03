@@ -141,6 +141,7 @@ return {
 		},
 	},
 	require("lsp.lsp_ts").ts_tools,
+	require("lsp.lsp_lua").lazydev(),
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = "VeryLazy",
