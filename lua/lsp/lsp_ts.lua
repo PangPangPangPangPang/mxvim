@@ -25,7 +25,7 @@ M.ts_tools = {
       require("ts-error-translator").setup({
         auto_override_publish_diagnostics = true,
       })
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+      vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         pattern = { "*.tsx", "*.ts", "*.css", "*.html", "*.js", "*.jsx" },
         callback = function()
           vim.lsp.buf.format({
@@ -49,7 +49,7 @@ M.ts_tools = {
         "dmmulroy/ts-error-translator.nvim",
         config = function()
           require("ts-error-translator").setup()
-          vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+          vim.api.nvim_create_autocmd({ "BufWritePre" }, {
             pattern = { "*.tsx", "*.ts", "*.css", "*.html", "*.js", "*.jsx" },
             callback = function()
               vim.lsp.buf.format({
