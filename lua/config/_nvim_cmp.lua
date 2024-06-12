@@ -40,7 +40,8 @@ M.config = function()
       end,
     },
     experimental = {
-      ghost_text = mxvim.enable_codeium ~= true and { hl_group = "Comment" } or false,
+      -- ghost_text = mxvim.enable_codeium ~= true and { hl_group = "Comment" } or false,
+      ghost_text = false
     },
     window = window,
     formatting = {
