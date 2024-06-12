@@ -15,6 +15,7 @@ M.setup = function()
     },
   }
   require("lspconfig").tsserver.setup(config)
+	vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@lsp" })
 end
 M.ts_tools = {
   {
@@ -70,9 +71,7 @@ M.ts_tools = {
           "<Cmd>TSToolsOrganizeImports<CR>",
           { buffer = bufnr, desc = "Organize imports" }
         )
-        -- vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@variable" })
-        -- vim.api.nvim_set_hl(0, "@lsp.typemod.variable.declaration.typescriptreact", { link = "@variable" })
-        -- vim.api.nvim_set_hl(0, "@variable.member.tsx", { link = "@property" })
+        vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@lsp" })
       end,
       handlers = {
         ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
