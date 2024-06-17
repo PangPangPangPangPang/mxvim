@@ -16,7 +16,7 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = true,
 		opts = {
-			inlay_hints = { enabled = true },
+			inlay_hints = { enabled = false },
 		},
 		config = function()
 			require("config._lsp_config").config()
