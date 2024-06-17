@@ -161,7 +161,7 @@ M.make_config = function()
 end
 
 M.custom_handlers = function()
-  vim.lsp.inlay_hint.enable()
+  -- vim.lsp.inlay_hint.enable()
   local sign = function(opts)
     vim.fn.sign_define(opts.name, {
       texthl = opts.name,
