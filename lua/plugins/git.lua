@@ -34,11 +34,10 @@ return {
       require("config._diffview").config()
     end,
   },
-
   {
     "tpope/vim-fugitive",
     lazy = true,
-    cmd = { "Git" },
+		cmd = { "G" },
   },
   {
     "NeogitOrg/neogit",
@@ -52,9 +51,9 @@ return {
       -- { "<leader>gl", "<cmd>Neogit log<cr>", mode = { "n", "v" }, desc = "Git log" },
       -- { "<F3>", '<cmd>Neogit<cr>', mode = "n" },
     },
-    setup = {
-      vim.cmd([[ com! G lua require("neogit").open({ kind = "auto" })]]),
-    },
+    -- setup = {
+    --   vim.cmd([[ com! G lua require("neogit").open({ kind = "auto" })]]),
+    -- },
     config = function()
       local neogit = require("neogit")
       neogit.setup({
