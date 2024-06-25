@@ -67,6 +67,8 @@ M.config = function()
   vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "Float" })
   vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "Float" })
+  vim.api.nvim_set_hl(0, "FzfLuaDirPart", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "FzfLuaFilePart", {link = "Identifier" })
 
   -- map fzf-lua to default if fzf called once
   local dmap = require("utils").dmap
