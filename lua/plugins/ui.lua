@@ -203,7 +203,7 @@ return {
 
   { -- better statuscolumn
     "luukvbaal/statuscol.nvim",
-    branch = "0.10",
+    -- branch = "0.10",
     event = { "BufRead", "BufNewFile" },
     dependencies = { "gen740/SmoothCursor.nvim" },
     opts = function()
@@ -233,7 +233,7 @@ return {
       end
 
       return {
-        ft_ignore = { "neo-tree", "neo-tree-popup", "alpha", "lazy", "mason", "nofile" },
+        ft_ignore = { "neo-tree", "neo-tree-popup", "alpha", "lazy", "mason", "nofile", "NvimTree" },
         segments = segments,
       }
     end,
