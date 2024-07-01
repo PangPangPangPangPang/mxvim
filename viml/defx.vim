@@ -1,7 +1,7 @@
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
-    " Define mappings
-    nnoremap <silent><buffer><expr> <2-LeftMouse> 
+	" Define mappings
+    nnoremap <silent><buffer><expr> <2-LeftMouse>
                 \ defx#is_directory() ?
                 \ defx#do_action('open_or_close_tree') :
                 \ defx#do_action('drop')
@@ -112,7 +112,7 @@ augroup END
 "                 \ 'columns': 'mark:indent:git:icon:filename:type:size:time',
 "                 \ })
 " endif
-" 
+"
 call defx#custom#column('icon', {
             \ 'directory_icon': '▶ ',
             \ 'opened_icon': '▼ ',
@@ -137,8 +137,8 @@ call defx#custom#column('git', 'indicators', {
             \ 'Deleted'   : '✖ ',
             \ 'Unknown'   : '? '
             \ })
-" 
-" 
+"
+"
 let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 2
 let g:defx_icons_directory_icon = ' '
