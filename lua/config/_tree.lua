@@ -110,7 +110,7 @@ M.config = function()
 			signcolumn = "yes",
 			width = "15%",
 			float = {
-				enable = false,
+				enable = true,
 			}
 		},
 	})

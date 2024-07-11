@@ -271,6 +271,7 @@ if fn.exists("g:neovide") == 1 then
 	else
 		-- o.guifont = "Iosevka Nerd Font:h16"
 		o.guifont = "JetBrains Mono:h16"
+		-- o.guifont = "DinaTtf10px Nerd Font:h18"
 		-- g.neovide_padding_top = 8
 		-- vim.opt.linespace = 4
 	end

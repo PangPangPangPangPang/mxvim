@@ -44,7 +44,8 @@ return {
 	},
 	{
 		"keaising/im-select.nvim",
-		enabled = require("utils").system() == "Linux" or not mxvim.enable_squirrel,
+		-- enabled = require("utils").system() == "Linux" or not mxvim.enable_squirrel,
+		enabled = false,
 		event = "VeryLazy",
 		config = function()
 			require('im_select').setup({
