@@ -25,5 +25,5 @@ mxvim.show_fold = false
 mxvim.enable_cursor = true
 mxvim.enable_ts_tools = false
 mxvim.enable_squirrel = false
-mxvim.enable_hlchunk = false
+mxvim.enable_hlchunk = true
 mxvim.enable_trouble = true

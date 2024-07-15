@@ -73,7 +73,7 @@ return {
     end,
   },
   {
-    "Mr-LLLLL/cool-chunk.nvim",
+    "shellRaining/hlchunk.nvim",
     enabled = mxvim.enable_hlchunk,
     event = "VeryLazy",
     dependencies = {

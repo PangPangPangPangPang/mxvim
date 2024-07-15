@@ -22,12 +22,10 @@ M.setup = function(opts)
 end
 
 M.setup_hlchunk = function()
-  local ft = require("cool-chunk.utils.filetype").support_filetypes
-  require("cool-chunk").setup({
+  require("hlchunk").setup({
     chunk = {
+			enable = true,
       notify = true,
-      support_filetypes = ft.support_filetypes, -- ft = require("cool-chunk.utils.filetype").support_filetypes
-      exclude_filetypes = ft.exclude_filetypes,
       hl_group = {
         chunk = "Yellowfg",
         error = "Error",
@@ -37,7 +35,7 @@ M.setup_hlchunk = function()
         vertical_line = "│",
         left_top = "╭",
         left_bottom = "╰",
-        left_arrow = "<",
+        -- left_arrow = "<",
         bottom_arrow = "v",
         right_arrow = ">",
       },
@@ -45,33 +43,11 @@ M.setup_hlchunk = function()
       animate_duration = 100,
       fire_event = { "CursorHold", "CursorHoldI" },
     },
-    context = {
+    indent = {
       enable = false,
-      notify = true,
-      chars = {
-        "│",
-      },
-      hl_group = {
-        context = "LineNr",
-      },
-      exclude_filetypes = ft.exclude_filetypes,
-      support_filetypes = ft.support_filetypes,
-      textobject = "ih",
-      jump_support_filetypes = { "lua", "python" },
-      jump_start = "[{",
-      jump_end = "]}",
-      fire_event = { "CursorHold", "CursorHoldI" },
     },
     line_num = {
-      notify = true,
-      hl_group = {
-        chunk = "CursorLineNr",
-        context = "LineNr",
-        error = "Error",
-      },
-      support_filetypes = ft.support_filetypes,
-      exclude_filetypes = ft.exclude_filetypes,
-      fire_event = { "CursorHold", "CursorHoldI" },
+      enable = false,
     },
   })
 end
