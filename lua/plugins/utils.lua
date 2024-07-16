@@ -97,57 +97,47 @@ return {
           separator = "➜", -- symbol used between a key and it's label
           group = "+", -- symbol prepended to a group
         },
-        window = {
+        win = {
+					width= 0.5,
           border = "single", -- none, single, double, shadow
-          position = "bottom", -- bottom, top
-          margin = { 1, 0, 1, 0.5 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
-          padding = { 1, 2, 0, 2 }, -- extra window padding [top, right, bottom, left]
-          winblend = 20, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+          padding = { 1, 2 },
           zindex = 1000, -- positive value to position WhichKey above other floating windows.
+					wo = {
+						winblend = 100
+					}
         },
+				layout = {
+					align = "right"
+				},
         show_help = false, -- show a help message in the command line for using WhichKey
         show_keys = false, -- show the currently pressed key and its label as a message in the command line
       })
-      wk.register({
-        g = {
-          name = "Git",
-          o = "Diff Choose ours",
-          t = "Diff Choose theirs",
-          B = "Diff Choose base",
-          A = "Diff Choose all",
-          X = "Diff Choose none",
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        w = {
-          name = "Workspace",
-          a = "Add workspace folder",
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        l = {
-          name = "Diagnostic",
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        ["="] = {
-          name = "Format",
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        c = {
-          name = "Language Server",
-          a = "Code action",
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        ["<Down>"] = {
-          name = "Change",
-        },
-        ["<Up>"] = {
-          name = "Change",
-        },
-      }, { prefix = "<leader>" })
+      wk.add({
+        { "<leader>g", group = "Git" },
+        { "<leader>gA", desc = "Diff Choose all" },
+        { "<leader>gB", desc = "Diff Choose base" },
+        { "<leader>gX", desc = "Diff Choose none" },
+        { "<leader>go", desc = "Diff Choose ours" },
+        { "<leader>gt", desc = "Diff Choose theirs" },
+      })
+      wk.add({
+        { "<leader>w", group = "Workspace" },
+        { "<leader>wa", desc = "Add workspace folder" },
+      })
+      wk.add({
+        { "<leader>l", group = "Diagnostic" },
+      })
+      wk.add({
+        { "<leader>=", group = "Format" },
+      })
+      wk.add({
+        { "<leader>c", group = "Language Server" },
+        { "<leader>ca", desc = "Code action" },
+      })
+      wk.add({
+        { "<leader><Down>", group = "Change" },
+        { "<leader><Up>", group = "Change" },
+      })
     end,
   },
   {
@@ -162,7 +152,7 @@ return {
   },
   -- {
   --   "stevearc/stickybuf.nvim",
-		-- event = "VeryLazy",
+  -- event = "VeryLazy",
   --   opts = {},
   -- },
 }
