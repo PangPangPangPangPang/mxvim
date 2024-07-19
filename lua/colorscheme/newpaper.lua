@@ -4,10 +4,11 @@ M.config = function()
   require("newpaper").setup({
     sidebars_contrast = { "NvimTree" },
     colors = {
-      lightsilver = "#F1F3F2",
+      -- lightsilver = "#F1F3F2",
     },
 		custom_highlights = {
-			LineNr = mxvim.enable_cursor and { fg = "#878787", bg = 'none' } or nil,
+			WinSeparator = { fg = "#DFE4EB", bg = 'none' },
+			-- LineNr = mxvim.enable_cursor and { fg = "#878787", bg = 'none' } or nil,
 		}
   })
 end

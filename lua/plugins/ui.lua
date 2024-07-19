@@ -185,7 +185,8 @@ return {
   },
   {
     "PangPangPangPangPang/prettier-number-line.nvim",
-    enabled = not mxvim.enable_cursor,
+		enabled = false,
+    -- enabled = not mxvim.enable_cursor,
     lazy = true,
     event = "VimEnter",
     config = function()

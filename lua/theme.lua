@@ -47,7 +47,7 @@ M.hl_common = function()
   vim.api.nvim_set_hl(0, "Greenfg", { fg = colors.green, bg = "none" })
   vim.api.nvim_set_hl(0, "Purplefg", { fg = colors.purple, bg = "none" })
   vim.api.nvim_set_hl(0, "Cyanfg", { fg = colors.cyan, bg = "none" })
-	vim.api.nvim_set_hl(0, "LineNr", { fg = "bg", bg = "none" })
+	-- vim.api.nvim_set_hl(0, "LineNr", { fg = "bg", bg = "none" })
 end
 
 local static_shade_colors = {}
