@@ -21,7 +21,6 @@ M.ts_tools = {
   {
     "dmmulroy/ts-error-translator.nvim",
     event = "LspAttach",
-    enabled = not mxvim.enable_ts_tools,
     config = function()
       require("ts-error-translator").setup({
         auto_override_publish_diagnostics = true,
@@ -46,20 +45,6 @@ M.ts_tools = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",
-      {
-        "dmmulroy/ts-error-translator.nvim",
-        config = function()
-          require("ts-error-translator").setup()
-          vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-            pattern = { "*.tsx", "*.ts", "*.css", "*.html", "*.js", "*.jsx" },
-            callback = function()
-              vim.lsp.buf.format({
-                async = true,
-              })
-            end,
-          })
-        end,
-      },
     },
     opts = {
       on_attach = function(client, bufnr)
