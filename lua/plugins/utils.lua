@@ -150,6 +150,19 @@ return {
 			]])
     end,
   },
+	{
+    'p5quared/apple-music.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    config = true,
+    keys = {
+        { "<leader>mm", function() require("apple-music").toggle_play() end,               desc = "Toggle playback[M]" },
+        { "<leader>ms", function() require("apple-music").toggle_shuffle() end,            desc = "Toggle [S]huffle" },
+        { "<leader>mp",  function() require("apple-music").select_playlist_telescope() end, desc = "Find [P]laylists" },
+        { "<leader>ma",  function() require("apple-music").select_album_telescope() end,    desc = "Find [A]lbum" },
+        { "<leader>ms",  function() require("apple-music").select_track_telescope() end,    desc = "Find [S]ong" },
+        { "<leader>mx", function() require("apple-music").cleanup_all() end,               desc = "Cleanup Temp Playlists" },
+    },
+}
   -- {
   --   "stevearc/stickybuf.nvim",
   -- event = "VeryLazy",
