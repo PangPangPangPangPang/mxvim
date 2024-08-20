@@ -44,8 +44,8 @@ return {
 	},
 	{
 		"keaising/im-select.nvim",
-		-- enabled = require("utils").system() == "Linux" or not mxvim.enable_squirrel,
-		enabled = false,
+		enabled = require("utils").system() == "Linux" or not mxvim.enable_squirrel,
+		-- enabled = false,
 		event = "VeryLazy",
 		config = function()
 			require('im_select').setup({
@@ -60,7 +60,7 @@ return {
             default_im_select  = "com.apple.keylayout.ABC",
 
 						-- https://github.com/laishulu/macism
-            default_command = 'macism',
+            -- default_command = 'macism',
 
             -- Restore the default input method state when the following events are triggered
             set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
