@@ -5,7 +5,7 @@ return {
     dependencies = {
       { "williamboman/mason.nvim" },
       { "nvim-lua/lsp-status.nvim" },
-      { "hrsh7th/nvim-cmp" },
+      { "iguanacucumber/magazine.nvim" },
       { "neovim/nvim-lspconfig" },
     },
     config = function()
@@ -34,7 +34,8 @@ return {
   },
 
   {
-    "hrsh7th/nvim-cmp",
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
     lazy = true,
     dependencies = {
       "onsails/lspkind-nvim",
@@ -197,10 +198,10 @@ return {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
     config = function()
-			local lighter = require("theme").colors(0.2)
-			vim.api.nvim_set_hl(0, "IlluminatedWordText", { fg = "none", bg = lighter.magenta })
-			vim.api.nvim_set_hl(0, "IlluminatedWordRead", { fg = "none", bg = lighter.magenta })
-			vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { fg = "none", bg = lighter.magenta })
+      local lighter = require("theme").colors(0.2)
+      vim.api.nvim_set_hl(0, "IlluminatedWordText", { fg = "none", bg = lighter.magenta })
+      vim.api.nvim_set_hl(0, "IlluminatedWordRead", { fg = "none", bg = lighter.magenta })
+      vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { fg = "none", bg = lighter.magenta })
       -- default configuration
       require("illuminate").configure({
         -- providers: provider used to get references in the buffer, ordered by priority

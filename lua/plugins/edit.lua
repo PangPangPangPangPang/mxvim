@@ -136,12 +136,15 @@ return {
     lazy = true,
   },
   {
-    "MeanderingProgrammer/markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown" },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("render-markdown").setup({})
-    end,
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
+    opts = {
+      sign = {
+        enabled = false,
+      },
+      bullet = { right_pad = 2 },
+    },
   },
   -- install without yarn or npm
   {
@@ -179,6 +182,7 @@ return {
       -- see below for full list of optional dependencies 👇
     },
     opts = {
+      ui = { enable = false },
       workspaces = {
         {
           name = "personal",
