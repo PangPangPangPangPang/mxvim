@@ -37,14 +37,14 @@ M.set_keymap = function()
         )
       end
 
-			if not mxvim.enable_trouble then
-				vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
-				vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
-				vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
-				vim.keymap.set("n", "<leader>cr", function()
-					vim.lsp.buf.references({ include_declaration = false })
-				end, { buffer = bufnr, desc = "Show references" })
-			end
+      if not mxvim.enable_trouble then
+        vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })
+        vim.keymap.set("n", "<leader>cd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "Declaration" })
+        vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Implementation" })
+        vim.keymap.set("n", "<leader>cr", function()
+          vim.lsp.buf.references({ include_declaration = false })
+        end, { buffer = bufnr, desc = "Show references" })
+      end
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Hover" })
       vim.keymap.set("n", "<leader>ch", function()
@@ -143,6 +143,9 @@ M.make_config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   safe_require("cmp_nvim_lsp", function(cmp)
     capabilities = cmp.default_capabilities(capabilities)
+  end)
+  safe_require("saghen/blink.cmp", function(blink)
+    capabilities = blink.get_lsp_capabilities(capabilities)
   end)
   local root_dir
   safe_require("lspconfig/util", function(util)

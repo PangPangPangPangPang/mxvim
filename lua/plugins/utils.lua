@@ -98,17 +98,17 @@ return {
           group = "+", -- symbol prepended to a group
         },
         win = {
-					width= 0.5,
+          width = 0.5,
           border = "single", -- none, single, double, shadow
           padding = { 1, 2 },
           zindex = 1000, -- positive value to position WhichKey above other floating windows.
-					wo = {
-						winblend = 100
-					}
+          wo = {
+            winblend = 100,
+          },
         },
-				layout = {
-					align = "right"
-				},
+        layout = {
+          align = "right",
+        },
         show_help = false, -- show a help message in the command line for using WhichKey
         show_keys = false, -- show the currently pressed key and its label as a message in the command line
       })
@@ -150,19 +150,80 @@ return {
 			]])
     end,
   },
-	{
-    'p5quared/apple-music.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim' },
+  {
+    "p5quared/apple-music.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
     config = true,
     keys = {
-        { "<leader>mm", function() require("apple-music").toggle_play() end,               desc = "Toggle playback[M]" },
-        { "<leader>ms", function() require("apple-music").toggle_shuffle() end,            desc = "Toggle [S]huffle" },
-        { "<leader>mp",  function() require("apple-music").select_playlist_telescope() end, desc = "Find [P]laylists" },
-        { "<leader>ma",  function() require("apple-music").select_album_telescope() end,    desc = "Find [A]lbum" },
-        { "<leader>ms",  function() require("apple-music").select_track_telescope() end,    desc = "Find [S]ong" },
-        { "<leader>mx", function() require("apple-music").cleanup_all() end,               desc = "Cleanup Temp Playlists" },
+      {
+        "<leader>mm",
+        function()
+          require("apple-music").toggle_play()
+        end,
+        desc = "Toggle playback[M]",
+      },
+      {
+        "<leader>ms",
+        function()
+          require("apple-music").toggle_shuffle()
+        end,
+        desc = "Toggle [S]huffle",
+      },
+      {
+        "<leader>mp",
+        function()
+          require("apple-music").select_playlist_telescope()
+        end,
+        desc = "Find [P]laylists",
+      },
+      {
+        "<leader>ma",
+        function()
+          require("apple-music").select_album_telescope()
+        end,
+        desc = "Find [A]lbum",
+      },
+      {
+        "<leader>ms",
+        function()
+          require("apple-music").select_track_telescope()
+        end,
+        desc = "Find [S]ong",
+      },
+      {
+        "<leader>mx",
+        function()
+          require("apple-music").cleanup_all()
+        end,
+        desc = "Cleanup Temp Playlists",
+      },
     },
-}
+    {
+      "nvzone/timerly",
+      cmd = "TimerlyToggle",
+      dependencies = {
+        "nvzone/volt",
+      },
+    },
+    {
+      "nvzone/menu",
+      -- lazy = true,
+      config = function()
+        -- Keyboard users
+        vim.keymap.set("n", "<C-t>", function()
+          require("menu").open("default")
+        end, {})
+
+        -- mouse users + nvimtree users!
+        vim.keymap.set("n", "<Tab>", function()
+          vim.cmd.exec('"normal! \\<RightMouse>"')
+
+          local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+          require("menu").open(options, { mouse = true })
+        end, {})
+      end,
+    },
+  },
   -- {
   --   "stevearc/stickybuf.nvim",
   -- event = "VeryLazy",

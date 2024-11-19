@@ -34,9 +34,39 @@ return {
   },
 
   {
-    "iguanacucumber/magazine.nvim",
-    name = "nvim-cmp",
-    lazy = true,
+    "saghen/blink.cmp",
+    enabled = mxvim.enable_blink,
+    lazy = false, -- lazy loading handled internally
+    dependencies = "rafamadriz/friendly-snippets",
+    version = "v0.*",
+    opts = {
+      keymap = {
+        preset = "enter",
+        ["<C-e>"] = { "fallback" },
+      },
+      highlight = {
+        ns = vim.api.nvim_create_namespace("blink_cmp"),
+        -- sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release, assuming themes add support
+        use_nvim_cmp_as_default = true,
+      },
+      windows = {
+        autocomplete = {
+          border = "rounded",
+        },
+        documentation = {
+          auto_show = true,
+        },
+      },
+    },
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    -- name = "nvim-cmp",
+    -- lazy = true,
+    enabled = not mxvim.enable_blink,
+    event = "VeryLazy",
     dependencies = {
       "onsails/lspkind-nvim",
       "hrsh7th/cmp-nvim-lua",
