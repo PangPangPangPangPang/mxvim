@@ -68,4 +68,39 @@ return {
       vim.g.gpt_commit_concise = 1
     end,
   },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("codecompanion").setup({
+        strategies = {
+          chat = {
+            adapter = "ollama",
+          },
+          inline = {
+            adapter = "ollama",
+          },
+        },
+        adapters = {
+          openai = function()
+            return require("codecompanion.adapters").extend("openai", {
+              env = {
+                api_key = "",
+              },
+              schema = {
+                model = {
+                  default = "gpt-4o-mini",
+                },
+              },
+            })
+          end,
+        },
+      })
+      vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+    end,
+  },
 }
