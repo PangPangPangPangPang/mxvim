@@ -21,7 +21,7 @@ M.config = function()
       require("lsp.lsp_lua").setup()
     end,
     tsserver = function()
-			require('lsp.lsp_ts').setup()
+      require("lsp.lsp_ts").setup()
     end,
   })
   require("lsp.lsp_swift").setup()
