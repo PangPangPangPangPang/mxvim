@@ -57,6 +57,14 @@ return {
         documentation = {
           auto_show = true,
         },
+        list = {
+          selection = "auto_insert",
+        },
+      },
+      sources = {
+        cmdline = {
+          min_keyword_length = 2,
+        },
       },
     },
   },
