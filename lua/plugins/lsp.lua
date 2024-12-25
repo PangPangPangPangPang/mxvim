@@ -57,9 +57,9 @@ return {
         documentation = {
           auto_show = true,
         },
-        list = {
-          selection = "auto_insert",
-        },
+        -- list = {
+        --   selection = "auto_insert",
+        -- },
       },
       sources = {
         cmdline = {
