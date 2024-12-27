@@ -17,6 +17,36 @@ M.setup = function()
 	require("lspconfig").ts_ls.setup(config)
 	-- vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@lsp" })
 end
+M.setup_vtsls = function()
+	-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+	require("lspconfig").vtsls.setup({
+		-- customize handlers for commands
+		settings = {
+			typescript = {
+				inlayHints = {
+					parameterNames = { enabled = "literals" },
+					parameterTypes = { enabled = true },
+					variableTypes = { enabled = true },
+					propertyDeclarationTypes = { enabled = true },
+					functionLikeReturnTypes = { enabled = true },
+					enumMemberValues = { enabled = true },
+				},
+			},
+		},
+		handlers = {
+			source_definition = function(err, locations) end,
+			file_references = function(err, locations) end,
+			code_action = function(err, actions) end,
+		},
+		-- automatically trigger renaming of extracted symbol
+		refactor_auto_rename = true,
+		refactor_move_to_file = {
+			-- If dressing.nvim is installed, telescope will be used for selection prompt. Use this to customize
+			-- the opts for telescope picker.
+			telescope_opts = function(items, default) end,
+		},
+	})
+end
 M.ts_tools = {
 	{
 		"dmmulroy/ts-error-translator.nvim",

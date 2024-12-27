@@ -20,6 +20,9 @@ M.config = function()
 		lua_ls = function()
 			require("lsp.lsp_lua").setup()
 		end,
+		vtsls = function()
+			require("lsp.lsp_ts").setup_vtsls()
+		end,
 	}
 	if not mxvim.enable_ts_tools then
 		handler.ts_ls = function()
