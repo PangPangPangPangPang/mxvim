@@ -13,17 +13,21 @@ M.config = function()
   })
   local lsp_config = require("config._lsp_config")
   local config = lsp_config.make_config()
-  require("mason-lspconfig").setup_handlers({
+  local handler = {
     function(server_name) -- default handler (optional)
       require("lspconfig")[server_name].setup(config)
     end,
     lua_ls = function()
       require("lsp.lsp_lua").setup()
     end,
-    tsserver = function()
+  }
+  if not mxvim.enable_ts_tools then
+    handler.tsserver = function()
       require("lsp.lsp_ts").setup()
-    end,
-  })
+    end
+  end
+
+  require("mason-lspconfig").setup_handlers(handler)
   require("lsp.lsp_swift").setup()
   vim.cmd([[ LspStart ]])
 end
