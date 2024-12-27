@@ -178,18 +178,18 @@ M.custom_handlers = function()
 	sign({ name = "DiagnosticSignHint", icon = icon.hint })
 	sign({ name = "DiagnosticSignInfo", icon = icon.info })
 
-	local safe_require = require("utils").safe_require
-	safe_require("lsputil.locations", function(locations)
-		vim.lsp.handlers["textDocument/references"] = locations.references_handler
-		vim.lsp.handlers["textDocument/definition"] = locations.definition_handler
-		vim.lsp.handlers["textDocument/declaration"] = locations.declaration_handler
-		vim.lsp.handlers["textDocument/typeDefinition"] = locations.typeDefinition_handler
-		vim.lsp.handlers["textDocument/implementation"] = locations.implementation_handler
-	end)
-	safe_require("lsputilsymbols", function(symbols)
-		vim.lsp.handlers["textDocument/documentSymbol"] = symbols.document_handler
-		vim.lsp.handlers["workspace/symbol"] = symbols.workspace_handler
-	end)
+	-- local safe_require = require("utils").safe_require
+	-- safe_require("lsputil.locations", function(locations)
+	-- 	vim.lsp.handlers["textDocument/references"] = locations.references_handler
+	-- 	vim.lsp.handlers["textDocument/definition"] = locations.definition_handler
+	-- 	vim.lsp.handlers["textDocument/declaration"] = locations.declaration_handler
+	-- 	vim.lsp.handlers["textDocument/typeDefinition"] = locations.typeDefinition_handler
+	-- 	vim.lsp.handlers["textDocument/implementation"] = locations.implementation_handler
+	-- end)
+	-- safe_require("lsputilsymbols", function(symbols)
+	-- 	vim.lsp.handlers["textDocument/documentSymbol"] = symbols.document_handler
+	-- 	vim.lsp.handlers["workspace/symbol"] = symbols.workspace_handler
+	-- end)
 
 	vim.diagnostic.config({
 		virtual_text = false,

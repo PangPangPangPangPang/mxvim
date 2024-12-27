@@ -22,7 +22,7 @@ M.config = function()
 		end,
 	}
 	if not mxvim.enable_ts_tools then
-		handler.tsserver = function()
+		handler.ts_ls = function()
 			require("lsp.lsp_ts").setup()
 		end
 	end
