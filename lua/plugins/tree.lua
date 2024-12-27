@@ -67,4 +67,18 @@ return {
 			require("config._neotree").config()
 		end,
 	},
+	{
+		"antosha417/nvim-lsp-file-operations",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			mxvim.enable_neotree and "nvim-neo-tree/neo-tree.nvim" or "nvim-tree/nvim-tree.lua",
+			-- Uncomment whichever supported plugin(s) you use
+			-- "nvim-tree/nvim-tree.lua",
+			-- "nvim-neo-tree/neo-tree.nvim",
+			-- "simonmclean/triptych.nvim"
+		},
+		config = function()
+			require("lsp-file-operations").setup()
+		end,
+	},
 }
