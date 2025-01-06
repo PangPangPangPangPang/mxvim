@@ -1,29 +1,6 @@
 return {
   {
-    "Exafunction/codeium.vim",
-    enabled = mxvim.enable_codeium,
-    event = "VeryLazy",
-    config = function()
-      vim.g.codeium_no_map_tab = 1
-      vim.keymap.set("n", "<leader>cc", function()
-        vim.fn["codeium#Chat"]()
-      end, { expr = true, silent = true, desc = "Chat with codeium" })
-      vim.keymap.set("i", "<C-Enter>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-;>", function()
-        require("cmp").close()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end)
-      vim.keymap.set("i", "<c-'>", function()
-        require("cmp").close()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end)
-    end,
-  },
-  {
     "monkoose/neocodeium",
-    enabled = not mxvim.enable_codeium,
     event = "VeryLazy",
     config = function()
       local neocodeium = require("neocodeium")
@@ -69,39 +46,58 @@ return {
     end,
   },
   {
-    "olimorris/codecompanion.nvim",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = true,
+    version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
+    opts = {
+      provider = "copilot",
+      auto_suggestions_provider = "copilot",
+      copilot = {
+        model = "claude-3.5-sonnet",
+      },
     },
-    config = function()
-      require("codecompanion").setup({
-        strategies = {
-          chat = {
-            adapter = "ollama",
-          },
-          inline = {
-            adapter = "ollama",
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      {
+        "zbirenbaum/copilot.lua",
+        config = function()
+          require("copilot").setup({})
+        end,
+      }, -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
           },
         },
-        adapters = {
-          openai = function()
-            return require("codecompanion.adapters").extend("openai", {
-              env = {
-                api_key = "",
-              },
-              schema = {
-                model = {
-                  default = "gpt-4o-mini",
-                },
-              },
-            })
-          end,
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
         },
-      })
-      vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("v", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-    end,
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
 }
