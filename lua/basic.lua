@@ -8,7 +8,7 @@ local dmap = require("utils").dmap
 o.background = mxvim.background
 g.editorconfig = true
 
-o.winblend = 30
+o.winblend = fn.exists("g:neovide") == 1 and 30 or 10
 
 -- disable netrw
 g.loaded_netrwPlugin = 1
@@ -286,7 +286,6 @@ if fn.exists("g:neovide") == 1 then
 
   g.neovide_fullscreen = true
   g.neovide_floating_corner_radius = 10.0
-  -- g.neovide_transparency = 0.75
   g.neovide_normal_opacity = 1
   g.neovide_window_blurred = true
   g.neovide_floating_blur_amount_x = 4.0
