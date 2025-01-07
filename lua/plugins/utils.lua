@@ -202,5 +202,33 @@ return {
         "nvzone/volt",
       },
     },
+    {
+      "Goose97/timber.nvim",
+      version = "*", -- Use for stability; omit to use `main` branch for the latest features
+      event = "VeryLazy",
+      config = function()
+        require("timber").setup({
+          -- Configuration here, or leave empty to use defaults
+          keymaps = {
+            -- Set to false to disable the default keymap for specific actions
+            -- insert_log_below = false,
+            insert_log_below = "<leader>ll",
+            insert_log_above = "glk",
+            insert_plain_log_below = "glo",
+            insert_plain_log_above = "gl<S-o>",
+            insert_batch_log = "glb",
+            add_log_targets_to_batch = "gla",
+            insert_log_below_operator = "g<S-l>j",
+            insert_log_above_operator = "g<S-l>k",
+            insert_batch_log_operator = "g<S-l>b",
+            add_log_targets_to_batch_operator = "g<S-l>a",
+          },
+          log_marker = "🪵", -- Or any other string, e.g: MY_LOG
+        })
+        vim.keymap.set("n", "<leader>lc", function()
+          require("timber.actions").clear_log_statements({ global = false })
+        end)
+      end,
+    },
   },
 }

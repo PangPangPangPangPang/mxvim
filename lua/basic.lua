@@ -285,7 +285,7 @@ if fn.exists("g:neovide") == 1 then
   dmap({ "i" }, "<D-r>", "<D-v>")
 
   g.neovide_fullscreen = true
-  g.neovide_floating_corner_radius = 10.0
+  g.neovide_floating_corner_radius = 0.2
   g.neovide_normal_opacity = 1
   g.neovide_window_blurred = true
   g.neovide_floating_blur_amount_x = 6.0

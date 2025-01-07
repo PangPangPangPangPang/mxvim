@@ -27,7 +27,7 @@ return {
   },
   -- defer all NeoVim diagnostics for a less distracting coding experience
   {
-    "https://gitlab.com/yorickpeterse/nvim-dd.git",
+    "yorickpeterse/nvim-dd",
     event = "VeryLazy",
     config = function()
       require("dd").setup({
@@ -38,7 +38,8 @@ return {
   {
     "saghen/blink.cmp",
     enabled = mxvim.enable_blink,
-    dependencies = "rafamadriz/friendly-snippets",
+    event = "LspAttach",
+    dependencies = { "rafamadriz/friendly-snippets" },
     version = "*",
     opts = {
       keymap = {
