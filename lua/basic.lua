@@ -293,24 +293,16 @@ if fn.exists("g:neovide") == 1 then
   g.neovide_cursor_vfx_mode = "sonicboom"
   g.neovide_cursor_trail_size = 0.1
 
-  vim.g.neovide_padding_top = 15
-  vim.g.neovide_padding_bottom = 15
-  vim.g.neovide_padding_right = 15
-  vim.g.neovide_padding_left = 15
-  if require("utils").system() == "Linux" then
-    o.guifont = "Iosevka Nerd Font:h16"
-  else
-    o.guifont = "MaxIosevka Nerd Font:h16:#e-subpixelantialias"
-    -- o.guifont = "JetBrains Mono:h16"
-    -- o.guifont = "DinaTtf10px Nerd Font:h18"
-    -- g.neovide_padding_top = 8
-    -- vim.opt.linespace = 4
-  end
+  g.neovide_padding_top = 15
+  g.neovide_padding_bottom = 15
+  g.neovide_padding_right = 15
+  g.neovide_padding_left = 15
+  o.guifont = "Iosevka Nerd Font:h18:#e-subpixelantialias"
   g.neovide_scroll_animation_length = 0.3
 elseif g.gonvim_running == 1 then
   if require("utils").system() == "Linux" then
-    o.guifont = "MaxIosevka Nerd Font:h10"
+    o.guifont = "Iosevka Nerd Font:h10"
   else
-    o.guifont = "MaxIosevka Nerd Font:h14"
+    o.guifont = "Iosevka Nerd Font:h14"
   end
 end
