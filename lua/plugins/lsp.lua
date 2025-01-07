@@ -52,10 +52,14 @@ return {
       completion = {
         menu = {
           border = "none",
+          winblend = 30,
           draw = { treesitter = { "lsp" } },
         },
         documentation = {
           auto_show = true,
+          window = {
+            winblend = 30,
+          },
         },
       },
       signature = { enabled = true },

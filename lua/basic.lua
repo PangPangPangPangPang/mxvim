@@ -8,7 +8,7 @@ local dmap = require("utils").dmap
 o.background = mxvim.background
 g.editorconfig = true
 
-o.winblend = 10
+o.winblend = 30
 
 -- disable netrw
 g.loaded_netrwPlugin = 1
@@ -284,12 +284,15 @@ if fn.exists("g:neovide") == 1 then
   dmap({ "c", "i" }, "<D-v>", "<c-r>+")
   dmap({ "i" }, "<D-r>", "<D-v>")
 
-  g.neovide_transparency = 1
-  g.neovide_cursor_trail_size = 0.1
-  g.neovide_window_blurred = true
   g.neovide_fullscreen = true
+  g.neovide_floating_corner_radius = 10.0
+  -- g.neovide_transparency = 0.75
+  g.neovide_normal_opacity = 1
+  g.neovide_window_blurred = true
+  g.neovide_floating_blur_amount_x = 4.0
+  g.neovide_floating_blur_amount_y = 4.0
   g.neovide_cursor_vfx_mode = "sonicboom"
-  g.neovide_floating_opacity = 1
+  g.neovide_cursor_trail_size = 0.1
   if require("utils").system() == "Linux" then
     o.guifont = "Iosevka Nerd Font:h16"
   else
