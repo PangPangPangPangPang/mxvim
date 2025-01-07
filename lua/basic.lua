@@ -288,8 +288,8 @@ if fn.exists("g:neovide") == 1 then
   g.neovide_floating_corner_radius = 10.0
   g.neovide_normal_opacity = 1
   g.neovide_window_blurred = true
-  g.neovide_floating_blur_amount_x = 4.0
-  g.neovide_floating_blur_amount_y = 4.0
+  g.neovide_floating_blur_amount_x = 6.0
+  g.neovide_floating_blur_amount_y = 6.0
   g.neovide_cursor_vfx_mode = "sonicboom"
   g.neovide_cursor_trail_size = 0.1
   if require("utils").system() == "Linux" then
