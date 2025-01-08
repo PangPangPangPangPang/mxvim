@@ -1,6 +1,7 @@
 return {
   {
     "monkoose/neocodeium",
+    enabled = mxvim.enable_codeium,
     event = "VeryLazy",
     config = function()
       local neocodeium = require("neocodeium")
@@ -55,6 +56,20 @@ return {
       auto_suggestions_provider = "copilot",
       copilot = {
         model = "claude-3.5-sonnet",
+      },
+      behaviour = {
+        auto_suggestions = not mxvim.enable_codeium, -- Experimental stage
+        auto_set_highlight_group = true,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = false,
+        support_paste_from_clipboard = false,
+        minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+      },
+      mappings = {
+        suggestion = {
+          accept = "<C-Enter>",
+          next = "<C-;>",
+        },
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

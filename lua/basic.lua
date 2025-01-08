@@ -200,20 +200,55 @@ opt.fillchars:append({
 require("utils").hook_print()
 -- if vim.fn.has('nvim-0.9') == 1 then
 
+-- Source the switch.vim file
 cmd([[source ~/.config/nvim/viml/switch.vim]])
-cmd([[
-    command! -nargs=0 CD :execute("cd %:p:h")
-    augroup last_edit_group
-        " Return to last edit position when opening files (You want this!)
-        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-        autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="Search", timeout=500}
-    augroup End
-    augroup tt_ft
-        autocmd!
-        autocmd BufNewFile,BufRead *.ttss   set filetype=css
-        autocmd BufNewFile,BufRead *.ttml   set filetype=html
-    augroup END
-]])
+
+-- Create CD command
+vim.api.nvim_create_user_command("CD", function()
+  vim.cmd("cd %:p:h")
+end, {})
+
+-- Create last_edit_group for autocommands
+local last_edit_group = vim.api.nvim_create_augroup("last_edit_group", { clear = true })
+
+-- Return to last edit position
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = last_edit_group,
+  callback = function()
+    local line = vim.fn.line("'\"")
+    if line > 1 and line <= vim.fn.line("$") then
+      vim.cmd('normal! g`"')
+    end
+  end,
+})
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = last_edit_group,
+  callback = function()
+    vim.highlight.on_yank({ higroup = "Search", timeout = 500 })
+  end,
+})
+
+-- Create tt_ft group for file type settings
+local tt_ft_group = vim.api.nvim_create_augroup("tt_ft", { clear = true })
+
+-- Set filetype for .ttss and .ttml files
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = tt_ft_group,
+  pattern = "*.ttss",
+  callback = function()
+    vim.bo.filetype = "css"
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = tt_ft_group,
+  pattern = "*.ttml",
+  callback = function()
+    vim.bo.filetype = "html"
+  end,
+})
 
 local ftgroup = vim.api.nvim_create_augroup("ft_group", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
