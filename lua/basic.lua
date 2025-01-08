@@ -285,6 +285,8 @@ if fn.exists("g:neovide") == 1 then
   dmap({ "i" }, "<D-r>", "<D-v>")
 
   g.neovide_fullscreen = true
+  g.neovide_text_gamma = 0.8
+  g.neovide_text_contrast = 0.1
   g.neovide_floating_corner_radius = 0.2
   g.neovide_normal_opacity = 1
   g.neovide_window_blurred = true
@@ -297,7 +299,7 @@ if fn.exists("g:neovide") == 1 then
   g.neovide_padding_bottom = 15
   g.neovide_padding_right = 15
   g.neovide_padding_left = 15
-  o.guifont = "Iosevka Nerd Font:h18:#e-subpixelantialias"
+  o.guifont = "Iosevka Nerd Font:h17:#e-subpixelantialias"
   g.neovide_scroll_animation_length = 0.3
 elseif g.gonvim_running == 1 then
   if require("utils").system() == "Linux" then
