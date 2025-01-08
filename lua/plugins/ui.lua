@@ -124,10 +124,15 @@ return {
       require("colorizer").setup({
         filetypes = {
           "*",
-          typescriptreact = { rgb_fn = true, hsl_fn = true },
-          javascriptreact = { rgb_fn = true, hsl_fn = true },
         },
-        user_default_options = { mode = "virtualtext" },
+        user_default_options = {
+          css = true,
+          css_fn = true,
+          names = false,
+          tailwind = true,
+          virtualtext_inline = true,
+          mode = "virtualtext",
+        },
       })
     end,
   },
