@@ -48,14 +48,20 @@ return {
   },
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     lazy = true,
-    version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
+    version = false,
+    keys = {
+      { "<F4>", "<cmd>AvanteToggle<cr>", mode = { "n", "i" }, desc = "Open AI" },
+    },
     opts = {
-      provider = "copilot",
+      provider = "gemini",
       auto_suggestions_provider = "copilot",
       copilot = {
         model = "claude-3.5-sonnet",
+      },
+      gemini = {
+        model = "gemini-2.0-flash-thinking-exp-1219",
       },
       behaviour = {
         auto_suggestions = not mxvim.enable_codeium, -- Experimental stage

@@ -63,7 +63,9 @@ return {
           },
         },
       },
-      signature = { enabled = true },
+      signature = { enabled = true, window = {
+        winblend = 30,
+      } },
       sources = {
         cmdline = {
           min_keyword_length = 2,
