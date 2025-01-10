@@ -52,7 +52,17 @@ return {
     lazy = true,
     version = false,
     keys = {
-      { "<F4>", "<cmd>AvanteToggle<cr>", mode = { "n", "i" }, desc = "Open AI" },
+      {
+        "<F4>",
+        function()
+          -- vim.cmd("normal!")
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+
+          require("avante").toggle()
+        end,
+        mode = { "n", "i" },
+        desc = "Open AI",
+      },
     },
     opts = {
       provider = "gemini",
@@ -75,6 +85,32 @@ return {
         suggestion = {
           accept = "<C-Enter>",
           next = "<C-;>",
+        },
+      },
+      windows = {
+        ---@type "right" | "left" | "top" | "bottom"
+        position = "right", -- the position of the sidebar
+        wrap = true, -- similar to vim.o.wrap
+        width = 30, -- default % based on available width
+        sidebar_header = {
+          enabled = true, -- true, false to enable/disable the header
+          align = "right", -- left, center, right for title
+          rounded = false,
+        },
+        input = {
+          prefix = "> ",
+          height = 8, -- Height of the input window in vertical layout
+        },
+        edit = {
+          border = "rounded",
+          start_insert = true, -- Start insert mode when opening the edit window
+        },
+        ask = {
+          floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+          start_insert = true, -- Start insert mode when opening the ask window
+          border = "rounded",
+          ---@type "ours" | "theirs"
+          focus_on_apply = "ours", -- which diff to focus after applying
         },
       },
     },
