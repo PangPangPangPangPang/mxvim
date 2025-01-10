@@ -258,7 +258,7 @@ M.show_cursor_virt_diagnostic = function()
 
   local raw_line = ""
   for _, line in ipairs(lines) do
-    raw_line = string.format("%s ■ %s", raw_line, line)
+    raw_line = string.format("%s 󱓻 %s", raw_line, line)
   end
   vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
   vim.api.nvim_buf_set_extmark(0, namespace, lnum, -1, {

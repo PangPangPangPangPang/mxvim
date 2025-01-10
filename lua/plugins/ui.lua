@@ -132,6 +132,7 @@ return {
           tailwind = true,
           virtualtext_inline = true,
           mode = "virtualtext",
+          virtualtext = "󱓻",
         },
       })
     end,
