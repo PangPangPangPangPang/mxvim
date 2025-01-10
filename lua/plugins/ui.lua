@@ -288,9 +288,7 @@ return {
       -- basebg = [23,23,23],
       blocklist = {
         custom = {
-          highlights = {
-            "/^Avante.*/",
-          },
+          buf_opts = { filetype = { "Avante", "NvimTree" } },
         },
       },
       basebg = "",
