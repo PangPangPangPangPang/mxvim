@@ -16,7 +16,6 @@ M.theme = function(name, nick)
       M.hl_common()
       local shade_colors = require("theme").colors(0.6)
       require("config._nvim_cmp").hl_cmp(shade_colors)
-      require("config._telescope").hl_telescope()
       require("config._diffview").hl_diff(shade_colors)
     end,
   }
