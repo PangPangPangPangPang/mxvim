@@ -1,6 +1,7 @@
 return {
   {
     "rcarriga/nvim-dap-ui",
+    lazy = true,
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       {

@@ -21,20 +21,21 @@ return {
     "folke/snacks.nvim",
     lazy = false,
     keys = {
-      -- {
-      --   "<leader>f",
-      --   function()
-      --     Snacks.picker.grep()
-      --   end,
-      --   desc = "Live grep",
-      -- },
+      {
+        "<leader>f",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Live grep",
+        mode = { "n" },
+      },
       {
         "<leader>f",
         function()
           Snacks.picker.grep_word()
         end,
         desc = "Visual selection or word",
-        mode = { "n", "x" },
+        mode = { "x" },
       },
       {
         "<leader>b",
