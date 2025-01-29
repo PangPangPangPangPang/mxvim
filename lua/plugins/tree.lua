@@ -8,8 +8,8 @@ return {
       require("config._tree").init()
     end,
     keys = {
-      { "<F1>", "<cmd>NvimTreeToggle<cr>", mode = { "n", "i" }, desc = "Jump to file tree" },
-      { "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n", "i" }, desc = "Jump to file tree" },
+      { "<F1>", "<cmd>NvimTreeToggle<cr>", mode = { "n" }, desc = "Jump to file tree" },
+      { "<leader>j", "<cmd>NvimTreeFindFile<cr>", mode = { "n" }, desc = "Jump to file tree" },
     },
     config = function()
       require("config._tree").config()

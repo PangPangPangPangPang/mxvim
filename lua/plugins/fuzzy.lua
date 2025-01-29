@@ -43,6 +43,7 @@ return {
           Snacks.picker.buffers()
         end,
         desc = "Buffers",
+        mode = { "x" },
       },
       {
         "<F7>",
