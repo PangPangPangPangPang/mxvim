@@ -63,9 +63,12 @@ return {
           },
         },
       },
-      signature = { enabled = true, window = {
-        winblend = 30,
-      } },
+      signature = {
+        enabled = true,
+        window = {
+          winblend = 30,
+        },
+      },
       sources = {
         cmdline = {
           min_keyword_length = 2,
@@ -146,26 +149,6 @@ return {
         "<leader>xQ",
         "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
-      },
-      {
-        "<c-]>",
-        "<cmd>Trouble lsp_definitions focus=true<cr>",
-        desc = "Definition",
-      },
-      {
-        "<leader>cr",
-        "<cmd>Trouble lsp_references focus=true<cr>",
-        desc = "Show references",
-      },
-      {
-        "<leader>ci",
-        "<cmd>Trouble lsp_implementations focus=true<cr>",
-        desc = "Show implementations",
-      },
-      {
-        "<leader>cd",
-        "<cmd>Trouble lsp_definitions focus=true<cr>",
-        desc = "Show definitions",
       },
     },
     config = function()
