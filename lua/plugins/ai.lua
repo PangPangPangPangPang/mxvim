@@ -66,15 +66,15 @@ return {
     },
     opts = {
       provider = "gemini",
-      auto_suggestions_provider = "copilot",
-      copilot = {
-        model = "claude-3.5-sonnet",
+      auto_suggestions_provider = "ollama",
+      ollama = {
+        model = "qwen2.5-coder:14b",
       },
-      gemini = {
-        model = "gemini-2.0-flash-thinking-exp-1219",
-      },
+      -- gemini = {
+      --   model = "gemini-2.0-flash-thinking-exp-1219",
+      -- },
       behaviour = {
-        auto_suggestions = not mxvim.enable_codeium, -- Experimental stage
+        auto_suggestions = false,
         auto_set_highlight_group = true,
         auto_set_keymaps = true,
         auto_apply_diff_after_generation = false,
@@ -156,5 +156,46 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
+  },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   config = function()
+  --     require("codecompanion").setup({
+  --       strategies = {
+  --         chat = {
+  --           adapter = "gemini",
+  --         },
+  --         inline = {
+  --           adapter = "gemini",
+  --         },
+  --       },
+  --       -- adapters = {
+  --       --   anthropic = function()
+  --       --     return require("codecompanion.adapters").extend("gemini", {
+  --       --       env = {
+  --       --         api_key = "MY_OTHER_ANTHROPIC_KEY",
+  --       --       },
+  --       --     })
+  --       --   end,
+  --       -- },
+  --     })
+  --   end,
+  -- },
+  {
+    "supermaven-inc/supermaven-nvim",
+    enabled = not mxvim.enable_codeium,
+    config = function()
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-Enter>",
+          clear_suggestion = "<C-;>",
+          accept_word = "<C-j>",
+        },
+      })
+    end,
   },
 }
