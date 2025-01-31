@@ -69,7 +69,7 @@ return {
             icon = " ",
             key = "s",
             desc = "Open Session",
-            action = "<cmd>lua Snacks.picker.projects()<CR>",
+            action = ":SessionManager load_session",
             pane = 2,
             padding = 1,
           },
