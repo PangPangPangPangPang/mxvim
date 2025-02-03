@@ -66,13 +66,10 @@ return {
     },
     opts = {
       provider = "gemini",
-      auto_suggestions_provider = "ollama",
-      ollama = {
-        model = "qwen2.5-coder:14b",
+      auto_suggestions_provider = "gemini",
+      gemini = {
+        model = "gemini-2.0-flash-thinking-exp-1219",
       },
-      -- gemini = {
-      --   model = "gemini-2.0-flash-thinking-exp-1219",
-      -- },
       behaviour = {
         auto_suggestions = false,
         auto_set_highlight_group = true,

@@ -177,6 +177,7 @@ return {
         "nvimtools/none-ls.nvim",
         dependencies = {
           "gbprod/none-ls-luacheck.nvim",
+          "nvimtools/none-ls-extras.nvim",
         },
       },
     },
