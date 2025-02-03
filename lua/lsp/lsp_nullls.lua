@@ -12,10 +12,12 @@ M.config = function()
   local sources = {
     null_ls.builtins.diagnostics.codespell,
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.code_actions.refactoring,
     null_ls.builtins.diagnostics.semgrep,
     require("none-ls.diagnostics.eslint"),
+    require("none-ls.code_actions.eslint"),
+
     prettier,
+    null_ls.builtins.code_actions.refactoring,
   }
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
   null_ls.setup({
