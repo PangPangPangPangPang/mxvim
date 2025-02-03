@@ -12,6 +12,8 @@ M.set_keymap = function()
     callback = function(args)
       local bufnr = args.buf
       local client = vim.lsp.get_client_by_id(args.data.client_id)
+      require("lsp-format").on_attach(client, bufnr)
+
       M.set_diagnostic(client)
 
       vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"

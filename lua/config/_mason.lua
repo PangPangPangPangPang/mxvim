@@ -8,7 +8,6 @@ M.config = function()
       "cssls",
       "html",
       "bashls",
-      "prettier",
       "vtsls",
     },
   })

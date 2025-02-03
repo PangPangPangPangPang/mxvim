@@ -15,6 +15,19 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = true,
+    dependencies = {
+      {
+        "lukas-reineke/lsp-format.nvim",
+        config = function()
+          require("lsp-format").setup({
+            typescriptreact = {
+              order = { "vtsls", "null-ls" },
+              exclude = { "vtsls" },
+            },
+          })
+        end,
+      },
+    },
     opts = {
       inlay_hints = { enabled = true },
       codelens = {
