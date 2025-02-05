@@ -22,7 +22,15 @@ M.setup_vtsls = function()
   require("lspconfig").vtsls.setup({
     -- customize handlers for commands
     settings = {
+      vtsls = {
+        autoUseWorkspaceTsdk = true,
+      },
       typescript = {
+        tsserver = {
+          pluginPaths = {
+            "./node_modules/typescript/lib",
+          },
+        },
         inlayHints = {
           parameterNames = { enabled = "literals" },
           parameterTypes = { enabled = true },
