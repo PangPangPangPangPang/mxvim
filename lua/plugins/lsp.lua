@@ -58,6 +58,7 @@ return {
       keymap = {
         preset = "enter",
         ["<C-e>"] = { "fallback" },
+        ["<C-n>"] = { "show", "select_next", "fallback" },
       },
       appearance = {
         use_nvim_cmp_as_default = true,

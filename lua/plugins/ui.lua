@@ -130,7 +130,7 @@ return {
           css_fn = true,
           names = false,
           tailwind = true,
-          virtualtext_inline = true,
+          virtualtext_inline = false,
           mode = "virtualtext",
           virtualtext = "󱓻",
         },
