@@ -52,6 +52,14 @@ return {
         end,
         desc = "Buffers",
       },
+      {
+        "<leader>lg",
+        function()
+          Snacks.lazygit()
+        end,
+        desc = "Lazygit",
+        mode = { "x" },
+      },
     },
     ---@type snacks.Config
     opts = {
@@ -102,6 +110,7 @@ return {
         },
       },
       bigfile = {},
+      lazygit = {},
       picker = {
         win = {
           input = {

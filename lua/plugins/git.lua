@@ -90,13 +90,5 @@ return {
       })
     end,
   },
-  {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    -- optional for floating window border decoration
-    cmd = { "LazyGit" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
+  { "akinsho/git-conflict.nvim", event = "VeryLazy", version = "*", config = true },
 }
