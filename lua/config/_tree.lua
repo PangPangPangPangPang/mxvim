@@ -43,7 +43,6 @@ M.config = function()
     on_attach = on_attach,
     disable_netrw = true,
     hijack_netrw = true,
-    -- auto_close = false,
     open_on_tab = false,
     hijack_cursor = true,
     update_cwd = true,
@@ -89,7 +88,7 @@ M.config = function()
         global = false,
       },
       open_file = {
-        quit_on_open = true,
+        quit_on_open = false,
         resize_window = true,
         window_picker = {
           enable = false,

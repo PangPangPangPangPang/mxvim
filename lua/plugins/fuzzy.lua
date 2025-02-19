@@ -111,6 +111,7 @@ return {
       },
       bigfile = {},
       lazygit = {},
+      image = {},
       picker = {
         win = {
           input = {
