@@ -90,13 +90,15 @@ return {
       })
     end,
   },
-  { "akinsho/git-conflict.nvim",
-		keys = {
-			{ "<leader>gl", "<cmd>GitConflictListOf<cr>", mode = { "n", "v" }, desc = "Git conflict list" },
-			{ "<leader>go", "<cmd>GitConflictChooseOurs<cr>", mode = { "n", "v" }, desc = "Git conflict choose ours" },
-			{ "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", mode = { "n", "v" }, desc = "Git conflict choose theirs" },
-			{ "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", mode = { "n", "v" }, desc = "Git conflict choose theirs" },
-
-		},
-		event = "VeryLazy", version = "*", config = true },
+  {
+    "akinsho/git-conflict.nvim",
+    keys = {
+      { "<leader>go", "<cmd>GitConflictChooseOurs<cr>", mode = { "n", "v" }, desc = "Git conflict choose ours" },
+      { "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", mode = { "n", "v" }, desc = "Git conflict choose theirs" },
+      { "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", mode = { "n", "v" }, desc = "Git conflict choose theirs" },
+    },
+    event = "VeryLazy",
+    version = "*",
+    config = true,
+  },
 }

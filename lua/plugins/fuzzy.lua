@@ -22,6 +22,14 @@ return {
     lazy = false,
     keys = {
       {
+        "<leader>gl",
+        function()
+					Snacks.picker.git_log()
+        end,
+        desc = "Git log",
+        mode = { "n" },
+      },
+      {
         "<leader>f",
         function()
           Snacks.picker.grep()
