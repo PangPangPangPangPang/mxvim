@@ -90,6 +90,7 @@ return {
           ["<Enter>"] = { "fallback" },
           ["<C-e>"] = { "fallback" },
           ["<C-n>"] = { "show", "select_next", "fallback" },
+          ["<Tab>"] = { "select_next", "fallback" },
         }, -- Inherits from top level `keymap` config when not set
         sources = function()
           local type = vim.fn.getcmdtype()
