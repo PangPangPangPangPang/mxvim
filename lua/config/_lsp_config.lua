@@ -179,40 +179,12 @@ end
 
 M.custom_handlers = function()
   -- vim.lsp.inlay_hint.enable()
-  local sign = function(opts)
-    vim.fn.sign_define(opts.name, {
-      texthl = opts.name,
-      text = mxvim.enable_cursor and opts.icon or "",
-      numhl = opts.name,
-    })
-  end
   local icon = require("theme").lsp_icon
-  sign({ name = "DiagnosticSignError", icon = icon.error })
-  sign({ name = "DiagnosticSignWarn", icon = icon.warn })
-  sign({ name = "DiagnosticSignHint", icon = icon.hint })
-  sign({ name = "DiagnosticSignInfo", icon = icon.info })
-
-  -- local safe_require = require("utils").safe_require
-  -- safe_require("lsputil.locations", function(locations)
-  -- 	vim.lsp.handlers["textDocument/references"] = locations.references_handler
-  -- 	vim.lsp.handlers["textDocument/definition"] = locations.definition_handler
-  -- 	vim.lsp.handlers["textDocument/declaration"] = locations.declaration_handler
-  -- 	vim.lsp.handlers["textDocument/typeDefinition"] = locations.typeDefinition_handler
-  -- 	vim.lsp.handlers["textDocument/implementation"] = locations.implementation_handler
-  -- end)
-  -- safe_require("lsputilsymbols", function(symbols)
-  -- 	vim.lsp.handlers["textDocument/documentSymbol"] = symbols.document_handler
-  -- 	vim.lsp.handlers["workspace/symbol"] = symbols.workspace_handler
-  -- end)
-
   vim.diagnostic.config({
     virtual_text = false,
     -- virtual_text = {
     -- 	spacing = 2,
     -- },
-    signs = function()
-      return true
-    end,
     underline = true,
     update_in_insert = false,
     float = {
@@ -221,6 +193,20 @@ M.custom_handlers = function()
       show_header = true,
       focusable = true,
       border = require("theme").border,
+    },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icon.error,
+        [vim.diagnostic.severity.WARN] = icon.warn,
+        [vim.diagnostic.severity.HINT] = icon.hint,
+        [vim.diagnostic.severity.INFO] = icon.info,
+      },
+      numhl = {
+        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      },
     },
   })
 end
