@@ -83,14 +83,18 @@ return {
           winblend = 30,
         },
       },
-			cmdline = {
-				enabled = true,
-				completion = {
-					menu = {
-						auto_show = true,
-					}
-				}
-			},
+      cmdline = {
+        completion = {
+          list = {
+            selection = {
+              preselect = false,
+            },
+          },
+          menu = {
+            auto_show = true,
+          },
+        },
+      },
     },
   },
   {
