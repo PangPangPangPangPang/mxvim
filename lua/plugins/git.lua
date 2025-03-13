@@ -5,7 +5,7 @@ return {
       { "<leader>ga", "<cmd>Gitsigns stage_hunk<cr>", mode = { "n", "v" }, desc = "Stage hunk" },
       { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", mode = { "n", "v" }, desc = "Unstage hunk" },
       { "<leader>gx", "<cmd>Gitsigns reset_hunk<cr>", mode = { "n", "v" }, desc = "Reset hunk" },
-      { "<leader>gb", "<cmd>Gitsigns blame_line<cr>", mode = { "n", "v" }, desc = "Blame line" },
+      { "<leader>gb", "<cmd>Gitsigns blame<cr>", mode = { "n", "v" }, desc = "Blame line" },
     },
     event = "VeryLazy",
     config = function()
@@ -95,7 +95,9 @@ return {
     keys = {
       { "<leader>go", "<cmd>GitConflictChooseOurs<cr>", mode = { "n", "v" }, desc = "Git conflict choose ours" },
       { "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", mode = { "n", "v" }, desc = "Git conflict choose theirs" },
-      { "<leader>gt", "<cmd>GitConflictChooseTheirs<cr>", mode = { "n", "v" }, desc = "Git conflict choose theirs" },
+      { "<leader>gg", "<cmd>GitConflictChooseBase<cr>", mode = { "n", "v" }, desc = "Git conflict choose base" },
+      { "<leader>gp", "<cmd>GitConflictPrevConflict<cr>", mode = { "n", "v" }, desc = "Git conflict prev conflict" },
+      { "<leader>gn", "<cmd>GitConflictNextConflict<cr>", mode = { "n", "v" }, desc = "Git conflict next conflict" },
     },
     event = "VeryLazy",
     version = "*",
