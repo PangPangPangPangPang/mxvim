@@ -319,6 +319,7 @@ if fn.exists("g:neovide") == 1 then
   dmap({ "c", "i" }, "<D-v>", "<c-r>+")
   dmap({ "i" }, "<D-r>", "<D-v>")
 
+  vim.opt.linespace = 2
   g.neovide_fullscreen = true
   g.neovide_text_gamma = 0.8
   g.neovide_text_contrast = 0.1
@@ -327,7 +328,7 @@ if fn.exists("g:neovide") == 1 then
   g.neovide_window_blurred = true
   g.neovide_floating_blur_amount_x = 6.0
   g.neovide_floating_blur_amount_y = 6.0
-  g.neovide_cursor_vfx_mode = "sonicboom"
+  -- g.neovide_cursor_vfx_mode = "sonicboom"
   g.neovide_cursor_trail_size = 0.1
 
   g.neovide_padding_top = 15
