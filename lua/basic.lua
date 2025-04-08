@@ -321,7 +321,7 @@ if fn.exists("g:neovide") == 1 then
 
   vim.opt.linespace = 2
   g.neovide_fullscreen = true
-  g.neovide_text_gamma = 0.8
+  g.neovide_text_gamma = 0.6
   g.neovide_text_contrast = 0.1
   g.neovide_floating_corner_radius = 0.2
   g.neovide_normal_opacity = 1

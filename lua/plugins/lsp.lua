@@ -65,6 +65,9 @@ return {
         nerd_font_variant = "mono",
       },
       completion = {
+        accept = {
+          dot_repeat = false,
+        },
         menu = {
           border = "none",
           winblend = 30,
