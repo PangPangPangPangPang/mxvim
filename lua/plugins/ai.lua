@@ -183,6 +183,7 @@ return {
   -- },
   {
     "supermaven-inc/supermaven-nvim",
+		event = "VeryLazy",
     enabled = not mxvim.enable_codeium,
     config = function()
       require("supermaven-nvim").setup({
