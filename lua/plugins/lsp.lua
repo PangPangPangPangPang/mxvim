@@ -216,7 +216,15 @@ return {
     event = "VeryLazy",
     config = function()
       vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions, { desc = "Code action" })
+      local hl = require("actions-preview.highlight")
+
       require("actions-preview").setup({
+        highlight_command = {
+          hl.delta("delta --no-gitconfig --side-by-side"),
+          function()
+            return require("actions-preview.highlight").delta()
+          end,
+        },
         snacks = {
           layout = { preset = "default" },
         },
