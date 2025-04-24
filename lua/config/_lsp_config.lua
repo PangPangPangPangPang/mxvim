@@ -18,28 +18,28 @@ M.set_keymap = function()
 
       vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-      if not mxvim.enable_lspsaga then
+      if not mxvim.enable_action_preview then
         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
-        vim.keymap.set({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { buffer = bufnr, desc = "Code lens" })
-        vim.keymap.set({ "n", "v" }, "<leader>cs", function()
-          -- vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
-          vim.lsp.buf.code_action({ context = { only = { "source.removeUnusedImports" } }, apply = true })
-        end, { buffer = bufnr, desc = "Organize imports" })
-        vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
-        -- Setup keymaps
-        vim.keymap.set("n", "[e", function()
-          vim.diagnostic.goto_prev({ float = true })
-        end, { buffer = bufnr, desc = "Diagnostic" })
-        vim.keymap.set("n", "]e", function()
-          vim.diagnostic.goto_next({ float = true })
-        end, { buffer = bufnr, desc = "Diagnostic" })
-        vim.keymap.set(
-          { "n", "i" },
-          "<C-k>",
-          vim.lsp.buf.signature_help,
-          { buffer = bufnr, desc = "LSP: Signature help" }
-        )
       end
+      vim.keymap.set({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { buffer = bufnr, desc = "Code lens" })
+      vim.keymap.set({ "n", "v" }, "<leader>cs", function()
+        -- vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+        vim.lsp.buf.code_action({ context = { only = { "source.removeUnusedImports" } }, apply = true })
+      end, { buffer = bufnr, desc = "Organize imports" })
+      vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
+      -- Setup keymaps
+      vim.keymap.set("n", "[e", function()
+        vim.diagnostic.goto_prev({ float = true })
+      end, { buffer = bufnr, desc = "Diagnostic" })
+      vim.keymap.set("n", "]e", function()
+        vim.diagnostic.goto_next({ float = true })
+      end, { buffer = bufnr, desc = "Diagnostic" })
+      vim.keymap.set(
+        { "n", "i" },
+        "<C-k>",
+        vim.lsp.buf.signature_help,
+        { buffer = bufnr, desc = "LSP: Signature help" }
+      )
 
       if not mxvim.enable_trouble then
         vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition, { buffer = bufnr, desc = "Definition" })

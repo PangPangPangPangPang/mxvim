@@ -131,15 +131,6 @@ return {
     end,
   },
   {
-    "glepnir/lspsaga.nvim",
-    enabled = mxvim.enable_lspsaga,
-    event = "LspAttach",
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    config = function()
-      require("config._lsp_saga").config()
-    end,
-  },
-  {
     "folke/trouble.nvim",
     enabled = mxvim.enable_trouble,
     lazy = true,
@@ -226,7 +217,9 @@ return {
     config = function()
       vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions, { desc = "Code action" })
       require("actions-preview").setup({
-        telescope = require("telescope.themes").get_dropdown({ winblend = 10 }),
+        snacks = {
+          layout = { preset = "default" },
+        },
       })
     end,
   },
