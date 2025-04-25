@@ -1,7 +1,7 @@
 return {
   {
     "monkoose/neocodeium",
-    enabled = mxvim.enable_codeium,
+    enabled = mxvim.ai_engine == "codeium",
     event = "VeryLazy",
     config = function()
       local neocodeium = require("neocodeium")
@@ -121,12 +121,6 @@ return {
       -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       {
-        "zbirenbaum/copilot.lua",
-        config = function()
-          require("copilot").setup({})
-        end,
-      }, -- for providers='copilot'
-      {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
         event = "VeryLazy",
@@ -152,6 +146,27 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    event = "VeryLazy",
+    enabled = mxvim.ai_engine == "copilot",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<c-enter>",
+            accept_word = false,
+            accept_line = false,
+            next = "<c-j>",
+            prev = "<c-k>",
+            dismiss = "<c-e>",
+          },
+        },
+      })
+    end,
   },
   -- {
   --   "olimorris/codecompanion.nvim",
@@ -183,8 +198,8 @@ return {
   -- },
   {
     "supermaven-inc/supermaven-nvim",
-		event = "VeryLazy",
-    enabled = not mxvim.enable_codeium,
+    event = "VeryLazy",
+    enabled = mxvim.ai_engine == "supermaven",
     config = function()
       require("supermaven-nvim").setup({
         keymaps = {

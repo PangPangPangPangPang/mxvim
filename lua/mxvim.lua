@@ -26,4 +26,6 @@ mxvim.enable_squirrel = false
 mxvim.enable_hlchunk = true
 mxvim.enable_blink = true
 mxvim.enable_trouble = true
-mxvim.enable_codeium = false
+
+--  codeium / copilot / supermaven
+mxvim.ai_engine = "copilot"
