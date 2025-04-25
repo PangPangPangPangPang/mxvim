@@ -1,9 +1,16 @@
 return {
-  {
-    "Shatur/neovim-session-manager",
-    cmd = { "SessionManager" },
-    keys = {
-      { "<leader>s", "<cmd>SessionManager load_session<cr>", mode = "n", desc = "Load sessions" },
-    },
-  },
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre",
+		keys = {
+			{
+				"<leader>s",
+				function()
+					require("persistence").select()
+				end,
+				mode = "n",
+				desc = "Load sessions",
+			},
+		},
+	},
 }

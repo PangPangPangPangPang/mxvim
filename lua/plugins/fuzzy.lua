@@ -77,7 +77,7 @@ return {
             icon = " ",
             key = "s",
             desc = "Open Session",
-            action = ":SessionManager load_session",
+            action = ":lua require('persistence').select()",
             pane = 2,
             padding = 1,
           },
