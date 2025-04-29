@@ -5,8 +5,6 @@ return {
     keys = {
       { "<F5>", "<cmd>lua require('config._vim_floaterm').open_term()<cr>", mode = "n" },
       { "<F5>", "<C-\\><C-n>:lua require('config._vim_floaterm').open_term()<CR>", mode = "t" },
-      { "<F6>", "<cmd>lua require('config._vim_floaterm').open_bottom_term()<cr>", mode = "n" },
-      { "<F6>", "<C-\\><C-n>:lua require('config._vim_floaterm').open_bottom_term()<CR>", mode = "t" },
       { "<Esc>", "<C-\\><C-n>:lua require('config._vim_floaterm').close()<CR>", mode = "t" },
       { "<leader>lg", ":lua require('config._vim_floaterm').open_lazygit()<CR>", mode = "n" },
     },

@@ -28,4 +28,4 @@ mxvim.enable_blink = true
 mxvim.enable_trouble = true
 
 --  codeium / copilot / supermaven
-mxvim.ai_engine = "copilot"
+mxvim.ai_engine = "supermaven"
