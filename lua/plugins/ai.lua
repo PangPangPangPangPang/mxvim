@@ -48,16 +48,13 @@ return {
   },
   {
     "yetone/avante.nvim",
-    -- event = "VeryLazy",
     lazy = true,
     version = false,
     keys = {
       {
         "<F4>",
         function()
-          -- vim.cmd("normal!")
           vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-
           require("avante").toggle()
         end,
         mode = { "n", "i" },
