@@ -47,103 +47,156 @@ return {
     end,
   },
   {
-    "yetone/avante.nvim",
-    lazy = true,
-    version = false,
+    "olimorris/codecompanion.nvim",
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionActions",
+      "CodeCompanionChat",
+      "CodeCompanionCmd",
+    },
     keys = {
       {
         "<F4>",
-        function()
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-          require("avante").toggle()
-        end,
+        ":CodeCompanionChat Toggle<CR>",
         mode = { "n", "i" },
         desc = "Open AI",
       },
     },
-    opts = {
-      provider = "gemini",
-      auto_suggestions_provider = "gemini",
-      gemini = {
-        model = "gemini-2.0-flash-thinking-exp-1219",
-      },
-      behaviour = {
-        auto_suggestions = false,
-        auto_set_highlight_group = true,
-        auto_set_keymaps = true,
-        auto_apply_diff_after_generation = false,
-        support_paste_from_clipboard = false,
-        minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-      },
-      mappings = {
-        suggestion = {
-          accept = "<C-Enter>",
-          next = "<C-;>",
-        },
-      },
-      windows = {
-        ---@type "right" | "left" | "top" | "bottom"
-        position = "right", -- the position of the sidebar
-        wrap = true, -- similar to vim.o.wrap
-        width = 30, -- default % based on available width
-        sidebar_header = {
-          enabled = true, -- true, false to enable/disable the header
-          align = "right", -- left, center, right for title
-          rounded = false,
-        },
-        input = {
-          prefix = "> ",
-          height = 8, -- Height of the input window in vertical layout
-        },
-        edit = {
-          border = "rounded",
-          start_insert = true, -- Start insert mode when opening the edit window
-        },
-        ask = {
-          floating = false, -- Open the 'AvanteAsk' prompt in a floating window
-          start_insert = true, -- Start insert mode when opening the ask window
-          border = "rounded",
-          ---@type "ours" | "theirs"
-          focus_on_apply = "ours", -- which diff to focus after applying
-        },
-      },
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "nvim-treesitter/nvim-treesitter",
+      "ravitemer/mcphub.nvim",
       {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "codecompanion" },
+      },
+    },
+    opts = {
+      strategies = {
+        chat = {
+          adapter = "gemini",
+        },
+        inline = {
+          adapter = "gemini",
         },
       },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
+      gemini = function()
+        return require("codecompanion.adapters").extend("gemini", {
+          schema = {
+            model = {
+              default = "gemini-2.0-flash-lite",
+            },
+          },
+          env = {
+            api_key = "GEMINI_API_KEY",
+          },
+        })
+      end,
+      display = {
+        diff = {
+          provider = "mini_diff",
         },
-        ft = { "markdown", "Avante" },
       },
     },
   },
+  -- {
+  --   "yetone/avante.nvim",
+  --   lazy = true,
+  --   version = false,
+  --   keys = {
+  --     {
+  --       "<F4>",
+  --       function()
+  --         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+  --         require("avante").toggle()
+  --       end,
+  --       mode = { "n", "i" },
+  --       desc = "Open AI",
+  --     },
+  --   },
+  --   opts = {
+  --     provider = "gemini",
+  --     auto_suggestions_provider = "gemini",
+  --     gemini = {
+  --       model = "gemini-2.0-flash-thinking-exp-1219",
+  --     },
+  --     behaviour = {
+  --       auto_suggestions = false,
+  --       auto_set_highlight_group = true,
+  --       auto_set_keymaps = true,
+  --       auto_apply_diff_after_generation = false,
+  --       support_paste_from_clipboard = false,
+  --       minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+  --     },
+  --     mappings = {
+  --       suggestion = {
+  --         accept = "<C-Enter>",
+  --         next = "<C-;>",
+  --       },
+  --     },
+  --     windows = {
+  --       ---@type "right" | "left" | "top" | "bottom"
+  --       position = "right", -- the position of the sidebar
+  --       wrap = true, -- similar to vim.o.wrap
+  --       width = 30, -- default % based on available width
+  --       sidebar_header = {
+  --         enabled = true, -- true, false to enable/disable the header
+  --         align = "right", -- left, center, right for title
+  --         rounded = false,
+  --       },
+  --       input = {
+  --         prefix = "> ",
+  --         height = 8, -- Height of the input window in vertical layout
+  --       },
+  --       edit = {
+  --         border = "rounded",
+  --         start_insert = true, -- Start insert mode when opening the edit window
+  --       },
+  --       ask = {
+  --         floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+  --         start_insert = true, -- Start insert mode when opening the ask window
+  --         border = "rounded",
+  --         ---@type "ours" | "theirs"
+  --         focus_on_apply = "ours", -- which diff to focus after applying
+  --       },
+  --     },
+  --   },
+  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  --   build = "make",
+  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     --- The below dependencies are optional,
+  --     -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+  --     {
+  --       -- support for image pasting
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         -- recommended settings
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           -- required for Windows users
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       -- Make sure to set this up properly if you have lazy=true
+  --       "MeanderingProgrammer/render-markdown.nvim",
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     },
+  --   },
+  -- },
   {
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",

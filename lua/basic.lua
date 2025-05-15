@@ -15,7 +15,7 @@ g.loaded_netrwPlugin = 1
 -- Config netrw
 g.netrw_banner = 0
 g.netrw_liststyle = 3 -- tree view
-g.netrw_altv = 1 -- open splits to the right
+g.netrw_altv = 1      -- open splits to the right
 
 g.mapleader = " "
 g.use_lua = 1
@@ -24,7 +24,7 @@ o.mouse = "a"
 o.showmode = false
 
 if fn.has("nvim-0.5") then
-  o.jumpoptions = "stack"
+	o.jumpoptions = "stack"
 end
 
 o.laststatus = 2
@@ -71,15 +71,15 @@ o.wildmenu = true
 o.pumheight = 20
 
 if fn.exists("&pumblend") then
-  o.wildoptions = "pum"
-  o.pumblend = 10
+	o.wildoptions = "pum"
+	o.pumblend = 10
 end
 
 o.wildignore = "*.o,*~,*.pyc"
 if fn.has("win16") or fn.has("win32") then
-  o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
+	o.wildignore = o.wildignore .. ".git*,.hg*,.svn*"
 else
-  o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
+	o.wildignore = o.wildignore .. "*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
 end
 
 o.completeopt = "menu,menuone,noinsert,noselect"
@@ -89,7 +89,7 @@ o.ruler = true
 
 -- Height of the command bar
 if fn.has("nvim-0.8") then
-  o.cmdheight = 0
+	o.cmdheight = 0
 end
 
 -- A buffer becomes hidden when it is abandoned
@@ -176,25 +176,25 @@ o.encoding = "utf8"
 o.ffs = "unix,dos,mac"
 
 if vim.fn.exists("+termguicolors") then
-  vim.o.termguicolors = true
+	vim.o.termguicolors = true
 end
 
 opt.fillchars:append({
-  eob = " ",
-  -- vert = "│",
-  vert = "▏",
-  vertleft = "▏",
-  vertright = "▏",
-  verthoriz = "─",
-  horiz = "─",
-  horizup = "─",
-  horizdown = "─",
-  diff = "╱",
-  foldclose = "",
-  foldopen = "",
-  foldsep = " ",
-  fold = " ",
-  msgsep = "─",
+	eob = " ",
+	-- vert = "│",
+	vert = "▏",
+	vertleft = "▏",
+	vertright = "▏",
+	verthoriz = "─",
+	horiz = "─",
+	horizup = "─",
+	horizdown = "─",
+	diff = "╱",
+	foldclose = "",
+	foldopen = "",
+	foldsep = " ",
+	fold = " ",
+	msgsep = "─",
 })
 
 require("utils").hook_print()
@@ -205,7 +205,7 @@ cmd([[source ~/.config/nvim/viml/switch.vim]])
 
 -- Create CD command
 vim.api.nvim_create_user_command("CD", function()
-  vim.cmd("cd %:p:h")
+	vim.cmd("cd %:p:h")
 end, {})
 
 -- Create last_edit_group for autocommands
@@ -213,21 +213,21 @@ local last_edit_group = vim.api.nvim_create_augroup("last_edit_group", { clear =
 
 -- Return to last edit position
 vim.api.nvim_create_autocmd("BufReadPost", {
-  group = last_edit_group,
-  callback = function()
-    local line = vim.fn.line("'\"")
-    if line > 1 and line <= vim.fn.line("$") then
-      vim.cmd('normal! g`"')
-    end
-  end,
+	group = last_edit_group,
+	callback = function()
+		local line = vim.fn.line("'\"")
+		if line > 1 and line <= vim.fn.line("$") then
+			vim.cmd('normal! g`"')
+		end
+	end,
 })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = last_edit_group,
-  callback = function()
-    vim.highlight.on_yank({ higroup = "Search", timeout = 500 })
-  end,
+	group = last_edit_group,
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Search", timeout = 500 })
+	end,
 })
 
 -- Create tt_ft group for file type settings
@@ -235,113 +235,114 @@ local tt_ft_group = vim.api.nvim_create_augroup("tt_ft", { clear = true })
 
 -- Set filetype for .ttss and .ttml files
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  group = tt_ft_group,
-  pattern = "*.ttss",
-  callback = function()
-    vim.bo.filetype = "css"
-  end,
+	group = tt_ft_group,
+	pattern = "*.ttss",
+	callback = function()
+		vim.bo.filetype = "css"
+	end,
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  group = tt_ft_group,
-  pattern = "*.ttml",
-  callback = function()
-    vim.bo.filetype = "html"
-  end,
+	group = tt_ft_group,
+	pattern = "*.ttml",
+	callback = function()
+		vim.bo.filetype = "html"
+	end,
 })
 
 local ftgroup = vim.api.nvim_create_augroup("ft_group", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = ftgroup,
-  pattern = {
-    "php",
-    "python",
-    "c",
-    "java",
-    "perl",
-    "shell",
-    "sh",
-    "vim",
-    "ruby",
-    "cpp",
-    "go",
-    "objc",
-    "swift",
-    "lua",
-  },
-  callback = function()
-    -- 1 tab == 4 spaces
-    o.shiftwidth = 4
-    o.tabstop = 4
-    o.sts = 4
-  end,
+	group = ftgroup,
+	pattern = {
+		"php",
+		"python",
+		"c",
+		"java",
+		"perl",
+		"shell",
+		"sh",
+		"vim",
+		"ruby",
+		"cpp",
+		"go",
+		"objc",
+		"swift",
+		"lua",
+	},
+	callback = function()
+		-- 1 tab == 4 spaces
+		o.shiftwidth = 4
+		o.tabstop = 4
+		o.sts = 4
+	end,
 })
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = ftgroup,
-  pattern = {
-    "javascriptreact",
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "css",
-    "xml",
-    "dart",
-    "json",
-    "less",
-    "markdown",
-  },
-  callback = function()
-    -- 1 tab == 4 spaces
-    o.shiftwidth = 2
-    o.tabstop = 2
-    o.sts = 2
-  end,
+	group = ftgroup,
+	pattern = {
+		"javascriptreact",
+		"javascript",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"css",
+		"xml",
+		"dart",
+		"json",
+		"less",
+		"markdown",
+	},
+	callback = function()
+		-- 1 tab == 4 spaces
+		o.shiftwidth = 2
+		o.tabstop = 2
+		o.sts = 2
+	end,
 })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  group = ftgroup,
-  pattern = { "*.podspec", "Podfile" },
-  callback = function()
-    o.filetype = "ruby"
-  end,
+	group = ftgroup,
+	pattern = { "*.podspec", "Podfile" },
+	callback = function()
+		o.filetype = "ruby"
+	end,
 })
 
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
-  -- for paste
-  dmap({ "i", "v" }, "<c-v>", '"+p')
-  dmap({ "n", "v" }, "<c-c>", '"+y')
-  dmap({ "c", "i" }, "<c-v>", "<c-r>+")
-  dmap({ "i" }, "<c-r>", "<c-v>")
-  dmap({ "n", "v" }, "<D-v>", '"+p')
-  dmap({ "n", "v" }, "<D-c>", '"+y')
-  dmap({ "c", "i" }, "<D-v>", "<c-r>+")
-  dmap({ "i" }, "<D-r>", "<D-v>")
+	-- for paste
+	dmap({ "i", "v" }, "<c-v>", '"+p')
+	dmap({ "n", "v" }, "<c-c>", '"+y')
+	dmap({ "c", "i" }, "<c-v>", "<c-r>+")
+	dmap({ "i" }, "<c-r>", "<c-v>")
+	dmap({ "n", "v" }, "<D-v>", '"+p')
+	dmap({ "n", "v" }, "<D-c>", '"+y')
+	dmap({ "c", "i" }, "<D-v>", "<c-r>+")
+	dmap({ "i" }, "<D-r>", "<D-v>")
 
-  vim.opt.linespace = 2
-  g.neovide_fullscreen = true
-  g.neovide_floating_corner_radius = 0.2
-  g.neovide_normal_opacity = 1
-  g.neovide_window_blurred = true
-  g.neovide_floating_blur_amount_x = 6.0
-  g.neovide_floating_blur_amount_y = 6.0
-  -- g.neovide_cursor_vfx_mode = "sonicboom"
-  g.neovide_cursor_trail_size = 0.1
+	vim.opt.linespace = 8
+	g.neovide_fullscreen = true
+	g.neovide_floating_corner_radius = 0.2
+	g.neovide_normal_opacity = 1
+	g.neovide_window_blurred = true
+	g.neovide_floating_blur_amount_x = 6.0
+	g.neovide_floating_blur_amount_y = 6.0
+	-- g.neovide_cursor_vfx_mode = "sonicboom"
+	g.neovide_cursor_trail_size = 0.1
 
-  g.neovide_text_gamma = 0.8
-  g.neovide_text_contrast = 1
+	g.neovide_text_gamma = 0.8
+	g.neovide_text_contrast = 1
 
-  g.neovide_padding_top = 15
-  g.neovide_padding_bottom = 15
-  g.neovide_padding_right = 15
-  g.neovide_padding_left = 15
-  o.guifont = "Iosevka Nerd Font:h17"
-  g.neovide_scroll_animation_length = 0.3
+	g.neovide_padding_top = 15
+	g.neovide_padding_bottom = 15
+	g.neovide_padding_right = 15
+	g.neovide_padding_left = 15
+	-- o.guifont = "Iosevka Nerd Font:h17"
+	o.guifont = "DinaTtf10px Nerd Font:h18"
+	g.neovide_scroll_animation_length = 0.3
 elseif g.gonvim_running == 1 then
-  if require("utils").system() == "Linux" then
-    o.guifont = "Iosevka Nerd Font:h10"
-  else
-    o.guifont = "Iosevka Nerd Font:h14"
-  end
+	if require("utils").system() == "Linux" then
+		o.guifont = "Iosevka Nerd Font:h10"
+	else
+		o.guifont = "Iosevka Nerd Font:h14"
+	end
 end

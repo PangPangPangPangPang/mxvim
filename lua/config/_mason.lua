@@ -2,6 +2,7 @@ local M = {}
 M.config = function()
   require("mason").setup()
   require("mason-lspconfig").setup({
+    automatic_enable = true,
     ensure_installed = {
       "rust_analyzer",
       "jsonls",
@@ -30,7 +31,7 @@ M.config = function()
     end
   end
 
-  require("mason-lspconfig").setup_handlers(handler)
+  -- require("mason-lspconfig").setup_handlers(handler)
   require("lsp.lsp_swift").setup()
   vim.cmd([[ LspStart ]])
 end
