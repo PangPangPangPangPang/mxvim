@@ -5,7 +5,6 @@ return {
     dependencies = {
       { "williamboman/mason.nvim" },
       { "nvim-lua/lsp-status.nvim" },
-      { "iguanacucumber/magazine.nvim" },
       { "neovim/nvim-lspconfig" },
     },
     config = function()
