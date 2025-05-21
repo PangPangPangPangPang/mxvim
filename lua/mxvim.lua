@@ -24,7 +24,6 @@ mxvim.enable_cursor = false
 mxvim.enable_ts_tools = false
 mxvim.enable_squirrel = false
 mxvim.enable_hlchunk = true
-mxvim.enable_blink = true
 mxvim.enable_trouble = true
 
 --  codeium / copilot / supermaven

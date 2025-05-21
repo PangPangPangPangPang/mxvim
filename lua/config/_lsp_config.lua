@@ -12,7 +12,6 @@ M.set_keymap = function()
     callback = function(args)
       local bufnr = args.buf
       local client = vim.lsp.get_client_by_id(args.data.client_id)
-      require("lsp-format").on_attach(client, bufnr)
 
       M.set_diagnostic(client)
 
@@ -153,28 +152,6 @@ M.set_diagnostic = function(client)
       )
     )
   end
-end
-
-M.make_config = function()
-  local safe_require = require("utils").safe_require
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  safe_require("cmp_nvim_lsp", function(cmp)
-    capabilities = cmp.default_capabilities(capabilities)
-  end)
-  safe_require("saghen/blink.cmp", function(blink)
-    capabilities = blink.get_lsp_capabilities(capabilities)
-  end)
-  local root_dir
-  safe_require("lspconfig/util", function(util)
-    root_dir = util.root_pattern("package.json", ".eslintrc", ".git")
-  end)
-  local config = {
-    autostart = true,
-    root_dir = root_dir,
-    -- enable snippet support
-    capabilities = capabilities,
-  }
-  return config
 end
 
 M.custom_handlers = function()

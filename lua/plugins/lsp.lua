@@ -1,39 +1,12 @@
 return {
   {
-    "williamboman/mason-lspconfig.nvim",
+    "williamboman/mason.nvim",
     event = "VeryLazy",
     dependencies = {
-      { "williamboman/mason.nvim" },
       { "nvim-lua/lsp-status.nvim" },
-      { "neovim/nvim-lspconfig" },
     },
     config = function()
       require("config._mason").config()
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    lazy = true,
-    dependencies = {
-      {
-        "lukas-reineke/lsp-format.nvim",
-        config = function()
-          require("lsp-format").setup({
-            typescriptreact = {
-              order = { "vtsls", "null-ls" },
-              exclude = { "vtsls" },
-            },
-          })
-        end,
-      },
-    },
-    opts = {
-      inlay_hints = { enabled = true },
-      codelens = {
-        enabled = true,
-      },
-    },
-    config = function()
       require("config._lsp_config").config()
     end,
   },
@@ -49,7 +22,6 @@ return {
   },
   {
     "saghen/blink.cmp",
-    enabled = mxvim.enable_blink,
     event = "LspAttach",
     dependencies = { "rafamadriz/friendly-snippets" },
     version = "*",
@@ -98,36 +70,6 @@ return {
         },
       },
     },
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    -- name = "nvim-cmp",
-    -- lazy = true,
-    enabled = not mxvim.enable_blink,
-    event = "VeryLazy",
-    dependencies = {
-      "onsails/lspkind-nvim",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp-document-symbol",
-      {
-        "hrsh7th/cmp-vsnip",
-        dependencies = {
-          "hrsh7th/vim-vsnip-integ",
-          "hrsh7th/vim-vsnip",
-          "rafamadriz/friendly-snippets",
-        },
-      },
-      {
-        "quangnguyen30192/cmp-nvim-tags",
-      },
-    },
-    config = function()
-      require("config._nvim_cmp").config()
-    end,
   },
   {
     "folke/trouble.nvim",
@@ -179,25 +121,6 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-  },
-  require("lsp.lsp_ts").ts_tools,
-  require("lsp.lsp_lua").lazydev(),
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "williamboman/mason.nvim",
-      {
-        "nvimtools/none-ls.nvim",
-        dependencies = {
-          "gbprod/none-ls-luacheck.nvim",
-          "nvimtools/none-ls-extras.nvim",
-        },
-      },
-    },
-    config = function()
-      require("lsp.lsp_nullls").config()
-    end,
   },
   {
     "wojciech-kulik/xcodebuild.nvim",
@@ -306,6 +229,32 @@ return {
         end,
         -- case_insensitive_regex: sets regex case sensitivity
         case_insensitive_regex = false,
+      })
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          javascript = { "prettierd", "prettier", stop_after_first = true },
+          javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+          typescript = { "prettierd", "prettier", stop_after_first = true },
+          typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+          lua = { "stylua" },
+          json = { "jq" },
+          html = { "prettierd", "prettier", stop_after_first = true },
+          css = { "prettierd", "prettier", stop_after_first = true },
+          scss = { "prettierd", "prettier", stop_after_first = true },
+          yaml = { "prettierd", "prettier", stop_after_first = true },
+        },
+        format_on_save = {
+          -- These options will be passed to conform.format()
+          timeout_ms = 500,
+          lsp_format = "fallback",
+        },
       })
     end,
   },
