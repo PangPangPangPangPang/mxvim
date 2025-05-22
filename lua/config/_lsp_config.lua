@@ -1,6 +1,5 @@
 local M = {}
 local colors = require("theme").colors(0.6)
-local cmd = vim.cmd
 M.config = function()
   M.custom_handlers()
   M.set_keymap()
@@ -87,7 +86,6 @@ M.set_diagnostic = function(client)
   client.server_capabilities.documentFormattingProvider = true
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
-    local show_diag = "autocmd CursorHold * lua require('config._lsp_config').show_cursor_virt_diagnostic()"
     local lsp_document_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
     vim.api.nvim_create_autocmd("CursorHold", {
       group = lsp_document_highlight,
@@ -148,7 +146,9 @@ M.set_diagnostic = function(client)
 end
 
 M.custom_handlers = function()
-  -- vim.lsp.inlay_hint.enable()
+  if mxvim.enable_inlay_hint then
+    vim.lsp.inlay_hint.enable()
+  end
   local icon = require("theme").lsp_icon
   vim.diagnostic.config({
     virtual_text = false,

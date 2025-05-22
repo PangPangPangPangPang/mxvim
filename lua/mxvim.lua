@@ -25,6 +25,7 @@ mxvim.enable_ts_tools = false
 mxvim.enable_squirrel = false
 mxvim.enable_hlchunk = true
 mxvim.enable_trouble = true
+mxvim.enable_inlay_hint = true
 
 --  codeium / copilot / supermaven
 mxvim.ai_engine = "copilot"

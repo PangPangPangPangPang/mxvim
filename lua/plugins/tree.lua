@@ -3,6 +3,7 @@ return {
     "kyazdani42/nvim-tree.lua",
     enabled = not mxvim.enable_neotree,
     lazy = true,
+    event = "VeryLazy",
     cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     init = function()
       require("config._tree").init()
