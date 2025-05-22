@@ -56,11 +56,11 @@ M.set_keymap = function()
       vim.keymap.set("n", "<leader>cl", vim.diagnostic.setloclist, { buffer = bufnr, desc = "Diagnostic list" })
       vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, { buffer = bufnr, desc = "Diagnostic float" })
 
-      vim.keymap.set("n", "<leader>cp", function()
-        vim.lsp.buf.format({
-          async = true,
-        })
-      end, { buffer = bufnr, desc = "Format document" })
+      -- vim.keymap.set("n", "<leader>cp", function()
+      --   vim.lsp.buf.format({
+      --     async = true,
+      --   })
+      -- end, { buffer = bufnr, desc = "Format document" })
 
       vim.keymap.set(
         "n",

@@ -256,6 +256,11 @@ return {
           lsp_format = "fallback",
         },
       })
+      vim.keymap.set("n", "<leader>cp", function()
+        require("conform").format({ async = true }, function(err, did_edit)
+          -- called after formatting
+        end)
+      end, { desc = "Format document" })
     end,
   },
   {
