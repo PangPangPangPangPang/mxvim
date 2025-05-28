@@ -18,35 +18,6 @@ return {
     end,
   },
   {
-    "skywind3000/vim-gpt-commit",
-    cmd = { "GptCommit" },
-    init = function()
-      local dmap = require("utils").dmap
-      vim.api.nvim_create_autocmd({ "FileType" }, {
-        pattern = {
-          "gitcommit",
-        },
-        callback = function()
-          dmap({ "i", "v" }, "<c-c>", "<cmd>GptCommit<cr>")
-        end,
-      })
-    end,
-
-    config = function()
-      -- if you don't want to set your api key directly, add to your .zshrc:
-      -- export OPENAI_API_KEY='sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      -- vim.g.gpt_commit_key = os.getenv("OPENAI_API_KEY")
-      -- uncomment this line below to enable proxy
-      -- vim.g.gpt_commit_proxy = 'socks5://127.0.0.1:1080'
-
-      -- uncomment the following lines if you want to use Ollama:
-      vim.g.gpt_commit_engine = "ollama"
-      vim.g.gpt_commit_ollama_url = "http://127.0.0.1:11434/api/chat"
-      vim.g.gpt_commit_ollama_model = "llama3"
-      vim.g.gpt_commit_concise = 1
-    end,
-  },
-  {
     "olimorris/codecompanion.nvim",
     cmd = {
       "CodeCompanion",
@@ -54,6 +25,17 @@ return {
       "CodeCompanionChat",
       "CodeCompanionCmd",
     },
+    init = function()
+      local dmap = require("utils").dmap
+      vim.api.nvim_create_autocmd({ "FileType" }, {
+        pattern = {
+          "gitcommit",
+        },
+        callback = function()
+          dmap({ "i", "v" }, "<c-c>", "<cmd>CodeCompanion /commit_message<cr>")
+        end,
+      })
+    end,
     keys = {
       {
         "<F4>",
@@ -94,6 +76,45 @@ return {
       },
     },
     opts = {
+      prompt_library = {
+        ["Commit Message"] = {
+          strategy = "inline",
+          description = "Generate a commit message",
+          opts = {
+            short_name = "commit_message",
+            auto_submit = true,
+            placement = "replace",
+          },
+          prompts = {
+            {
+              role = "user",
+              content = function()
+                return string.format(
+                  [[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message for me:
+
+` ` `diff
+%s
+` ` `
+
+When unsure about the module names to use in the commit message, you can refer to the last 20 commit messages in this repository:
+
+` ` `
+%s
+` ` `
+
+Output only the commit message without any explanations and follow-up suggestions.
+]],
+                  vim.fn.system("git diff --no-ext-diff --staged"),
+                  vim.fn.system('git log --pretty=format:"%s" -n 20')
+                )
+              end,
+              opts = {
+                contains_code = true,
+              },
+            },
+          },
+        },
+      },
       extensions = {
         mcphub = {
           callback = "mcphub.extensions.codecompanion",
@@ -152,34 +173,6 @@ return {
       })
     end,
   },
-  -- {
-  --   "olimorris/codecompanion.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-treesitter/nvim-treesitter",
-  --   },
-  --   config = function()
-  --     require("codecompanion").setup({
-  --       strategies = {
-  --         chat = {
-  --           adapter = "gemini",
-  --         },
-  --         inline = {
-  --           adapter = "gemini",
-  --         },
-  --       },
-  --       -- adapters = {
-  --       --   anthropic = function()
-  --       --     return require("codecompanion.adapters").extend("gemini", {
-  --       --       env = {
-  --       --         api_key = "MY_OTHER_ANTHROPIC_KEY",
-  --       --       },
-  --       --     })
-  --       --   end,
-  --       -- },
-  --     })
-  --   end,
-  -- },
   {
     "supermaven-inc/supermaven-nvim",
     event = "VeryLazy",
