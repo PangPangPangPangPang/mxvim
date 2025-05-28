@@ -32,7 +32,7 @@ return {
           "gitcommit",
         },
         callback = function()
-          dmap("i", "<c-c>", "<esc><cmd>CodeCompanion /commit_message<cr>")
+          dmap("i", "<c-c>", "<esc><cmd>CodeCompanion /commit_message<cr>ga")
         end,
       })
     end,
