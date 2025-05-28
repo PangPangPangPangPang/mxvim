@@ -49,10 +49,6 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim",
       {
-        "MeanderingProgrammer/render-markdown.nvim",
-        ft = { "codecompanion" },
-      },
-      {
         "echasnovski/mini.diff",
         config = function()
           local diff = require("mini.diff")
