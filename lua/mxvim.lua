@@ -29,3 +29,14 @@ mxvim.enable_inlay_hint = true
 
 --  codeium / copilot / supermaven
 mxvim.ai_engine = "copilot"
+
+mxvim.lsp = {
+  -- "bashls",
+  "cssls",
+  "eslint",
+  "html",
+  "jsonls",
+  "lua_ls",
+  "tailwindcss",
+  "vtsls",
+}

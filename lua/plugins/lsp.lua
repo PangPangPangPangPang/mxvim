@@ -1,8 +1,10 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     dependencies = {
+      "neovim/nvim-lspconfig",
+			"mason-org/mason-lspconfig.nvim",
       { "nvim-lua/lsp-status.nvim" },
     },
     config = function()
@@ -10,6 +12,7 @@ return {
       require("config._lsp_config").config()
     end,
   },
+
   -- defer all NeoVim diagnostics for a less distracting coding experience
   {
     "yorickpeterse/nvim-dd",
