@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     dependencies = {
       "neovim/nvim-lspconfig",
-			"mason-org/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       { "nvim-lua/lsp-status.nvim" },
     },
     config = function()
@@ -32,6 +32,8 @@ return {
       keymap = {
         preset = "enter",
         ["<C-e>"] = { "fallback" },
+        ["<C-f>"] = { "fallback" },
+        ["<C-b>"] = { "fallback" },
         ["<C-n>"] = { "show", "select_next", "fallback" },
       },
       appearance = {
