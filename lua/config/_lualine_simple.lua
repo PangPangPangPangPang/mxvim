@@ -93,55 +93,7 @@ local function ins_inactive_left(component)
   table.insert(config.inactive_sections.lualine_c, component)
 end
 
--- ins_left({
--- 	"diff",
--- 	padding = { right = 2 },
--- 	colored = false,
--- })
-
--- ins_left({
--- 	function()
--- 		local alias = {
--- 			n = "NORMAL",
--- 			i = "INSERT",
--- 			V = "VISUAL",
--- 			[""] = "VISUAL",
--- 			v = "VISUAL",
--- 			c = "COMMAND-LINE",
--- 			["r?"] = ":CONFIRM",
--- 			rm = "--MORE",
--- 			R = "REPLACE",
--- 			Rv = "VIRTUAL",
--- 			s = "SELECT",
--- 			S = "SELECT",
--- 			["r"] = "HIT-ENTER",
--- 			[""] = "SELECT",
--- 			t = "TERMINAL",
--- 			["!"] = "SHELL",
--- 		}
--- 		-- return alias[vim.fn.mode()]
--- 		return string.format("%s", alias[vim.fn.mode()])
--- 	end,
--- 	padding = { left = 2 },
--- })
-
--- ins_right({
--- 	"lsp_progress",
--- 	display_components = { "lsp_client_name", { "title", "percentage", "message" } },
--- 	display_lsp_name_after_initialization = true,
--- 	separators = {
--- 		component = " ",
--- 		progress = " | ",
--- 		percentage = { pre = "", post = "%% " },
--- 		title = { pre = "", post = ": " },
--- 		lsp_client_name = { pre = "", post = "" },
--- 		spinner = { pre = "", post = "" },
--- 		message = { commenced = "In Progress", completed = "Completed" },
--- 	},
--- 	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
--- 	padding = { left = 2, right = 2 },
--- })
-ins_right({
+ins_left({
   function()
     local alias = {
       n = "N",
@@ -164,7 +116,13 @@ ins_right({
     -- return alias[vim.fn.mode()]
     return string.format("%s", alias[vim.fn.mode()])
   end,
-  padding = { right = 2 },
+  padding = { left = 1 },
+})
+
+ins_left({
+  "branch",
+  icon = "",
+  padding = { left = 2 },
 })
 local zf = require("config._zfvimim")
 ins_right({
@@ -196,7 +154,7 @@ end
 
 ins_right({
   location,
-  padding = { right = 2 },
+  padding = { right = 1 },
 })
 
 -- local function encoding()
