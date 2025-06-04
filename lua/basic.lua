@@ -334,10 +334,10 @@ if fn.exists("g:neovide") == 1 then
   g.neovide_text_gamma = 0.8
   g.neovide_text_contrast = 1
 
-  g.neovide_padding_top = 15
-  g.neovide_padding_bottom = 15
-  g.neovide_padding_right = 15
-  g.neovide_padding_left = 15
+  g.neovide_padding_top = 12
+  g.neovide_padding_bottom = 0
+  g.neovide_padding_right = 12
+  g.neovide_padding_left = 12
   -- o.guifont = "Iosevka Nerd Font:h17"
   o.guifont = "DinaTtf10px Nerd Font:h18"
   g.neovide_scroll_animation_length = 0.3
