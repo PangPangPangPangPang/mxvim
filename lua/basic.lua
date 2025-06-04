@@ -55,9 +55,6 @@ o.path = o.path .. "**"
 -- Search tags
 o.tags = "./.tags;,.tags"
 
--- vim.cmd('filetype on')
--- vim.cmd('filetype indent on')
-
 -- o.3 lines to the cursor - when moving vertically using j/k
 o.so = 3
 
