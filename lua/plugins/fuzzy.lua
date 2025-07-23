@@ -111,7 +111,9 @@ return {
       },
       bigfile = {},
       lazygit = {},
-      image = {},
+      image = {
+        enabled = vim.fn.exists("g:neovide") == 0,
+      },
       picker = {
         win = {
           input = {
