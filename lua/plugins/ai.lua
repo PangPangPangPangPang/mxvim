@@ -19,12 +19,13 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    cmd = {
-      "CodeCompanion",
-      "CodeCompanionActions",
-      "CodeCompanionChat",
-      "CodeCompanionCmd",
-    },
+    event = "VeryLazy",
+    -- cmd = {
+    --   "CodeCompanion",
+    --   "CodeCompanionActions",
+    --   "CodeCompanionChat",
+    --   "CodeCompanionCmd",
+    -- },
     init = function()
       local dmap = require("utils").dmap
       vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -38,10 +39,17 @@ return {
     end,
     keys = {
       {
-        "<F4>",
+        -- "<F4>",
+        "<c-l>",
         "<cmd>CodeCompanionChat Toggle<CR>",
         mode = { "n", "i" },
         desc = "Open AI",
+      },
+      {
+        "<c-i>",
+        ":CodeCompanion ",
+        mode = { "v", "n" },
+        desc = "Open AI inline assistant",
       },
     },
     dependencies = {
