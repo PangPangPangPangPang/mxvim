@@ -19,13 +19,12 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    event = "VeryLazy",
-    -- cmd = {
-    --   "CodeCompanion",
-    --   "CodeCompanionActions",
-    --   "CodeCompanionChat",
-    --   "CodeCompanionCmd",
-    -- },
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionActions",
+      "CodeCompanionChat",
+      "CodeCompanionCmd",
+    },
     init = function()
       local dmap = require("utils").dmap
       vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -53,6 +52,7 @@ return {
       },
     },
     dependencies = {
+      "franco-ruggeri/codecompanion-spinner.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/mcphub.nvim",
@@ -120,6 +120,7 @@ Output only the commit message without any explanations and follow-up suggestion
         },
       },
       extensions = {
+        spinner = {},
         mcphub = {
           callback = "mcphub.extensions.codecompanion",
           opts = {
