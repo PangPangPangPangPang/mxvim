@@ -142,7 +142,7 @@ Output only the commit message without any explanations and follow-up suggestion
         return require("codecompanion.adapters").extend("gemini", {
           schema = {
             model = {
-              default = "gemini-2.0-flash-lite",
+              default = "gemini-2.5-flash",
             },
           },
           env = {
