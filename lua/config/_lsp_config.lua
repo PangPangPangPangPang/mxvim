@@ -12,7 +12,7 @@ M.set_keymap = function()
       local bufnr = args.buf
       local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-      M.set_diagnostic(client)
+      -- M.set_diagnostic(client)
 
       vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
@@ -27,10 +27,10 @@ M.set_keymap = function()
       vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
       -- Setup keymaps
       vim.keymap.set("n", "[e", function()
-        vim.diagnostic.goto_prev({ float = true })
+        vim.diagnostic.goto_prev({ float = false })
       end, { buffer = bufnr, desc = "Diagnostic" })
       vim.keymap.set("n", "]e", function()
-        vim.diagnostic.goto_next({ float = true })
+        vim.diagnostic.goto_next({ float = false })
       end, { buffer = bufnr, desc = "Diagnostic" })
       vim.keymap.set(
         { "n", "i" },
