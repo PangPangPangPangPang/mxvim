@@ -335,8 +335,8 @@ if fn.exists("g:neovide") == 1 then
   g.neovide_padding_bottom = 0
   g.neovide_padding_right = 12
   g.neovide_padding_left = 12
-  -- o.guifont = "Iosevka Nerd Font:h17"
-  o.guifont = "DinaTtf10px Nerd Font:h18"
+  o.guifont = "Iosevka Nerd Font Mono:h17"
+  -- o.guifont = "DinaTtf10px Nerd Font:h18"
   g.neovide_scroll_animation_length = 0.3
 elseif g.gonvim_running == 1 then
   if require("utils").system() == "Linux" then
