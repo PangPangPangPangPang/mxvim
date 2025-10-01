@@ -234,9 +234,9 @@ Output only the commit message without any explanations and follow-up suggestion
       {
         "<leader>ac",
         function()
-          require("sidekick.cli").toggle({ name = "claude", focus = true })
+          require("sidekick.cli").toggle({ name = "codex", focus = true })
         end,
-        desc = "Sidekick Claude Toggle",
+        desc = "Sidekick codex Toggle",
         mode = { "n", "v" },
       },
       {
@@ -244,7 +244,7 @@ Output only the commit message without any explanations and follow-up suggestion
         function()
           require("sidekick.cli").toggle({ name = "gemini", focus = true })
         end,
-        desc = "Sidekick Grok Toggle",
+        desc = "Sidekick Gemini Toggle",
         mode = { "n", "v" },
       },
       {
