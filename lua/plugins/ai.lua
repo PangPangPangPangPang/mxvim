@@ -37,19 +37,18 @@ return {
       })
     end,
     keys = {
-      {
-        -- "<F4>",
-        "<c-l>",
-        "<cmd>CodeCompanionChat Toggle<CR>",
-        mode = { "n", "i" },
-        desc = "Open AI",
-      },
-      {
-        "<c-i>",
-        ":CodeCompanion ",
-        mode = { "v", "n" },
-        desc = "Open AI inline assistant",
-      },
+      -- {
+      --   "<c-l>",
+      --   "<cmd>CodeCompanionChat Toggle<CR>",
+      --   mode = { "n", "i" },
+      --   desc = "Open AI",
+      -- },
+      -- {
+      --   "<c-i>",
+      --   ":CodeCompanion ",
+      --   mode = { "v", "n" },
+      --   desc = "Open AI inline assistant",
+      -- },
     },
     dependencies = {
       "franco-ruggeri/codecompanion-spinner.nvim",
@@ -161,6 +160,9 @@ Output only the commit message without any explanations and follow-up suggestion
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
     enabled = mxvim.ai_engine == "copilot",
+    requires = {
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    },
     config = function()
       require("copilot").setup({
         suggestion = {
@@ -232,12 +234,12 @@ Output only the commit message without any explanations and follow-up suggestion
         mode = { "n", "v" },
       },
       {
-        "<leader>ac",
+        "<c-l>",
         function()
           require("sidekick.cli").toggle({ name = "codex", focus = true })
         end,
         desc = "Sidekick codex Toggle",
-        mode = { "n", "v" },
+        mode = { "n", "v", "i" },
       },
       {
         "<leader>ag",
@@ -248,12 +250,12 @@ Output only the commit message without any explanations and follow-up suggestion
         mode = { "n", "v" },
       },
       {
-        "<leader>ap",
+        "<c-i>",
         function()
           require("sidekick.cli").select_prompt()
         end,
         desc = "Sidekick Ask Prompt",
-        mode = { "n", "v" },
+        mode = { "v" },
       },
     },
   },

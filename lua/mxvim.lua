@@ -28,7 +28,7 @@ mxvim.enable_trouble = true
 mxvim.enable_inlay_hint = true
 
 --  codeium / copilot / supermaven
-mxvim.ai_engine = "supermaven"
+mxvim.ai_engine = "copilot"
 
 mxvim.lsp = {
   -- "bashls",
