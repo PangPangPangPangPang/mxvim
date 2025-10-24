@@ -1,6 +1,27 @@
 local colors = require("theme").colors()
 local theme = require("theme")
 local safe_require = require("utils").safe_require
+
+local function apply_base_variable_highlights()
+	local groups = {
+		"@variable",
+		"@variable.parameter",
+		"@variable.parameter.reference",
+		"@variable.member",
+		"@variable.field",
+		"@lsp.type.variable",
+		"@lsp.type.parameter",
+		"@lsp.type.property",
+		"@lsp.typemod.variable.local",
+		"@lsp.typemod.variable.mutable",
+		"@lsp.typemod.variable.readonly",
+		"@lsp.typemod.parameter.mutable",
+	}
+	for _, group in ipairs(groups) do
+		pcall(vim.api.nvim_set_hl, 0, group, { link = "Normal" })
+	end
+end
+
 require("nvim-treesitter.configs").setup({
 	-- npm i -g tree-sitter-cli
 	-- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
@@ -107,6 +128,17 @@ require("nvim-treesitter.configs").setup({
 			show_help = "?",
 		},
 	},
+})
+
+apply_base_variable_highlights()
+
+local variable_highlights_augroup =
+	vim.api.nvim_create_augroup("MXVIMTreeSitterVariableHighlight", { clear = true })
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = variable_highlights_augroup,
+	callback = apply_base_variable_highlights,
+	desc = "Keep local and temporary variables using the base highlight color",
 })
 
 require("rainbow-delimiters.setup").setup({

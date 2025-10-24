@@ -11,7 +11,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       -- { "<leader>p", "<cmd>lua require('fzf-lua').files()<cr>" },
-      { "<c-p>", "<cmd>lua require('fzf-lua').files()<cr>" },
+      -- { "<c-p>", "<cmd>lua require('fzf-lua').files()<cr>" },
     },
     config = function()
       require("config._fzf").config()
@@ -59,6 +59,13 @@ return {
         end,
         desc = "Lazygit",
         mode = { "x" },
+      },
+      {
+        "<c-p>",
+        function()
+          Snacks.picker.files()
+        end,
+        desc = "Find Files",
       },
     },
     ---@type snacks.Config
