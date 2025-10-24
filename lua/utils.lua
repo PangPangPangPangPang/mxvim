@@ -196,13 +196,51 @@ M.load_plugins = function()
       "clone",
       "--filter=blob:none",
       "https://github.com/folke/lazy.nvim.git",
-      "--branch=stable", -- latest stable release
+      "--branch=stable",
       lazypath,
     })
   end
+
   vim.opt.rtp:prepend(lazypath)
-  vim.cmd([[ com! PS lua require('lazy').sync() ]])
-  require("lazy").setup("plugins")
+
+  local ok, lazy = pcall(require, "lazy")
+  if not ok then
+    return
+  end
+
+  pcall(vim.api.nvim_create_user_command, "PS", function()
+    lazy.sync()
+  end, {})
+
+  lazy.setup({
+    spec = {
+      { import = "plugins" },
+    },
+    defaults = {
+      lazy = true,
+      version = false,
+    },
+    install = { missing = false },
+    checker = { enabled = false },
+    change_detection = { notify = false },
+    performance = {
+      cache = { enabled = true },
+      reset_packpath = true,
+      rtp = {
+        disabled_plugins = {
+          "gzip",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+          "rplugin",
+          "matchit",
+          "matchparen",
+          "netrwPlugin",
+        },
+      },
+    },
+  })
 end
 
 M.is_alacritty = function()

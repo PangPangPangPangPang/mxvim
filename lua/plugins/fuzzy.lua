@@ -19,7 +19,7 @@ return {
   },
   {
     "folke/snacks.nvim",
-    lazy = false,
+    event = "VimEnter",
     keys = {
       {
         "<leader>f",

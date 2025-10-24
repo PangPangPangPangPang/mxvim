@@ -1,7 +1,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    lazy = true,
+    event = "VeryLazy",
     dependencies = {
       "bercly0b/lualine-lsp-progress",
     },
@@ -170,6 +170,7 @@ return {
   },
   {
     "romainl/vim-cool",
+    event = "VeryLazy",
     init = function()
       vim.g.CoolTotalMatches = 1
     end,

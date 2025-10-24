@@ -3,6 +3,8 @@ M.theme = function(name, nick)
   local ret = {
     name,
     enabled = mxvim.current_theme == nick,
+    lazy = false,
+    priority = 1000,
     config = function()
       require("colorscheme." .. mxvim.current_theme).config()
       require("config._tree").theme()
