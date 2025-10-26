@@ -111,9 +111,10 @@ return {
         -- requires require('vim._extui').enable({}), otherwise has no effect
         -- cmdline = true,
         groups = {
-          "BlinkPairsOrange",
-          "BlinkPairsPurple",
-          "BlinkPairsBlue",
+          "Redfg",
+          "Yellowfg",
+          "Orangefg",
+          "Greenfg",
         },
         -- unmatched_group = "BlinkPairsUnmatched",
 
