@@ -6,7 +6,7 @@ return {
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/playground",
-      "HiPhish/rainbow-delimiters.nvim",
+      -- "HiPhish/rainbow-delimiters.nvim",
       "nvim-treesitter/nvim-treesitter-textobjects",
       {
         "windwp/nvim-ts-autotag",

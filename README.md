@@ -57,7 +57,6 @@ NVIM_APPNAME=PangPangPangPangPang/mxvim/ nvim
 
 ### editing-support
 
--   [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
 -   [windwp/nvim-ts-autotag](https://dotfyle.com/plugins/windwp/nvim-ts-autotag)
 
 ### file-explorer
