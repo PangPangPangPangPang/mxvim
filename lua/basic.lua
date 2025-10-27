@@ -309,14 +309,14 @@ pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
   -- for paste
-  dmap({ "i", "v" }, "<c-v>", '"+p')
-  dmap({ "n", "v" }, "<c-c>", '"+y')
-  dmap({ "c", "i" }, "<c-v>", "<c-r>+")
-  dmap({ "i" }, "<c-r>", "<c-v>")
-  dmap({ "n", "v" }, "<D-v>", '"+p')
-  dmap({ "n", "v" }, "<D-c>", '"+y')
-  dmap({ "c", "i" }, "<D-v>", "<c-r>+")
-  dmap({ "i" }, "<D-r>", "<D-v>")
+  dmap({ "i", "v", "t" }, "<c-v>", '"+p')
+  dmap({ "n", "v", "t" }, "<c-c>", '"+y')
+  dmap({ "c", "i", "t" }, "<c-v>", "<c-r>+")
+  dmap({ "i", "t" }, "<c-r>", "<c-v>")
+  dmap({ "n", "v", "t" }, "<D-v>", '"+p')
+  dmap({ "n", "v", "t" }, "<D-c>", '"+y')
+  dmap({ "c", "i", "t" }, "<D-v>", "<c-r>+")
+  dmap({ "i", "t" }, "<D-r>", "<D-v>")
 
   vim.opt.linespace = 8
   g.neovide_fullscreen = true

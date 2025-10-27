@@ -239,7 +239,7 @@ Output only the commit message without any explanations and follow-up suggestion
           require("sidekick.cli").toggle({ name = "codex", focus = true })
         end,
         desc = "Sidekick codex Toggle",
-        mode = { "n", "v", "i" },
+        mode = { "n", "v", "i", "t" },
       },
       {
         "<leader>ag",
