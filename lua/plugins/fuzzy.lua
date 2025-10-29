@@ -121,6 +121,17 @@ return {
       image = {
         enabled = vim.fn.exists("g:neovide") == 0,
       },
+      scroll = {
+        -- enabled = not vim.g.neovide,
+        enabled = false,
+        animate = {
+          duration = {
+            step = 125,
+            total = 250,
+          },
+          easing = "linear",
+        },
+      },
       picker = {
         win = {
           input = {
