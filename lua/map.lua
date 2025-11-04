@@ -13,5 +13,4 @@ dmap({ "v" }, "Y", '"+y')
 -- dmap({ "v", "n" }, "<c-k>", "<c-w>k")
 -- dmap({ "v", "n" }, "<c-l>", "<c-w>l")
 
-
 dmap({ "n", "v" }, "<leader>q", ':lua require("utils").close_common()<cr>', "Close ignore buffer")
