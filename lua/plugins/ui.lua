@@ -289,7 +289,7 @@ return {
       -- basebg = [23,23,23],
       blocklist = {
         custom = {
-          buf_opts = { filetype = { "Avante", "NvimTree", "OverseerList" }, buftype = { "terminal" } },
+          -- buf_opts = { filetype = { "Avante", "NvimTree", "OverseerList" }, buftype = { "terminal" } },
         },
       },
       basebg = "",
