@@ -32,7 +32,9 @@ return {
           "gitcommit",
         },
         callback = function()
-          dmap("i", "<c-c>", "<esc><cmd>CodeCompanion /commit_message<cr>")
+          dmap("i", "<c-c>", function()
+            require("codecompanion").prompt("commit_message")
+          end)
         end,
       })
     end,
@@ -81,10 +83,14 @@ return {
     opts = {
       prompt_library = {
         ["Commit Message"] = {
-          strategy = "inline",
+          interaction = "inline",
           description = "Generate a commit message",
           opts = {
-            short_name = "commit_message",
+            adapter = {
+              name = "gemini",
+              model = "gemini-2.5-flash",
+            },
+            alias = "commit_message",
             auto_submit = true,
             placement = "replace",
           },
