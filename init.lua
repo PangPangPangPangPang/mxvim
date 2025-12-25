@@ -17,7 +17,6 @@ pcall(function()
 
   vim.loop.fs_close(fd)
   vim.loop.fs_unlink(test_path)
-
   vim.loader.enable()
 end)
 
