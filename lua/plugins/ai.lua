@@ -242,11 +242,20 @@ Output only the commit message without any explanations and follow-up suggestion
       {
         "<c-l>",
         function()
-          require("sidekick.cli").toggle({ name = "codex", focus = true })
+          require("sidekick.cli").toggle({ focus = true })
         end,
         desc = "Sidekick codex Toggle",
         mode = { "n", "v", "i", "t" },
       },
+      -- {
+      --   "<c-l>",
+      --   function()
+      --     require("sidekick.cli").toggle({ name = "opencode", focus = true })
+      --   end,
+      --   desc = "Sidekick OpenCode Toggle",
+      --   mode = { "n", "v" },
+      -- },
+
       {
         "<leader>ag",
         function()
