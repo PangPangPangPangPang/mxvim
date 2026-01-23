@@ -81,7 +81,7 @@ return {
   {
     "saghen/blink.pairs",
     version = "*",
-    event = "VimEnter",
+    event = "InsertEnter",
     dependencies = "saghen/blink.download",
     opts = {
       mappings = {

@@ -19,7 +19,7 @@ return {
   },
   {
     "folke/snacks.nvim",
-    event = "VimEnter",
+    event = "VeryLazy",
     keys = {
       {
         "<leader>f",
@@ -72,14 +72,7 @@ return {
     opts = {
       dashboard = {
         sections = {
-          {
-            section = "terminal",
-            cmd = "pokemon-colorscripts -r --no-title; sleep .1",
-            random = 10,
-            pane = 1,
-            height = 30,
-            width = 40,
-          },
+          -- Avoid spawning external commands on first paint.
           {
             icon = " ",
             key = "s",

@@ -1,6 +1,6 @@
 local M = {}
 M.init = function()
-  vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+  vim.api.nvim_create_autocmd({ "UIEnter" }, { callback = open_nvim_tree })
 end
 M.config = function()
   local function on_attach(bufnr)
@@ -139,6 +139,9 @@ end
 
 ---@diagnostic disable-next-line: lowercase-global
 function open_nvim_tree(data)
+  if vim.fn.argc() ~= 0 then
+    return
+  end
   local directory = vim.fn.isdirectory(data.file) == 1
   if not directory then
     return

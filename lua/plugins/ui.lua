@@ -195,7 +195,7 @@ return {
     -- enabled = false,
     enabled = not mxvim.enable_cursor,
     lazy = true,
-    event = "VimEnter",
+    event = "VeryLazy",
     config = function()
       -- current virtual
       require("prettier-number-line").setup({
@@ -226,7 +226,7 @@ return {
   { -- better statuscolumn
     "luukvbaal/statuscol.nvim",
     -- branch = "0.10",
-    event = { "BufRead", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = { "gen740/SmoothCursor.nvim" },
     opts = function()
       local builtin = require("statuscol.builtin")

@@ -203,7 +203,25 @@ M.load_plugins = function()
 
   vim.opt.rtp:prepend(lazypath)
   vim.cmd([[ com! PS lua require('lazy').sync() ]])
-  require("lazy").setup("plugins")
+  require("lazy").setup("plugins", {
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          "gzip",
+          "man",
+          "matchit",
+          "matchparen",
+          "netrwPlugin",
+          "rplugin",
+          "spellfile",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+        },
+      },
+    },
+  })
 end
 
 M.is_alacritty = function()
