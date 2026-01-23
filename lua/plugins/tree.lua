@@ -1,6 +1,6 @@
 return {
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     enabled = not mxvim.enable_neotree,
     lazy = true,
     event = "VeryLazy",

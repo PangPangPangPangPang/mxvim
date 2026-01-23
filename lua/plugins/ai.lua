@@ -166,7 +166,7 @@ Output only the commit message without any explanations and follow-up suggestion
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
     enabled = mxvim.ai_engine == "copilot",
-    requires = {
+    dependencies = {
       "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
     },
     config = function()

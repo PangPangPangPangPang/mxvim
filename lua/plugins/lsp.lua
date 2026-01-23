@@ -119,7 +119,7 @@ return {
   {
     "stevearc/aerial.nvim",
     keys = {
-      { "<F2>", "<cmd>AerialToggle<cr>", { "n", "i" } },
+      { "<F2>", "<cmd>AerialToggle<cr>", mode = { "n", "i" } },
     },
     opts = {},
     -- Optional dependencies

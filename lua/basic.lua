@@ -200,7 +200,7 @@ require("utils").hook_print()
 -- if vim.fn.has('nvim-0.9') == 1 then
 
 -- Source the switch.vim file
-cmd([[source ~/.config/nvim/viml/switch.vim]])
+cmd("source " .. vim.fn.stdpath("config") .. "/viml/switch.vim")
 
 -- Create CD command
 vim.api.nvim_create_user_command("CD", function()
@@ -270,9 +270,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   },
   callback = function()
     -- 1 tab == 4 spaces
-    o.shiftwidth = 4
-    o.tabstop = 4
-    o.sts = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    vim.bo.sts = 4
   end,
 })
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -292,16 +292,16 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   },
   callback = function()
     -- 1 tab == 4 spaces
-    o.shiftwidth = 2
-    o.tabstop = 2
-    o.sts = 2
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
+    vim.bo.sts = 2
   end,
 })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   group = ftgroup,
   pattern = { "*.podspec", "Podfile" },
   callback = function()
-    o.filetype = "ruby"
+    vim.bo.filetype = "ruby"
   end,
 })
 
