@@ -118,21 +118,16 @@ return {
     end,
   },
   {
-    "NvChad/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     event = "VeryLazy",
     config = function()
       require("colorizer").setup({
-        filetypes = {
-          "*",
-        },
-        user_default_options = {
-          css = true,
-          css_fn = true,
-          names = false,
-          tailwind = true,
-          virtualtext_inline = false,
-          mode = "virtualtext",
-          virtualtext = "󱓻",
+        options = {
+          parsers = { css_fn = true },
+          display = {
+            mode = "virtualtext",
+            virtualtext = { position = "after" },
+          },
         },
       })
     end,
