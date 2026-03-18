@@ -211,6 +211,20 @@ Output only the commit message without any explanations and follow-up suggestion
         },
       },
     },
+    init = function()
+      -- In sidekick terminal buffers:
+      -- <Esc>       → send Esc to the CLI process (e.g. Claude)
+      -- <Esc><Esc>  → exit terminal mode (back to normal mode)
+      vim.api.nvim_create_autocmd("TermOpen", {
+        callback = function(ev)
+          local name = vim.api.nvim_buf_get_name(ev.buf)
+          if name:match("claude") or name:match("sidekick") or name:match("gemini") then
+            vim.keymap.set("t", "<Esc>", "<Esc>", { buffer = ev.buf, noremap = true, desc = "Send Esc to terminal" })
+            vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { buffer = ev.buf, noremap = true, desc = "Exit terminal mode" })
+          end
+        end,
+      })
+    end,
     keys = {
       {
         "<tab>",
