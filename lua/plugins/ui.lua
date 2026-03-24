@@ -190,7 +190,7 @@ return {
     -- enabled = false,
     enabled = not mxvim.enable_cursor,
     lazy = true,
-    event = "VeryLazy",
+    event = "UIEnter",
     config = function()
       -- current virtual
       require("prettier-number-line").setup({

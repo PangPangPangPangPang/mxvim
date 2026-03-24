@@ -220,7 +220,15 @@ Output only the commit message without any explanations and follow-up suggestion
           local name = vim.api.nvim_buf_get_name(ev.buf)
           if name:match("claude") or name:match("sidekick") or name:match("gemini") then
             vim.keymap.set("t", "<Esc>", "<Esc>", { buffer = ev.buf, noremap = true, desc = "Send Esc to terminal" })
-            vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { buffer = ev.buf, noremap = true, desc = "Exit terminal mode" })
+            vim.keymap.set(
+              "t",
+              "<Esc><Esc>",
+              "<C-\\><C-n>",
+              { buffer = ev.buf, noremap = true, desc = "Exit terminal mode" }
+            )
+            vim.keymap.set("t", "<c-l>", function()
+              require("sidekick.cli").toggle({ focus = true })
+            end, { buffer = ev.buf, desc = "Sidekick Toggle CLI" })
           end
         end,
       })
@@ -261,15 +269,6 @@ Output only the commit message without any explanations and follow-up suggestion
         desc = "Sidekick codex Toggle",
         mode = { "n", "v", "i", "t" },
       },
-      -- {
-      --   "<c-l>",
-      --   function()
-      --     require("sidekick.cli").toggle({ name = "opencode", focus = true })
-      --   end,
-      --   desc = "Sidekick OpenCode Toggle",
-      --   mode = { "n", "v" },
-      -- },
-
       {
         "<leader>ag",
         function()
