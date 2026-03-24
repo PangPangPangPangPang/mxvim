@@ -229,6 +229,26 @@ Output only the commit message without any explanations and follow-up suggestion
             vim.keymap.set("t", "<c-l>", function()
               require("sidekick.cli").toggle({ focus = true })
             end, { buffer = ev.buf, desc = "Sidekick Toggle CLI" })
+            -- Allow <C-w> window navigation from terminal mode
+            for _, key in ipairs({ "h", "j", "k", "l", "w", "W", "p", "H", "J", "K", "L" }) do
+              vim.keymap.set(
+                "t",
+                "<C-w>" .. key,
+                "<C-\\><C-n><C-w>" .. key,
+                { buffer = ev.buf, noremap = true, desc = "Window nav: " .. key }
+              )
+            end
+          end
+        end,
+      })
+      -- Auto-enter terminal mode when focusing a sidekick terminal buffer
+      vim.api.nvim_create_autocmd("BufEnter", {
+        callback = function(ev)
+          if vim.bo[ev.buf].buftype == "terminal" then
+            local name = vim.api.nvim_buf_get_name(ev.buf)
+            if name:match("claude") or name:match("sidekick") or name:match("gemini") then
+              vim.cmd("startinsert")
+            end
           end
         end,
       })
