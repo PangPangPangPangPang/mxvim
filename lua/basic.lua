@@ -308,6 +308,9 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
+  -- Fix PATH for GUI launch (shell profile not sourced by Neovide)
+  vim.env.PATH = vim.env.PATH .. ":/usr/local/bin:/opt/homebrew/bin:" .. vim.env.HOME .. "/.local/bin"
+
   -- for paste
   dmap({ "i", "v" }, "<c-v>", '"+p')
   dmap({ "t" }, "<c-v>", '<C-\\><C-n>"+pi')
