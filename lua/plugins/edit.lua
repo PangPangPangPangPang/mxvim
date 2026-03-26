@@ -155,16 +155,13 @@ return {
     enabled = false,
     lazy = true,
   },
+
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
-    opts = {
-      sign = {
-        enabled = false,
-      },
-      bullet = { right_pad = 2 },
-    },
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    ft = { "markdown" },
+
+    dependencies = { "saghen/blink.cmp" },
   },
   -- install without yarn or npm
   {
