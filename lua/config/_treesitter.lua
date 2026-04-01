@@ -22,7 +22,7 @@ local function apply_base_variable_highlights()
   end
 end
 
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
   -- npm i -g tree-sitter-cli
   -- ensure_installed = 'maintained',     -- one of "all", "language", or a list of languages
   highlight = {
