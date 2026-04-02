@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     enabled = mxvim.enable_treesitter,
+    branch = "main",
     event = "VeryLazy",
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",

@@ -34,6 +34,7 @@ local config = {
     section_separators = "",
     theme = bubbles_theme,
     -- section_separators = { right = " | " },
+    always_show_tabline = false,
   },
   sections = {
     -- these are to remove the defaults
