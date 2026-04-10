@@ -21,14 +21,15 @@ return {
     end,
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-    },
+    "rachartier/tiny-cmdline.nvim",
     config = function()
-      require("config._noice").setup()
+      vim.o.cmdheight = 0
+      require("tiny-cmdline").setup({
+        position = {
+          y = "20%",
+        },
+        on_reposition = require("tiny-cmdline").adapters.blink,
+      })
     end,
   },
   {
