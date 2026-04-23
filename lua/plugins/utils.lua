@@ -196,6 +196,43 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
+      local function patch_timber_for_nvim_012()
+        vim.treesitter.query.add_directive("make-logable-range!", function(match, _, _, predicate, metadata)
+          local capture_id = predicate[2]
+          local range_type = predicate[3]
+          local node = match[capture_id]
+
+          if vim.fn.has("nvim-0.11") == 1 and type(node) == "table" then
+            node = node[1]
+          end
+
+          if not node or type(node.range) ~= "function" then
+            return
+          end
+
+          local start_adjust = tonumber(predicate[4]) or 0
+          local end_adjust = tonumber(predicate[5]) or 0
+          local start_row, _, end_row, _ = node:range()
+
+          local adjusted_start_row = math.max(0, start_row + start_adjust)
+          local adjusted_end_row = math.max(adjusted_start_row, end_row + 1 + end_adjust)
+
+          local logable_ranges = metadata.logable_ranges or {}
+          if range_type == "outer" then
+            table.insert(logable_ranges, { 0, adjusted_start_row })
+            table.insert(logable_ranges, { adjusted_end_row, math.huge })
+          elseif range_type == "inner" then
+            table.insert(logable_ranges, { adjusted_start_row, adjusted_end_row })
+          elseif range_type == "before" then
+            table.insert(logable_ranges, { 0, adjusted_start_row })
+          elseif range_type == "after" then
+            table.insert(logable_ranges, { adjusted_end_row, math.huge })
+          end
+
+          metadata.logable_ranges = logable_ranges
+        end, { force = true })
+      end
+
       require("timber").setup({
         -- Configuration here, or leave empty to use defaults
         keymaps = {
@@ -214,6 +251,7 @@ return {
         },
         log_marker = "🪵", -- Or any other string, e.g: MY_LOG
       })
+      patch_timber_for_nvim_012()
       vim.keymap.set("n", "<leader>lc", function()
         require("timber.actions").clear_log_statements({ global = false })
       end)

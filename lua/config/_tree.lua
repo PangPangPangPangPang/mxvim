@@ -90,10 +90,6 @@ M.config = function()
       update_cwd = false,
       ignore_list = { "node_modules", ".git", "build" },
     },
-    system_open = {
-      cmd = nil,
-      args = {},
-    },
     actions = {
       use_system_clipboard = true,
       change_dir = {
