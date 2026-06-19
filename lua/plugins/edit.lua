@@ -80,9 +80,13 @@ return {
   },
   {
     "saghen/blink.pairs",
+    dependencies = "saghen/blink.lib",
     version = "*",
+    build = function()
+      require("blink.pairs").download():pwait(60000)
+    end,
     event = "InsertEnter",
-    dependencies = "saghen/blink.download",
+
     opts = {
       mappings = {
         enabled = true,
