@@ -24,4 +24,5 @@ return {
   require("theme").theme("zootedb0t/citruszest.nvim", "citruszest"),
   require("theme").theme("yorik1984/newpaper.nvim", "newpaper"),
   require("theme").theme("alexkotusenko/nightgem.nvim", "nightgem"),
+  require("theme").theme("vossenwout/guts.nvim", "guts"),
 }
