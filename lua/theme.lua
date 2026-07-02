@@ -26,11 +26,10 @@ M.theme = function(name, nick)
   return ret
 end
 M.hl_common = function()
-  local lighter = require("theme").colors(0.2)
   local darker = require("theme").colors(0.4)
   local colors = require("theme").colors()
   vim.api.nvim_set_hl(0, "Visual", { fg = "none", bg = darker.blue })
-  -- vim.api.nvim_set_hl(0, "CursorLine", { fg = "none", bg = lighter.blue })
+  vim.api.nvim_set_hl(0, "CursorLine", { fg = "none", bg = M.shade(colors.fg, 0.06) })
   vim.api.nvim_set_hl(0, "Search", { fg = "none", bg = darker.magenta })
   vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.magenta, bg = "none" })
   vim.api.nvim_set_hl(0, "NormalFloat", { link = "cleared" })
