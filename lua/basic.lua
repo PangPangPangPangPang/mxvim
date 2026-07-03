@@ -351,6 +351,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
+require("config.commit_ai").setup()
+
 pcall(require, "private")
 
 if fn.exists("g:neovide") == 1 then
