@@ -1,6 +1,7 @@
 -- Generate a Conventional Commit message in gitcommit buffers via the Gemini API.
--- Plain vim.system + curl, no plugin dependency. <c-c> starts a generation;
--- pressing it again while a request is running cancels it.
+-- Plain vim.system + curl, no plugin dependency. Generation starts automatically
+-- when the commit buffer opens empty (skipped for amend/reword/merge, which
+-- already carry a message). <c-c> cancels a running request or regenerates.
 local M = {}
 
 local job = nil
@@ -21,7 +22,8 @@ When unsure about the module names to use in the commit message, you can refer t
 Output only the commit message without any explanations and follow-up suggestions.
 ]]
 
-function M.generate()
+function M.generate(opts)
+  opts = opts or {}
   if job then
     job:kill(9)
     job = nil
@@ -30,13 +32,17 @@ function M.generate()
   end
 
   if not vim.env.GEMINI_API_KEY then
-    vim.notify("$GEMINI_API_KEY is not set", vim.log.levels.ERROR)
+    if not opts.auto then
+      vim.notify("$GEMINI_API_KEY is not set", vim.log.levels.ERROR)
+    end
     return
   end
 
   local diff = vim.fn.system("git diff --no-ext-diff --staged")
   if vim.trim(diff) == "" then
-    vim.notify("No staged changes", vim.log.levels.WARN)
+    if not opts.auto then
+      vim.notify("No staged changes", vim.log.levels.WARN)
+    end
     return
   end
   local logs = vim.fn.system('git log --pretty=format:"%s" -n 20')
@@ -82,6 +88,11 @@ function M.setup()
     pattern = "gitcommit",
     callback = function(ev)
       vim.keymap.set("i", "<c-c>", M.generate, { buffer = ev.buf, desc = "Generate commit message" })
+      -- Auto-generate only when the message is still empty: amend/reword/merge
+      -- commits open with an existing first line that must not be clobbered.
+      if vim.trim(vim.api.nvim_buf_get_lines(ev.buf, 0, 1, false)[1] or "") == "" then
+        M.generate({ auto = true })
+      end
     end,
   })
 end
