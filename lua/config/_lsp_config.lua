@@ -27,10 +27,10 @@ M.set_keymap = function()
       vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })
       -- Setup keymaps
       vim.keymap.set("n", "[e", function()
-        vim.diagnostic.goto_prev({ float = false })
+        vim.diagnostic.jump({ count = -1, float = false })
       end, { buffer = bufnr, desc = "Diagnostic" })
       vim.keymap.set("n", "]e", function()
-        vim.diagnostic.goto_next({ float = false })
+        vim.diagnostic.jump({ count = 1, float = false })
       end, { buffer = bufnr, desc = "Diagnostic" })
       vim.keymap.set(
         { "n", "i" },
