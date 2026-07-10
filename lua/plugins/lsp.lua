@@ -35,6 +35,29 @@ return {
         ["<C-f>"] = { "fallback" },
         ["<C-b>"] = { "fallback" },
         ["<C-n>"] = { "show", "select_next", "fallback" },
+        -- rime-ls: commit the first Chinese candidate with <space> (no-op while rime is off)
+        ["<space>"] = {
+          function(cmp)
+            if not vim.g.rime_enabled then
+              return false
+            end
+            return require("rimels.blink").accept_first(cmp)
+          end,
+          "fallback",
+        },
+      },
+      sources = {
+        providers = {
+          lsp = {
+            -- rime-ls: demote snippets while typing Chinese (no-op while rime is off)
+            transform_items = function(ctx, items)
+              if not vim.g.rime_enabled then
+                return items
+              end
+              return require("rimels.blink").transform_items(ctx, items)
+            end,
+          },
+        },
       },
       appearance = {
         use_nvim_cmp_as_default = true,

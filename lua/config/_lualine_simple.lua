@@ -125,11 +125,10 @@ ins_left({
   icon = "",
   padding = { left = 2 },
 })
-local zf = require("config._zfvimim")
 ins_right({
   -- padding = { right = 2 },
   function()
-    return zf.zf_method
+    return vim.g.rime_enabled and "ㄓ" or ""
   end,
 })
 

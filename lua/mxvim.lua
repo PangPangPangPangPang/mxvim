@@ -23,6 +23,7 @@ mxvim.show_fold = false
 mxvim.enable_cursor = false
 mxvim.enable_ts_tools = false
 mxvim.enable_squirrel = false
+mxvim.enable_rime_ls = true
 mxvim.enable_hlchunk = true
 mxvim.enable_trouble = true
 mxvim.enable_inlay_hint = true

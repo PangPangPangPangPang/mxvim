@@ -170,11 +170,10 @@ local function location()
 	return "Ln%2l, Col%2v"
 end
 
-local zf = require("config._zfvimim")
 ins_right({
 	-- padding = { right = 2 },
 	function()
-		return zf.zf_method
+		return vim.g.rime_enabled and "ㄓ" or ""
 	end,
 })
 
