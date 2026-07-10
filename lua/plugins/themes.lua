@@ -25,4 +25,5 @@ return {
   require("theme").theme("yorik1984/newpaper.nvim", "newpaper"),
   require("theme").theme("alexkotusenko/nightgem.nvim", "nightgem"),
   require("theme").theme("vossenwout/guts.nvim", "guts"),
+  require("theme").theme("github-main-user/lytmode.nvim", "lytmode"),
 }

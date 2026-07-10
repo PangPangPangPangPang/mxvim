@@ -18,7 +18,7 @@ local function apply_base_variable_highlights()
     "@lsp.typemod.parameter.mutable",
   }
   for _, group in ipairs(groups) do
-    pcall(vim.api.nvim_set_hl, 0, group, { link = "Normal" })
+    -- pcall(vim.api.nvim_set_hl, 0, group, { link = "Normal" })
   end
 end
 
@@ -129,7 +129,7 @@ require("nvim-treesitter").setup({
   },
 })
 
-apply_base_variable_highlights()
+-- apply_base_variable_highlights()
 
 local variable_highlights_augroup = vim.api.nvim_create_augroup("MXVIMTreeSitterVariableHighlight", { clear = true })
 
