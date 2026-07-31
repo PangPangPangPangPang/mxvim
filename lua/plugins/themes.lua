@@ -27,4 +27,5 @@ return {
   require("theme").theme("vossenwout/guts.nvim", "guts"),
   require("theme").theme("github-main-user/lytmode.nvim", "lytmode"),
   require("theme").theme("cpplain/flexoki.nvim", "flexoki"),
+  require("theme").theme("mcauley-penney/techbase.nvim", "techbase"),
 }
