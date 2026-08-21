@@ -2,10 +2,10 @@ _G.mxvim = {}
 
 -- nightfly github-theme miramare vscode nord onedarkpro rose-pine catppuccin
 -- gruvbox-material gruvbox kanagawa nightfox tundra oh-lucy oh-lucy-evening
--- melange monokai tokyonight oxocarbon bamboo modus citruszest newpaper flexoki techbase cendre
-mxvim.current_theme = "cendre"
+-- melange monokai tokyonight oxocarbon bamboo modus citruszest newpaper flexoki techbase cendre suannhai
+mxvim.current_theme = "suannhai"
 -- light / dark
-mxvim.background = "dark"
+mxvim.background = "light"
 -- simple / pure / normal
 mxvim.style = "simple"
 mxvim.use_coc = false
@@ -40,4 +40,5 @@ mxvim.lsp = {
   "lua_ls",
   "tailwindcss",
   "vtsls",
+  "kotlin_language_server",
 }

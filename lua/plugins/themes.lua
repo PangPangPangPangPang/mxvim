@@ -29,4 +29,5 @@ return {
   require("theme").theme("cpplain/flexoki.nvim", "flexoki"),
   require("theme").theme("mcauley-penney/techbase.nvim", "techbase"),
   require("theme").theme("Aejkatappaja/cendre", "cendre"),
+  require("theme").theme("WeiTing1991/suannhai.nvim", "suannhai"),
 }
