@@ -3,9 +3,9 @@ _G.mxvim = {}
 -- nightfly github-theme miramare vscode nord onedarkpro rose-pine catppuccin
 -- gruvbox-material gruvbox kanagawa nightfox tundra oh-lucy oh-lucy-evening
 -- melange monokai tokyonight oxocarbon bamboo modus citruszest newpaper flexoki techbase cendre suannhai
-mxvim.current_theme = "suannhai"
+mxvim.current_theme = "bamboo"
 -- light / dark
-mxvim.background = "light"
+mxvim.background = "dark"
 -- simple / pure / normal
 mxvim.style = "simple"
 mxvim.use_coc = false
