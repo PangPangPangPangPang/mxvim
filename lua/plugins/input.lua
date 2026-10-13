@@ -1,44 +1,44 @@
 if require("utils").system() == "MacOS" and mxvim.enable_squirrel then
-	local squirrel = vim.fn.executable("/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel") == 1
-	vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-		callback = function()
-			if squirrel then
-				vim.fn.system([[
+  local squirrel = vim.fn.executable("/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel") == 1
+  vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    callback = function()
+      if squirrel then
+        vim.fn.system([[
 			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode_prev
 			]])
-			end
-		end
-	})
+      end
+    end,
+  })
 
-	vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-		callback = function()
-			if squirrel then
-				vim.fn.system([[
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    callback = function()
+      if squirrel then
+        vim.fn.system([[
 			/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --ascii_mode
 			]])
-			end
-		end
-	})
+      end
+    end,
+  })
 end
 
 return {
-	{
-		"PangPangPangPangPang/rimels.nvim",
-		dir = vim.fn.expand("~/rimels.nvim"),
-		enabled = mxvim.enable_rime_ls and require("utils").system() == "MacOS",
-		event = "VeryLazy",
-		keys = {
-			{
-				"<c-x>",
-				function()
-					require("rimels").toggle()
-				end,
-				mode = { "n", "i" },
-				desc = "Toggle Rime",
-			},
-		},
-		opts = {},
-	},
+  {
+    "PangPangPangPangPang/rimels.nvim",
+    -- dir = vim.fn.expand("~/rimels.nvim"),
+    enabled = mxvim.enable_rime_ls and require("utils").system() == "MacOS",
+    event = "VeryLazy",
+    keys = {
+      {
+        "<c-x>",
+        function()
+          require("rimels").toggle()
+        end,
+        mode = { "n", "i" },
+        desc = "Toggle Rime",
+      },
+    },
+    opts = {},
+  },
   {
     "keaising/im-select.nvim",
     enabled = require("utils").system() == "Linux" or not mxvim.enable_squirrel,
