@@ -32,13 +32,13 @@ mxvim.enable_inlay_hint = true
 mxvim.ai_engine = "supermaven"
 
 mxvim.lsp = {
-  -- "bashls",
-  "cssls",
-  "eslint",
-  "html",
-  "jsonls",
-  "lua_ls",
-  "tailwindcss",
-  "vtsls",
-  "kotlin_language_server",
+	-- "bashls",
+	"cssls",
+	"eslint",
+	"html",
+	"jsonls",
+	"lua_ls",
+	"tailwindcss",
+	"vtsls",
+	"kotlin_language_server",
 }
