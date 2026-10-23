@@ -343,6 +343,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.bo.sts = 2
   end,
 })
+
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   group = ftgroup,
   pattern = { "*.podspec", "Podfile" },
