@@ -287,6 +287,7 @@ return {
         custom = {
           -- buf_opts = { filetype = { "Avante", "NvimTree", "OverseerList" }, buftype = { "terminal" } },
         },
+        vellum = { buf_name = { "vellum://preview" } }, -- keep the Vellum markdown preview undimmed
       },
       basebg = "",
       -- prevent a window or buffer from being styled. You

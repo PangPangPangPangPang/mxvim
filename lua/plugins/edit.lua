@@ -162,8 +162,12 @@ return {
   {
     "blackhat-7/vellum.nvim",
     ft = "markdown",
-    keys = { { "<leader>mp", "<cmd>Vellum<cr>", desc = "Markdown preview" } },
     opts = {},
+    init = function()
+      vim.api.nvim_create_user_command("MarkdownPreview", function()
+        require("vellum").toggle()
+      end, { desc = "Toggle Vellum markdown preview" })
+    end,
   },
   -- install without yarn or npm
   {
