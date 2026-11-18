@@ -29,7 +29,7 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "<c-x>",
+        "<c-/>",
         function()
           require("rimels").toggle()
         end,
